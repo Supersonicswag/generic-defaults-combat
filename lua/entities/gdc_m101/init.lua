@@ -61,7 +61,7 @@ function ENT:firewp()
 		
 		local phys = self.Entity:GetPhysicsObject()  	
 		if (phys:IsValid()) then  		
-			phys:ApplyForceCenter( self.Entity:GetUp() * -12000000 ) 
+			phys:ApplyForceCenter( self.Entity:GetUp() * -120000000 ) 
 		end 
 		
 		local effectdata = EffectData()
