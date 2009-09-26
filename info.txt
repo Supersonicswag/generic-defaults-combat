@@ -1,0 +1,11 @@
+"AddonInfo"
+{
+	"name"				"Generic Default's Combat"
+	"version"			"1"
+	"up_date"			"When I change it."
+	"author_name"		"Generic Default, everyone else made the base that I used."
+	"author_email"		"AIDS!"
+	"author_url"		"SVN - "
+	"info"				"A mod of a mod of a mod of a mod."
+	"override"			"0"
+}

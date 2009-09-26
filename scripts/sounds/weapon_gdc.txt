@@ -1,0 +1,110 @@
+"30cal.Single"
+{
+	"channel"			"CHAN_WEAPON"
+	"volume"			"1.0"
+	"CompatibilityAttenuation"	"ATTN_NORM"
+	"pitch"				"PITCH_NORM"
+
+	"soundlevel"			"SNDLVL_150dB"
+
+	"wave"				")GDC/30cal.wav"
+}
+"50cal.Single"
+{
+	"channel"			"CHAN_WEAPON"
+	"volume"			"1.0"
+	"CompatibilityAttenuation"	"ATTN_NORM"
+	"pitch"				"PITCH_NORM"
+
+	"soundlevel"			"SNDLVL_150dB"
+
+	"wave"				")GDC/50cal.wav"
+}
+"Bushmaster.Single"
+{
+	"channel"			"CHAN_WEAPON"
+	"volume"			"1.0"
+	"CompatibilityAttenuation"	"ATTN_NORM"
+	"pitch"				"PITCH_NORM"
+
+	"soundlevel"			"SNDLVL_150dB"
+
+	"wave"				")GDC/Bushmaster.wav"
+}
+"Bofors.Single"
+{
+	"channel"			"CHAN_WEAPON"
+	"volume"			"1.0"
+	"CompatibilityAttenuation"	"ATTN_NORM"
+	"pitch"				"PITCH_NORM"
+
+	"soundlevel"			"SNDLVL_150dB"
+
+	"wave"				")GDC/Bofizzle.wav"
+}
+"120mm.Single"
+{
+	"channel"			"CHAN_WEAPON"
+	"volume"			"1.0"
+	"CompatibilityAttenuation"	"ATTN_NORM"
+	"pitch"				"PITCH_NORM"
+
+	"soundlevel"			"SNDLVL_150dB"
+
+	"wave"				")GDC/120mm.wav"
+}
+"M230.Single"
+{
+	"channel"			"CHAN_WEAPON"
+	"volume"			"1.0"
+	"CompatibilityAttenuation"	"ATTN_NORM"
+	"pitch"				"PITCH_NORM"
+
+	"soundlevel"			"SNDLVL_150dB"
+
+	"wave"				")GDC/M230.wav"
+}
+"M197.Single"
+{
+	"channel"			"CHAN_WEAPON"
+	"volume"			"1.0"
+	"CompatibilityAttenuation"	"ATTN_NORM"
+	"pitch"				"PITCH_NORM"
+
+	"soundlevel"			"SNDLVL_150dB"
+
+	"wave"				")GDC/M197.wav"
+}
+"2A42.Single"
+{
+	"channel"			"CHAN_WEAPON"
+	"volume"			"1.0"
+	"CompatibilityAttenuation"	"ATTN_NORM"
+	"pitch"				"PITCH_NORM"
+
+	"soundlevel"			"SNDLVL_150dB"
+
+	"wave"				")GDC/2A42.wav"
+}
+"GAU12.Single"
+{
+	"channel"			"CHAN_WEAPON"
+	"volume"			"1.0"
+	"CompatibilityAttenuation"	"ATTN_NORM"
+	"pitch"				"PITCH_NORM"
+
+	"soundlevel"			"SNDLVL_150dB"
+
+	"wave"				")GDC/GAU12.wav"
+}
+"M134.Single"
+{
+	"channel"			"CHAN_WEAPON"
+	"volume"			"1.0"
+	"CompatibilityAttenuation"	"ATTN_NORM"
+	"pitch"				"PITCH_NORM"
+
+	"soundlevel"			"SNDLVL_150dB"
+
+	"wave"				")GDC/M134.wav"
+}
