@@ -17,7 +17,7 @@ function ENT:Initialize()
 	self.reloadtime = 0
 	self.infire = false
 	self.infire2 = false
-	self.Entity:SetModel( "models/props_rooftop/gutter_pipe_128.mdl" ) 	
+	self.Entity:SetModel( "models/props_pipes/pipecluster08d_extender128.mdl" ) 	
 	self.Entity:PhysicsInit( SOLID_VPHYSICS )      -- Make us work with physics,  	
 	self.Entity:SetMoveType( MOVETYPE_VPHYSICS )   --after all, gmod is a physics  	
 	self.Entity:SetSolid( SOLID_VPHYSICS )        -- Toolbox     

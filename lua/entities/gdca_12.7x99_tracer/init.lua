@@ -28,7 +28,7 @@ function ENT:Think()
 	
 		FireTrail = ents.Create("env_spritetrail")
 		FireTrail:SetKeyValue("lifetime","0.1")
-		FireTrail:SetKeyValue("startwidth","30")
+		FireTrail:SetKeyValue("startwidth","35")
 		FireTrail:SetKeyValue("endwidth","0")
 		FireTrail:SetKeyValue("spritename","trails/laser.vmt")
 		FireTrail:SetKeyValue("rendermode","5")
