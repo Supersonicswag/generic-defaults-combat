@@ -31,7 +31,7 @@ function ENT:Think()
 	if (tr.Hit) then
 		if ( self.exploded == false ) then
 			if ( self.exploded == false && self.ticking == true ) then
-				util.BlastDamage(self.Entity, self.Entity, tr.HitPos, 75, 50)
+				util.BlastDamage(self.Entity, self.Entity, tr.HitPos, 75, 150)
 				if (tr.Entity:IsWorld() || tr.Entity:IsPlayer() || tr.Entity:IsNPC() || tr.HitSky) then
 					local effectdata = EffectData()
 					effectdata:SetOrigin(tr.HitPos)
@@ -44,7 +44,7 @@ function ENT:Think()
 				end
 			if (tr.Entity:IsValid()) then
 				
-					local attack = cbt_dealhcghit( tr.Entity, 50, 10, tr.HitPos , tr.HitPos)
+					local attack = cbt_dealhcghit( tr.Entity, 80, 10, tr.HitPos , tr.HitPos)
 						if (attack == 0) then
 							brokedshell = ents.Create("prop_physics")
 							brokedshell:SetPos(self.Entity:GetPos())
