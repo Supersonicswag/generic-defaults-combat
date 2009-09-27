@@ -55,7 +55,7 @@ function ENT:Think()
 	if (tr.Hit) then
 		if ( self.exploded == false ) then
 			if ( self.exploded == false && self.ticking == true ) then
-				util.BlastDamage(self.Entity, self.Entity, tr.HitPos, 120, 150)
+				util.BlastDamage(self.Entity, self.Entity, tr.HitPos, 120, 100)
 				if (tr.Entity:IsWorld() || tr.Entity:IsPlayer() || tr.Entity:IsNPC() || tr.HitSky) then
 					local effectdata = EffectData()
 					effectdata:SetOrigin(tr.HitPos)

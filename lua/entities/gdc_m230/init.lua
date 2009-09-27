@@ -51,7 +51,7 @@ end
 
 function ENT:firerac5()
 
-		local ent = ents.Create( "gdca_30x113he" )
+		local ent = ents.Create( "gdca_30x113hei" )
 		ent:SetPos( self.Entity:GetPos() +  self.Entity:GetUp() * 150)
 		ent:SetAngles( self.Entity:GetAngles() )
 		ent:Spawn()
