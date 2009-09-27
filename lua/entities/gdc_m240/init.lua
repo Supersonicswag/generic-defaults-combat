@@ -10,8 +10,8 @@ util.PrecacheSound("arty/cannon.wav")
 function ENT:Initialize()   
 
 	self.ammomodel = "models/props_c17/canister01a.mdl"
-	self.ammos = 150
-	self.clipsize = 150
+	self.ammos = 200
+	self.clipsize = 200
 	self.armed = false
 	self.loading = false
 	self.reloadtime = 0
@@ -102,7 +102,7 @@ end
 function ENT:Think()
 if FIELDS == nil and COMBATDAMAGEENGINE == nil then return end
 	if self.ammos <= 0 then
-	self.reloadtime = CurTime()+5
+	self.reloadtime = CurTime()+3
 	self.ammos = self.clipsize
 	end
 	
