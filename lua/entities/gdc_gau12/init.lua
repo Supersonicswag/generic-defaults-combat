@@ -141,7 +141,7 @@ if(k=="Fire API") then
 		end
 	end
 	
-	if(k=="") then
+	if(k=="Fire APT") then
 		if((v or 0) >= 1) then
 			self.inFire2 = true
 		else
