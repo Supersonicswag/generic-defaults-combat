@@ -11,6 +11,7 @@ self.exploded = false
 self.armed = true
 
 self.flightvector = self.Entity:GetUp() * 200
+self.timeleft = CurTime() + 10
 self.Entity:SetModel( "models/combatmodels/tankshell.mdl" )
 self.Entity:SetGravity( 0.5 ) 	
 self.Entity:PhysicsInit( SOLID_VPHYSICS )      -- Make us work with physics,  	
@@ -38,6 +39,12 @@ end
 		FireTrail:Activate()
 	end 
  
+		if self.timeleft < CurTime() then
+					self.exploded = true
+					self.Entity:Remove()
+					
+	end
+
 	local trace = {}
 		trace.start = self.Entity:GetPos()
 		trace.endpos = self.Entity:GetPos() + self.flightvector

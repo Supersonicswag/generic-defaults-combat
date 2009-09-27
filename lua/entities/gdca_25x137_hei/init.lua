@@ -12,6 +12,7 @@ self.armed = true
 self.ticking = true
 self.smoking = false
 self.flightvector = self.Entity:GetUp() * 550
+self.timeleft = CurTime() + 5
 self.Entity:SetModel( "models/combatmodels/tankshell_40mm.mdl" ) 	
 self.Entity:PhysicsInit( SOLID_VPHYSICS )      -- Make us work with physics,  	
 self.Entity:SetMoveType( MOVETYPE_NONE )   --after all, gmod is a physics  	
@@ -39,6 +40,12 @@ function ENT:Think()
 		FireTrail:Activate()
 	end 
 	
+		if self.timeleft < CurTime() then
+					self.exploded = true
+					self.Entity:Remove()
+					
+	end
+
 	local trace = {}
 		trace.start = self.Entity:GetPos()
 		trace.endpos = self.Entity:GetPos() + self.flightvector 
