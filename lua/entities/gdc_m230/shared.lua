@@ -1,6 +1,6 @@
  ENT.Type = "anim"  
  ENT.Base = "base_gmodentity"     
- ENT.PrintName		= "GDC 30mm M230"  
+ ENT.PrintName		= "GDC 40mm L/60"  
  ENT.Author			= "Generic Default"  
  ENT.Contact			= "AIDS"  
  ENT.Purpose			= "SPLODE"

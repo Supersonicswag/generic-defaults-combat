@@ -284,7 +284,7 @@ function TOOL.BuildCPanel( CPanel )
 		Ctype["Options"]["#GAU-12 25mm"]	= { gdcweapons_gdcweaponsindex = "9" }
 		Ctype["Options"]["#2KG High Explosive Charge"]	= { gdcweapons_gdcweaponsindex = "10" }
 		Ctype["Options"]["#M134 7.62mm"]	= { gdcweapons_gdcweaponsindex = "11" }
-		
+
 	CPanel:AddControl("ComboBox", Ctype )
 	
 

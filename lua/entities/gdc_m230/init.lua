@@ -10,13 +10,13 @@ util.PrecacheSound("arty/artyfire.wav")
 function ENT:Initialize()   
 
 	self.ammomodel = "models/props_c17/canister01a.mdl"
-	self.ammos = 30
-	self.clipsize = 30
+	self.ammos = 7
+	self.clipsize = 7
 	self.armed = false
 	self.loading = false
 	self.reloadtime = 0
 	self.infire = false
-	self.Entity:SetModel( "models/props_lab/pipesystem01a.mdl" ) 	
+	self.Entity:SetModel( "models/props_pipes/pipecluster08d_extender64.mdl" ) 	
 	self.Entity:PhysicsInit( SOLID_VPHYSICS )      -- Make us work with physics,  	
 	self.Entity:SetMoveType( MOVETYPE_VPHYSICS )   --after all, gmod is a physics  	
 	self.Entity:SetSolid( SOLID_VPHYSICS )        -- Toolbox     
@@ -38,7 +38,7 @@ function ENT:SpawnFunction( ply, tr)
 	local SpawnPos = tr.HitPos + tr.HitNormal * 60
 	
 	
-	local ent = ents.Create( "gdca_m230" )
+	local ent = ents.Create( "gdc_l60" )
 		ent:SetPos( SpawnPos )
 	ent:Spawn()
 	ent:Activate()
@@ -51,22 +51,22 @@ end
 
 function ENT:firerac5()
 
-		local ent = ents.Create( "gdca_30x113hei" )
-		ent:SetPos( self.Entity:GetPos() +  self.Entity:GetUp() * 100)
+		local ent = ents.Create( "gdca_40x311he" )
+		ent:SetPos( self.Entity:GetPos() +  self.Entity:GetUp() * 200)
 		ent:SetAngles( self.Entity:GetAngles() )
 		ent:Spawn()
 		ent:Activate()
 		
 		local phys = self.Entity:GetPhysicsObject()  	
 		if (phys:IsValid()) then  		
-			phys:ApplyForceCenter( self.Entity:GetUp() * -3000000 ) 
+			phys:ApplyForceCenter( self.Entity:GetUp() * -400000 ) 
 		end 
 		
-		self.Entity:EmitSound( "M230.single" )
+		self.Entity:EmitSound( "Bofors.single" )
 		self.ammos = self.ammos-1
 		
 		local effectdata = EffectData()
-		effectdata:SetOrigin(self.Entity:GetPos() +  self.Entity:GetUp() * 40)
+		effectdata:SetOrigin(self.Entity:GetPos() +  self.Entity:GetUp() * 50)
 		effectdata:SetNormal( self:GetUp() )
 		util.Effect( "muzzleflash", effectdata )
 	
@@ -77,7 +77,7 @@ function ENT:Think()
 if FIELDS == nil and COMBATDAMAGEENGINE == nil then return end
 Wire_TriggerOutput(self.Entity, "Shots", self.ammos)
 	if self.ammos <= 0 then
-	self.reloadtime = CurTime()+7
+	self.reloadtime = CurTime()+5
 	self.ammos = self.clipsize
 	end
 	
@@ -95,7 +95,7 @@ Wire_TriggerOutput(self.Entity, "Shots", self.ammos)
 		end
 	end
 
-	self.Entity:NextThink( CurTime() + .1)
+	self.Entity:NextThink( CurTime() + .5)
 	return true
 end
 
