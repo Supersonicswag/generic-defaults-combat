@@ -39,7 +39,7 @@ function ENT:Think()
 	if (tr.Hit) then
 		if ( self.exploded == false ) then
 			if ( self.exploded == false && self.ticking == true ) then
-				util.BlastDamage(self.Entity, self.Entity, tr.HitPos, 300, 100)
+				util.BlastDamage(self.Entity, self.Entity, tr.HitPos, 300, 150)
 				if (tr.Entity:IsWorld() || tr.Entity:IsPlayer() || tr.Entity:IsNPC() || tr.HitSky) then
 					local effectdata = EffectData()
 					effectdata:SetOrigin(tr.HitPos)
@@ -50,7 +50,7 @@ function ENT:Think()
 					self.Entity:Remove()
 					return true
 				end
-			cbt_hcgexplode( tr.HitPos, 150, 200, 6)
+			cbt_hcgexplode( tr.HitPos, 100, 200, 6)
 
 			if (tr.Entity:IsValid()) then
 				

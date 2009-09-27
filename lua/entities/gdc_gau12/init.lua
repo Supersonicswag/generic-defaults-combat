@@ -28,7 +28,7 @@ function ENT:Initialize()
 		phys:Wake() 
 	end 
  
-	self.Inputs = Wire_CreateInputs( self.Entity, { "Fire API", "Fire HEI"} )
+	self.Inputs = Wire_CreateInputs( self.Entity, { "Fire API", "Fire APT"} )
 	self.Outputs = Wire_CreateOutputs( self.Entity, { "Can Fire"})
 end   
 
@@ -74,9 +74,9 @@ function ENT:fireapi()
 
 end
 
-function ENT:firehei()
+function ENT:fireapt()
 
-	local ent = ents.Create( "gdca_25x137_hei" )
+	local ent = ents.Create( "gdca_25x137_apt" )
 		ent:SetPos( self.Entity:GetPos() +  self.Entity:GetUp() * 200)
 		ent:SetAngles( self.Entity:GetAngles() )
 		ent:Spawn()
@@ -102,7 +102,7 @@ end
 function ENT:Think()
 if FIELDS == nil and COMBATDAMAGEENGINE == nil then return end
 	if self.ammos <= 0 then
-	self.reloadtime = CurTime()+5
+	self.reloadtime = CurTime()+4
 	self.ammos = self.clipsize
 	end
 	
@@ -123,7 +123,7 @@ if FIELDS == nil and COMBATDAMAGEENGINE == nil then return end
 	if (self.inFire2 == true) then
 		if (self.reloadtime < CurTime()) then
 		
-			self:firehei()
+			self:fireapt()
 			
 		end
 	end
@@ -141,7 +141,7 @@ if(k=="Fire API") then
 		end
 	end
 	
-	if(k=="Fire HEI") then
+	if(k=="") then
 		if((v or 0) >= 1) then
 			self.inFire2 = true
 		else

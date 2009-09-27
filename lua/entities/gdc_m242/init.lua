@@ -28,7 +28,7 @@ function ENT:Initialize()
 		phys:Wake() 
 	end 
  
-	self.Inputs = Wire_CreateInputs( self.Entity, { "Fire", "Reload"} )
+	self.Inputs = Wire_CreateInputs( self.Entity, { "Fire" } )
 	self.Outputs = Wire_CreateOutputs( self.Entity, { "Can Fire", "Shots"})
 end   
 
