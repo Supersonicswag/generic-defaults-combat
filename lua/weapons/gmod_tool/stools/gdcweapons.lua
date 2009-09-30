@@ -31,7 +31,8 @@ if ( CLIENT ) then
 	language.Add( "Tool_gdcweapons_help9", "25mm gatling gun. Effective against medium vehicles and infantry." )
 	language.Add( "Tool_gdcweapons_help10", "2kg High Explosive charge. 15-20m Blast radius." )
 	language.Add( "Tool_gdcweapons_help11", "7.62mm gatling gun. Effective against infantry and light vehicles." )
-	language.Add( "Tool_gdcweapons_help11", "120mm. Effective against medium and heavy vehicles.." )
+	language.Add( "Tool_gdcweapons_help12", "120mm. Effective against medium and heavy vehicles." )
+	language.Add( "Tool_gdcweapons_help13", "HEAT Shape Charge. Effective against armored vehicles." )
 
 
 	
@@ -135,6 +136,12 @@ if ( !trace.Hit ) then return end
 	self.ent:Activate()
 							elseif (gdcweaponsindex == 12) then
 	self.ent = ents.Create( "gdc_m256" )
+		self.ent:SetPos( SpawnPos )
+		self.ent:SetAngles( trace.HitNormal:Angle() + Angle(90,0,0))
+	self.ent:Spawn()
+	self.ent:Activate()
+							elseif (gdcweaponsindex == 13) then
+	self.ent = ents.Create( "gdc_shape_charge" )
 		self.ent:SetPos( SpawnPos )
 		self.ent:SetAngles( trace.HitNormal:Angle() + Angle(90,0,0))
 	self.ent:Spawn()
@@ -254,6 +261,12 @@ if ( !trace.Hit ) then return end
 		self.ent:SetAngles( trace.HitNormal:Angle() + Angle(90,0,0))
 	self.ent:Spawn()
 	self.ent:Activate()
+							elseif (gdcweaponsindex == 13) then
+	self.ent = ents.Create( "gdc_shape_charge" )
+		self.ent:SetPos( SpawnPos )
+		self.ent:SetAngles( trace.HitNormal:Angle() + Angle(90,0,0))
+	self.ent:Spawn()
+	self.ent:Activate()
 
 	end
 
@@ -298,6 +311,7 @@ function TOOL.BuildCPanel( CPanel )
 		Ctype["Options"]["#2KG High Explosive Charge"]	= { gdcweapons_gdcweaponsindex = "10" }
 		Ctype["Options"]["#M134 7.62mm"]	= { gdcweapons_gdcweaponsindex = "11" }
 		Ctype["Options"]["#M256 120mm"]	= { gdcweapons_gdcweaponsindex = "12" }
+		Ctype["Options"]["#HEAT Shape Charge."]	= { gdcweapons_gdcweaponsindex = "13" }
 
 	CPanel:AddControl("ComboBox", Ctype )
 	
