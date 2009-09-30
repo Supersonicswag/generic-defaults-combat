@@ -11,7 +11,7 @@ self.exploded = false
 self.armed = true
 self.ticking = true
 self.smoking = false
-self.flightvector = self.Entity:GetUp() * 350
+self.flightvector = self.Entity:GetUp() * 300
 self.timeleft = CurTime() + 5
 self.Entity:SetModel( "models/combatmodels/tankshell_120mm.mdl" ) 	
 self.Entity:PhysicsInit( SOLID_VPHYSICS )      -- Make us work with physics,  	
@@ -50,11 +50,11 @@ function ENT:Think()
 					self.Entity:Remove()
 					return true
 				end
-			cbt_hcgexplode( tr.HitPos, 200, 600, 6)
+			cbt_hcgexplode( tr.HitPos, 100, 600, 6)
 
 			if (tr.Entity:IsValid()) then
 				
-					local attack = cbt_dealhcghit( tr.Entity, 1700, 20, tr.HitPos , tr.HitPos)
+					local attack = cbt_dealhcghit( tr.Entity, 1500, 20, tr.HitPos , tr.HitPos)
 						if (attack == 0) then
 							brokedshell = ents.Create("prop_physics")
 							brokedshell:SetPos(self.Entity:GetPos())
