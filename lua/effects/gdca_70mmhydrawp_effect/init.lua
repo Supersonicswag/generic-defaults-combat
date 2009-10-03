@@ -65,12 +65,12 @@ local vOffset = data:GetOrigin()
 			local particle2 = emitter:Add( "particles/smokey", vOffset ) 
  			if (particle2) then 
  				 
- 				particle2:SetVelocity( VectorRand() * math.Rand(1500, 2000) ) 
+ 				particle2:SetVelocity( VectorRand() * math.Rand(1500, 1600) ) 
  				 
  				particle2:SetLifeTime( 0 ) 
- 				particle2:SetDieTime( math.Rand(5, 7) ) 
+ 				particle2:SetDieTime( math.Rand(7, 14) ) 
  				 
- 				particle2:SetStartAlpha( 200 ) 
+ 				particle2:SetStartAlpha( 150 ) 
  				particle2:SetEndAlpha( 0 ) 
  				 
  				particle2:SetStartSize( math.Rand(150, 200) ) 

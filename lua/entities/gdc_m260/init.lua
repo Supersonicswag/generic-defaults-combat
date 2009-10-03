@@ -50,7 +50,7 @@ end
 function ENT:firehe()
 
 		local ent = ents.Create( "gdca_70mmhydrahe" )
-		ent:SetPos( self.Entity:GetPos() +  self.Entity:GetUp() * 200)
+		ent:SetPos( self.Entity:GetPos() +  self.Entity:GetUp() * 250)
 		ent:SetAngles( self.Entity:GetAngles() )
 		ent:Spawn()
 		ent:Activate()
@@ -64,7 +64,7 @@ end
 function ENT:firewp()
 
 		local ent = ents.Create( "gdca_70mmhydrawp" )
-		ent:SetPos( self.Entity:GetPos() +  self.Entity:GetUp() * 200)
+		ent:SetPos( self.Entity:GetPos() +  self.Entity:GetUp() * 250)
 		ent:SetAngles( self.Entity:GetAngles() )
 		ent:Spawn()
 		ent:Activate()
