@@ -10,7 +10,7 @@ self.smoking = false
 self.exploded = false
 self.armed = true
 
-self.flightvector = self.Entity:GetUp() * 175
+self.flightvector = self.Entity:GetUp() * 150
 self.timeleft = CurTime() + 10
 self.Entity:SetModel( "models/combatmodels/tankshell.mdl" )
 self.Entity:SetGravity( 0.5 ) 	
@@ -72,7 +72,7 @@ end
 	end
 	
 	self.Entity:SetPos(self.Entity:GetPos() + self.flightvector)
-	self.flightvector = self.flightvector + Vector(math.Rand(-1,1), math.Rand(-1,1),math.Rand(-0.5,0.5)) + Vector(0,0,-0.1)
+	self.flightvector = self.flightvector + Vector(math.Rand(-0.5,0.5), math.Rand(-0.5,0.5),math.Rand(-0.5,0.5)) + Vector(0,0,-0.1)
 	self.Entity:SetAngles(self.flightvector:Angle() + Angle(90,0,0))
 	self.Entity:NextThink( CurTime() )
 	return true
