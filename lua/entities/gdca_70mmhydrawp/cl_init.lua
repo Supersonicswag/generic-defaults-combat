@@ -18,8 +18,8 @@
  function ENT:Think()
 	
 	pos = self:GetPos()
-		for i=0, (3) do
-			local particle = self.emitter:Add( "particles/smokey", pos + (self:GetUp() * -50 * i))
+		for i=0, (4) do
+			local particle = self.emitter:Add( "particles/smokey", pos + (self:GetUp() * -60 * i))
 			if (particle) then
 				particle:SetVelocity((self:GetUp() * -300) )
 				particle:SetLifeTime( 0 )
@@ -27,7 +27,7 @@
 				particle:SetStartAlpha( math.Rand( 60, 80 ) )
 				particle:SetEndAlpha( 0 )
 				particle:SetStartSize( math.Rand( 40, 50 ) )
-				particle:SetEndSize( math.Rand( 100, 150 ) )
+				particle:SetEndSize( math.Rand( 150, 200 ) )
 				particle:SetRoll( math.Rand(0, 360) )
 				particle:SetRollDelta( math.Rand(-1, 1) )
 				particle:SetColor( 255 , 255 , 255 ) 
