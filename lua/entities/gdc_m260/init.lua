@@ -105,7 +105,7 @@ Wire_TriggerOutput(self.Entity, "shots", self.ammos)
 		end
 	end
 
-	self.Entity:NextThink( CurTime() + .15)
+	self.Entity:NextThink( CurTime() + 0.14285)
 	return true
 end
 

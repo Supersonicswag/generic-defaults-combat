@@ -19,7 +19,7 @@
 	
 	pos = self:GetPos()
 		for i=0, (4) do
-			local particle = self.emitter:Add( "particles/smokey", pos + (self:GetUp() * -60 * i))
+			local particle = self.emitter:Add( "particles/smokey", pos + (self:GetUp() * -100 * i))
 			if (particle) then
 				particle:SetVelocity((self:GetUp() * -300) )
 				particle:SetLifeTime( 0 )
@@ -31,7 +31,8 @@
 				particle:SetRoll( math.Rand(0, 360) )
 				particle:SetRollDelta( math.Rand(-1, 1) )
 				particle:SetColor( 255 , 255 , 255 ) 
-				particle:VelocityDecay( true )	
+				particle:VelocityDecay( true )
+ 				particle:SetGravity( Vector( 100, 0, 0 ) ) 
 			end
 		end
 end
