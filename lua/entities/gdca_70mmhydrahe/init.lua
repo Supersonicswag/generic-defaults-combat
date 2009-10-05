@@ -66,7 +66,7 @@ end
 			return true
 			end
 			
-			local attack = gcombat.hcgexplode( tr.HitPos, 300, 500, 6)
+			local attack = gcombat.hcgexplode( tr.HitPos, 300, 300, 6)
 			self.Entity:Remove()
 		
 	end

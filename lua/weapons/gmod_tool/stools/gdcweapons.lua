@@ -29,10 +29,10 @@ if ( CLIENT ) then
 	language.Add( "Tool_gdcweapons_help7", "70mm rocket pod. Effective against all vehicles and infantry." )
 	language.Add( "Tool_gdcweapons_help8", "105mm cannon. Effective against heavy vehicles and infantry." )
 	language.Add( "Tool_gdcweapons_help9", "25mm gatling gun. Effective against medium vehicles and infantry." )
-	language.Add( "Tool_gdcweapons_help10", "2kg High Explosive charge. 15-20m Blast radius." )
+	language.Add( "Tool_gdcweapons_help10", "2kg High Explosive charge. Large blast radius. effective agasint infantry and light vehicles." )
 	language.Add( "Tool_gdcweapons_help11", "7.62mm gatling gun. Effective against infantry and light vehicles." )
 	language.Add( "Tool_gdcweapons_help12", "120mm. Effective against medium and heavy vehicles." )
-	language.Add( "Tool_gdcweapons_help13", "HEAT Shape Charge. Effective against armored vehicles." )
+	language.Add( "Tool_gdcweapons_help13", "HEAT Shape Charge. Smaller blast radius that does more damage. Effective against armored vehicles." )
 
 
 	

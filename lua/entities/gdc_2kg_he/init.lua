@@ -44,8 +44,8 @@ function ENT:Think()
 		util.Effect( "gdca_70mmhydra_effect1", effectdata )
 		util.Effect( "gdca_70mmhydra_effect2", effectdata )
 		self.Entity:EmitSound( "Impacts/Explosion2.wav", 100, 100)
-		cbt_hcgexplode( self.Entity:GetPos(), 300, 600, 7)
-		util.BlastDamage(self.Entity, self.Entity, self.Entity:GetPos(), 700, 200)
+		cbt_hcgexplode( self.Entity:GetPos(), 400, 500, 7)
+		util.BlastDamage(self.Entity, self.Entity, self.Entity:GetPos(), 1000, 200)
 		self.Entity:Remove()
 	end
 end

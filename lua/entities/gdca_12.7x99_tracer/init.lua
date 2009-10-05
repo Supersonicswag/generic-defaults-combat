@@ -56,12 +56,12 @@ function ENT:Think()
 		if ( self.exploded == false ) then
 			if ( self.exploded == false && self.ticking == true ) then
 				util.BlastDamage(self.Entity, self.Entity, tr.HitPos, 120, 100)
-				if (tr.Entity:IsWorld() || tr.Entity:IsPlayer() || tr.Entity:IsNPC() || tr.HitSky) then
 					local effectdata = EffectData()
 					effectdata:SetOrigin(tr.HitPos)
 					effectdata:SetNormal(tr.HitNormal)
 					effectdata:SetStart(tr.HitPos)
 					util.Effect( "gdca_12.7x99_effect", effectdata )
+				if (tr.Entity:IsWorld() || tr.Entity:IsPlayer() || tr.Entity:IsNPC() || tr.HitSky) then
 					self.exploded = true
 					self.Entity:Remove()
 					return true

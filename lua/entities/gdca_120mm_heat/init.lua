@@ -40,17 +40,17 @@ function ENT:Think()
 		if ( self.exploded == false ) then
 			if ( self.exploded == false && self.ticking == true ) then
 				util.BlastDamage(self.Entity, self.Entity, tr.HitPos, 500, 200)
-				if (tr.Entity:IsWorld() || tr.Entity:IsPlayer() || tr.Entity:IsNPC() || tr.HitSky) then
 					local effectdata = EffectData()
 					effectdata:SetOrigin(tr.HitPos)
 					effectdata:SetNormal(tr.HitNormal)
 					effectdata:SetStart(tr.HitPos)
 					util.Effect( "gdca_120mmheat_effect", effectdata )
+				if (tr.Entity:IsWorld() || tr.Entity:IsPlayer() || tr.Entity:IsNPC() || tr.HitSky) then
 					self.exploded = true
 					self.Entity:Remove()
 					return true
 				end
-			cbt_hcgexplode( tr.HitPos, 100, 600, 6)
+			cbt_hcgexplode( tr.HitPos, 150, 1000, 7)
 
 			if (tr.Entity:IsValid()) then
 				
