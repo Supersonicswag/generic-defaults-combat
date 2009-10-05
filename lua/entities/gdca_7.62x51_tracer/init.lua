@@ -68,7 +68,7 @@ function ENT:Think()
 				end
 			if (tr.Entity:IsValid()) then
 				
-					local attack = cbt_dealhcghit( tr.Entity, 80, 10, tr.HitPos , tr.HitPos)
+					local attack = cbt_dealhcghit( tr.Entity, 50, 10, tr.HitPos , tr.HitPos)
 						if (attack == 0) then
 							brokedshell = ents.Create("prop_physics")
 							brokedshell:SetPos(self.Entity:GetPos())
