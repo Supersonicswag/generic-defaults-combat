@@ -40,7 +40,7 @@ function EFFECT:Init( data )
 				particle:SetStartAlpha( 255 )
 				particle:SetEndAlpha( 0 )
 
-				particle:SetStartSize( 200 )
+				particle:SetStartSize( 250 )
 				particle:SetEndSize( 0 )
 
 				particle:SetRoll( math.Rand(180,480) )

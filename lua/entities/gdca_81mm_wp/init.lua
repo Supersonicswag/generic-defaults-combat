@@ -10,9 +10,9 @@ self.smoking = false
 self.exploded = false
 self.armed = true
 
-self.flightvector = self.Entity:GetUp() * 200
+self.flightvector = self.Entity:GetUp() * 80
 self.timeleft = CurTime() + 10
-self.Entity:SetModel( "models/props_junk/garbage_plasticbottle003a.mdl" )
+self.Entity:SetModel( "models/props_junk/garbage_glassbottle001a.mdl" )
 self.Entity:SetGravity( 0.5 ) 	
 self.Entity:PhysicsInit( SOLID_VPHYSICS )      -- Make us work with physics,  	
 self.Entity:SetMoveType( MOVETYPE_NONE )   --after all, gmod is a physics  	
@@ -37,7 +37,7 @@ end
 	
 	
 if tr.Hit then
-util.BlastDamage(self.Entity, self.Entity, tr.HitPos, 1050, 150)
+util.BlastDamage(self.Entity, self.Entity, tr.HitPos, 600, 150)
 local effectdata = EffectData()
 effectdata:SetOrigin(tr.HitPos)
 effectdata:SetNormal(tr.HitNormal)
@@ -49,13 +49,13 @@ self.Entity:Remove()
 return true
 end
 
-local attack = gcombat.hcgexplode( tr.HitPos, 300, 200, 5)
+local attack = gcombat.hcgexplode( tr.HitPos, 200, 100, 6)
 self.Entity:Remove()
 
 end
 	
 	self.Entity:SetPos(self.Entity:GetPos() + self.flightvector)
-	self.flightvector = self.flightvector + Vector(math.Rand(-0.5,0.5), math.Rand(-0.5,0.5),math.Rand(-0.5,0.5)) + Vector(0,0,-0.2)
+	self.flightvector = self.flightvector + Vector(math.Rand(-0.2,0.2), math.Rand(-0.2,0.2),math.Rand(-0.2,0.2)) + Vector(0,0,-0.3)
 	self.Entity:SetAngles(self.flightvector:Angle() + Angle(90,0,0))
 	self.Entity:NextThink( CurTime() )
 	return true

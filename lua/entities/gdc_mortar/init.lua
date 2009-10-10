@@ -5,20 +5,22 @@ AddCSLuaFile( "shared.lua" )
 include('entities/base_wire_entity/init.lua'); 
 include('shared.lua')
 
+util.PrecacheSound("arty/artyfire.wav")
+
 function ENT:Initialize()   
 
 	self.ammomodel = "models/props_c17/canister01a.mdl"
-	self.ammos = 7
-	self.clipsize = 7
+	self.ammos =1
+	self.clipsize = 1
 	self.armed = false
 	self.loading = false
 	self.reloadtime = 0
 	self.infire = false
-	self.Entity:SetModel( "models/props_junk/plasticbucket001a.mdl" ) 	
+	self.infire2 = false
+	self.Entity:SetModel( "models/props_pipes/pipecluster08d_extender64.mdl" ) 	
 	self.Entity:PhysicsInit( SOLID_VPHYSICS )      -- Make us work with physics,  	
 	self.Entity:SetMoveType( MOVETYPE_VPHYSICS )   --after all, gmod is a physics  	
 	self.Entity:SetSolid( SOLID_VPHYSICS )        -- Toolbox     
-	self.Entity:SetColor(25,25,25,255)
 	
           
 	local phys = self.Entity:GetPhysicsObject()  	
@@ -26,18 +28,18 @@ function ENT:Initialize()
 		phys:Wake() 
 	end 
  
-	self.Inputs = Wire_CreateInputs( self.Entity, { "Fire HE", "Fire WP"} )
-	self.Outputs = Wire_CreateOutputs( self.Entity, { "Can Fire", "shots"})
+	self.Inputs = Wire_CreateInputs( self.Entity, { "Fire HE", "Fire WP" } )
+	self.Outputs = Wire_CreateOutputs( self.Entity, { "Can Fire"})
 end   
 
 function ENT:SpawnFunction( ply, tr)
 	
 	if ( !tr.Hit ) then return end
-	local SpawnPos = tr.HitPos + tr.HitNormal * 60
+	local SpawnPos = tr.HitPos + tr.HitNormal * 10
 	
 	
-	local ent = ents.Create( "gdc_m260" )
-	ent:SetPos( SpawnPos )
+	local ent = ents.Create( "gdc_mortar" )
+		ent:SetPos( SpawnPos )
 	ent:Spawn()
 	ent:Activate()
 	
@@ -47,29 +49,51 @@ function ENT:SpawnFunction( ply, tr)
 
 end
 
-function ENT:firehe()
+function ENT:firewp()
 
-		local ent = ents.Create( "gdca_70mmhydrahe" )
-		ent:SetPos( self.Entity:GetPos() +  self.Entity:GetUp() * 250)
+		local ent = ents.Create( "gdca_81mm_wp" )
+		ent:SetPos( self.Entity:GetPos() +  self.Entity:GetUp() * 100)
 		ent:SetAngles( self.Entity:GetAngles() )
 		ent:Spawn()
 		ent:Activate()
+		self.armed = false
 		
-		self.Entity:EmitSound( "M260.single" )
+		
+		local phys = self.Entity:GetPhysicsObject()  	
+		if (phys:IsValid()) then  		
+			phys:ApplyForceCenter( self.Entity:GetUp() * -2000 ) 
+		end 
+		
+		local effectdata = EffectData()
+		effectdata:SetOrigin(self.Entity:GetPos() +  self.Entity:GetUp() * 80)
+		effectdata:SetStart(self.Entity:GetPos() +  self.Entity:GetUp() * 80)
+		util.Effect( "tankflash", effectdata )
+		self.Entity:EmitSound( "81mm.single" )
 		self.ammos = self.ammos-1
 	
 
 end
 
-function ENT:firewp()
+function ENT:firehe()
 
-		local ent = ents.Create( "gdca_70mmhydrawp" )
-		ent:SetPos( self.Entity:GetPos() +  self.Entity:GetUp() * 250)
+	local ent = ents.Create( "gdca_81mm_he" )
+		ent:SetPos( self.Entity:GetPos() +  self.Entity:GetUp() * 100)
 		ent:SetAngles( self.Entity:GetAngles() )
 		ent:Spawn()
 		ent:Activate()
+		self.armed = false
 		
-		self.Entity:EmitSound( "M260.single" )
+		
+		local phys = self.Entity:GetPhysicsObject()  	
+		if (phys:IsValid()) then  		
+			phys:ApplyForceCenter( self.Entity:GetUp() * -2000 ) 
+		end 
+		
+		local effectdata = EffectData()
+		effectdata:SetOrigin(self.Entity:GetPos() +  self.Entity:GetUp() * 80)
+		effectdata:SetStart(self.Entity:GetPos() +  self.Entity:GetUp() * 80)
+		util.Effect( "tankflash", effectdata )
+		self.Entity:EmitSound( "81mm.single" )
 		self.ammos = self.ammos-1
 	
 
@@ -77,9 +101,8 @@ end
 
 function ENT:Think()
 if FIELDS == nil and COMBATDAMAGEENGINE == nil then return end
-Wire_TriggerOutput(self.Entity, "shots", self.ammos)
 	if self.ammos <= 0 then
-	self.reloadtime = CurTime()+14
+	self.reloadtime = CurTime()+3
 	self.ammos = self.clipsize
 	end
 	
@@ -92,7 +115,7 @@ Wire_TriggerOutput(self.Entity, "shots", self.ammos)
 	if (self.inFire == true) then
 		if (self.reloadtime < CurTime()) then
 		
-			self:firehe()
+			self:firewp()
 			
 		end
 	end
@@ -100,17 +123,17 @@ Wire_TriggerOutput(self.Entity, "shots", self.ammos)
 	if (self.inFire2 == true) then
 		if (self.reloadtime < CurTime()) then
 		
-			self:firewp()
+			self:firehe()
 			
 		end
 	end
 
-	self.Entity:NextThink( CurTime() + 0.14285)
+	self.Entity:NextThink( CurTime() + .01)
 	return true
 end
 
 function ENT:TriggerInput(k, v)
-if(k=="Fire HE") then
+if(k=="Fire WP") then
 		if((v or 0) >= 1) then
 			self.inFire = true
 		else
@@ -118,7 +141,7 @@ if(k=="Fire HE") then
 		end
 	end
 	
-	if(k=="Fire WP") then
+	if(k=="Fire HE") then
 		if((v or 0) >= 1) then
 			self.inFire2 = true
 		else

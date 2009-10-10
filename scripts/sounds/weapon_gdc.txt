@@ -108,3 +108,25 @@
 
 	"wave"				")GDC/M134.wav"
 }
+"M260.Single"
+{
+	"channel"			"CHAN_WEAPON"
+	"volume"			"1.0"
+	"CompatibilityAttenuation"	"ATTN_NORM"
+	"pitch"				"PITCH_NORM"
+
+	"soundlevel"			"SNDLVL_150dB"
+
+	"wave"				")GDC/M260.wav"
+}
+"81mm.Single"
+{
+	"channel"			"CHAN_WEAPON"
+	"volume"			"1.0"
+	"CompatibilityAttenuation"	"ATTN_NORM"
+	"pitch"				"PITCH_NORM"
+
+	"soundlevel"			"SNDLVL_150dB"
+
+	"wave"				")GDC/81mm.wav"
+}

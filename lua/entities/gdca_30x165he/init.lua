@@ -50,11 +50,11 @@ function ENT:Think()
 					self.Entity:Remove()
 					return true
 				end
-			cbt_hcgexplode( tr.HitPos, 100, 100, 6)
+			cbt_hcgexplode( tr.HitPos, 30, 90, 6)
 
 			if (tr.Entity:IsValid()) then
 				
-					local attack = cbt_dealhcghit( tr.Entity, 300, 15, tr.HitPos , tr.HitPos)
+					local attack = cbt_dealhcghit( tr.Entity, 250, 15, tr.HitPos , tr.HitPos)
 						if (attack == 0) then
 							brokedshell = ents.Create("prop_physics")
 							brokedshell:SetPos(self.Entity:GetPos())
