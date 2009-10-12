@@ -54,7 +54,11 @@ function ENT:Think()
 			cbt_hcgexplode( tr.HitPos, 20, 60, 6)
 
 			if (tr.Entity:IsValid()) then
-				
+					local effectdata = EffectData()
+					effectdata:SetOrigin(tr.HitPos)
+					effectdata:SetStart(tr.HitPos)
+					util.Effect( "gdca_sparks", effectdata )	
+			
 					local attack = gcombat.hcghit( tr.Entity, 150, 10, tr.HitPos, tr.HitPos)
 						if (attack == 0) then
 							brokedshell = ents.Create("prop_physics")

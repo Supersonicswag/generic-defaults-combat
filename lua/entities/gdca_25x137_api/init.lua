@@ -67,7 +67,11 @@ function ENT:Think()
 					return true
 				end
 			if (tr.Entity:IsValid()) then
-				
+					local effectdata = EffectData()
+					effectdata:SetOrigin(tr.HitPos)
+					effectdata:SetStart(tr.HitPos)
+					util.Effect( "gdca_sparks", effectdata )	
+			
 					local attack = cbt_dealhcghit( tr.Entity, 300, 20, tr.HitPos , tr.HitPos)
 						if (attack == 0) then
 							brokedshell = ents.Create("prop_physics")

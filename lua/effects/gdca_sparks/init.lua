@@ -10,7 +10,7 @@ function EFFECT:Init( data )
 	
 local vOffset = data:GetOrigin() 
  	 
- 	local NumParticles = 40	 
+ 	local NumParticles = 20	 
  	local emitter = ParticleEmitter( vOffset ) 
  	 
  		for i=0, NumParticles do 
@@ -21,7 +21,7 @@ local vOffset = data:GetOrigin()
  				particle:SetVelocity( VectorRand() * math.Rand(100, 1000) ) 
  				 
  				particle:SetLifeTime( 0 ) 
- 				particle:SetDieTime( math.Rand(1, 2.5) ) 
+ 				particle:SetDieTime( math.Rand(0.5, 1.5) ) 
  				 
  				particle:SetStartAlpha( 255 ) 
  				 
@@ -32,8 +32,6 @@ local vOffset = data:GetOrigin()
  				particle:SetRollDelta( math.Rand(-5, 5) ) 
  				 
  				particle:SetAirResistance( 2 ) 
- 				particle:SetCollide( 1 ) 
- 				particle:SetBounce( 0.5 ) 
  				
  				particle:SetGravity( Vector( 0, 0, -600 ) ) 
  			 
