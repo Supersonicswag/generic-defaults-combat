@@ -59,7 +59,7 @@ function ENT:firerac5()
 		
 		local phys = self.Entity:GetPhysicsObject()  	
 		if (phys:IsValid()) then  		
-			phys:ApplyForceCenter( self.Entity:GetUp() * -2500000 ) 
+			phys:ApplyForceCenter( self.Entity:GetUp() * -2500 ) 
 		end 
 		
 		self.Entity:EmitSound( "Bushmaster.single" )
