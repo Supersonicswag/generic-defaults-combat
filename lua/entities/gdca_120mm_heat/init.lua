@@ -50,7 +50,7 @@ function ENT:Think()
 					self.Entity:Remove()
 					return true
 				end
-			cbt_hcgexplode( tr.HitPos, 100, 1000, 7)
+			cbt_hcgexplode( tr.HitPos, 100, 1500, 7)
 
 			if (tr.Entity:IsValid()) then
 				
