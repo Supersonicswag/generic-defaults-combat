@@ -5,7 +5,7 @@ AddCSLuaFile( "shared.lua" )
 include('entities/base_wire_entity/init.lua'); 
 include('shared.lua')
 
-util.PrecacheSound("arty/artyfire.wav")
+util.PrecacheSound("arty/cannon.wav")
 
 function ENT:Initialize()   
 
@@ -16,11 +16,11 @@ function ENT:Initialize()
 	self.loading = false
 	self.reloadtime = 0
 	self.infire = false
+	self.infire2 = false
 	self.Entity:SetModel( "models/props_lab/pipesystem01a.mdl" ) 	
 	self.Entity:PhysicsInit( SOLID_VPHYSICS )      -- Make us work with physics,  	
 	self.Entity:SetMoveType( MOVETYPE_VPHYSICS )   --after all, gmod is a physics  	
 	self.Entity:SetSolid( SOLID_VPHYSICS )        -- Toolbox     
-	self.Entity:SetColor(100,100,100,255)
 	
           
 	local phys = self.Entity:GetPhysicsObject()  	
@@ -28,8 +28,8 @@ function ENT:Initialize()
 		phys:Wake() 
 	end 
  
-	self.Inputs = Wire_CreateInputs( self.Entity, { "Fire", "Reload"} )
-	self.Outputs = Wire_CreateOutputs( self.Entity, { "Can Fire", "Shots"})
+	self.Inputs = Wire_CreateInputs( self.Entity, { "Fire", "Fire Tracer"} )
+	self.Outputs = Wire_CreateOutputs( self.Entity, { "Can Fire"})
 end   
 
 function ENT:SpawnFunction( ply, tr)
@@ -49,35 +49,60 @@ function ENT:SpawnFunction( ply, tr)
 
 end
 
-function ENT:firerac5()
+function ENT:fire()
 
 		local ent = ents.Create( "gdca_30x165he" )
 		ent:SetPos( self.Entity:GetPos() +  self.Entity:GetUp() * 100)
 		ent:SetAngles( self.Entity:GetAngles() )
 		ent:Spawn()
 		ent:Activate()
+		self.armed = false
+		
 		
 		local phys = self.Entity:GetPhysicsObject()  	
 		if (phys:IsValid()) then  		
-			phys:ApplyForceCenter( self.Entity:GetUp() * -3000 ) 
+			phys:ApplyForceCenter( self.Entity:GetUp() * -7000 ) 
 		end 
 		
-		self.Entity:EmitSound( "2A42.single" )
-		self.ammos = self.ammos-1
-		
 		local effectdata = EffectData()
-		effectdata:SetOrigin(self.Entity:GetPos() +  self.Entity:GetUp() * 40)
+		effectdata:SetOrigin(self.Entity:GetPos() +  self.Entity:GetUp() * 30)
 		effectdata:SetNormal( self:GetUp() )
 		util.Effect( "muzzleflash", effectdata )
+		self.Entity:EmitSound( "2A42.single" )
+		self.ammos = self.ammos-1
+	
+
+end
+
+function ENT:firetracer()
+
+	local ent = ents.Create( "gdca_30x165het" )
+		ent:SetPos( self.Entity:GetPos() +  self.Entity:GetUp() * 100)
+		ent:SetAngles( self.Entity:GetAngles() )
+		ent:Spawn()
+		ent:Activate()
+		self.armed = false
+		
+		
+		local phys = self.Entity:GetPhysicsObject()  	
+		if (phys:IsValid()) then  		
+			phys:ApplyForceCenter( self.Entity:GetUp() * -7000 ) 
+		end 
+		
+		local effectdata = EffectData()
+		effectdata:SetOrigin(self.Entity:GetPos() +  self.Entity:GetUp() * 30)
+		effectdata:SetNormal( self:GetUp() )
+		util.Effect( "muzzleflash", effectdata )
+		self.Entity:EmitSound( "2A42.single" )
+		self.ammos = self.ammos-1
 	
 
 end
 
 function ENT:Think()
 if FIELDS == nil and COMBATDAMAGEENGINE == nil then return end
-Wire_TriggerOutput(self.Entity, "Shots", self.ammos)
 	if self.ammos <= 0 then
-	self.reloadtime = CurTime()+0.3334
+	self.reloadtime = CurTime()+0.334
 	self.ammos = self.clipsize
 	end
 	
@@ -90,12 +115,20 @@ Wire_TriggerOutput(self.Entity, "Shots", self.ammos)
 	if (self.inFire == true) then
 		if (self.reloadtime < CurTime()) then
 		
-			self:firerac5()
+			self:fire()
+			
+		end
+	end
+	
+	if (self.inFire2 == true) then
+		if (self.reloadtime < CurTime()) then
+		
+			self:firetracer()
 			
 		end
 	end
 
-	self.Entity:NextThink( CurTime() + .01)
+	self.Entity:NextThink( CurTime() + .03)
 	return true
 end
 
@@ -108,9 +141,11 @@ if(k=="Fire") then
 		end
 	end
 	
-if(k=="Reload") then
+	if(k=="Fire Tracer") then
 		if((v or 0) >= 1) then
-			self.ammos = 0
+			self.inFire2 = true
+		else
+			self.inFire2 = false
 		end
 	end
 	
