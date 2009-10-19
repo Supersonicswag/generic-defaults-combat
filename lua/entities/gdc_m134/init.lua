@@ -10,8 +10,8 @@ util.PrecacheSound("arty/cannon.wav")
 function ENT:Initialize()   
 
 	self.ammomodel = "models/props_c17/canister01a.mdl"
-	self.ammos = 30
-	self.clipsize = 30
+	self.ammos = 100
+	self.clipsize = 100
 	self.armed = false
 	self.loading = false
 	self.reloadtime = 0
@@ -29,7 +29,7 @@ function ENT:Initialize()
 	end 
  
 	self.Inputs = Wire_CreateInputs( self.Entity, { "Fire", "Fire Tracer"} )
-	self.Outputs = Wire_CreateOutputs( self.Entity, { "Can Fire"})
+	self.Outputs = Wire_CreateOutputs( self.Entity, { "Can Fire", "Shots"})
 end   
 
 function ENT:SpawnFunction( ply, tr)
@@ -38,7 +38,7 @@ function ENT:SpawnFunction( ply, tr)
 	local SpawnPos = tr.HitPos + tr.HitNormal * 60
 	
 	
-	local ent = ents.Create( "gdc_gau12" )
+	local ent = ents.Create( "gdc_m134" )
 		ent:SetPos( SpawnPos )
 	ent:Spawn()
 	ent:Activate()
@@ -101,8 +101,9 @@ end
 
 function ENT:Think()
 if FIELDS == nil and COMBATDAMAGEENGINE == nil then return end
+Wire_TriggerOutput(self.Entity, "Shots", self.ammos)
 	if self.ammos <= 0 then
-	self.reloadtime = CurTime()+1.5
+	self.reloadtime = CurTime()+6
 	self.ammos = self.clipsize
 	end
 	
@@ -128,7 +129,7 @@ if FIELDS == nil and COMBATDAMAGEENGINE == nil then return end
 		end
 	end
 
-	self.Entity:NextThink( CurTime() + 0.05)
+	self.Entity:NextThink( CurTime() + 0.04)
 	return true
 end
 
