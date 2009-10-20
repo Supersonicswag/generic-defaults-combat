@@ -51,7 +51,7 @@ function ENT:Think()
 					return true
 				end
 
-			cbt_hcgexplode( tr.HitPos, 30, 60, 6)
+			cbt_hcgexplode( tr.HitPos, 30, 70, 6)
 
 			if (tr.Entity:IsValid()) then
 				
@@ -82,7 +82,7 @@ function ENT:Think()
 	end
 
 	self.Entity:SetPos(self.Entity:GetPos() + self.flightvector)
-	self.flightvector = self.flightvector + Vector(math.Rand(-0.50,0.50), math.Rand(-0.5,0.5),math.Rand(-0.5,0.5)) + Vector(0,0,-0.2)
+	self.flightvector = self.flightvector + Vector(math.Rand(-0.4,0.4), math.Rand(-0.4,0.4),math.Rand(-0.4,0.4)) + Vector(0,0,-0.2)
 	self.Entity:SetAngles(self.flightvector:Angle() + Angle(90,0,0))
 	self.Entity:NextThink( CurTime() )
 	return true
