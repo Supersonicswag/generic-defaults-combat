@@ -10,14 +10,14 @@ util.PrecacheSound("arty/artyfire.wav")
 function ENT:Initialize()   
 
 	self.ammomodel = "models/props_c17/canister01a.mdl"
-	self.ammos =1
-	self.clipsize = 1
+	self.ammos = 32
+	self.clipsize = 32
 	self.armed = false
 	self.loading = false
 	self.reloadtime = 0
 	self.infire = false
 	self.infire2 = false
-	self.Entity:SetModel( "models/props_pipes/pipecluster08d_extender128.mdl" ) 	
+	self.Entity:SetModel( "models/props_lab/pipesystem01b.mdl" ) 	
 	self.Entity:PhysicsInit( SOLID_VPHYSICS )      -- Make us work with physics,  	
 	self.Entity:SetMoveType( MOVETYPE_VPHYSICS )   --after all, gmod is a physics  	
 	self.Entity:SetSolid( SOLID_VPHYSICS )        -- Toolbox     
@@ -28,7 +28,7 @@ function ENT:Initialize()
 		phys:Wake() 
 	end 
  
-	self.Inputs = Wire_CreateInputs( self.Entity, { "Fire HEAT", "Fire SABOT" } )
+	self.Inputs = Wire_CreateInputs( self.Entity, { "Fire HE", "Fire HEDP" } )
 	self.Outputs = Wire_CreateOutputs( self.Entity, { "Can Fire"})
 end   
 
@@ -38,7 +38,7 @@ function ENT:SpawnFunction( ply, tr)
 	local SpawnPos = tr.HitPos + tr.HitNormal * 10
 	
 	
-	local ent = ents.Create( "gdc_m256" )
+	local ent = ents.Create( "gdc_m101" )
 		ent:SetPos( SpawnPos )
 	ent:Spawn()
 	ent:Activate()
@@ -49,10 +49,10 @@ function ENT:SpawnFunction( ply, tr)
 
 end
 
-function ENT:firesabot()
+function ENT:firehedp()
 
-		local ent = ents.Create( "gdca_120mm_sabot" )
-		ent:SetPos( self.Entity:GetPos() +  self.Entity:GetUp() * 150)
+		local ent = ents.Create( "gdca_40x53_hedp" )
+		ent:SetPos( self.Entity:GetPos() +  self.Entity:GetUp() * 100)
 		ent:SetAngles( self.Entity:GetAngles() )
 		ent:Spawn()
 		ent:Activate()
@@ -61,21 +61,21 @@ function ENT:firesabot()
 		
 		local phys = self.Entity:GetPhysicsObject()  	
 		if (phys:IsValid()) then  		
-			phys:ApplyForceCenter( self.Entity:GetUp() * -12000 ) 
+			phys:ApplyForceCenter( self.Entity:GetUp() * -5000 ) 
 		end 
 		
 		local effectdata = EffectData()
-		effectdata:SetOrigin(self.Entity:GetPos() +  self.Entity:GetUp() * 80)
+		effectdata:SetOrigin(self.Entity:GetPos() +  self.Entity:GetUp() * 30)
 		effectdata:SetNormal( self:GetUp() )
-		self.Entity:EmitSound( "120mm.single", 500, 100 )
+		self.Entity:EmitSound( "MK19.single" )
 		self.ammos = self.ammos-1
 	
 
 end
 
-function ENT:fireheat()
+function ENT:firehe()
 
-	local ent = ents.Create( "gdca_120mm_heat" )
+	local ent = ents.Create( "gdca_40x53_he" )
 		ent:SetPos( self.Entity:GetPos() +  self.Entity:GetUp() * 150)
 		ent:SetAngles( self.Entity:GetAngles() )
 		ent:Spawn()
@@ -85,13 +85,13 @@ function ENT:fireheat()
 		
 		local phys = self.Entity:GetPhysicsObject()  	
 		if (phys:IsValid()) then  		
-			phys:ApplyForceCenter( self.Entity:GetUp() * -12000 ) 
+			phys:ApplyForceCenter( self.Entity:GetUp() * -5000 ) 
 		end 
 		
 		local effectdata = EffectData()
-		effectdata:SetOrigin(self.Entity:GetPos() +  self.Entity:GetUp() * 80)
+		effectdata:SetOrigin(self.Entity:GetPos() +  self.Entity:GetUp() * 30)
 		effectdata:SetNormal( self:GetUp() )
-		self.Entity:EmitSound( "120mm.single" )
+		self.Entity:EmitSound( "MK19.single" )
 		self.ammos = self.ammos-1
 	
 
@@ -100,7 +100,7 @@ end
 function ENT:Think()
 if FIELDS == nil and COMBATDAMAGEENGINE == nil then return end
 	if self.ammos <= 0 then
-	self.reloadtime = CurTime()+7
+	self.reloadtime = CurTime()+6
 	self.ammos = self.clipsize
 	end
 	
@@ -113,7 +113,7 @@ if FIELDS == nil and COMBATDAMAGEENGINE == nil then return end
 	if (self.inFire == true) then
 		if (self.reloadtime < CurTime()) then
 		
-			self:firesabot()
+			self:firehedp()
 			
 		end
 	end
@@ -121,17 +121,17 @@ if FIELDS == nil and COMBATDAMAGEENGINE == nil then return end
 	if (self.inFire2 == true) then
 		if (self.reloadtime < CurTime()) then
 		
-			self:fireheat()
+			self:firehe()
 			
 		end
 	end
 
-	self.Entity:NextThink( CurTime() + .01)
+	self.Entity:NextThink( CurTime() + .22)
 	return true
 end
 
 function ENT:TriggerInput(k, v)
-if(k=="Fire SABOT") then
+if(k=="Fire HEDP") then
 		if((v or 0) >= 1) then
 			self.inFire = true
 		else
@@ -139,7 +139,7 @@ if(k=="Fire SABOT") then
 		end
 	end
 	
-	if(k=="Fire HEAT") then
+	if(k=="Fire HE") then
 		if((v or 0) >= 1) then
 			self.inFire2 = true
 		else
