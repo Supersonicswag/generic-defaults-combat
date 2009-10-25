@@ -37,55 +37,26 @@ function ENT:Think()
 	local tr = util.TraceLine( trace )
 	
 	if (tr.Hit) then
-		if ( self.exploded == false ) then
-			if ( self.exploded == false && self.ticking == true ) then
 				util.BlastDamage(self.Entity, self.Entity, tr.HitPos, 300, 100)
 					local effectdata = EffectData()
 					effectdata:SetOrigin(tr.HitPos)
 					effectdata:SetNormal(tr.HitNormal)
 					effectdata:SetStart(tr.HitPos)
 					util.Effect( "gdca_30x113_effect", effectdata )
-				if (tr.Entity:IsWorld() || tr.Entity:IsPlayer() || tr.Entity:IsNPC() || tr.HitSky) then
-					self.exploded = true
+				if (tr.Entity:IsPlayer() || tr.Entity:IsNPC() || tr.HitSky) then
 					self.Entity:Remove()
 					return true
-				end
-
-			cbt_hcgexplode( tr.HitPos, 30, 70, 6)
-
-			if (tr.Entity:IsValid()) then
-				
-					local attack = cbt_dealhcghit( tr.Entity, 200, 10, tr.HitPos , tr.HitPos)
-						if (attack == 0) then
-							brokedshell = ents.Create("prop_physics")
-							brokedshell:SetPos(self.Entity:GetPos())
-							brokedshell:SetAngles(self.Entity:GetAngles())
-							brokedshell:SetKeyValue( "model", "models/combatmodels/tankshell.mdl" )
-							brokedshell:PhysicsInit( SOLID_VPHYSICS )
-							brokedshell:SetMoveType( MOVETYPE_VPHYSICS )
-							brokedshell:SetSolid( SOLID_VPHYSICS )
-							brokedshell:Activate()
-							brokedshell:Spawn()
-							brokedshell:Fire("Kill", "", 20)
-						local phys = brokedshell:GetPhysicsObject()  	
-						if (phys:IsValid()) then  
-						phys:SetVelocity(self.flightvector * 600000)
-						end
-			end
-				
-			end
-
-				self.exploded = true
-				self.Entity:Remove()
-			end
-		end
+					end
+			
+			local attack = gcombat.hcgexplode( tr.HitPos, 40, 100, 6)
+			self.Entity:Remove()
+		
 	end
 
 	self.Entity:SetPos(self.Entity:GetPos() + self.flightvector)
-	self.flightvector = self.flightvector + Vector(math.Rand(-0.4,0.4), math.Rand(-0.4,0.4),math.Rand(-0.4,0.4)) + Vector(0,0,-0.2)
+	self.flightvector = self.flightvector + Vector(math.Rand(-0.3,0.3), math.Rand(-0.3,0.3),math.Rand(-0.3,0.3)) + Vector(0,0,-0.2)
 	self.Entity:SetAngles(self.flightvector:Angle() + Angle(90,0,0))
 	self.Entity:NextThink( CurTime() )
 	return true
-	end
- 
+end
  
