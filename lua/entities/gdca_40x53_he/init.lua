@@ -10,7 +10,7 @@ self.smoking = false
 self.exploded = false
 self.armed = true
 
-self.flightvector = self.Entity:GetUp() * 200
+self.flightvector = self.Entity:GetUp() * 150
 self.timeleft = CurTime() + 8
 self.Entity:SetModel( "models/combatmodels/tankshell_40mm.mdl" )
 self.Entity:SetGravity( 0.5 ) 	

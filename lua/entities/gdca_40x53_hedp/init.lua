@@ -11,7 +11,7 @@ self.exploded = false
 self.armed = true
 self.ticking = true
 self.smoking = false
-self.flightvector = self.Entity:GetUp() * 200
+self.flightvector = self.Entity:GetUp() * 150
 self.timeleft = CurTime() + 8
 self.Entity:SetModel( "models/combatmodels/tankshell_40mm.mdl" ) 	
 self.Entity:PhysicsInit( SOLID_VPHYSICS )      -- Make us work with physics,  	
