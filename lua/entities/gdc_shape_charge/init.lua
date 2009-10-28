@@ -45,7 +45,7 @@ function ENT:Think()
 		util.Effect( "gdca_sparks", effectdata )
 		self.Entity:EmitSound( "Impacts/Explosion2.wav", 100, 100)
 		self.Entity:EmitSound( "Impacts/Explosion2.wav", 100, 100)
-		cbt_hcgexplode( self.Entity:GetPos(), 200, 1200, 10)
+		cbt_hcgexplode( self.Entity:GetPos(), 200, 1500, 10)
 		util.BlastDamage(self.Entity, self.Entity, self.Entity:GetPos(), 500, 200)
 		self.Entity:Remove()
 	end
