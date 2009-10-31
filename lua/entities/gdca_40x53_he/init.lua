@@ -59,6 +59,8 @@ end
 					effectdata:SetNormal(tr.HitNormal)	
 					effectdata:SetStart(tr.HitPos)
 					util.Effect( "gdca_30x165_effect", effectdata )
+					util.ScreenShake(tr.HitPos, 10, 5, 1, 1000 )
+					util.Decal("Scorch", tr.HitPos + tr.HitNormal, tr.HitPos - tr.HitNormal)
 					
 			if (tr.Entity:IsPlayer() || tr.Entity:IsNPC() || tr.HitSky) then
 			self.Entity:Remove()

@@ -69,6 +69,7 @@ function ENT:firerac5()
 		effectdata:SetOrigin(self.Entity:GetPos() +  self.Entity:GetUp() * 50)
 		effectdata:SetNormal( self:GetUp() )
 		util.Effect( "muzzleflash", effectdata )
+		util.ScreenShake(self.Entity:GetPos(), 40, 5, 0.2, 400 )
 	
 
 end

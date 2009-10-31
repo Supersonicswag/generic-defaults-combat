@@ -68,6 +68,7 @@ function ENT:firewp()
 		effectdata:SetOrigin(self.Entity:GetPos() +  self.Entity:GetUp() * 50)
 		effectdata:SetNormal( self:GetUp() )
 		util.Effect( "muzzleflash", effectdata )
+		util.ScreenShake(self.Entity:GetPos(), 30, 5, 0.2, 300 )
 		self.Entity:EmitSound( "81mm.single" )
 		self.ammos = self.ammos-1
 	
@@ -93,6 +94,7 @@ function ENT:firehe()
 		effectdata:SetOrigin(self.Entity:GetPos() +  self.Entity:GetUp() * 50)
 		effectdata:SetNormal( self:GetUp() )
 		util.Effect( "muzzleflash", effectdata )
+		util.ScreenShake(self.Entity:GetPos(), 30, 5, 0.2, 300 )
 		self.Entity:EmitSound( "81mm.single" )
 		self.ammos = self.ammos-1
 	

@@ -45,6 +45,9 @@ function ENT:Think()
 					effectdata:SetNormal(tr.HitNormal)
 					effectdata:SetStart(tr.HitPos)
 					util.Effect( "gdca_120mmheat_effect", effectdata )
+					util.ScreenShake(tr.HitPos, 20, 5, 1, 1200 )
+					util.Decal("Scorch", tr.HitPos + tr.HitNormal, tr.HitPos - tr.HitNormal)
+
 				if (tr.Entity:IsWorld() || tr.Entity:IsPlayer() || tr.Entity:IsNPC() || tr.HitSky) then
 					self.exploded = true
 					self.Entity:Remove()

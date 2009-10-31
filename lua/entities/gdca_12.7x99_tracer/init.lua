@@ -61,6 +61,9 @@ function ENT:Think()
 					effectdata:SetNormal(tr.HitNormal)
 					effectdata:SetStart(tr.HitPos)
 					util.Effect( "gdca_12.7x99_effect", effectdata )
+					util.ScreenShake(tr.HitPos, 15, 5, 0.3, 200 )
+					util.Decal("ExplosiveGunshot", tr.HitPos + tr.HitNormal, tr.HitPos - tr.HitNormal)
+
 				if (tr.Entity:IsWorld() || tr.Entity:IsPlayer() || tr.Entity:IsNPC() || tr.HitSky) then
 					self.exploded = true
 					self.Entity:Remove()

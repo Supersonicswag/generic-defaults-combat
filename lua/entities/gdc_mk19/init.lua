@@ -67,6 +67,7 @@ function ENT:firehedp()
 		local effectdata = EffectData()
 		effectdata:SetOrigin(self.Entity:GetPos() +  self.Entity:GetUp() * 30)
 		effectdata:SetNormal( self:GetUp() )
+		util.ScreenShake(self.Entity:GetPos(), 20, 5, 0.2, 200 )
 		self.Entity:EmitSound( "MK19.single" )
 		self.ammos = self.ammos-1
 	
@@ -91,6 +92,7 @@ function ENT:firehe()
 		local effectdata = EffectData()
 		effectdata:SetOrigin(self.Entity:GetPos() +  self.Entity:GetUp() * 30)
 		effectdata:SetNormal( self:GetUp() )
+		util.ScreenShake(self.Entity:GetPos(), 20, 5, 0.2, 200 )
 		self.Entity:EmitSound( "MK19.single" )
 		self.ammos = self.ammos-1
 	
