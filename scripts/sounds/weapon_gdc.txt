@@ -139,5 +139,5 @@
 
 	"soundlevel"			"SNDLVL_150dB"
 
-	"wave"				")GDC/Mk19.wav"
+	"wave"				")GDC/MK19.wav"
 }
