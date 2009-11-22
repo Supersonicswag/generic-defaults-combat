@@ -38,7 +38,7 @@ function ENT:SpawnFunction( ply, tr)
 	local SpawnPos = tr.HitPos + tr.HitNormal * 10
 	
 	
-	local ent = ents.Create( "gdc_m101" )
+	local ent = ents.Create( "gdc_mk19" )
 		ent:SetPos( SpawnPos )
 	ent:Spawn()
 	ent:Activate()
