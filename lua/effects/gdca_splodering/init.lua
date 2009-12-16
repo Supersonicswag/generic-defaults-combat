@@ -92,7 +92,7 @@
 		end
 	end
 	
-	for i=0, 5*self.Radius do
+	for i=0, 3*self.Radius do
 		local Whisp = self.Emitter:Add( "particles/smokey", self.Origin )
 			if (Whisp) then
 				Whisp:SetVelocity(VectorRand() * math.random( 200,300*self.Radius) )
@@ -148,7 +148,7 @@ function EFFECT:Think( )
 					Smoke:SetRollDelta( math.Rand(-0.2, 0.2) )			
 					Smoke:SetAirResistance( 200 ) 			 
 					Smoke:SetGravity( Vector( math.Rand( -200 , 200 ), math.Rand( -200 , 200 ), math.Rand( 10 , 100 ) ) )			
-					Smoke:SetColor( 53,50,45 )
+					Smoke:SetColor( 63,60,55 )
 				end	
 			
 			end

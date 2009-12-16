@@ -19,7 +19,7 @@
 	
 	pos = self:GetPos()
 		for i=0, (4) do
-			local particle = self.emitter:Add( "particle/smokestack", pos + (self:GetUp() * -100 * i))
+			local particle = self.emitter:Add( "particles/smokey", pos + (self:GetUp() * -100 * i))
 			if (particle) then
 				particle:SetVelocity((self:GetUp() * -600) )
 				particle:SetLifeTime( 0 )
