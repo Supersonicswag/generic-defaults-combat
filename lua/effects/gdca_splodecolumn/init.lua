@@ -27,7 +27,7 @@
 			Smoke:SetRollDelta( math.Rand(-2, 2) )			
 			Smoke:SetAirResistance( 200 ) 			 
 			Smoke:SetGravity( Vector( 0, 0, math.Rand(-100, -400) ) ) 			
-			Smoke:SetColor( 63,60,55 )
+			Smoke:SetColor( 60,55,45 )
 		end
 	
 	end

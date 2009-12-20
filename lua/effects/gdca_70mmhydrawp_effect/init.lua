@@ -68,7 +68,7 @@ local vOffset = data:GetOrigin()
  				particle2:SetVelocity( VectorRand() * math.Rand(1500, 1600) ) 
  				 
  				particle2:SetLifeTime( 0 ) 
- 				particle2:SetDieTime( math.Rand(7, 14) ) 
+ 				particle2:SetDieTime( math.Rand(5, 20) ) 
  				 
  				particle2:SetStartAlpha( 150 ) 
  				particle2:SetEndAlpha( 0 ) 

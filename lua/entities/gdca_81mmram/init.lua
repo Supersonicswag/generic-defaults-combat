@@ -74,7 +74,7 @@ end
 	end
 	
 	self.Entity:SetPos(self.Entity:GetPos() + self.flightvector)
-	self.flightvector = self.flightvector - self.flightvector/35 + self.Entity:GetUp()*2 + Vector(math.Rand(-0.15,0.15), math.Rand(-0.15,0.15),math.Rand(-0.15,0.15)) + Vector(0,0,-0.3)
+	self.flightvector = self.flightvector - self.flightvector/35 + self.Entity:GetUp()*2 + Vector(math.Rand(-0.1,0.1), math.Rand(-0.1,0.1),math.Rand(-0.15,0.15)) + Vector(0,0,-0.3)
 	self.Entity:SetAngles(self.flightvector:Angle() + Angle(90,0,0))
 	self.Entity:NextThink( CurTime() )
 	return true

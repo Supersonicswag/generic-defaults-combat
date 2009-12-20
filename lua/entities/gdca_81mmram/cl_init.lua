@@ -21,7 +21,7 @@
 		for i=0, (3) do
 			local particle = self.emitter:Add( "particles/smokey", pos + (self:GetUp() * -20 * i))
 			if (particle) then
-				particle:SetVelocity((self:GetUp() * -300) )
+				particle:SetVelocity((self:GetUp() * -1000) )
 				particle:SetDieTime( math.Rand( 2, 5 ) )
 				particle:SetStartAlpha( math.Rand( 40, 50 ) )
 				particle:SetEndAlpha( 0 )
@@ -34,14 +34,14 @@
  				particle:SetGravity( Vector( 100, 0, 0 ) ) 
 			end
 
-			for i=1, 5 do
-				local particle = self.emitter:Add( "effects/fire_cloud1", pos + (self:GetUp() * -7 * i) )
+			for i=1, 7 do
+				local particle = self.emitter:Add( "effects/fire_cloud1", pos + (self:GetUp() * -10 * i) )
 
 				particle:SetVelocity((self:GetUp() * -500) )
 				particle:SetDieTime( 0.15 )
 				particle:SetStartAlpha( 255 )
 				particle:SetEndAlpha( 0 )
-				particle:SetStartSize( math.Rand( 7, 10 ) )
+				particle:SetStartSize( 10 )
 				particle:SetEndSize( math.Rand( 20, 25 ) )
 				particle:SetRoll( math.Rand( -5, 5 ) )
 				particle:SetRollDelta( 0 )
