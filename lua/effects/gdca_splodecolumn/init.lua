@@ -42,7 +42,7 @@
 			Debris:SetEndAlpha( 0 )
 			Debris:SetStartSize( math.random(4,7*self.Scale) )
 			Debris:SetRoll( math.Rand(0, 360) )
-			Debris:SetRollDelta( math.Rand(-0.5, 0.5) )			
+			Debris:SetRollDelta( math.Rand(-5, 5) )			
 			Debris:SetAirResistance( 50 ) 			 			
 			Debris:SetColor( 53,50,45 )
 			Debris:SetGravity( Vector( 0, 0, -600) ) 

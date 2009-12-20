@@ -66,8 +66,9 @@ function ENT:firesabot()
 		
 		local effectdata = EffectData()
 		effectdata:SetOrigin(self.Entity:GetPos() +  self.Entity:GetUp() * 80)
-		effectdata:SetNormal( self:GetUp() )
-		util.Effect( "muzzleflash", effectdata )
+		effectdata:SetNormal(self:GetUp())
+		effectdata:SetScale(2)
+		util.Effect( "gdca_tanksmoke", effectdata )
 		util.ScreenShake(self.Entity:GetPos(), 95, 5, 0.4, 1200 )
 		self.Entity:EmitSound( "120mm.single", 500, 100 )
 		self.ammos = self.ammos-1
@@ -92,8 +93,9 @@ function ENT:fireheat()
 		
 		local effectdata = EffectData()
 		effectdata:SetOrigin(self.Entity:GetPos() +  self.Entity:GetUp() * 80)
-		effectdata:SetNormal( self:GetUp() )
-		util.Effect( "muzzleflash", effectdata )
+		effectdata:SetNormal(self:GetUp())
+		effectdata:SetScale(2)
+		util.Effect( "gdca_tanksmoke", effectdata )
 		util.ScreenShake(self.Entity:GetPos(), 95, 5, 0.4, 1200 )
 		self.Entity:EmitSound( "120mm.single" )
 		self.ammos = self.ammos-1

@@ -65,9 +65,10 @@ function ENT:firewp()
 		end 
 		
 		local effectdata = EffectData()
-		effectdata:SetOrigin(self.Entity:GetPos() +  self.Entity:GetUp() * 50)
-		effectdata:SetNormal( self:GetUp() )
-		util.Effect( "muzzleflash", effectdata )
+		effectdata:SetOrigin(self.Entity:GetPos() +  self.Entity:GetUp() * 40)
+		effectdata:SetNormal(self:GetUp())
+		effectdata:SetScale(0.5)
+		util.Effect( "gdca_tanksmoke", effectdata )
 		util.ScreenShake(self.Entity:GetPos(), 30, 5, 0.2, 300 )
 		self.Entity:EmitSound( "81mm.single" )
 		self.ammos = self.ammos-1
@@ -91,9 +92,10 @@ function ENT:firehe()
 		end 
 		
 		local effectdata = EffectData()
-		effectdata:SetOrigin(self.Entity:GetPos() +  self.Entity:GetUp() * 50)
-		effectdata:SetNormal( self:GetUp() )
-		util.Effect( "muzzleflash", effectdata )
+		effectdata:SetOrigin(self.Entity:GetPos() +  self.Entity:GetUp() * 40)
+		effectdata:SetNormal(self:GetUp())
+		effectdata:SetScale(0.5)
+		util.Effect( "gdca_tanksmoke", effectdata )
 		util.ScreenShake(self.Entity:GetPos(), 30, 5, 0.2, 300 )
 		self.Entity:EmitSound( "81mm.single" )
 		self.ammos = self.ammos-1
