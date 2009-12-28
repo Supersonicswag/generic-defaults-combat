@@ -17,7 +17,7 @@
 	
 		local Smoke = self.Emitter:Add( "particles/smokey", self.Origin )
 		if (Smoke) then
-			Smoke:SetVelocity( self.DirVec * math.random( 300,700*self.Scale) + VectorRand()*250*self.Scale )
+			Smoke:SetVelocity( self.DirVec * math.random( 200,700*self.Scale) + VectorRand()*250*self.Scale )
 			Smoke:SetDieTime( math.Rand( 1 , 2.5 )*self.Scale )
 			Smoke:SetStartAlpha( math.Rand( 120, 150 ) )
 			Smoke:SetEndAlpha( 0 )
@@ -36,7 +36,7 @@
 	
 		local Debris = self.Emitter:Add( "effects/fleck_tile"..math.random(1,2), self.Origin )
 		if (Debris) then
-			Debris:SetVelocity ( self.DirVec * math.random(300,500*self.Scale) + VectorRand() * 300*self.Scale )
+			Debris:SetVelocity ( self.DirVec * math.random(200,400*self.Scale) + VectorRand() * 300*self.Scale )
 			Debris:SetDieTime( math.random( 1, 2) * self.Scale )
 			Debris:SetStartAlpha( 255 )
 			Debris:SetEndAlpha( 0 )
@@ -56,7 +56,7 @@
 	
 		local Embers = self.Emitter:Add( "particles/flamelet"..math.random(1,5), self.Origin )
 		if (Embers) then
-			Embers:SetVelocity ( self.DirVec * math.random(300,600) + VectorRand() * 200*self.Scale )
+			Embers:SetVelocity ( self.DirVec * math.random(500,1500) + VectorRand() * 500*self.Scale )
 			Embers:SetDieTime( math.Rand( 0.05 , 0.07 )*self.Scale )
 			Embers:SetStartAlpha( 255 )
 			Embers:SetEndAlpha( 0 )
