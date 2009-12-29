@@ -46,7 +46,7 @@ function ENT:Think()
 		util.ScreenShake(self.Entity:GetPos(), 20, 5, 1, 2000 )
 		self.Entity:EmitSound( "Impacts/Explosion2.wav", 100, 100)
 		self.Entity:EmitSound( "Impacts/Explosion2.wav", 100, 100)
-		cbt_hcgexplode( self.Entity:GetPos(), 400, 500, 7)
+		cbt_hcgexplode( self.Entity:GetPos(), 600, 500, 7)
 		util.BlastDamage(self.Entity, self.Entity, self.Entity:GetPos(), 1000, 200)
 		self.Entity:Remove()
 	end

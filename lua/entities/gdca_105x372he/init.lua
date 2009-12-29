@@ -37,7 +37,7 @@ end
 	
 	
 if tr.Hit then
-util.BlastDamage(self.Entity, self.Entity, tr.HitPos, 1050, 250)
+util.BlastDamage(self.Entity, self.Entity, tr.HitPos, 1200, 300)
 local effectdata = EffectData()
 effectdata:SetOrigin(tr.HitPos)
 effectdata:SetNormal(tr.HitNormal)
@@ -53,7 +53,7 @@ self.Entity:Remove()
 return true
 end
 
-local attack = gcombat.hcgexplode( tr.HitPos, 400, 400, 6)
+local attack = gcombat.hcgexplode( tr.HitPos, 600, 400, 6)
 self.Entity:Remove()
 
 end
