@@ -36,7 +36,7 @@
 	
 		local Debris = self.Emitter:Add( "effects/fleck_tile"..math.random(1,2), self.Origin )
 		if (Debris) then
-			Debris:SetVelocity ( self.DirVec * math.random(100,300*self.Scale) + VectorRand() * 300*self.Scale )
+			Debris:SetVelocity ( self.DirVec * math.random(200,400*self.Scale) + VectorRand() * 300*self.Scale )
 			Debris:SetDieTime( math.random( 1, 2) * self.Scale )
 			Debris:SetStartAlpha( 255 )
 			Debris:SetEndAlpha( 0 )
@@ -85,14 +85,6 @@
 			end
 		end
 
-	local Sparks = EffectData()
-		Sparks:SetOrigin( self.Origin )
-		Sparks:SetNormal( self.DirVec )
-		Sparks:SetMagnitude( self.Scale*3 )
-		Sparks:SetScale( self.Scale*1 )
-		Sparks:SetRadius( self.Scale*3 )
-	util.Effect( "Sparks", Sparks )
-	
  end 
    
    

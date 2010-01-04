@@ -109,13 +109,6 @@
 			end
 	end
 	
-	for i=0, 2*self.Radius do
-		local Cookoff = EffectData()				
-			Cookoff:SetOrigin( self.Origin )
-			Cookoff:SetScale( self.Scale*4000 )
-		util.Effect( "Cookoff", Cookoff )
-	end
-	
  end 
    
    
