@@ -20,7 +20,7 @@ function ENT:Initialize()
 	self.Entity:PhysicsInit( SOLID_VPHYSICS )      -- Make us work with physics,  	
 	self.Entity:SetMoveType( MOVETYPE_VPHYSICS )   --after all, gmod is a physics  	
 	self.Entity:SetSolid( SOLID_VPHYSICS )        -- Toolbox     
-	self.Entity:SetColor(100,100,100,255)
+	self.Entity:SetColor(130,170,100,255)
 	
           
 	local phys = self.Entity:GetPhysicsObject()  	
@@ -38,7 +38,7 @@ function ENT:SpawnFunction( ply, tr)
 	local SpawnPos = tr.HitPos + tr.HitNormal * 60
 	
 	
-	local ent = ents.Create( "gdc_81mmram" )
+	local ent = ents.Create( "gdc_84gml" )
 		ent:SetPos( SpawnPos )
 	ent:Spawn()
 	ent:Activate()
@@ -51,7 +51,7 @@ end
 
 function ENT:firerac5()
 
-		local ent = ents.Create( "gdca_81mmram" )
+		local ent = ents.Create( "gdca_gmissile" )
 		ent:SetPos( self.Entity:GetPos() +  self.Entity:GetUp() * 100)
 		ent:SetAngles( self.Entity:GetAngles() )
 		ent:Spawn()
@@ -62,7 +62,7 @@ function ENT:firerac5()
 			phys:ApplyForceCenter( self.Entity:GetUp() * 0 ) 
 		end 
 		
-		self.Entity:EmitSound( "RAM.single" )
+		self.Entity:EmitSound( "GML.single" )
 		self.ammos = self.ammos-1
 		
 		local effectdata = EffectData()
@@ -77,7 +77,7 @@ function ENT:Think()
 if FIELDS == nil and COMBATDAMAGEENGINE == nil then return end
 Wire_TriggerOutput(self.Entity, "Shots", self.ammos)
 	if self.ammos <= 0 then
-	self.reloadtime = CurTime()+2
+	self.reloadtime = CurTime()+5
 	self.ammos = self.clipsize
 	end
 	

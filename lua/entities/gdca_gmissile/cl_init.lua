@@ -39,7 +39,7 @@
 				local particle = self.emitter:Add( "effects/fire_cloud1", pos + (self:GetUp() * -20 * i) )
 
 				particle:SetVelocity((self:GetUp() * -500) )
-				particle:SetDieTime( 0.06 )
+				particle:SetDieTime( 0.05 )
 				particle:SetStartAlpha( 255 )
 				particle:SetEndAlpha( 0 )
 				particle:SetStartSize( 20 )

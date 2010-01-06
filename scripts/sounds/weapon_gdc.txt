@@ -141,3 +141,25 @@
 
 	"wave"				")GDC/MK19.wav"
 }
+"RAM.Single"
+{
+	"channel"			"CHAN_WEAPON"
+	"volume"			"1.0"
+	"CompatibilityAttenuation"	"ATTN_NORM"
+	"pitch"				"PITCH_NORM"
+
+	"soundlevel"			"SNDLVL_150dB"
+
+	"wave"				")GDC/RAM.wav"
+}
+"GML.Single"
+{
+	"channel"			"CHAN_WEAPON"
+	"volume"			"1.0"
+	"CompatibilityAttenuation"	"ATTN_NORM"
+	"pitch"				"PITCH_NORM"
+
+	"soundlevel"			"SNDLVL_150dB"
+
+	"wave"				")GDC/GML.wav"
+}

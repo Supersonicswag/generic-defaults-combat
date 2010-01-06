@@ -36,7 +36,8 @@ if ( CLIENT ) then
 	language.Add( "Tool_gdcweapons_help14", "81mm mortar for indirect fire. 5280 inches/sec, 20 RPM, High Explosive/White Phosphorus" )
 	language.Add( "Tool_gdcweapons_help15", "40mm grenade launcher for mounted weapons. 9900 inches/sec, 300 RPM, High Explosive/High Explosive Dual Purpose" )
 	language.Add( "Tool_gdcweapons_help16", "81mm rocket assisted mortar launcher. 5280 inches/sec CONSTANT, 30 RPM, High Explosive" )
-	
+	language.Add( "Tool_gdcweapons_help17", "84mm guided rocket launcher(Target Finding). ~9900 inches/sec CONSTANT, 12 RPM, High Explosive" )
+
 	language.Add( "Tool_turret_type", "Type of weapon" )
 	
 	language.Add( "Undone_gdcweapons", "Undone weapon" )
@@ -161,6 +162,12 @@ if ( !trace.Hit ) then return end
 	self.ent:Activate()
 							elseif (gdcweaponsindex == 16) then
 	self.ent = ents.Create( "gdc_81mmram" )
+		self.ent:SetPos( SpawnPos )
+		self.ent:SetAngles( trace.HitNormal:Angle() + Angle(90,0,0))
+	self.ent:Spawn()
+	self.ent:Activate()
+							elseif (gdcweaponsindex == 17) then
+	self.ent = ents.Create( "gdc_84gml" )
 		self.ent:SetPos( SpawnPos )
 		self.ent:SetAngles( trace.HitNormal:Angle() + Angle(90,0,0))
 	self.ent:Spawn()
@@ -304,6 +311,12 @@ if ( !trace.Hit ) then return end
 		self.ent:SetAngles( trace.HitNormal:Angle() + Angle(90,0,0))
 	self.ent:Spawn()
 	self.ent:Activate()
+							elseif (gdcweaponsindex == 17) then
+	self.ent = ents.Create( "gdc_84gml" )
+		self.ent:SetPos( SpawnPos )
+		self.ent:SetAngles( trace.HitNormal:Angle() + Angle(90,0,0))
+	self.ent:Spawn()
+	self.ent:Activate()
 
 	end
 
@@ -352,6 +365,7 @@ function TOOL.BuildCPanel( CPanel )
 		Ctype["Options"]["#81mm Mortar Launcher"]	= { gdcweapons_gdcweaponsindex = "14" }
 		Ctype["Options"]["#Mk-19 40mm"]	= { gdcweapons_gdcweaponsindex = "15" }
 		Ctype["Options"]["#81mm RAM"]	= { gdcweapons_gdcweaponsindex = "16" }
+		Ctype["Options"]["#84mm GML"]	= { gdcweapons_gdcweaponsindex = "17" }
 
 	CPanel:AddControl("ComboBox", Ctype )
 	

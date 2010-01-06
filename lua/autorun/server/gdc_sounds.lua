@@ -19,6 +19,8 @@ resource.AddFile( "sound/GDC/120mm.wav" );
 resource.AddFile( "sound/GDC/M260.wav" );
 resource.AddFile( "sound/GDC/81mm.wav" );
 resource.AddFile( "sound/GDC/MK19.wav" );
+resource.AddFile( "sound/GDC/RAM.wav" );
+resource.AddFile( "sound/GDC/GML.wav" );
 
 resource.AddFile( "sound/Impacts/Impact_01.wav" );
 resource.AddFile( "sound/Impacts/Impact_02.wav" );
