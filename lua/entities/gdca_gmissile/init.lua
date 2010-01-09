@@ -106,7 +106,7 @@ end
 		self.flightvector = self.flightvector:GetNormalized() * 150 + Vector(math.Rand(-1,1), math.Rand(-1,1),math.Rand(-1,1)) + Vector(0,0,-0.06)
 	end
 
-	self.flightvector = self.flightvector - self.flightvector/40 + self.Entity:GetUp()*3 + Vector(math.Rand(-0.3,0.3), math.Rand(-0.3,0.3),math.Rand(-0.2,0.2))
+	self.flightvector = self.flightvector - self.flightvector/100 + self.Entity:GetUp()*4 + Vector(math.Rand(-0.3,0.3), math.Rand(-0.3,0.3),math.Rand(-0.2,0.2))
 	self.Entity:SetPos(self.Entity:GetPos() + self.flightvector)
 	self.Entity:SetAngles(self.flightvector:Angle() + Angle(90,0,0))
 	self.Entity:NextThink( CurTime() )
