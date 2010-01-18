@@ -66,10 +66,10 @@ function ENT:firerac5()
 		self.ammos = self.ammos-1
 		
 		local effectdata = EffectData()
-		effectdata:SetOrigin(self.Entity:GetPos() +  self.Entity:GetUp() * 40)
+		effectdata:SetOrigin(self.Entity:GetPos() +  self.Entity:GetUp() * 30)
 		effectdata:SetNormal(self:GetUp())
-		effectdata:SetScale(0.7)
-		util.Effect( "gdca_tanksmoke", effectdata )
+		effectdata:SetScale(0.9)
+		util.Effect( "gdca_muzzle", effectdata )
 		util.ScreenShake(self.Entity:GetPos(), 40, 5, 0.2, 400 )
 	
 

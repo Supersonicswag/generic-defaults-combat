@@ -65,9 +65,10 @@ function ENT:fireapi()
 		end 
 		
 		local effectdata = EffectData()
-		effectdata:SetOrigin(self.Entity:GetPos() +  self.Entity:GetUp() * 30)
-		effectdata:SetNormal( self:GetUp() )
-		util.Effect( "muzzleflash", effectdata )
+		effectdata:SetOrigin(self.Entity:GetPos() +  self.Entity:GetUp() * 20)
+		effectdata:SetNormal(self:GetUp())
+		effectdata:SetScale(0.6)
+		util.Effect( "gdca_muzzle", effectdata )
 		util.ScreenShake(self.Entity:GetPos(), 25, 5, 0.2, 350 )
 		self.Entity:EmitSound( "Bushmaster.single" )
 		self.ammos = self.ammos-1
@@ -91,9 +92,10 @@ function ENT:firehei()
 		end 
 		
 		local effectdata = EffectData()
-		effectdata:SetOrigin(self.Entity:GetPos() +  self.Entity:GetUp() * 30)
-		effectdata:SetNormal( self:GetUp() )
-		util.Effect( "muzzleflash", effectdata )
+		effectdata:SetOrigin(self.Entity:GetPos() +  self.Entity:GetUp() * 20)
+		effectdata:SetNormal(self:GetUp())
+		effectdata:SetScale(0.6)
+		util.Effect( "gdca_muzzle", effectdata )
 		util.ScreenShake(self.Entity:GetPos(), 25, 5, 0.2, 350 )
 		self.Entity:EmitSound( "Bushmaster.single" )
 		self.ammos = self.ammos-1

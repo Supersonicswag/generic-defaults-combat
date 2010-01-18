@@ -66,8 +66,9 @@ function ENT:fire()
 		
 		local effectdata = EffectData()
 		effectdata:SetOrigin(self.Entity:GetPos() +  self.Entity:GetUp() * 30)
-		effectdata:SetNormal( self:GetUp() )
-		util.Effect( "muzzleflash", effectdata )
+		effectdata:SetNormal(self:GetUp())
+		effectdata:SetScale(0.4)
+		util.Effect( "gdca_muzzle", effectdata )
 		util.ScreenShake(self.Entity:GetPos(), 12, 5, 0.2, 200 )
 		self.Entity:EmitSound( "50cal.single" )
 		self.ammos = self.ammos-1
@@ -92,8 +93,9 @@ function ENT:firetracer()
 		
 		local effectdata = EffectData()
 		effectdata:SetOrigin(self.Entity:GetPos() +  self.Entity:GetUp() * 30)
-		effectdata:SetNormal( self:GetUp() )
-		util.Effect( "muzzleflash", effectdata )
+		effectdata:SetNormal(self:GetUp())
+		effectdata:SetScale(0.4)
+		util.Effect( "gdca_muzzle", effectdata )
 		util.ScreenShake(self.Entity:GetPos(), 12, 5, 0.2, 200 )
 		self.Entity:EmitSound( "50cal.single" )
 		self.ammos = self.ammos-1

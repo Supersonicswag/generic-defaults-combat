@@ -36,7 +36,7 @@ if ( CLIENT ) then
 	language.Add( "Tool_gdcweapons_help14", "81mm mortar for indirect fire. 5280 inches/sec, 20 RPM, High Explosive/White Phosphorus" )
 	language.Add( "Tool_gdcweapons_help15", "40mm grenade launcher for mounted weapons. 9900 inches/sec, 300 RPM, High Explosive/High Explosive Dual Purpose" )
 	language.Add( "Tool_gdcweapons_help16", "81mm rocket assisted mortar launcher. 5280 inches/sec CONSTANT, 30 RPM, High Explosive" )
-	language.Add( "Tool_gdcweapons_help17", "84mm guided rocket launcher(Target Finding). ~9900 inches/sec CONSTANT, 12 RPM, High Explosive" )
+	language.Add( "Tool_gdcweapons_help17", "84mm guided rocket launcher(Target Finding). 26400 inches/sec Accelerated, 12 RPM, High Explosive. BE CAREFUL! Don't fire at anything with unwanted targets in the general direction!" )
 
 	language.Add( "Tool_turret_type", "Type of weapon" )
 	
