@@ -36,6 +36,11 @@ function ENT:Think()
 		trace.filter = self.Entity 
 	local tr = util.TraceLine( trace )
 	
+				if tr.HitSky then
+			self.Entity:Remove()
+			return true
+		end
+
 	if (tr.Hit) then
 		if ( self.exploded == false ) then
 			if ( self.exploded == false && self.ticking == true ) then

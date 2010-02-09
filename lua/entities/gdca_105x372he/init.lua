@@ -35,7 +35,11 @@ end
 		trace.filter = self.Entity 
 	local tr = util.TraceLine( trace )
 	
-	
+				if tr.HitSky then
+			self.Entity:Remove()
+			return true
+		end
+
 if tr.Hit then
 util.BlastDamage(self.Entity, self.Entity, tr.HitPos, 1200, 300)
 local effectdata = EffectData()
