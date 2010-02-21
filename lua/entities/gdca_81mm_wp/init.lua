@@ -34,7 +34,12 @@ end
 		trace.endpos = self.Entity:GetPos() + self.flightvector
 		trace.filter = self.Entity 
 	local tr = util.TraceLine( trace )
-	
+
+
+				if tr.HitSky then
+			self.Entity:Remove()
+			return true
+		end	
 	
 if tr.Hit then
 util.BlastDamage(self.Entity, self.Entity, tr.HitPos, 600, 150)
