@@ -12,5 +12,4 @@ ENT.Exploded		= false
 ENT.XCo			= nil
 ENT.YCo			= nil
 ENT.ZCo			= nil
-ENT.Target		= nil
-
+ENT.Target		= Vector(ENT.XCo,ENT.YCo,ENT.ZCo)

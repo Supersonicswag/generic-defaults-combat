@@ -48,7 +48,12 @@ end
 		trace.endpos = self.Entity:GetPos() + self.flightvector
 		trace.filter = self.Entity 
 	local tr = util.TraceLine( trace )
-	
+
+				if tr.HitSky then
+			self.Entity:Remove()
+			return true
+		end
+
 	if tr.Hit then
 		util.BlastDamage(self.Entity, self.Entity, tr.HitPos, 600, 150)
 			local effectdata = EffectData()
@@ -61,20 +66,15 @@ end
 					util.ScreenShake(tr.HitPos, 10, 5, 1, 2000 )
 					util.Decal("Scorch", tr.HitPos + tr.HitNormal, tr.HitPos - tr.HitNormal)
 
-			if (tr.Entity:IsPlayer() || tr.Entity:IsNPC() || tr.HitSky) then
-			self.Entity:Remove()
-			return true
-			end
 			
 			local attack = gcombat.hcgexplode( tr.HitPos, 300, 400, 8)
 			self.Entity:Remove()
 		
 	end
-	
-			self.Target = Vector(self.XCo, self.YCo, self.ZCo)
 
 
 	if self.Think  then
+			self.Target = Vector(self.XCo, self.YCo, self.ZCo)
 		self.flightvector = self.flightvector + Vector(math.Rand(-1,1), math.Rand(-1,1),math.Rand(-0.5,0.5)) + (self.Target - self:GetPos()):GetNormalized() * 6
 		if self:GetPos():Distance(self.target) > 1500 then
 			local trace = {}

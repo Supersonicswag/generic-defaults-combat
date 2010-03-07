@@ -59,11 +59,14 @@ function ENT:firegps()
 		ent:Spawn()
 		ent:Activate()
 		self.armed = false
-		
+		self.XCo = "X"
+		self.YCo = "Y"
+		self.ZCo = "Z"
 		
 		local phys = self.Entity:GetPhysicsObject()  	
 		if (phys:IsValid()) then  		
 			phys:ApplyForceCenter( self.Entity:GetUp() * -800 ) 
+
 		end 
 		
 		util.ScreenShake(self.Entity:GetPos(), 30, 5, 0.2, 300 )

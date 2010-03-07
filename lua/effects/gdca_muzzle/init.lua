@@ -16,8 +16,8 @@
 		local Smoke = self.Emitter:Add( "particle/smokestack", self.Origin )
 		if (Smoke) then
 			Smoke:SetVelocity( self.DirVec * math.random( 0,1000*self.Scale) + VectorRand()*200*self.Scale )
-			Smoke:SetDieTime( math.Rand( 0.5 , 1 )*self.Scale )
-			Smoke:SetStartAlpha( math.Rand( 40, 60 ) )
+			Smoke:SetDieTime( math.Rand( 0.5 , 1)*self.Scale )
+			Smoke:SetStartAlpha( math.Rand( 50, 80 ) )
 			Smoke:SetEndAlpha( 0 )
 			Smoke:SetStartSize( 40*self.Scale )
 			Smoke:SetEndSize( 50*self.Scale )
@@ -25,7 +25,7 @@
 			Smoke:SetRollDelta( math.Rand(-2, 2) )			
 			Smoke:SetAirResistance( 300 ) 			 
 			Smoke:SetGravity( Vector( 0, 0, math.Rand(0, 100) ) ) 			
-			Smoke:SetColor( 100,100,100 )
+			Smoke:SetColor( 130,130,130 )
 		end
 	
 	end

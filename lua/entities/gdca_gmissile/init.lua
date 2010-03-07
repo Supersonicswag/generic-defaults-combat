@@ -67,10 +67,6 @@ end
 					util.ScreenShake(tr.HitPos, 10, 5, 1, 2000 )
 					util.Decal("Scorch", tr.HitPos + tr.HitNormal, tr.HitPos - tr.HitNormal)
 
-			if (tr.Entity:IsPlayer() || tr.Entity:IsNPC() || tr.HitSky) then
-			self.Entity:Remove()
-			return true
-			end
 			
 			local attack = gcombat.hcgexplode( tr.HitPos, 300, 400, 8)
 			self.Entity:Remove()

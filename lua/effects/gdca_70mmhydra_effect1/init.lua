@@ -17,25 +17,22 @@ local vOffset = data:GetOrigin()
  	 
  		for i=0, NumParticles do 
  		 
- 			local particle = emitter:Add( "effects/spark", vOffset ) 
+ 			local particle = emitter:Add( "effects/fleck_tile"..math.random(1,2), vOffset ) 
  			if (particle) then 
  				 
- 				particle:SetVelocity( VectorRand() * math.Rand(1200, 1500) ) 
- 				 
- 				particle:SetLifeTime( 0 ) 
- 				particle:SetDieTime( math.Rand(1, 2) ) 
- 				 
+ 				particle:SetVelocity( VectorRand() * math.Rand(3000, 5500) ) 
+ 				particle:SetDieTime( math.Rand(0.3, 0.6) ) 			 
  				particle:SetStartAlpha( 255 ) 
- 				particle:SetEndAlpha( 0 ) 
- 				 
- 				particle:SetStartSize( math.Rand(20, 50) ) 
- 				 
+ 				particle:SetEndAlpha( 255 ) 		 
+ 				particle:SetStartSize( math.Rand(3, 15) ) 
+ 				particle:SetEndSize( 0 ) 				 
  				particle:SetRoll( math.Rand(0, 360) ) 
- 				particle:SetRollDelta( math.Rand(-5, 5) ) 
- 				 
- 				particle:SetAirResistance( 100 ) 
- 				 
+ 				particle:SetRollDelta( math.Rand(-5, 5) ) 				 
+ 				particle:SetAirResistance( 30 ) 
+ 				particle:SetColor(0,0,0) 				 
  				particle:SetGravity( Vector( 0, 0, -600 ) ) 
+				particle:SetCollide( true )
+				particle:SetBounce( 1 )	
  			 
  			end 
 			

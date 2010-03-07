@@ -12,3 +12,4 @@ ENT.AdminSpawnable		= false
 ENT.XCo			= nil
 ENT.YCo			= nil
 ENT.ZCo			= nil
+ENT.Target		= Vector(0,0,0)
