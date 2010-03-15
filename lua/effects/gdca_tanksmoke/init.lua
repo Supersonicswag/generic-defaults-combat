@@ -16,11 +16,11 @@
 		local Smoke = self.Emitter:Add( "particle/smokestack", self.Origin )
 		if (Smoke) then
 			Smoke:SetVelocity( self.DirVec * math.random( 100,1000*self.Scale) + VectorRand()*200*self.Scale )
-			Smoke:SetDieTime( math.Rand( 0.5 , 3 )*self.Scale )
-			Smoke:SetStartAlpha( math.Rand( 120, 150 ) )
+			Smoke:SetDieTime( math.Rand( 0.5 , 4 )*self.Scale )
+			Smoke:SetStartAlpha( math.Rand( 70, 100 ) )
 			Smoke:SetEndAlpha( 0 )
 			Smoke:SetStartSize( 40*self.Scale )
-			Smoke:SetEndSize( 60*self.Scale )
+			Smoke:SetEndSize( 70*self.Scale )
 			Smoke:SetRoll( math.Rand(150, 360) )
 			Smoke:SetRollDelta( math.Rand(-2, 2) )			
 			Smoke:SetAirResistance( 200 ) 			 
@@ -36,7 +36,7 @@
 		local Embers = self.Emitter:Add( "particles/flamelet"..math.random(1,5), self.Origin )
 		if (Embers) then
 			Embers:SetVelocity ( self.DirVec * math.random(0,2500) + VectorRand() * 500*self.Scale )
-			Embers:SetDieTime( math.Rand( 0.08 , 0.12 )*self.Scale )
+			Embers:SetDieTime( math.Rand( 0.05 , 0.1 )*self.Scale )
 			Embers:SetStartAlpha( 255 )
 			Embers:SetEndAlpha( 0 )
 			Embers:SetStartSize( 30*self.Scale )
