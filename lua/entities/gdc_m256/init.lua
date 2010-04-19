@@ -61,7 +61,7 @@ function ENT:firesabot()
 		
 		local phys = self.Entity:GetPhysicsObject()  	
 		if (phys:IsValid()) then  		
-			phys:ApplyForceCenter( self.Entity:GetUp() * -12000 ) 
+			phys:ApplyForceCenter( self.Entity:GetUp() * -120000 ) 
 		end 
 		
 		local effectdata = EffectData()
@@ -88,7 +88,7 @@ function ENT:fireheat()
 		
 		local phys = self.Entity:GetPhysicsObject()  	
 		if (phys:IsValid()) then  		
-			phys:ApplyForceCenter( self.Entity:GetUp() * -12000 ) 
+			phys:ApplyForceCenter( self.Entity:GetUp() * -120000 ) 
 		end 
 		
 		local effectdata = EffectData()

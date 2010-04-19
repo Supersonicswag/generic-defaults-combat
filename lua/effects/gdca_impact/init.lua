@@ -33,7 +33,7 @@
 	
 	end
 	
-	for i=0, 5*self.Scale do
+	for i=0, 10*self.Scale do
 	
 		local Debris = self.Emitter:Add( "effects/fleck_tile"..math.random(1,2), self.Origin )
 		if (Debris) then

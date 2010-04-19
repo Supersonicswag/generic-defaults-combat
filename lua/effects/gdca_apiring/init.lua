@@ -13,91 +13,68 @@
 	self.Emitter = ParticleEmitter( self.Origin )
 
 	WorldSound( "Impacts/Explosion2.wav", self.Origin, 100, 100 )
+	
 		
-	for i=0, 7*self.Radius do
+		for i=1,2 do 
+			local Flash = self.Emitter:Add( "effects/muzzleflash"..math.random(1,4), self.Origin )
+			if (Flash) then
+				Flash:SetVelocity( self.DirVec*100 )
+				Flash:SetAirResistance( 200 )
+				Flash:SetDieTime( 0.1 )
+				Flash:SetStartAlpha( 255 )
+				Flash:SetEndAlpha( 0 )
+				Flash:SetStartSize( math.Rand( 150, 250 )*self.Scale )
+				Flash:SetEndSize( 0 )
+				Flash:SetRoll( math.Rand(180,480) )
+				Flash:SetRollDelta( math.Rand(-1,1) )
+				Flash:SetColor(255,200,200)	
+			end
+		end
+	
+	for i=0, 10*self.Radius do
 	
 		local Smoke = self.Emitter:Add( "particles/smokey", self.Origin )
 		if (Smoke) then
-			Smoke:SetVelocity( self.DirVec * math.random( 30,120*self.Radius) + VectorRand() * math.random( 50,100*self.Radius) )
-			Smoke:SetLifeTime( 0 )
-			Smoke:SetDieTime( math.Rand( 2 , 4 )*self.Radius/3  )
-			Smoke:SetStartAlpha( math.Rand( 50, 150 ) )
+			Smoke:SetVelocity( self.DirVec * math.random( 50,200*self.Radius) + VectorRand() * math.random( 50,100*self.Radius) )
+			Smoke:SetDieTime( math.Rand( 1 , 3 )*self.Radius)
+			Smoke:SetStartAlpha( math.Rand( 30, 50 ) )
 			Smoke:SetEndAlpha( 0 )
-			Smoke:SetStartSize( 5*self.Scale )
-			Smoke:SetEndSize( 50*self.Radius )
+			Smoke:SetStartSize( 15*self.Scale )
+			Smoke:SetEndSize( 35*self.Radius )
 			Smoke:SetRoll( math.Rand(150, 360) )
-			Smoke:SetRollDelta( math.Rand(-2, 2) )			
-			Smoke:SetAirResistance( 100 ) 			 
-			Smoke:SetGravity( Vector( math.random(-20,20)*self.Radius, math.random(-20,20)*self.Radius, 250 ) ) 			
-			Smoke:SetColor( 53,50,45 )
+			Smoke:SetRollDelta( math.Rand(-1, 1) )			
+			Smoke:SetAirResistance( 200 ) 			 
+			Smoke:SetGravity( Vector( math.random(-20,20)*self.Radius, math.random(-20,20)*self.Radius, -200 ) ) 			
+			Smoke:SetColor( 140,135,125 )
 		end
 	
 	end
-		
-	for i=0, 3*self.Radius do
-	 
-		local Flame = self.Emitter:Add( "particles/flamelet"..math.random(1,5), self.Origin)
-		if (Flame) then
-			Flame:SetVelocity( VectorRand() * math.random(100,300*self.Radius) )
-			Flame:SetLifeTime( 0 )
-			Flame:SetDieTime( 0.15 )
-			Flame:SetStartAlpha( math.Rand( 50, 255 ) )
-			Flame:SetEndAlpha( 0 )
-			Flame:SetStartSize( 2 )
-			Flame:SetEndSize( 80*self.Scale )
-			Flame:SetRoll( math.random(120, 360) )
-			Flame:SetRollDelta( math.Rand(-1, 1) )			
-			Flame:SetAirResistance( 300 ) 			 
-			Flame:SetGravity( Vector( 0, 0, 4 ) ) 			
-			Flame:SetColor( 255,255,255 )
-		end
-		
-	end
-	
-	for i=0, 3*self.Radius do
+
+	for i=0, 20*self.Scale do
 	
 		local Debris = self.Emitter:Add( "effects/fleck_tile"..math.random(1,2), self.Origin )
 		if (Debris) then
-			Debris:SetVelocity ( VectorRand() * math.random(500*self.Radius,600*self.Radius) )
-			Debris:SetLifeTime( 0 )
-			Debris:SetDieTime( math.Rand( 3 , 6 )*self.Radius/3 )
+			Debris:SetVelocity ( self.DirVec * math.random(0,700*self.Scale) + VectorRand() * 200*self.Scale )
+			Debris:SetDieTime( math.random( 0.7, 1.5) * self.Scale )
 			Debris:SetStartAlpha( 255 )
 			Debris:SetEndAlpha( 0 )
-			Debris:SetStartSize( 2 )
-			Debris:SetEndSize( 2 )
+			Debris:SetStartSize( math.random(0.2,2*self.Scale) )
 			Debris:SetRoll( math.Rand(0, 360) )
-			Debris:SetRollDelta( math.Rand(-0.2, 0.2) )			
-			Debris:SetAirResistance( 100 ) 			 
-			Debris:SetGravity( Vector( 0, 0, -650 ) ) 			
-			Debris:SetColor( 100,80,90 )
+			Debris:SetRollDelta( math.Rand(-5, 5) )			
+			Debris:SetAirResistance( 30 ) 			 			
+			Debris:SetColor( 105,100,90 )
+			Debris:SetGravity( Vector( 0, 0, -600) ) 
+			Debris:SetCollide( true )
+			Debris:SetBounce( 0.1 )	
 		end
 	end
-	
-	for i=0, 5*self.Radius do
-	
-		local Embers = self.Emitter:Add( "particles/flamelet"..math.random(1,5), self.Origin )
-		if (Embers) then
-			Embers:SetVelocity ( VectorRand() * math.random(300*self.Radius,400*self.Radius) )
-			Embers:SetLifeTime( 0 )
-			Embers:SetDieTime( math.Rand( 3 , 6 )*self.Radius/3 )
-			Embers:SetStartAlpha( 255 )
-			Embers:SetEndAlpha( 0 )
-			Embers:SetStartSize( 10 )
-			Embers:SetEndSize( 20 )
-			Embers:SetRoll( math.Rand(0, 360) )
-			Embers:SetRollDelta( math.Rand(-0.2, 0.2) )			
-			Embers:SetAirResistance( 100 ) 			 
-			Embers:SetGravity( Vector( 0, 0, -650 ) ) 			
-			Embers:SetColor( 150,130,90 )
-		end
-	end
-	
+
 	for i=0, 3*self.Radius do
 		local Whisp = self.Emitter:Add( "particles/smokey", self.Origin )
 			if (Whisp) then
-				Whisp:SetVelocity(VectorRand() * math.random( 100,200*self.Radius) )
+				Whisp:SetVelocity(VectorRand() * math.random( 100,300*self.Radius) )
 				Whisp:SetDieTime( math.Rand( 4 , 10 )*self.Scale/2  )
-				Whisp:SetStartAlpha( math.Rand( 35, 50 ) )
+				Whisp:SetStartAlpha( math.Rand( 20, 30 ) )
 				Whisp:SetEndAlpha( 0 )
 				Whisp:SetStartSize( 70*self.Scale )
 				Whisp:SetEndSize( 100*self.Radius )
@@ -120,7 +97,7 @@ function EFFECT:Think( )
 	if self.DirVec != Vector(1,1,0) then
 	
 		local Timer = CurTime() + 3
-		local Density = 30*self.Radius
+		local Density = 50*self.Radius
 		local Angle = self.DirVec:Angle()
 		if Timer > CurTime() then
 			
@@ -130,18 +107,16 @@ function EFFECT:Think( )
 				local ShootVector = Angle:Up()
 				local Smoke = self.Emitter:Add( "particles/smokey", self.Origin )
 				if (Smoke) then
-					Smoke:SetVelocity( ShootVector * math.Rand(10,500*self.Radius) )
-					Smoke:SetLifeTime( 0 )
+					Smoke:SetVelocity( self.DirVec*50 + ShootVector * math.Rand(10,500*self.Radius) )
 					Smoke:SetDieTime( math.Rand( 2 , 5 )*self.Radius /2 )
 					Smoke:SetStartAlpha( math.Rand( 80, 120 ) )
 					Smoke:SetEndAlpha( 0 )
-					Smoke:SetStartSize( 25*self.Scale )
-					Smoke:SetEndSize( 40*self.Radius )
+					Smoke:SetStartSize( 15*self.Scale )
+					Smoke:SetEndSize( 25*self.Radius )
 					Smoke:SetRoll( math.Rand(0, 360) )
-					Smoke:SetRollDelta( math.Rand(-1, 1) )			
-					Smoke:SetAirResistance( 200 ) 			 
-					Smoke:SetGravity( Vector( math.Rand( -200 , 200 ), math.Rand( -200 , 200 ), math.Rand( 10 , 100 ) ) )			
-					Smoke:SetColor( 60,55,45 )
+					Smoke:SetRollDelta( math.Rand(-2, 2) )			
+					Smoke:SetAirResistance( 300 ) 			 		
+					Smoke:SetColor( 140,135,125 )
 				end	
 			
 			end

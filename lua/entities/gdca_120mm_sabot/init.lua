@@ -11,6 +11,7 @@ self.exploded = false
 self.armed = true
 self.ticking = true
 self.smoking = false
+self.penetrate = 100
 self.flightvector = self.Entity:GetUp() * 550
 self.timeleft = CurTime() + 5
 self.Entity:SetModel( "models/combatmodels/tankshell_40mm.mdl" ) 	
@@ -23,6 +24,7 @@ self:Think()
 end   
 
 function ENT:Think()
+	
 
 		if self.timeleft < CurTime() then
 					self.exploded = true
@@ -36,58 +38,74 @@ function ENT:Think()
 		trace.filter = self.Entity 
 	local tr = util.TraceLine( trace )
 	
-				if tr.HitSky then
+			if tr.HitSky then
 			self.Entity:Remove()
 			return true
-		end
+		end		
 
-	if (tr.Hit) then
-		if ( self.exploded == false ) then
-			if ( self.exploded == false && self.ticking == true ) then
-				util.BlastDamage(self.Entity, self.Entity, tr.HitPos, 100, 300)
+
+			if tr.Hit then
+				util.BlastDamage(self.Entity, self.Entity, tr.HitPos, 200, 300)
 					local effectdata = EffectData()
 					effectdata:SetOrigin(tr.HitPos)
 					effectdata:SetNormal(tr.HitNormal)
-					effectdata:SetStart(tr.HitPos)
-					util.Effect( "gdca_20x102_effect", effectdata )
-					util.Effect( "gdca_sparks", effectdata )
-					util.ScreenShake(tr.HitPos, 30, 5, 0.3, 500 )
-					util.Decal("fadingScorch", tr.HitPos + tr.HitNormal, tr.HitPos - tr.HitNormal)
+					effectdata:SetScale(3)
+					effectdata:SetRadius(2)
+					util.Effect( "gdca_apiring", effectdata )
+					util.ScreenShake(tr.HitPos, 10, 5, 0.3, 150 )
+					util.Decal("ExplosiveGunshot", tr.HitPos + tr.HitNormal, tr.HitPos - tr.HitNormal)
 
-				if (tr.Entity:IsWorld() || tr.Entity:IsPlayer() || tr.Entity:IsNPC() || tr.HitSky) then
+				end
+
+	local trace = {}
+		trace.start = tr.HitPos + self.flightvector:GetNormalized() * 100
+		trace.endpos = tr.HitPos
+		trace.filter = self.Entity 
+	local pr = util.TraceLine( trace )
+
+		if tr.Hit and !pr.Hit then
+		self.Entity:Remove()
+		end
+
+			if (tr.Entity:IsValid()) then
+			local attack = gcombat.hcghit( tr.Entity, 1500, 100, tr.HitPos, tr.HitPos)
+			end
+
+		if pr.Hit then
+
+		self.penetrate = self.penetrate - (tr.HitPos:Distance(pr.HitPos))
+	end
+
+				if self.penetrate<0 then
 					self.exploded = true
 					self.Entity:Remove()
 					return true
 				end
-			if (tr.Entity:IsValid()) then
-				
-					local attack = gcombat.hcghit( tr.Entity, 4500, 100, tr.HitPos, tr.HitPos)
-						if (attack == 0) then
-							brokedshell = ents.Create("prop_physics")
-							brokedshell:SetPos(self.Entity:GetPos())
-							brokedshell:SetAngles(self.Entity:GetAngles())
-							brokedshell:SetKeyValue( "model", "models/combatmodels/tankshell.mdl" )
-							brokedshell:PhysicsInit( SOLID_VPHYSICS )
-							brokedshell:SetMoveType( MOVETYPE_VPHYSICS )
-							brokedshell:SetSolid( SOLID_VPHYSICS )
-							brokedshell:Activate()
-							brokedshell:Spawn()
-							brokedshell:Fire("Kill", "", 20)
-						local phys = brokedshell:GetPhysicsObject()  	
-						if (phys:IsValid()) then  
-						phys:SetVelocity(self.flightvector * 600000)
-						end
-			end
-				
+
+		if pr.Hit and self.penetrate>0 then
+				util.BlastDamage(self.Entity, self.Entity, pr.HitPos, 200, 100)
+				self.Entity:SetPos(pr.HitPos + self.flightvector:GetNormalized()*5)
+					local effectdata = EffectData()
+					effectdata:SetOrigin(pr.HitPos)
+					effectdata:SetNormal(self.flightvector:GetNormalized())
+					effectdata:SetScale(3)
+					effectdata:SetRadius(2.5)
+					util.Effect( "gdca_penetrate", effectdata )
+					util.ScreenShake(tr.HitPos, 10, 5, 0.3, 150 )
+					util.Decal("ExplosiveGunshot", pr.HitPos + pr.HitNormal, pr.HitPos - pr.HitNormal)
+
 			end
 
-				self.exploded = true
-				self.Entity:Remove()
-			end
-		end
-	end
+			if tr.Entity:IsValid() and !tr.Entity:IsPlayer() and !tr.Entity:IsNPC()  then
+					local effectdata = EffectData()
+					effectdata:SetOrigin(tr.HitPos)
+					effectdata:SetStart(tr.HitPos)
+					util.Effect( "gdca_sparks", effectdata )				
 
+			end
+		if !pr.Hit then
 	self.Entity:SetPos(self.Entity:GetPos() + self.flightvector)
+	end
 	self.flightvector = self.flightvector + Vector(math.Rand(-0.5,0.5), math.Rand(-0.5,0.5),math.Rand(-0.5,0.5)) + Vector(0,0,-0.2)
 	self.Entity:SetAngles(self.flightvector:Angle() + Angle(90,0,0))
 	self.Entity:NextThink( CurTime() )
