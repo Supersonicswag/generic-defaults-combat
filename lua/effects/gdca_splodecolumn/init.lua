@@ -19,7 +19,7 @@
 		if (Smoke) then
 			Smoke:SetVelocity( self.DirVec * math.random( 200,700*self.Scale) + VectorRand()*250*self.Scale )
 			Smoke:SetDieTime( math.Rand( 1 , 2.5 )*self.Scale )
-			Smoke:SetStartAlpha( math.Rand( 120, 150 ) )
+			Smoke:SetStartAlpha( math.Rand( 60, 90 ) )
 			Smoke:SetEndAlpha( 0 )
 			Smoke:SetStartSize( 40*self.Scale )
 			Smoke:SetEndSize( 70*self.Scale )

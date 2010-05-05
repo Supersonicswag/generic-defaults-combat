@@ -9,6 +9,7 @@ function ENT:Initialize()
 math.randomseed(CurTime())
 self.exploded = false
 self.armed = true
+self.tracer = true
 self.ticking = true
 self.smoking = false
 self.flightvector = self.Entity:GetUp() * 500
@@ -24,7 +25,7 @@ end
 
 function ENT:Think()
 
-	if (self.smoking == false) then
+	if self.tracer then
 		self.smoking = true
 	
 		FireTrail = ents.Create("env_spritetrail")

@@ -84,7 +84,7 @@ function ENT:firetracer()
 		ent:Spawn()
 		ent:Activate()
 		self.armed = false
-		
+
 		
 		local phys = self.Entity:GetPhysicsObject()  	
 		if (phys:IsValid()) then  		

@@ -10,7 +10,7 @@ function EFFECT:Init( data )
 	
 local vOffset = data:GetOrigin() 
  	 
- 	local NumParticles = 20	 
+ 	local NumParticles = 15	 
  	local emitter = ParticleEmitter( vOffset ) 
  	 
  		for i=0, NumParticles do 
@@ -18,14 +18,14 @@ local vOffset = data:GetOrigin()
  			local particle = emitter:Add( "effects/spark", vOffset ) 
  			if (particle) then 
  				 
- 				particle:SetVelocity( VectorRand() * math.Rand(100, 1000) ) 
+ 				particle:SetVelocity( VectorRand() * math.Rand(50, 300) ) 
  				 
  				particle:SetLifeTime( 0 ) 
  				particle:SetDieTime( math.Rand(0.5, 1.5) ) 
  				 
  				particle:SetStartAlpha( 255 ) 
  				 
- 				particle:SetStartSize( math.Rand(7, 10) ) 
+ 				particle:SetStartSize( math.Rand(3, 6) ) 
  				particle:SetEndSize( 0 ) 
  				 
  				particle:SetRoll( math.Rand(0, 360) ) 
