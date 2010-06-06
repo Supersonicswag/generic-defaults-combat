@@ -12,21 +12,21 @@
 ====-AK47 / ACOG Scope====
 
 =*HK416*=
-5.56x45mm, 900 RPM, ~900 m/s, 30 round magazine
--HK416 / Iron Sights
--HK416 / Red Dot Sight
--HK416 / Holo Sight
--HK416 / Magnified 3x Holo Sight
+===5.56x45mm, 900 RPM, ~900 m/s, 30 round magazine===
+====-HK416 / Iron Sights====
+====-HK416 / Red Dot Sight====
+====-HK416 / Holo Sight====
+====-HK416 / Magnified 3x Holo Sight====
 
-*M4A1*
-5.56x45mm, 800 RPM, ~900 m/s, 30 round magazine
--M4A1 / Iron Sights
--M4A1 / Holo Sight
--M4A1 / ACOG Scope
+=*M4A1*=
+===5.56x45mm, 800 RPM, ~900 m/s, 30 round magazine===
+====-M4A1 / Iron Sights====
+====-M4A1 / Holo Sight====
+====-M4A1 / ACOG Scope====
 
-*P90*
-5.7x28mm, 900 RPM, ~715 m/s, 50 round magazine
--P90 / Iron Sights
--P90 / Red Dot Sight
--P90 / Holo Sight
--P90 / ACOG Scope
+=*P90*=
+===5.7x28mm, 900 RPM, ~715 m/s, 50 round magazine===
+====-P90 / Iron Sights====
+====-P90 / Red Dot Sight====
+====-P90 / Holo Sight====
+====-P90 / ACOG Scope====
