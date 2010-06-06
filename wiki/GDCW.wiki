@@ -9,7 +9,7 @@
 
 *AK47*
 7.62x39mm, 600 RPM, ~715 m/s, 30 round magazine
--AK47 / Iron Sights
+===-AK47 / Iron Sights===
 -AK47 / Red Dot Sight
 -AK47 / Holo Sight
 -AK47 / ACOG Scope
