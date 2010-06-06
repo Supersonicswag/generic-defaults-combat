@@ -78,26 +78,19 @@ function ENT:Think()
 		trace.filter = self.Entity 
 	local pr = util.TraceLine( trace )
 
-		if tr.Hit and !pr.Hit then
+		if pr.StartSolid  || tr.Hit and !pr.Hit || self.penetrate<0 then
 		self.Entity:Remove()
+		end
+
+		if tr.Hit and pr.Hit then
+		self.penetrate = self.penetrate - (tr.HitPos:Distance(pr.HitPos))
 		end
 
 			if (tr.Entity:IsValid()) then
 			local attack = gcombat.hcghit( tr.Entity, 150, 100, tr.HitPos, tr.HitPos)
 			end
 
-		if pr.Hit then
-
-		self.penetrate = self.penetrate - (tr.HitPos:Distance(pr.HitPos))
-	end
-
-				if self.penetrate<0 then
-					self.exploded = true
-					self.Entity:Remove()
-					return true
-				end
-
-		if pr.Hit and self.penetrate>0 then
+		if !pr.StartSolid and tr.Hit and self.penetrate>0 then
 				util.BlastDamage(self.Entity, self.Entity, pr.HitPos, 150, 70)
 				self.Entity:SetPos(pr.HitPos + self.flightvector:GetNormalized()*5)
 					local effectdata = EffectData()
