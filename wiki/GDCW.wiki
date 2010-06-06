@@ -1,7 +1,7 @@
-#summary GDC SWEPS- Assault Pack
 #labels gdcw,weapons,sweps
 
-= Originally released on June 5th, 2010, the gdcw assault pack includes 15 SWEPS. A newer release was added shortly after to fix an aspect ratio problem with the ACOG scopes. =
+
+=== Originally released on June 5th, 2010, the gdcw assault pack includes 15 SWEPS. A newer release was added shortly after to fix an aspect ratio problem with the ACOG scopes. ===
 
 
 =*AK47*=
