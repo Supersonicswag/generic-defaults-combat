@@ -7,7 +7,7 @@
 
 = Specifications =
 
-*AK47*
+=*AK47*=
 7.62x39mm, 600 RPM, ~715 m/s, 30 round magazine
 ===-AK47 / Iron Sights===
 -AK47 / Red Dot Sight
