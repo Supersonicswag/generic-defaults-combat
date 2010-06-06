@@ -4,17 +4,14 @@
 = Originally released on June 5th, 2010, the gdcw assault pack includes 15 SWEPS. A newer release was added shortly after to fix an aspect ratio problem with the ACOG scopes. =
 
 
-
-= Specifications =
-
-==*AK47*==
+=*AK47*=
 ===7.62x39mm, 600 RPM, ~715 m/s, 30 round magazine===
 ====-AK47 / Iron Sights====
 ====-AK47 / Red Dot Sight====
 ====-AK47 / Holo Sight====
 ====-AK47 / ACOG Scope====
 
-*HK416*
+=*HK416*=
 5.56x45mm, 900 RPM, ~900 m/s, 30 round magazine
 -HK416 / Iron Sights
 -HK416 / Red Dot Sight
