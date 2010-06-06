@@ -1,12 +1,11 @@
 #summary GDC SWEPS- Assault Pack
 #labels gdcw,weapons,sweps
 
-= Introduction =
-
-Originally released on June 5th, 2010, the gdcw assault pack includes 15 SWEPS. A newer release was added shortly after to fix an aspect ratio problem with the ACOG scopes.
+= Originally released on June 5th, 2010, the gdcw assault pack includes 15 SWEPS. A newer release was added shortly after to fix an aspect ratio problem with the ACOG scopes. =
 
 
-= Details =
+
+= Specifications =
 
 *AK47*
 7.62x39mm, 600 RPM, ~715 m/s, 30 round magazine
