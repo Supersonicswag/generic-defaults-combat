@@ -1,0 +1,20 @@
+
+"Unlittwotexture"
+	{
+	// Original shader: VertexLitTexture
+	"$baseTexture" "models\weapons\v_models\MW2_M16A4\LENS2"
+	"$texture2"	"scope\gdcw_noise"	
+	"$translucent" "1"
+	"$additive" "1"
+	"$nocull" "1"
+	"$model" "1"	
+	"Proxies"
+	{
+	"TextureScroll"
+	{
+	"texturescrollvar" "$texture2transform"
+	"texturescrollrate" 10
+	"texturescrollangle" -55
+	}
+	}
+	}

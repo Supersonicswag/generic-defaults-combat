@@ -1,0 +1,59 @@
+MODDERS - READ THIS BEFORE EDITING 
+
+First of all, you DO have permission to modify and redistribute my code, since most of it isn't even mine anyway (I mixed several bases and added my own code in some spots). Just give me credit. 
+Read the stuff below if you are new to coding/addon-ing or just need help with figuring out my code.
+
+
+{LUA}
+
+[autorun]
+This part is just basic sever files that add stuff. GDCW additions is a file that adds new guns for NPCs to use. Modify it if you want to add new guns.
+The "server" folder mostly contains download scripts that send clientside files to the players who join your server.
+
+[effects]
+This folder contains lua particle effects that are rendered for when you fire the guns.
+
+[entities]
+This folder contains bullet entities. In each folder there are three files; cl_init, init, and shared.
+Shared contains the name of each bullet and other basic stuff.
+Init controls the bullet. To change a bullet's speed, look for "self.flightvector". To change penetration, look for "self.penetrate".
+Cl_init shouldn't be modified because nobody really knows what it does.
+
+[weapons]
+This folder contains the weapon bases and the weapon files. 
+If you want to modify a single gun, mess with the weapon folders such as "gdcw_m4a1holo" in the shared and cl_init files.
+If you want to change the weapon bases (there are only 2), open the folder and modify the shared file. Most of the stuff you will be changing has a description to the side.
+
+
+{MATERIALS}
+
+[scope]
+This folder holds the scope textures. Put new scope stuff here or replace the textures if you make better ones.
+
+[models/weapons/v_models or w_models]
+These folders hold the materials that go on the gun models. You should only be adding stuff here if you get new models.
+
+[VGUI]
+This holds all the materials for the weapon menu.
+
+{MODELS}
+
+[weapons]
+Add your new hexed CSS or HL2 gun models here.
+
+{SCRIPTS}
+
+[sounds]
+This folder contains files that change sound properties. You need sounds to be scripted to play repetitively without problems.
+
+{SOUND}
+
+[gdc/*]
+Has several categories of gun sounds. Add or modify files to your liking but don't rename them.
+
+[impacts]
+Bullet hit sounds. Modify but don't rename or delete!
+
+
+
+That's it for the readme! If you didn't just skip to the bottom you probably wasted several minutes of your life!

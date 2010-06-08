@@ -1,0 +1,11 @@
+"AddonInfo"
+{
+	"name"		"GDC Weapons"
+	"version"		"2"
+	"up_date"		"June 5rd 2010"
+	"author_name"	"Generic Default"
+	"author_email"	"DON'T EMAIL ME I WONT ANSWER"
+	"author_url"	"https://generic-defaults-combat.googlecode.com/svn"
+	"info"		"GDC SWEPs and NPC modifiers. This pack includes 15 assault weapons (6 are useable by NPC's), an NPC spawning tool for use with the weapons, and a ragdoll and gun removal tool to prevent lag buildup and allow endless NPC battles! Devenger and Major Victory created the npc cleanup and npc spawner tools, so don't say I stole credit! I also take no credit for the weapon models."
+	"override"	"0"
+}

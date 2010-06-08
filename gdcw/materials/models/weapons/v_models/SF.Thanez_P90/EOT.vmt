@@ -1,0 +1,5 @@
+VertexLitGeneric
+{
+	"$basetexture"	"models\weapons\v_models\SF.Thanez_P90\EOT"
+	"$bumpmap" 	"models\weapons\v_models\SF.Thanez_P90\EOT_normal"
+}

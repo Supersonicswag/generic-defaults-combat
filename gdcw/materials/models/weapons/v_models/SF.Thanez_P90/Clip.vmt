@@ -1,0 +1,8 @@
+VertexLitGeneric
+{
+	"$basetexture"	"models\weapons\v_models\SF.Thanez_P90\Clip"
+	"$translucent" 1
+	"$bumpmap" "models\weapons\v_models\SF.Thanez_P90\Clip_Normal"
+ 	"$envmap" "env_cubemap"
+	"$normalmapalphaenvmapmask" 1
+}

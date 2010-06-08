@@ -1,0 +1,49 @@
+"HK416F.single"
+{
+	"channel"				"CHAN_WEAPON"
+	"volume"				"1.0"
+	"CompatibilityAttenuation"		"ATTN_NORM"
+	"pitch"				"PITCH_NORM"
+	"soundlevel"			"SNDLVL_150dB"
+	"wave"				")GDC/HK416/HK416F.wav"
+}
+
+"aimable_M4.mag_out"
+{
+	"channel"		"CHAN_ITEM"
+	"volume"		"1.0"
+	"CompatibilityAttenuation"	"1.0"
+	"pitch"		"PITCH_NORM"
+	"soundlevel"			"SNDLVL_100dB"
+	"wave"			")GDC/HK416/HK416Clipout.wav"
+}
+
+"aimable_M4.mag_in"
+{
+	"channel"		"CHAN_ITEM"
+	"volume"		"1.0"
+	"CompatibilityAttenuation"	"1.0"
+	"pitch"		"PITCH_NORM"
+	"soundlevel"			"SNDLVL_100dB"
+	"wave"			")GDC/HK416/HK416Clipin.wav"
+}
+
+"aimable_M4.mag_push"
+{
+	"channel"		"CHAN_ITEM"
+	"volume"		"1.0"
+	"CompatibilityAttenuation"	"1.0"
+	"pitch"		"PITCH_NORM"
+	"soundlevel"			"SNDLVL_100dB"
+	"wave"			")GDC/HK416/HK416Cliptap.wav"
+}
+
+"aimable_M4.button_hit"
+{
+	"channel"		"CHAN_ITEM"
+	"volume"		"1.0"
+	"CompatibilityAttenuation"	"1.0"
+	"pitch"		"PITCH_NORM"
+	"soundlevel"			"SNDLVL_100dB"
+	"wave"			")GDC/HK416/HK416Taprelease.wav"
+}

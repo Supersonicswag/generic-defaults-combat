@@ -1,0 +1,8 @@
+"LightmappedGeneric"
+{
+	"$basetexture" "VGUI/entities/gdcw_p90rdot"
+	"$translucent" 1
+	"$vertexcolor" 		1 
+	"$vertexalpha" 		1 
+	"$nolod" 			1 
+}

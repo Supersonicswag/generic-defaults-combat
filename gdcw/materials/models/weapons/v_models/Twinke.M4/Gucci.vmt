@@ -1,0 +1,8 @@
+VertexLitGeneric
+{
+	"$basetexture"	"models\weapons\v_models\Twinke.M4\Gucci"
+	"$bumpmap" "models\weapons\v_models\Twinke.M4\Gucci_bump"
+	"$envmap" "env_cubemap"
+	"$normalmapalphaenvmapmask" "1"
+	"$envmaptint" "[ .60 .60 .60]"
+}
