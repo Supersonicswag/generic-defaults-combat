@@ -1,0 +1,8 @@
+The GDC SVN repository has been moved!
+
+Go to Tortoise SVN ---> Switch ---> (http://generic-defaults-combat.googlecode.com/svn/gdc/)
+
+Update the SVN and you should be good to go! Remember to try my SWEPS via SVN or
+download on gmod.org! They do not require GDC SVN to work. For SWEPS, check out a folder to;
+
+http://generic-defaults-combat.googlecode.com/svn/gdcw
