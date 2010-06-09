@@ -92,7 +92,7 @@ function SWEP:FireRocket()
 	local aim = self.Owner:GetAimVector()
 	local side = aim:Cross(Vector(0,0,1))
 	local up = side:Cross(aim)
-	local pos = self.Owner:GetShootPos() +  aim * 40 + side * 4 + up * -1	--offsets the rocket so it spawns from the muzzle (hopefully)
+	local pos = self.Owner:GetShootPos() +  aim * 50 + side * 4 + up * -1	--offsets the rocket so it spawns from the muzzle (hopefully)
 	if SERVER then
 	local rocket = ents.Create(self.Primary.Round)
 		if !rocket:IsValid() then return false end

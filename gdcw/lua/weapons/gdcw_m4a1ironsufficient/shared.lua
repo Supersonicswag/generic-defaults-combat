@@ -48,7 +48,6 @@ end
 
 function SWEP:Precache()
 	util.PrecacheSound("M4A1F.single")
-	util.PrecacheSound("FadeOut.single")
 	util.PrecacheSound("Buttons.snd14")
 end
 
@@ -57,7 +56,6 @@ function SWEP:PrimaryAttack()
 	if self:CanPrimaryAttack() then
 		self:FireRocket()
 		self.Weapon:EmitSound("M4A1F.single")
-		self.Weapon:EmitSound("FadeOut.single")
 		self.Weapon:TakePrimaryAmmo(1)
 		self.Weapon:SendWeaponAnim( ACT_VM_PRIMARYATTACK )
 		local fx 		= EffectData()
