@@ -14,7 +14,7 @@ SWEP.ViewModel				= "models/weapons/v_M4A1IRON.mdl"
 SWEP.WorldModel				= "models/weapons/w_M4A1IRON.mdl"
 
 SWEP.Spawnable				= false
-SWEP.AdminSpawnable			= true
+SWEP.AdminSpawnable			= false
 
 SWEP.Primary.RPM				= 800					// This is in Rounds Per Minute
 SWEP.Primary.ClipSize			= 30					// Size of a clip
