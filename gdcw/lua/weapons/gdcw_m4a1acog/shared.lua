@@ -21,9 +21,9 @@ SWEP.Primary.Round			= ("gdcwa_5.56x45_tracer")
 SWEP.Primary.RPM				= 800					// This is in Rounds Per Minute
 SWEP.Primary.ClipSize			= 30					// Size of a clip
 SWEP.Primary.DefaultClip			= 31					// Default number of bullets in a clip
-SWEP.Primary.KickUp			= 0.25						// Maximum up recoil (rise)
-SWEP.Primary.KickDown			= 0.25						// Maximum down recoil (skeet)
-SWEP.Primary.KickHorizontal			= 0.25						// Maximum up recoil (stock)
+SWEP.Primary.KickUp			= 0.3						// Maximum up recoil (rise)
+SWEP.Primary.KickDown			= 0.3						// Maximum down recoil (skeet)
+SWEP.Primary.KickHorizontal			= 0.3						// Maximum up recoil (stock)
 SWEP.Primary.Automatic			= true					// Automatic/Semi Auto
 SWEP.Primary.Ammo			= "smg1"
 

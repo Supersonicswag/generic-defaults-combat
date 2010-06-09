@@ -4,8 +4,8 @@ SWEP.Author				= "Generic Default"
 SWEP.Contact				= "AIDS!"
 SWEP.Purpose				= "Requesting permission to fire."
 SWEP.Instructions				= "Round: 5.56 \nVelocity: ~900 m/s \nSights: ACOG 4x \nCapacity: 30 rounds \nRate of Fire: 750 rounds per minute"
-SWEP.MuzzleAttachment			= "muzzle" 	-- Should be "1" for CSS models or "muzzle" for hl2 models
-SWEP.ShellEjectAttachment			= "1" 		-- Should be "2" for CSS models or "1" for hl2 models
+SWEP.MuzzleAttachment			= "1" 	-- Should be "1" for CSS models or "muzzle" for hl2 models
+SWEP.ShellEjectAttachment			= "2" 		-- Should be "2" for CSS models or "1" for hl2 models
 SWEP.DrawCrosshair			= false	
 
 SWEP.ViewModelFOV			= 65

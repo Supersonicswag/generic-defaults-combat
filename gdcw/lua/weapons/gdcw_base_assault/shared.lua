@@ -57,10 +57,7 @@ function SWEP:Deploy()
 	return true
 	end
 
-function SWEP:Holster( self )
-	self:SetWeaponHoldType("ar2")                          	// Hold type styles; ar2 pistol shotgun rpg normal melee grenade smg slam fist melee2 passive knife
-	return true
-end
+
 function SWEP:Precache()
 	util.PrecacheSound(self.Primary.Sound)
 	util.PrecacheSound("Buttons.snd14")
@@ -154,7 +151,7 @@ function SWEP:IronSight()
 	end					// Shoulder the gun				// Shoulder the gun
 
 	if self.Owner:KeyDown(IN_WALK) then		// If you are holding ALT (walking slow) then
-	self:SetWeaponHoldType("shotgun")                      	// Hold type styles; ar2 pistol shotgun rpg normal melee grenade smg slam fist melee2 passive knife
+	self:SetWeaponHoldType("crossbow")                      	// Hold type styles; ar2 pistol shotgun rpg normal melee grenade smg slam fist melee2 passive knife
 	end					// Hold it at the hip (NO RUSSIAN WOOOT!)
 
 	if !self.Owner:KeyDown(IN_USE) then

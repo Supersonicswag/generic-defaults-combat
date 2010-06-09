@@ -76,12 +76,21 @@ function ENT:Think()
 					effectdata:SetScale(0.9)
 					effectdata:SetRadius(0.9)
 					util.Effect( "gdcw_impact", effectdata )
-					util.ScreenShake(tr.HitPos, 10, 5, 0.3, 200 )
+					util.ScreenShake(tr.HitPos, 10, 5, 0.1, 200 )
 					util.Decal("ExplosiveGunshot", tr.HitPos + tr.HitNormal, tr.HitPos - tr.HitNormal)
 					end
 
-			if tr.Hit and tr.Entity:IsPlayer() || tr.Entity:IsNPC() then
-				util.BlastDamage(self.Entity, self.Owner, tr.HitPos, 70, 40)
+				if tr.Hit and tr.Entity:IsPlayer() || tr.Entity:IsNPC() then
+				local dmginfo = DamageInfo()
+					dmginfo:SetDamage( math.Rand(30,110) ) 	--1 to 4 hits for a kill
+					dmginfo:SetDamageType( DMG_BULLET ) 	--Bullet damage
+					dmginfo:SetAttacker( self.Owner ) 		--Shooter gets credit
+					dmginfo:SetInflictor( self.Entity ) 		--Bullet gets credit
+					dmginfo:SetDamageForce( self.flightvector/50 ) 	--A few newtons...
+				tr.Entity:TakeDamageInfo( dmginfo ) 			--Take damage!
+					local effectdata = EffectData()
+					effectdata:SetOrigin( tr.HitPos )
+					util.Effect( "BloodImpact", effectdata )
 				end
 
 	local trace = {}
@@ -98,8 +107,8 @@ function ENT:Think()
 		self.penetrate = self.penetrate - (tr.HitPos:Distance(pr.HitPos))
 		end
 
-		if !pr.StartSolid and tr.Hit and self.penetrate>0 then
-				util.BlastDamage(self.Entity, self.Owner, pr.HitPos, 30, 10)
+		if !pr.StartSolid and tr.Hit and self.penetrate>0 and !tr.Entity:IsPlayer() and !tr.Entity:IsNPC() then
+				util.BlastDamage(self.Entity, self.Owner, pr.HitPos, 40, 10)
 				self.Entity:SetPos(tr.HitPos + self.flightvector:GetNormalized()*10)
 					local effectdata = EffectData()
 					effectdata:SetOrigin(pr.HitPos)
@@ -107,7 +116,7 @@ function ENT:Think()
 					effectdata:SetScale(1)
 					effectdata:SetRadius(1)
 					util.Effect( "gdcw_penetrate", effectdata )
-					util.ScreenShake(tr.HitPos, 10, 5, 0.3, 250 )
+					util.ScreenShake(tr.HitPos, 10, 5, 0.1, 250 )
 					util.Decal("ExplosiveGunshot", pr.HitPos + pr.HitNormal, pr.HitPos - pr.HitNormal)
 					end
 
@@ -115,7 +124,7 @@ function ENT:Think()
 	if !pr.Hit then
 	self.Entity:SetPos(self.Entity:GetPos() + self.flightvector)
 	end
-	self.flightvector = self.flightvector - self.flightvector/80 + Vector(math.Rand(-0.2,0.2), math.Rand(-0.2,0.2),math.Rand(-0.05,0.05)) + Vector(0,0,-0.06)
+	self.flightvector = self.flightvector - self.flightvector/80 + Vector(math.Rand(-0.15,0.15), math.Rand(-0.15,0.15),math.Rand(-0.1,0.1)) + Vector(0,0,-0.06)
 	self.Entity:SetAngles(self.flightvector:Angle() + Angle(90,0,0))
 	self.Entity:NextThink( CurTime() )
 	return true
