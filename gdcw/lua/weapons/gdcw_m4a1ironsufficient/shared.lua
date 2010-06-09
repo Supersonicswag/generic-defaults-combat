@@ -14,7 +14,7 @@ SWEP.ViewModel				= "models/weapons/v_M4A1IRON.mdl"
 SWEP.WorldModel				= "models/weapons/w_M4A1IRON.mdl"
 
 SWEP.Spawnable				= false
-SWEP.AdminSpawnable			= false
+SWEP.AdminSpawnable			= true
 
 SWEP.Primary.RPM				= 800					// This is in Rounds Per Minute
 SWEP.Primary.ClipSize			= 30					// Size of a clip
@@ -48,6 +48,7 @@ end
 
 function SWEP:Precache()
 	util.PrecacheSound("M4A1F.single")
+	util.PrecacheSound("FadeOut.single")
 	util.PrecacheSound("Buttons.snd14")
 end
 
@@ -56,6 +57,7 @@ function SWEP:PrimaryAttack()
 	if self:CanPrimaryAttack() then
 		self:FireRocket()
 		self.Weapon:EmitSound("M4A1F.single")
+		self.Weapon:EmitSound("FadeOut.single")
 		self.Weapon:TakePrimaryAmmo(1)
 		self.Weapon:SendWeaponAnim( ACT_VM_PRIMARYATTACK )
 		local fx 		= EffectData()

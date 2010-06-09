@@ -15,19 +15,19 @@
 		
 	for i=0, 15*self.Scale do
 	
-		local Smoke = self.Emitter:Add( "particle/particle_smokegrenade", self.Origin )
+		local Smoke = self.Emitter:Add( "particles/smokey", self.Origin )
 		if (Smoke) then
 			Smoke:SetVelocity( self.DirVec * math.random( 0,500*self.Scale) + VectorRand()*100*self.Scale )
-			Smoke:SetDieTime( math.Rand( 1 , 3 )*self.Scale )
-			Smoke:SetStartAlpha( math.Rand( 100, 120 ) )
+			Smoke:SetDieTime( math.Rand( 1 , 2.5 )*self.Scale )
+			Smoke:SetStartAlpha( math.Rand( 80, 100 ) )
 			Smoke:SetEndAlpha( 0 )
-			Smoke:SetStartSize( 13*self.Scale )
+			Smoke:SetStartSize( 12*self.Scale )
 			Smoke:SetEndSize( 30*self.Scale )
 			Smoke:SetRoll( math.Rand(150, 360) )
 			Smoke:SetRollDelta( math.Rand(-2, 2) )			
 			Smoke:SetAirResistance( 300 ) 			 
 			Smoke:SetGravity( Vector( math.Rand(-100, 100) * self.Scale, math.Rand(-100, 100) * self.Scale, math.Rand(0, -100) ) ) 			
-			Smoke:SetColor( 120,115,105 )
+			Smoke:SetColor( 140,135,125 )
 
 		end
 	
