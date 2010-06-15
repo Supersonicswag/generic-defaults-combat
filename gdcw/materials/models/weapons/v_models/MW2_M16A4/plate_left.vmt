@@ -2,7 +2,6 @@
 {
 	"$basetexture"			"models\weapons\v_models\MW2_M16A4\plate_left"
 	"$bumpmap" 			"models\weapons\v_models\MW2_M16A4\plate_left_normal"
-	"$halflambert" 			"1"
 	"$phong" 			"1"
 	"$phongexponent" 		"40"
 	"$phongexponenttexture" 	"models\weapons\v_models\MW2_M16A4\plate_left"

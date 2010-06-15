@@ -99,7 +99,7 @@ function ENT:Think()
 		trace.filter = self.Entity 
 	local pr = util.TraceLine( trace )
 
-		if pr.StartSolid || tr.Hit and !pr.Hit || self.penetrate<0 then
+		if pr.StartSolid and !pr.Entity:IsPlayer() and !pr.Entity:IsNPC() || tr.Hit and !pr.Hit || self.penetrate<0 then
 		self.Entity:Remove()
 		end
 
@@ -109,7 +109,7 @@ function ENT:Think()
 
 		if !pr.StartSolid and tr.Hit and self.penetrate>0 and !tr.Entity:IsPlayer() and !tr.Entity:IsNPC() then
 				util.BlastDamage(self.Entity, self.Owner, pr.HitPos, 40, 10)
-				self.Entity:SetPos(tr.HitPos + self.flightvector:GetNormalized()*10)
+				self.Entity:SetPos(pr.HitPos + self.flightvector:GetNormalized()*10)
 					local effectdata = EffectData()
 					effectdata:SetOrigin(pr.HitPos)
 					effectdata:SetNormal(self.flightvector:GetNormalized())

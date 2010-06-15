@@ -30,7 +30,14 @@ SWEP.Secondary.ClipSize			= 0					// Size of a clip
 SWEP.Secondary.DefaultClip			= 0					// Default number of bullets in a clip
 SWEP.Secondary.Automatic			= false					// Automatic/Semi Auto
 SWEP.Secondary.Ammo			= "none"
-SWEP.Secondary.ScopeZoom			= 0	
+SWEP.Secondary.ScopeZoom			= 0
+SWEP.Secondary.UseACOG			= false	
+SWEP.Secondary.UseMilDot			= false		
+SWEP.Secondary.UseSVD			= false	
+SWEP.Secondary.UseParabolic		= false	
+SWEP.Secondary.UseElcan			= false	
+
+SWEP.Secondary.UseRangefinder		= false	
 
 SWEP.data 				= {}					-- The starting firemode
 SWEP.data.ironsights			= 1
@@ -39,6 +46,7 @@ SWEP.IronSightsPos = Vector (2.4537, 1.0923, 0.2696)
 SWEP.IronSightsAng = Vector (0.0186, -0.0547, 0)
 
 function SWEP:Initialize()
+
 	if CLIENT then
 	
 		-- We need to get these so we can scale everything to the player's current resolution.
@@ -145,13 +153,8 @@ function SWEP:PrimaryAttack()
 		util.Effect("gdcw_muzzle",fx)
 		self.Owner:SetAnimation( PLAYER_ATTACK1 )
 		self.Owner:MuzzleFlash()
-		if self:Clip1() == 0 then
-			self:Reload()
-		end
-	else
-		self.Weapon:EmitSound("Buttons.snd14")
+		self.Weapon:SetNextPrimaryFire(CurTime()+1/(self.Primary.RPM/60))
 	end
-	self.Weapon:SetNextPrimaryFire(CurTime()+1/(self.Primary.RPM/60))
 end
 
 function SWEP:FireRocket()
@@ -187,22 +190,23 @@ end
 
 function SWEP:Reload()
 
+	self.Weapon:DefaultReload(ACT_VM_RELOAD) 
+	-- Animation when you're reloading
+
 	if ( self.Weapon:Clip1() < self.Primary.ClipSize ) and !self.Owner:IsNPC() then
 	-- When the current clip < full clip and the rest of your ammo > 0, then
 
-	self.Weapon:DefaultReload(ACT_VM_RELOAD) 		// Animation when you're reloading
-
-		self.Owner:SetFOV( 0, 0.2 )
+		self.Owner:SetFOV( 0, 0.3 )
+		-- Zoom = 0
 
 		self:SetIronsights(false)
 		-- Set the ironsight to false
 
 		if CLIENT then return end
 		self.Owner:DrawViewModel(true)
-
-	end	
 end
-
+	
+end
 
 /*---------------------------------------------------------
 IronSight
@@ -243,15 +247,24 @@ function SWEP:IronSight()
 		self.Owner:DrawViewModel(true)
 		end
 
-
 end
 
 function SWEP:DrawHUD()
 
 
-
 	if  self.Owner:KeyDown(IN_ATTACK2) and (self:GetIronsights() == true) then
 
+	if self.Secondary.UseRangefinder then
+	local trace = {}
+		trace.start = self.Owner:GetShootPos()
+		trace.endpos = self.Owner:GetShootPos() + self.Owner:GetAimVector()*60000		// Laser Rangefinder
+		trace.filter = self.Owner
+	local tr = util.TraceLine( trace )
+
+	draw.SimpleText(tostring( math.Round(self.Owner:GetShootPos():Distance(tr.HitPos)/39.37) ),"ScoreboardText",ScrW() / 3, ScrH() * (44/60),Color(130,170,70,255))			// Range in meters
+	draw.SimpleText(tostring(  math.Round(((self.Owner:GetShootPos():Distance(tr.HitPos)/39.37)/850)*100)/100  ),"ScoreboardText",ScrW() / 3, ScrH() * (45/60),Color(170,130,70,255))		// Flight time
+	end
+			if self.Secondary.UseACOG then
 			-- Draw the FAKE SCOPE THANG
 			surface.SetDrawColor(0, 0, 0, 255)
 			surface.SetTexture(surface.GetTextureID("scope/gdcw_closedsight"))
@@ -266,7 +279,35 @@ function SWEP:DrawHUD()
 			surface.SetDrawColor(0, 0, 0, 255)
 			surface.SetTexture(surface.GetTextureID("scope/gdcw_acogcross"))
 			surface.DrawTexturedRect(self.ReticleTable.x, self.ReticleTable.y, self.ReticleTable.w, self.ReticleTable.h)
+			end
 
+			if self.Secondary.UseMilDot then
+			-- Draw the MIL DOT SCOPE
+			surface.SetDrawColor(0, 0, 0, 255)
+			surface.SetTexture(surface.GetTextureID("scope/gdcw_scopesight"))
+			surface.DrawTexturedRect(self.LensTable.x, self.LensTable.y, self.LensTable.w, self.LensTable.h)
+			end
+
+			if self.Secondary.UseSVD then
+			-- Draw the SVD SCOPE
+			surface.SetDrawColor(0, 0, 0, 255)
+			surface.SetTexture(surface.GetTextureID("scope/gdcw_svdsight"))
+			surface.DrawTexturedRect(self.LensTable.x, self.LensTable.y, self.LensTable.w, self.LensTable.h)
+			end
+
+			if self.Secondary.UseParabolic then
+			-- Draw the PARABOLIC SCOPE
+			surface.SetDrawColor(0, 0, 0, 255)
+			surface.SetTexture(surface.GetTextureID("scope/gdcw_parabolicsight"))
+			surface.DrawTexturedRect(self.LensTable.x, self.LensTable.y, self.LensTable.w, self.LensTable.h)
+			end
+
+			if self.Secondary.UseElcan then
+			-- Draw the ELCAN SCOPE
+			surface.SetDrawColor(0, 0, 0, 255)
+			surface.SetTexture(surface.GetTextureID("scope/gdcw_elcansight"))
+			surface.DrawTexturedRect(self.LensTable.x, self.LensTable.y, self.LensTable.w, self.LensTable.h)
+			end
 	end
 end
 
@@ -276,6 +317,7 @@ Think
 function SWEP:Think()
 
 	self:IronSight()
+
 end
 
 /*---------------------------------------------------------

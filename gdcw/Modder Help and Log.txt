@@ -65,3 +65,4 @@ That's it for the readme! If you didn't just skip to the bottom you probably was
 [R91]	- Added SVN for GDCW; added 4 M16s and G36C; switched to higher quality dust effects
 [R92]	- Switched back to low quality dust effects
 [R94]	- Added this log; increased bullet spawn range to prevent most owner suicides; minor changes
+[R95]	- Added sniper pack; fixed reload glitch; modified some minor stuff.

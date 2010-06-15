@@ -8,9 +8,9 @@ SWEP.MuzzleAttachment			= "1" 	-- Should be "1" for CSS models or "muzzle" for h
 SWEP.ShellEjectAttachment			= "2" 		-- Should be "2" for CSS models or "1" for hl2 models
 SWEP.DrawCrosshair			= false	
 
-SWEP.ViewModelFOV			= 65
-SWEP.ViewModelFlip			= false
-SWEP.ViewModel				= "models/weapons/v_g36c.mdl"
+SWEP.ViewModelFOV			= 60
+SWEP.ViewModelFlip			= true
+SWEP.ViewModel				= "models/weapons/v_GDCG36C.mdl"
 SWEP.WorldModel				= "models/weapons/w_g36c.mdl"
 SWEP.Base 				= "gdcw_base_rifleman"
 SWEP.Spawnable				= true
@@ -31,10 +31,12 @@ SWEP.Secondary.ClipSize			= 1					// Size of a clip
 SWEP.Secondary.DefaultClip			= 1					// Default number of bullets in a clip
 SWEP.Secondary.Automatic			= false					// Automatic/Semi Auto
 SWEP.Secondary.Ammo			= ""
-SWEP.Secondary.ScopeZoom			= 4	
+SWEP.Secondary.ScopeZoom			= 4
+SWEP.Secondary.UseACOG			= true		
 
 SWEP.data 				= {}					-- The starting firemode
 SWEP.data.ironsights			= 1
+SWEP.ScopeScale 				= 0.5
 
-SWEP.IronSightsPos = Vector (-3.2108, -5.0916, -0.0297)
+SWEP.IronSightsPos = Vector (3.0729, -3.3862, 0.9386)
 SWEP.IronSightsAng = Vector (0, 0, 0)

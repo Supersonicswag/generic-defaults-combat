@@ -39,6 +39,7 @@ SWEP.IronSightsPos = Vector (2.4537, 1.0923, 0.2696)
 SWEP.IronSightsAng = Vector (0.0186, -0.0547, 0)
 
 function SWEP:Initialize()
+	self.Reloadaftershoot = 0 				-- Can't reload when firering
 	if !self.Owner:IsNPC() then
 		self:SetWeaponHoldType("ar2")                          	-- Hold type style ("ar2" "pistol" "shotgun" "rpg" "normal" "melee" "grenade" "smg")
 	end
@@ -79,13 +80,8 @@ function SWEP:PrimaryAttack()
 		util.Effect("gdcw_shells",fx)	
 		self.Owner:SetAnimation( PLAYER_ATTACK1 )
 		self.Owner:MuzzleFlash()
-		if self:Clip1() == 0 then
-			self:Reload()
-		end
-	else
-		self.Weapon:EmitSound("Buttons.snd14")
+		self.Weapon:SetNextPrimaryFire(CurTime()+1/(self.Primary.RPM/60))
 	end
-	self.Weapon:SetNextPrimaryFire(CurTime()+1/(self.Primary.RPM/60))
 end
 
 function SWEP:FireRocket()
@@ -116,10 +112,11 @@ end
 
 function SWEP:Reload()
 
+	self.Weapon:DefaultReload(ACT_VM_RELOAD) 
+	-- Animation when you're reloading
+
 	if ( self.Weapon:Clip1() < self.Primary.ClipSize ) and !self.Owner:IsNPC() then
 	-- When the current clip < full clip and the rest of your ammo > 0, then
-
-	self.Weapon:DefaultReload(ACT_VM_RELOAD) 		// Animation when you're reloading
 
 		self.Owner:SetFOV( 0, 0.3 )
 		-- Zoom = 0

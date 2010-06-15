@@ -32,6 +32,7 @@ npcs = {
 }
 
 wpns = {
+	{ "GDCW FAL", "gdcw_fal" },
 	{ "GDCW M16 ACOG", "gdcw_m16acog" },
 	{ "GDCW M16 Red Dot", "gdcw_m16rdot" },
 	{ "GDCW M16 Holo", "gdcw_m16holo" },

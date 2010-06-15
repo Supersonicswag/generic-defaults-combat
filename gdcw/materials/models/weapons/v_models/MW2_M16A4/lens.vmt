@@ -1,7 +1,5 @@
 "VertexLitGeneric"
 {
-	"$basetexture"	"models\weapons\v_models\MW2_M16A4\lens"
+	"$basetexture"	"_rt_FullFrameFB"
 	"$bumpmap" "models\weapons\v_models\MW2_M16A4\lens_normal"
-	"$envmap" "env_cubemap"
-	"$normalmapalphaenvmapmask" 1
 }

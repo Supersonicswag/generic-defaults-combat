@@ -1,0 +1,10 @@
+"vertexlitgeneric"
+{
+	"$baseTexture" "models\weapons\v_models\AS50\Scope"
+	"$bumpmap" "models\weapons\v_models\AS50\Scope_normal"
+	"$phong" 		"1"
+	"$phongexponent" 	"30"
+	"$phongboost" "0.2"
+	"$phongfresnelranges" "[1 3 6]"
+	"$phongalbedotint" "1"
+}

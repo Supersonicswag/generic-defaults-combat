@@ -1,0 +1,9 @@
+"VertexLitGeneric"
+{
+	"$baseTexture" "models\weapons\v_models\Tactical M24\silencer"
+      	"$envmap" 			"env_cubemap"
+      	"$bumpmap" "models/weapons\v_models/Tactical M24\silencer_normal"
+	"$normalmapalphaenvmapmask" 1
+	
+}
+

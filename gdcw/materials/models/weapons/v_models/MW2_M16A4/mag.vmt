@@ -2,7 +2,6 @@
 {
 	"$basetexture"	"models\weapons\v_models\MW2_M16A4\mag"
 	"$bumpmap"     "models\weapons\v_models\MW2_M16A4\mag_normal"
-	"$normalmapalphaenvmapmask" "1"
 	"$phong" 		"1"
 	"$phongexponent" 	"10"
 	"$phongboost" "0.75"

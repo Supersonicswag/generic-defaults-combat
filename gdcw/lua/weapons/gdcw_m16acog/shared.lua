@@ -31,10 +31,12 @@ SWEP.Secondary.ClipSize			= 1					// Size of a clip
 SWEP.Secondary.DefaultClip			= 1					// Default number of bullets in a clip
 SWEP.Secondary.Automatic			= false					// Automatic/Semi Auto
 SWEP.Secondary.Ammo			= ""
-SWEP.Secondary.ScopeZoom			= 4	
+SWEP.Secondary.ScopeZoom			= 4
+SWEP.Secondary.UseACOG			= true		
 
 SWEP.data 				= {}					-- The starting firemode
 SWEP.data.ironsights			= 1
+SWEP.ScopeScale 				= 0.5
 
 SWEP.IronSightsPos = Vector (2.275, -2.9708, 0.5303)
 SWEP.IronSightsAng = Vector (0, 0, 0)
