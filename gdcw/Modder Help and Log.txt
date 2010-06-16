@@ -66,3 +66,4 @@ That's it for the readme! If you didn't just skip to the bottom you probably was
 [R92]	- Switched back to low quality dust effects
 [R94]	- Added this log; increased bullet spawn range to prevent most owner suicides; minor changes
 [R95]	- Added sniper pack; fixed reload glitch; modified some minor stuff.
+[R99]	- Reduced filesize by 30mb by cutting AS50 texture in half.
