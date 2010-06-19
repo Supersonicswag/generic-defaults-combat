@@ -106,7 +106,7 @@ function ENT:Think()
 		self.penetrate = self.penetrate - (tr.HitPos:Distance(pr.HitPos))
 		end
 
-		if !pr.StartSolid and tr.Hit and self.penetrate>0 and !tr.Entity:IsPlayer() and !tr.Entity:IsNPC() then
+		if !pr.StartSolid and tr.Hit and self.penetrate>0 and !pr.Entity:IsPlayer() and !pr.Entity:IsNPC() then
 				util.BlastDamage(self.Entity, self.Owner, pr.HitPos, 60, 10)
 				self.Entity:SetPos(pr.HitPos + self.flightvector:GetNormalized()*10)
 					local effectdata = EffectData()
@@ -123,7 +123,7 @@ function ENT:Think()
 	if !pr.Hit then
 	self.Entity:SetPos(self.Entity:GetPos() + self.flightvector)
 	end
-	self.flightvector = self.flightvector - self.flightvector/120 + Vector(math.Rand(-0.1,0.1), math.Rand(-0.1,0.1),math.Rand(-0.1,0.1)) + Vector(0,0,-0.06)
+	self.flightvector = self.flightvector - self.flightvector/130 + Vector(math.Rand(-0.1,0.1), math.Rand(-0.1,0.1),math.Rand(-0.1,0.1)) + Vector(0,0,-0.06)
 	self.Entity:SetAngles(self.flightvector:Angle() + Angle(90,0,0))
 	self.Entity:NextThink( CurTime() )
 	return true

@@ -123,7 +123,7 @@ function ENT:Think()
 	if !pr.Hit then
 	self.Entity:SetPos(self.Entity:GetPos() + self.flightvector)
 	end
-	self.flightvector = self.flightvector - self.flightvector/150 + Vector(math.Rand(-0.1,0.1), math.Rand(-0.1,0.1),math.Rand(-0.1,0.1)) + Vector(0,0,-0.06)
+	self.flightvector = self.flightvector - self.flightvector/150 + Vector(math.Rand(-0.07,0.07), math.Rand(-0.07,0.07),math.Rand(-0.07,0.07)) + Vector(0,0,-0.06)
 	self.Entity:SetAngles(self.flightvector:Angle() + Angle(90,0,0))
 	self.Entity:NextThink( CurTime() )
 	return true
