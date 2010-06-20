@@ -1,0 +1,9 @@
+"P228F.single"
+{
+	"channel"				"CHAN_WEAPON"
+	"volume"				"1.0"
+	"CompatibilityAttenuation"		"ATTN_NORM"
+	"pitch"				"PITCH_NORM"
+	"soundlevel"			"SNDLVL_150dB"
+	"wave"				")GDC/P228/P228F.wav"
+}

@@ -41,3 +41,7 @@ SWEP.ScopeScale 				= 0.7
 
 SWEP.IronSightsPos = Vector (3.2269, -3.3734, 1.3315)
 SWEP.IronSightsAng = Vector (0, 0, 0)
+SWEP.SightsPos = Vector (3.2269, -3.3734, 1.3315)
+SWEP.SightsAng = Vector (0, 0, 0)
+SWEP.RunSightsPos = Vector (-2.3095, -3.0514, 3.3965)
+SWEP.RunSightsAng = Vector (-19.8471, -33.9181, 0)

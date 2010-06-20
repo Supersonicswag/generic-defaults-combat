@@ -1,0 +1,36 @@
+"UZIF.single"
+{
+	"channel"				"CHAN_WEAPON"
+	"volume"				"1.0"
+	"CompatibilityAttenuation"		"ATTN_NORM"
+	"pitch"				"PITCH_NORM"
+	"soundlevel"			"SNDLVL_150dB"
+	"wave"				")GDC/UZI/UZIF.wav"
+}
+"GenericGDUZI.Clipout"
+{
+	"channel"				"CHAN_RELOAD"
+	"volume"				"1.0"
+	"CompatibilityAttenuation"		"ATTN_NORM"
+	"pitch"				"PITCH_NORM"
+	"soundlevel"			"SNDLVL_100dB"
+	"wave"				")GDC/UZI/UZIClipout.wav"
+}
+"GenericGDUZI.Clipin"
+{
+	"channel"				"CHAN_RELOAD"
+	"volume"				"1.0"
+	"CompatibilityAttenuation"		"ATTN_NORM"
+	"pitch"				"PITCH_NORM"
+	"soundlevel"			"SNDLVL_100dB"
+	"wave"				")GDC/UZI/UZIClipin.wav"
+}
+"GenericGDUZI.Boltpull"
+{
+	"channel"				"CHAN_RELOAD"
+	"volume"				"1.0"
+	"CompatibilityAttenuation"		"ATTN_NORM"
+	"pitch"				"PITCH_NORM"
+	"soundlevel"			"SNDLVL_100dB"
+	"wave"				")GDC/UZI/UZIBoltpull.wav"
+}

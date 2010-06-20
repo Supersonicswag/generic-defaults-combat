@@ -39,5 +39,7 @@ SWEP.data.ironsights			= 1
 
 SWEP.IronSightsPos = Vector (2.3055, -2.0691, 0.7616)
 SWEP.IronSightsAng = Vector (0, 0, 0)
-
-
+SWEP.SightsPos = Vector (2.3055, -2.0691, 0.7616)
+SWEP.SightsAng = Vector (0, 0, 0)
+SWEP.RunSightsPos = Vector (-3.0328, 0, 2.888)
+SWEP.RunSightsAng = Vector (-24.2146, -36.522, 0)
