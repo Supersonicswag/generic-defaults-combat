@@ -70,7 +70,7 @@ end
 
 
 function SWEP:PrimaryAttack()
-	if self:CanPrimaryAttack() and !self.Owner:KeyDown(IN_USE) then
+	if self:CanPrimaryAttack() then
 		self:FireRocket()
 		self.Weapon:EmitSound(self.Primary.Sound)
 		self.Weapon:TakePrimaryAmmo(1)
@@ -145,7 +145,7 @@ function SWEP:IronSight()
 	self:SetIronsights(true, self.Owner)					// Set the ironsight true
 	end								// Lower the gun
 
-	if self.Owner:KeyReleased(IN_USE) and !self.Owner:KeyDown(IN_SPEED) and !self.Owner:KeyDown(IN_WALK) and !self.Owner:KeyDown(IN_ATTACK2) then					// If you release E then
+	if (self.Owner:KeyReleased(IN_USE) || self.Owner:KeyReleased(IN_SPEED)) and !self.Owner:KeyDown(IN_SPEED) and !self.Owner:KeyDown(IN_WALK) and !self.Owner:KeyDown(IN_ATTACK2) then					// If you release E then
 	self:SetWeaponHoldType("pistol")                          				// Hold type styles; ar2 pistol shotgun rpg normal melee grenade smg slam fist melee2 passive knife
 	self:SetIronsights(false, self.Owner)					// Set the ironsight true
 	end								// Shoulder the gun

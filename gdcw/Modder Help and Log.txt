@@ -68,4 +68,6 @@ That's it for the readme! If you didn't just skip to the bottom you probably was
 [R95]	- Added sniper pack; fixed reload glitch; modified some minor stuff; switched M16s to COD4 reload sounds; added G36 reload sounds
 [R99]	- Reduced filesize by 30mb by cutting AS50 texture in half
 [R100]	- Removed NPCBC battle clean up mod. 
-[R101}	- Re-added the NPC spawner after an accidental delete.
+[R101]	- Re-added the NPC spawner after an accidental delete.
+[R102]	- Added beta Uzi and P228 for upcomming pistols pack; made guns hold lowered when sprinting or holding E.
+[R103]	- Fixed pistols so they now work with metrocops and NPCs.
