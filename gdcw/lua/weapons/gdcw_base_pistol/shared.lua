@@ -17,7 +17,7 @@ SWEP.AdminSpawnable			= false
 
 SWEP.Primary.Sound 			= Sound("")				// Sound of the gun
 SWEP.Primary.Round 			= ("")					// What kind of bullet?
-SWEP.Primary.Cone			= 0.5					// Accuracy of NPCs
+SWEP.Primary.Cone			= 0.2					// Accuracy of NPCs
 SWEP.Primary.RPM				= 0					// This is in Rounds Per Minute
 SWEP.Primary.ClipSize			= 0					// Size of a clip
 SWEP.Primary.DefaultClip			= 0					// Default number of bullets in a clip
@@ -75,13 +75,19 @@ function SWEP:PrimaryAttack()
 		self.Weapon:EmitSound(self.Primary.Sound)
 		self.Weapon:TakePrimaryAmmo(1)
 		self.Weapon:SendWeaponAnim( ACT_VM_PRIMARYATTACK )
+		if !self.Owner:IsNPC() then
 		local fx 		= EffectData()
 		fx:SetEntity(self.Weapon)
 		fx:SetOrigin(self.Owner:GetShootPos())
 		fx:SetNormal(self.Owner:GetAimVector())
 		fx:SetAttachment(self.MuzzleAttachment)
 		util.Effect("gdcw_muzzle",fx)
-		util.Effect("gdcw_caps",fx)	
+		local shell 	= EffectData()
+		shell:SetEntity(self.Weapon)
+		shell:SetNormal(self.Owner:GetAimVector())
+		shell:SetAttachment(self.ShellEjectAttachment)
+		util.Effect("gdcw_caps",shell)	
+		end
 		self.Owner:SetAnimation( PLAYER_ATTACK1 )
 		self.Owner:MuzzleFlash()
 		self.Weapon:SetNextPrimaryFire(CurTime()+1/(self.Primary.RPM/60))
@@ -145,7 +151,11 @@ function SWEP:IronSight()
 	self:SetIronsights(true, self.Owner)					// Set the ironsight true
 	end								// Lower the gun
 
-	if (self.Owner:KeyReleased(IN_USE) || self.Owner:KeyReleased(IN_SPEED)) and !self.Owner:KeyDown(IN_SPEED) and !self.Owner:KeyDown(IN_WALK) and !self.Owner:KeyDown(IN_ATTACK2) then					// If you release E then
+	if self.Owner:KeyDown(IN_USE) then					// If you hold E and you can shoot then
+	self.Weapon:SetNextPrimaryFire(CurTime()+0.2)				// Make it so you can't shoot for another quarter second
+	end								// Lower the gun
+
+	if (self.Owner:KeyReleased(IN_USE) || self.Owner:KeyReleased(IN_SPEED)) then	// If you release E then
 	self:SetWeaponHoldType("pistol")                          				// Hold type styles; ar2 pistol shotgun rpg normal melee grenade smg slam fist melee2 passive knife
 	self:SetIronsights(false, self.Owner)					// Set the ironsight true
 	end								// Shoulder the gun

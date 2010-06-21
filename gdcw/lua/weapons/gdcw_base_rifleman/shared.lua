@@ -18,6 +18,7 @@ SWEP.AdminSpawnable			= false
 SWEP.Primary.Sound 			= Sound("")				// Sound of the gun
 SWEP.Primary.Round 			= ("")					// What kind of bullet?
 SWEP.Primary.RPM				= 0					// This is in Rounds Per Minute
+SWEP.Primary.Cone			= 0.15					// Accuracy of NPCs
 SWEP.Primary.ClipSize			= 0					// Size of a clip
 SWEP.Primary.DefaultClip			= 0					// Default number of bullets in a clip
 SWEP.Primary.KickUp			= 0					// Maximum up recoil (rise)
@@ -146,12 +147,19 @@ function SWEP:PrimaryAttack()
 		self.Weapon:EmitSound(self.Primary.Sound)
 		self.Weapon:TakePrimaryAmmo(1)
 		self.Weapon:SendWeaponAnim( ACT_VM_PRIMARYATTACK )
+		if !self.Owner:IsNPC() then
 		local fx 		= EffectData()
 		fx:SetEntity(self.Weapon)
 		fx:SetOrigin(self.Owner:GetShootPos())
 		fx:SetNormal(self.Owner:GetAimVector())
 		fx:SetAttachment(self.MuzzleAttachment)
 		util.Effect("gdcw_muzzle",fx)
+		local shell 	= EffectData()
+		shell:SetEntity(self.Weapon)
+		shell:SetNormal(self.Owner:GetAimVector())
+		shell:SetAttachment(self.ShellEjectAttachment)
+		util.Effect("gdcw_shells",shell)	
+		end
 		self.Owner:SetAnimation( PLAYER_ATTACK1 )
 		self.Owner:MuzzleFlash()
 		self.Weapon:SetNextPrimaryFire(CurTime()+1/(self.Primary.RPM/60))
@@ -159,11 +167,6 @@ function SWEP:PrimaryAttack()
 end
 
 function SWEP:FireRocket()
-		local shell 	= EffectData()
-		shell:SetEntity(self.Weapon)
-		shell:SetNormal(self.Owner:GetAimVector())
-		shell:SetAttachment(self.ShellEjectAttachment)
-		util.Effect("gdcw_shells",shell)	
 	local aim = self.Owner:GetAimVector()
 	local side = aim:Cross(Vector(0,0,1))
 	local up = side:Cross(aim)
@@ -214,13 +217,18 @@ IronSight
 ---------------------------------------------------------*/
 function SWEP:IronSight()
 
-	if self.Owner:KeyDown(IN_USE) and self:CanPrimaryAttack() || self.Owner:KeyDown(IN_SPEED) then		// If you hold E and you can shoot then
+	if self.Owner:KeyDown(IN_USE) and self:CanPrimaryAttack() and !self.Owner:KeyDown(IN_ATTACK2) || (self.Owner:KeyDown(IN_SPEED) and !self.Owner:KeyDown(IN_ATTACK2)) then		// If you hold E and you can shoot then
+	self.Owner:SetFOV( 0, 0.2 )
 	self.Weapon:SetNextPrimaryFire(CurTime()+0.3)				// Make it so you can't shoot for another quarter second
 	self:SetWeaponHoldType("passive")                          			// Hold type styles; ar2 pistol shotgun rpg normal melee grenade smg
 	self.IronSightsPos = self.RunSightsPos					// Hold it down
 	self.IronSightsAng = self.RunSightsAng					// Hold it down
 	self:SetIronsights(true, self.Owner)					// Set the ironsight true
-	end								
+	end	
+							
+	if self.Owner:KeyDown(IN_USE) then					// If you hold E and you can shoot then
+	self.Weapon:SetNextPrimaryFire(CurTime()+0.3)				// Make it so you can't shoot for another quarter second
+	end								// Lower the gun
 
 	if self.Owner:KeyReleased(IN_USE) || self.Owner:KeyReleased (IN_SPEED) then	// If you release E then
 	self:SetWeaponHoldType("ar2")                          				// Hold type styles; ar2 pistol shotgun rpg normal melee grenade smg slam fist melee2 passive knife
@@ -230,6 +238,10 @@ function SWEP:IronSight()
 	if self.Owner:KeyDown(IN_WALK) then	// If you are holding ALT (walking slow) then
 	self:SetWeaponHoldType("crossbow")                          	// Hold type styles; ar2 pistol shotgun rpg normal melee grenade smg slam fist melee2 passive knife
 	end					// Hold it at the hip (NO RUSSIAN WOOOT!)
+
+	if self.Owner:KeyPressed(IN_SPEED) then	// If you run then
+		self.Owner:SetFOV( 0, 0.2 )
+		end	
 
 		if self.Owner:KeyPressed(IN_ATTACK2) and !self.Owner:KeyDown(IN_USE) and !self.Owner:KeyDown(IN_SPEED) then
 			self.Owner:SetFOV( 75/self.Secondary.ScopeZoom, 0.15 )
@@ -241,7 +253,7 @@ function SWEP:IronSight()
 			self.Owner:DrawViewModel(false)
 			end
 
-	if self.Owner:KeyReleased(IN_ATTACK2) and !self.Owner:KeyDown(IN_USE) and !self.Owner:KeyDown(IN_SPEED) then
+	if (self.Owner:KeyReleased(IN_ATTACK2) || self.Owner:KeyDown(IN_SPEED)) and !self.Owner:KeyDown(IN_USE) and !self.Owner:KeyDown(IN_SPEED) then
 		self.Owner:SetFOV( 0, 0.2 )
 		self:SetIronsights(false, self.Owner)
 		-- Set the ironsight false

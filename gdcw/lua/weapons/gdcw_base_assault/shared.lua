@@ -17,6 +17,7 @@ SWEP.AdminSpawnable			= false
 
 SWEP.Primary.Sound 			= Sound("")				// Sound of the gun
 SWEP.Primary.Round 			= ("")					// What kind of bullet?
+SWEP.Primary.Cone			= 0.2					// Accuracy of NPCs
 SWEP.Primary.RPM				= 0					// This is in Rounds Per Minute
 SWEP.Primary.ClipSize			= 0					// Size of a clip
 SWEP.Primary.DefaultClip			= 0					// Default number of bullets in a clip
@@ -72,13 +73,19 @@ function SWEP:PrimaryAttack()
 		self.Weapon:EmitSound(self.Primary.Sound)
 		self.Weapon:TakePrimaryAmmo(1)
 		self.Weapon:SendWeaponAnim( ACT_VM_PRIMARYATTACK )
+		if !self.Owner:IsNPC() then
 		local fx 		= EffectData()
 		fx:SetEntity(self.Weapon)
 		fx:SetOrigin(self.Owner:GetShootPos())
 		fx:SetNormal(self.Owner:GetAimVector())
 		fx:SetAttachment(self.MuzzleAttachment)
 		util.Effect("gdcw_muzzle",fx)
-		util.Effect("gdcw_shells",fx)	
+		local shell 	= EffectData()
+		shell:SetEntity(self.Weapon)
+		shell:SetNormal(self.Owner:GetAimVector())
+		shell:SetAttachment(self.ShellEjectAttachment)
+		util.Effect("gdcw_shells",shell)	
+		end
 		self.Owner:SetAnimation( PLAYER_ATTACK1 )
 		self.Owner:MuzzleFlash()
 		self.Weapon:SetNextPrimaryFire(CurTime()+1/(self.Primary.RPM/60))
