@@ -8,7 +8,7 @@ SWEP.AutoSwitchTo			= true		// Auto switch to if we pick it up
 SWEP.AutoSwitchFrom			= true		// Auto switch from if you pick up a better weapon
 
 function SWEP:Initialize()
-	self:SetWeaponHoldType("ar2")
+	self:SetWeaponHoldType("pistol")
 end
 
 function SWEP:OnRemove()

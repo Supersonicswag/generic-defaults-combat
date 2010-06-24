@@ -82,7 +82,7 @@ function ENT:Think()
 
 				if tr.Hit and tr.Entity:IsPlayer() || tr.Entity:IsNPC() then
 				local dmginfo = DamageInfo()
-					dmginfo:SetDamage( math.Rand(30,110) ) 	--1 to 4 hits for a kill
+					dmginfo:SetDamage( math.Rand(50,65) ) 	--1 to 4 hits for a kill
 					dmginfo:SetDamageType( DMG_BULLET ) 	--Bullet damage
 					dmginfo:SetAttacker( self.Owner ) 		--Shooter gets credit
 					dmginfo:SetInflictor( self.Entity ) 		--Bullet gets credit

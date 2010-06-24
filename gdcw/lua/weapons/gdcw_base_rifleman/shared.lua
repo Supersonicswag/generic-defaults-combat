@@ -9,7 +9,7 @@ SWEP.ShellEjectAttachment			= "2" 	-- Should be "2" for CSS models or "1" for hl
 SWEP.DrawCrosshair			= false	
 SWEP.ViewModelFOV			= 65
 SWEP.ViewModelFlip			= true
-SWEP.MuzzleAttachment			= "1"
+
 
 SWEP.Spawnable				= false
 SWEP.AdminSpawnable			= false
@@ -239,8 +239,10 @@ function SWEP:IronSight()
 	self:SetWeaponHoldType("crossbow")                          	// Hold type styles; ar2 pistol shotgun rpg normal melee grenade smg slam fist melee2 passive knife
 	end					// Hold it at the hip (NO RUSSIAN WOOOT!)
 
-	if self.Owner:KeyPressed(IN_SPEED) then	// If you run then
+	if self.Owner:KeyPressed(IN_SPEED) || self.Owner:KeyPressed(IN_USE) then	// If you run then
 		self.Owner:SetFOV( 0, 0.2 )
+		if CLIENT then return end
+		self.Owner:DrawViewModel(true)
 		end	
 
 		if self.Owner:KeyPressed(IN_ATTACK2) and !self.Owner:KeyDown(IN_USE) and !self.Owner:KeyDown(IN_SPEED) then

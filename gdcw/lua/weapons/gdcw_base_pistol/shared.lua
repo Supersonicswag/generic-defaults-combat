@@ -9,7 +9,7 @@ SWEP.ShellEjectAttachment			= "2" 		// Should be "2" for CSS models or "1" for h
 SWEP.DrawCrosshair			= false		// Hell no, crosshairs r 4 nubz!
 SWEP.ViewModelFOV			= 65		// How big the gun will look
 SWEP.ViewModelFlip			= true		// True for CSS models, False for HL2 models
-SWEP.MuzzleAttachment			= "1"
+
 
 SWEP.Spawnable				= false
 SWEP.AdminSpawnable			= false

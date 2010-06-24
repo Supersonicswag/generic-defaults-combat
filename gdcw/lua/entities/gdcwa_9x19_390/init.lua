@@ -67,7 +67,7 @@ function ENT:Think()
 
 				if tr.Hit and tr.Entity:IsPlayer() || tr.Entity:IsNPC() then
 				local dmginfo = DamageInfo()
-					dmginfo:SetDamage( math.Rand(60,105) ) 	--1 or 2 hits for a kill
+					dmginfo:SetDamage( math.Rand(50,70) ) 	--1 or 2 hits for a kill
 					dmginfo:SetDamageType( DMG_BULLET ) 	--Bullet damage
 					dmginfo:SetAttacker( self.Owner ) 		--Shooter gets credit
 					dmginfo:SetInflictor( self.Entity ) 		--Bullet gets credit
@@ -109,7 +109,7 @@ function ENT:Think()
 	if !pr.Hit then
 	self.Entity:SetPos(self.Entity:GetPos() + self.flightvector)
 	end
-	self.flightvector = self.flightvector - self.flightvector/100 + Vector(math.Rand(-0.2,0.2), math.Rand(-0.2,0.2),math.Rand(-0.2,0.2)) + Vector(0,0,-0.06)
+	self.flightvector = self.flightvector - self.flightvector/150 + Vector(math.Rand(-0.2,0.2), math.Rand(-0.2,0.2),math.Rand(-0.2,0.2)) + Vector(0,0,-0.06)
 	self.Entity:SetAngles(self.flightvector:Angle() + Angle(90,0,0))
 	self.Entity:NextThink( CurTime() )
 	return true
