@@ -147,11 +147,13 @@ function SWEP:IronSight()
 	self.IronSightsPos = self.RunSightsPos					// Hold it down
 	self.IronSightsAng = self.RunSightsAng					// Hold it down
 	self:SetIronsights(true, self.Owner)					// Set the ironsight true
+	self.Owner:SetFOV( 0, 0.3 )
 	end								
 
 	if self.Owner:KeyReleased(IN_USE) || self.Owner:KeyReleased (IN_SPEED) then	// If you release E then
 	self:SetWeaponHoldType("ar2")                          				// Hold type styles; ar2 pistol shotgun rpg normal melee grenade smg slam fist melee2 passive knife
 	self:SetIronsights(false, self.Owner)					// Set the ironsight true
+	self.Owner:SetFOV( 0, 0.3 )
 	end								// Shoulder the gun
 
 	if self.Owner:KeyPressed(IN_WALK) then		// If you are holding ALT (walking slow) then
@@ -211,7 +213,7 @@ function SWEP:GetViewModelPosition(pos, ang)
 		self.bLastIron = bIron
 		self.fIronTime = CurTime()
 
-		if (bIron) and !self.Owner:KeyDown(IN_SPEED) then
+		if (bIron) and self.Owner:KeyDown(IN_ATTACK2) then
 			self.SwayScale 	= 0.02
 			self.BobScale 	= 0.02
 		else

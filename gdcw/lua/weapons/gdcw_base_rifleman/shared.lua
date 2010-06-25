@@ -352,7 +352,7 @@ function SWEP:GetViewModelPosition(pos, ang)
 		self.bLastIron = bIron
 		self.fIronTime = CurTime()
 
-		if (bIron) and !self.Owner:KeyDown(IN_SPEED) then
+		if (bIron) and self.Owner:KeyDown(IN_ATTACK2) then
 			self.SwayScale 	= 0.02
 			self.BobScale 	= 0.02
 		else

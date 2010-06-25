@@ -70,7 +70,7 @@ function ENT:Think()
 					dmginfo:SetDamageType( DMG_BULLET ) 	--Bullet damage
 					dmginfo:SetAttacker( self.Owner ) 		--Shooter gets credit
 					dmginfo:SetInflictor( self.Entity ) 		--Bullet gets credit
-					dmginfo:SetDamageForce( self.flightvector/30 ) 	--A few newtons...
+					dmginfo:SetDamageForce( self.flightvector/80 ) 	--A few newtons...
 				tr.Entity:TakeDamageInfo( dmginfo ) 			--Take damage!
 					local effectdata = EffectData()
 					effectdata:SetOrigin( tr.HitPos )
