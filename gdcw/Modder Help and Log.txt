@@ -71,3 +71,4 @@ That's it for the readme! If you didn't just skip to the bottom you probably was
 [R101]	- Re-added the NPC spawner after an accidental delete.
 [R102]	- Added beta Uzi and P228 for upcomming pistols pack; made guns hold lowered when sprinting or holding E.
 [R103]	- Fixed pistols so they now work with metrocops and NPCs.
+[R109]	- A few new thangs.

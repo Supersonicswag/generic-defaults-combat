@@ -93,10 +93,14 @@ function SWEP:PrimaryAttack()
 end
 
 function SWEP:FireRocket()
-	local aim = self.Owner:GetAimVector()
-	local side = aim:Cross(Vector(0,0,1))
-	local up = side:Cross(aim)
-	local pos = self.Owner:GetShootPos() +  aim * 50 + side * 4 + up * -1	--offsets the rocket so it spawns from the muzzle (hopefully)
+	if (self:GetIronsights() == true) and self.Owner:KeyDown(IN_ATTACK2) then
+	aim = self.Owner:GetAimVector()
+	else 
+	aim = self.Owner:GetAimVector()+Vector(math.Rand(-0.03,0.03), math.Rand(-0.03,0.03),math.Rand(-0.03,0.03))
+	end
+	side = aim:Cross(Vector(0,0,1))
+	up = side:Cross(aim)
+	pos = self.Owner:GetShootPos() +  aim * 50 + side * 4 + up * -1	--offsets the rocket so it spawns from the muzzle (hopefully)
 	if SERVER then
 	local rocket = ents.Create(self.Primary.Round)
 		if !rocket:IsValid() then return false end
@@ -157,7 +161,7 @@ function SWEP:IronSight()
 	end								// Shoulder the gun
 
 	if self.Owner:KeyPressed(IN_WALK) then		// If you are holding ALT (walking slow) then
-	self:SetWeaponHoldType("crossbow")                      	// Hold type styles; ar2 pistol shotgun rpg normal melee grenade smg slam fist melee2 passive knife
+	self:SetWeaponHoldType("shotgun")                      	// Hold type styles; ar2 pistol shotgun rpg normal melee grenade smg slam fist melee2 passive knife
 	end					// Hold it at the hip (NO RUSSIAN WOOOT!)
 
 	if !self.Owner:KeyDown(IN_USE) and !self.Owner:KeyDown(IN_SPEED) then

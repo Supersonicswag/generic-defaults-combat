@@ -32,6 +32,10 @@ npcs = {
 }
 
 wpns = {
+	{ "GDCW M240", "gdcw_m240" },
+	{ "GDCW Desert Eagle", "gdcw_deagle" },
+	{ "GDCW M1911", "gdcw_m1911" },
+	{ "GDCW Mini Uzi", "gdcw_miniuzi" },
 	{ "GDCW Uzi", "gdcw_fulluzi" },
 	{ "GDCW P228", "gdcw_p228" },
 	{ "GDCW M9", "gdcw_m9" },
