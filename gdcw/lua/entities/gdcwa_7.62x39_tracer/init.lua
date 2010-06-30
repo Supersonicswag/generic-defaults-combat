@@ -55,10 +55,14 @@ function ENT:Think()
 					
 	end
 
+	Table	={} 			//Table name is table name
+	Table[1]	=self.Owner 		//The person holding the gat
+	Table[2]	=self.Entity 		//The cap
+
 	local trace = {}
 		trace.start = self.Entity:GetPos()
-		trace.endpos = self.Entity:GetPos() + self.flightvector * 1.1
-		trace.filter = self.Entity 
+		trace.endpos = self.Entity:GetPos() + self.flightvector
+		trace.filter = Table
 	local tr = util.TraceLine( trace )
 	
 				if tr.HitSky then

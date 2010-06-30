@@ -40,10 +40,14 @@ function ENT:Think()
 					
 	end
 
+	Table	={} 			//Table name is table name
+	Table[1]	=self.Owner 		//The person holding the gat
+	Table[2]	=self.Entity 		//The cap
+
 	local trace = {}
 		trace.start = self.Entity:GetPos()
-		trace.endpos = self.Entity:GetPos() + self.flightvector * 1.1
-		trace.filter = self.Entity 
+		trace.endpos = self.Entity:GetPos() + self.flightvector
+		trace.filter = Table
 	local tr = util.TraceLine( trace )
 	
 				if tr.HitSky then
@@ -66,7 +70,7 @@ function ENT:Think()
 
 			if tr.Hit and tr.Entity:IsPlayer() || tr.Entity:IsNPC() then
 				local dmginfo = DamageInfo()
-					dmginfo:SetDamage( math.Rand(70,120) ) 	-- 1 to 2 hits for a kill
+					dmginfo:SetDamage( math.Rand(70,130) ) 	-- 1 to 2 hits for a kill
 					dmginfo:SetDamageType( DMG_BULLET ) 	--Bullet damage
 					dmginfo:SetAttacker( self.Owner ) 		--Shooter gets credit
 					dmginfo:SetInflictor( self.Entity ) 		--Bullet gets credit

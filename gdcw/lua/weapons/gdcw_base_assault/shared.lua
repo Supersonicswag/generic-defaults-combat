@@ -96,7 +96,7 @@ function SWEP:FireRocket()
 	if (self:GetIronsights() == true) and self.Owner:KeyDown(IN_ATTACK2) then
 	aim = self.Owner:GetAimVector()
 	else 
-	aim = self.Owner:GetAimVector()+Vector(math.Rand(-0.03,0.03), math.Rand(-0.03,0.03),math.Rand(-0.03,0.03))
+	aim = self.Owner:GetAimVector()+Vector(math.Rand(-0.02,0.02), math.Rand(-0.02,0.02),math.Rand(-0.02,0.02))
 	end
 	side = aim:Cross(Vector(0,0,1))
 	up = side:Cross(aim)
@@ -108,6 +108,7 @@ function SWEP:FireRocket()
 		rocket:SetPos(pos)
 	rocket:SetOwner(self.Owner)
 	rocket:Spawn()
+	rocket.Owner = self.Owner
 	rocket:Activate()
 	end
 		if SERVER and !self.Owner:IsNPC() then
@@ -217,7 +218,7 @@ function SWEP:GetViewModelPosition(pos, ang)
 		self.bLastIron = bIron
 		self.fIronTime = CurTime()
 
-		if (bIron) and self.Owner:KeyDown(IN_ATTACK2) then
+		if (bIron) and !self.Owner:KeyDown(IN_SPEED) then	// If Ironsights and NOT RUNNING then
 			self.SwayScale 	= 0.02
 			self.BobScale 	= 0.02
 		else

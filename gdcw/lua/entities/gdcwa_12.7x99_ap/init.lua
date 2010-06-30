@@ -40,10 +40,14 @@ function ENT:Think()
 					
 	end
 
+	Table	={} 			//Table name is table name
+	Table[1]	=self.Owner 		//The person holding the gat
+	Table[2]	=self.Entity 		//The cap
+
 	local trace = {}
 		trace.start = self.Entity:GetPos()
-		trace.endpos = self.Entity:GetPos() + self.flightvector * 1.1
-		trace.filter = self.Entity 
+		trace.endpos = self.Entity:GetPos() + self.flightvector
+		trace.filter = Table
 	local tr = util.TraceLine( trace )
 	
 				if tr.HitSky then
@@ -53,7 +57,7 @@ function ENT:Think()
 
 
 					if tr.Hit and !tr.Entity:IsPlayer() and !tr.Entity:IsNPC() then
-					util.BlastDamage(self.Entity, self.Owner, tr.HitPos, 80, 20)
+					util.BlastDamage(self.Entity, self.Owner, tr.HitPos, 100, 20)
 					local effectdata = EffectData()
 					effectdata:SetOrigin(tr.HitPos)
 					effectdata:SetNormal(tr.HitNormal)
@@ -92,7 +96,7 @@ function ENT:Think()
 		end
 
 		if !pr.StartSolid and tr.Hit and self.penetrate>0 and !pr.Entity:IsPlayer() and !pr.Entity:IsNPC() then
-				util.BlastDamage(self.Entity, self.Owner, pr.HitPos, 80, 20)
+				util.BlastDamage(self.Entity, self.Owner, pr.HitPos, 100, 20)
 				self.Entity:SetPos(pr.HitPos + self.flightvector:GetNormalized()*10)
 					local effectdata = EffectData()
 					effectdata:SetOrigin(pr.HitPos)
