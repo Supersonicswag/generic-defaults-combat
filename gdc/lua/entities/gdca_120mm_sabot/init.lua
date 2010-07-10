@@ -63,7 +63,7 @@ function ENT:Think()
 		trace.filter = self.Entity 
 	local pr = util.TraceLine( trace )
 
-		if pr.StartSolid  || tr.Hit and !pr.Hit || self.penetrate<0 then
+		if pr.StartSolid and !pr.Entity:IsPlayer() and !pr.Entity:IsNPC() || tr.Hit and !pr.Hit || self.penetrate<0 then
 		self.Entity:Remove()
 		end
 

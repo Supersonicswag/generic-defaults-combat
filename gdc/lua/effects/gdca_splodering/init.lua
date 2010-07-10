@@ -12,7 +12,7 @@
 	self.Radius = data:GetRadius()
 	self.Emitter = ParticleEmitter( self.Origin )
 
-	WorldSound( "Impacts/Explosion2.wav", self.Origin, 100, 100 )
+	WorldSound( "Explosion.Boom", self.Origin)
 		
 	for i=0, 7*self.Radius do
 	
@@ -56,7 +56,7 @@
 	
 	for i=0, 3*self.Radius do
 	
-		local Debris = self.Emitter:Add( "effects/fleck_tile"..math.random(1,2), self.Origin )
+		local Debris = self.Emitter:Add( "effects/fleck_cement"..math.random(1,2), self.Origin )
 		if (Debris) then
 			Debris:SetVelocity ( VectorRand() * math.random(500*self.Radius,600*self.Radius) )
 			Debris:SetLifeTime( 0 )
@@ -73,24 +73,6 @@
 		end
 	end
 	
-	for i=0, 5*self.Radius do
-	
-		local Embers = self.Emitter:Add( "particles/flamelet"..math.random(1,5), self.Origin )
-		if (Embers) then
-			Embers:SetVelocity ( VectorRand() * math.random(300*self.Radius,400*self.Radius) )
-			Embers:SetLifeTime( 0 )
-			Embers:SetDieTime( math.Rand( 3 , 6 )*self.Radius/3 )
-			Embers:SetStartAlpha( 255 )
-			Embers:SetEndAlpha( 0 )
-			Embers:SetStartSize( 10 )
-			Embers:SetEndSize( 20 )
-			Embers:SetRoll( math.Rand(0, 360) )
-			Embers:SetRollDelta( math.Rand(-0.2, 0.2) )			
-			Embers:SetAirResistance( 100 ) 			 
-			Embers:SetGravity( Vector( 0, 0, -650 ) ) 			
-			Embers:SetColor( 150,130,90 )
-		end
-	end
 	
 	for i=0, 3*self.Radius do
 		local Whisp = self.Emitter:Add( "particles/smokey", self.Origin )

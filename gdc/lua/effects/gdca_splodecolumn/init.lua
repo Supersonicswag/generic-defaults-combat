@@ -34,7 +34,7 @@
 	
 	for i=0, 20*self.Scale do
 	
-		local Debris = self.Emitter:Add( "effects/fleck_tile"..math.random(1,2), self.Origin )
+		local Debris = self.Emitter:Add( "effects/fleck_cement"..math.random(1,2), self.Origin )
 		if (Debris) then
 			Debris:SetVelocity ( self.DirVec * math.random(200,400*self.Scale) + VectorRand() * 300*self.Scale )
 			Debris:SetDieTime( math.random( 1, 2) * self.Scale )
@@ -43,7 +43,7 @@
 			Debris:SetStartSize( math.random(4,7*self.Scale) )
 			Debris:SetRoll( math.Rand(0, 360) )
 			Debris:SetRollDelta( math.Rand(-5, 5) )			
-			Debris:SetAirResistance( 80 ) 			 			
+			Debris:SetAirResistance( 40 ) 			 			
 			Debris:SetColor( 53,50,45 )
 			Debris:SetGravity( Vector( 0, 0, -600) ) 
 			Debris:SetCollide( true )

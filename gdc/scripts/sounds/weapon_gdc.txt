@@ -15,10 +15,8 @@
 	"volume"			"1.0"
 	"CompatibilityAttenuation"	"ATTN_NORM"
 	"pitch"				"PITCH_NORM"
-
-	"soundlevel"			"SNDLVL_150dB"
-
-	"wave"				")GDC/50cal.wav"
+	"soundlevel"			"SNDLVL_155dB"
+	"wave"				"^GDC/50cal.wav"
 }
 "Bushmaster.Single"
 {
@@ -162,4 +160,22 @@
 	"soundlevel"			"SNDLVL_150dB"
 
 	"wave"				")GDC/GML.wav"
+}
+"Explosion.Boom"
+{
+	"channel"				"CHAN_EXPLOSION"
+	"volume"				"1.0"
+	"CompatibilityAttenuation"		"ATTN_NORM"
+	"pitch"				"PITCH_NORM"
+	"soundlevel"			"SNDLVL_155dB"
+	"wave"				"^Impacts/Explosion2.wav"
+}
+"GAU19.Shoot"
+{
+	"channel"				"CHAN_WEAPON"
+	"volume"				"1.0"
+	"CompatibilityAttenuation"		"ATTN_NORM"
+	"pitch"				"PITCH_NORM"
+	"soundlevel"			"SNDLVL_155dB"
+	"wave"				"^GDC/GAU19.wav"
 }

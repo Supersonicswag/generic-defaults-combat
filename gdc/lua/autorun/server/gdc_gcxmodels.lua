@@ -37,9 +37,9 @@ resource.AddFile( "models/combatmodels/tankshell_120mm.dx90.vtx" );
 resource.AddFile( "models/combatmodels/tankshell_120mm.xbox.vtx" );
 resource.AddFile( "models/combatmodels/tankshell_120mm.vvd" );
 
-resource.AddFile( "materials/combatmodels/flarefinal2.vmf" );
+resource.AddFile( "materials/combatmodels/flarefinal2.vmt" );
 resource.AddFile( "materials/combatmodels/flarefinal2.vtf" );
-resource.AddFile( "materials/combatmodels/mgtracerfinal.vmf" );
+resource.AddFile( "materials/combatmodels/mgtracerfinal.vmt" );
 resource.AddFile( "materials/combatmodels/mgtracerfinal.vtf" );
-resource.AddFile( "materials/combatmodels/trailblur.vmf" );
+resource.AddFile( "materials/combatmodels/trailblur.vmt" );
 resource.AddFile( "materials/combatmodels/trailblur.vtf" );

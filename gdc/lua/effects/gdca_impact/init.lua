@@ -35,7 +35,7 @@
 	
 	for i=0, 10*self.Scale do
 	
-		local Debris = self.Emitter:Add( "effects/fleck_tile"..math.random(1,2), self.Origin )
+		local Debris = self.Emitter:Add( "effects/fleck_cement"..math.random(1,2), self.Origin )
 		if (Debris) then
 			Debris:SetVelocity ( self.DirVec * math.random(200,300*self.Scale) + VectorRand() * 300*self.Scale )
 			Debris:SetDieTime( math.random( 1, 2) * self.Scale )

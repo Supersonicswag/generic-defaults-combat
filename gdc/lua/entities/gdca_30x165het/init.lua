@@ -25,7 +25,7 @@ end
 
 function ENT:Think()
 
-	if self.tracer then
+	if self.tracer and !self.smoking then
 		self.smoking = true
 	
 		FireTrail = ents.Create("env_spritetrail")
