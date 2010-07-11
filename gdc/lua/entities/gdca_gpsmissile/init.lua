@@ -10,6 +10,7 @@ function ENT:Initialize()
 
 math.randomseed(CurTime())
 self.exploded = false
+self.Target = self.Entity:GetVar("Target",Vector(1))
 self.flightvector = self.Entity:GetUp() * 30
 self.timeleft = CurTime() + 10
 
@@ -24,8 +25,6 @@ self.InitH = (self:GetPos()).z
 	
  	self.Sound = CreateSound( self.Entity, Sound( "weapons/rpg/rocket1.wav" ) ) 
  	self.Sound:Play()
-	
-	self.target = self.Entity    
 
  self:Think()
  
@@ -74,9 +73,9 @@ end
 
 
 	if self.Think  then
-			self.Target = Vector(self.XCo, self.YCo, self.ZCo)
+
 		self.flightvector = self.flightvector + Vector(math.Rand(-1,1), math.Rand(-1,1),math.Rand(-0.5,0.5)) + (self.Target - self:GetPos()):GetNormalized() * 6
-		if self:GetPos():Distance(self.target) > 1500 then
+		if self:GetPos():Distance(self.Target) > 1500 then
 			local trace = {}
 				trace.start = self.Entity:GetPos()
 				trace.endpos = self.Entity:GetPos() + self.flightvector * 10
@@ -84,7 +83,7 @@ end
 			local tr = util.TraceLine( trace )
 			if tr.Hit then self.flightvector = self.flightvector + tr.HitNormal * 0.8 + VectorRand() * 5 end
 		end
-		self.flightvector = self.flightvector:GetNormalized() * 150 + Vector(math.Rand(-1,1), math.Rand(-1,1),math.Rand(-1,1)) + Vector(0,0,-0.06)
+		self.flightvector = self.flightvector:GetNormalized() * 150 + Vector(math.Rand(-1,1), math.Rand(-1,1),math.Rand(-1,1))
 	end
 
 	self.flightvector = self.flightvector - self.flightvector/100 + self.Entity:GetUp()*4 + Vector(math.Rand(-0.3,0.3), math.Rand(-0.3,0.3),math.Rand(-0.2,0.2))

@@ -30,7 +30,7 @@ function ENT:Initialize()
 		phys:Wake() 
 	end 
  
-	self.Inputs = Wire_CreateInputs( self.Entity, { "Fire", "Fire GPS", "X", "Y", "Z"} )
+	self.Inputs = WireLib.CreateSpecialInputs(self, {  "Fire", "FireGPS", "Position" }, { "NORMAL", "NORMAL", "VECTOR" } )
 	self.Outputs = Wire_CreateOutputs( self.Entity, { "Can Fire"})
 end   
 
@@ -51,30 +51,6 @@ function ENT:SpawnFunction( ply, tr)
 
 end
 
-function ENT:firegps()
-
-		local ent = ents.Create( "gdca_gpsmissile" )
-		ent:SetPos( self.Entity:GetPos() +  self.Entity:GetUp() * 100)
-		ent:SetAngles( self.Entity:GetAngles() )
-		ent:Spawn()
-		ent:Activate()
-		self.armed = false
-		self.XCo = "X"
-		self.YCo = "Y"
-		self.ZCo = "Z"
-		
-		local phys = self.Entity:GetPhysicsObject()  	
-		if (phys:IsValid()) then  		
-			phys:ApplyForceCenter( self.Entity:GetUp() * -800 ) 
-
-		end 
-		
-		util.ScreenShake(self.Entity:GetPos(), 30, 5, 0.2, 300 )
-		self.Entity:EmitSound( "GML.single" )
-		self.ammos = self.ammos-1
-	
-
-end
 
 function ENT:fire()
 
@@ -83,7 +59,6 @@ function ENT:fire()
 		ent:SetAngles( self.Entity:GetAngles() )
 		ent:Spawn()
 		ent:Activate()
-		self.armed = false
 		
 		
 		local phys = self.Entity:GetPhysicsObject()  	
@@ -133,18 +108,11 @@ end
 
 function ENT:TriggerInput(k, v)
 
-	if (k == "X") then
-		self.XCo = v
+	if (k == "Position") then
+		self.Target = v or Vector(0,0,0)
+	end
 
-	elseif (k == "Y") then
-		self.YCo = v
-
-	elseif (k == "Z") then
-		self.ZCo = v
-
-end
-
-if(k=="Fire GPS") then
+if(k=="FireGPS") then
 		if((v or 0) >= 1) then
 			self.inFire = true
 		else
@@ -163,3 +131,27 @@ if(k=="Fire GPS") then
 end
  
  
+function ENT:firegps()
+
+		local GPSMISSILE = ents.Create( "gdca_gpsmissile" )
+		GPSMISSILE:SetPos( self.Entity:GetPos() +  self.Entity:GetUp() * 100)
+		GPSMISSILE:SetAngles( self.Entity:GetAngles() )
+		GPSMISSILE:Spawn()
+		GPSMISSILE:Initialize()
+		GPSMISSILE:Activate()
+		GPSMISSILE.Target = self.Target or Vector(0,0,0)
+		print(tostring(self.Target))
+		print("Firing")
+
+		local phys = self.Entity:GetPhysicsObject()  	
+		if (phys:IsValid()) then  		
+			phys:ApplyForceCenter( self.Entity:GetUp() * -800 ) 
+
+		end 
+		
+		util.ScreenShake(self.Entity:GetPos(), 30, 5, 0.2, 300 )
+		self.Entity:EmitSound( "GML.single" )
+		self.ammos = self.ammos-1
+	
+
+end
