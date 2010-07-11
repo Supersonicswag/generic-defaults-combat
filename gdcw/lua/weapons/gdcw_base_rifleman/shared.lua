@@ -124,7 +124,7 @@ function SWEP:Initialize()
 		self:SetNPCMinBurst(3)
 		self:SetNPCMaxBurst(10)
 		self:SetNPCFireRate(1)
-		self:SetCurrentWeaponProficiency( WEAPON_PROFICIENCY_PERFECT )
+		self:SetCurrentWeaponProficiency( WEAPON_PROFICIENCY_VERY_GOOD )
 	end
 end
 
@@ -147,19 +147,12 @@ function SWEP:PrimaryAttack()
 		self.Weapon:EmitSound(self.Primary.Sound)
 		self.Weapon:TakePrimaryAmmo(1)
 		self.Weapon:SendWeaponAnim( ACT_VM_PRIMARYATTACK )
-		if !self.Owner:IsNPC() then
 		local fx 		= EffectData()
 		fx:SetEntity(self.Weapon)
 		fx:SetOrigin(self.Owner:GetShootPos())
 		fx:SetNormal(self.Owner:GetAimVector())
 		fx:SetAttachment(self.MuzzleAttachment)
 		util.Effect("gdcw_muzzle",fx)
-		local shell 	= EffectData()
-		shell:SetEntity(self.Weapon)
-		shell:SetNormal(self.Owner:GetAimVector())
-		shell:SetAttachment(self.ShellEjectAttachment)
-		util.Effect("gdcw_shells",shell)	
-		end
 		self.Owner:SetAnimation( PLAYER_ATTACK1 )
 		self.Owner:MuzzleFlash()
 		self.Weapon:SetNextPrimaryFire(CurTime()+1/(self.Primary.RPM/60))
@@ -172,17 +165,19 @@ function SWEP:FireRocket()
 	else 
 	aim = self.Owner:GetAimVector()+Vector(math.Rand(-0.02,0.02), math.Rand(-0.02,0.02),math.Rand(-0.02,0.02))
 	end
-	side = aim:Cross(Vector(0,0,1))
-	up = side:Cross(aim)
-	pos = self.Owner:GetShootPos() +  aim * 50 + side * 4 + up * -1	--offsets the rocket so it spawns from the muzzle (hopefully)
+	if !self.Owner:IsNPC() then
+	pos = self.Owner:GetShootPos()
+	else
+	pos = self.Owner:GetShootPos()+self.Owner:GetAimVector()*50
+	end
 	if SERVER then
 	local rocket = ents.Create(self.Primary.Round)
-		if !rocket:IsValid() then return false end
-		rocket:SetAngles(aim:Angle()+Angle(90,0,0))
-		rocket:SetPos(pos)
+	if !rocket:IsValid() then return false end
+	rocket:SetAngles(aim:Angle()+Angle(90,0,0))
+	rocket:SetPos(pos)
 	rocket:SetOwner(self.Owner)
 	rocket:Spawn()
-	rocket.Owner = self.Owner
+	rocket.owner = self.Owner
 	rocket:Activate()
 	end
 		if SERVER and !self.Owner:IsNPC() then
