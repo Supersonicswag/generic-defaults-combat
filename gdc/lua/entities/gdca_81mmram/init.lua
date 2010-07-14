@@ -6,10 +6,6 @@ include('shared.lua')
 
 function ENT:Initialize()   
 
-self.smoking = false
-self.exploded = false
-self.armed = true
-
 self.flightvector = self.Entity:GetUp() * 40
 self.timeleft = CurTime() + 20
 self.Entity:SetModel( "models/combatmodels/tankshell.mdl" )
@@ -40,10 +36,8 @@ end
 	end 
 
 		if self.timeleft < CurTime() then
-					self.exploded = true
-					self.Entity:Remove()
-					
-	end
+		self.Entity:Remove()			
+		end
 
 	local trace = {}
 		trace.start = self.Entity:GetPos()
@@ -52,14 +46,14 @@ end
 	local tr = util.TraceLine( trace )
 	
 
-				if tr.HitSky then
+			if tr.HitSky then
 			self.Entity:Remove()
 			return true
-		end
+			end
 	
-	if tr.Hit then
-		util.BlastDamage(self.Entity, self.Entity, tr.HitPos, 1000, 200)
-			local effectdata = EffectData()
+				if tr.Hit then
+					util.BlastDamage(self.Entity, self.Entity, tr.HitPos, 1000, 200)
+					local effectdata = EffectData()
 					effectdata:SetOrigin(tr.HitPos)
 					effectdata:SetNormal(tr.HitNormal)
 					effectdata:SetScale(3)
@@ -68,15 +62,10 @@ end
 					util.Effect( "gdca_splodecolumn", effectdata )
 					util.ScreenShake(tr.HitPos, 10, 5, 1, 2000 )
 					util.Decal("Scorch", tr.HitPos + tr.HitNormal, tr.HitPos - tr.HitNormal)
-			if (tr.Entity:IsPlayer() || tr.Entity:IsNPC() || tr.HitSky) then
-			self.Entity:Remove()
-			return true
-			end
 			
-			local attack = gcombat.hcgexplode( tr.HitPos, 500, 300, 6)
-			self.Entity:Remove()
-		
-	end
+					local attack = gcombat.hcgexplode( tr.HitPos, 500, 300, 6)
+					self.Entity:Remove()
+					end
 	
 	self.Entity:SetPos(self.Entity:GetPos() + self.flightvector)
 	self.flightvector = self.flightvector - self.flightvector/35 + self.Entity:GetUp()*2 + Vector(math.Rand(-0.1,0.1), math.Rand(-0.1,0.1),math.Rand(-0.15,0.15)) + Vector(0,0,-0.3)

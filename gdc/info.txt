@@ -7,5 +7,5 @@
 	"author_email"		"AIDS!"
 	"author_url"		"http://code.google.com/p/generic-defaults-combat/"
 	"info"			"A mod of a mod of a mod of a mod."
-	"override"			"0"
+	"override"		"0"
 }

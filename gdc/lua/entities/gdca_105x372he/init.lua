@@ -6,10 +6,6 @@ include('shared.lua')
 
 function ENT:Initialize()   
 
-self.smoking = false
-self.exploded = false
-self.armed = true
-
 self.flightvector = self.Entity:GetUp() * 200
 self.timeleft = CurTime() + 10
 self.Entity:SetModel( "models/props_junk/garbage_plasticbottle003a.mdl" )
@@ -24,10 +20,8 @@ end
  function ENT:Think()
 	
 		if self.timeleft < CurTime() then
-					self.exploded = true
-					self.Entity:Remove()
-					
-	end
+		self.Entity:Remove()				
+		end
 
 	local trace = {}
 		trace.start = self.Entity:GetPos()
@@ -35,32 +29,26 @@ end
 		trace.filter = self.Entity 
 	local tr = util.TraceLine( trace )
 	
-				if tr.HitSky then
+			if tr.HitSky then
 			self.Entity:Remove()
 			return true
-		end
+			end
 
-if tr.Hit then
-util.BlastDamage(self.Entity, self.Entity, tr.HitPos, 1200, 300)
-local effectdata = EffectData()
-effectdata:SetOrigin(tr.HitPos)
-effectdata:SetNormal(tr.HitNormal)
-effectdata:SetScale(5)
-effectdata:SetRadius(6)
-util.Effect( "gdca_splodering", effectdata )
-util.Effect( "gdca_splodecolumn", effectdata )
-util.ScreenShake(tr.HitPos, 20, 5, 1, 2500 )
-util.Decal("Scorch", tr.HitPos + tr.HitNormal, tr.HitPos - tr.HitNormal)
+			if tr.Hit then
+				util.BlastDamage(self.Entity, self.Entity, tr.HitPos, 1200, 300)
+				local effectdata = EffectData()
+				effectdata:SetOrigin(tr.HitPos)
+				effectdata:SetNormal(tr.HitNormal)
+				effectdata:SetScale(5)
+				effectdata:SetRadius(6)
+				util.Effect( "gdca_splodering", effectdata )
+				util.Effect( "gdca_splodecolumn", effectdata )
+				util.ScreenShake(tr.HitPos, 20, 5, 1, 2500 )
+				util.Decal("Scorch", tr.HitPos + tr.HitNormal, tr.HitPos - tr.HitNormal)
 
-if (tr.Entity:IsPlayer() || tr.Entity:IsNPC() || tr.HitSky) then
-self.Entity:Remove()
-return true
-end
-
-local attack = gcombat.hcgexplode( tr.HitPos, 600, 400, 6)
-self.Entity:Remove()
-
-end
+				local attack = gcombat.hcgexplode( tr.HitPos, 600, 400, 6)
+				self.Entity:Remove()
+				end
 	
 	self.Entity:SetPos(self.Entity:GetPos() + self.flightvector)
 	self.flightvector = self.flightvector + Vector(math.Rand(-0.3,0.3), math.Rand(-0.3,0.3),math.Rand(-0.3,0.2)) + Vector(0,0,-0.2)

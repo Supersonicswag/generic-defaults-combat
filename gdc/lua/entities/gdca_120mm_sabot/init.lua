@@ -7,10 +7,6 @@ include('shared.lua')
 function ENT:Initialize()   
 
 math.randomseed(CurTime())
-self.exploded = false
-self.armed = true
-self.ticking = true
-self.smoking = false
 self.penetrate = 100
 self.flightvector = self.Entity:GetUp() * 550
 self.timeleft = CurTime() + 5
@@ -26,11 +22,9 @@ end
 function ENT:Think()
 	
 
-		if self.timeleft < CurTime() then
-					self.exploded = true
-					self.Entity:Remove()
-					
-	end
+			if self.timeleft < CurTime() then
+			self.Entity:Remove()		
+			end
 
 	local trace = {}
 		trace.start = self.Entity:GetPos()
@@ -41,7 +35,7 @@ function ENT:Think()
 			if tr.HitSky then
 			self.Entity:Remove()
 			return true
-		end		
+			end		
 
 
 			if tr.Hit then
@@ -54,6 +48,10 @@ function ENT:Think()
 					util.Effect( "gdca_apiring", effectdata )
 					util.ScreenShake(tr.HitPos, 10, 5, 0.3, 150 )
 					util.Decal("ExplosiveGunshot", tr.HitPos + tr.HitNormal, tr.HitPos - tr.HitNormal)
+
+				if (tr.Entity:IsValid()) then
+				local attack = gcombat.hcghit( tr.Entity, 2500, 100, tr.HitPos, tr.HitPos)
+				end
 
 				end
 
@@ -70,9 +68,6 @@ function ENT:Think()
 		if tr.Hit and pr.Hit then
 		self.penetrate = self.penetrate - (tr.HitPos:Distance(pr.HitPos))
 		end
-			if (tr.Entity:IsValid()) then
-			local attack = gcombat.hcghit( tr.Entity, 1500, 100, tr.HitPos, tr.HitPos)
-			end
 
 		if !pr.StartSolid and tr.Hit and self.penetrate>0 then
 				util.BlastDamage(self.Entity, self.Entity, pr.HitPos, 200, 100)

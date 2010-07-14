@@ -71,22 +71,13 @@ end
 		
 	end
 
-
-	if self.Think  then
-
-		self.flightvector = self.flightvector + Vector(math.Rand(-1,1), math.Rand(-1,1),math.Rand(-0.5,0.5)) + (self.Target - self:GetPos()):GetNormalized() * 6
-		if self:GetPos():Distance(self.Target) > 1500 then
-			local trace = {}
-				trace.start = self.Entity:GetPos()
-				trace.endpos = self.Entity:GetPos() + self.flightvector * 10
-				trace.filter = self.Entity 
-			local tr = util.TraceLine( trace )
-			if tr.Hit then self.flightvector = self.flightvector + tr.HitNormal * 0.8 + VectorRand() * 5 end
-		end
-		self.flightvector = self.flightvector:GetNormalized() * 150 + Vector(math.Rand(-1,1), math.Rand(-1,1),math.Rand(-1,1))
+	if self.Target != Vector(0,0,0) then
+	self.flightvector = self.flightvector + (self.Target - self:GetPos()):GetNormalized() * 6
+	self.flightvector = self.flightvector:GetNormalized() * 150
+	else
+	self.flightvector = self.flightvector - self.flightvector/100 + self.Entity:GetUp()*3 + Vector(math.Rand(-0.3,0.3), math.Rand(-0.3,0.3),math.Rand(-0.2,0.2))
 	end
 
-	self.flightvector = self.flightvector - self.flightvector/100 + self.Entity:GetUp()*4 + Vector(math.Rand(-0.3,0.3), math.Rand(-0.3,0.3),math.Rand(-0.2,0.2))
 	self.Entity:SetPos(self.Entity:GetPos() + self.flightvector)
 	self.Entity:SetAngles(self.flightvector:Angle() + Angle(90,0,0))
 	self.Entity:NextThink( CurTime() )

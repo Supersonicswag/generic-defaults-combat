@@ -1,16 +1,10 @@
-
 AddCSLuaFile( "cl_init.lua" )
 AddCSLuaFile( "shared.lua" )
-
 include('shared.lua')
 
 function ENT:Initialize()   
 
 math.randomseed(CurTime())
-self.exploded = false
-self.armed = true
-self.ticking = true
-self.smoking = false
 self.flightvector = self.Entity:GetUp() * 300
 self.timeleft = CurTime() + 5
 self.Entity:SetModel( "models/combatmodels/tankshell_40mm.mdl" ) 	
@@ -25,10 +19,8 @@ end
 function ENT:Think()
 
 		if self.timeleft < CurTime() then
-					self.exploded = true
-					self.Entity:Remove()
-					
-	end
+		self.Entity:Remove()			
+		end
 
 	local trace = {}
 		trace.start = self.Entity:GetPos()
@@ -36,13 +28,13 @@ function ENT:Think()
 		trace.filter = self.Entity 
 	local tr = util.TraceLine( trace )
 
-				if tr.HitSky then
+			if tr.HitSky then
 			self.Entity:Remove()
 			return true
-		end	
+			end	
 
-	if (tr.Hit) then
-				util.BlastDamage(self.Entity, self.Entity, tr.HitPos, 300, 100)
+				if (tr.Hit) then
+					util.BlastDamage(self.Entity, self.Entity, tr.HitPos, 300, 100)
 					local effectdata = EffectData()
 					effectdata:SetOrigin(tr.HitPos)
 					effectdata:SetNormal(tr.HitNormal)
@@ -51,16 +43,10 @@ function ENT:Think()
 					util.Effect( "gdca_splodecolumn", effectdata )
 					util.ScreenShake(tr.HitPos, 10, 5, 0.5, 1000 )
 					util.Decal("Scorch", tr.HitPos + tr.HitNormal, tr.HitPos - tr.HitNormal)
-
-				if (tr.Entity:IsPlayer() || tr.Entity:IsNPC() || tr.HitSky) then
-					self.Entity:Remove()
-					return true
-					end
 			
-			local attack = gcombat.hcgexplode( tr.HitPos, 40, 100, 6)
-			self.Entity:Remove()
-		
-	end
+					gcombat.hcgexplode( tr.HitPos, 40, 100, 6)
+					self.Entity:Remove()
+					end
 
 	self.Entity:SetPos(self.Entity:GetPos() + self.flightvector)
 	self.flightvector = self.flightvector + Vector(math.Rand(-0.3,0.3), math.Rand(-0.3,0.3),math.Rand(-0.3,0.3)) + Vector(0,0,-0.2)

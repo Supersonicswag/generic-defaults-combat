@@ -140,8 +140,6 @@ function ENT:firegps()
 		GPSMISSILE:Initialize()
 		GPSMISSILE:Activate()
 		GPSMISSILE.Target = self.Target or Vector(0,0,0)
-		print(tostring(self.Target))
-		print("Firing")
 
 		local phys = self.Entity:GetPhysicsObject()  	
 		if (phys:IsValid()) then  		

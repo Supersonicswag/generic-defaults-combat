@@ -1,7 +1,5 @@
-
 AddCSLuaFile( "cl_init.lua" )
 AddCSLuaFile( "shared.lua" )
-
 include('shared.lua')
 
 util.PrecacheSound( "weapons/rpg/rocket1.wav" )
@@ -9,7 +7,6 @@ util.PrecacheSound( "weapons/rpg/rocket1.wav" )
 function ENT:Initialize()   
 
 math.randomseed(CurTime())
-self.exploded = false
 self.flightvector = self.Entity:GetUp() * 30
 self.timeleft = CurTime() + 10
 
@@ -19,8 +16,6 @@ self.Entity:SetModel( "models/props_c17/canister01a.mdl" )
 self.Entity:PhysicsInit( SOLID_VPHYSICS )      -- Make us work with physics,  	
 self.Entity:SetMoveType( MOVETYPE_NONE )   --after all, gmod is a physics  	
 self.Entity:SetSolid( SOLID_VPHYSICS )        -- CHEESECAKE!    >:3 
-
-self.InitH = (self:GetPos()).z
 	
  	self.Sound = CreateSound( self.Entity, Sound( "weapons/rpg/rocket1.wav" ) ) 
  	self.Sound:Play()
@@ -38,9 +33,7 @@ end
  function ENT:Think()
 	
 	if self.timeleft < CurTime() then
-					self.exploded = true
-					self.Entity:Remove()
-					
+	self.Entity:Remove()				
 	end
 
 	local trace = {}
@@ -50,14 +43,14 @@ end
 	local tr = util.TraceLine( trace )
 	
 
-				if tr.HitSky then
+			if tr.HitSky then
 			self.Entity:Remove()
 			return true
-		end
+			end
 
-	if tr.Hit then
-		util.BlastDamage(self.Entity, self.Entity, tr.HitPos, 600, 150)
-			local effectdata = EffectData()
+			if tr.Hit then
+				util.BlastDamage(self.Entity, self.Entity, tr.HitPos, 600, 150)
+					local effectdata = EffectData()
 					effectdata:SetOrigin(tr.HitPos)
 					effectdata:SetNormal(tr.HitNormal)
 					effectdata:SetScale(3)
@@ -67,16 +60,15 @@ end
 					util.ScreenShake(tr.HitPos, 10, 5, 1, 2000 )
 					util.Decal("Scorch", tr.HitPos + tr.HitNormal, tr.HitPos - tr.HitNormal)
 
-			
-			local attack = gcombat.hcgexplode( tr.HitPos, 300, 400, 8)
-			self.Entity:Remove()
-		
-	end
+					local attack = gcombat.hcgexplode( tr.HitPos, 300, 400, 8)
+					self.Entity:Remove()	
+
+					end
 	
 	local EIS = ents.FindInSphere(self:GetPos(), 40000)
 	local distance = 40000
 	
-	if (!self.target:IsValid() || self.target == self.Entity ) then 
+	if (!self.target:IsValid() || self.target == self.Entity) then 
 	
 	self.target = self.Entity
 	local EIS = ents.FindInSphere(self:GetPos(), 40000)
