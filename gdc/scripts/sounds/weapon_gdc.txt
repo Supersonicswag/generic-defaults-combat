@@ -7,7 +7,7 @@
 
 	"soundlevel"			"SNDLVL_150dB"
 
-	"wave"				")GDC/30cal.wav"
+	"wave"				"^GDC/30cal.wav"
 }
 "50cal.Single"
 {
@@ -27,7 +27,7 @@
 
 	"soundlevel"			"SNDLVL_150dB"
 
-	"wave"				")GDC/Bushmaster.wav"
+	"wave"				"^GDC/Bushmaster.wav"
 }
 "Bofors.Single"
 {
@@ -38,7 +38,7 @@
 
 	"soundlevel"			"SNDLVL_150dB"
 
-	"wave"				")GDC/Bofizzle.wav"
+	"wave"				"^GDC/Bofizzle.wav"
 }
 "120mm.Single"
 {
@@ -49,7 +49,7 @@
 
 	"soundlevel"			"SNDLVL_150dB"
 
-	"wave"				")GDC/120mm.wav"
+	"wave"				"^GDC/120mm.wav"
 }
 "M230.Single"
 {
@@ -60,7 +60,7 @@
 
 	"soundlevel"			"SNDLVL_150dB"
 
-	"wave"				")GDC/M230.wav"
+	"wave"				"^GDC/M230.wav"
 }
 "M197.Single"
 {
@@ -71,7 +71,7 @@
 
 	"soundlevel"			"SNDLVL_150dB"
 
-	"wave"				")GDC/M197.wav"
+	"wave"				"^GDC/M197.wav"
 }
 "2A42.Single"
 {
@@ -82,7 +82,7 @@
 
 	"soundlevel"			"SNDLVL_150dB"
 
-	"wave"				")GDC/2A42.wav"
+	"wave"				"^GDC/2A42.wav"
 }
 "GAU12.Single"
 {
@@ -93,7 +93,7 @@
 
 	"soundlevel"			"SNDLVL_150dB"
 
-	"wave"				")GDC/GAU12.wav"
+	"wave"				"^GDC/GAU12.wav"
 }
 "M134.Single"
 {
@@ -104,7 +104,7 @@
 
 	"soundlevel"			"SNDLVL_150dB"
 
-	"wave"				")GDC/M134.wav"
+	"wave"				"^GDC/M134.wav"
 }
 "M260.Single"
 {
@@ -115,7 +115,7 @@
 
 	"soundlevel"			"SNDLVL_150dB"
 
-	"wave"				")GDC/M260.wav"
+	"wave"				"^GDC/M260.wav"
 }
 "81mm.Single"
 {
@@ -126,7 +126,7 @@
 
 	"soundlevel"			"SNDLVL_150dB"
 
-	"wave"				")GDC/81mm.wav"
+	"wave"				"^GDC/81mm.wav"
 }
 "MK19.Single"
 {
@@ -137,7 +137,7 @@
 
 	"soundlevel"			"SNDLVL_150dB"
 
-	"wave"				")GDC/MK19.wav"
+	"wave"				"^GDC/MK19.wav"
 }
 "RAM.Single"
 {
@@ -148,7 +148,7 @@
 
 	"soundlevel"			"SNDLVL_150dB"
 
-	"wave"				")GDC/RAM.wav"
+	"wave"				"^GDC/RAM.wav"
 }
 "GML.Single"
 {
@@ -159,7 +159,7 @@
 
 	"soundlevel"			"SNDLVL_150dB"
 
-	"wave"				")GDC/GML.wav"
+	"wave"				"^GDC/GML.wav"
 }
 "Explosion.Boom"
 {
