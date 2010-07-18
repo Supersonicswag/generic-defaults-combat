@@ -2,7 +2,7 @@
 SWEP.Category				= "Generic Default's Weapons"
 SWEP.Author				= "Generic Default"
 SWEP.Contact				= "AIDS!"
-SWEP.Purpose				= "Requesting permission to fire."
+SWEP.Purpose				= "Long range jihadding."
 SWEP.Instructions				= "Round: 7.62 \nVelocity: ~715 m/s \nSights: ACOG 4x \nCapacity: 30 rounds \nRate of Fire: 600 rounds per minute"
 SWEP.MuzzleAttachment			= "1" 	-- Should be "1" for CSS models or "muzzle" for hl2 models
 SWEP.ShellEjectAttachment			= "2" 	-- Should be "2" for CSS models or "1" for hl2 models

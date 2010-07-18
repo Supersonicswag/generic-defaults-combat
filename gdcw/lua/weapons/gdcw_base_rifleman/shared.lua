@@ -226,7 +226,7 @@ function SWEP:IronSight()
 	self:SetIronsights(true, self.Owner)					// Set the ironsight true
 	end	
 							
-	if self.Owner:KeyDown(IN_USE) then					// If you hold E and you can shoot then
+	if self.Owner:KeyDown(IN_USE) || self.Owner:KeyDown(IN_SPEED) then		// If you hold E or run then
 	self.Weapon:SetNextPrimaryFire(CurTime()+0.3)				// Make it so you can't shoot for another quarter second
 	end								// Lower the gun
 

@@ -63,7 +63,7 @@ function ENT:Think()
 	local trace = {}
 		trace.start = self.Entity:GetPos()
 		trace.endpos = self.Entity:GetPos() + self.flightvector
-		trace.filter = Table
+		trace.filter = self.Entity
 	local tr = util.TraceLine( trace )
 	
 				if tr.HitSky then
@@ -86,7 +86,7 @@ function ENT:Think()
 
 			if tr.Hit and tr.Entity:IsPlayer() || tr.Entity:IsNPC() then
 				local dmginfo = DamageInfo()
-					dmginfo:SetDamage( math.Rand(50,70) ) 	-- 1 to 3 hits for a kill
+					dmginfo:SetDamage( math.Rand(25,35) ) 	-- 1 to 3 hits for a kill
 					dmginfo:SetDamageType( DMG_BULLET ) 	--Bullet damage
 					dmginfo:SetAttacker( self.Owner ) 		--Shooter gets credit
 					dmginfo:SetInflictor( self.Entity ) 		--Bullet gets credit
