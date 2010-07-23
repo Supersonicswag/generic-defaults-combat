@@ -63,7 +63,7 @@ function ENT:Think()
 	local trace = {}
 		trace.start = self.Entity:GetPos()
 		trace.endpos = self.Entity:GetPos() + self.flightvector
-		trace.filter = self.Entity
+		trace.filter = Table
 	local tr = util.TraceLine( trace )
 	
 				if tr.HitSky then
