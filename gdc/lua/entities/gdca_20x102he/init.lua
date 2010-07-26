@@ -35,12 +35,13 @@ function ENT:Think()
 			end
 
 				if (tr.Hit) then
-					util.BlastDamage(self.Entity, self.Entity, tr.HitPos, 200, 150)
+					util.BlastDamage(self.Entity, self.Entity, tr.HitPos, 200, 50)
 					local effectdata = EffectData()
 					effectdata:SetOrigin(tr.HitPos)
 					effectdata:SetNormal(tr.HitNormal)
-					effectdata:SetScale(1)
-					effectdata:SetRadius(1)
+					effectdata:SetScale(1)			// Size of cloud
+					effectdata:SetRadius(1)			// Size of ring
+					effectdata:SetMagnitude(30)			// Size of flash
 					util.Effect( "gdca_splodecolumn", effectdata )
 					util.ScreenShake(tr.HitPos, 10, 5, 0.5, 600 )
 					util.Decal("fadingScorch", tr.HitPos + tr.HitNormal, tr.HitPos - tr.HitNormal)

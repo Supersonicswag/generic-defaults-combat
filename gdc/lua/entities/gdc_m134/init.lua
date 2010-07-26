@@ -10,13 +10,12 @@ util.PrecacheSound("arty/cannon.wav")
 function ENT:Initialize()   
 
 	self.ammomodel = "models/props_c17/canister01a.mdl"
-	self.ammos = 100
-	self.clipsize = 100
 	self.armed = false
 	self.loading = false
 	self.reloadtime = 0
 	self.infire = false
 	self.infire2 = false
+	self.heat = 0
 	self.Entity:SetModel( "models/props_lab/pipesystem02c.mdl" ) 	
 	self.Entity:PhysicsInit( SOLID_VPHYSICS )      -- Make us work with physics,  	
 	self.Entity:SetMoveType( MOVETYPE_VPHYSICS )   --after all, gmod is a physics  	
@@ -29,7 +28,7 @@ function ENT:Initialize()
 	end 
  
 	self.Inputs = Wire_CreateInputs( self.Entity, { "Fire", "Fire Tracer"} )
-	self.Outputs = Wire_CreateOutputs( self.Entity, { "Can Fire", "Shots"})
+	self.Outputs = Wire_CreateOutputs( self.Entity, { "Can Fire", "Heat"})
 end   
 
 function ENT:SpawnFunction( ply, tr)
@@ -56,7 +55,7 @@ function ENT:fire()
 		ent:SetAngles( self.Entity:GetAngles() )
 		ent:Spawn()
 		ent:Activate()
-		self.armed = false
+		self.heat = self.heat+2.3
 		
 		
 		local phys = self.Entity:GetPhysicsObject()  	
@@ -71,8 +70,6 @@ function ENT:fire()
 		util.Effect( "gdca_muzzle", effectdata )
 		util.ScreenShake(self.Entity:GetPos(), 7, 5, 0.2, 140 )
 		self.Entity:EmitSound( "M134.single" )
-		self.ammos = self.ammos-1
-	
 
 end
 
@@ -83,8 +80,7 @@ function ENT:firetracer()
 		ent:SetAngles( self.Entity:GetAngles() )
 		ent:Spawn()
 		ent:Activate()
-		self.armed = false
-		
+		self.heat = self.heat+2.3		
 		
 		local phys = self.Entity:GetPhysicsObject()  	
 		if (phys:IsValid()) then  		
@@ -98,18 +94,21 @@ function ENT:firetracer()
 		util.Effect( "gdca_muzzle", effectdata )
 		util.ScreenShake(self.Entity:GetPos(), 7, 5, 0.2, 140 )
 		self.Entity:EmitSound( "M134.single" )
-		self.ammos = self.ammos-1
 	
 
 end
 
 function ENT:Think()
 if FIELDS == nil and COMBATDAMAGEENGINE == nil then return end
-Wire_TriggerOutput(self.Entity, "Shots", self.ammos)
-	if self.ammos <= 0 then
-	self.reloadtime = CurTime()+6
-	self.ammos = self.clipsize
-	end
+
+			if self.heat>0 then
+			Wire_TriggerOutput(self.Entity, "Heat", self.heat)
+			self.heat = self.heat-1
+			end
+
+			if self.heat>100 then
+			self.reloadtime = CurTime()+4		// Overheat for 4 seconds
+			end
 	
 	if (self.reloadtime < CurTime()) then
 		Wire_TriggerOutput(self.Entity, "Can Fire", 1)

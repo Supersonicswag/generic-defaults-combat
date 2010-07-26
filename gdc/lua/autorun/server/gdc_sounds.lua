@@ -15,6 +15,7 @@ resource.AddFile( "sound/GDC/M230.wav" );
 resource.AddFile( "sound/GDC/2A42.wav" );
 resource.AddFile( "sound/GDC/Bofizzle.wav" );
 resource.AddFile( "sound/GDC/GAU12.wav" );
+resource.AddFile( "sound/GDC/GAU19.wav" );
 resource.AddFile( "sound/GDC/120mm.wav" );
 resource.AddFile( "sound/GDC/M260.wav" );
 resource.AddFile( "sound/GDC/81mm.wav" );

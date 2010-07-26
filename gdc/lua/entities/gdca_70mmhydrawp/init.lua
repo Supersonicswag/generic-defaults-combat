@@ -4,7 +4,7 @@ include('shared.lua')
 
 function ENT:Initialize()   
 
-self.flightvector = self.Entity:GetUp() * 220
+self.flightvector = self.Entity:GetUp() * 200
 self.timeleft = CurTime() + 10
 self.Entity:SetModel( "models/combatmodels/tankshell.mdl" )
 self.Entity:SetGravity( 0.5 ) 	
@@ -50,13 +50,20 @@ end
 			end	
 
 				if tr.Hit then
-					util.BlastDamage(self.Entity, self.Entity, tr.HitPos, 700, 50)
+
+				for k, v in pairs ( ents.FindInSphere( self.Entity:GetPos(), 600 ) ) do	// Find anything within 50 feet
+				if v:IsPlayer() || v:IsNPC() then		// If its alive then
+				v:Ignite( 4, 100 ) end		// Fry it for 4 seconds, and make it catch anything around it on fire too
+				end			
+
+					util.BlastDamage(self.Entity, self.Entity, tr.HitPos, 500, 30)
 					local effectdata = EffectData()
 					effectdata:SetOrigin(tr.HitPos)
-					effectdata:SetNormal(tr.HitNormal)	
-					effectdata:SetStart(tr.HitPos)
-					util.Effect( "gdca_70mmhydrawp_effect", effectdata )
-					util.ScreenShake(tr.HitPos, 10, 5, 1, 1500 )
+					effectdata:SetNormal(tr.HitNormal)
+					effectdata:SetScale(3)
+					effectdata:SetRadius(3.5)
+					util.Effect( "gdca_whitephosphorus", effectdata )
+					util.ScreenShake(tr.HitPos, 10, 5, 1, 2500 )
 					util.Decal("Scorch", tr.HitPos + tr.HitNormal, tr.HitPos - tr.HitNormal)
 			
 					local attack = gcombat.hcgexplode( tr.HitPos, 200, 200, 5)

@@ -70,7 +70,7 @@ function ENT:fireapi()
 		effectdata:SetScale(0.6)
 		util.Effect( "gdca_muzzle", effectdata )
 		util.ScreenShake(self.Entity:GetPos(), 25, 5, 0.2, 350 )
-		self.Entity:EmitSound( "Bushmaster.single" )
+		WorldSound( "Bushmaster.Single", self.Entity:GetPos())
 		self.ammos = self.ammos-1
 	
 
@@ -97,7 +97,7 @@ function ENT:firehei()
 		effectdata:SetScale(0.6)
 		util.Effect( "gdca_muzzle", effectdata )
 		util.ScreenShake(self.Entity:GetPos(), 25, 5, 0.2, 350 )
-		self.Entity:EmitSound( "Bushmaster.single" )
+		WorldSound( "Bushmaster.Single", self.Entity:GetPos())
 		self.ammos = self.ammos-1
 	
 

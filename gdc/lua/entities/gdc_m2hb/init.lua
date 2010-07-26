@@ -10,8 +10,6 @@ util.PrecacheSound("arty/cannon.wav")
 function ENT:Initialize()   
 
 	self.ammomodel = "models/props_c17/canister01a.mdl"
-	self.ammos = 100
-	self.clipsize = 100
 	self.armed = false
 	self.loading = false
 	self.reloadtime = 0
@@ -56,8 +54,6 @@ function ENT:fire()
 		ent:SetAngles( self.Entity:GetAngles() )
 		ent:Spawn()
 		ent:Activate()
-		self.armed = false
-		
 		
 		local phys = self.Entity:GetPhysicsObject()  	
 		if (phys:IsValid()) then  		
@@ -71,9 +67,7 @@ function ENT:fire()
 		util.Effect( "gdca_muzzle", effectdata )
 		util.ScreenShake(self.Entity:GetPos(), 12, 5, 0.2, 200 )
 		self.Entity:EmitSound( "50cal.single" )
-		self.ammos = self.ammos-1
 	
-
 end
 
 function ENT:firetracer()
@@ -83,9 +77,7 @@ function ENT:firetracer()
 		ent:SetAngles( self.Entity:GetAngles() )
 		ent:Spawn()
 		ent:Activate()
-		self.armed = false
-		
-		
+				
 		local phys = self.Entity:GetPhysicsObject()  	
 		if (phys:IsValid()) then  		
 			phys:ApplyForceCenter( self.Entity:GetUp() * -1270 ) 
@@ -98,17 +90,12 @@ function ENT:firetracer()
 		util.Effect( "gdca_muzzle", effectdata )
 		util.ScreenShake(self.Entity:GetPos(), 12, 5, 0.2, 200 )
 		self.Entity:EmitSound( "50cal.single" )
-		self.ammos = self.ammos-1
 	
 
 end
 
 function ENT:Think()
 if FIELDS == nil and COMBATDAMAGEENGINE == nil then return end
-	if self.ammos <= 0 then
-	self.reloadtime = CurTime()+5
-	self.ammos = self.clipsize
-	end
 	
 	if (self.reloadtime < CurTime()) then
 		Wire_TriggerOutput(self.Entity, "Can Fire", 1)

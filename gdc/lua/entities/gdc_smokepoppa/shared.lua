@@ -1,10 +1,10 @@
  ENT.Type 			= "anim"  
- ENT.Base 			= "base_gmodentity"     
- ENT.PrintName			= "GDC 25mm GAU-12"  
+ ENT.Base			 = "base_gmodentity"     
+ ENT.PrintName			= "GDC Smoke Popper"  
  ENT.Author			= "Generic Default"  
  ENT.Contact			= "AIDS"  
- ENT.Purpose			= "Shoot Stuff"
- ENT.Instructions			= "Shoot"  
+ ENT.Purpose			= "Cover"
+ ENT.Instructions			= "SMOKE EM OUT"  
  
 ENT.Spawnable			= false
 ENT.AdminSpawnable		= false

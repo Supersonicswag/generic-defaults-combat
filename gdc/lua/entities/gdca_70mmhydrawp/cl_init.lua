@@ -19,22 +19,22 @@
 	
 	pos = self:GetPos()
 		for i=0, (4) do
-			local particle = self.emitter:Add( "particle/smokestack", pos + (self:GetUp() * -70 * i))
+			local particle = self.emitter:Add( "particle/particle_smokegrenade", pos + (self:GetUp() * -60 * i))
 			if (particle) then
-				particle:SetVelocity((self:GetUp() * -1500) )
-				particle:SetDieTime( math.Rand( 2, 4 ) )
+				particle:SetVelocity((self:GetUp() * -2000) )
+				particle:SetDieTime( math.Rand( 3, 7 ) )
 				particle:SetStartAlpha( math.Rand( 60, 80 ) )
 				particle:SetEndAlpha( 0 )
 				particle:SetStartSize( math.Rand( 40, 50 ) )
 				particle:SetEndSize( math.Rand( 150, 200 ) )
 				particle:SetRoll( math.Rand(0, 360) )
 				particle:SetRollDelta( math.Rand(-1, 1) )
-				particle:SetColor( 255 , 255 , 255 ) 
+				particle:SetColor( 250 , 250 , 250 ) 
  				particle:SetAirResistance( 100 ) 
  				particle:SetGravity( Vector( 100, 0, 0 ) ) 
 			end
 
-			for i=1, 11 do
+			for i=1, 10 do
 				local particle = self.emitter:Add( "effects/fire_cloud1", pos + (self:GetUp() * -20 * i) )
 
 				particle:SetVelocity((self:GetUp() * -500) )

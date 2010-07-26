@@ -34,13 +34,20 @@ end
 			end	
 	
 			if tr.Hit then
-				util.BlastDamage(self.Entity, self.Entity, tr.HitPos, 600, 150)
+
+				for k, v in pairs ( ents.FindInSphere( self.Entity:GetPos(), 600 ) ) do	// Find anything within 50 feet
+				if v:IsPlayer() || v:IsNPC() then		// If its alive then
+				v:Ignite( 3, 100 ) end		// Fry it for 3 seconds, and make it catch anything around it on fire too
+				end			
+
+				util.BlastDamage(self.Entity, self.Entity, tr.HitPos, 600, 30)
 				local effectdata = EffectData()
 				effectdata:SetOrigin(tr.HitPos)
 				effectdata:SetNormal(tr.HitNormal)
-				effectdata:SetStart(tr.HitPos)
-				util.Effect( "gdca_105x372wp_effect", effectdata )
-				util.ScreenShake(tr.HitPos, 10, 5, 1, 2000 )
+				effectdata:SetScale(4)
+				effectdata:SetRadius(4.3)
+				util.Effect( "gdca_whitephosphorus", effectdata )
+				util.ScreenShake(tr.HitPos, 10, 5, 1, 3000 )
 				util.Decal("Scorch", tr.HitPos + tr.HitNormal, tr.HitPos - tr.HitNormal)
 
 				local attack = gcombat.hcgexplode( tr.HitPos, 200, 100, 6)

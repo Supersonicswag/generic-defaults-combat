@@ -50,12 +50,13 @@ end
 			end
 	
 				if tr.Hit then
-					util.BlastDamage(self.Entity, self.Entity, tr.HitPos, 700, 150)
+					util.BlastDamage(self.Entity, self.Entity, tr.HitPos, 700, 80)
 					local effectdata = EffectData()
 					effectdata:SetOrigin(tr.HitPos)
 					effectdata:SetNormal(tr.HitNormal)
-					effectdata:SetScale(3)
-					effectdata:SetRadius(3)
+					effectdata:SetScale(3)			// Size of cloud
+					effectdata:SetRadius(3)			// Size of ring
+					effectdata:SetMagnitude(200)			// Size of flash
 					util.Effect( "gdca_splodering", effectdata )
 					util.Effect( "gdca_splodecolumn", effectdata )
 					util.ScreenShake(tr.HitPos, 10, 5, 1, 2000 )

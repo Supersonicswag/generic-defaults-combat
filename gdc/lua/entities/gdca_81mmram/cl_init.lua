@@ -19,17 +19,17 @@
 	
 	pos = self:GetPos()
 		for i=0, (3) do
-			local particle = self.emitter:Add( "particles/smokey", pos + (self:GetUp() * -20 * i))
+			local particle = self.emitter:Add( "particle/particle_smokegrenade", pos + (self:GetUp() * -30 * i))
 			if (particle) then
-				particle:SetVelocity((self:GetUp() * -1000) )
-				particle:SetDieTime( math.Rand( 2, 5 ) )
+				particle:SetVelocity((self:GetUp() * -2000) )
+				particle:SetDieTime( math.Rand( 3, 7 ) )
 				particle:SetStartAlpha( math.Rand( 40, 50 ) )
 				particle:SetEndAlpha( 0 )
-				particle:SetStartSize( 30 )
-				particle:SetEndSize( math.Rand( 100, 150 ) )
+				particle:SetStartSize( 40 )
+				particle:SetEndSize( math.Rand( 150, 200 ) )
 				particle:SetRoll( math.Rand(0, 360) )
 				particle:SetRollDelta( math.Rand(-1, 1) )
-				particle:SetColor( 255 , 255 , 255 ) 
+				particle:SetColor( 200 , 200 , 200 ) 
  				particle:SetAirResistance( 100 ) 
  				particle:SetGravity( Vector( 100, 0, 0 ) ) 
 			end

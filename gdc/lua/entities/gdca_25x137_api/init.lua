@@ -39,7 +39,7 @@ function ENT:Think()
 
 
 				if tr.Hit then
-					util.BlastDamage(self.Entity, self.Entity, tr.HitPos, 150, 70)
+					util.BlastDamage(self.Entity, self.Entity, tr.HitPos, 150, 50)
 					local effectdata = EffectData()
 					effectdata:SetOrigin(tr.HitPos)
 					effectdata:SetNormal(tr.HitNormal)

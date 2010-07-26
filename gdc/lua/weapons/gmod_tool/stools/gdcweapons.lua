@@ -19,24 +19,27 @@ if ( CLIENT ) then
 	language.Add( "Tool_gdcweapons_0", "Left click to weld the gun to the place you're aiming. Right click to spawn it unwelded." )
 	
 
-	language.Add( "Tool_gdcweapons_help0", ".30 caliber medium machine gun. 26400 inches/sec, ~860 RPM, Tracer/Ball" )
-	language.Add( "Tool_gdcweapons_help1", ".50 caliber heavy machine gun. 29700 inches/sec, ~460 RPM, Tracer/Ball" )
-	language.Add( "Tool_gdcweapons_help2", "20mm gatling gun. 23100 inches/sec, ~700 RPM, High Explosive" )
-	language.Add( "Tool_gdcweapons_help3", "25mm cannon. 36300 inches/sec, 300 RPM, High Explosive Incindiary/Armor Piercing Incindiary" )
-	language.Add( "Tool_gdcweapons_help4", "30mm chain gun. 19800 inches/sec, ~600 RPM, High Explosive Incindiary" )
-	language.Add( "Tool_gdcweapons_help5", "30mm cannon. 33000 inches/sec, 200 RPM, High Explosive" )
-	language.Add( "Tool_gdcweapons_help6", "40mm cannon. 19800 inches/sec, 120 RPM, High Explosive" )
-	language.Add( "Tool_gdcweapons_help7", "70mm rocket pod. 13200 inches/sec, 7 Salvo, High Explosive/White Phosphorus" )
-	language.Add( "Tool_gdcweapons_help8", "105mm cannon. 13200 inches/sec, 8 RPM, High Explosive/White Phosphorus" )
-	language.Add( "Tool_gdcweapons_help9", "25mm gatling gun. 36300 inches/sec, 1200 RPM, Armor Piercing Incindiary" )
-	language.Add( "Tool_gdcweapons_help10", "2kg High Explosive charge. 25 meter blast radius. Effective agasint infantry and light vehicles." )
-	language.Add( "Tool_gdcweapons_help11", "7.62mm gatling gun. 26400 inches/sec, 1500 RPM, Tracer/Ball" )
-	language.Add( "Tool_gdcweapons_help12", "120mm. 19800/36300 inches/sec, 8 RPM, High Explosive Anti-Tank/SABOT" )
-	language.Add( "Tool_gdcweapons_help13", "HEAT Shape Charge. 5m blast radius that does lots of damage. Effective against armored vehicles." )
-	language.Add( "Tool_gdcweapons_help14", "81mm mortar for indirect fire. 5280 inches/sec, 20 RPM, High Explosive/White Phosphorus" )
-	language.Add( "Tool_gdcweapons_help15", "40mm grenade launcher for mounted weapons. 9900 inches/sec, 300 RPM, High Explosive/High Explosive Dual Purpose" )
-	language.Add( "Tool_gdcweapons_help16", "81mm rocket assisted mortar launcher. 5280 inches/sec CONSTANT, 30 RPM, High Explosive" )
-	language.Add( "Tool_gdcweapons_help17", "84mm guided rocket launcher(Target Finding). 26400 inches/sec Accelerated, 12 RPM, High Explosive. BE CAREFUL! Don't fire at anything with unwanted targets in the general direction!" )
+	language.Add( "Tool_gdcweapons_help0", "~860 RPM, Tracer/Ball" )
+	language.Add( "Tool_gdcweapons_help1", "~460 RPM, Tracer/Ball" )
+	language.Add( "Tool_gdcweapons_help2", "~700 RPM, High Explosive" )
+	language.Add( "Tool_gdcweapons_help3", "300 RPM, High Explosive Incindiary/Armor Piercing Incindiary" )
+	language.Add( "Tool_gdcweapons_help4", "~600 RPM, High Explosive Incindiary" )
+	language.Add( "Tool_gdcweapons_help5", "200 RPM, High Explosive" )
+	language.Add( "Tool_gdcweapons_help6", "120 RPM, High Explosive" )
+	language.Add( "Tool_gdcweapons_help7", "7 RPM, 7 Salvo, High Explosive/White Phosphorus" )
+	language.Add( "Tool_gdcweapons_help8", "8 RPM, High Explosive/White Phosphorus" )
+	language.Add( "Tool_gdcweapons_help9", "1200 RPM, Armor Piercing Incindiary, Overheats after 25 rounds" )
+	language.Add( "Tool_gdcweapons_help10", "25 meter blast radius. Effective against infantry" )
+	language.Add( "Tool_gdcweapons_help11", "1500 RPM, Tracer/Ball, Overheats after 75 rounds" )
+	language.Add( "Tool_gdcweapons_help12", "8 RPM, High Explosive Anti-Tank/SABOT" )
+	language.Add( "Tool_gdcweapons_help13", "Powerful 5m blast radius. Effective against armored vehicles." )
+	language.Add( "Tool_gdcweapons_help14", "20 RPM, High Explosive/White Phosphorus" )
+	language.Add( "Tool_gdcweapons_help15", "300 RPM, High Explosive/High Explosive Dual Purpose" )
+	language.Add( "Tool_gdcweapons_help16", "30 RPM, High Explosive" )
+	language.Add( "Tool_gdcweapons_help17", "12 RPM, High Explosive. IR Guided, GPS Guided, No coordinates will fire straight. BE CAREFUL! Don't fire at anything with unwanted targets in the general direction!" )
+	language.Add( "Tool_gdcweapons_help18", "~1100 RPM, Tracer/Ball, Overheats after 50 rounds" )
+	language.Add( "Tool_gdcweapons_help19", "Smoke deployer." )
+
 
 	language.Add( "Tool_turret_type", "Type of weapon" )
 	
@@ -168,6 +171,18 @@ if ( !trace.Hit ) then return end
 	self.ent:Activate()
 							elseif (gdcweaponsindex == 17) then
 	self.ent = ents.Create( "gdc_84gml" )
+		self.ent:SetPos( SpawnPos )
+		self.ent:SetAngles( trace.HitNormal:Angle() + Angle(90,0,0))
+	self.ent:Spawn()
+	self.ent:Activate()
+							elseif (gdcweaponsindex == 18) then
+	self.ent = ents.Create( "gdc_gau19" )
+		self.ent:SetPos( SpawnPos )
+		self.ent:SetAngles( trace.HitNormal:Angle() + Angle(90,0,0))
+	self.ent:Spawn()
+	self.ent:Activate()
+							elseif (gdcweaponsindex == 19) then
+	self.ent = ents.Create( "gdc_smokepoppa" )
 		self.ent:SetPos( SpawnPos )
 		self.ent:SetAngles( trace.HitNormal:Angle() + Angle(90,0,0))
 	self.ent:Spawn()
@@ -317,7 +332,18 @@ if ( !trace.Hit ) then return end
 		self.ent:SetAngles( trace.HitNormal:Angle() + Angle(90,0,0))
 	self.ent:Spawn()
 	self.ent:Activate()
-
+							elseif (gdcweaponsindex == 18) then
+	self.ent = ents.Create( "gdc_gau19" )
+		self.ent:SetPos( SpawnPos )
+		self.ent:SetAngles( trace.HitNormal:Angle() + Angle(90,0,0))
+	self.ent:Spawn()
+	self.ent:Activate()
+							elseif (gdcweaponsindex == 19) then
+	self.ent = ents.Create( "gdc_smokepoppa" )
+		self.ent:SetPos( SpawnPos )
+		self.ent:SetAngles( trace.HitNormal:Angle() + Angle(90,0,0))
+	self.ent:Spawn()
+	self.ent:Activate()
 	end
 
 	ply:AddCount( "gcombat", self.ent )
@@ -348,24 +374,26 @@ function TOOL.BuildCPanel( CPanel )
 	// the pertenent cannon
 	local Ctype = {Label = "#Tool_turret_type", MenuButton = 0, Options={}}
 
-		Ctype["Options"]["#M240 7.62"]	= { gdcweapons_gdcweaponsindex = "0" }
-		Ctype["Options"]["#M2HB 12.7"]	= { gdcweapons_gdcweaponsindex = "1" }
-		Ctype["Options"]["#M197 20mm"]	= { gdcweapons_gdcweaponsindex = "2" }
-		Ctype["Options"]["#M242 25mm"]	= { gdcweapons_gdcweaponsindex = "3" }
-		Ctype["Options"]["#M230 30mm"]	= { gdcweapons_gdcweaponsindex = "4" }
-		Ctype["Options"]["#2A42 30mm"]	= { gdcweapons_gdcweaponsindex = "5" }
-		Ctype["Options"]["#L60 40mm"]	= { gdcweapons_gdcweaponsindex = "6" }
-		Ctype["Options"]["#M260 70mm"]	= { gdcweapons_gdcweaponsindex = "7" }
-		Ctype["Options"]["#M101 105mm"]	= { gdcweapons_gdcweaponsindex = "8" }
-		Ctype["Options"]["#GAU-12 25mm"]	= { gdcweapons_gdcweaponsindex = "9" }
+		Ctype["Options"]["#M240 7.62"]		= { gdcweapons_gdcweaponsindex = "0" }
+		Ctype["Options"]["#M2HB 12.7"]		= { gdcweapons_gdcweaponsindex = "1" }
+		Ctype["Options"]["#M197 20mm"]		= { gdcweapons_gdcweaponsindex = "2" }
+		Ctype["Options"]["#M242 25mm"]		= { gdcweapons_gdcweaponsindex = "3" }
+		Ctype["Options"]["#M230 30mm"]		= { gdcweapons_gdcweaponsindex = "4" }
+		Ctype["Options"]["#2A42 30mm"]		= { gdcweapons_gdcweaponsindex = "5" }
+		Ctype["Options"]["#L60 40mm"]		= { gdcweapons_gdcweaponsindex = "6" }
+		Ctype["Options"]["#M260 70mm"]		= { gdcweapons_gdcweaponsindex = "7" }
+		Ctype["Options"]["#M101 105mm"]		= { gdcweapons_gdcweaponsindex = "8" }
+		Ctype["Options"]["#GAU-12 25mm"]		= { gdcweapons_gdcweaponsindex = "9" }
 		Ctype["Options"]["#2KG High Explosive Charge"]	= { gdcweapons_gdcweaponsindex = "10" }
-		Ctype["Options"]["#M134 7.62mm"]	= { gdcweapons_gdcweaponsindex = "11" }
-		Ctype["Options"]["#M256 120mm"]	= { gdcweapons_gdcweaponsindex = "12" }
+		Ctype["Options"]["#M134 7.62mm"]		= { gdcweapons_gdcweaponsindex = "11" }
+		Ctype["Options"]["#M256 120mm"]		= { gdcweapons_gdcweaponsindex = "12" }
 		Ctype["Options"]["#HEAT Shape Charge"]	= { gdcweapons_gdcweaponsindex = "13" }
-		Ctype["Options"]["#81mm Mortar Launcher"]	= { gdcweapons_gdcweaponsindex = "14" }
-		Ctype["Options"]["#Mk-19 40mm"]	= { gdcweapons_gdcweaponsindex = "15" }
-		Ctype["Options"]["#81mm RAM"]	= { gdcweapons_gdcweaponsindex = "16" }
-		Ctype["Options"]["#84mm GML"]	= { gdcweapons_gdcweaponsindex = "17" }
+		Ctype["Options"]["#Mortar Launcher 81mm"]	= { gdcweapons_gdcweaponsindex = "14" }
+		Ctype["Options"]["#MK-19 40mm"]		= { gdcweapons_gdcweaponsindex = "15" }
+		Ctype["Options"]["#81mm RAM"]		= { gdcweapons_gdcweaponsindex = "16" }
+		Ctype["Options"]["#84mm GML"]		= { gdcweapons_gdcweaponsindex = "17" }
+		Ctype["Options"]["#GAU-19 12.7mm"]		= { gdcweapons_gdcweaponsindex = "18" }
+		Ctype["Options"]["#Smoke Deployer"]		= { gdcweapons_gdcweaponsindex = "19" }
 
 	CPanel:AddControl("ComboBox", Ctype )
 	

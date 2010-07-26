@@ -70,7 +70,7 @@ function ENT:firewp()
 		effectdata:SetScale(1.6)
 		util.Effect( "gdca_tanksmoke", effectdata )
 		util.ScreenShake(self.Entity:GetPos(), 90, 5, 0.3, 1050 )
-		self.Entity:EmitSound( "120mm.single", 500, 100 )
+		self.Entity:EmitSound( "M101.single", 500, 100 )
 		self.ammos = self.ammos-1
 	
 
@@ -97,7 +97,7 @@ function ENT:firehe()
 		effectdata:SetScale(1.6)
 		util.Effect( "gdca_tanksmoke", effectdata )
 		util.ScreenShake(self.Entity:GetPos(), 90, 5, 0.3, 1050 )
-		self.Entity:EmitSound( "120mm.single" )
+		self.Entity:EmitSound( "M101.single" )
 		self.ammos = self.ammos-1
 	
 
