@@ -7,7 +7,7 @@ function DEBUG_Msg (mesg)
 	--Msg (mesg)
 end
 
-npcs = {
+npcs = { 
 	{ "Headcrab", "npc_headcrab" },    
 	{ "Headcrab Poison", "npc_headcrab_poison" },
 	{ "Zombie", "npc_zombie" },
@@ -32,14 +32,10 @@ npcs = {
 }
 
 wpns = {
+	{ "GDCW HK21", "gdcw_hk21" },
 	{ "GDCW M240", "gdcw_m240" },
-	{ "GDCW Desert Eagle", "gdcw_deagle" },
-	{ "GDCW M1911", "gdcw_m1911" },
-	{ "GDCW Mini Uzi", "gdcw_miniuzi" },
 	{ "GDCW Uzi", "gdcw_fulluzi" },
 	{ "GDCW P228", "gdcw_p228" },
-	{ "GDCW M9", "gdcw_m9" },
-	{ "GDCW FiveSeven", "gdcw_fiveseven" },
 	{ "GDCW FAL", "gdcw_fal" },
 	{ "GDCW M16 ACOG", "gdcw_m16acog" },
 	{ "GDCW M16 Red Dot", "gdcw_m16rdot" },

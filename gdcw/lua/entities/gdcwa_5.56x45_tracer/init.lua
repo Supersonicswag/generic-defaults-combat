@@ -18,7 +18,7 @@ function ENT:Initialize()
 
 math.randomseed(CurTime())
 self.smoking = false
-self.Owner = self.Entity:GetVar("owner",Entity(1))
+self.Owner = self:GetOwner()
 self.penetrate = 10
 self.flightvector = self.Entity:GetUp() * ((900*39.37)/66)             	-- Velocity in m/s, inches to meters conversion, ticks per second.FIRST NUMMER = SPEED
 

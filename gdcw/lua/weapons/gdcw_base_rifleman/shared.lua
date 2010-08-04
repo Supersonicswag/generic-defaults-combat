@@ -36,13 +36,17 @@ SWEP.Secondary.UseACOG			= false
 SWEP.Secondary.UseMilDot			= false		
 SWEP.Secondary.UseSVD			= false	
 SWEP.Secondary.UseParabolic		= false	
-SWEP.Secondary.UseElcan			= false	
+SWEP.Secondary.UseElcan			= false
+SWEP.Secondary.UseGreenDuplex		= false	
+SWEP.Secondary.HasNVG			= false	
 
 SWEP.Secondary.UseRangefinder		= false	
 
 SWEP.data 				= {}					-- The starting firemode
 SWEP.data.ironsights			= 1
 SWEP.ScopeScale 				= 0.5
+SWEP.ReticleScale 				= 0.5
+SWEP.NVG				= 0
 SWEP.IronSightsPos = Vector (2.4537, 1.0923, 0.2696)
 SWEP.IronSightsAng = Vector (0.0186, -0.0547, 0)
 
@@ -56,6 +60,7 @@ function SWEP:Initialize()
 		
 		-- The following code is only slightly riped off from Night Eagle
 		-- These tables are used to draw things like scopes and crosshairs to the HUD.
+
 		self.ScopeTable = {}
 		self.ScopeTable.l = iScreenHeight*self.ScopeScale
 		self.ScopeTable.x1 = 0.5*(iScreenWidth + self.ScopeTable.l)
@@ -66,13 +71,6 @@ function SWEP:Initialize()
 		self.ScopeTable.y3 = self.ScopeTable.y2
 		self.ScopeTable.x4 = self.ScopeTable.x3
 		self.ScopeTable.y4 = self.ScopeTable.y1
-				
-		self.ParaScopeTable = {}
-		self.ParaScopeTable.x = 0.5*iScreenWidth - self.ScopeTable.l
-		self.ParaScopeTable.y = 0.5*iScreenHeight - self.ScopeTable.l
-		self.ParaScopeTable.w = 2*self.ScopeTable.l
-		self.ParaScopeTable.h = 2*self.ScopeTable.l
-		
 		self.ScopeTable.l = (iScreenHeight + 1)*self.ScopeScale -- I don't know why this works, but it does.
 
 		self.QuadTable = {}
@@ -100,20 +98,21 @@ function SWEP:Initialize()
 		self.LensTable.h = 2*self.ScopeTable.l
 
 		self.ReticleTable = {}
-		self.ReticleTable.x = iScreenWidth*0.3875
-		self.ReticleTable.y = iScreenHeight*0.3
-		self.ReticleTable.w = iScreenWidth*0.225
-		self.ReticleTable.h = iScreenHeight*0.4
+		self.ReticleTable.wdivider = 3.125
+		self.ReticleTable.hdivider = 1.7579/self.ReticleScale		// Draws the texture at 512 when the resolution is 1600x900
+		self.ReticleTable.x = (iScreenWidth/2)-((iScreenHeight/self.ReticleTable.hdivider)/2)
+		self.ReticleTable.y = (iScreenHeight/2)-((iScreenHeight/self.ReticleTable.hdivider)/2)
+		self.ReticleTable.w = iScreenHeight/self.ReticleTable.hdivider
+		self.ReticleTable.h = iScreenHeight/self.ReticleTable.hdivider
 
-		self.CrossHairTable = {}
-		self.CrossHairTable.x11 = 0
-		self.CrossHairTable.y11 = 0.5*iScreenHeight
-		self.CrossHairTable.x12 = iScreenWidth
-		self.CrossHairTable.y12 = self.CrossHairTable.y11
-		self.CrossHairTable.x21 = 0.5*iScreenWidth
-		self.CrossHairTable.y21 = 0
-		self.CrossHairTable.x22 = 0.5*iScreenWidth
-		self.CrossHairTable.y22 = iScreenHeight
+		self.FilterTable = {}
+		self.FilterTable.wdivider = 3.125
+		self.FilterTable.hdivider = 1.7579/1.35	
+		self.FilterTable.x = (iScreenWidth/2)-((iScreenHeight/self.FilterTable.hdivider)/2)
+		self.FilterTable.y = (iScreenHeight/2)-((iScreenHeight/self.FilterTable.hdivider)/2)
+		self.FilterTable.w = iScreenHeight/self.FilterTable.hdivider
+		self.FilterTable.h = iScreenHeight/self.FilterTable.hdivider
+
 		
 	end
 	if !self.Owner:IsNPC() then
@@ -217,6 +216,10 @@ IronSight
 ---------------------------------------------------------*/
 function SWEP:IronSight()
 
+	if (self:GetIronsights() == true) and self.Owner:KeyPressed(IN_SCORE) then	// If you hold E and crouch then
+	self.NVG = !self.NVG						// Toggle Night Vision
+	end
+
 	if self.Owner:KeyDown(IN_USE) and self:CanPrimaryAttack() and !self.Owner:KeyDown(IN_ATTACK2) || (self.Owner:KeyDown(IN_SPEED) and !self.Owner:KeyDown(IN_ATTACK2)) then		// If you hold E and you can shoot then
 	self.Owner:SetFOV( 0, 0.2 )
 	self.Weapon:SetNextPrimaryFire(CurTime()+0.3)				// Make it so you can't shoot for another quarter second
@@ -319,9 +322,26 @@ function SWEP:DrawHUD()
 			end
 
 			if self.Secondary.UseElcan then
+			-- Draw the RETICLE
+			surface.SetDrawColor(0, 0, 0, 255)
+			surface.SetTexture(surface.GetTextureID("scope/gdcw_elcanreticle"))
+			surface.DrawTexturedRect(self.ReticleTable.x, self.ReticleTable.y, self.ReticleTable.w, self.ReticleTable.h)
+			
 			-- Draw the ELCAN SCOPE
 			surface.SetDrawColor(0, 0, 0, 255)
 			surface.SetTexture(surface.GetTextureID("scope/gdcw_elcansight"))
+			surface.DrawTexturedRect(self.LensTable.x, self.LensTable.y, self.LensTable.w, self.LensTable.h)
+			end
+
+			if self.Secondary.UseGreenDuplex then
+			-- Draw the RETICLE
+			surface.SetDrawColor(0, 0, 0, 255)
+			surface.SetTexture(surface.GetTextureID("scope/gdcw_nvgilluminatedduplex"))
+			surface.DrawTexturedRect(self.ReticleTable.x, self.ReticleTable.y, self.ReticleTable.w, self.ReticleTable.h)
+
+			-- Draw the SCOPE
+			surface.SetDrawColor(0, 0, 0, 255)
+			surface.SetTexture(surface.GetTextureID("scope/gdcw_closedsight"))
 			surface.DrawTexturedRect(self.LensTable.x, self.LensTable.y, self.LensTable.w, self.LensTable.h)
 			end
 	end

@@ -4,6 +4,33 @@
 	"volume"				"1.0"
 	"CompatibilityAttenuation"		"ATTN_NORM"
 	"pitch"				"PITCH_NORM"
-	"soundlevel"			"SNDLVL_150dB"
+	"soundlevel"			"SNDLVL_155dB"
 	"wave"				")GDC/P228/P228F.wav"
+}
+"GenericP228.Clipin"
+{
+	"channel"				"CHAN_RELOAD"
+	"volume"				"1.0"
+	"CompatibilityAttenuation"		"ATTN_NORM"
+	"pitch"				"PITCH_NORM"
+	"soundlevel"			"SNDLVL_70dB"
+	"wave"				")GDC/P228/P228Clipin.wav"
+}
+"GenericP228.Clipout"
+{
+	"channel"				"CHAN_RELOAD"
+	"volume"				"1.0"
+	"CompatibilityAttenuation"		"ATTN_NORM"
+	"pitch"				"PITCH_NORM"
+	"soundlevel"			"SNDLVL_70dB"
+	"wave"				")GDC/P228/P228Clipout.wav"
+}
+"GenericP228.Sliderelease"
+{
+	"channel"				"CHAN_RELOAD"
+	"volume"				"1.0"
+	"CompatibilityAttenuation"		"ATTN_NORM"
+	"pitch"				"PITCH_NORM"
+	"soundlevel"			"SNDLVL_70dB"
+	"wave"				")GDC/P228/P228Sliderelease.wav"
 }

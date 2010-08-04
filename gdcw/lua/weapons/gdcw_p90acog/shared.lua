@@ -37,6 +37,7 @@ SWEP.Secondary.UseACOG			= true
 SWEP.data 				= {}					-- The starting firemode
 SWEP.data.ironsights			= 1
 SWEP.ScopeScale 				= 0.5
+SWEP.ReticleScale 				= 0.6
 
 SWEP.IronSightsPos = Vector (3.8464, -10.355, 0.5953)
 SWEP.IronSightsAng = Vector (0, 0, 0)

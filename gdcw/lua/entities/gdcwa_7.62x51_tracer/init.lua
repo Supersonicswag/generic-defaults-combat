@@ -18,7 +18,7 @@ function ENT:Initialize()
 
 math.randomseed(CurTime())
 self.smoking = false
-self.Owner = self.Entity:GetVar("owner",Entity(1))
+self.Owner = self:GetOwner()
 self.penetrate = 20
 self.flightvector = self.Entity:GetUp() * ((840*39.37)/66)             	-- Velocity in m/s, inches to meters conversion, ticks per second.FIRST NUMMER = SPEED
 self.timeleft = CurTime() + 5
@@ -102,7 +102,7 @@ function ENT:Think()
 		trace.filter = self.Entity 
 	local pr = util.TraceLine( trace )
 
-		if pr.StartSolid and !pr.Entity:IsPlayer() and !pr.Entity:IsNPC() || tr.Hit and !pr.Hit || self.penetrate<0 then
+		if pr.StartSolid || tr.Hit and !pr.Hit || self.penetrate<0 then
 		self.Entity:Remove()
 		end
 

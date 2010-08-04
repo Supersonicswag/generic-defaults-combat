@@ -106,6 +106,8 @@ function SWEP:FireRocket()
 		rocket.owner = self.Owner
 		rocket:Activate()
 	end
+
+
 		if SERVER and !self.Owner:IsNPC() then
 		local anglo = Angle(math.Rand(-self.Primary.KickDown,self.Primary.KickUp), math.Rand(-self.Primary.KickHorizontal,self.Primary.KickHorizontal), 0)
 		self.Owner:ViewPunch(anglo)

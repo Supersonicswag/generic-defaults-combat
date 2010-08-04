@@ -1,0 +1,9 @@
+"Weapon_Pistol.Empty"
+{
+	"channel"				"CHAN_SKEET"
+	"volume"				"1.0"
+	"CompatibilityAttenuation"		"ATTN_NORM"
+	"pitch"				"PITCH_NORM"
+	"soundlevel"			"SNDLVL_60dB"
+	"wave"				"weapons/pistol/pistol_empty.wav"
+}
