@@ -192,9 +192,9 @@ function SWEP:IronSight()
 		if CLIENT then return end
 	end
 
-		if self.Owner:KeyDown(IN_ATTACK2) then
-		self.SwayScale 	= 0.02
-		self.BobScale 	= 0.02
+		if self.Owner:KeyDown(IN_ATTACK2) and !self.Owner:KeyDown(IN_USE) and !self.Owner:KeyDown(IN_SPEED) then
+		self.SwayScale 	= 0.05
+		self.BobScale 	= 0.05
 		else
 		self.SwayScale 	= 1.0
 		self.BobScale 	= 1.0
