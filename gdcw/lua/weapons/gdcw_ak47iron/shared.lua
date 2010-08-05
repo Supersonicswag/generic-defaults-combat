@@ -37,9 +37,9 @@ SWEP.data 				= {}						// The starting firemode
 SWEP.data.ironsights			= 1
 
 
-SWEP.IronSightsPos = Vector (4.5350, -4.2492, 1.843)
+SWEP.IronSightsPos = Vector (4.5348, -4.2492, 1.843)
 SWEP.IronSightsAng = Vector (0.6248, -0.0475, 0)
-SWEP.SightsPos = Vector (4.5350, -4.2492, 1.843)
+SWEP.SightsPos = Vector (4.5348, -4.2492, 1.843)
 SWEP.SightsAng = Vector (0.6248, -0.0475, 0)
 SWEP.RunSightsPos = Vector (-2.3095, -3.0514, 2.3965)
 SWEP.RunSightsAng = Vector (-19.8471, -33.9181, 10)

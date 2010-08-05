@@ -73,12 +73,14 @@ function SWEP:PrimaryAttack()
 		self.Weapon:EmitSound(self.Primary.Sound)
 		self.Weapon:TakePrimaryAmmo(1)
 		self.Weapon:SendWeaponAnim( ACT_VM_PRIMARYATTACK )
+		if self.Owner:Alive() then
 		local fx 		= EffectData()
 		fx:SetEntity(self.Weapon)
 		fx:SetOrigin(self.Owner:GetShootPos())
 		fx:SetNormal(self.Owner:GetAimVector())
 		fx:SetAttachment(self.MuzzleAttachment)
 		util.Effect("gdcw_muzzle",fx)
+		end
 		self.Owner:SetAnimation( PLAYER_ATTACK1 )
 		self.Owner:MuzzleFlash()
 		self.Weapon:SetNextPrimaryFire(CurTime()+1/(self.Primary.RPM/60))
@@ -189,6 +191,14 @@ function SWEP:IronSight()
 
 		if CLIENT then return end
 	end
+
+		if self.Owner:KeyDown(IN_ATTACK2) then
+		self.SwayScale 	= 0.02
+		self.BobScale 	= 0.02
+		else
+		self.SwayScale 	= 1.0
+		self.BobScale 	= 1.0
+		end
 end
 
 /*---------------------------------------------------------
@@ -215,13 +225,6 @@ function SWEP:GetViewModelPosition(pos, ang)
 		self.bLastIron = bIron
 		self.fIronTime = CurTime()
 
-		if (bIron) and !self.Owner:KeyDown(IN_SPEED) then	// If Ironsights and NOT RUNNING then
-			self.SwayScale 	= 0.02
-			self.BobScale 	= 0.02
-		else
-			self.SwayScale 	= 1.0
-			self.BobScale 	= 1.0
-		end
 	end
 
 	local fIronTime = self.fIronTime or 0

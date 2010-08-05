@@ -12,7 +12,7 @@ SWEP.ViewModelFOV			= 65
 SWEP.ViewModelFlip			= false
 SWEP.ViewModel				= "models/weapons/v_GDCWFLUZI.mdl"
 SWEP.WorldModel				= "models/weapons/w_GDCUZI.mdl"
-SWEP.Base 				= "gdcw_base_pistol"
+SWEP.Base 				= "gdcw_base_ghettoblaster"
 SWEP.Spawnable				= true
 SWEP.AdminSpawnable			= true
 

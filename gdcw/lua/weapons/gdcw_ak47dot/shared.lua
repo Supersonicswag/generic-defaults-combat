@@ -36,9 +36,9 @@ SWEP.Secondary.IronFOV			= 45					// How much you 'zoom' in. Less is more!
 SWEP.data 				= {}					-- The starting firemode
 SWEP.data.ironsights			= 1
 
-SWEP.IronSightsPos = Vector (4.4473, -5.4266, 1.6892)
+SWEP.IronSightsPos = Vector (4.4472, -5.4266, 1.6892)
 SWEP.IronSightsAng = Vector (0, 0, 0)
-SWEP.SightsPos = Vector (4.4473, -5.4266, 1.6892)
+SWEP.SightsPos = Vector (4.4472, -5.4266, 1.6892)
 SWEP.SightsAng =Vector (0, 0, 0)
 SWEP.RunSightsPos = Vector (-2.3095, -3.0514, 2.3965)
 SWEP.RunSightsAng = Vector (-19.8471, -33.9181, 10)

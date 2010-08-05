@@ -36,7 +36,7 @@ wpns = {
 	{ "GDCW M240", "gdcw_m240" },
 	{ "GDCW Uzi", "gdcw_fulluzi" },
 	{ "GDCW P228", "gdcw_p228" },
-	{ "GDCW FAL", "gdcw_fal" },
+	{ "GDCW FAL", "gdcw_falscope" },
 	{ "GDCW M16 ACOG", "gdcw_m16acog" },
 	{ "GDCW M16 Red Dot", "gdcw_m16rdot" },
 	{ "GDCW M16 Holo", "gdcw_m16holo" },

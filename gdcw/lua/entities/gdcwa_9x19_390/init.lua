@@ -18,7 +18,7 @@ function ENT:Initialize()
 
 math.randomseed(CurTime())
 self.smoking = false
-self.Owner = self:GetOwner()
+self.Owner = self:GetOwner() or self.Entity
 self.penetrate = 5
 self.flightvector = self.Entity:GetUp() * ((390*39.37)/66)             	-- Velocity in m/s, inches to meters conversion, ticks per second.FIRST NUMMER = SPEED
 
@@ -58,7 +58,7 @@ function ENT:Think()
 
 
 					if tr.Hit and !tr.Entity:IsPlayer() and !tr.Entity:IsNPC() then
-					util.BlastDamage(self.Entity, self.Owner, tr.HitPos, 30, 10)
+					util.BlastDamage(self.Entity, self.Owner or self.Entity, tr.HitPos, 30, 10)
 					local effectdata = EffectData()
 					effectdata:SetOrigin(tr.HitPos)
 					effectdata:SetNormal(tr.HitNormal)
@@ -73,7 +73,7 @@ function ENT:Think()
 				local dmginfo = DamageInfo()
 					dmginfo:SetDamage( math.Rand(25,35) ) 	--1 or 2 hits for a kill
 					dmginfo:SetDamageType( DMG_BULLET ) 	--Bullet damage
-					dmginfo:SetAttacker( self.Owner ) 		--Shooter gets credit
+					dmginfo:SetAttacker( self.Owner or self.Entity ) 	--Shooter gets credit
 					dmginfo:SetInflictor( self.Entity ) 		--Bullet gets credit
 					dmginfo:SetDamageForce( self.flightvector/100 ) 	--A few newtons...
 				tr.Entity:TakeDamageInfo( dmginfo ) 			--Take damage!
@@ -97,7 +97,7 @@ function ENT:Think()
 		end
 
 		if !pr.StartSolid and tr.Hit and self.penetrate>0 and !pr.Entity:IsPlayer() and !pr.Entity:IsNPC() then
-				util.BlastDamage(self.Entity, self.Owner, pr.HitPos, 40, 10)
+				util.BlastDamage(self.Entity, self.Owner or self.Entity, pr.HitPos, 40, 10)
 				self.Entity:SetPos(pr.HitPos + self.flightvector:GetNormalized()*10)
 					local effectdata = EffectData()
 					effectdata:SetOrigin(pr.HitPos)
