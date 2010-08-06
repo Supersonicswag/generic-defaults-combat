@@ -1,6 +1,6 @@
  ENT.Type 			= "anim"  
  ENT.Base 			= "base_anim"     
- ENT.PrintName			= "11mm"  
+ ENT.PrintName			= ".50 AE"  
  ENT.Author			= "Generic Default"  
  ENT.Contact			= "AIDS"  
  ENT.Purpose			= "Shoot Stuff"  

@@ -58,7 +58,7 @@ function ENT:Think()
 
 
 					if tr.Hit and !tr.Entity:IsPlayer() and !tr.Entity:IsNPC() then
-					util.BlastDamage(self.Entity, self.Owner, tr.HitPos, 30, 10)
+					util.BlastDamage(self.Entity, self.Entity, tr.HitPos, 30, 10)
 					local effectdata = EffectData()
 					effectdata:SetOrigin(tr.HitPos)
 					effectdata:SetNormal(tr.HitNormal)
@@ -78,9 +78,11 @@ function ENT:Think()
 					dmginfo:SetDamageForce( self.flightvector/100 ) 	--A few newtons...
 				tr.Entity:TakeDamageInfo( dmginfo ) 			--Take damage!
 					local effectdata = EffectData()
-					effectdata:SetOrigin( tr.HitPos )
-					util.Effect( "BloodImpact", effectdata )
-					util.Decal("Blood", tr.HitPos + tr.HitNormal, tr.HitPos - tr.HitNormal)
+					effectdata:SetOrigin(tr.HitPos)
+					effectdata:SetNormal(self.flightvector:GetNormalized())
+					effectdata:SetScale(1)
+					util.Effect( "gdcw_bloodychunkyviolence", effectdata ) 	// Nothing violent here!
+					util.Effect( "BloodImpact", effectdata )			// Nothing violent here either!
 				end
 
 	local trace = {}
@@ -98,7 +100,7 @@ function ENT:Think()
 		end
 
 		if !pr.StartSolid and tr.Hit and self.penetrate>0 and !pr.Entity:IsPlayer() and !pr.Entity:IsNPC() then
-				util.BlastDamage(self.Entity, self.Owner, pr.HitPos, 40, 10)
+				util.BlastDamage(self.Entity, self.Entity, pr.HitPos, 40, 10)
 				self.Entity:SetPos(pr.HitPos + self.flightvector:GetNormalized()*10)
 					local effectdata = EffectData()
 					effectdata:SetOrigin(pr.HitPos)

@@ -73,7 +73,7 @@ function ENT:Think()
 
 
 					if tr.Hit and !tr.Entity:IsPlayer() and !tr.Entity:IsNPC() then
-					util.BlastDamage(self.Entity, self.Owner, tr.HitPos, 50, 10)
+					util.BlastDamage(self.Entity, self.Entity, tr.HitPos, 50, 10)
 					local effectdata = EffectData()
 					effectdata:SetOrigin(tr.HitPos)
 					effectdata:SetNormal(tr.HitNormal)
@@ -84,7 +84,7 @@ function ENT:Think()
 					util.Decal("ExplosiveGunshot", tr.HitPos + tr.HitNormal, tr.HitPos - tr.HitNormal)
 					end
 
-			if tr.Hit and tr.Entity:IsPlayer() || tr.Entity:IsNPC() then
+					if tr.Hit and tr.Entity:IsPlayer() || tr.Entity:IsNPC() then
 				local dmginfo = DamageInfo()
 					dmginfo:SetDamage( math.Rand(25,35) ) 	-- 1 to 3 hits for a kill
 					dmginfo:SetDamageType( DMG_BULLET ) 	--Bullet damage
@@ -93,8 +93,11 @@ function ENT:Think()
 					dmginfo:SetDamageForce( self.flightvector/250 ) 	--A few newtons...
 				tr.Entity:TakeDamageInfo( dmginfo ) 			--Take damage!
 					local effectdata = EffectData()
-					effectdata:SetOrigin( tr.HitPos )
-					util.Effect( "BloodImpact", effectdata )
+					effectdata:SetOrigin(tr.HitPos)
+					effectdata:SetNormal(self.flightvector:GetNormalized())
+					effectdata:SetScale(0.9)
+					util.Effect( "gdcw_bloodychunkyviolence", effectdata ) 	// Nothing violent here!
+					util.Effect( "BloodImpact", effectdata )			// Nothing violent here either!
 				end
 
 	local trace = {}
@@ -103,7 +106,7 @@ function ENT:Think()
 		trace.filter = self.Entity 
 	local pr = util.TraceLine( trace )
 
-		if pr.StartSolid and !pr.Entity:IsPlayer() and !pr.Entity:IsNPC() || tr.Hit and !pr.Hit || self.penetrate<0 then
+		if pr.StartSolid || tr.Hit and !pr.Hit || self.penetrate<0 then
 		self.Entity:Remove()
 		end
 
@@ -112,7 +115,7 @@ function ENT:Think()
 		end
 
 		if !pr.StartSolid and tr.Hit and self.penetrate>0 and !pr.Entity:IsPlayer() and !pr.Entity:IsNPC() then
-				util.BlastDamage(self.Entity, self.Owner, pr.HitPos, 50, 10)
+				util.BlastDamage(self.Entity, self.Entity, pr.HitPos, 50, 10)
 				self.Entity:SetPos(pr.HitPos + self.flightvector:GetNormalized()*10)
 					local effectdata = EffectData()
 					effectdata:SetOrigin(pr.HitPos)

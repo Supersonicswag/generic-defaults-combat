@@ -72,7 +72,7 @@ function ENT:Think()
 
 
 					if tr.Hit and !tr.Entity:IsPlayer() and !tr.Entity:IsNPC() then
-					util.BlastDamage(self.Entity, self.Owner, tr.HitPos, 60, 10)
+					util.BlastDamage(self.Entity, self.Entity, tr.HitPos, 60, 10)
 					local effectdata = EffectData()
 					effectdata:SetOrigin(tr.HitPos)
 					effectdata:SetNormal(tr.HitNormal)
@@ -85,15 +85,18 @@ function ENT:Think()
 
 					if tr.Hit and tr.Entity:IsPlayer() || tr.Entity:IsNPC() then
 				local dmginfo = DamageInfo()
-					dmginfo:SetDamage( math.Rand(30,50) ) 	-- 1 or 2 hits for a kill
+					dmginfo:SetDamage( math.Rand(30,53) ) 	-- 1 or 2 hits for a kill
 					dmginfo:SetDamageType( DMG_BULLET ) 	--Bullet damage
 					dmginfo:SetAttacker( self.Owner ) 		--Shooter gets credit
 					dmginfo:SetInflictor( self.Entity ) 		--Bullet gets credit
 					dmginfo:SetDamageForce( self.flightvector/200 ) 	--A few newtons...
 				tr.Entity:TakeDamageInfo( dmginfo ) 			--Take damage!
 					local effectdata = EffectData()
-					effectdata:SetOrigin( tr.HitPos )
-					util.Effect( "BloodImpact", effectdata )
+					effectdata:SetOrigin(tr.HitPos)
+					effectdata:SetNormal(self.flightvector:GetNormalized())
+					effectdata:SetScale(1.1)
+					util.Effect( "gdcw_bloodychunkyviolence", effectdata ) 	// Nothing violent here!
+					util.Effect( "BloodImpact", effectdata )			// Nothing violent here either!
 				end
 
 	local trace = {}
@@ -111,7 +114,7 @@ function ENT:Think()
 		end
 
 		if !pr.StartSolid and tr.Hit and self.penetrate>0 and !pr.Entity:IsPlayer() and !pr.Entity:IsNPC() then
-				util.BlastDamage(self.Entity, self.Owner, pr.HitPos, 60, 10)
+				util.BlastDamage(self.Entity, self.Entity, pr.HitPos, 60, 10)
 				self.Entity:SetPos(pr.HitPos + self.flightvector:GetNormalized()*10)
 					local effectdata = EffectData()
 					effectdata:SetOrigin(pr.HitPos)

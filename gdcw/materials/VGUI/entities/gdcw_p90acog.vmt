@@ -1,4 +1,4 @@
-"LightmappedGeneric"
+"UnlitGeneric"
 {
 	"$basetexture" "VGUI/entities/gdcw_p90acog"
 	"$translucent" 1

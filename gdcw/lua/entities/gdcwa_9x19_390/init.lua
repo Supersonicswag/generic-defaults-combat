@@ -18,7 +18,7 @@ function ENT:Initialize()
 
 math.randomseed(CurTime())
 self.smoking = false
-self.Owner = self:GetOwner() or self.Entity
+self.Owner = self:GetOwner()
 self.penetrate = 5
 self.flightvector = self.Entity:GetUp() * ((390*39.37)/66)             	-- Velocity in m/s, inches to meters conversion, ticks per second.FIRST NUMMER = SPEED
 
@@ -58,7 +58,7 @@ function ENT:Think()
 
 
 					if tr.Hit and !tr.Entity:IsPlayer() and !tr.Entity:IsNPC() then
-					util.BlastDamage(self.Entity, self.Owner or self.Entity, tr.HitPos, 30, 10)
+					util.BlastDamage(self.Entity, self.Entity, tr.HitPos, 30, 10)
 					local effectdata = EffectData()
 					effectdata:SetOrigin(tr.HitPos)
 					effectdata:SetNormal(tr.HitNormal)
@@ -78,8 +78,11 @@ function ENT:Think()
 					dmginfo:SetDamageForce( self.flightvector/100 ) 	--A few newtons...
 				tr.Entity:TakeDamageInfo( dmginfo ) 			--Take damage!
 					local effectdata = EffectData()
-					effectdata:SetOrigin( tr.HitPos )
-					util.Effect( "BloodImpact", effectdata )
+					effectdata:SetOrigin(tr.HitPos)
+					effectdata:SetNormal(self.flightvector:GetNormalized())
+					effectdata:SetScale(0.9)
+					util.Effect( "gdcw_bloodychunkyviolence", effectdata ) 	// Nothing violent here!
+					util.Effect( "BloodImpact", effectdata )			// Nothing violent here either!
 				end
 
 	local trace = {}
