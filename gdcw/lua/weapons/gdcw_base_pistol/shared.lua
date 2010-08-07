@@ -205,7 +205,7 @@ end
 /*---------------------------------------------------------
 GetViewModelPosition
 ---------------------------------------------------------*/
-local IRONSIGHT_TIME = 0.3
+local IRONSIGHT_TIME = 0.2
 -- Time to enter in the ironsight mod
 
 function SWEP:GetViewModelPosition(pos, ang)

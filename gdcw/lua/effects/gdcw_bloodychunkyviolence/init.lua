@@ -16,8 +16,8 @@
 	
 		local Debris = self.Emitter:Add( "effects/fleck_cement"..math.random(1,2), self.Origin+(self.DirVec*5) )
 		if (Debris) then
-			Debris:SetVelocity ( self.DirVec * math.random(70,400*self.Scale) + VectorRand():GetNormalized() * 80*self.Scale )
-			Debris:SetDieTime( math.random( 0.3, 0.7) )
+			Debris:SetVelocity ( self.DirVec * math.random(50,300*self.Scale) + VectorRand():GetNormalized() * 50*self.Scale )
+			Debris:SetDieTime( math.random( 0.3, 0.6) )
 			Debris:SetStartAlpha( 255 )
 			Debris:SetEndAlpha( 0 )
 			Debris:SetStartSize( 4*self.Scale )
