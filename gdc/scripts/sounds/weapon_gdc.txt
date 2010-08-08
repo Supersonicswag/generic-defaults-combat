@@ -12,7 +12,7 @@
 	"volume"				"1.0"
 	"pitch"				"PITCH_NORM"
 	"soundlevel"			"SNDLVL_155dB"
-	"wave"				"^GDC/50cal.wav"
+	"wave"				")GDC/50cal.wav"
 }
 "Bushmaster.Single"
 {
@@ -132,7 +132,7 @@
 	"volume"				"1.0"
 	"pitch"				"PITCH_NORM"
 	"soundlevel"			"SNDLVL_155dB"
-	"wave"				"^GDC/GAU19.wav"
+	"wave"				"^GDC/M2BASS.wav"
 }
 "Explosion.Boom"
 {

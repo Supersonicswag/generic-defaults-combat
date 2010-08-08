@@ -14,17 +14,16 @@
 
 	WorldSound( "Explosion.Boom", self.Origin)
 		
-	for i=0, 7*self.Radius do
+	for i=0, 10*self.Radius do
 	
 		local Smoke = self.Emitter:Add( "particles/smokey", self.Origin )
 		if (Smoke) then
-			Smoke:SetVelocity( self.DirVec * math.random( 30,120*self.Radius) + VectorRand() * math.random( 50,100*self.Radius) )
-			Smoke:SetLifeTime( 0 )
-			Smoke:SetDieTime( math.Rand( 2 , 4 )*self.Radius/3  )
-			Smoke:SetStartAlpha( math.Rand( 50, 100 ) )
+			Smoke:SetVelocity( self.DirVec * math.random( 30,120*self.Radius) + VectorRand():GetNormalized() * math.random( 50,100*self.Radius) )
+			Smoke:SetDieTime( math.Rand( 0.5 , 1 )*self.Radius  )
+			Smoke:SetStartAlpha( math.Rand( 50, 70 ) )
 			Smoke:SetEndAlpha( 0 )
-			Smoke:SetStartSize( 5*self.Scale )
-			Smoke:SetEndSize( 50*self.Radius )
+			Smoke:SetStartSize( 10*self.Scale )
+			Smoke:SetEndSize( 30*self.Radius )
 			Smoke:SetRoll( math.Rand(150, 360) )
 			Smoke:SetRollDelta( math.Rand(-2, 2) )			
 			Smoke:SetAirResistance( 100 ) 			 
@@ -38,7 +37,7 @@
 	 
 		local Flame = self.Emitter:Add( "effects/fire_cloud1", self.Origin)
 		if (Flame) then
-			Flame:SetVelocity( VectorRand() * math.random(100,200*self.Radius) )
+			Flame:SetVelocity( VectorRand():GetNormalized() * math.random(100,200*self.Radius) )
 			Flame:SetLifeTime( 0 )
 			Flame:SetDieTime( 0.2 )
 			Flame:SetStartAlpha( math.Rand( 50, 255 ) )
@@ -54,10 +53,10 @@
 		
 	end
 	
-	for i=0, 3*self.Radius do
+	for i=0, 5*self.Radius do
 		local Whisp = self.Emitter:Add( "particles/smokey", self.Origin )
 			if (Whisp) then
-				Whisp:SetVelocity(VectorRand() * math.random( 100,200*self.Radius) )
+				Whisp:SetVelocity(VectorRand():GetNormalized() * math.random( 300,600*self.Radius) )
 				Whisp:SetDieTime( math.Rand( 4 , 10 )*self.Scale/2  )
 				Whisp:SetStartAlpha( math.Rand( 35, 50 ) )
 				Whisp:SetEndAlpha( 0 )
@@ -65,9 +64,11 @@
 				Whisp:SetEndSize( 100*self.Radius )
 				Whisp:SetRoll( math.Rand(150, 360) )
 				Whisp:SetRollDelta( math.Rand(-2, 2) )			
-				Whisp:SetAirResistance( 200 ) 			 
-				Whisp:SetGravity( Vector( math.random(-60,60)*self.Radius, math.random(-60,60)*self.Radius, 0 ) ) 			
+				Whisp:SetAirResistance( 300 ) 			 
+				Whisp:SetGravity( Vector( math.random(-40,40)*self.Radius, math.random(-40,40)*self.Radius, 0 ) ) 			
 				Whisp:SetColor( 150,150,150 )
+				Whisp:SetCollide( true )
+				Whisp:SetBounce( 1 )	
 			end
 	end
 
@@ -83,7 +84,7 @@
 				if (Smoke) then
 					Smoke:SetVelocity( ShootVector * math.Rand(10,500*self.Radius) )
 					Smoke:SetLifeTime( 0 )
-					Smoke:SetDieTime( math.Rand( 2 , 5 )*self.Radius /2 )
+					Smoke:SetDieTime( math.Rand( 1 , 3 )*self.Radius  )
 					Smoke:SetStartAlpha( math.Rand( 60, 90 ) )
 					Smoke:SetEndAlpha( 0 )
 					Smoke:SetStartSize( 25*self.Scale )

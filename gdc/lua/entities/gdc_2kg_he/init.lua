@@ -28,26 +28,25 @@ function ENT:Initialize()
 	self.Entity:SetOwner(self.owner)
 	local phys = self.Entity:GetPhysicsObject()
 	if phys:IsValid() then 
-		phys:Wake()
+	phys:Wake()
 	end
+   	self.Inputs = Wire_CreateInputs ( self.Entity, { "Detonate" } )
 
-      self.Inputs = Wire_CreateInputs ( self.Entity, { "Detonate" } )
 end
 
 
 function ENT:Think()
 
-        if self.infire then
+        if self.infire then			
 		local effectdata = EffectData()
-			effectdata:SetOrigin( self.Entity:GetPos() )
-			effectdata:SetStart(self.Entity:GetUp())
-		util.Effect( "gdca_70mmhydra_effect1", effectdata )
-		util.Effect( "gdca_70mmhydra_effect2", effectdata )
-		util.ScreenShake(self.Entity:GetPos(), 20, 5, 1, 2000 )
-		self.Entity:EmitSound( "Explosion.Boom")
-		self.Entity:EmitSound( "Explosion.Boom")
+		effectdata:SetOrigin(self.Entity:GetPos())
+		effectdata:SetScale(3)			// Size of cloud
+		effectdata:SetRadius(3)			// Size of ring
+		effectdata:SetMagnitude(200)			// Size of flash
+		util.Effect( "gdca_airburst", effectdata )
+		util.ScreenShake(self.Entity:GetPos(), 20, 5, 1, 3000 )
 		cbt_hcgexplode( self.Entity:GetPos(), 600, 500, 7)
-		util.BlastDamage(self.Entity, self.Entity, self.Entity:GetPos(), 1000, 200)
+		util.BlastDamage(self.Entity, self.Entity, self.Entity:GetPos(), 1100, 200)
 		self.Entity:Remove()
 	end
 end

@@ -39,15 +39,14 @@ function ENT:Think()
 
         if self.infire then
 		local effectdata = EffectData()
-			effectdata:SetOrigin( self.Entity:GetPos() )
-			effectdata:SetStart(self.Entity:GetUp())
-		util.Effect( "gdca_40x311_effect", effectdata )
-		util.Effect( "gdca_sparks", effectdata )
-		util.ScreenShake(self.Entity:GetPos(), 25, 5, 1, 1000 )
-		self.Entity:EmitSound( "Explosion.Boom")
-		self.Entity:EmitSound( "Explosion.Boom")
-		cbt_hcgexplode( self.Entity:GetPos(), 200, 1500, 10)
-		util.BlastDamage(self.Entity, self.Entity, self.Entity:GetPos(), 500, 200)
+		effectdata:SetOrigin(self.Entity:GetPos())
+		effectdata:SetScale(2)			// Size of cloud
+		effectdata:SetRadius(2)			// Size of ring
+		effectdata:SetMagnitude(200)			// Size of flash
+		util.Effect( "gdca_airburst", effectdata )
+		util.ScreenShake(self.Entity:GetPos(), 25, 5, 1, 2000 )
+		cbt_hcgexplode( self.Entity:GetPos(), 300, 1500, 10)			// Position, Radius, Damage, Pieece?
+		util.BlastDamage(self.Entity, self.Entity, self.Entity:GetPos(), 600, 200)
 		self.Entity:Remove()
 	end
 end

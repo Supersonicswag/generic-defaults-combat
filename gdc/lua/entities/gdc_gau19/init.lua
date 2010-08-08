@@ -5,7 +5,7 @@ AddCSLuaFile( "shared.lua" )
 include('entities/base_wire_entity/init.lua'); 
 include('shared.lua')
 
-util.PrecacheSound("50cal.single")
+util.PrecacheSound("GAU19.single")
 
 function ENT:Initialize()   
 
@@ -69,7 +69,7 @@ function ENT:fire()
 		effectdata:SetScale(0.4)
 		util.Effect( "gdca_muzzle", effectdata )
 		util.ScreenShake(self.Entity:GetPos(), 12, 5, 0.2, 200 )
-		WorldSound( "Explosion.Boom", self.Entity:GetPos())
+		self.Entity:EmitSound( "GAU19.Single" )
 	
 
 end

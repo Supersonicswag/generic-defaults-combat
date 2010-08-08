@@ -5,8 +5,6 @@ AddCSLuaFile( "shared.lua" )
 include('entities/base_wire_entity/init.lua'); 
 include('shared.lua')
 
-util.PrecacheSound("arty/cannon.wav")
-
 function ENT:Initialize()   
 
 	self.ammomodel = "models/props_c17/canister01a.mdl"
@@ -64,9 +62,9 @@ function ENT:fire()
 		effectdata:SetOrigin(self.Entity:GetPos() +  self.Entity:GetUp() * 30)
 		effectdata:SetNormal(self:GetUp())
 		effectdata:SetScale(0.4)
-		util.Effect( "gdca_muzzle", effectdata )
+		util.Effect( "gdca_m2hbmuzzle", effectdata )
 		util.ScreenShake(self.Entity:GetPos(), 12, 5, 0.2, 200 )
-		self.Entity:EmitSound( "50cal.single" )
+
 	
 end
 
@@ -87,9 +85,9 @@ function ENT:firetracer()
 		effectdata:SetOrigin(self.Entity:GetPos() +  self.Entity:GetUp() * 30)
 		effectdata:SetNormal(self:GetUp())
 		effectdata:SetScale(0.4)
-		util.Effect( "gdca_muzzle", effectdata )
+		util.Effect( "gdca_m2hbmuzzle", effectdata )
 		util.ScreenShake(self.Entity:GetPos(), 12, 5, 0.2, 200 )
-		self.Entity:EmitSound( "50cal.single" )
+
 	
 
 end

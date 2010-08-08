@@ -61,7 +61,7 @@ function ENT:Think()
 			util.Decal("ExplosiveGunshot", tr.HitPos + tr.HitNormal, tr.HitPos - tr.HitNormal)
 
 			if (tr.Entity:IsValid()) then
-			local attack = gcombat.hcghit( tr.Entity, 150, 100, tr.HitPos, tr.HitPos)
+			local attack = gcombat.hcghit( tr.Entity, 100, 15, tr.HitPos, tr.HitPos)
 			end
 
 			self.Entity:Remove()

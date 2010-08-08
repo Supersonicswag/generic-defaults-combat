@@ -19,7 +19,7 @@
 	
 		local Smoke = self.Emitter:Add( "particle/particle_smokegrenade", self.Origin )
 		if (Smoke) then
-			Smoke:SetVelocity( self.DirVec * math.random( 200,700*self.Scale) + VectorRand()*250*self.Scale )
+			Smoke:SetVelocity( self.DirVec * math.random( 200,700*self.Scale) + VectorRand():GetNormalized()*250*self.Scale )
 			Smoke:SetDieTime( math.Rand( 13 , 20 ) )
 			Smoke:SetStartAlpha( math.Rand( 100, 120 ) )
 			Smoke:SetEndAlpha( 0 )

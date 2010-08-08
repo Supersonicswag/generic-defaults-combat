@@ -1,5 +1,5 @@
 
-TOOL.Category		= "GCX"
+TOOL.Category		= "GDC"
 TOOL.Name			= "#Generic Defaults Combat"
 TOOL.Command		= nil
 TOOL.ConfigName		= ""
@@ -29,10 +29,10 @@ if ( CLIENT ) then
 	language.Add( "Tool_gdcweapons_help7", "7 RPM, 7 Salvo, High Explosive/White Phosphorus" )
 	language.Add( "Tool_gdcweapons_help8", "8 RPM, High Explosive/White Phosphorus" )
 	language.Add( "Tool_gdcweapons_help9", "1200 RPM, Armor Piercing Incindiary, Overheats after 25 rounds" )
-	language.Add( "Tool_gdcweapons_help10", "25 meter blast radius. Effective against infantry" )
+	language.Add( "Tool_gdcweapons_help10", "30 meter blast radius. Effective against infantry" )
 	language.Add( "Tool_gdcweapons_help11", "1500 RPM, Tracer/Ball, Overheats after 75 rounds" )
 	language.Add( "Tool_gdcweapons_help12", "8 RPM, High Explosive Anti-Tank/SABOT" )
-	language.Add( "Tool_gdcweapons_help13", "Powerful 5m blast radius. Effective against armored vehicles." )
+	language.Add( "Tool_gdcweapons_help13", "Powerful 15m blast radius. Effective against vehicles" )
 	language.Add( "Tool_gdcweapons_help14", "20 RPM, High Explosive/White Phosphorus" )
 	language.Add( "Tool_gdcweapons_help15", "300 RPM, High Explosive/High Explosive Dual Purpose" )
 	language.Add( "Tool_gdcweapons_help16", "30 RPM, High Explosive" )
@@ -42,9 +42,7 @@ if ( CLIENT ) then
 
 
 	language.Add( "Tool_turret_type", "Type of weapon" )
-	
 	language.Add( "Undone_gdcweapons", "Undone weapon" )
-	
 	language.Add( "Cleanup_gdcweapons", "Weapon" )
 	language.Add( "Cleaned_gdcweapons", "Cleaned up all Weapons" )
 	language.Add( "SBoxLimit_gcombats", "You've reached the Weapon limit!" )
@@ -65,7 +63,7 @@ if ( !trace.Hit ) then return end
 	
 	local gdcweaponsindex	= self:GetClientNumber( "gdcweaponsindex" ) 
 	
-	local SpawnPos = trace.HitPos + trace.HitNormal * 5
+	local SpawnPos = trace.HitPos + trace.HitNormal * 50
 
 	if (gdcweaponsindex == 0) then
 	self.ent = ents.Create( "gdc_m240" )
@@ -192,7 +190,7 @@ if ( !trace.Hit ) then return end
 	
 	
 	local phys = self.ent:GetPhysicsObject()  	
-	if (phys:IsValid()) then  		
+	if (phys:IsValid() and trace.Entity:IsValid()) then  		
 		local weld = constraint.Weld(self.ent, trace.Entity, 0, trace.PhysicsBone, 0)
 		local nocollide = constraint.NoCollide(self.ent, trace.Entity, 0, trace.PhysicsBone)
 	end 
@@ -222,7 +220,7 @@ if ( !trace.Hit ) then return end
 	
 	local gdcweaponsindex	= self:GetClientNumber( "gdcweaponsindex" ) 
 	
-	local SpawnPos = trace.HitPos + trace.HitNormal * 5
+	local SpawnPos = trace.HitPos + trace.HitNormal * 50
 
 	if (gdcweaponsindex == 0) then
 	self.ent = ents.Create( "gdc_m240" )
