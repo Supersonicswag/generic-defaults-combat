@@ -31,7 +31,7 @@
 				particle:SetRollDelta( math.Rand(-1, 1) )
 				particle:SetColor( 200 , 200 , 200 ) 
  				particle:SetAirResistance( 100 ) 
- 				particle:SetGravity( Vector( 100, 0, 0 ) ) 
+ 				particle:SetGravity( VectorRand():GetNormalized()*math.Rand(50, 100) ) 
 			end
 
 			for i=1, 7 do

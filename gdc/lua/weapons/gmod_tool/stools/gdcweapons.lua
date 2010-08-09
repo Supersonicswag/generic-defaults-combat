@@ -39,6 +39,7 @@ if ( CLIENT ) then
 	language.Add( "Tool_gdcweapons_help17", "12 RPM, High Explosive. IR Guided, GPS Guided, No coordinates will fire straight. BE CAREFUL! Don't fire at anything with unwanted targets in the general direction!" )
 	language.Add( "Tool_gdcweapons_help18", "~1100 RPM, Tracer/Ball, Overheats after 50 rounds" )
 	language.Add( "Tool_gdcweapons_help19", "Smoke deployer." )
+	language.Add( "Tool_gdcweapons_help20", "Flare deployer, 10 salvo. Flares can be used as smoke, signals, or IR jammers (GMLS will track it)" )
 
 
 	language.Add( "Tool_turret_type", "Type of weapon" )
@@ -52,7 +53,7 @@ end
 function TOOL:LeftClick( trace )
 local ply = self:GetOwner()
 if FIELDS == nil and COMBATDAMAGEENGINE == nil then
-	ply:PrintMessage( HUD_PRINTCENTER, "You need Gcombat Core to use GCX" )  
+	ply:PrintMessage( HUD_PRINTCENTER, "You need Gcombat Core to use GDC" )  
 	return 
 end
 if (!ply:CheckLimit( "gcombat" )) then return end
@@ -181,6 +182,12 @@ if ( !trace.Hit ) then return end
 	self.ent:Activate()
 							elseif (gdcweaponsindex == 19) then
 	self.ent = ents.Create( "gdc_smokepoppa" )
+		self.ent:SetPos( SpawnPos )
+		self.ent:SetAngles( trace.HitNormal:Angle() + Angle(90,0,0))
+	self.ent:Spawn()
+	self.ent:Activate()
+							elseif (gdcweaponsindex == 20) then
+	self.ent = ents.Create( "gdc_flarepoppa" )
 		self.ent:SetPos( SpawnPos )
 		self.ent:SetAngles( trace.HitNormal:Angle() + Angle(90,0,0))
 	self.ent:Spawn()
@@ -342,6 +349,13 @@ if ( !trace.Hit ) then return end
 		self.ent:SetAngles( trace.HitNormal:Angle() + Angle(90,0,0))
 	self.ent:Spawn()
 	self.ent:Activate()
+							elseif (gdcweaponsindex == 20) then
+	self.ent = ents.Create( "gdc_flarepoppa" )
+		self.ent:SetPos( SpawnPos )
+		self.ent:SetAngles( trace.HitNormal:Angle() + Angle(90,0,0))
+	self.ent:Spawn()
+	self.ent:Activate()
+
 	end
 
 	ply:AddCount( "gcombat", self.ent )
@@ -392,6 +406,7 @@ function TOOL.BuildCPanel( CPanel )
 		Ctype["Options"]["#84mm GML"]		= { gdcweapons_gdcweaponsindex = "17" }
 		Ctype["Options"]["#GAU-19 12.7mm"]		= { gdcweapons_gdcweaponsindex = "18" }
 		Ctype["Options"]["#Smoke Deployer"]		= { gdcweapons_gdcweaponsindex = "19" }
+		Ctype["Options"]["#Flare Deployer"]		= { gdcweapons_gdcweaponsindex = "20" }
 
 	CPanel:AddControl("ComboBox", Ctype )
 	
