@@ -17,7 +17,7 @@
 	
 		local Smoke = self.Emitter:Add( "particles/smokey", self.Origin )
 		if (Smoke) then
-			Smoke:SetVelocity( self.DirVec * math.random( 0,500*self.Scale) + VectorRand()*100*self.Scale )
+			Smoke:SetVelocity( self.DirVec * math.random( 0,500*self.Scale) + VectorRand():GetNormalized()*100*self.Scale )
 			Smoke:SetDieTime( math.Rand( 1 , 2.5 )*self.Scale )
 			Smoke:SetStartAlpha( math.Rand( 80, 100 ) )
 			Smoke:SetEndAlpha( 0 )
@@ -26,22 +26,38 @@
 			Smoke:SetRoll( math.Rand(150, 360) )
 			Smoke:SetRollDelta( math.Rand(-2, 2) )			
 			Smoke:SetAirResistance( 300 ) 			 
-			Smoke:SetGravity( Vector( math.Rand(-100, 100) * self.Scale, math.Rand(-100, 100) * self.Scale, math.Rand(0, -100) ) ) 			
-			Smoke:SetColor( 140,135,125 )
-
+			Smoke:SetGravity( Vector( math.Rand(-70, 70) * self.Scale, math.Rand(-70, 70) * self.Scale, math.Rand(0, -100) ) ) 			
+			Smoke:SetColor( 130,125,115 )
 		end
-	
 	end
 
-	for i=0, 12*self.Scale do
+	for i=0, 10*self.Scale do
+	
+		local Smoke = self.Emitter:Add( "particle/particle_composite", self.Origin )
+		if (Smoke) then
+			Smoke:SetVelocity( self.DirVec * math.random( 0,400*self.Scale) + VectorRand():GetNormalized()*20*self.Scale )
+			Smoke:SetDieTime( math.Rand( 0.5 , 1.5 )*self.Scale )
+			Smoke:SetStartAlpha( 150 )
+			Smoke:SetEndAlpha( 0 )
+			Smoke:SetStartSize( 20*self.Scale )
+			Smoke:SetEndSize( 30*self.Scale )
+			Smoke:SetRoll( math.Rand(150, 360) )
+			Smoke:SetRollDelta( math.Rand(-2, 2) )			
+			Smoke:SetAirResistance( 400 ) 			 
+			Smoke:SetGravity( Vector( math.Rand(-50, 50) * self.Scale, math.Rand(-50, 50) * self.Scale, math.Rand(0, -100) ) ) 			
+			Smoke:SetColor( 105,100,90 )
+		end
+	end
+
+	for i=0, 10*self.Scale do
 	
 		local Debris = self.Emitter:Add( "effects/fleck_cement"..math.random(1,2), self.Origin )
 		if (Debris) then
-			Debris:SetVelocity ( self.DirVec * math.random(200,300*self.Scale) + VectorRand() * 300*self.Scale )
+			Debris:SetVelocity ( self.DirVec * math.random(200,300*self.Scale) + VectorRand():GetNormalized() * 300*self.Scale )
 			Debris:SetDieTime( math.random( 0.6, 1) )
 			Debris:SetStartAlpha( 255 )
 			Debris:SetEndAlpha( 0 )
-			Debris:SetStartSize( math.random(1,5*self.Scale) )
+			Debris:SetStartSize( math.random(2,5*self.Scale) )
 			Debris:SetRoll( math.Rand(0, 360) )
 			Debris:SetRollDelta( math.Rand(-5, 5) )			
 			Debris:SetAirResistance( 50 ) 			 			
@@ -49,7 +65,6 @@
 			Debris:SetGravity( Vector( 0, 0, -600) ) 
 			Debris:SetCollide( true )
 			Debris:SetBounce( 1 )			
-
 		end
 	end
 	

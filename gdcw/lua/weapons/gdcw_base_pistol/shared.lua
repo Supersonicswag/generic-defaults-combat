@@ -119,9 +119,10 @@ function SWEP:SecondaryAttack()
 end
 
 function SWEP:Reload()
-
+	
 	self.Weapon:DefaultReload(ACT_VM_RELOAD) 
-	-- Animation when you're reloading
+	if !self.Owner:IsNPC() then
+	self.Idle = CurTime() + self.Owner:GetViewModel():SequenceDuration() end
 
 	if ( self.Weapon:Clip1() < self.Primary.ClipSize ) and !self.Owner:IsNPC() then
 	-- When the current clip < full clip and the rest of your ammo > 0, then
@@ -200,6 +201,11 @@ Think
 function SWEP:Think()
 
 	self:IronSight()
+	if !self.Owner:IsNPC() then
+	if self.Idle and CurTime() >= self.Idle then
+	self.Idle = nil
+	self:SendWeaponAnim(ACT_VM_IDLE)
+	end end
 end
 
 /*---------------------------------------------------------

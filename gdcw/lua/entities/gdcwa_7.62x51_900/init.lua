@@ -116,12 +116,12 @@ function ENT:Think()
 		trace.filter = self.Entity 
 	local pr = util.TraceLine( trace )
 
-		if pr.StartSolid || tr.Hit and !pr.Hit || self.penetrate<0 then
-		self.Entity:Remove()
-		end
-
 		if tr.Hit and pr.Hit then
 		self.penetrate = self.penetrate - (tr.HitPos:Distance(pr.HitPos))
+		end
+
+		if pr.StartSolid || tr.Hit and !pr.Hit || self.penetrate<0 then
+		self.Entity:Remove()
 		end
 
 		if !pr.StartSolid and tr.Hit and self.penetrate>0 and !pr.Entity:IsPlayer() and !pr.Entity:IsNPC() then

@@ -73,3 +73,4 @@ That's it for the readme! If you didn't just skip to the bottom you probably was
 [R103]	- Fixed pistols so they now work with metrocops and NPCs.
 [R109]	- A few new thangs.
 [R118]	- Fixed kill credit (I HOPE!). Added beta M240 and HK21 for the upcomming machine guns pack. Also changed a few minor thangs.
+[R137]	- Added an unscoped bolt action awp and M76. Added gritty dirt stuff to hit effects so they look better.
