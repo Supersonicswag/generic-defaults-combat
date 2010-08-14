@@ -29,7 +29,7 @@
 			Smoke:SetAirResistance( 400 ) 			 		
 			Smoke:SetColor( 60,55,45 )
 			Smoke:SetCollide( true )
-			Smoke:SetBounce( 0.7 )
+			Smoke:SetBounce( 1 )
 		end
 	
 	end
@@ -74,7 +74,7 @@
 		end
 	end
 
-		for i=1,5 do 
+		for i=1,8 do 
 			local Flash = self.Emitter:Add( "effects/muzzleflash"..math.random(1,4), self.Origin )
 			if (Flash) then
 				Flash:SetVelocity( VectorRand() )

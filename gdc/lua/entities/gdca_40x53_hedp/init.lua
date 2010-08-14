@@ -11,6 +11,7 @@ self.Entity:SetModel( "models/combatmodels/tankshell_40mm.mdl" )
 self.Entity:PhysicsInit( SOLID_VPHYSICS )      -- Make us work with physics,  	
 self.Entity:SetMoveType( MOVETYPE_NONE )   --after all, gmod is a physics  	
 self.Entity:SetSolid( SOLID_VPHYSICS )        -- CHEESECAKE!    >:3            
+self.Entity:SetColor(255,255,0,255)
 
 self:Think()
  
@@ -51,7 +52,7 @@ function ENT:Think()
 			end
 
 				if (tr.Hit) then
-					util.BlastDamage(self.Entity, self.Entity, tr.HitPos, 350, 50)
+					util.BlastDamage(self.Entity, self.Entity, tr.HitPos, 350, 80)
 					local effectdata = EffectData()
 					effectdata:SetOrigin(tr.HitPos)
 					effectdata:SetNormal(tr.HitNormal)
@@ -62,10 +63,9 @@ function ENT:Think()
 					util.ScreenShake(tr.HitPos, 10, 5, 1, 700 )
 					util.Decal("Scorch", tr.HitPos + tr.HitNormal, tr.HitPos - tr.HitNormal)
 
-					cbt_hcgexplode( tr.HitPos, 100, 300, 6)
-
 					if (tr.Entity:IsValid()) then
-					cbt_dealhcghit( tr.Entity, 250, 15, tr.HitPos , tr.HitPos)	
+					cbt_hcgexplode( tr.HitPos, 200, 200, 6)		// Radius, Damage
+					gcombat.hcghit( tr.Entity, 200, 15, tr.HitPos, tr.HitPos) 	// Entity, Damage, Pierce
 					end
 
 					self.Entity:Remove()

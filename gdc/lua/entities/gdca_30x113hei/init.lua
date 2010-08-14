@@ -34,7 +34,7 @@ function ENT:Think()
 			end	
 
 				if (tr.Hit) then
-					util.BlastDamage(self.Entity, self.Entity, tr.HitPos, 300, 50)
+					util.BlastDamage(self.Entity, self.Entity, tr.HitPos, 300, 75)
 					local effectdata = EffectData()
 					effectdata:SetOrigin(tr.HitPos)
 					effectdata:SetNormal(tr.HitNormal)
@@ -45,7 +45,7 @@ function ENT:Think()
 					util.ScreenShake(tr.HitPos, 10, 5, 0.5, 1000 )
 					util.Decal("Scorch", tr.HitPos + tr.HitNormal, tr.HitPos - tr.HitNormal)
 			
-					gcombat.hcgexplode( tr.HitPos, 40, 100, 6)
+					cbt_hcgexplode( tr.HitPos, 40, 100, 7)		// Radius, Damage
 					self.Entity:Remove()
 					end
 

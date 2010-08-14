@@ -18,37 +18,37 @@
  function ENT:Think()
 	
 	pos = self:GetPos()
-		for i=1, 1 do
-			local particle = self.emitter:Add( "particle/particle_smokegrenade", pos)
+		for i=0, (6) do
+			local particle = self.emitter:Add( "particle/particle_smokegrenade", pos + (self:GetUp() * -80 * i))
 			if (particle) then
-				particle:SetVelocity(self:GetUp() )
-				particle:SetDieTime( math.Rand( 3, 7 ) )
-				particle:SetStartAlpha( math.Rand( 40, 60 ) )
+				particle:SetVelocity((self:GetUp() * -1000)+VectorRand():GetNormalized()*math.Rand(50, 100) )
+				particle:SetDieTime( math.Rand( 2, 5 ) )
+				particle:SetStartAlpha( math.Rand( 60, 80 ) )
 				particle:SetEndAlpha( 0 )
-				particle:SetStartSize( 50 )
-				particle:SetEndSize( math.Rand( 300, 350 ) )
+				particle:SetStartSize( math.Rand( 60, 70 ) )
+				particle:SetEndSize( math.Rand( 170, 200 ) )
 				particle:SetRoll( math.Rand(0, 360) )
 				particle:SetRollDelta( math.Rand(-1, 1) )
-				particle:SetColor( 230 , 230 , 230 ) 
+				particle:SetColor( 200 , 200 , 200 ) 
  				particle:SetAirResistance( 100 ) 
- 				particle:SetGravity( VectorRand():GetNormalized()*math.Rand(50, 200) ) 	
+ 				particle:SetGravity( VectorRand():GetNormalized()*math.Rand(20, 70) ) 
 			end
 
-			for i=1, 2 do
-				local particle = self.emitter:Add( "effects/fire_cloud1", pos )
-				particle:SetVelocity(self:GetUp() )
-				particle:SetDieTime( 0.15 )
+			for i=1, 10 do
+				local particle = self.emitter:Add( "particles/flamelet"..math.random(1,5), pos + (self:GetUp() * -40 * i) )
+
+				particle:SetVelocity((self:GetUp() * -1000)+VectorRand():GetNormalized()*math.Rand(70, 120) )
+				particle:SetDieTime( 0.07 )
 				particle:SetStartAlpha( 255 )
 				particle:SetEndAlpha( 0 )
-				particle:SetStartSize( 50 )
-				particle:SetEndSize( math.Rand( 55, 65 ) )
+				particle:SetStartSize( 25 )
+				particle:SetEndSize( math.Rand( 35, 45 ) )
 				particle:SetRoll( math.Rand( -5, 5 ) )
 				particle:SetRollDelta( 0 )
-				particle:SetAirResistance(10)
+				particle:SetAirResistance(50)
 				particle:SetColor( 255,255,255 )
 
-		end
+			end
 		
-	end
-
+		end
 end

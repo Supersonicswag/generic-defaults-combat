@@ -4,7 +4,7 @@
 	"volume"				"1.0"
 	"pitch"				"PITCH_NORM"
 	"soundlevel"			"SNDLVL_155dB"
-	"wave"				"^GDC/30cal.wav"
+	"wave"				")GDC/30cal.wav"
 }
 "50cal.Single"
 {
@@ -20,7 +20,7 @@
 	"volume"				"1.0"
 	"pitch"				"99, 101"
 	"soundlevel"			"SNDLVL_155dB"
-	"wave"				"^GDC/Bushmaster.wav"
+	"wave"				")GDC/Bushmaster.wav"
 }
 "Bofors.Single"
 {
@@ -28,7 +28,7 @@
 	"volume"				"1.0"
 	"pitch"				"PITCH_NORM"
 	"soundlevel"			"SNDLVL_155dB"
-	"wave"				"^GDC/Bofizzle.wav"
+	"wave"				")GDC/Bofizzle.wav"
 }
 "120mm.Single"
 {
@@ -52,7 +52,7 @@
 	"volume"				"1.0"
 	"pitch"				"PITCH_NORM"
 	"soundlevel"			"SNDLVL_155dB"
-	"wave"				"^GDC/M230.wav"
+	"wave"				")GDC/M230.wav"
 }
 "M197.Single"
 {
@@ -60,7 +60,7 @@
 	"volume"				"1.0"
 	"pitch"				"PITCH_NORM"
 	"soundlevel"			"SNDLVL_155dB"
-	"wave"				"^GDC/M197.wav"
+	"wave"				")GDC/M197.wav"
 }
 "2A42.Single"
 {
@@ -68,7 +68,7 @@
 	"volume"				"1.0"
 	"pitch"				"PITCH_NORM"
 	"soundlevel"			"SNDLVL_155dB"
-	"wave"				"^GDC/2A42.wav"
+	"wave"				")GDC/2A42.wav"
 }
 "GAU12.Single"
 {
@@ -76,7 +76,7 @@
 	"volume"				"1.0"
 	"pitch"				"PITCH_NORM"
 	"soundlevel"			"SNDLVL_155dB"
-	"wave"				"^GDC/GAU12.wav"
+	"wave"				")GDC/GAU12.wav"
 }
 "M134.Single"
 {
@@ -84,7 +84,7 @@
 	"volume"				"1.0"
 	"pitch"				"PITCH_NORM"
 	"soundlevel"			"SNDLVL_155dB"
-	"wave"				"^GDC/M134.wav"
+	"wave"				")GDC/M134.wav"
 }
 "M260.Single"
 {
@@ -92,7 +92,7 @@
 	"volume"				"1.0"
 	"pitch"				"PITCH_NORM"
 	"soundlevel"			"SNDLVL_155dB"
-	"wave"				"^GDC/M260.wav"
+	"wave"				")GDC/M260.wav"
 }
 "81mm.Single"
 {
@@ -100,7 +100,7 @@
 	"volume"				"1.0"
 	"pitch"				"PITCH_NORM"
 	"soundlevel"			"SNDLVL_155dB"
-	"wave"				"^GDC/81mm.wav"
+	"wave"				")GDC/81mm.wav"
 }
 "MK19.Single"
 {
@@ -108,7 +108,7 @@
 	"volume"				"1.0"
 	"pitch"				"PITCH_NORM"
 	"soundlevel"			"SNDLVL_155dB"
-	"wave"				"^GDC/MK19.wav"
+	"wave"				")GDC/MK19.wav"
 }
 "RAM.Single"
 {
@@ -116,7 +116,7 @@
 	"volume"				"1.0"
 	"pitch"				"PITCH_NORM"
 	"soundlevel"			"SNDLVL_155dB"
-	"wave"				"^GDC/RAM.wav"
+	"wave"				")GDC/RAM.wav"
 }
 "GML.Single"
 {
@@ -124,7 +124,7 @@
 	"volume"				"1.0"
 	"pitch"				"PITCH_NORM"
 	"soundlevel"			"SNDLVL_155dB"
-	"wave"				"^GDC/GML.wav"
+	"wave"				")GDC/GML.wav"
 }
 "GAU19.Single"
 {
@@ -132,7 +132,7 @@
 	"volume"				"1.0"
 	"pitch"				"PITCH_NORM"
 	"soundlevel"			"SNDLVL_155dB"
-	"wave"				"^GDC/M2BASS.wav"
+	"wave"				")GDC/M2BASS.wav"
 }
 "Flare.Single"
 {

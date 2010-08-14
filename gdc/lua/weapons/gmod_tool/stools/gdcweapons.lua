@@ -26,7 +26,7 @@ if ( CLIENT ) then
 	language.Add( "Tool_gdcweapons_help4", "~600 RPM, High Explosive Incindiary" )
 	language.Add( "Tool_gdcweapons_help5", "200 RPM, High Explosive" )
 	language.Add( "Tool_gdcweapons_help6", "120 RPM, High Explosive" )
-	language.Add( "Tool_gdcweapons_help7", "7 RPM, 7 Salvo, High Explosive/White Phosphorus" )
+	language.Add( "Tool_gdcweapons_help7", "7 RPS, 7 Salvo, High Explosive/White Phosphorus" )
 	language.Add( "Tool_gdcweapons_help8", "8 RPM, High Explosive/White Phosphorus" )
 	language.Add( "Tool_gdcweapons_help9", "1200 RPM, Armor Piercing Incindiary, Overheats after 25 rounds" )
 	language.Add( "Tool_gdcweapons_help10", "30 meter blast radius. Effective against infantry" )
@@ -40,6 +40,8 @@ if ( CLIENT ) then
 	language.Add( "Tool_gdcweapons_help18", "~1100 RPM, Tracer/Ball, Overheats after 50 rounds" )
 	language.Add( "Tool_gdcweapons_help19", "Smoke deployer." )
 	language.Add( "Tool_gdcweapons_help20", "Flare deployer, 10 salvo. Flares can be used as smoke, signals, or IR jammers (GMLS will track it)" )
+	language.Add( "Tool_gdcweapons_help21", "10 RPS, 12 Salvo, High Explosive Fragmentation/High Explosive Anti-Tank" )
+	language.Add( "Tool_gdcweapons_help22", "4 RPS, 8 Salvo, High Explosive Anti-Tank/FAE (Thermobaric)/Penetrator" )
 
 
 	language.Add( "Tool_turret_type", "Type of weapon" )
@@ -188,6 +190,18 @@ if ( !trace.Hit ) then return end
 	self.ent:Activate()
 							elseif (gdcweaponsindex == 20) then
 	self.ent = ents.Create( "gdc_flarepoppa" )
+		self.ent:SetPos( SpawnPos )
+		self.ent:SetAngles( trace.HitNormal:Angle() + Angle(90,0,0))
+	self.ent:Spawn()
+	self.ent:Activate()
+							elseif (gdcweaponsindex == 21) then
+	self.ent = ents.Create( "gdc_ub16" )
+		self.ent:SetPos( SpawnPos )
+		self.ent:SetAngles( trace.HitNormal:Angle() + Angle(90,0,0))
+	self.ent:Spawn()
+	self.ent:Activate()
+							elseif (gdcweaponsindex == 22) then
+	self.ent = ents.Create( "gdc_ub8" )
 		self.ent:SetPos( SpawnPos )
 		self.ent:SetAngles( trace.HitNormal:Angle() + Angle(90,0,0))
 	self.ent:Spawn()
@@ -355,6 +369,18 @@ if ( !trace.Hit ) then return end
 		self.ent:SetAngles( trace.HitNormal:Angle() + Angle(90,0,0))
 	self.ent:Spawn()
 	self.ent:Activate()
+							elseif (gdcweaponsindex == 21) then
+	self.ent = ents.Create( "gdc_ub16" )
+		self.ent:SetPos( SpawnPos )
+		self.ent:SetAngles( trace.HitNormal:Angle() + Angle(90,0,0))
+	self.ent:Spawn()
+	self.ent:Activate()
+							elseif (gdcweaponsindex == 22) then
+	self.ent = ents.Create( "gdc_ub8" )
+		self.ent:SetPos( SpawnPos )
+		self.ent:SetAngles( trace.HitNormal:Angle() + Angle(90,0,0))
+	self.ent:Spawn()
+	self.ent:Activate()
 
 	end
 
@@ -407,6 +433,8 @@ function TOOL.BuildCPanel( CPanel )
 		Ctype["Options"]["#GAU-19 12.7mm"]		= { gdcweapons_gdcweaponsindex = "18" }
 		Ctype["Options"]["#Smoke Deployer"]		= { gdcweapons_gdcweaponsindex = "19" }
 		Ctype["Options"]["#Flare Deployer"]		= { gdcweapons_gdcweaponsindex = "20" }
+		Ctype["Options"]["#UB-16 57mm"]		= { gdcweapons_gdcweaponsindex = "21" }
+		Ctype["Options"]["#UB-8 80mm"]		= { gdcweapons_gdcweaponsindex = "22" }
 
 	CPanel:AddControl("ComboBox", Ctype )
 	

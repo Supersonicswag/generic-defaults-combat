@@ -13,7 +13,7 @@
 	self.Emitter = ParticleEmitter( self.Origin )
 
 	WorldSound( "ambient/explosions/explode_" .. math.random(1, 4) .. ".wav", self.Origin, 100, 100 )
-		
+
 	for i=0, 20*self.Scale do
 	
 		local Smoke = self.Emitter:Add( "particles/smokey", self.Origin )
@@ -32,7 +32,26 @@
 		end
 	
 	end
+
+	for i=0, 20*self.Scale do
 	
+		local Dust = self.Emitter:Add( "particle/particle_composite", self.Origin )
+		if (Dust) then
+			Dust:SetVelocity( self.DirVec * math.random( 200,700*self.Scale) + VectorRand():GetNormalized()*250*self.Scale )
+			Dust:SetDieTime( math.Rand( 0.5 , 1 ) )
+			Dust:SetStartAlpha( 200 )
+			Dust:SetEndAlpha( 0 )
+			Dust:SetStartSize( 40*self.Scale )
+			Dust:SetEndSize( 70*self.Scale )
+			Dust:SetRoll( math.Rand(150, 360) )
+			Dust:SetRollDelta( math.Rand(-1, 1) )			
+			Dust:SetAirResistance( 200 ) 			 
+			Dust:SetGravity( Vector( 0, 0, math.Rand(-100, -400) ) ) 			
+			Dust:SetColor( 60,55,45 )
+		end
+	
+	end
+
 	for i=0, 25*self.Scale do
 	
 		local Debris = self.Emitter:Add( "effects/fleck_cement"..math.random(1,2), self.Origin )
@@ -57,8 +76,8 @@
 	
 		local Shrapnel = self.Emitter:Add( "effects/fleck_cement"..math.random(1,2), self.Origin )
 		if (Shrapnel) then
-			Shrapnel:SetVelocity ( self.DirVec*100*self.Scale + VectorRand():GetNormalized() * 2000*self.Scale )
-			Shrapnel:SetDieTime( math.random( 0.1, 0.3) * self.Scale )
+			Shrapnel:SetVelocity ( self.DirVec*300*self.Scale + VectorRand():GetNormalized() * 2000*self.Scale )
+			Shrapnel:SetDieTime( math.random( 0.3, 0.5) * self.Scale )
 			Shrapnel:SetStartAlpha( 255 )
 			Shrapnel:SetEndAlpha( 0 )
 			Shrapnel:SetStartSize( math.random(4,7*self.Scale) )
@@ -68,7 +87,7 @@
 			Shrapnel:SetColor( 53,50,45 )
 			Shrapnel:SetGravity( Vector( 0, 0, -600) ) 
 			Shrapnel:SetCollide( true )
-			Shrapnel:SetBounce( 1 )			
+			Shrapnel:SetBounce( 1.5 )			
 
 		end
 	end
@@ -89,6 +108,21 @@
 			end
 		end
 
+		for i=1,1 do 
+			local Shockwave = self.Emitter:Add( "sprites/heatwave", self.Origin )
+			if (Shockwave) then
+				Shockwave:SetVelocity( VectorRand() )
+				Shockwave:SetAirResistance( 200 )
+				Shockwave:SetDieTime( 0.2 )
+				Shockwave:SetStartAlpha( 255 )
+				Shockwave:SetEndAlpha( 0 )
+				Shockwave:SetStartSize( self.Magnitude )
+				Shockwave:SetEndSize( self.Magnitude*15 )
+				Shockwave:SetRoll( math.Rand(180,480) )
+				Shockwave:SetRollDelta( math.Rand(-1,1) )
+				Shockwave:SetColor(255,255,255)	
+			end
+		end
  end 
    
    

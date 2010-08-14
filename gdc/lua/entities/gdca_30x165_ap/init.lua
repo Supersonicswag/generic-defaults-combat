@@ -7,8 +7,8 @@ include('shared.lua')
 function ENT:Initialize()   
 
 math.randomseed(CurTime())
-self.penetrate = 20
-self.flightvector = self.Entity:GetUp() * 550
+self.penetrate = 30
+self.flightvector = self.Entity:GetUp() * 500
 self.timeleft = CurTime() + 5
 self.Entity:SetModel( "models/combatmodels/tankshell_40mm.mdl" ) 	
 self.Entity:PhysicsInit( SOLID_VPHYSICS )      -- Make us work with physics,  	
@@ -39,22 +39,22 @@ function ENT:Think()
 
 
 				if tr.Hit then
-					util.BlastDamage(self.Entity, self.Entity, tr.HitPos, 150, 50)
+					util.BlastDamage(self.Entity, self.Entity, tr.HitPos, 200, 70)
 					local effectdata = EffectData()
 					effectdata:SetOrigin(tr.HitPos)
 					effectdata:SetNormal(tr.HitNormal)
-					effectdata:SetScale(2)
-					effectdata:SetRadius(2)
+					effectdata:SetScale(2.5)
+					effectdata:SetRadius(2.5)
 					util.Effect( "gdca_impact", effectdata )
 					util.ScreenShake(tr.HitPos, 10, 5, 1, 500 )
 					util.Decal("fadingScorch", tr.HitPos + tr.HitNormal, tr.HitPos - tr.HitNormal)
 					if (tr.Entity:IsValid()) then
-					gcombat.hcghit( tr.Entity, 250, 25, tr.HitPos, tr.HitPos) 	// Entity, Damage, Pierce
+					gcombat.hcghit( tr.Entity, 350, 30, tr.HitPos, tr.HitPos) 	// Entity, Damage, Pierce
 					end
 					end
 
 	local trace = {}
-		trace.start = tr.HitPos + self.flightvector:GetNormalized() * 20
+		trace.start = tr.HitPos + self.flightvector:GetNormalized() * 30
 		trace.endpos = tr.HitPos
 		trace.filter = self.Entity 
 	local pr = util.TraceLine( trace )
@@ -69,15 +69,15 @@ function ENT:Think()
 
 
 		if !pr.StartSolid and tr.Hit and pr.Hit and self.penetrate>0 then
-				util.BlastDamage(self.Entity, self.Entity, pr.HitPos, 150, 50)
+				util.BlastDamage(self.Entity, self.Entity, pr.HitPos, 200, 50)
 				self.Entity:SetPos(pr.HitPos + self.flightvector:GetNormalized()*5)
 					local effectdata = EffectData()
 					effectdata:SetOrigin(pr.HitPos)
 					effectdata:SetNormal(self.flightvector:GetNormalized())
-					effectdata:SetScale(2)
-					effectdata:SetRadius(2)
+					effectdata:SetScale(3)
+					effectdata:SetRadius(3)
 					util.Effect( "gdca_penetrate", effectdata )
-					util.ScreenShake(tr.HitPos, 10, 5, 0.3, 250 )
+					util.ScreenShake(tr.HitPos, 10, 5, 0.3, 350 )
 					util.Decal("ExplosiveGunshot", pr.HitPos + pr.HitNormal, pr.HitPos - pr.HitNormal)
 
 			end

@@ -46,7 +46,7 @@ function ENT:Think()
 					util.ScreenShake(tr.HitPos, 10, 5, 0.5, 600 )
 					util.Decal("fadingScorch", tr.HitPos + tr.HitNormal, tr.HitPos - tr.HitNormal)
 
-					cbt_hcgexplode( tr.HitPos, 20, 60, 6)
+					local attack = gcombat.hcgexplode( tr.HitPos, 30, 80, 6)		// Radius, Damage
 
 					if (tr.Entity:IsValid()) then
 					local effectdata = EffectData()

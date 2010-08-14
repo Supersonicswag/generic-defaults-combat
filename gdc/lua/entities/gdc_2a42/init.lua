@@ -17,19 +17,20 @@ function ENT:Initialize()
 	self.reloadtime = 0
 	self.infire = false
 	self.infire2 = false
+	self.inFireAP = false
+	self.inFireAPT = false
 	self.Entity:SetModel( "models/props_lab/pipesystem01a.mdl" ) 	
 	self.Entity:PhysicsInit( SOLID_VPHYSICS )      -- Make us work with physics,  	
 	self.Entity:SetMoveType( MOVETYPE_VPHYSICS )   --after all, gmod is a physics  	
 	self.Entity:SetSolid( SOLID_VPHYSICS )        -- Toolbox     
 	
-          
 	local phys = self.Entity:GetPhysicsObject()  	
 	if (phys:IsValid()) then  		
-		phys:Wake() 
+	phys:Wake() 
 	end 
  
-	self.Inputs = Wire_CreateInputs( self.Entity, { "Fire", "Fire Tracer"} )
-	self.Outputs = Wire_CreateOutputs( self.Entity, { "Can Fire"})
+	self.Inputs = Wire_CreateInputs( self.Entity, { "Fire", "Fire Tracer", "Fire AP", "Fire APT"} )
+
 end   
 
 function ENT:SpawnFunction( ply, tr)
@@ -51,17 +52,15 @@ end
 
 function ENT:fire()
 
-		local ent = ents.Create( "gdca_30x165he" )
+		local ent = ents.Create( "gdca_30x165_he" )
 		ent:SetPos( self.Entity:GetPos() +  self.Entity:GetUp() * 100)
 		ent:SetAngles( self.Entity:GetAngles() )
 		ent:Spawn()
 		ent:Activate()
-		self.armed = false
-		
 		
 		local phys = self.Entity:GetPhysicsObject()  	
 		if (phys:IsValid()) then  		
-			phys:ApplyForceCenter( self.Entity:GetUp() * -7000 ) 
+		phys:ApplyForceCenter( self.Entity:GetUp() * -10000 ) 
 		end 
 		
 		local effectdata = EffectData()
@@ -72,23 +71,20 @@ function ENT:fire()
 		util.ScreenShake(self.Entity:GetPos(), 30, 5, 0.2, 400 )
 		self.Entity:EmitSound( "2A42.single" )
 		self.ammos = self.ammos-1
-	
-
 end
 
 function ENT:firetracer()
 
-	local ent = ents.Create( "gdca_30x165het" )
+	local ent = ents.Create( "gdca_30x165_het" )
 		ent:SetPos( self.Entity:GetPos() +  self.Entity:GetUp() * 100)
 		ent:SetAngles( self.Entity:GetAngles() )
 		ent:Spawn()
 		ent:Activate()
 		self.armed = false
 
-		
 		local phys = self.Entity:GetPhysicsObject()  	
 		if (phys:IsValid()) then  		
-			phys:ApplyForceCenter( self.Entity:GetUp() * -7000 ) 
+		phys:ApplyForceCenter( self.Entity:GetUp() * -10000 ) 
 		end 
 		
 		local effectdata = EffectData()
@@ -99,14 +95,58 @@ function ENT:firetracer()
 		util.ScreenShake(self.Entity:GetPos(), 30, 5, 0.2, 400 )
 		self.Entity:EmitSound( "2A42.single" )
 		self.ammos = self.ammos-1
-	
+end
 
+function ENT:fireap()
+
+	local ent = ents.Create( "gdca_30x165_ap" )
+		ent:SetPos( self.Entity:GetPos() +  self.Entity:GetUp() * 100)
+		ent:SetAngles( self.Entity:GetAngles() )
+		ent:Spawn()
+		ent:Activate()
+
+		local phys = self.Entity:GetPhysicsObject()  	
+		if (phys:IsValid()) then  		
+		phys:ApplyForceCenter( self.Entity:GetUp() * -10000 ) 
+		end 
+		
+		local effectdata = EffectData()
+		effectdata:SetOrigin(self.Entity:GetPos() +  self.Entity:GetUp() * 30)
+		effectdata:SetNormal(self:GetUp())
+		effectdata:SetScale(0.7)
+		util.Effect( "gdca_muzzle", effectdata )
+		util.ScreenShake(self.Entity:GetPos(), 30, 5, 0.2, 400 )
+		self.Entity:EmitSound( "2A42.single" )
+		self.ammos = self.ammos-1
+end
+
+function ENT:fireapt()
+
+	local ent = ents.Create( "gdca_30x165_apt" )
+		ent:SetPos( self.Entity:GetPos() +  self.Entity:GetUp() * 100)
+		ent:SetAngles( self.Entity:GetAngles() )
+		ent:Spawn()
+		ent:Activate()
+
+		local phys = self.Entity:GetPhysicsObject()  	
+		if (phys:IsValid()) then  		
+		phys:ApplyForceCenter( self.Entity:GetUp() * -10000 ) 
+		end 
+		
+		local effectdata = EffectData()
+		effectdata:SetOrigin(self.Entity:GetPos() +  self.Entity:GetUp() * 30)
+		effectdata:SetNormal(self:GetUp())
+		effectdata:SetScale(0.7)
+		util.Effect( "gdca_muzzle", effectdata )
+		util.ScreenShake(self.Entity:GetPos(), 30, 5, 0.2, 400 )
+		self.Entity:EmitSound( "2A42.single" )
+		self.ammos = self.ammos-1
 end
 
 function ENT:Think()
 if FIELDS == nil and COMBATDAMAGEENGINE == nil then return end
 	if self.ammos <= 0 then
-	self.reloadtime = CurTime()+0.334
+	self.reloadtime = CurTime()+0.3
 	self.ammos = self.clipsize
 	end
 	
@@ -125,13 +165,22 @@ if FIELDS == nil and COMBATDAMAGEENGINE == nil then return end
 	end
 	
 	if (self.inFire2 == true) then
-		if (self.reloadtime < CurTime()) then
-		
-			self:firetracer()
-			
-		end
+	if (self.reloadtime < CurTime()) then
+	self:firetracer()			
+	end
 	end
 
+	if (self.inFireAP == true) then
+	if (self.reloadtime < CurTime()) then
+	self:fireap()			
+	end
+	end
+
+	if (self.inFireAPT == true) then
+	if (self.reloadtime < CurTime()) then
+	self:fireapt()			
+	end
+	end
 	self.Entity:NextThink( CurTime() + .03)
 	return true
 end
@@ -150,6 +199,22 @@ if(k=="Fire") then
 			self.inFire2 = true
 		else
 			self.inFire2 = false
+		end
+	end
+
+	if(k=="Fire AP") then
+		if((v or 0) >= 1) then
+			self.inFireAP = true
+		else
+			self.inFireAP = false
+		end
+	end
+
+	if(k=="Fire APT") then
+		if((v or 0) >= 1) then
+			self.inFireAPT = true
+		else
+			self.inFireAPT = false
 		end
 	end
 	

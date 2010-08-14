@@ -46,12 +46,12 @@ end
 				util.ScreenShake(tr.HitPos, 20, 5, 1, 2500 )
 				util.Decal("Scorch", tr.HitPos + tr.HitNormal, tr.HitPos - tr.HitNormal)
 
-				local attack = gcombat.hcgexplode( tr.HitPos, 300, 200, 6)
+				local attack = gcombat.hcgexplode( tr.HitPos, 400, 200, 6)
 				self.Entity:Remove()
 				end
 	
 	self.Entity:SetPos(self.Entity:GetPos() + self.flightvector)
-	self.flightvector = self.flightvector + Vector(math.Rand(-0.2,0.2), math.Rand(-0.2,0.2),math.Rand(-0.2,0.2)) + Vector(0,0,-0.3)
+	self.flightvector = self.flightvector + Vector(math.Rand(-0.1,0.1), math.Rand(-0.1,0.1),math.Rand(-0.1,0.1)) + Vector(0,0,-0.3)
 	self.Entity:SetAngles(self.flightvector:Angle() + Angle(90,0,0))
 	self.Entity:NextThink( CurTime() )
 	return true

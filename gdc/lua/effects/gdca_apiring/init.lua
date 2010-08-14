@@ -12,7 +12,7 @@
 	self.Radius = data:GetRadius()
 	self.Emitter = ParticleEmitter( self.Origin )
 
-	WorldSound( "Impacts/Explosion2.wav", self.Origin, 100, 100 )
+	WorldSound( "ambient/explosions/explode_" .. math.random(1, 4) .. ".wav", self.Origin, 100, 100 )
 	
 		
 		for i=1,2 do 
@@ -52,7 +52,7 @@
 
 	for i=0, 20*self.Scale do
 	
-		local Debris = self.Emitter:Add( "effects/fleck_tile"..math.random(1,2), self.Origin )
+		local Debris = self.Emitter:Add( "effects/fleck_cement"..math.random(1,2), self.Origin )
 		if (Debris) then
 			Debris:SetVelocity ( self.DirVec * math.random(0,700*self.Scale) + VectorRand() * 200*self.Scale )
 			Debris:SetDieTime( math.random( 0.7, 1.5) * self.Scale )
@@ -70,7 +70,7 @@
 	end
 
 	for i=0, 3*self.Radius do
-		local Whisp = self.Emitter:Add( "particles/smokey", self.Origin )
+		local Whisp = self.Emitter:Add( "particle/particle_composite", self.Origin )
 			if (Whisp) then
 				Whisp:SetVelocity(VectorRand() * math.random( 100,300*self.Radius) )
 				Whisp:SetDieTime( math.Rand( 4 , 10 )*self.Scale/2  )

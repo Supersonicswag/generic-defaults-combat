@@ -4,8 +4,8 @@ include('shared.lua')
 
 function ENT:Initialize()   
 self.penetrate = 100
-self.flightvector = self.Entity:GetUp() * 550
-self.timeleft = CurTime() + 5
+self.flightvector = self.Entity:GetUp() * ((200*39.37)/66)
+self.timeleft = CurTime() + 7
 self.Entity:SetModel( "models/led.mdl" ) 	
 self.Entity:PhysicsInit( SOLID_VPHYSICS )      -- Make us work with physics,  	
 self.Entity:SetMoveType( MOVETYPE_NONE )   --after all, gmod is a physics  	
@@ -42,13 +42,13 @@ function ENT:Think()
 					effectdata:SetOrigin(tr.HitPos)
 					effectdata:SetNormal(tr.HitNormal)
 					effectdata:SetScale(3)
-					effectdata:SetRadius(2)
+					effectdata:SetRadius(3)
 					util.Effect( "gdca_apiring", effectdata )
 					util.Effect( "gdca_impact", effectdata )
 					util.ScreenShake(tr.HitPos, 10, 5, 0.3, 1000 )
 					util.Decal("fadingScorch", tr.HitPos + tr.HitNormal, tr.HitPos - tr.HitNormal)
 					if tr.Entity:IsValid() then
-					local attack = gcombat.hcghit( tr.Entity, 4000, 100, tr.HitPos, tr.HitPos)
+					local attack = gcombat.hcghit( tr.Entity, 2000, 100, tr.HitPos, tr.HitPos)
 					end 
 
 				end
@@ -75,13 +75,13 @@ function ENT:Think()
 			effectdata:SetOrigin(pr.HitPos)
 			effectdata:SetNormal(self.flightvector:GetNormalized())
 			effectdata:SetScale(3)
-			effectdata:SetRadius(2.5)
+			effectdata:SetRadius(3)
 			util.Effect( "gdca_penetrate", effectdata )
 			util.ScreenShake(tr.HitPos, 10, 5, 0.1, 1000 )
 			util.Decal("fadingScorch", pr.HitPos + pr.HitNormal, pr.HitPos - pr.HitNormal)
 			end
 
-	self.flightvector =  self.flightvector + Vector(math.Rand(-0.5,0.5), math.Rand(-0.5,0.5),math.Rand(-0.5,0.5)) + Vector(0,0,-0.20)
+	self.flightvector =  self.flightvector - self.flightvector/80 + self.Entity:GetUp()*5 + Vector(math.Rand(-0.2,0.2), math.Rand(-0.2,0.2),math.Rand(-0.2,0.2)) + Vector(0,0,-0.10)
 
 	if !pr.Hit then
 	self.Entity:SetPos(self.Entity:GetPos() + self.flightvector)
