@@ -1,0 +1,27 @@
+"M3F.single"
+{
+	"channel"				"CHAN_WEAPON"
+	"volume"				"1.0"
+	"CompatibilityAttenuation"		"ATTN_NORM"
+	"pitch"				"PITCH_NORM"
+	"soundlevel"			"SNDLVL_150dB"
+	"wave"				")GDC/Shotgun/ShotgunBlast.wav"
+}
+"GenericM3.InsertShell"
+{
+	"channel"				"CHAN_RELOAD"
+	"volume"				"1.0"
+	"CompatibilityAttenuation"		"ATTN_NORM"
+	"pitch"				"PITCH_NORM"
+	"soundlevel"			"SNDLVL_100dB"
+	"wave"				")GDC/Shotgun/ShotgunShell.wav"
+}
+"GenericM3.Pump"
+{
+	"channel"				"CHAN_RELOAD"
+	"volume"				"1.0"
+	"CompatibilityAttenuation"		"ATTN_NORM"
+	"pitch"				"PITCH_NORM"
+	"soundlevel"			"SNDLVL_100dB"
+	"wave"				")GDC/Shotgun/ShotgunPump.wav"
+}

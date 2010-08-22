@@ -11,7 +11,7 @@
 	self.Scale = data:GetScale()
 	self.Emitter = ParticleEmitter( self.Origin )
 
-	WorldSound( "Impacts/Impact_0" .. math.random(1, 5) .. ".wav", self.Origin, 100, 120-(20/self.Scale) )
+	WorldSound( "Bullet.Impact", self.Origin)
 		
 	for i=0, 15*self.Scale do
 	

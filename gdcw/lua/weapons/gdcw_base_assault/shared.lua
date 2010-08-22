@@ -57,6 +57,7 @@ function SWEP:Deploy()
 	self:SetWeaponHoldType("ar2")                          	// Hold type styles; ar2 pistol shotgun rpg normal melee grenade smg slam fist melee2 passive knife
 	self:SetIronsights(false, self.Owner)					// Set the ironsight false
 	self.Weapon:SendWeaponAnim( ACT_VM_DRAW )
+	if !self.Owner:IsNPC() then self.ResetSights = CurTime() + self.Owner:GetViewModel():SequenceDuration() end
 	return true
 	end
 
@@ -73,14 +74,12 @@ function SWEP:PrimaryAttack()
 		self.Weapon:EmitSound(self.Primary.Sound)
 		self.Weapon:TakePrimaryAmmo(1)
 		self.Weapon:SendWeaponAnim( ACT_VM_PRIMARYATTACK )
-		if self.Owner:Alive() then
 		local fx 		= EffectData()
 		fx:SetEntity(self.Weapon)
 		fx:SetOrigin(self.Owner:GetShootPos())
 		fx:SetNormal(self.Owner:GetAimVector())
 		fx:SetAttachment(self.MuzzleAttachment)
 		util.Effect("gdcw_muzzle",fx)
-		end
 		self.Owner:SetAnimation( PLAYER_ATTACK1 )
 		self.Owner:MuzzleFlash()
 		self.Weapon:SetNextPrimaryFire(CurTime()+1/(self.Primary.RPM/60))
@@ -126,7 +125,7 @@ function SWEP:Reload()
 
 	self.Weapon:DefaultReload(ACT_VM_RELOAD) 
 	if !self.Owner:IsNPC() then
-	self.Idle = CurTime() + self.Owner:GetViewModel():SequenceDuration() end
+	self.ResetSights = CurTime() + self.Owner:GetViewModel():SequenceDuration() end
 
 
 	if ( self.Weapon:Clip1() < self.Primary.ClipSize ) and !self.Owner:IsNPC() then
@@ -146,6 +145,12 @@ end
 IronSight
 ---------------------------------------------------------*/
 function SWEP:IronSight()
+
+	if !self.Owner:IsNPC() then
+	if self.ResetSights and CurTime() >= self.ResetSights then
+	self.ResetSights = nil
+	self:SendWeaponAnim(ACT_VM_IDLE)
+	end end
 
 	if self.Owner:KeyDown(IN_USE) and self:CanPrimaryAttack() || self.Owner:KeyDown(IN_SPEED) then		// If you hold E and you can shoot then
 	self.Weapon:SetNextPrimaryFire(CurTime()+0.3)				// Make it so you can't shoot for another quarter second
@@ -208,12 +213,8 @@ Think
 ---------------------------------------------------------*/
 function SWEP:Think()
 
-	self:IronSight()
-	if !self.Owner:IsNPC() then
-	if self.Idle and CurTime() >= self.Idle then
-	self.Idle = nil
-	self:SendWeaponAnim(ACT_VM_IDLE)
-	end end
+self:IronSight()
+
 end
 
 /*---------------------------------------------------------
