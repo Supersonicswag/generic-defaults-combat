@@ -6,12 +6,12 @@ function ENT:Initialize()
 
 self.flightvector = self.Entity:GetUp() * 150
 self.timeleft = CurTime() + 8
-self.Entity:SetModel( "models/combatmodels/tankshell_40mm.mdl" )
+self.Entity:SetModel( "models/led2.mdl" )
 self.Entity:SetGravity( 0.5 ) 	
 self.Entity:PhysicsInit( SOLID_VPHYSICS )      -- Make us work with physics,  	
 self.Entity:SetMoveType( MOVETYPE_NONE )   --after all, gmod is a physics  	
 self.Entity:SetSolid( SOLID_VPHYSICS )        -- CHEESECAKE!    >:3           
-self.Entity:SetColor(255,255,0,255)
+self.Entity:SetColor(255,255,255,255)
  
 end   
 
@@ -61,7 +61,6 @@ end
 					util.Effect( "gdca_splodering", effectdata )
 					util.ScreenShake(tr.HitPos, 10, 5, 1, 1000 )
 					util.Decal("Scorch", tr.HitPos + tr.HitNormal, tr.HitPos - tr.HitNormal)
-			
 					local attack = gcombat.hcgexplode( tr.HitPos, 150, 100, 6)		// Radius, Damage
 					self.Entity:Remove()
 					end

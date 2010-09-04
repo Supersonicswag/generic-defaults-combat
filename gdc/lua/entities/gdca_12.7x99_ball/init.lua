@@ -7,7 +7,7 @@ function ENT:Initialize()
 math.randomseed(CurTime())
 self.flightvector = self.Entity:GetUp() * 450
 self.timeleft = CurTime() + 5
-self.Entity:SetModel( "models/combatmodels/tankshell_25mm.mdl" ) 	
+self.Entity:SetModel( "models/led2.mdl" ) 	
 self.Entity:PhysicsInit( SOLID_VPHYSICS )	
 self.Entity:SetMoveType( MOVETYPE_NONE )
 self.Entity:SetSolid( SOLID_VPHYSICS )

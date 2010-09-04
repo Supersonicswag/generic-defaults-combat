@@ -18,8 +18,8 @@
  function ENT:Think()
 	
 	pos = self:GetPos()
-		for i=0, (4) do
-			local particle = self.emitter:Add( "particle/particle_smokegrenade", pos + (self:GetUp() * -60 * i))
+		for i=1, (5) do
+			local particle = self.emitter:Add( "particle/particle_smokegrenade", pos + (self:GetUp() * -50 * i))
 			if (particle) then
 				particle:SetVelocity((self:GetUp() * -2000) )
 				particle:SetDieTime( math.Rand( 3, 7 ) )
@@ -35,7 +35,7 @@
 			end
 
 			for i=1, 10 do
-				local particle = self.emitter:Add( "effects/fire_cloud1", pos + (self:GetUp() * -20 * i) )
+				local particle = self.emitter:Add( "effects/fire_cloud1", pos + (self:GetUp() * -25 * i) )
 
 				particle:SetVelocity((self:GetUp() * -500) )
 				particle:SetDieTime( 0.06 )

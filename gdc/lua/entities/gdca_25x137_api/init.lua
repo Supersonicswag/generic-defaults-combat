@@ -10,7 +10,7 @@ math.randomseed(CurTime())
 self.penetrate = 20
 self.flightvector = self.Entity:GetUp() * 550
 self.timeleft = CurTime() + 5
-self.Entity:SetModel( "models/combatmodels/tankshell_40mm.mdl" ) 	
+self.Entity:SetModel( "models/led2.mdl" ) 	
 self.Entity:PhysicsInit( SOLID_VPHYSICS )      -- Make us work with physics,  	
 self.Entity:SetMoveType( MOVETYPE_NONE )   --after all, gmod is a physics  	
 self.Entity:SetSolid( SOLID_VPHYSICS )        -- CHEESECAKE!    >:3            
@@ -49,7 +49,7 @@ function ENT:Think()
 					util.ScreenShake(tr.HitPos, 10, 5, 1, 500 )
 					util.Decal("fadingScorch", tr.HitPos + tr.HitNormal, tr.HitPos - tr.HitNormal)
 					if (tr.Entity:IsValid()) then
-					gcombat.hcghit( tr.Entity, 250, 25, tr.HitPos, tr.HitPos) 	// Entity, Damage, Pierce
+					local attack =  gcombat.hcghit( tr.Entity, 250, 25, tr.HitPos, tr.HitPos) 	// Entity, Damage, Pierce
 					end
 					end
 

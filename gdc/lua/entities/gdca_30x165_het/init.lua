@@ -62,11 +62,9 @@ function ENT:Think()
 					util.Effect( "gdca_splodecolumn", effectdata )
 					util.ScreenShake(tr.HitPos, 10, 5, 0.5, 1000 )
 					util.Decal("Scorch", tr.HitPos + tr.HitNormal, tr.HitPos - tr.HitNormal)
-
-
 					if (tr.Entity:IsValid()) then
-					cbt_hcgexplode( tr.HitPos, 40, 100, 10)		// Radius, Damage
-					cbt_dealhcghit( tr.Entity, 200, 15, tr.HitPos , tr.HitPos)				
+					local attack = cbt_hcgexplode( tr.HitPos, 40, 100, 10)		// Radius, Damage
+					local attack = cbt_dealhcghit( tr.Entity, 200, 15, tr.HitPos , tr.HitPos)				
 					end
 
 				self.Entity:Remove()

@@ -30,3 +30,11 @@ end
 	self.Entity:NextThink( CurTime() )
 	return true
 end
+
+function ENT:PhysicsUpdate()
+return true
+end
+
+function ENT:PhysicsCollide( data, physobj )
+self.Entity:Remove()
+end

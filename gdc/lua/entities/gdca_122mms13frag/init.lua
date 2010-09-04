@@ -55,7 +55,7 @@ end
 					util.Effect( "gdca_splodecolumn", effectdata )
 					util.ScreenShake(tr.HitPos, 10, 5, 1, 5000 )
 					util.Decal("Scorch", tr.HitPos + tr.HitNormal, tr.HitPos - tr.HitNormal)
-					local attack = gcombat.hcgexplode( tr.HitPos, 600, 300, 6)		// Radius, Damage
+					local attack = gcombat.hcgexplode( tr.HitPos, 600, 600, 6)		// Radius, Damage
 					self.Entity:Remove()	
 					end
 	

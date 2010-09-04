@@ -6,6 +6,6 @@ ENT.Contact			= "AIDS"
 ENT.Purpose			= "Strafin'"  
 ENT.Instructions			= "LAUNCH"  
  
-ENT.Spawnable			= true
-ENT.AdminSpawnable		= true
+ENT.Spawnable			= false
+ENT.AdminSpawnable		= false
 

@@ -16,32 +16,32 @@ if ( CLIENT ) then
 
 	language.Add( "Tool_gdcweapons_name", "GDC Weapons" )
 	language.Add( "Tool_gdcweapons_desc", "Puts weapons on stuff." )
-	language.Add( "Tool_gdcweapons_0", "Left click to weld the gun to the place you're aiming. Right click to spawn it unwelded." )
+	language.Add( "Tool_gdcweapons_0", "Left click to weld the gun to the place you're aiming. Right click to spawn it unwelded. R for weapon statistics." )
 	
 
-	language.Add( "Tool_gdcweapons_help0", "~860 RPM, Tracer/Ball" )
-	language.Add( "Tool_gdcweapons_help1", "~460 RPM, Tracer/Ball" )
-	language.Add( "Tool_gdcweapons_help2", "~700 RPM, High Explosive" )
-	language.Add( "Tool_gdcweapons_help3", "300 RPM, High Explosive Incindiary/Armor Piercing Incindiary" )
-	language.Add( "Tool_gdcweapons_help4", "~600 RPM, High Explosive Incindiary" )
-	language.Add( "Tool_gdcweapons_help5", "200 RPM, High Explosive" )
-	language.Add( "Tool_gdcweapons_help6", "120 RPM, High Explosive" )
-	language.Add( "Tool_gdcweapons_help7", "7 RPS, 7 Salvo, High Explosive/White Phosphorus" )
-	language.Add( "Tool_gdcweapons_help8", "8 RPM, High Explosive/White Phosphorus" )
-	language.Add( "Tool_gdcweapons_help9", "1200 RPM, Armor Piercing Incindiary, Overheats after 25 rounds" )
+	language.Add( "Tool_gdcweapons_help0", "~860 RPM, Tracer/Ball, 26400 Inches/Second" )
+	language.Add( "Tool_gdcweapons_help1", "~460 RPM, Tracer/Ball, 29700 Inches/Second" )
+	language.Add( "Tool_gdcweapons_help2", "~700 RPM, High Explosive(5), 23100 Inches/Second" )
+	language.Add( "Tool_gdcweapons_help3", "300 RPM, High Explosive Incindiary(6.5)/Armor Piercing Incindiary, 36300 Inches/Second" )
+	language.Add( "Tool_gdcweapons_help4", "~600 RPM, High Explosive Incindiary(7), 19800 Inches/Second" )
+	language.Add( "Tool_gdcweapons_help5", "200 RPM, High Explosive(8), 33000 Inches/Second" )
+	language.Add( "Tool_gdcweapons_help6", "120 RPM, High Explosive(13), 19800 Inches/Second" )
+	language.Add( "Tool_gdcweapons_help7", "7 RPS, 7 Salvo, High Explosive(18)/White Phosphorus(15), 13200 Inches/Second" )
+	language.Add( "Tool_gdcweapons_help8", "8 RPM, High Explosive(31)/White Phosphorus(25), 19800 Inches/Second" )
+	language.Add( "Tool_gdcweapons_help9", "1200 RPM, Armor Piercing Incindiary, Overheats after 25 rounds, 36300 Inches/Second" )
 	language.Add( "Tool_gdcweapons_help10", "30 meter blast radius. Effective against infantry" )
-	language.Add( "Tool_gdcweapons_help11", "1500 RPM, Tracer/Ball, Overheats after 75 rounds" )
-	language.Add( "Tool_gdcweapons_help12", "8 RPM, High Explosive Anti-Tank/SABOT" )
+	language.Add( "Tool_gdcweapons_help11", "1500 RPM, Tracer/Ball, Overheats after 75 rounds, 26400 Inches/Second" )
+	language.Add( "Tool_gdcweapons_help12", "8 RPM, High Explosive Anti-Tank(18)/SABOT, 23100 Inches/Second(HEAT), 36300 Inches/Second(SABOT)" )
 	language.Add( "Tool_gdcweapons_help13", "Powerful 15m blast radius. Effective against vehicles" )
-	language.Add( "Tool_gdcweapons_help14", "20 RPM, High Explosive/White Phosphorus" )
-	language.Add( "Tool_gdcweapons_help15", "300 RPM, High Explosive/High Explosive Dual Purpose" )
-	language.Add( "Tool_gdcweapons_help16", "30 RPM, High Explosive" )
-	language.Add( "Tool_gdcweapons_help17", "12 RPM, High Explosive. IR Guided, GPS Guided, No coordinates will fire straight. BE CAREFUL! Don't fire at anything with unwanted targets in the general direction!" )
-	language.Add( "Tool_gdcweapons_help18", "~1100 RPM, Tracer/Ball, Overheats after 50 rounds" )
+	language.Add( "Tool_gdcweapons_help14", "20 RPM, High Explosive(23m)/White Phosphorus(15), 5280 Inches/Second" )
+	language.Add( "Tool_gdcweapons_help15", "300 RPM, High Explosive(11m)/High Explosive Dual Purpose(9m), 9900 Inches/Second" )
+	language.Add( "Tool_gdcweapons_help16", "30 RPM, High Explosive(25m), 2640-4620- Inches/Second" )
+	language.Add( "Tool_gdcweapons_help17", "12 RPM, High Explosive(15m). IR Guided, GPS Guided, No coordinates will fire straight. BE CAREFUL! Don't fire at anything with unwanted targets in the general direction!" )
+	language.Add( "Tool_gdcweapons_help18", "~1100 RPM, Tracer/Ball, Overheats after 50 rounds, 29700 Inches/Second" )
 	language.Add( "Tool_gdcweapons_help19", "Smoke deployer." )
 	language.Add( "Tool_gdcweapons_help20", "Flare deployer, 10 salvo. Flares can be used as smoke, signals, or IR jammers (GMLS will track it)" )
-	language.Add( "Tool_gdcweapons_help21", "10 RPS, 12 Salvo, High Explosive Fragmentation/High Explosive Anti-Tank" )
-	language.Add( "Tool_gdcweapons_help22", "4 RPS, 8 Salvo, High Explosive Anti-Tank/FAE (Thermobaric)/Penetrator" )
+	language.Add( "Tool_gdcweapons_help21", "10 RPS, 16 Salvo, High Explosive Fragmentation(13m)/High Explosive Anti-Tank(8m)" )
+	language.Add( "Tool_gdcweapons_help22", "4 RPS, 8 Salvo, High Explosive Anti-Tank(15m)/FAE (Thermobaric)(25)/Penetrator(5m)." )
 
 
 	language.Add( "Tool_turret_type", "Type of weapon" )
@@ -68,142 +68,164 @@ if ( !trace.Hit ) then return end
 	
 	local SpawnPos = trace.HitPos + trace.HitNormal * 50
 
-	if (gdcweaponsindex == 0) then
+		if (gdcweaponsindex == 0) then
 	self.ent = ents.Create( "gdc_m240" )
-		self.ent:SetPos( SpawnPos )
-		self.ent:SetAngles( trace.HitNormal:Angle() + Angle(90,0,0))
+	self.ent:SetPos( SpawnPos )
+	self.ent:SetAngles( trace.HitNormal:Angle() + Angle(90,0,0))
 	self.ent:Spawn()
 	self.ent:Activate()
-	elseif (gdcweaponsindex == 1) then
+
+		elseif (gdcweaponsindex == 1) then
 	self.ent = ents.Create( "gdc_m2hb" )
-		self.ent:SetPos( SpawnPos )
-		self.ent:SetAngles( trace.HitNormal:Angle() + Angle(90,0,0))
+	self.ent:SetPos( SpawnPos )
+	self.ent:SetAngles( trace.HitNormal:Angle() + Angle(90,0,0))
 	self.ent:Spawn()
 	self.ent:Activate()
+
 		elseif (gdcweaponsindex == 2) then
 	self.ent = ents.Create( "gdc_m197" )
-		self.ent:SetPos( SpawnPos )
-		self.ent:SetAngles( trace.HitNormal:Angle() + Angle(90,0,0))
+	self.ent:SetPos( SpawnPos )
+	self.ent:SetAngles( trace.HitNormal:Angle() + Angle(90,0,0))
 	self.ent:Spawn()
 	self.ent:Activate()
+
 		elseif (gdcweaponsindex == 3) then
 	self.ent = ents.Create( "gdc_m242" )
-		self.ent:SetPos( SpawnPos )
-		self.ent:SetAngles( trace.HitNormal:Angle() + Angle(90,0,0))
+	self.ent:SetPos( SpawnPos )
+	self.ent:SetAngles( trace.HitNormal:Angle() + Angle(90,0,0))
 	self.ent:Spawn()
 	self.ent:Activate()
+
 		elseif (gdcweaponsindex == 4) then
 	self.ent = ents.Create( "gdc_m230" )
-		self.ent:SetPos( SpawnPos )
-		self.ent:SetAngles( trace.HitNormal:Angle() + Angle(90,0,0))
+	self.ent:SetPos( SpawnPos )
+	self.ent:SetAngles( trace.HitNormal:Angle() + Angle(90,0,0))
 	self.ent:Spawn()
 	self.ent:Activate()
+
 		elseif (gdcweaponsindex == 5) then
 	self.ent = ents.Create( "gdc_2a42" )
-		self.ent:SetPos( SpawnPos )
-		self.ent:SetAngles( trace.HitNormal:Angle() + Angle(90,0,0))
+	self.ent:SetPos( SpawnPos )
+	self.ent:SetAngles( trace.HitNormal:Angle() + Angle(90,0,0))
 	self.ent:Spawn()
 	self.ent:Activate()
-			elseif (gdcweaponsindex == 6) then
+
+		elseif (gdcweaponsindex == 6) then
 	self.ent = ents.Create( "gdc_l60" )
-		self.ent:SetPos( SpawnPos )
-		self.ent:SetAngles( trace.HitNormal:Angle() + Angle(90,0,0))
+	self.ent:SetPos( SpawnPos )
+	self.ent:SetAngles( trace.HitNormal:Angle() + Angle(90,0,0))
 	self.ent:Spawn()
 	self.ent:Activate()
-				elseif (gdcweaponsindex == 7) then
+
+		elseif (gdcweaponsindex == 7) then
 	self.ent = ents.Create( "gdc_m260" )
-		self.ent:SetPos( SpawnPos )
-		self.ent:SetAngles( trace.HitNormal:Angle() + Angle(90,0,0))
+	self.ent:SetPos( SpawnPos )
+	self.ent:SetAngles( trace.HitNormal:Angle() + Angle(90,0,0))
 	self.ent:Spawn()
 	self.ent:Activate()
-					elseif (gdcweaponsindex == 8) then
+
+		elseif (gdcweaponsindex == 8) then
 	self.ent = ents.Create( "gdc_m101" )
-		self.ent:SetPos( SpawnPos )
-		self.ent:SetAngles( trace.HitNormal:Angle() + Angle(90,0,0))
+	self.ent:SetPos( SpawnPos )
+	self.ent:SetAngles( trace.HitNormal:Angle() + Angle(90,0,0))
 	self.ent:Spawn()
 	self.ent:Activate()
-					elseif (gdcweaponsindex == 9) then
+
+		elseif (gdcweaponsindex == 9) then
 	self.ent = ents.Create( "gdc_gau12" )
-		self.ent:SetPos( SpawnPos )
-		self.ent:SetAngles( trace.HitNormal:Angle() + Angle(90,0,0))
+	self.ent:SetPos( SpawnPos )
+	self.ent:SetAngles( trace.HitNormal:Angle() + Angle(90,0,0))
 	self.ent:Spawn()
 	self.ent:Activate()
-						elseif (gdcweaponsindex == 10) then
+
+		elseif (gdcweaponsindex == 10) then
 	self.ent = ents.Create( "gdc_2kg_he" )
-		self.ent:SetPos( SpawnPos )
-		self.ent:SetAngles( trace.HitNormal:Angle() + Angle(90,0,0))
+	self.ent:SetPos( SpawnPos )
+	self.ent:SetAngles( trace.HitNormal:Angle() + Angle(90,0,0))
 	self.ent:Spawn()
 	self.ent:Activate()
-							elseif (gdcweaponsindex == 11) then
+
+		elseif (gdcweaponsindex == 11) then
 	self.ent = ents.Create( "gdc_m134" )
-		self.ent:SetPos( SpawnPos )
-		self.ent:SetAngles( trace.HitNormal:Angle() + Angle(90,0,0))
+	self.ent:SetPos( SpawnPos )
+	self.ent:SetAngles( trace.HitNormal:Angle() + Angle(90,0,0))
 	self.ent:Spawn()
 	self.ent:Activate()
-							elseif (gdcweaponsindex == 12) then
+
+		elseif (gdcweaponsindex == 12) then
 	self.ent = ents.Create( "gdc_m256" )
-		self.ent:SetPos( SpawnPos )
-		self.ent:SetAngles( trace.HitNormal:Angle() + Angle(90,0,0))
+	self.ent:SetPos( SpawnPos )
+	self.ent:SetAngles( trace.HitNormal:Angle() + Angle(90,0,0))
 	self.ent:Spawn()
 	self.ent:Activate()
-							elseif (gdcweaponsindex == 13) then
+
+		elseif (gdcweaponsindex == 13) then
 	self.ent = ents.Create( "gdc_shape_charge" )
-		self.ent:SetPos( SpawnPos )
-		self.ent:SetAngles( trace.HitNormal:Angle() + Angle(90,0,0))
+	self.ent:SetPos( SpawnPos )
+	self.ent:SetAngles( trace.HitNormal:Angle() + Angle(90,0,0))
 	self.ent:Spawn()
 	self.ent:Activate()
-							elseif (gdcweaponsindex == 14) then
+
+		elseif (gdcweaponsindex == 14) then
 	self.ent = ents.Create( "gdc_mortar" )
-		self.ent:SetPos( SpawnPos )
-		self.ent:SetAngles( trace.HitNormal:Angle() + Angle(90,0,0))
+	self.ent:SetPos( SpawnPos )
+	self.ent:SetAngles( trace.HitNormal:Angle() + Angle(90,0,0))
 	self.ent:Spawn()
 	self.ent:Activate()
-							elseif (gdcweaponsindex == 15) then
+
+		elseif (gdcweaponsindex == 15) then
 	self.ent = ents.Create( "gdc_mk19" )
-		self.ent:SetPos( SpawnPos )
-		self.ent:SetAngles( trace.HitNormal:Angle() + Angle(90,0,0))
+	self.ent:SetPos( SpawnPos )
+	self.ent:SetAngles( trace.HitNormal:Angle() + Angle(90,0,0))
 	self.ent:Spawn()
 	self.ent:Activate()
-							elseif (gdcweaponsindex == 16) then
+
+		elseif (gdcweaponsindex == 16) then
 	self.ent = ents.Create( "gdc_81mmram" )
-		self.ent:SetPos( SpawnPos )
-		self.ent:SetAngles( trace.HitNormal:Angle() + Angle(90,0,0))
+	self.ent:SetPos( SpawnPos )
+	self.ent:SetAngles( trace.HitNormal:Angle() + Angle(90,0,0))
 	self.ent:Spawn()
 	self.ent:Activate()
-							elseif (gdcweaponsindex == 17) then
+
+		elseif (gdcweaponsindex == 17) then
 	self.ent = ents.Create( "gdc_84gml" )
-		self.ent:SetPos( SpawnPos )
-		self.ent:SetAngles( trace.HitNormal:Angle() + Angle(90,0,0))
+	self.ent:SetPos( SpawnPos )
+	self.ent:SetAngles( trace.HitNormal:Angle() + Angle(90,0,0))
 	self.ent:Spawn()
 	self.ent:Activate()
-							elseif (gdcweaponsindex == 18) then
+
+		elseif (gdcweaponsindex == 18) then
 	self.ent = ents.Create( "gdc_gau19" )
-		self.ent:SetPos( SpawnPos )
-		self.ent:SetAngles( trace.HitNormal:Angle() + Angle(90,0,0))
+	self.ent:SetPos( SpawnPos )
+	self.ent:SetAngles( trace.HitNormal:Angle() + Angle(90,0,0))
 	self.ent:Spawn()
 	self.ent:Activate()
-							elseif (gdcweaponsindex == 19) then
+
+		elseif (gdcweaponsindex == 19) then
 	self.ent = ents.Create( "gdc_smokepoppa" )
-		self.ent:SetPos( SpawnPos )
-		self.ent:SetAngles( trace.HitNormal:Angle() + Angle(90,0,0))
+	self.ent:SetPos( SpawnPos )
+	self.ent:SetAngles( trace.HitNormal:Angle() + Angle(90,0,0))
 	self.ent:Spawn()
 	self.ent:Activate()
-							elseif (gdcweaponsindex == 20) then
+
+		elseif (gdcweaponsindex == 20) then
 	self.ent = ents.Create( "gdc_flarepoppa" )
-		self.ent:SetPos( SpawnPos )
-		self.ent:SetAngles( trace.HitNormal:Angle() + Angle(90,0,0))
+	self.ent:SetPos( SpawnPos )
+	self.ent:SetAngles( trace.HitNormal:Angle() + Angle(90,0,0))
 	self.ent:Spawn()
 	self.ent:Activate()
-							elseif (gdcweaponsindex == 21) then
+
+		elseif (gdcweaponsindex == 21) then
 	self.ent = ents.Create( "gdc_ub16" )
-		self.ent:SetPos( SpawnPos )
-		self.ent:SetAngles( trace.HitNormal:Angle() + Angle(90,0,0))
+	self.ent:SetPos( SpawnPos )
+	self.ent:SetAngles( trace.HitNormal:Angle() + Angle(90,0,0))
 	self.ent:Spawn()
 	self.ent:Activate()
-							elseif (gdcweaponsindex == 22) then
+
+		elseif (gdcweaponsindex == 22) then
 	self.ent = ents.Create( "gdc_ub8" )
-		self.ent:SetPos( SpawnPos )
-		self.ent:SetAngles( trace.HitNormal:Angle() + Angle(90,0,0))
+	self.ent:SetPos( SpawnPos )
+	self.ent:SetAngles( trace.HitNormal:Angle() + Angle(90,0,0))
 	self.ent:Spawn()
 	self.ent:Activate()
 
@@ -212,16 +234,16 @@ if ( !trace.Hit ) then return end
 	
 	local phys = self.ent:GetPhysicsObject()  	
 	if (phys:IsValid() and trace.Entity:IsValid()) then  		
-		local weld = constraint.Weld(self.ent, trace.Entity, 0, trace.PhysicsBone, 0)
-		local nocollide = constraint.NoCollide(self.ent, trace.Entity, 0, trace.PhysicsBone)
+	local weld = constraint.Weld(self.ent, trace.Entity, 0, trace.PhysicsBone, 0)
+	local nocollide = constraint.NoCollide(self.ent, trace.Entity, 0, trace.PhysicsBone)
 	end 
 	ply:AddCount( "gcombat", self.ent )
 	
 	undo.Create("gdcweapons")
-		undo.AddEntity( self.ent )
-		undo.AddEntity( weld )
-		undo.AddEntity( nocollide )
-		undo.SetPlayer( ply )
+	undo.AddEntity( self.ent )
+	undo.AddEntity( weld )
+	undo.AddEntity( nocollide )
+	undo.SetPlayer( ply )
 	undo.Finish()
 	return true
 
@@ -243,142 +265,164 @@ if ( !trace.Hit ) then return end
 	
 	local SpawnPos = trace.HitPos + trace.HitNormal * 50
 
-	if (gdcweaponsindex == 0) then
+		if (gdcweaponsindex == 0) then
 	self.ent = ents.Create( "gdc_m240" )
-		self.ent:SetPos( SpawnPos )
-		self.ent:SetAngles( trace.HitNormal:Angle() + Angle(90,0,0))
+	self.ent:SetPos( SpawnPos )
+	self.ent:SetAngles( trace.HitNormal:Angle() + Angle(90,0,0))
 	self.ent:Spawn()
 	self.ent:Activate()
-	elseif (gdcweaponsindex == 1) then
+
+		elseif (gdcweaponsindex == 1) then
 	self.ent = ents.Create( "gdc_m2hb" )
-		self.ent:SetPos( SpawnPos )
-		self.ent:SetAngles( trace.HitNormal:Angle() + Angle(90,0,0))
+	self.ent:SetPos( SpawnPos )
+	self.ent:SetAngles( trace.HitNormal:Angle() + Angle(90,0,0))
 	self.ent:Spawn()
 	self.ent:Activate()
+
 		elseif (gdcweaponsindex == 2) then
 	self.ent = ents.Create( "gdc_m197" )
-		self.ent:SetPos( SpawnPos )
-		self.ent:SetAngles( trace.HitNormal:Angle() + Angle(90,0,0))
+	self.ent:SetPos( SpawnPos )
+	self.ent:SetAngles( trace.HitNormal:Angle() + Angle(90,0,0))
 	self.ent:Spawn()
 	self.ent:Activate()
+
 		elseif (gdcweaponsindex == 3) then
 	self.ent = ents.Create( "gdc_m242" )
-		self.ent:SetPos( SpawnPos )
-		self.ent:SetAngles( trace.HitNormal:Angle() + Angle(90,0,0))
+	self.ent:SetPos( SpawnPos )
+	self.ent:SetAngles( trace.HitNormal:Angle() + Angle(90,0,0))
 	self.ent:Spawn()
 	self.ent:Activate()
+
 		elseif (gdcweaponsindex == 4) then
 	self.ent = ents.Create( "gdc_m230" )
-		self.ent:SetPos( SpawnPos )
-		self.ent:SetAngles( trace.HitNormal:Angle() + Angle(90,0,0))
+	self.ent:SetPos( SpawnPos )
+	self.ent:SetAngles( trace.HitNormal:Angle() + Angle(90,0,0))
 	self.ent:Spawn()
 	self.ent:Activate()
+
 		elseif (gdcweaponsindex == 5) then
 	self.ent = ents.Create( "gdc_2a42" )
-		self.ent:SetPos( SpawnPos )
-		self.ent:SetAngles( trace.HitNormal:Angle() + Angle(90,0,0))
+	self.ent:SetPos( SpawnPos )
+	self.ent:SetAngles( trace.HitNormal:Angle() + Angle(90,0,0))
 	self.ent:Spawn()
 	self.ent:Activate()
-			elseif (gdcweaponsindex == 6) then
+
+		elseif (gdcweaponsindex == 6) then
 	self.ent = ents.Create( "gdc_l60" )
-		self.ent:SetPos( SpawnPos )
-		self.ent:SetAngles( trace.HitNormal:Angle() + Angle(90,0,0))
+	self.ent:SetPos( SpawnPos )
+	self.ent:SetAngles( trace.HitNormal:Angle() + Angle(90,0,0))
 	self.ent:Spawn()
 	self.ent:Activate()
-				elseif (gdcweaponsindex == 7) then
+
+		elseif (gdcweaponsindex == 7) then
 	self.ent = ents.Create( "gdc_m260" )
-		self.ent:SetPos( SpawnPos )
-		self.ent:SetAngles( trace.HitNormal:Angle() + Angle(90,0,0))
+	self.ent:SetPos( SpawnPos )
+	self.ent:SetAngles( trace.HitNormal:Angle() + Angle(90,0,0))
 	self.ent:Spawn()
 	self.ent:Activate()
-					elseif (gdcweaponsindex == 8) then
+
+		elseif (gdcweaponsindex == 8) then
 	self.ent = ents.Create( "gdc_m101" )
-		self.ent:SetPos( SpawnPos )
-		self.ent:SetAngles( trace.HitNormal:Angle() + Angle(90,0,0))
+	self.ent:SetPos( SpawnPos )
+	self.ent:SetAngles( trace.HitNormal:Angle() + Angle(90,0,0))
 	self.ent:Spawn()
 	self.ent:Activate()
-					elseif (gdcweaponsindex == 9) then
+
+		elseif (gdcweaponsindex == 9) then
 	self.ent = ents.Create( "gdc_gau12" )
-		self.ent:SetPos( SpawnPos )
-		self.ent:SetAngles( trace.HitNormal:Angle() + Angle(90,0,0))
+	self.ent:SetPos( SpawnPos )
+	self.ent:SetAngles( trace.HitNormal:Angle() + Angle(90,0,0))
 	self.ent:Spawn()
 	self.ent:Activate()
-					elseif (gdcweaponsindex == 10) then
+
+		elseif (gdcweaponsindex == 10) then
 	self.ent = ents.Create( "gdc_2kg_he" )
-		self.ent:SetPos( SpawnPos )
-		self.ent:SetAngles( trace.HitNormal:Angle() + Angle(90,0,0))
+	self.ent:SetPos( SpawnPos )
+	self.ent:SetAngles( trace.HitNormal:Angle() + Angle(90,0,0))
 	self.ent:Spawn()
 	self.ent:Activate()
-							elseif (gdcweaponsindex == 11) then
+
+		elseif (gdcweaponsindex == 11) then
 	self.ent = ents.Create( "gdc_m134" )
-		self.ent:SetPos( SpawnPos )
-		self.ent:SetAngles( trace.HitNormal:Angle() + Angle(90,0,0))
+	self.ent:SetPos( SpawnPos )
+	self.ent:SetAngles( trace.HitNormal:Angle() + Angle(90,0,0))
 	self.ent:Spawn()
 	self.ent:Activate()
-							elseif (gdcweaponsindex == 12) then
+
+		elseif (gdcweaponsindex == 12) then
 	self.ent = ents.Create( "gdc_m256" )
-		self.ent:SetPos( SpawnPos )
-		self.ent:SetAngles( trace.HitNormal:Angle() + Angle(90,0,0))
+	self.ent:SetPos( SpawnPos )
+	self.ent:SetAngles( trace.HitNormal:Angle() + Angle(90,0,0))
 	self.ent:Spawn()
 	self.ent:Activate()
-							elseif (gdcweaponsindex == 13) then
+
+		elseif (gdcweaponsindex == 13) then
 	self.ent = ents.Create( "gdc_shape_charge" )
-		self.ent:SetPos( SpawnPos )
-		self.ent:SetAngles( trace.HitNormal:Angle() + Angle(90,0,0))
+	self.ent:SetPos( SpawnPos )
+	self.ent:SetAngles( trace.HitNormal:Angle() + Angle(90,0,0))
 	self.ent:Spawn()
 	self.ent:Activate()
-							elseif (gdcweaponsindex == 14) then
+
+		elseif (gdcweaponsindex == 14) then
 	self.ent = ents.Create( "gdc_mortar" )
-		self.ent:SetPos( SpawnPos )
-		self.ent:SetAngles( trace.HitNormal:Angle() + Angle(90,0,0))
+	self.ent:SetPos( SpawnPos )
+	self.ent:SetAngles( trace.HitNormal:Angle() + Angle(90,0,0))
 	self.ent:Spawn()
 	self.ent:Activate()
-							elseif (gdcweaponsindex == 15) then
+
+		elseif (gdcweaponsindex == 15) then
 	self.ent = ents.Create( "gdc_mk19" )
-		self.ent:SetPos( SpawnPos )
-		self.ent:SetAngles( trace.HitNormal:Angle() + Angle(90,0,0))
+	self.ent:SetPos( SpawnPos )
+	self.ent:SetAngles( trace.HitNormal:Angle() + Angle(90,0,0))
 	self.ent:Spawn()
 	self.ent:Activate()
-							elseif (gdcweaponsindex == 16) then
+
+		elseif (gdcweaponsindex == 16) then
 	self.ent = ents.Create( "gdc_81mmram" )
-		self.ent:SetPos( SpawnPos )
-		self.ent:SetAngles( trace.HitNormal:Angle() + Angle(90,0,0))
+	self.ent:SetPos( SpawnPos )
+	self.ent:SetAngles( trace.HitNormal:Angle() + Angle(90,0,0))
 	self.ent:Spawn()
 	self.ent:Activate()
-							elseif (gdcweaponsindex == 17) then
+
+		elseif (gdcweaponsindex == 17) then
 	self.ent = ents.Create( "gdc_84gml" )
-		self.ent:SetPos( SpawnPos )
-		self.ent:SetAngles( trace.HitNormal:Angle() + Angle(90,0,0))
+	self.ent:SetPos( SpawnPos )
+	self.ent:SetAngles( trace.HitNormal:Angle() + Angle(90,0,0))
 	self.ent:Spawn()
 	self.ent:Activate()
-							elseif (gdcweaponsindex == 18) then
+
+		elseif (gdcweaponsindex == 18) then
 	self.ent = ents.Create( "gdc_gau19" )
-		self.ent:SetPos( SpawnPos )
-		self.ent:SetAngles( trace.HitNormal:Angle() + Angle(90,0,0))
+	self.ent:SetPos( SpawnPos )
+	self.ent:SetAngles( trace.HitNormal:Angle() + Angle(90,0,0))
 	self.ent:Spawn()
 	self.ent:Activate()
-							elseif (gdcweaponsindex == 19) then
+
+		elseif (gdcweaponsindex == 19) then
 	self.ent = ents.Create( "gdc_smokepoppa" )
-		self.ent:SetPos( SpawnPos )
-		self.ent:SetAngles( trace.HitNormal:Angle() + Angle(90,0,0))
+	self.ent:SetPos( SpawnPos )
+	self.ent:SetAngles( trace.HitNormal:Angle() + Angle(90,0,0))
 	self.ent:Spawn()
 	self.ent:Activate()
-							elseif (gdcweaponsindex == 20) then
+
+		elseif (gdcweaponsindex == 20) then
 	self.ent = ents.Create( "gdc_flarepoppa" )
-		self.ent:SetPos( SpawnPos )
-		self.ent:SetAngles( trace.HitNormal:Angle() + Angle(90,0,0))
+	self.ent:SetPos( SpawnPos )
+	self.ent:SetAngles( trace.HitNormal:Angle() + Angle(90,0,0))
 	self.ent:Spawn()
 	self.ent:Activate()
-							elseif (gdcweaponsindex == 21) then
+
+		elseif (gdcweaponsindex == 21) then
 	self.ent = ents.Create( "gdc_ub16" )
-		self.ent:SetPos( SpawnPos )
-		self.ent:SetAngles( trace.HitNormal:Angle() + Angle(90,0,0))
+	self.ent:SetPos( SpawnPos )
+	self.ent:SetAngles( trace.HitNormal:Angle() + Angle(90,0,0))
 	self.ent:Spawn()
 	self.ent:Activate()
-							elseif (gdcweaponsindex == 22) then
+
+		elseif (gdcweaponsindex == 22) then
 	self.ent = ents.Create( "gdc_ub8" )
-		self.ent:SetPos( SpawnPos )
-		self.ent:SetAngles( trace.HitNormal:Angle() + Angle(90,0,0))
+	self.ent:SetPos( SpawnPos )
+	self.ent:SetAngles( trace.HitNormal:Angle() + Angle(90,0,0))
 	self.ent:Spawn()
 	self.ent:Activate()
 
@@ -386,10 +430,10 @@ if ( !trace.Hit ) then return end
 
 	ply:AddCount( "gcombat", self.ent )
 	undo.Create("gdcweapons")
-		undo.AddEntity( self.ent )
-		undo.AddEntity( weld )
-		undo.AddEntity( nocollide )
-		undo.SetPlayer( ply )
+	undo.AddEntity( self.ent )
+	undo.AddEntity( weld )
+	undo.AddEntity( nocollide )
+	undo.SetPlayer( ply )
 	undo.Finish()
 	return true
 

@@ -9,7 +9,7 @@ function ENT:Initialize()
 math.randomseed(CurTime())
 self.flightvector = self.Entity:GetUp() * 500
 self.timeleft = CurTime() + 5
-self.Entity:SetModel( "models/combatmodels/tankshell_40mm.mdl" ) 	
+self.Entity:SetModel( "models/led2.mdl" ) 	
 self.Entity:PhysicsInit( SOLID_VPHYSICS )      -- Make us work with physics,  	
 self.Entity:SetMoveType( MOVETYPE_NONE )   --after all, gmod is a physics  	
 self.Entity:SetSolid( SOLID_VPHYSICS )        -- CHEESECAKE!    >:3            
@@ -49,7 +49,7 @@ function ENT:Think()
 					util.Decal("Scorch", tr.HitPos + tr.HitNormal, tr.HitPos - tr.HitNormal)
 
 					if (tr.Entity:IsValid()) then
-					cbt_hcgexplode( tr.HitPos, 40, 100, 10)				// Radius, Damage
+					local attack = cbt_hcgexplode( tr.HitPos, 40, 100, 10)				// Radius, Damage
 					local attack = cbt_dealhcghit( tr.Entity, 200, 15, tr.HitPos , tr.HitPos)	// Ent, Damage, Pierce				
 					end
 

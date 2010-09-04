@@ -150,3 +150,19 @@
 	"soundlevel"			"SNDLVL_155dB"
 	"wave"				"^Impacts/Explosion2.wav"
 }
+"Bullet.Impact"
+{
+	"channel"				"CHAN_STATIC"
+	"volume"				"1.0"
+	"CompatibilityAttenuation"		"ATTN_NORM"
+	"pitch"				"90, 110"
+	"soundlevel"			"SNDLVL_70dB"
+	"rndwave"
+	{
+	"wave"				"Impacts/Impact_01.wav"
+	"wave"				"Impacts/Impact_02.wav"
+	"wave"				"Impacts/Impact_03.wav"
+	"wave"				"Impacts/Impact_04.wav"
+	"wave"				"Impacts/Impact_05.wav"
+	}
+}

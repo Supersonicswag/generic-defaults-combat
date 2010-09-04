@@ -59,7 +59,7 @@ function ENT:Think()
 					util.ScreenShake(tr.HitPos, 10, 5, 1, 500 )
 					util.Decal("fadingScorch", tr.HitPos + tr.HitNormal, tr.HitPos - tr.HitNormal)
 					if (tr.Entity:IsValid()) then
-					gcombat.hcghit( tr.Entity, 350, 30, tr.HitPos, tr.HitPos) 	// Entity, Damage, Pierce
+					local attack = gcombat.hcghit( tr.Entity, 350, 30, tr.HitPos, tr.HitPos) 	// Entity, Damage, Pierce
 					end
 					end
 
