@@ -50,7 +50,7 @@ function ENT:Think()
 
 					if tr.Hit and tr.Entity:IsPlayer() || tr.Entity:IsNPC() then
 					local dmginfo = DamageInfo()
-					dmginfo:SetDamage( math.Rand(15,25) ) 	-- 30-50 damage
+					dmginfo:SetDamage( math.Rand(15,20) ) 	-- 30-50 damage
 					hitgroup = tr.HitGroup
 	if hitgroup == HITGROUP_HEAD 					then 	dmginfo:ScaleDamage( 10 ) 			end
 	if hitgroup == HITGROUP_STOMACH 					then 	dmginfo:ScaleDamage( 1 ) 			end

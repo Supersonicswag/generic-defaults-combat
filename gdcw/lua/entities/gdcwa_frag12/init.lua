@@ -37,7 +37,7 @@ function ENT:Think()
 
 
 					if tr.Hit then
-					util.BlastDamage(self.Owner, self.Entity, tr.HitPos, 75, 70)		//Radius, Damage
+					util.BlastDamage(self.Owner, self.Entity, tr.HitPos, 80, 80)		//Radius, Damage
 					local effectdata = EffectData()
 					effectdata:SetOrigin(tr.HitPos)
 					effectdata:SetNormal(tr.HitNormal)

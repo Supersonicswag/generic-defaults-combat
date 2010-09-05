@@ -7,6 +7,7 @@ SWEP.Instructions				= "Round: 7.62 \nVelocity: ~715 m/s \nSights: Iron \nCapaci
 SWEP.MuzzleAttachment			= "1" 	-- Should be "1" for CSS models or "muzzle" for hl2 models
 SWEP.ShellEjectAttachment			= "2" 	-- Should be "2" for CSS models or "1" for hl2 models
 SWEP.DrawCrosshair			= false	
+SWEP.AnimPrefix 				= "smg2"
 
 SWEP.ViewModelFOV			= 55
 SWEP.ViewModelFlip			= true
