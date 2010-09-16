@@ -25,7 +25,7 @@ function ENT:Think()
 
 	local trace = {}
 		trace.start = self.Entity:GetPos()
-		trace.endpos = self.Entity:GetPos() + self.flightvector*1.3
+		trace.endpos = self.Entity:GetPos() + self.flightvector
 		trace.filter = self.Entity
 	local tr = util.TraceLine( trace )
 
@@ -48,7 +48,7 @@ function ENT:Think()
 					util.ScreenShake(tr.HitPos, 10, 5, 0.3, 1000 )
 					util.Decal("fadingScorch", tr.HitPos + tr.HitNormal, tr.HitPos - tr.HitNormal)
 					if tr.Entity:IsValid() then
-					local attack = gcombat.hcghit( tr.Entity, 4000, 100, tr.HitPos, tr.HitPos)
+					local attack = gcombat.hcghit( tr.Entity, 1500, 100, tr.HitPos, tr.HitPos)
 					end 
 
 				end
@@ -81,7 +81,7 @@ function ENT:Think()
 			util.Decal("fadingScorch", pr.HitPos + pr.HitNormal, pr.HitPos - pr.HitNormal)
 			end
 
-	self.flightvector =  self.flightvector + Vector(math.Rand(-0.5,0.5), math.Rand(-0.5,0.5),math.Rand(-0.5,0.5)) + Vector(0,0,-0.20)
+	self.flightvector =  self.flightvector + Vector(math.Rand(-0.3,0.3), math.Rand(-0.3,0.3),math.Rand(-0.3,0.3)) + Vector(0,0,-0.20)
 
 	if !pr.Hit then
 	self.Entity:SetPos(self.Entity:GetPos() + self.flightvector)

@@ -48,7 +48,7 @@ function ENT:Think()
 					util.ScreenShake(tr.HitPos, 10, 5, 0.3, 1000 )
 					util.Decal("fadingScorch", tr.HitPos + tr.HitNormal, tr.HitPos - tr.HitNormal)
 					if tr.Entity:IsValid() then
-					local attack = gcombat.hcghit( tr.Entity, 2000, 100, tr.HitPos, tr.HitPos)
+					local attack = gcombat.hcghit( tr.Entity, 1000, 100, tr.HitPos, tr.HitPos)
 					end 
 
 				end
