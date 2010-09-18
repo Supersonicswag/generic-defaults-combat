@@ -39,9 +39,10 @@ end
 				effectdata:SetOrigin(tr.HitPos)
 				effectdata:SetNormal(tr.HitNormal)
 				effectdata:SetScale(3)			// Size of cloud
-				effectdata:SetRadius(2)			// Size of ring
+				effectdata:SetRadius(3)			// Size of ring
 				effectdata:SetMagnitude(200)			// Size of flash
-				util.Effect( "gdca_epicsplosion", effectdata )
+				util.Effect( "gdca_splodering", effectdata )
+				util.Effect( "gdca_splodecolumn", effectdata )
 				util.ScreenShake(tr.HitPos, 20, 5, 1, 2500 )
 				util.Decal("Scorch", tr.HitPos + tr.HitNormal, tr.HitPos - tr.HitNormal)
 
