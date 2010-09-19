@@ -1,9 +1,9 @@
  ENT.Type 			= "anim"  
  ENT.Base 			= "base_gmodentity"     
- ENT.PrintName			= "GDC 20mm M197"  
+ ENT.PrintName			= "20mm Armor Piercing Incindiary"  
  ENT.Author			= "Generic Default"  
  ENT.Contact			= "AIDS"  
- ENT.Purpose			= "SPLODE"
+ ENT.Purpose			= "BOOM"  
  ENT.Instructions			= "SHOOT"  
  
 ENT.Spawnable			= false

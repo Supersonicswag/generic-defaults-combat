@@ -3,7 +3,6 @@ AddCSLuaFile( "shared.lua" )
 include('shared.lua')
 
 function ENT:Initialize()   
-
 self.flightvector = self.Entity:GetUp() * ((200*39.37)/66)
 self.timeleft = CurTime() + 7
 self.Entity:SetModel( "models/combatmodels/tankshell.mdl" )	
@@ -11,18 +10,17 @@ self.Entity:PhysicsInit( SOLID_VPHYSICS )      -- Make us work with physics,
 self.Entity:SetMoveType( MOVETYPE_NONE )   --after all, gmod is a physics  	
 self.Entity:SetSolid( SOLID_VPHYSICS )        -- CHEESECAKE!    >:3           
 self.Entity:SetColor(255,255,0,255)
-	FireTrail = ents.Create("env_spritetrail")
-	FireTrail:SetKeyValue("lifetime","0.3")
-	FireTrail:SetKeyValue("startwidth","20")
-	FireTrail:SetKeyValue("endwidth","200")
-	FireTrail:SetKeyValue("spritename","trails/smoke.vmt")
-	FireTrail:SetKeyValue("rendermode","5")
-	FireTrail:SetKeyValue("rendercolor","200 200 200")
-	FireTrail:SetPos(self.Entity:GetPos())
-	FireTrail:SetParent(self.Entity)
-	FireTrail:Spawn()
-	FireTrail:Activate()
-
+FireTrail = ents.Create("env_spritetrail")
+FireTrail:SetKeyValue("lifetime","0.3")
+FireTrail:SetKeyValue("startwidth","20")
+FireTrail:SetKeyValue("endwidth","200")
+FireTrail:SetKeyValue("spritename","trails/smoke.vmt")
+FireTrail:SetKeyValue("rendermode","5")
+FireTrail:SetKeyValue("rendercolor","200 200 200")
+FireTrail:SetPos(self.Entity:GetPos())
+FireTrail:SetParent(self.Entity)
+FireTrail:Spawn()
+FireTrail:Activate()
 end   
 
  function ENT:Think()
@@ -44,7 +42,7 @@ end
 			end
 	
 				if tr.Hit then
-					util.BlastDamage(self.Entity, self.Entity, tr.HitPos, 500, 70)
+					util.BlastDamage(self.Entity, self.Entity, tr.HitPos, 600, 70)
 					local effectdata = EffectData()
 					effectdata:SetOrigin(tr.HitPos)
 					effectdata:SetNormal(tr.HitNormal)

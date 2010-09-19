@@ -44,7 +44,7 @@ end
 			end
 	
 				if tr.Hit then
-					util.BlastDamage(self.Entity, self.Entity, tr.HitPos, 600, 100)
+					util.BlastDamage(self.Entity, self.Entity, tr.HitPos, 700, 100)
 					local effectdata = EffectData()
 					effectdata:SetOrigin(tr.HitPos)
 					effectdata:SetNormal(tr.HitNormal)

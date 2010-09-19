@@ -12,27 +12,21 @@ self.Entity:SetModel( "models/combatmodels/tankshell_25mm.mdl" )
 self.Entity:PhysicsInit( SOLID_VPHYSICS )	
 self.Entity:SetMoveType( MOVETYPE_NONE )
 self.Entity:SetSolid( SOLID_VPHYSICS )
-
+FireTrail = ents.Create("env_spritetrail")
+FireTrail:SetKeyValue("lifetime","0.1")
+FireTrail:SetKeyValue("startwidth","25")
+FireTrail:SetKeyValue("endwidth","0")
+FireTrail:SetKeyValue("spritename","trails/laser.vmt")
+FireTrail:SetKeyValue("rendermode","5")
+FireTrail:SetKeyValue("rendercolor","255 150 100")
+FireTrail:SetPos(self.Entity:GetPos())
+FireTrail:SetParent(self.Entity)
+FireTrail:Spawn()
+FireTrail:Activate()
 self:Think()
 end   
 
 function ENT:Think()	
-
-	if (self.tracer == false) then
-		self.tracer = true
-	
-		FireTrail = ents.Create("env_spritetrail")
-		FireTrail:SetKeyValue("lifetime","0.1")
-		FireTrail:SetKeyValue("startwidth","25")
-		FireTrail:SetKeyValue("endwidth","0")
-		FireTrail:SetKeyValue("spritename","trails/laser.vmt")
-		FireTrail:SetKeyValue("rendermode","5")
-		FireTrail:SetKeyValue("rendercolor","255 150 100")
-		FireTrail:SetPos(self.Entity:GetPos())
-		FireTrail:SetParent(self.Entity)
-		FireTrail:Spawn()
-		FireTrail:Activate()
-	end 
 
 	if self.timeleft < CurTime() then
 		self.Entity:Remove()
@@ -50,7 +44,7 @@ function ENT:Think()
 			end	
 	
 		if tr.Hit then
-			util.BlastDamage(self.Entity, self.Entity, tr.HitPos, 75, 100)
+			util.BlastDamage(self.Entity, self.Entity, tr.HitPos, 70, 50)		// Radius, Damage
 			local effectdata = EffectData()
 			effectdata:SetOrigin(tr.HitPos)
 			effectdata:SetNormal(tr.HitNormal)
@@ -60,8 +54,8 @@ function ENT:Think()
 			util.ScreenShake(tr.HitPos, 10, 5, 0.3, 200 )
 			util.Decal("ExplosiveGunshot", tr.HitPos + tr.HitNormal, tr.HitPos - tr.HitNormal)
 
-			if (tr.Entity:IsValid()) then
-			local attack = gcombat.hcghit( tr.Entity, 50, 10, tr.HitPos, tr.HitPos)
+			if tr.Entity:IsValid() then
+			local attack = gcombat.hcghit( tr.Entity, 70, 10, tr.HitPos, tr.HitPos)
 			end
 
 			self.Entity:Remove()

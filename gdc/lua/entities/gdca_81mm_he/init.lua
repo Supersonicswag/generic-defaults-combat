@@ -38,8 +38,8 @@ end
 				local effectdata = EffectData()
 				effectdata:SetOrigin(tr.HitPos)
 				effectdata:SetNormal(tr.HitNormal)
-				effectdata:SetScale(3)			// Size of cloud
-				effectdata:SetRadius(3)			// Size of ring
+				effectdata:SetScale(4)			// Size of cloud
+				effectdata:SetRadius(4)			// Size of ring
 				effectdata:SetMagnitude(200)			// Size of flash
 				util.Effect( "gdca_splodering", effectdata )
 				util.Effect( "gdca_splodecolumn", effectdata )

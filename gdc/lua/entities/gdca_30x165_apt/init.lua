@@ -49,7 +49,7 @@ function ENT:Think()
 
 
 				if tr.Hit then
-					util.BlastDamage(self.Entity, self.Entity, tr.HitPos, 200, 70)
+					util.BlastDamage(self.Entity, self.Entity, tr.HitPos, 170, 70)
 					local effectdata = EffectData()
 					effectdata:SetOrigin(tr.HitPos)
 					effectdata:SetNormal(tr.HitNormal)
@@ -58,9 +58,11 @@ function ENT:Think()
 					util.Effect( "gdca_impact", effectdata )
 					util.ScreenShake(tr.HitPos, 10, 5, 1, 500 )
 					util.Decal("fadingScorch", tr.HitPos + tr.HitNormal, tr.HitPos - tr.HitNormal)
-					if (tr.Entity:IsValid()) then
-					local attack = gcombat.hcghit( tr.Entity, 350, 30, tr.HitPos, tr.HitPos) 	// Entity, Damage, Pierce
+
+					if tr.Entity:IsValid() then
+					local attack = gcombat.hcghit( tr.Entity, 300, 30, tr.HitPos, tr.HitPos) 	// Entity, Damage, Pierce
 					end
+
 					end
 
 	local trace = {}

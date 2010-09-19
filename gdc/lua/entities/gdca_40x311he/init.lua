@@ -13,26 +13,21 @@ self.Entity:PhysicsInit( SOLID_VPHYSICS )      -- Make us work with physics,
 self.Entity:SetMoveType( MOVETYPE_NONE )   --after all, gmod is a physics  	
 self.Entity:SetSolid( SOLID_VPHYSICS )        -- CHEESECAKE!    >:3           
 self.Entity:SetColor(255,255,0,255)
- 
+ FireTrail = ents.Create("env_spritetrail")
+FireTrail:SetKeyValue("lifetime","0.1")
+FireTrail:SetKeyValue("startwidth","90")
+FireTrail:SetKeyValue("endwidth","0")
+FireTrail:SetKeyValue("spritename","trails/laser.vmt")
+FireTrail:SetKeyValue("rendermode","5")
+FireTrail:SetKeyValue("rendercolor","250 150 100")
+FireTrail:SetPos(self.Entity:GetPos())
+FireTrail:SetParent(self.Entity)
+FireTrail:Spawn()
+FireTrail:Activate()
 end   
 
  function ENT:Think()
 	
- 	if (self.tracer == false) then
-		self.tracer = true
-	
-		FireTrail = ents.Create("env_spritetrail")
-		FireTrail:SetKeyValue("lifetime","0.1")
-		FireTrail:SetKeyValue("startwidth","90")
-		FireTrail:SetKeyValue("endwidth","0")
-		FireTrail:SetKeyValue("spritename","trails/laser.vmt")
-		FireTrail:SetKeyValue("rendermode","5")
-		FireTrail:SetKeyValue("rendercolor","250 150 100")
-		FireTrail:SetPos(self.Entity:GetPos())
-		FireTrail:SetParent(self.Entity)
-		FireTrail:Spawn()
-		FireTrail:Activate()
-	end 
  
 		if self.timeleft < CurTime() then
 		self.Entity:Remove()				
@@ -51,7 +46,7 @@ end
 			end	
 
 				if tr.Hit then
-					util.BlastDamage(self.Entity, self.Entity, tr.HitPos, 500, 100)
+					util.BlastDamage(self.Entity, self.Entity, tr.HitPos, 400, 100)
 					local effectdata = EffectData()
 					effectdata:SetOrigin(tr.HitPos)
 					effectdata:SetNormal(tr.HitNormal)

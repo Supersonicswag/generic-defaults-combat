@@ -5,8 +5,6 @@ AddCSLuaFile( "shared.lua" )
 include('shared.lua')
 
 function ENT:Initialize()   
-
-math.randomseed(CurTime())
 self.penetrate = 15
 self.flightvector = self.Entity:GetUp() * 590
 self.timeleft = CurTime() + 5
@@ -14,9 +12,7 @@ self.Entity:SetModel( "models/led2.mdl" )
 self.Entity:PhysicsInit( SOLID_VPHYSICS )      -- Make us work with physics,  	
 self.Entity:SetMoveType( MOVETYPE_NONE )   --after all, gmod is a physics  	
 self.Entity:SetSolid( SOLID_VPHYSICS )        -- CHEESECAKE!    >:3            
-
 self:Think()
- 
 end   
 
 function ENT:Think()
@@ -39,7 +35,7 @@ function ENT:Think()
 
 
 				if tr.Hit then
-					util.BlastDamage(self.Entity, self.Entity, tr.HitPos, 100, 50)
+					util.BlastDamage(self.Entity, self.Entity, tr.HitPos, 100, 70)		// Radius, Damage
 					local effectdata = EffectData()
 					effectdata:SetOrigin(tr.HitPos)
 					effectdata:SetNormal(tr.HitNormal)
@@ -48,8 +44,9 @@ function ENT:Think()
 					util.Effect( "gdca_impact", effectdata )
 					util.ScreenShake(tr.HitPos, 10, 5, 1, 300 )
 					util.Decal("fadingScorch", tr.HitPos + tr.HitNormal, tr.HitPos - tr.HitNormal)
-					if (tr.Entity:IsValid()) then
-					local attack =  gcombat.hcghit( tr.Entity, 150, 15, tr.HitPos, tr.HitPos) 	// Entity, Damage, Pierce
+
+					if tr.Entity:IsValid() then
+					local attack = gcombat.hcghit( tr.Entity, 140, 15, tr.HitPos, tr.HitPos)
 					end
 					end
 

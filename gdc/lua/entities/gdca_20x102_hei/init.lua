@@ -5,24 +5,13 @@ include('shared.lua')
 function ENT:Initialize()   
 
 math.randomseed(CurTime())
-self.flightvector = self.Entity:GetUp() * 150
-self.timeleft = CurTime() + 8
+self.flightvector = self.Entity:GetUp() * 350
+self.timeleft = CurTime() + 5
 self.Entity:SetModel( "models/led2.mdl" ) 	
 self.Entity:PhysicsInit( SOLID_VPHYSICS )      -- Make us work with physics,  	
 self.Entity:SetMoveType( MOVETYPE_NONE )   --after all, gmod is a physics  	
 self.Entity:SetSolid( SOLID_VPHYSICS )        -- CHEESECAKE!    >:3            
-self.Entity:SetColor(255,255,0,255)
-FireTrail = ents.Create("env_spritetrail")
-FireTrail:SetKeyValue("lifetime","0.3")
-FireTrail:SetKeyValue("startwidth","20")
-FireTrail:SetKeyValue("endwidth","0")
-FireTrail:SetKeyValue("spritename","trails/smoke.vmt")
-FireTrail:SetKeyValue("rendermode","5")
-FireTrail:SetKeyValue("rendercolor","150 150 150")
-FireTrail:SetPos(self.Entity:GetPos())
-FireTrail:SetParent(self.Entity)
-FireTrail:Spawn()
-FireTrail:Activate()
+
 self:Think()
  
 end   
@@ -30,12 +19,12 @@ end
 function ENT:Think()
 
 		if self.timeleft < CurTime() then
-		self.Entity:Remove()				
+		self.Entity:Remove()			
 		end
 
 	local trace = {}
 		trace.start = self.Entity:GetPos()
-		trace.endpos = self.Entity:GetPos() + self.flightvector 
+		trace.endpos = self.Entity:GetPos() + self.flightvector
 		trace.filter = self.Entity 
 	local tr = util.TraceLine( trace )
 	
@@ -46,19 +35,19 @@ function ENT:Think()
 			end
 
 				if (tr.Hit) then
-					util.BlastDamage(self.Entity, self.Entity, tr.HitPos, 400, 40)
+					util.BlastDamage(self.Entity, self.Entity, tr.HitPos, 200, 50)
 					local effectdata = EffectData()
 					effectdata:SetOrigin(tr.HitPos)
 					effectdata:SetNormal(tr.HitNormal)
-					effectdata:SetScale(1.5)			// Size of cloud
+					effectdata:SetScale(1)			// Size of cloud
 					effectdata:SetRadius(1)			// Size of ring
-					effectdata:SetMagnitude(50)			// Size of flash
+					effectdata:SetMagnitude(30)			// Size of flash
 					util.Effect( "gdca_splodecolumn", effectdata )
-					util.ScreenShake(tr.HitPos, 10, 5, 1, 700 )
-					util.Decal("Scorch", tr.HitPos + tr.HitNormal, tr.HitPos - tr.HitNormal)
+					util.ScreenShake(tr.HitPos, 10, 5, 0.5, 600 )
+					util.Decal("fadingScorch", tr.HitPos + tr.HitNormal, tr.HitPos - tr.HitNormal)
 
 					if tr.Entity:IsValid() then
-					local attack = gcombat.hcgexplode( tr.HitPos, 150, 200, 10)		// Radius, Damage
+					local attack = gcombat.hcgexplode( tr.HitPos, 30, 80, 6)		// Radius, Damage
 					local effectdata = EffectData()
 					effectdata:SetOrigin(tr.HitPos)
 					effectdata:SetStart(tr.HitPos)
@@ -68,11 +57,10 @@ function ENT:Think()
 					self.Entity:Remove()
 					end
 
+
 	self.Entity:SetPos(self.Entity:GetPos() + self.flightvector)
-	self.flightvector = self.flightvector + Vector(math.Rand(-0.20,0.20), math.Rand(-0.2,0.2),math.Rand(-0.2,0.2)) + Vector(0,0,-0.15)
+	self.flightvector = self.flightvector + Vector(math.Rand(-0.5,0.5), math.Rand(-0.5,0.5),math.Rand(-0.5,0.5)) + Vector(0,0,-0.2)
 	self.Entity:SetAngles(self.flightvector:Angle() + Angle(90,0,0))
 	self.Entity:NextThink( CurTime() )
 	return true
 	end
- 
- 

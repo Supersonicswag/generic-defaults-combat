@@ -7,7 +7,7 @@ include('shared.lua')
 function ENT:Initialize()   
 
 math.randomseed(CurTime())
-self.penetrate = 20
+self.penetrate = 25
 self.flightvector = self.Entity:GetUp() * 550
 self.timeleft = CurTime() + 5
 self.Entity:SetModel( "models/led2.mdl" ) 	
@@ -39,7 +39,7 @@ function ENT:Think()
 
 
 				if tr.Hit then
-					util.BlastDamage(self.Entity, self.Entity, tr.HitPos, 150, 50)
+					util.BlastDamage(self.Entity, self.Entity, tr.HitPos, 150, 75)
 					local effectdata = EffectData()
 					effectdata:SetOrigin(tr.HitPos)
 					effectdata:SetNormal(tr.HitNormal)
@@ -48,13 +48,15 @@ function ENT:Think()
 					util.Effect( "gdca_impact", effectdata )
 					util.ScreenShake(tr.HitPos, 10, 5, 1, 500 )
 					util.Decal("fadingScorch", tr.HitPos + tr.HitNormal, tr.HitPos - tr.HitNormal)
-					if (tr.Entity:IsValid()) then
+
+					if tr.Entity:IsValid() then
 					local attack =  gcombat.hcghit( tr.Entity, 250, 25, tr.HitPos, tr.HitPos) 	// Entity, Damage, Pierce
 					end
+
 					end
 
 	local trace = {}
-		trace.start = tr.HitPos + self.flightvector:GetNormalized() * 20
+		trace.start = tr.HitPos + self.flightvector:GetNormalized() * 25
 		trace.endpos = tr.HitPos
 		trace.filter = self.Entity 
 	local pr = util.TraceLine( trace )

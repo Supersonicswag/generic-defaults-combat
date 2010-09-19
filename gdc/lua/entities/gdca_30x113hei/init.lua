@@ -34,7 +34,7 @@ function ENT:Think()
 			end	
 
 				if (tr.Hit) then
-					util.BlastDamage(self.Entity, self.Entity, tr.HitPos, 300, 75)
+					util.BlastDamage(self.Entity, self.Entity, tr.HitPos, 300, 50)
 					local effectdata = EffectData()
 					effectdata:SetOrigin(tr.HitPos)
 					effectdata:SetNormal(tr.HitNormal)
@@ -44,7 +44,15 @@ function ENT:Think()
 					util.Effect( "gdca_splodecolumn", effectdata )
 					util.ScreenShake(tr.HitPos, 10, 5, 0.5, 1000 )
 					util.Decal("Scorch", tr.HitPos + tr.HitNormal, tr.HitPos - tr.HitNormal)
-					local attack =  cbt_hcgexplode( tr.HitPos, 40, 100, 7)		// Radius, Damage
+
+					if tr.Entity:IsValid() then
+					local attack = gcombat.hcgexplode( tr.HitPos, 40, 80, 6)		// Radius, Damage
+					local effectdata = EffectData()
+					effectdata:SetOrigin(tr.HitPos)
+					effectdata:SetStart(tr.HitPos)
+					util.Effect( "gdca_sparks", effectdata )	
+					end
+
 					self.Entity:Remove()
 					end
 

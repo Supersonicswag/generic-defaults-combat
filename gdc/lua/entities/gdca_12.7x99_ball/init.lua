@@ -33,7 +33,7 @@ function ENT:Think()
 			end	
 	
 		if tr.Hit then
-			util.BlastDamage(self.Entity, self.Entity, tr.HitPos, 150, 100)
+			util.BlastDamage(self.Entity, self.Entity, tr.HitPos, 90, 70)		// Radius, Damage
 			local effectdata = EffectData()
 			effectdata:SetOrigin(tr.HitPos)
 			effectdata:SetNormal(tr.HitNormal)
@@ -43,8 +43,8 @@ function ENT:Think()
 			util.ScreenShake(tr.HitPos, 10, 5, 0.3, 300 )
 			util.Decal("ExplosiveGunshot", tr.HitPos + tr.HitNormal, tr.HitPos - tr.HitNormal)
 
-			if (tr.Entity:IsValid()) then
-			local attack = gcombat.hcghit( tr.Entity, 100, 15, tr.HitPos, tr.HitPos)
+			if tr.Entity:IsValid() then
+			local attack = gcombat.hcghit( tr.Entity, 120, 15, tr.HitPos, tr.HitPos)
 			end
 
 			self.Entity:Remove()

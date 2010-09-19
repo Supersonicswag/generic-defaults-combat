@@ -12,28 +12,22 @@ self.Entity:SetModel( "models/combatmodels/tankshell_40mm.mdl" )
 self.Entity:PhysicsInit( SOLID_VPHYSICS )      -- Make us work with physics,  	
 self.Entity:SetMoveType( MOVETYPE_NONE )   --after all, gmod is a physics  	
 self.Entity:SetSolid( SOLID_VPHYSICS )        -- CHEESECAKE!    >:3            
-
+FireTrail = ents.Create("env_spritetrail")
+FireTrail:SetKeyValue("lifetime","0.1")
+FireTrail:SetKeyValue("startwidth","70")
+FireTrail:SetKeyValue("endwidth","0")
+FireTrail:SetKeyValue("spritename","trails/laser.vmt")
+FireTrail:SetKeyValue("rendermode","5")
+FireTrail:SetKeyValue("rendercolor","255 150 100")
+FireTrail:SetPos(self.Entity:GetPos())
+FireTrail:SetParent(self.Entity)
+FireTrail:Spawn()
+FireTrail:Activate()
 self:Think()
  
 end   
 
 function ENT:Think()
-
-	if (self.tracer == false) then
-		self.tracer = true
-	
-		FireTrail = ents.Create("env_spritetrail")
-		FireTrail:SetKeyValue("lifetime","0.1")
-		FireTrail:SetKeyValue("startwidth","70")
-		FireTrail:SetKeyValue("endwidth","0")
-		FireTrail:SetKeyValue("spritename","trails/laser.vmt")
-		FireTrail:SetKeyValue("rendermode","5")
-		FireTrail:SetKeyValue("rendercolor","255 150 100")
-		FireTrail:SetPos(self.Entity:GetPos())
-		FireTrail:SetParent(self.Entity)
-		FireTrail:Spawn()
-		FireTrail:Activate()
-	end 
 
 		if self.timeleft < CurTime() then
 		self.Entity:Remove()			
@@ -52,7 +46,7 @@ function ENT:Think()
 			end
 
 				if (tr.Hit) then
-					util.BlastDamage(self.Entity, self.Entity, tr.HitPos, 300, 100)
+					util.BlastDamage(self.Entity, self.Entity, tr.HitPos, 300, 70)
 					local effectdata = EffectData()
 					effectdata:SetOrigin(tr.HitPos)
 					effectdata:SetNormal(tr.HitNormal)
@@ -62,9 +56,13 @@ function ENT:Think()
 					util.Effect( "gdca_splodecolumn", effectdata )
 					util.ScreenShake(tr.HitPos, 10, 5, 0.5, 1000 )
 					util.Decal("Scorch", tr.HitPos + tr.HitNormal, tr.HitPos - tr.HitNormal)
-					if (tr.Entity:IsValid()) then
-					local attack = cbt_hcgexplode( tr.HitPos, 40, 100, 10)		// Radius, Damage
-					local attack = cbt_dealhcghit( tr.Entity, 200, 15, tr.HitPos , tr.HitPos)				
+
+					if tr.Entity:IsValid() then
+					local attack = gcombat.hcgexplode( tr.HitPos, 40, 120, 10)		// Radius, Damage
+					local effectdata = EffectData()
+					effectdata:SetOrigin(tr.HitPos)
+					effectdata:SetStart(tr.HitPos)
+					util.Effect( "gdca_sparks", effectdata )	
 					end
 
 				self.Entity:Remove()

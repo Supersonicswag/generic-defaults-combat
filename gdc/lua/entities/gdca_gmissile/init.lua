@@ -54,7 +54,15 @@ end
 					util.ScreenShake(tr.HitPos, 10, 5, 1, 2000 )
 					util.Decal("Scorch", tr.HitPos + tr.HitNormal, tr.HitPos - tr.HitNormal)
 
-					local attack = gcombat.hcgexplode( tr.HitPos, 300, 400, 10)
+
+					if tr.Entity:IsValid() then
+					local attack = gcombat.hcgexplode( tr.HitPos, 300, 400, 10)		// Radius, Damage
+					local effectdata = EffectData()
+					effectdata:SetOrigin(tr.HitPos)
+					effectdata:SetStart(tr.HitPos)
+					util.Effect( "gdca_sparks", effectdata )	
+					end
+
 					self.Entity:Remove()	
 					end
 	

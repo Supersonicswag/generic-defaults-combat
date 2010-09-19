@@ -11,17 +11,6 @@ self.Entity:SetModel( "models/combatmodels/tankshell_40mm.mdl" )
 self.Entity:PhysicsInit( SOLID_VPHYSICS )      -- Make us work with physics,  	
 self.Entity:SetMoveType( MOVETYPE_NONE )   --after all, gmod is a physics  	
 self.Entity:SetSolid( SOLID_VPHYSICS )        -- CHEESECAKE!    >:3            
-FireTrail = ents.Create("env_spritetrail")
-FireTrail:SetKeyValue("lifetime",".1")
-FireTrail:SetKeyValue("startwidth","60")
-FireTrail:SetKeyValue("endwidth","0")
-FireTrail:SetKeyValue("spritename","trails/laser.vmt")
-FireTrail:SetKeyValue("rendermode","5")
-FireTrail:SetKeyValue("rendercolor","250 150 100")
-FireTrail:SetPos(self.Entity:GetPos())
-FireTrail:SetParent(self.Entity)
-FireTrail:Spawn()
-FireTrail:Activate()
 self:Think()
 end   
 
@@ -46,7 +35,7 @@ function ENT:Think()
 			end
 
 				if (tr.Hit) then
-					util.BlastDamage(self.Entity, self.Entity, tr.HitPos, 250, 80)
+					util.BlastDamage(self.Entity, self.Entity, tr.HitPos, 250, 60)
 					local effectdata = EffectData()
 					effectdata:SetOrigin(tr.HitPos)
 					effectdata:SetNormal(tr.HitNormal)
@@ -56,9 +45,15 @@ function ENT:Think()
 					util.Effect( "gdca_splodecolumn", effectdata )
 					util.ScreenShake(tr.HitPos, 10, 5, 0.5, 700 )
 					util.Decal("fadingScorch", tr.HitPos + tr.HitNormal, tr.HitPos - tr.HitNormal)
-					if (tr.Entity:IsValid()) then
-					local attack = cbt_hcgexplode( tr.HitPos, 30, 100, 10)		// Radius, Damage
+
+					if tr.Entity:IsValid() then
+					local attack = gcombat.hcgexplode( tr.HitPos, 30, 100, 6)		// Radius, Damage
+					local effectdata = EffectData()
+					effectdata:SetOrigin(tr.HitPos)
+					effectdata:SetStart(tr.HitPos)
+					util.Effect( "gdca_sparks", effectdata )	
 					end
+
 					self.Entity:Remove()
 					end
 
