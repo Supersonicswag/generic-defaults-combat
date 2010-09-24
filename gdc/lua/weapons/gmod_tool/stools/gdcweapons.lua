@@ -487,8 +487,8 @@ function TOOL.BuildCPanel( CPanel )
 		Ctype["Options"]["#HEAT Shape Charge"]	= { gdcweapons_gdcweaponsindex = "13" }
 		Ctype["Options"]["#Mortar Launcher 81mm"]	= { gdcweapons_gdcweaponsindex = "14" }
 		Ctype["Options"]["#MK-19 40mm"]		= { gdcweapons_gdcweaponsindex = "15" }
-		Ctype["Options"]["#81mm RAM"]		= { gdcweapons_gdcweaponsindex = "16" }
-		Ctype["Options"]["#84mm GML"]		= { gdcweapons_gdcweaponsindex = "17" }
+		Ctype["Options"]["#RAM 81mm "]		= { gdcweapons_gdcweaponsindex = "16" }
+		Ctype["Options"]["#GML 84mm "]		= { gdcweapons_gdcweaponsindex = "17" }
 		Ctype["Options"]["#GAU-19 12.7mm"]		= { gdcweapons_gdcweaponsindex = "18" }
 		Ctype["Options"]["#Smoke Deployer"]		= { gdcweapons_gdcweaponsindex = "19" }
 		Ctype["Options"]["#Flare Deployer"]		= { gdcweapons_gdcweaponsindex = "20" }

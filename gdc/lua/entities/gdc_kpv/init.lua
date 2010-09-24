@@ -129,19 +129,19 @@ if FIELDS == nil and COMBATDAMAGEENGINE == nil then return end
 			self.reloadtime = CurTime()+4		// Overheat for 4 seconds
 			end
 	
-	if (self.InFireAPI == true) then
+	if self.InFireAPI then
 	if (self.reloadtime < CurTime()) then
 	self:fireapi()
 	end
 	end
 	
-	if (self.InFireAPIT == true) then
+	if self.InFireAPIT and !self.InFireAPI then
 	if (self.reloadtime < CurTime()) then
 	self:fireapit()
 	end
 	end
 
-	if (self.InFireHEI == true) then
+	if self.InFireHEI and !self.InFireAPI and !self.InFireAPIT then
 	if (self.reloadtime < CurTime()) then
 	self:firehei()
 	end

@@ -88,17 +88,15 @@ if FIELDS == nil and COMBATDAMAGEENGINE == nil then return end
 			end
 	
 	if (self.reloadtime < CurTime()) then
-		Wire_TriggerOutput(self.Entity, "Can Fire", 1)
+	Wire_TriggerOutput(self.Entity, "Can Fire", 1)
 	else
-		Wire_TriggerOutput(self.Entity, "Can Fire", 0)
+	Wire_TriggerOutput(self.Entity, "Can Fire", 0)
 	end
 	
-	if (self.inFire == true) then
-		if (self.reloadtime < CurTime()) then
-		
-			self:firerac5()
-			
-		end
+	if self.inFire then
+	if (self.reloadtime < CurTime()) then
+	self:firerac5()	
+	end
 	end
 
 	self.Entity:NextThink( CurTime() + .1)
@@ -106,19 +104,15 @@ if FIELDS == nil and COMBATDAMAGEENGINE == nil then return end
 end
 
 function ENT:TriggerInput(k, v)
-if(k=="Fire") then
+
+		if(k=="Fire") then
 		if((v or 0) >= 1) then
-			self.inFire = true
+		self.inFire = true
 		else
-			self.inFire = false
+		self.inFire = false
 		end
-	end
-	
-if(k=="Reload") then
-		if((v or 0) >= 1) then
-			self.ammos = 0
 		end
-	end
+
 	
 end
  

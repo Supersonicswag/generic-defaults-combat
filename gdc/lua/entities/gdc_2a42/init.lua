@@ -151,72 +151,72 @@ if FIELDS == nil and COMBATDAMAGEENGINE == nil then return end
 	end
 	
 	if (self.reloadtime < CurTime()) then
-		Wire_TriggerOutput(self.Entity, "Can Fire", 1)
+	Wire_TriggerOutput(self.Entity, "Can Fire", 1)
 	else
-		Wire_TriggerOutput(self.Entity, "Can Fire", 0)
+	Wire_TriggerOutput(self.Entity, "Can Fire", 0)
 	end
 	
-	if (self.inFire == true) then
-		if (self.reloadtime < CurTime()) then
-		
-			self:fire()
-			
-		end
+	if self.inFire then
+	if (self.reloadtime < CurTime()) then
+	self:fire()	
+	end
 	end
 	
-	if (self.inFire2 == true) then
+	if self.inFire2 and !self.inFire then
 	if (self.reloadtime < CurTime()) then
 	self:firetracer()			
 	end
 	end
 
-	if (self.inFireAP == true) then
+	if self.inFireAP and !self.inFire and !self.inFire2 then
 	if (self.reloadtime < CurTime()) then
 	self:fireap()			
 	end
 	end
 
-	if (self.inFireAPT == true) then
+	if self.inFireAPT and !self.inFire and !self.inFire2 and !self.inFireAP then
 	if (self.reloadtime < CurTime()) then
 	self:fireapt()			
 	end
 	end
+
 	self.Entity:NextThink( CurTime() + .03)
 	return true
 end
 
 function ENT:TriggerInput(k, v)
-if(k=="Fire") then
+
+		if(k=="Fire") then
 		if((v or 0) >= 1) then
-			self.inFire = true
+		self.inFire = true
 		else
-			self.inFire = false
+		self.inFire = false
 		end
-	end
+		end
 	
-	if(k=="Fire Tracer") then
+		if(k=="Fire Tracer") then
 		if((v or 0) >= 1) then
-			self.inFire2 = true
+		self.inFire2 = true
 		else
-			self.inFire2 = false
+		self.inFire2 = false
 		end
-	end
+		end
 
-	if(k=="Fire AP") then
+		if(k=="Fire AP") then
 		if((v or 0) >= 1) then
-			self.inFireAP = true
+		self.inFireAP = true
 		else
-			self.inFireAP = false
+		self.inFireAP = false
 		end
-	end
+		end
 
-	if(k=="Fire APT") then
+		if(k=="Fire APT") then
 		if((v or 0) >= 1) then
-			self.inFireAPT = true
+		self.inFireAPT = true
 		else
-			self.inFireAPT = false
+		self.inFireAPT = false
 		end
-	end
+		end
 	
 end
  

@@ -111,28 +111,24 @@ if FIELDS == nil and COMBATDAMAGEENGINE == nil then return end
 	end
 	
 	if (self.reloadtime < CurTime()) then
-		Wire_TriggerOutput(self.Entity, "Can Fire", 1)
+	Wire_TriggerOutput(self.Entity, "Can Fire", 1)
 	else
-		Wire_TriggerOutput(self.Entity, "Can Fire", 0)
+	Wire_TriggerOutput(self.Entity, "Can Fire", 0)
 	end
 	
-	if (self.inFire == true) then
-		if (self.reloadtime < CurTime()) then
-		
-			self:fireapi()
-			
-		end
+	if self.inFire then
+	if (self.reloadtime < CurTime()) then
+	self:fireapi()	
+	end
 	end
 	
-	if (self.inFire2 == true) then
-		if (self.reloadtime < CurTime()) then
-		
-			self:firehei()
-			
-		end
+	if self.inFire2 and !self.inFire then
+	if (self.reloadtime < CurTime()) then
+	self:firehei()	
+	end
 	end
 
-	self.Entity:NextThink( CurTime() + .03)
+	self.Entity:NextThink( CurTime() + .01)
 	return true
 end
 

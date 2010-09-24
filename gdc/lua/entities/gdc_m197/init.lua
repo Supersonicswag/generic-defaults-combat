@@ -109,19 +109,19 @@ if FIELDS == nil and COMBATDAMAGEENGINE == nil then return end
 		Wire_TriggerOutput(self.Entity, "Can Fire", 0)
 		end
 	
-		if (self.InFireHEI == true) then
+		if self.InFireHEI then
 		if (self.reloadtime < CurTime()) then
 		self:FireHEI()
 		end
 		end
 
-		if (self.InFireHEIT == true) then
+		if self.InFireHEIT and !self.InFireHEI then
 		if (self.reloadtime < CurTime()) then
 		self:FireHEIT()
 		end
 		end
 
-		if (self.InFireAPI == true) then
+		if self.InFireAPI and !self.InFireHEIT and !self.InFireHEI then
 		if (self.reloadtime < CurTime()) then
 		self:FireAPI()
 		end

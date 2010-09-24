@@ -78,31 +78,28 @@ end
 function ENT:Think()
 if FIELDS == nil and COMBATDAMAGEENGINE == nil then return end
 Wire_TriggerOutput(self.Entity, "shots", self.ammos)
+
 	if self.ammos <= 0 then
 	self.reloadtime = CurTime()+14
 	self.ammos = self.clipsize
 	end
 	
 	if (self.reloadtime < CurTime()) then
-		Wire_TriggerOutput(self.Entity, "Can Fire", 1)
+	Wire_TriggerOutput(self.Entity, "Can Fire", 1)
 	else
-		Wire_TriggerOutput(self.Entity, "Can Fire", 0)
+	Wire_TriggerOutput(self.Entity, "Can Fire", 0)
 	end
 	
-	if (self.inFire == true) then
-		if (self.reloadtime < CurTime()) then
-		
-			self:firehe()
-			
-		end
+	if self.inFire then
+	if (self.reloadtime < CurTime()) then
+	self:firehe()	
+	end
 	end
 	
-	if (self.inFire2 == true) then
-		if (self.reloadtime < CurTime()) then
-		
-			self:firewp()
-			
-		end
+	if self.inFire2 and !self.inFire then
+	if (self.reloadtime < CurTime()) then
+	self:firewp()	
+	end
 	end
 
 	self.Entity:NextThink( CurTime() + 0.14285)

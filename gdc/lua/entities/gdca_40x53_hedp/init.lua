@@ -12,19 +12,7 @@ self.Entity:PhysicsInit( SOLID_VPHYSICS )      -- Make us work with physics,
 self.Entity:SetMoveType( MOVETYPE_NONE )   --after all, gmod is a physics  	
 self.Entity:SetSolid( SOLID_VPHYSICS )        -- CHEESECAKE!    >:3            
 self.Entity:SetColor(255,255,0,255)
-FireTrail = ents.Create("env_spritetrail")
-FireTrail:SetKeyValue("lifetime","0.3")
-FireTrail:SetKeyValue("startwidth","20")
-FireTrail:SetKeyValue("endwidth","0")
-FireTrail:SetKeyValue("spritename","trails/smoke.vmt")
-FireTrail:SetKeyValue("rendermode","5")
-FireTrail:SetKeyValue("rendercolor","150 150 150")
-FireTrail:SetPos(self.Entity:GetPos())
-FireTrail:SetParent(self.Entity)
-FireTrail:Spawn()
-FireTrail:Activate()
 self:Think()
- 
 end   
 
 function ENT:Think()

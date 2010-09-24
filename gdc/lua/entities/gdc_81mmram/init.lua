@@ -82,17 +82,15 @@ Wire_TriggerOutput(self.Entity, "Shots", self.ammos)
 	end
 	
 	if (self.reloadtime < CurTime()) then
-		Wire_TriggerOutput(self.Entity, "Can Fire", 1)
+	Wire_TriggerOutput(self.Entity, "Can Fire", 1)
 	else
-		Wire_TriggerOutput(self.Entity, "Can Fire", 0)
+	Wire_TriggerOutput(self.Entity, "Can Fire", 0)
 	end
 	
-	if (self.inFire == true) then
-		if (self.reloadtime < CurTime()) then
-		
-			self:firerac5()
-			
-		end
+	if self.inFire then
+	if (self.reloadtime < CurTime()) then
+	self:firerac5()	
+	end
 	end
 
 	self.Entity:NextThink( CurTime() + .03)
