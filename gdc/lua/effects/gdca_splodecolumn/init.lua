@@ -38,7 +38,7 @@
 		local Dust = self.Emitter:Add( "particle/particle_composite", self.Origin )
 		if (Dust) then
 			Dust:SetVelocity( self.DirVec * math.random( 200,700*self.Scale) + VectorRand():GetNormalized()*250*self.Scale )
-			Dust:SetDieTime( math.Rand( 0.5 , 1 ) )
+			Dust:SetDieTime( math.Rand( 1 , 1.5 ) )
 			Dust:SetStartAlpha( 200 )
 			Dust:SetEndAlpha( 0 )
 			Dust:SetStartSize( 40*self.Scale )

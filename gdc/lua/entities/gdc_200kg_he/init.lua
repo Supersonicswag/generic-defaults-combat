@@ -41,10 +41,12 @@ function ENT:Think()
 		local effectdata = EffectData()
 			effectdata:SetOrigin(self.Entity:GetPos())
 			effectdata:SetNormal(Vector(0,0,1))
-			effectdata:SetScale(10)
-			effectdata:SetRadius(15)
-				util.Effect( "gdca_splodecolumn", effectdata )
-				util.Effect( "gdca_splodering", effectdata )
+			effectdata:SetScale(10)			// Size of explosion
+			effectdata:SetRadius(1)			// Relative width of explosion
+			effectdata:SetMagnitude(20)			// Length of explosion trails
+			util.Effect( "gdca_cinematicboom", effectdata )
+			util.ScreenShake(self.Entity:GetPos(), 20, 5, 1, 10000 )
+
 		util.ScreenShake(self.Entity:GetPos(), 20, 5, 1, 20000 )
 		self.Entity:EmitSound( "Explosion.Boom")
 		self.Entity:EmitSound( "Explosion.Boom")

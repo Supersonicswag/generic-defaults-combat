@@ -48,12 +48,11 @@ end
 					local effectdata = EffectData()
 					effectdata:SetOrigin(tr.HitPos)
 					effectdata:SetNormal(tr.HitNormal)
-					effectdata:SetScale(6)			// Size of cloud
-					effectdata:SetRadius(7)			// Size of ring
-					effectdata:SetMagnitude(300)			// Size of flash
-					util.Effect( "gdca_splodering", effectdata )
-					util.Effect( "gdca_splodecolumn", effectdata )
-					util.ScreenShake(tr.HitPos, 10, 5, 1, 5000 )
+					effectdata:SetScale(6)			// Size of explosion
+					effectdata:SetRadius(1.3)			// Relative width of explosion
+					effectdata:SetMagnitude(20)			// Length of explosion trails
+					util.Effect( "gdca_cinematicboom", effectdata )
+					util.ScreenShake(tr.HitPos, 20, 5, 1, 3500 )
 					util.Decal("Scorch", tr.HitPos + tr.HitNormal, tr.HitPos - tr.HitNormal)
 					local attack = gcombat.hcgexplode( tr.HitPos, 800, 800, 6)		// Radius, Damage
 					self.Entity:Remove()	

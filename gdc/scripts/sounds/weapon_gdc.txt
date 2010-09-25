@@ -142,6 +142,22 @@
 	"soundlevel"			"SNDLVL_155dB"
 	"wave"				")GDC/KPV.wav"
 }
+"GSh23.Single"
+{
+	"channel"				"CHAN_WEAPON"
+	"volume"				"1.0"
+	"pitch"				"PITCH_NORM"
+	"soundlevel"			"SNDLVL_155dB"
+	"wave"				")GDC/GShAutoCannon.wav"
+}
+"GSh30.Single"
+{
+	"channel"				"CHAN_WEAPON"
+	"volume"				"1.0"
+	"pitch"				"90"
+	"soundlevel"			"SNDLVL_155dB"
+	"wave"				")GDC/GShAutoCannon.wav"
+}
 "Flare.Single"
 {
 	"channel"				"CHAN_WEAPON"

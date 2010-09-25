@@ -50,11 +50,10 @@ end
 					local effectdata = EffectData()
 					effectdata:SetOrigin(tr.HitPos)
 					effectdata:SetNormal(tr.HitNormal)
-					effectdata:SetScale(2.5)			// Size of cloud
-					effectdata:SetRadius(3)			// Size of ring
-					effectdata:SetMagnitude(130)			// Size of flash
-					util.Effect( "gdca_splodering", effectdata )
-					util.Effect( "gdca_splodecolumn", effectdata )
+					effectdata:SetScale(2.2)			// Size of explosion
+					effectdata:SetRadius(0.8)			// Relative width of explosion
+					effectdata:SetMagnitude(13)			// Length of explosion trails
+					util.Effect( "gdca_cinematicboom", effectdata )
 					util.ScreenShake(tr.HitPos, 10, 5, 1, 1300 )
 					util.Decal("Scorch", tr.HitPos + tr.HitNormal, tr.HitPos - tr.HitNormal)
 					local attack = gcombat.hcgexplode( tr.HitPos, 200, 300, 10)		// Radius, Damage
@@ -62,7 +61,7 @@ end
 					end
 	
 	self.Entity:SetPos(self.Entity:GetPos() + self.flightvector)
-	self.flightvector = self.flightvector + Vector(math.Rand(-0.5,0.5), math.Rand(-0.5,0.5),math.Rand(-0.5,0.5)) + Vector(0,0,-0.2)
+	self.flightvector = self.flightvector + Vector(math.Rand(-0.4,0.4), math.Rand(-0.4,0.4),math.Rand(-0.4,0.4)) + Vector(0,0,-0.2)
 	self.Entity:SetAngles(self.flightvector:Angle() + Angle(90,0,0))
 	self.Entity:NextThink( CurTime() )
 	return true
