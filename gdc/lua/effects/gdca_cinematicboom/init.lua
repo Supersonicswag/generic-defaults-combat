@@ -14,10 +14,12 @@ self.Size = 5*self.Scale
 
 self.emitter = ParticleEmitter( Pos )
 self.Origin = Pos	
-
+			if Scale<2.1 then
+				WorldSound( "ambient/explosions/explode_" .. math.random(1, 4) .. ".wav", Pos, 100, 100 )
+			else
 				WorldSound( "Explosion.Boom", Pos)
-
-
+				WorldSound( "ambient/explosions/explode_" .. math.random(1, 4) .. ".wav", Pos, 100, 100 )
+			end
 
 		for i=1,5 do 
 			local Flash = self.emitter:Add( "effects/muzzleflash"..math.random(1,4), Pos )
@@ -76,7 +78,7 @@ self.Origin = Pos
 		for k = 1, self.Particles do
 			local Rcolor = math.random(-20,20)
 			local particle1 = self.emitter:Add( "particles/smokey", Pos )				
-			particle1:SetVelocity((VectorRand():GetNormalized()*math.Rand(1, 2) * self.Size) + (RanVec*self.Size*k*3))	
+			particle1:SetVelocity((VectorRand():GetNormalized()*math.Rand(1, 2) * self.Size) + (RanVec*self.Size*k*3.5))	
 			particle1:SetDieTime( math.Rand( 0, 3 )*self.Scale )	
 			particle1:SetStartAlpha( math.Rand( 70, 90 ) )			
 			particle1:SetEndAlpha(0)	

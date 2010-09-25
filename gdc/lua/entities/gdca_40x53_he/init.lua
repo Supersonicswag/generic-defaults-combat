@@ -37,7 +37,7 @@ end
 					local effectdata = EffectData()
 					effectdata:SetOrigin(tr.HitPos)
 					effectdata:SetNormal(tr.HitNormal)
-					effectdata:SetScale(2)			// Size of explosion
+					effectdata:SetScale(1.7)			// Size of explosion
 					effectdata:SetRadius(1.3)			// Relative width of explosion
 					effectdata:SetMagnitude(12)			// Length of explosion trails
 					util.Effect( "gdca_cinematicboom", effectdata )
