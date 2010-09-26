@@ -75,7 +75,7 @@ self.Origin = Pos
 		local DustRing = Angle:Up()
 		local RanVec = (DirVec*math.Rand(1, 5) + (DustRing*math.Rand(3, 5)*Radius))
 
-		for k = 1, self.Particles do
+		for k = 3, self.Particles do
 			local Rcolor = math.random(-20,20)
 			local particle1 = self.emitter:Add( "particles/smokey", Pos )				
 			particle1:SetVelocity((VectorRand():GetNormalized()*math.Rand(1, 2) * self.Size) + (RanVec*self.Size*k*3.5))	
@@ -87,7 +87,7 @@ self.Origin = Pos
 			particle1:SetStartSize( (5*self.Size)-((k/self.Particles)*self.Size*3) )	
 			particle1:SetEndSize( (20*self.Size)-((k/self.Particles)*self.Size) )
 			particle1:SetRoll( math.random( -500, 500 )/100 )	
-			particle1:SetRollDelta( math.random( -0.3, 0.3 ) )	
+			particle1:SetRollDelta( math.random( -0.5, 0.5 ) )	
 			particle1:SetColor( 90+Rcolor,86+Rcolor,75+Rcolor )
 		end
 

@@ -39,10 +39,10 @@ function ENT:Think()
 					local effectdata = EffectData()
 					effectdata:SetOrigin(tr.HitPos)
 					effectdata:SetNormal(tr.HitNormal)
-					effectdata:SetScale(0.7)			// Size of cloud
-					effectdata:SetRadius(0.7)			// Size of ring
-					effectdata:SetMagnitude(20)			// Size of flash
-					util.Effect( "gdca_splodecolumn", effectdata )
+					effectdata:SetScale(0.8)			// Size of explosion
+					effectdata:SetRadius(0.6)			// Relative width of explosion
+					effectdata:SetMagnitude(10)			// Length of explosion trails
+					util.Effect( "gdca_cinematicboom", effectdata )
 					util.ScreenShake(tr.HitPos, 10, 5, 0.5, 400 )
 					util.Decal("fadingScorch", tr.HitPos + tr.HitNormal, tr.HitPos - tr.HitNormal)
 

@@ -54,7 +54,7 @@ end
 					util.Effect( "gdca_cinematicboom", effectdata )
 					util.ScreenShake(tr.HitPos, 20, 5, 1, 3500 )
 					util.Decal("Scorch", tr.HitPos + tr.HitNormal, tr.HitPos - tr.HitNormal)
-					local attack = gcombat.hcgexplode( tr.HitPos, 800, 800, 6)		// Radius, Damage
+					local attack = gcombat.hcgexplode( tr.HitPos, 800, 800, 10)		// Radius, Damage
 					self.Entity:Remove()	
 					end
 	

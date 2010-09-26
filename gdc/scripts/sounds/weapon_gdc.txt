@@ -132,7 +132,7 @@
 	"volume"				"1.0"
 	"pitch"				"PITCH_NORM"
 	"soundlevel"			"SNDLVL_155dB"
-	"wave"				")GDC/M2BASS.wav"
+	"wave"				")GDC/GAU19.wav"
 }
 "KPV.Single"
 {

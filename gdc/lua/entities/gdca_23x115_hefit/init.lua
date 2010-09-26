@@ -54,7 +54,7 @@ function ENT:Think()
 					util.Decal("fadingScorch", tr.HitPos + tr.HitNormal, tr.HitPos - tr.HitNormal)
 
 					if tr.Entity:IsValid() then
-					local attack = gcombat.hcgexplode( tr.HitPos, 30, 50, 6)		// Radius, Damage
+					local attack = gcombat.hcgexplode( tr.HitPos, 30, 80, 6)		// Radius, Damage
 					local effectdata = EffectData()
 					effectdata:SetOrigin(tr.HitPos)
 					effectdata:SetStart(tr.HitPos)
