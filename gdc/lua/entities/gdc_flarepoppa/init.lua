@@ -59,7 +59,7 @@ function ENT:Think()
 if FIELDS == nil and COMBATDAMAGEENGINE == nil then return end
 Wire_TriggerOutput(self.Entity, "Shots", self.ammos)
 	if self.ammos <= 0 then
-	self.reloadtime = CurTime()+15
+	self.reloadtime = CurTime()+10
 	self.ammos = self.clipsize
 	end
 	

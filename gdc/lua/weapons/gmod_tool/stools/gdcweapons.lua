@@ -42,7 +42,7 @@ if ( CLIENT ) then
 	language.Add( "Tool_gdcweapons_help20", "Flare deployer, 10 salvo. Flares can be used as smoke, signals, or IR jammers (GMLS will track it)" )
 	language.Add( "Tool_gdcweapons_help21", "10 RPS, 16 Salvo, High Explosive Fragmentation(13m)/High Explosive Anti-Tank(8m)" )
 	language.Add( "Tool_gdcweapons_help22", "4 RPS, 8 Salvo, High Explosive Anti-Tank(15m)/FAE (Thermobaric)(25)/Penetrator(5m)." )
-	language.Add( "Tool_gdcweapons_help22", "420 RPM, Armor Piercing Incindiary, Armor Piercing Incindiary Tracer, High Explosive Incindiary(4m), Overheats after 33 rounds, 39600 Inches/Second" )
+	language.Add( "Tool_gdcweapons_help23", "420 RPM, Armor Piercing Incindiary, Armor Piercing Incindiary Tracer, High Explosive Incindiary(4m), Overheats after 33 rounds, 39600 Inches/Second" )
 
 
 	language.Add( "Tool_turret_type", "Type of weapon" )

@@ -55,7 +55,7 @@ end
 
 
 					if tr.Entity:IsValid() then
-					local attack = gcombat.hcgexplode( tr.HitPos, 300, 400, 10)		// Radius, Damage
+					local attack = gcombat.hcgexplode( tr.HitPos, 300, 300, 10)		// Radius, Damage
 					local effectdata = EffectData()
 					effectdata:SetOrigin(tr.HitPos)
 					effectdata:SetStart(tr.HitPos)
@@ -71,7 +71,7 @@ end
 	if self.nexttarGet < CurTime() then 
 		for _,t in pairs(EIS) do
 			if !(t:GetClass() == "gdca_flare") and !self.Flared then
-			if (t:GetClass() == "prop_physics" || t:GetClass() == "prop_vehicle_prisoner_pod" || t:GetClass() == "prop_vehicle_jeep" || t:GetClass() == "prop_vehicle_airboat" || t:GetClass() == "gdca_flare" || t:IsNPC()) then
+			if (t:IsValid()) and (t:GetClass() == "prop_physics" || t:GetClass() == "prop_vehicle_prisoner_pod" || t:GetClass() == "prop_vehicle_jeep" || t:GetClass() == "prop_vehicle_airboat" || t:GetClass() == "gdca_flare" || t:IsNPC()) then
 				if (t:GetPos():Distance(self:GetPos()) < distance && self:GetUp():DotProduct((t:GetPos() - self:GetPos()):GetNormalized()) > 0.98) then
 						self.Target = t
 				end
@@ -81,22 +81,22 @@ end
 						self.Flared = true
 						end
 			end
-			self.nexttarGet = CurTime() + 1
+			self.nexttarGet = CurTime() + 0.3
 		end
 
 
-	if (self.Target != self.Entity) and (self.Target:GetPos():Distance(self:GetPos()) < distance && self:GetUp():DotProduct((self.Target:GetPos() - self:GetPos()):GetNormalized()) > 0.50) then
+	if (self.Target:IsValid()) and (self.Target != self.Entity) and (self.Target:GetPos():Distance(self:GetPos()) < distance && self:GetUp():DotProduct((self.Target:GetPos() - self:GetPos()):GetNormalized()) > 0.50) then
 	ForwardAngle = self.Entity:GetUp():Angle()
 	TangY = (self.Target:GetPos() - self:GetPos()):GetNormalized():Angle().y
-	AddY = math.Clamp(math.AngleDifference(TangY, self.Entity:GetUp():Angle().y)*15,-1.5,1.5)
+	AddY = math.Clamp(math.AngleDifference(TangY, self.Entity:GetUp():Angle().y)*15,-1.2,1.2)
 	TangP = (self.Target:GetPos() - self:GetPos()):GetNormalized():Angle().p
-	AddP = math.Clamp(math.AngleDifference(TangP, self.Entity:GetUp():Angle().p)*15,-1.5,1.5)
-	self.Entity:SetAngles((Angle(AddP,AddY,0) + ForwardAngle) + Angle(90,0,0) + Angle(math.Rand(-0.5,0.5),math.Rand(-0.5,0.5),math.Rand(-0.5,0.5)))
+	AddP = math.Clamp(math.AngleDifference(TangP, self.Entity:GetUp():Angle().p)*15,-1.2,1.2)
+	self.Entity:SetAngles((Angle(AddP,AddY,0) + ForwardAngle) + Angle(90,0,0) + Angle(math.Rand(-0.8,0.8),math.Rand(-0.8,0.8),math.Rand(-0.8,0.8)))
 	else
 	self.Entity:SetAngles(self.flightvector:Angle() + Angle(90,0,0))
 	end
 
-	self.flightvector = self.Entity:GetUp()*150 + Vector(math.Rand(-0.3,0.3), math.Rand(-0.3,0.3),math.Rand(-0.3,0.3))
+	self.flightvector = self.Entity:GetUp()*120 + Vector(math.Rand(-0.3,0.3), math.Rand(-0.3,0.3),math.Rand(-0.3,0.3))
 	self.Entity:SetPos(self.Entity:GetPos() + self.flightvector)
 	self.Entity:NextThink( CurTime() )
 	return true

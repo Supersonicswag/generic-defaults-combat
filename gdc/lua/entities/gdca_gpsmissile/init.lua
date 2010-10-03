@@ -53,7 +53,7 @@ end
 			util.Effect( "gdca_cinematicboom", effectdata )
 			util.ScreenShake(tr.HitPos, 10, 5, 1, 2000 )
 			util.Decal("Scorch", tr.HitPos + tr.HitNormal, tr.HitPos - tr.HitNormal)
-			local attack =  gcombat.hcgexplode( tr.HitPos, 300, 400, 8)
+			local attack =  gcombat.hcgexplode( tr.HitPos, 300, 400, 10)
 			self.Entity:Remove()
 			end
 
@@ -64,7 +64,7 @@ end
 	AddY = math.Clamp(math.AngleDifference(TangY, self.Entity:GetUp():Angle().y)*15,-1.5,1.5)
 	TangP = (self.Target - self:GetPos()):GetNormalized():Angle().p
 	AddP = math.Clamp(math.AngleDifference(TangP, self.Entity:GetUp():Angle().p)*15,-1.5,1.5)
-	self.Entity:SetAngles((Angle(AddP,AddY,0) + ForwardAngle) + Angle(90,0,0) + Angle(math.Rand(-0.5,0.5),math.Rand(-0.5,0.5),math.Rand(-0.5,0.5)))
+	self.Entity:SetAngles((Angle(AddP,AddY,0) + ForwardAngle) + Angle(90,0,0) + Angle(math.Rand(-0.8,0.8),math.Rand(-0.8,0.8),math.Rand(-0.8,0.8)))
 	else
 	self.Entity:SetAngles(self.flightvector:Angle() + Angle(90,0,0))
 	end
