@@ -16,6 +16,33 @@ self.Sound = CreateSound( self.Entity, Sound( "weapons/rpg/rocket1.wav" ) )
 self.Sound:Play()
 self.Target = self.Entity    
 self.Flared = false
+
+SmokeTrail = ents.Create("env_spritetrail")
+SmokeTrail:SetKeyValue("lifetime","0.5")
+SmokeTrail:SetKeyValue("startwidth","40")
+SmokeTrail:SetKeyValue("endwidth","200")
+SmokeTrail:SetKeyValue("spritename","trails/smoke.vmt")
+SmokeTrail:SetKeyValue("rendermode","5")
+SmokeTrail:SetKeyValue("rendercolor","200 200 200")
+SmokeTrail:SetPos(self.Entity:GetPos())
+SmokeTrail:SetParent(self.Entity)
+SmokeTrail:Spawn()
+SmokeTrail:Activate()
+
+Glow = ents.Create("env_sprite")
+Glow:SetPos(self.Entity:GetPos())
+Glow:SetKeyValue("renderfx", "0")
+Glow:SetKeyValue("rendermode", "5")
+Glow:SetKeyValue("renderamt", "255")
+Glow:SetKeyValue("rendercolor", "250 200 200")
+Glow:SetKeyValue("framerate12", "20")
+Glow:SetKeyValue("model", "light_glow03.spr")
+Glow:SetKeyValue("scale", "2.5")
+Glow:SetKeyValue("GlowProxySize", "130")
+Glow:SetParent(self.Entity)
+Glow:Spawn()
+Glow:Activate()
+
 self:Think()
 end   
 
@@ -71,7 +98,7 @@ end
 	if self.nexttarGet < CurTime() then 
 		for _,t in pairs(EIS) do
 			if !(t:GetClass() == "gdca_flare") and !self.Flared then
-			if (t:IsValid()) and (t:GetClass() == "prop_physics" || t:GetClass() == "prop_vehicle_prisoner_pod" || t:GetClass() == "prop_vehicle_jeep" || t:GetClass() == "prop_vehicle_airboat" || t:GetClass() == "gdca_flare" || t:IsNPC()) then
+			if (t:IsValid() and (t:GetClass() == "prop_physics" || t:GetClass() == "prop_vehicle_prisoner_pod" || t:GetClass() == "prop_vehicle_jeep" || t:GetClass() == "prop_vehicle_airboat" || t:GetClass() == "gdca_flare" || t:IsNPC()) and (t:GetVelocity():Length() > 0)) then
 				if (t:GetPos():Distance(self:GetPos()) < distance && self:GetUp():DotProduct((t:GetPos() - self:GetPos()):GetNormalized()) > 0.98) then
 						self.Target = t
 				end

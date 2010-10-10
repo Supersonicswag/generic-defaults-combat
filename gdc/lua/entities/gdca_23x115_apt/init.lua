@@ -9,19 +9,31 @@ self.timeleft = CurTime() + 5
 self.Entity:SetModel( "models/combatmodels/tankshell_25mm.mdl" ) 	
 self.Entity:PhysicsInit( SOLID_VPHYSICS )      -- Make us work with physics,  	
 self.Entity:SetMoveType( MOVETYPE_NONE )   --after all, gmod is a physics  	
-self.Entity:SetSolid( SOLID_VPHYSICS )        -- CHEESECAKE!    >:3            
-FireTrail = ents.Create("env_spritetrail")
-FireTrail:SetKeyValue("lifetime",".1")
-FireTrail:SetKeyValue("startwidth","50")
-FireTrail:SetKeyValue("endwidth","0")
-FireTrail:SetKeyValue("spritename","trails/laser.vmt")
-FireTrail:SetKeyValue("rendermode","5")
-FireTrail:SetKeyValue("rendercolor","250 150 100")
-FireTrail:SetPos(self.Entity:GetPos())
-FireTrail:SetParent(self.Entity)
-FireTrail:Spawn()
-FireTrail:Activate()
+self.Entity:SetSolid( SOLID_VPHYSICS )        -- CHEESECAKE!    >:3      
+      
+Tracer = ents.Create("env_spritetrail")
+Tracer:SetKeyValue("lifetime","0.1")
+Tracer:SetKeyValue("startwidth","50")
+Tracer:SetKeyValue("endwidth","0")
+Tracer:SetKeyValue("spritename","trails/laser.vmt")
+Tracer:SetKeyValue("rendermode","5")
+Tracer:SetKeyValue("rendercolor","255 150 100")
+Tracer:SetPos(self.Entity:GetPos())
+Tracer:SetParent(self.Entity)
+Tracer:Spawn()
+Tracer:Activate()
+
+Glow = ents.Create("env_sprite")
+Glow:SetKeyValue("model","orangecore2.vmt")
+Glow:SetKeyValue("rendercolor","255 150 100")
+Glow:SetKeyValue("scale","0.25")
+Glow:SetPos(self.Entity:GetPos())
+Glow:SetParent(self.Entity)
+Glow:Spawn()
+Glow:Activate()
+
 self:Think()
+
 end   
 
 function ENT:Think()

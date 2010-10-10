@@ -1,6 +1,6 @@
 
 TOOL.Category		= "GDC"
-TOOL.Name			= "#Generic Defaults Combat"
+TOOL.Name		= "#Generic Defaults Combat"
 TOOL.Command		= nil
 TOOL.ConfigName		= ""
 
@@ -10,6 +10,9 @@ TOOL.ent = {}
 
 cleanup.Register( "gdcweapons" )
 
+	if SERVER then
+	CreateConVar( 'sbox_maxgcombat', 10 )
+	end
 
 // Add Default Language translation (saves adding it to the txt files)
 if ( CLIENT ) then
@@ -21,19 +24,19 @@ if ( CLIENT ) then
 
 	language.Add( "Tool_gdcweapons_help0", "~860 RPM, Tracer/Ball, 26400 Inches/Second" )
 	language.Add( "Tool_gdcweapons_help1", "~460 RPM, Tracer/Ball, 29700 Inches/Second" )
-	language.Add( "Tool_gdcweapons_help2", "~700 RPM, High Explosive(5), 23100 Inches/Second" )
-	language.Add( "Tool_gdcweapons_help3", "300 RPM, High Explosive Incindiary(6.5)/Armor Piercing Incindiary, 36300 Inches/Second" )
-	language.Add( "Tool_gdcweapons_help4", "~600 RPM, High Explosive Incindiary(7), 19800 Inches/Second" )
-	language.Add( "Tool_gdcweapons_help5", "200 RPM, High Explosive(8), 33000 Inches/Second" )
-	language.Add( "Tool_gdcweapons_help6", "120 RPM, High Explosive(13), 19800 Inches/Second" )
-	language.Add( "Tool_gdcweapons_help7", "7 RPS, 7 Salvo, High Explosive(18)/White Phosphorus(15), 13200 Inches/Second" )
-	language.Add( "Tool_gdcweapons_help8", "8 RPM, High Explosive(31)/White Phosphorus(25), 19800 Inches/Second" )
+	language.Add( "Tool_gdcweapons_help2", "~700 RPM, High Explosive(5m), 23100 Inches/Second" )
+	language.Add( "Tool_gdcweapons_help3", "300 RPM, High Explosive Incindiary(6.5m)/Armor Piercing Incindiary, 36300 Inches/Second" )
+	language.Add( "Tool_gdcweapons_help4", "~600 RPM, High Explosive Incindiary(7m), 19800 Inches/Second" )
+	language.Add( "Tool_gdcweapons_help5", "200 RPM, High Explosive(8m), 33000 Inches/Second" )
+	language.Add( "Tool_gdcweapons_help6", "120 RPM, High Explosive(13m), 19800 Inches/Second" )
+	language.Add( "Tool_gdcweapons_help7", "7 RPS, 7 Salvo, High Explosive(18m)/White Phosphorus(15m), 13200 Inches/Second" )
+	language.Add( "Tool_gdcweapons_help8", "8 RPM, High Explosive(31m)/White Phosphorus(25m), 19800 Inches/Second" )
 	language.Add( "Tool_gdcweapons_help9", "1200 RPM, Armor Piercing Incindiary, Overheats after 25 rounds, 36300 Inches/Second" )
 	language.Add( "Tool_gdcweapons_help10", "30 meter blast radius. Effective against infantry" )
 	language.Add( "Tool_gdcweapons_help11", "1500 RPM, Tracer/Ball, Overheats after 75 rounds, 26400 Inches/Second" )
-	language.Add( "Tool_gdcweapons_help12", "8 RPM, High Explosive Anti-Tank(18)/SABOT, 23100 Inches/Second(HEAT), 36300 Inches/Second(SABOT)" )
+	language.Add( "Tool_gdcweapons_help12", "8 RPM, High Explosive Anti-Tank(18m)/SABOT, 23100 Inches/Second(HEAT), 36300 Inches/Second(SABOT)" )
 	language.Add( "Tool_gdcweapons_help13", "Powerful 15m blast radius. Effective against vehicles" )
-	language.Add( "Tool_gdcweapons_help14", "20 RPM, High Explosive(23m)/White Phosphorus(15), 5280 Inches/Second" )
+	language.Add( "Tool_gdcweapons_help14", "20 RPM, High Explosive(23m)/White Phosphorus(15m), 5280 Inches/Second" )
 	language.Add( "Tool_gdcweapons_help15", "300 RPM, High Explosive(11m)/High Explosive Dual Purpose(9m), 9900 Inches/Second" )
 	language.Add( "Tool_gdcweapons_help16", "30 RPM, High Explosive(25m), 2640-4620- Inches/Second" )
 	language.Add( "Tool_gdcweapons_help17", "12 RPM, High Explosive(15m). IR Guided, GPS Guided, No coordinates will fire straight. BE CAREFUL! Don't fire at anything with unwanted targets in the general direction!" )
@@ -49,7 +52,7 @@ if ( CLIENT ) then
 	language.Add( "Undone_gdcweapons", "Undone weapon" )
 	language.Add( "Cleanup_gdcweapons", "Weapon" )
 	language.Add( "Cleaned_gdcweapons", "Cleaned up all Weapons" )
-	language.Add( "SBoxLimit_gcombats", "You've reached the Weapon limit!" )
+	language.Add( "SBoxLimit_gcombats", "Dude you already have enough guns!" )
 
 end
 

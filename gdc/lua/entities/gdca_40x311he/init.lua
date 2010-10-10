@@ -13,17 +13,28 @@ self.Entity:PhysicsInit( SOLID_VPHYSICS )      -- Make us work with physics,
 self.Entity:SetMoveType( MOVETYPE_NONE )   --after all, gmod is a physics  	
 self.Entity:SetSolid( SOLID_VPHYSICS )        -- CHEESECAKE!    >:3           
 self.Entity:SetColor(255,255,0,255)
- FireTrail = ents.Create("env_spritetrail")
-FireTrail:SetKeyValue("lifetime","0.1")
-FireTrail:SetKeyValue("startwidth","90")
-FireTrail:SetKeyValue("endwidth","0")
-FireTrail:SetKeyValue("spritename","trails/laser.vmt")
-FireTrail:SetKeyValue("rendermode","5")
-FireTrail:SetKeyValue("rendercolor","250 150 100")
-FireTrail:SetPos(self.Entity:GetPos())
-FireTrail:SetParent(self.Entity)
-FireTrail:Spawn()
-FireTrail:Activate()
+
+Tracer = ents.Create("env_spritetrail")
+Tracer:SetKeyValue("lifetime","0.1")
+Tracer:SetKeyValue("startwidth","90")
+Tracer:SetKeyValue("endwidth","0")
+Tracer:SetKeyValue("spritename","trails/laser.vmt")
+Tracer:SetKeyValue("rendermode","5")
+Tracer:SetKeyValue("rendercolor","255 150 100")
+Tracer:SetPos(self.Entity:GetPos())
+Tracer:SetParent(self.Entity)
+Tracer:Spawn()
+Tracer:Activate()
+
+Glow = ents.Create("env_sprite")
+Glow:SetKeyValue("model","orangecore2.vmt")
+Glow:SetKeyValue("rendercolor","255 150 100")
+Glow:SetKeyValue("scale","0.4")
+Glow:SetPos(self.Entity:GetPos())
+Glow:SetParent(self.Entity)
+Glow:Spawn()
+Glow:Activate()
+
 end   
 
  function ENT:Think()
@@ -61,7 +72,7 @@ end
 					end
 	
 	self.Entity:SetPos(self.Entity:GetPos() + self.flightvector)
-	self.flightvector = self.flightvector + Vector(math.Rand(-0.4,0.4), math.Rand(-0.4,0.4),math.Rand(-0.4,0.4)) + Vector(0,0,-0.2)
+	self.flightvector = self.flightvector + Vector(math.Rand(-0.3,0.3), math.Rand(-0.3,0.3),math.Rand(-0.3,0.3)) + Vector(0,0,-0.2)
 	self.Entity:SetAngles(self.flightvector:Angle() + Angle(90,0,0))
 	self.Entity:NextThink( CurTime() )
 	return true

@@ -45,7 +45,7 @@ function ENT:Think()
 		effectdata:SetMagnitude(200)			// Size of flash
 		util.Effect( "gdca_airburst", effectdata )
 		util.ScreenShake(self.Entity:GetPos(), 25, 5, 1, 2000 )
-		cbt_hcgexplode( self.Entity:GetPos(), 300, 1500, 10)			// Position, Radius, Damage, Pieece?
+		cbt_hcgexplode( self.Entity:GetPos(), 300, 1500, 10)			// Position, Radius, Damage, Pierce?
 		util.BlastDamage(self.Entity, self.Entity, self.Entity:GetPos(), 600, 200)
 		self.Entity:Remove()
 	end

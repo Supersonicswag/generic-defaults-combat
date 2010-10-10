@@ -17,6 +17,7 @@ function ENT:Initialize()
 	self.reloadtime = 0
 	self.infire = false
 	self.infire2 = false
+	self.InFireIlluminator = false
 	self.Entity:SetModel( "models/props_pipes/pipecluster08d_extender64.mdl" ) 	
 	self.Entity:PhysicsInit( SOLID_VPHYSICS )      -- Make us work with physics,  	
 	self.Entity:SetMoveType( MOVETYPE_VPHYSICS )   --after all, gmod is a physics  	
@@ -28,7 +29,7 @@ function ENT:Initialize()
 		phys:Wake() 
 	end 
  
-	self.Inputs = Wire_CreateInputs( self.Entity, { "Fire HE", "Fire WP" } )
+	self.Inputs = Wire_CreateInputs( self.Entity, { "Fire HE", "Fire WP", "Fire Illuminator" } )
 	self.Outputs = Wire_CreateOutputs( self.Entity, { "Can Fire"})
 end   
 
@@ -103,6 +104,33 @@ function ENT:firehe()
 
 end
 
+function ENT:fireilluminator()
+
+	local ent = ents.Create( "gdca_81mm_illuminator" )
+		ent:SetPos( self.Entity:GetPos() +  self.Entity:GetUp() * 100)
+		ent:SetAngles( self.Entity:GetAngles() )
+		ent:Spawn()
+		ent:Activate()
+
+		
+		local phys = self.Entity:GetPhysicsObject()  	
+		if (phys:IsValid()) then  		
+		phys:ApplyForceCenter( self.Entity:GetUp() * -81000 ) 
+		end 
+		
+		local effectdata = EffectData()
+		effectdata:SetOrigin(self.Entity:GetPos() +  self.Entity:GetUp() * 40)
+		effectdata:SetNormal(self:GetUp())
+		effectdata:SetScale(0.5)
+		util.Effect( "gdca_tanksmoke", effectdata )
+		util.ScreenShake(self.Entity:GetPos(), 30, 5, 0.2, 300 )
+		self.Entity:EmitSound( "81mm.single" )
+
+		self.reloadtime = CurTime()+10
+	
+
+end
+
 function ENT:Think()
 if FIELDS == nil and COMBATDAMAGEENGINE == nil then return end
 	if self.ammos <= 0 then
@@ -128,27 +156,41 @@ if FIELDS == nil and COMBATDAMAGEENGINE == nil then return end
 	end
 	end
 
+	if self.InFireIlluminator and !self.inFire and !self.inFire2 then
+	if (self.reloadtime < CurTime()) then
+	self:fireilluminator()	
+	end
+	end
+
 	self.Entity:NextThink( CurTime() + .01)
 	return true
 end
 
 function ENT:TriggerInput(k, v)
-if(k=="Fire WP") then
-		if((v or 0) >= 1) then
+
+			if(k=="Fire WP") then
+			if((v or 0) >= 1) then
 			self.inFire = true
-		else
+			else
 			self.inFire = false
-		end
-	end
+			end
+			end
 	
-	if(k=="Fire HE") then
-		if((v or 0) >= 1) then
+			if(k=="Fire HE") then
+			if((v or 0) >= 1) then
 			self.inFire2 = true
-		else
+			else
 			self.inFire2 = false
-		end
-	end
-	
+			end
+			end
+
+			if(k=="Fire Illuminator") then
+			if((v or 0) >= 1) then
+			self.InFireIlluminator = true
+			else
+			self.InFireIlluminator = false
+			end
+			end
 end
  
  

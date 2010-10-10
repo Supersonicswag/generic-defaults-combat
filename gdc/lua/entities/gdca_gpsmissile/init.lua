@@ -18,6 +18,33 @@ self.Entity:SetMoveType( MOVETYPE_NONE )   --after all, gmod is a physics
 self.Entity:SetSolid( SOLID_VPHYSICS )        -- CHEESECAKE!    >:3 
 self.Sound = CreateSound( self.Entity, Sound( "weapons/rpg/rocket1.wav" ) ) 
 self.Sound:Play()
+
+SmokeTrail = ents.Create("env_spritetrail")
+SmokeTrail:SetKeyValue("lifetime","0.5")
+SmokeTrail:SetKeyValue("startwidth","40")
+SmokeTrail:SetKeyValue("endwidth","200")
+SmokeTrail:SetKeyValue("spritename","trails/smoke.vmt")
+SmokeTrail:SetKeyValue("rendermode","5")
+SmokeTrail:SetKeyValue("rendercolor","200 200 200")
+SmokeTrail:SetPos(self.Entity:GetPos())
+SmokeTrail:SetParent(self.Entity)
+SmokeTrail:Spawn()
+SmokeTrail:Activate()
+
+Glow = ents.Create("env_sprite")
+Glow:SetPos(self.Entity:GetPos())
+Glow:SetKeyValue("renderfx", "0")
+Glow:SetKeyValue("rendermode", "5")
+Glow:SetKeyValue("renderamt", "255")
+Glow:SetKeyValue("rendercolor", "250 200 200")
+Glow:SetKeyValue("framerate12", "20")
+Glow:SetKeyValue("model", "light_glow03.spr")
+Glow:SetKeyValue("scale", "2.5")
+Glow:SetKeyValue("GlowProxySize", "130")
+Glow:SetParent(self.Entity)
+Glow:Spawn()
+Glow:Activate()
+
 self:Think()
 end   
 
@@ -53,7 +80,7 @@ end
 			util.Effect( "gdca_cinematicboom", effectdata )
 			util.ScreenShake(tr.HitPos, 10, 5, 1, 2000 )
 			util.Decal("Scorch", tr.HitPos + tr.HitNormal, tr.HitPos - tr.HitNormal)
-			local attack =  gcombat.hcgexplode( tr.HitPos, 300, 400, 10)
+			local attack =  gcombat.hcgexplode( tr.HitPos, 400, 400, 10)
 			self.Entity:Remove()
 			end
 

@@ -12,26 +12,36 @@ self.Entity:PhysicsInit( SOLID_VPHYSICS )      -- Make us work with physics,
 self.Entity:SetMoveType( MOVETYPE_NONE )   --after all, gmod is a physics  	
 self.Entity:SetSolid( SOLID_VPHYSICS )        -- CHEESECAKE!    >:3           
 self.Entity:SetColor(255,255,0,255)
- 
+
+ SmokeTrail = ents.Create("env_spritetrail")
+SmokeTrail:SetKeyValue("lifetime","0.3")
+SmokeTrail:SetKeyValue("startwidth","20")
+SmokeTrail:SetKeyValue("endwidth","200")
+SmokeTrail:SetKeyValue("spritename","trails/smoke.vmt")
+SmokeTrail:SetKeyValue("rendermode","5")
+SmokeTrail:SetKeyValue("rendercolor","200 200 200")
+SmokeTrail:SetPos(self.Entity:GetPos())
+SmokeTrail:SetParent(self.Entity)
+SmokeTrail:Spawn()
+SmokeTrail:Activate()
+
+Glow = ents.Create("env_sprite")
+Glow:SetPos(self.Entity:GetPos())
+Glow:SetKeyValue("renderfx", "0")
+Glow:SetKeyValue("rendermode", "5")
+Glow:SetKeyValue("renderamt", "255")
+Glow:SetKeyValue("rendercolor", "250 200 200")
+Glow:SetKeyValue("framerate12", "20")
+Glow:SetKeyValue("model", "light_glow03.spr")
+Glow:SetKeyValue("scale", "2.5")
+Glow:SetKeyValue("GlowProxySize", "130")
+Glow:SetParent(self.Entity)
+Glow:Spawn()
+Glow:Activate()
+
 end   
 
  function ENT:Think()
-
-	if (self.smoking == false) then
-		self.smoking = true
-	
-		FireTrail = ents.Create("env_spritetrail")
-		FireTrail:SetKeyValue("lifetime","0.3")
-		FireTrail:SetKeyValue("startwidth","20")
-		FireTrail:SetKeyValue("endwidth","200")
-		FireTrail:SetKeyValue("spritename","trails/smoke.vmt")
-		FireTrail:SetKeyValue("rendermode","5")
-		FireTrail:SetKeyValue("rendercolor","200 200 200")
-		FireTrail:SetPos(self.Entity:GetPos())
-		FireTrail:SetParent(self.Entity)
-		FireTrail:Spawn()
-		FireTrail:Activate()
-	end 
 
 		if self.timeleft < CurTime() then
 		self.Entity:Remove()			
