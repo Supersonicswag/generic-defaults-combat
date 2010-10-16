@@ -46,6 +46,7 @@ if ( CLIENT ) then
 	language.Add( "Tool_gdcweapons_help21", "10 RPS, 16 Salvo, High Explosive Fragmentation(13m)/High Explosive Anti-Tank(8m)" )
 	language.Add( "Tool_gdcweapons_help22", "4 RPS, 8 Salvo, High Explosive Anti-Tank(15m)/FAE (Thermobaric)(25)/Penetrator(5m)." )
 	language.Add( "Tool_gdcweapons_help23", "420 RPM, Armor Piercing Incindiary, Armor Piercing Incindiary Tracer, High Explosive Incindiary(4m), Overheats after 33 rounds, 39600 Inches/Second" )
+	language.Add( "Tool_gdcweapons_help24", "600 RPM, Tracer(Green)/Ball, 29700 Inches/Second" )
 
 
 	language.Add( "Tool_turret_type", "Type of weapon" )
@@ -235,6 +236,13 @@ if ( !trace.Hit ) then return end
 
 		elseif (gdcweaponsindex == 23) then
 	self.ent = ents.Create( "gdc_kpv" )
+	self.ent:SetPos( SpawnPos )
+	self.ent:SetAngles( trace.HitNormal:Angle() + Angle(90,0,0))
+	self.ent:Spawn()
+	self.ent:Activate()
+
+		elseif (gdcweaponsindex == 24) then
+	self.ent = ents.Create( "gdc_pkm" )
 	self.ent:SetPos( SpawnPos )
 	self.ent:SetAngles( trace.HitNormal:Angle() + Angle(90,0,0))
 	self.ent:Spawn()
@@ -444,6 +452,13 @@ if ( !trace.Hit ) then return end
 	self.ent:Spawn()
 	self.ent:Activate()
 
+		elseif (gdcweaponsindex == 24) then
+	self.ent = ents.Create( "gdc_pkm" )
+	self.ent:SetPos( SpawnPos )
+	self.ent:SetAngles( trace.HitNormal:Angle() + Angle(90,0,0))
+	self.ent:Spawn()
+	self.ent:Activate()
+
 	end
 
 	ply:AddCount( "gcombat", self.ent )
@@ -498,6 +513,7 @@ function TOOL.BuildCPanel( CPanel )
 		Ctype["Options"]["#UB-16 57mm"]		= { gdcweapons_gdcweaponsindex = "21" }
 		Ctype["Options"]["#UB-8 80mm"]		= { gdcweapons_gdcweaponsindex = "22" }
 		Ctype["Options"]["#KPV 14.5mm"]		= { gdcweapons_gdcweaponsindex = "23" }
+		Ctype["Options"]["#PKM 7.62mm"]		= { gdcweapons_gdcweaponsindex = "24" }
 
 	CPanel:AddControl("ComboBox", Ctype )
 	

@@ -35,7 +35,7 @@ function ENT:FireHEI()
 		
 		local phys = self.Entity:GetPhysicsObject()  	
 		if (phys:IsValid()) then  		
-		phys:ApplyForceCenter( self.Entity:GetUp() * -10000 ) 
+		phys:ApplyForceCenter( self.Entity:GetUp() * -20000 ) 
 		end 
 		
 		self.Entity:EmitSound( "M197.single" )
@@ -57,7 +57,7 @@ function ENT:FireHEIT()
 		
 		local phys = self.Entity:GetPhysicsObject()  	
 		if (phys:IsValid()) then  		
-		phys:ApplyForceCenter( self.Entity:GetUp() * -10000 ) 
+		phys:ApplyForceCenter( self.Entity:GetUp() * -20000 ) 
 		end 
 		
 		self.Entity:EmitSound( "M197.single" )

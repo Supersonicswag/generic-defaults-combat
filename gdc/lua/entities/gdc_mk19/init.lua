@@ -61,7 +61,7 @@ function ENT:firehedp()
 		
 		local phys = self.Entity:GetPhysicsObject()  	
 		if (phys:IsValid()) then  		
-			phys:ApplyForceCenter( self.Entity:GetUp() * -5000 ) 
+			phys:ApplyForceCenter( self.Entity:GetUp() * -10000 ) 
 		end 
 		
 		local effectdata = EffectData()
@@ -88,7 +88,7 @@ function ENT:firehe()
 		
 		local phys = self.Entity:GetPhysicsObject()  	
 		if (phys:IsValid()) then  		
-			phys:ApplyForceCenter( self.Entity:GetUp() * -5000 ) 
+			phys:ApplyForceCenter( self.Entity:GetUp() * -10000 ) 
 		end 
 		
 		local effectdata = EffectData()

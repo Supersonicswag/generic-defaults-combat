@@ -10,20 +10,20 @@ function ENT:Initialize()
 	self.loading = false
 	self.reloadtime = 0
 	self.inFireAPT = false
-	self.inFireHEFIT = false
+	self.inFireHET = false
 	self.heat = 0
 	self.Entity:SetModel( "models/props_c17/signpole001.mdl" ) 	
 	self.Entity:PhysicsInit( SOLID_VPHYSICS )      -- Make us work with physics,  	
 	self.Entity:SetMoveType( MOVETYPE_VPHYSICS )   --after all, gmod is a physics  	
 	self.Entity:SetSolid( SOLID_VPHYSICS )        -- Toolbox     
-	util.PrecacheSound("GSh23.Single")
+	util.PrecacheSound("GSh30.Single")
           
 	local phys = self.Entity:GetPhysicsObject()  	
 	if (phys:IsValid()) then  		
 	phys:Wake() 
 	end 
  
-	self.Inputs = Wire_CreateInputs( self.Entity, { "Fire AP-T", "Fire HEFI-T"} )
+	self.Inputs = Wire_CreateInputs( self.Entity, { "Fire AP-T", "Fire HE-T"} )
 	self.Outputs = Wire_CreateOutputs( self.Entity, { "Can Fire", "Heat"})
 end   
 
@@ -32,7 +32,7 @@ function ENT:SpawnFunction( ply, tr)
 	if ( !tr.Hit ) then return end
 	local SpawnPos = tr.HitPos + tr.HitNormal * 60
 	
-	local ent = ents.Create( "gdc_gau19" )
+	local ent = ents.Create( "gdc_gsh30" )
 	ent:SetPos( SpawnPos )
 	ent:Spawn()
 	ent:Activate()
@@ -42,7 +42,7 @@ end
 
 function ENT:fireapt()
 
-		local ent = ents.Create( "gdca_23x115_apt" )
+		local ent = ents.Create( "gdca_30x165_apt" )
 		ent:SetPos( self.Entity:GetPos() +  self.Entity:GetUp() * 250)
 		ent:SetAngles( self.Entity:GetAngles() )
 		ent:Spawn()
@@ -52,22 +52,22 @@ function ENT:fireapt()
 		
 		local phys = self.Entity:GetPhysicsObject()  	
 		if (phys:IsValid()) then  		
-		phys:ApplyForceCenter( self.Entity:GetUp() * -23000 ) 
+		phys:ApplyForceCenter( self.Entity:GetUp() * -30000 ) 
 		end 
 		
 		local effectdata = EffectData()
 		effectdata:SetOrigin(self.Entity:GetPos() +  self.Entity:GetUp() * 110)
 		effectdata:SetNormal(self:GetUp())
-		effectdata:SetScale(0.6)
+		effectdata:SetScale(0.7)
 		util.Effect( "gdca_muzzle", effectdata )
-		util.ScreenShake(self.Entity:GetPos(), 12, 5, 0.1, 400 )
-		self.Entity:EmitSound( "GSh23.Single" )
+		util.ScreenShake(self.Entity:GetPos(), 12, 5, 0.1, 600 )
+		self.Entity:EmitSound( "GSh30.Single" )
 	
 
 end
 
-function ENT:firehefit()
-	local ent = ents.Create( "gdca_23x115_hefit" )
+function ENT:fireHET()
+	local ent = ents.Create( "gdca_30x165_HET" )
 		ent:SetPos( self.Entity:GetPos() +  self.Entity:GetUp() * 250)
 		ent:SetAngles( self.Entity:GetAngles() )
 		ent:Spawn()
@@ -76,16 +76,16 @@ function ENT:firehefit()
 		
 		local phys = self.Entity:GetPhysicsObject()  	
 		if (phys:IsValid()) then  		
-		phys:ApplyForceCenter( self.Entity:GetUp() * -23000 ) 
+		phys:ApplyForceCenter( self.Entity:GetUp() * -30000 ) 
 		end 
 		
 		local effectdata = EffectData()
 		effectdata:SetOrigin(self.Entity:GetPos() +  self.Entity:GetUp() * 110)
 		effectdata:SetNormal(self:GetUp())
-		effectdata:SetScale(0.6)
+		effectdata:SetScale(0.7)
 		util.Effect( "gdca_muzzle", effectdata )
-		util.ScreenShake(self.Entity:GetPos(), 12, 5, 0.1, 400 )
-		self.Entity:EmitSound( "GSh23.Single" )
+		util.ScreenShake(self.Entity:GetPos(), 12, 5, 0.1, 600 )
+		self.Entity:EmitSound( "GSh30.Single" )
 	
 end
 
@@ -113,9 +113,9 @@ if FIELDS == nil and COMBATDAMAGEENGINE == nil then return end
 	end
 	end
 	
-	if self.inFireHEFIT and !self.inFireAPT then
+	if self.inFireHET and !self.inFireAPT then
 	if (self.reloadtime < CurTime()) then
-	self:firehefit()	
+	self:fireHET()	
 	end
 	end
 
@@ -127,18 +127,18 @@ end
 function ENT:TriggerInput(k, v)
 
 	if(k=="Fire AP-T") then
-		if((v or 0) == 529) then		// See a pattern with the non-menu'd weapons?
+		if((v or 0) == 900) then		// See a pattern with the non-menu'd weapons?
 		self.inFireAPT = true
 		else
 		self.inFireAPT = false
 		end
 		end
 	
-	if(k=="Fire HEFI-T") then
-		if((v or 0) == 529) then
-		self.inFireHEFIT = true
+	if(k=="Fire HE-T") then
+		if((v or 0) == 900) then
+		self.inFireHET = true
 		else
-		self.inFireHEFIT = false
+		self.inFireHET = false
 		end
 		end
 	

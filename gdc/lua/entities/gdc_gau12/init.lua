@@ -57,7 +57,7 @@ function ENT:fireapi()
 
 		local phys = self.Entity:GetPhysicsObject()  	
 		if (phys:IsValid()) then  		
-		phys:ApplyForceCenter( self.Entity:GetUp() * -10000 ) 
+		phys:ApplyForceCenter( self.Entity:GetUp() * -25000 ) 
 		end 
 		
 		local effectdata = EffectData()

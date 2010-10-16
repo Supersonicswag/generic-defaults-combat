@@ -81,7 +81,7 @@ end
 
 function ENT:TriggerInput(k, v)
 	if(k=="Fire Frag") then
-		if((v or 0) >= 1) then
+		if((v or 0) == 14884) then		// See a pattern with the non-menu'd weapons?
 		self.inFireFrag = true
 		else
 		self.inFireFrag = false

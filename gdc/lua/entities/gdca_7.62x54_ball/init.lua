@@ -5,38 +5,15 @@ include('shared.lua')
 function ENT:Initialize()   
 
 math.randomseed(CurTime())
-self.flightvector = self.Entity:GetUp() * 400
-self.tracer = false
+self.flightvector = self.Entity:GetUp() * 450
 self.timeleft = CurTime() + 5
 self.Entity:SetModel( "models/led2.mdl" ) 	
 self.Entity:PhysicsInit( SOLID_VPHYSICS )	
 self.Entity:SetMoveType( MOVETYPE_NONE )
 self.Entity:SetSolid( SOLID_VPHYSICS )
 
-Tracer = ents.Create("env_spritetrail")
-Tracer:SetKeyValue("lifetime","0.1")
-Tracer:SetKeyValue("startwidth","25")
-Tracer:SetKeyValue("endwidth","0")
-Tracer:SetKeyValue("spritename","trails/laser.vmt")
-Tracer:SetKeyValue("rendermode","5")
-Tracer:SetKeyValue("rendercolor","255 150 100")
-Tracer:SetPos(self.Entity:GetPos())
-Tracer:SetParent(self.Entity)
-Tracer:Spawn()
-Tracer:Activate()
-
-Glow = ents.Create("env_sprite")
-Glow:SetKeyValue("model","orangecore2.vmt")
-Glow:SetKeyValue("rendercolor","255 150 100")
-Glow:SetKeyValue("scale","0.10")
-Glow:SetPos(self.Entity:GetPos())
-Glow:SetParent(self.Entity)
-Glow:Spawn()
-Glow:Activate()
-
-self:Think()
-
-end   
+	self:Think()
+	end   
 
 function ENT:Think()	
 
@@ -66,7 +43,7 @@ function ENT:Think()
 			util.ScreenShake(tr.HitPos, 10, 5, 0.3, 200 )
 			util.Decal("ExplosiveGunshot", tr.HitPos + tr.HitNormal, tr.HitPos - tr.HitNormal)
 
-			if tr.Entity:IsValid() then
+			if (tr.Entity:IsValid()) then
 			local attack = gcombat.hcghit( tr.Entity, 70, 10, tr.HitPos, tr.HitPos)
 			end
 
@@ -74,7 +51,7 @@ function ENT:Think()
 			return true
 		end
 
-self.flightvector = self.flightvector + Vector(math.Rand(-0.4,0.4), math.Rand(-0.4,0.4),math.Rand(-0.4,0.4)) + Vector(0,0,-0.2)
+self.flightvector = self.flightvector + Vector(math.Rand(-0.3,0.3), math.Rand(-0.3,0.3),math.Rand(-0.3,0.3)) + Vector(0,0,-0.15)
 self.Entity:SetPos(self.Entity:GetPos() + self.flightvector)
 self.Entity:SetAngles(self.flightvector:Angle() + Angle(90,0,0))
 self.Entity:NextThink( CurTime() )

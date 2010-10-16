@@ -55,7 +55,7 @@ function ENT:fire()
 		
 		local phys = self.Entity:GetPhysicsObject()  	
 		if (phys:IsValid()) then  		
-			phys:ApplyForceCenter( self.Entity:GetUp() * -1270 ) 
+			phys:ApplyForceCenter( self.Entity:GetUp() * -12700 ) 
 		end 
 		
 		local effectdata = EffectData()
@@ -78,7 +78,7 @@ function ENT:firetracer()
 				
 		local phys = self.Entity:GetPhysicsObject()  	
 		if (phys:IsValid()) then  		
-			phys:ApplyForceCenter( self.Entity:GetUp() * -1270 ) 
+			phys:ApplyForceCenter( self.Entity:GetUp() * -12700 ) 
 		end 
 		
 		local effectdata = EffectData()

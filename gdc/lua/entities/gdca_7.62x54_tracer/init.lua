@@ -5,7 +5,7 @@ include('shared.lua')
 function ENT:Initialize()   
 
 math.randomseed(CurTime())
-self.flightvector = self.Entity:GetUp() * 400
+self.flightvector = self.Entity:GetUp() * 450
 self.tracer = false
 self.timeleft = CurTime() + 5
 self.Entity:SetModel( "models/led2.mdl" ) 	
@@ -19,7 +19,7 @@ Tracer:SetKeyValue("startwidth","25")
 Tracer:SetKeyValue("endwidth","0")
 Tracer:SetKeyValue("spritename","trails/laser.vmt")
 Tracer:SetKeyValue("rendermode","5")
-Tracer:SetKeyValue("rendercolor","255 150 100")
+Tracer:SetKeyValue("rendercolor","150 255 100")
 Tracer:SetPos(self.Entity:GetPos())
 Tracer:SetParent(self.Entity)
 Tracer:Spawn()
@@ -27,7 +27,7 @@ Tracer:Activate()
 
 Glow = ents.Create("env_sprite")
 Glow:SetKeyValue("model","orangecore2.vmt")
-Glow:SetKeyValue("rendercolor","255 150 100")
+Glow:SetKeyValue("rendercolor","80 255 80")
 Glow:SetKeyValue("scale","0.10")
 Glow:SetPos(self.Entity:GetPos())
 Glow:SetParent(self.Entity)
@@ -74,7 +74,7 @@ function ENT:Think()
 			return true
 		end
 
-self.flightvector = self.flightvector + Vector(math.Rand(-0.4,0.4), math.Rand(-0.4,0.4),math.Rand(-0.4,0.4)) + Vector(0,0,-0.2)
+self.flightvector = self.flightvector + Vector(math.Rand(-0.3,0.3), math.Rand(-0.3,0.3),math.Rand(-0.3,0.3)) + Vector(0,0,-0.15)
 self.Entity:SetPos(self.Entity:GetPos() + self.flightvector)
 self.Entity:SetAngles(self.flightvector:Angle() + Angle(90,0,0))
 self.Entity:NextThink( CurTime() )

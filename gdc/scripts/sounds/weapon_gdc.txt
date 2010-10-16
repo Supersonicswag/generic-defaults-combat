@@ -154,9 +154,17 @@
 {
 	"channel"				"CHAN_WEAPON"
 	"volume"				"1.0"
-	"pitch"				"90"
+	"pitch"				"85"
 	"soundlevel"			"SNDLVL_155dB"
 	"wave"				")GDC/GShAutoCannon.wav"
+}
+"PKM.Single"
+{
+	"channel"				"CHAN_WEAPON"
+	"volume"				"1.0"
+	"pitch"				"100"
+	"soundlevel"			"SNDLVL_155dB"
+	"wave"				")GDC/PKM.wav"
 }
 "Flare.Single"
 {
