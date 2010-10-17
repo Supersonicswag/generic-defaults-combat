@@ -23,7 +23,7 @@
 			if (particle) then
 				particle:SetVelocity((self:GetUp() * -1000)+VectorRand():GetNormalized()*math.Rand(50, 100) )
 				particle:SetDieTime( math.Rand( 2, 5 ) )
-				particle:SetStartAlpha( math.Rand( 60, 80 ) )
+				particle:SetStartAlpha( math.Rand( 50, 70 ) )
 				particle:SetEndAlpha( 0 )
 				particle:SetStartSize( math.Rand( 50, 60 ) )
 				particle:SetEndSize( math.Rand( 170, 200 ) )

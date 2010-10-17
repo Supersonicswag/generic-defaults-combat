@@ -5,7 +5,7 @@ include('shared.lua')
 function ENT:Initialize()   
 
 self.flightvector = self.Entity:GetUp() * 150
-self.timeleft = CurTime() + 1.2
+self.timeleft = CurTime() + 1.5
 self.Entity:SetModel( "models/combatmodels/tankshell.mdl" )	
 self.Entity:PhysicsInit( SOLID_VPHYSICS )      -- Make us work with physics,  	
 self.Entity:SetMoveType( MOVETYPE_NONE )   --after all, gmod is a physics  	
@@ -29,7 +29,7 @@ Glow:SetPos(self.Entity:GetPos())
 Glow:SetKeyValue("renderfx", "0")
 Glow:SetKeyValue("rendermode", "5")
 Glow:SetKeyValue("renderamt", "255")
-Glow:SetKeyValue("rendercolor", "250 200 200")
+Glow:SetKeyValue("rendercolor", "250 200 150")
 Glow:SetKeyValue("framerate12", "20")
 Glow:SetKeyValue("model", "light_glow03.spr")
 Glow:SetKeyValue("scale", "5")

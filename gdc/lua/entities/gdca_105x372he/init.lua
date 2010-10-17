@@ -40,7 +40,7 @@ end
 				effectdata:SetOrigin(tr.HitPos)
 				effectdata:SetNormal(tr.HitNormal)
 				effectdata:SetScale(4.5)			// Size of explosion
-				effectdata:SetRadius(1)			// Relative width of explosion
+				effectdata:SetRadius(1)			// Relative width of explosion. Higher is narrower.
 				effectdata:SetMagnitude(20)			// Length of explosion trails
 				util.Effect( "gdca_cinematicboom", effectdata )
 				util.ScreenShake(tr.HitPos, 20, 5, 1, 2500 )

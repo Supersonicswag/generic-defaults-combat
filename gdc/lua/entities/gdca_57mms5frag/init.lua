@@ -12,7 +12,7 @@ self.Entity:SetSolid( SOLID_VPHYSICS )        -- CHEESECAKE!    >:3
 self.Entity:SetColor(255,255,0,255)
 
 SmokeTrail = ents.Create("env_spritetrail")
-SmokeTrail:SetKeyValue("lifetime","0.3")
+SmokeTrail:SetKeyValue("lifetime","1")
 SmokeTrail:SetKeyValue("startwidth","20")
 SmokeTrail:SetKeyValue("endwidth","200")
 SmokeTrail:SetKeyValue("spritename","trails/smoke.vmt")
@@ -28,7 +28,7 @@ Glow:SetPos(self.Entity:GetPos())
 Glow:SetKeyValue("renderfx", "0")
 Glow:SetKeyValue("rendermode", "5")
 Glow:SetKeyValue("renderamt", "255")
-Glow:SetKeyValue("rendercolor", "250 200 200")
+Glow:SetKeyValue("rendercolor", "250 200 150")
 Glow:SetKeyValue("framerate12", "20")
 Glow:SetKeyValue("model", "light_glow03.spr")
 Glow:SetKeyValue("scale", "2.5")
@@ -63,7 +63,7 @@ end
 					effectdata:SetOrigin(tr.HitPos)
 					effectdata:SetNormal(tr.HitNormal)
 					effectdata:SetScale(2)			// Size of explosion
-					effectdata:SetRadius(0.5)			// Relative width of explosion
+					effectdata:SetRadius(1)			// Relative width of explosion. Higher is narrower.
 					effectdata:SetMagnitude(13)			// Length of explosion trails
 					util.Effect( "gdca_cinematicboom", effectdata )
 					util.ScreenShake(tr.HitPos, 10, 5, 1, 2000 )

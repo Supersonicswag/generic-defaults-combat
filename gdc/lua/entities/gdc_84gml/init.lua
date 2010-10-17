@@ -23,7 +23,8 @@ function ENT:Initialize()
 	self.Entity:SetMoveType( MOVETYPE_VPHYSICS )   --after all, gmod is a physics  	
 	self.Entity:SetSolid( SOLID_VPHYSICS )        -- Toolbox     
 	self.Entity:SetColor(130,170,100,255)
-	
+	self.Entity:DrawShadow( false )
+
           
 	local phys = self.Entity:GetPhysicsObject()  	
 	if (phys:IsValid()) then  		

@@ -9,10 +9,18 @@ self.timeleft = CurTime() + 5
 self.Entity:SetModel( "models/led.mdl" ) 	
 self.Entity:PhysicsInit( SOLID_VPHYSICS )      -- Make us work with physics,  	
 self.Entity:SetMoveType( MOVETYPE_NONE )   --after all, gmod is a physics  	
-self.Entity:SetSolid( SOLID_VPHYSICS )        -- CHEESECAKE!    >:3            
+self.Entity:SetSolid( SOLID_VPHYSICS )        -- CHEESECAKE!    >:3       
+     
+Glow = ents.Create("env_sprite")
+Glow:SetKeyValue("model","orangecore2.vmt")
+Glow:SetKeyValue("rendercolor","255 200 150")
+Glow:SetKeyValue("scale","0.4")
+Glow:SetPos(self.Entity:GetPos())
+Glow:SetParent(self.Entity)
+Glow:Spawn()
+Glow:Activate()
 
 self:Think()
- 
 end   
 
 function ENT:Think()

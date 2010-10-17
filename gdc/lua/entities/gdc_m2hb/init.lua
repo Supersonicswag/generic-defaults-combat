@@ -17,6 +17,7 @@ function ENT:Initialize()
 	self.Entity:PhysicsInit( SOLID_VPHYSICS )      -- Make us work with physics,  	
 	self.Entity:SetMoveType( MOVETYPE_VPHYSICS )   --after all, gmod is a physics  	
 	self.Entity:SetSolid( SOLID_VPHYSICS )        -- Toolbox     
+	self.Entity:DrawShadow( false )
 	
           
 	local phys = self.Entity:GetPhysicsObject()  	

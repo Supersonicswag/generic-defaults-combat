@@ -6,7 +6,7 @@ local Radius = data:GetRadius()
 local DirVec = data:GetNormal()
 local Particles = data:GetMagnitude()
 local Angle = DirVec:Angle()
-local DebrizzlemyNizzle = 10+data:GetScale()*2	
+local DebrizzlemyNizzle = 10+data:GetScale()	
 
 self.Particles = data:GetMagnitude()
 self.Scale = data:GetScale()	
@@ -40,12 +40,12 @@ self.Origin = Pos
 		for i=1, 20*Scale do
 			local Dust = self.emitter:Add( "particle/particle_composite", Pos )
 			if (Dust) then
-				Dust:SetVelocity( DirVec * math.random( 100,400)*Scale + VectorRand():GetNormalized()*300*Scale )
+				Dust:SetVelocity( DirVec * math.random( 100,400)*Scale + ((VectorRand():GetNormalized()*300/Radius)*Scale) )
 				Dust:SetDieTime( math.Rand( 2 , 3 ) )
-				Dust:SetStartAlpha( 230 )
+				Dust:SetStartAlpha( 230-((-1+Radius)*120) )
 				Dust:SetEndAlpha( 0 )
-				Dust:SetStartSize( 60*Scale )
-				Dust:SetEndSize( 100*Scale )
+				Dust:SetStartSize( (60*Scale)/Radius )
+				Dust:SetEndSize( (100*Scale)/Radius )
 				Dust:SetRoll( math.Rand(150, 360) )
 				Dust:SetRollDelta( math.Rand(-1, 1) )			
 				Dust:SetAirResistance( 150 ) 			 
@@ -73,14 +73,14 @@ self.Origin = Pos
 	for i = 1, DebrizzlemyNizzle do 	
 		Angle:RotateAroundAxis(Angle:Forward(), (360/DebrizzlemyNizzle))
 		local DustRing = Angle:Up()
-		local RanVec = (DirVec*math.Rand(1, 5) + (DustRing*math.Rand(3, 5)*Radius))
+		local RanVec = DirVec*math.Rand(1, 5) + (DustRing*math.Rand(3, 5)/Radius)
 
 		for k = 3, self.Particles do
 			local Rcolor = math.random(-20,20)
 			local particle1 = self.emitter:Add( "particles/smokey", Pos )				
 			particle1:SetVelocity((VectorRand():GetNormalized()*math.Rand(1, 2) * self.Size) + (RanVec*self.Size*k*3.5))	
 			particle1:SetDieTime( math.Rand( 0, 3 )*self.Scale )	
-			particle1:SetStartAlpha( math.Rand( 70, 90 ) )			
+			particle1:SetStartAlpha( math.Rand( 70, 90 )-((-1+Radius)*10) )			
 			particle1:SetEndAlpha(0)	
 			particle1:SetGravity((VectorRand():GetNormalized()*math.Rand(5, 10)* self.Size) + Vector(0,0,-50))
 			particle1:SetAirResistance( 200+Scale*20 ) 		

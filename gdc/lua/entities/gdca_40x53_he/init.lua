@@ -12,6 +12,16 @@ self.Entity:PhysicsInit( SOLID_VPHYSICS )      -- Make us work with physics,
 self.Entity:SetMoveType( MOVETYPE_NONE )   --after all, gmod is a physics  	
 self.Entity:SetSolid( SOLID_VPHYSICS )        -- CHEESECAKE!    >:3           
 self.Entity:SetColor(255,255,255,255)
+
+Glow = ents.Create("env_sprite")
+Glow:SetKeyValue("model","orangecore2.vmt")
+Glow:SetKeyValue("rendercolor","255 150 100")
+Glow:SetKeyValue("scale","0.05")
+Glow:SetPos(self.Entity:GetPos())
+Glow:SetParent(self.Entity)
+Glow:Spawn()
+Glow:Activate()
+
 end   
 
  function ENT:Think()
@@ -38,7 +48,7 @@ end
 					effectdata:SetOrigin(tr.HitPos)
 					effectdata:SetNormal(tr.HitNormal)
 					effectdata:SetScale(1.5)			// Size of explosion
-					effectdata:SetRadius(1.3)			// Relative width of explosion
+					effectdata:SetRadius(1)			// Relative width of explosion. Higher is narrower.
 					effectdata:SetMagnitude(12)			// Length of explosion trails
 					util.Effect( "gdca_cinematicboom", effectdata )
 					util.ScreenShake(tr.HitPos, 10, 5, 1, 1000 )

@@ -7,10 +7,20 @@ include('shared.lua')
 function ENT:Initialize()   
 self.flightvector = self.Entity:GetUp() * 550
 self.timeleft = CurTime() + 5
-self.Entity:SetModel( "models/combatmodels/tankshell_40mm.mdl" ) 	
+self.Entity:SetModel( "models/led2.mdl" ) 	
 self.Entity:PhysicsInit( SOLID_VPHYSICS )      -- Make us work with physics,  	
 self.Entity:SetMoveType( MOVETYPE_NONE )   --after all, gmod is a physics  	
-self.Entity:SetSolid( SOLID_VPHYSICS )        -- CHEESECAKE!    >:3            
+self.Entity:SetSolid( SOLID_VPHYSICS )        -- CHEESECAKE!    >:3         
+   
+Glow = ents.Create("env_sprite")
+Glow:SetKeyValue("model","orangecore2.vmt")
+Glow:SetKeyValue("rendercolor","255 150 100")
+Glow:SetKeyValue("scale","0.05")
+Glow:SetPos(self.Entity:GetPos())
+Glow:SetParent(self.Entity)
+Glow:Spawn()
+Glow:Activate()
+
 self:Think()
 end   
 
@@ -40,7 +50,7 @@ function ENT:Think()
 					effectdata:SetOrigin(tr.HitPos)
 					effectdata:SetNormal(tr.HitNormal)
 					effectdata:SetScale(1.1)			// Size of explosion
-					effectdata:SetRadius(0.6)			// Relative width of explosion
+					effectdata:SetRadius(1.4)			// Relative width of explosion. Higher is narrower.
 					effectdata:SetMagnitude(11)			// Length of explosion trails
 					util.Effect( "gdca_cinematicboom", effectdata )
 					util.ScreenShake(tr.HitPos, 10, 5, 0.5, 700 )
@@ -58,7 +68,7 @@ function ENT:Think()
 					end
 
 	self.Entity:SetPos(self.Entity:GetPos() + self.flightvector)
-	self.flightvector = self.flightvector + Vector(math.Rand(-0.2,0.2), math.Rand(-0.2,0.2),math.Rand(-0.2,0.2)) + Vector(0,0,-0.2)
+	self.flightvector = self.flightvector + Vector(math.Rand(-0.4,0.4), math.Rand(-0.4,0.4),math.Rand(-0.4,0.4)) + Vector(0,0,-0.2)
 	self.Entity:SetAngles(self.flightvector:Angle() + Angle(90,0,0))
 	self.Entity:NextThink( CurTime() )
 	return true

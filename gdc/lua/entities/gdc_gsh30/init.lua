@@ -23,6 +23,7 @@ function ENT:Initialize()
 	self.Entity:SetMoveType( MOVETYPE_VPHYSICS )   --after all, gmod is a physics  	
 	self.Entity:SetSolid( SOLID_VPHYSICS )        -- Toolbox     
 	util.PrecacheSound("GSh30.Single")
+	self.Entity:DrawShadow( false )
           
 	local phys = self.Entity:GetPhysicsObject()  	
 	if (phys:IsValid()) then  		

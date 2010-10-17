@@ -62,7 +62,7 @@ function ENT:Think()
 					effectdata:SetOrigin(tr.HitPos)
 					effectdata:SetNormal(tr.HitNormal)
 					effectdata:SetScale(1.3)			// Size of explosion
-					effectdata:SetRadius(0.5)			// Relative width of explosion
+					effectdata:SetRadius(1.3)			// Relative width of explosion. Higher is narrower.
 					effectdata:SetMagnitude(12)			// Length of explosion trails
 					util.Effect( "gdca_cinematicboom", effectdata )
 					util.ScreenShake(tr.HitPos, 10, 5, 0.5, 1000 )
