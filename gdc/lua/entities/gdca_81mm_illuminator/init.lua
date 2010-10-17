@@ -22,6 +22,8 @@ end
 		ent:SetPos( self.Entity:GetPos())
 		ent:SetAngles( self.Entity:GetAngles() )
 		ent:Spawn()
+		local phys = ent:GetPhysicsObject()
+		phys:ApplyForceCenter(self.flightvector*150)
 		ent:Activate()
 		self.Entity:Remove()				
 		end

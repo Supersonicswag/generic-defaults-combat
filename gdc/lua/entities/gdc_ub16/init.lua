@@ -52,7 +52,7 @@ end
 function ENT:firefrag()
 
 		local ent = ents.Create( "gdca_57mms5frag" )
-		ent:SetPos( self.Entity:GetPos() +  self.Entity:GetUp() * 250)
+		ent:SetPos( self.Entity:GetPos() +  self.Entity:GetUp() * 300)
 		ent:SetAngles( self.Entity:GetAngles() )
 		ent:Spawn()
 		ent:Activate()
@@ -66,7 +66,7 @@ end
 function ENT:fireheat()
 
 		local ent = ents.Create( "gdca_57mms5heat" )
-		ent:SetPos( self.Entity:GetPos() +  self.Entity:GetUp() * 250)
+		ent:SetPos( self.Entity:GetPos() +  self.Entity:GetUp() * 300)
 		ent:SetAngles( self.Entity:GetAngles() )
 		ent:Spawn()
 		ent:Activate()

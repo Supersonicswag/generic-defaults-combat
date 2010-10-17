@@ -13,8 +13,8 @@ self.Entity:SetSolid( SOLID_VPHYSICS )        -- CHEESECAKE!    >:3
 self.Entity:SetColor(255,255,0,255)
 
 SmokeTrail = ents.Create("env_spritetrail")
-SmokeTrail:SetKeyValue("lifetime","0.5")
-SmokeTrail:SetKeyValue("startwidth","20")
+SmokeTrail:SetKeyValue("lifetime","1")
+SmokeTrail:SetKeyValue("startwidth","30")
 SmokeTrail:SetKeyValue("endwidth","200")
 SmokeTrail:SetKeyValue("spritename","trails/smoke.vmt")
 SmokeTrail:SetKeyValue("rendermode","5")

@@ -3,7 +3,7 @@ AddCSLuaFile( "shared.lua" )
 include('shared.lua')
 
 function ENT:Initialize()   
-self.flightvector = self.Entity:GetUp() * ((200*39.37)/66)
+self.flightvector = self.Entity:GetUp() * 150
 self.timeleft = CurTime() + 7
 self.Entity:SetModel( "models/combatmodels/tankshell.mdl" )	
 self.Entity:PhysicsInit( SOLID_VPHYSICS )      -- Make us work with physics,  	

@@ -19,6 +19,12 @@ function ENT:SpawnFunction( ply, tr)
 
 end
 
+// READ ME!
+
+// So you found this entity and you're wondering why its not on the list.
+// It's because it's an exploit and I don't want it to be minged. It isn't even the best weapon but it's easy to abuse so 
+// DONT TELL ANYBODY HOW TO USE IT. Otherwise I will change/remove it so it's not usable by you, and you'll be sorry.
+
 function ENT:Initialize()
 	self.Entity:SetModel( "models/props_junk/popcan01a.mdl" )
 	self.Entity:PhysicsInit( SOLID_VPHYSICS )      -- Make us work with physics,  	

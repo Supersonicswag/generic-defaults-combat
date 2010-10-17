@@ -4,7 +4,7 @@ include('shared.lua')
 
 function ENT:Initialize()   
 self.penetrate = 100
-self.flightvector = self.Entity:GetUp() * ((200*39.37)/66)
+self.flightvector = self.Entity:GetUp() * 150
 self.timeleft = CurTime() + 7
 self.Entity:SetModel( "models/led.mdl" ) 	
 self.Entity:PhysicsInit( SOLID_VPHYSICS )      -- Make us work with physics,  	

@@ -32,7 +32,7 @@ function ENT:Initialize()
 	phys:Wake() 
 	end 
  
-	self.Inputs = Wire_CreateInputs( self.Entity, { "Fire Frag"} )
+	self.Inputs = Wire_CreateInputs( self.Entity, { "Fire Frag", "Fire Illuminator"} )
 	self.Outputs = Wire_CreateOutputs( self.Entity, {"Can Fire"})
 end   
 
@@ -48,7 +48,17 @@ end
 
 	function ENT:firefrag()
 		local ent = ents.Create( "gdca_122mms13frag" )
-		ent:SetPos( self.Entity:GetPos() +  self.Entity:GetUp() * 250)
+		ent:SetPos( self.Entity:GetPos() +  self.Entity:GetUp() * 350)
+		ent:SetAngles( self.Entity:GetAngles() )
+		ent:Spawn()
+		ent:Activate()		
+		self.Entity:EmitSound( "M260.single" )
+		self.ammos = self.ammos-1
+	end
+
+	function ENT:fireillum()
+		local ent = ents.Create( "gdca_122mm_illuminator" )
+		ent:SetPos( self.Entity:GetPos() +  self.Entity:GetUp() * 350)
 		ent:SetAngles( self.Entity:GetAngles() )
 		ent:Spawn()
 		ent:Activate()		
@@ -64,14 +74,20 @@ if FIELDS == nil and COMBATDAMAGEENGINE == nil then return end
 	end
 
 	if (self.reloadtime < CurTime()) then
-		Wire_TriggerOutput(self.Entity, "Can Fire", 1)
+	Wire_TriggerOutput(self.Entity, "Can Fire", 1)
 	else
-		Wire_TriggerOutput(self.Entity, "Can Fire", 0)
+	Wire_TriggerOutput(self.Entity, "Can Fire", 0)
 	end
 	
-	if (self.inFireFrag == true) then
+	if self.inFireFrag then
 	if (self.reloadtime < CurTime()) then
 	self:firefrag()
+	end
+	end
+
+	if self.inFireIllum and !self.inFireFrag then
+	if (self.reloadtime < CurTime()) then
+	self:fireillum()
 	end
 	end
 
@@ -85,6 +101,13 @@ function ENT:TriggerInput(k, v)
 		self.inFireFrag = true
 		else
 		self.inFireFrag = false
+		end
+	end
+	if(k=="Fire Illuminator") then
+		if((v or 0) > 0) then	
+		self.inFireIllum = true
+		else
+		self.inFireIllum = false
 		end
 	end
 end
