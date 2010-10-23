@@ -4,8 +4,8 @@ include('shared.lua')
 
 function ENT:Initialize()   
 self.penetrate = 100
-self.flightvector = self.Entity:GetUp() * 150
-self.timeleft = CurTime() + 7
+self.flightvector = self.Entity:GetUp() * 200
+self.timeleft = CurTime() + 5
 self.Entity:SetModel( "models/led.mdl" ) 	
 self.Entity:PhysicsInit( SOLID_VPHYSICS )      -- Make us work with physics,  	
 self.Entity:SetMoveType( MOVETYPE_NONE )   --after all, gmod is a physics  	
@@ -107,7 +107,7 @@ function ENT:Think()
 			util.Decal("fadingScorch", pr.HitPos + pr.HitNormal, pr.HitPos - pr.HitNormal)
 			end
 
-	self.flightvector =  self.flightvector - self.flightvector/80 + self.Entity:GetUp()*5 + Vector(math.Rand(-0.2,0.2), math.Rand(-0.2,0.2),math.Rand(-0.2,0.2)) + Vector(0,0,-0.10)
+	self.flightvector =  self.flightvector - self.flightvector/100 + self.Entity:GetUp()*5 + Vector(math.Rand(-0.2,0.2), math.Rand(-0.2,0.2),math.Rand(-0.2,0.2)) + Vector(0,0,-0.10)
 
 	if !pr.Hit then
 	self.Entity:SetPos(self.Entity:GetPos() + self.flightvector)

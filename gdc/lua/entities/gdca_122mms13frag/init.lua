@@ -4,7 +4,7 @@ include('shared.lua')
 
 function ENT:Initialize()   
 
-self.flightvector = self.Entity:GetUp() * 150
+self.flightvector = self.Entity:GetUp() * 200
 self.timeleft = CurTime() + 7
 self.Entity:SetModel( "models/combatmodels/tankshell.mdl" )	
 self.Entity:PhysicsInit( SOLID_VPHYSICS )      -- Make us work with physics,  	
@@ -75,7 +75,7 @@ end
 					end
 	
 	self.Entity:SetPos(self.Entity:GetPos() + self.flightvector)
-	self.flightvector =  self.flightvector - self.flightvector/80 + self.Entity:GetUp()*3 + Vector(math.Rand(-0.2,0.2), math.Rand(-0.2,0.2),math.Rand(-0.2,0.2)) + Vector(0,0,-0.10)
+	self.flightvector =  self.flightvector - self.flightvector/100 + self.Entity:GetUp()*3 + Vector(math.Rand(-0.2,0.2), math.Rand(-0.2,0.2),math.Rand(-0.2,0.2)) + Vector(0,0,-0.10)
 	self.Entity:SetAngles(self.flightvector:Angle() + Angle(90,0,0))
 	self.Entity:NextThink( CurTime() )
 	return true

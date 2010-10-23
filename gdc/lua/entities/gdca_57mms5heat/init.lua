@@ -3,8 +3,8 @@ AddCSLuaFile( "shared.lua" )
 include('shared.lua')
 
 function ENT:Initialize()   
-self.flightvector = self.Entity:GetUp() * 150
-self.timeleft = CurTime() + 7
+self.flightvector = self.Entity:GetUp() * 200
+self.timeleft = CurTime() + 5
 self.Entity:SetModel( "models/combatmodels/tankshell.mdl" )	
 self.Entity:PhysicsInit( SOLID_VPHYSICS )      -- Make us work with physics,  	
 self.Entity:SetMoveType( MOVETYPE_NONE )   --after all, gmod is a physics  	
