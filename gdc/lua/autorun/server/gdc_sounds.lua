@@ -24,6 +24,7 @@ resource.AddFile( "sound/GDC/RAM.wav" );
 resource.AddFile( "sound/GDC/GML.wav" );
 resource.AddFile( "sound/GDC/GShAutoCannon.wav" );
 resource.AddFile( "sound/GDC/PKM.wav" );
+resource.AddFile( "sound/GDC/KPV.wav" );
 resource.AddFile( "sound/GDC/Flare.wav" );
 
 resource.AddFile( "sound/Impacts/Impact_01.wav" );

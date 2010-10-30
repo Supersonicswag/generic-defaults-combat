@@ -181,7 +181,7 @@ if FIELDS == nil and COMBATDAMAGEENGINE == nil then return end
 	end
 	end
 
-	self.Entity:NextThink( CurTime() + .03)
+	self.Entity:NextThink( CurTime() + .01)
 	return true
 end
 
