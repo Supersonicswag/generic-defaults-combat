@@ -22,7 +22,7 @@ Cl_init shouldn't be modified because nobody really knows what it does.
 [weapons]
 This folder contains the weapon bases and the weapon files. 
 If you want to modify a single gun, mess with the weapon folders such as "gdcw_m4a1holo" in the shared and cl_init files.
-If you want to change the weapon bases (there are only 2), open the folder and modify the shared file. Most of the stuff you will be changing has a description to the side.
+If you want to change the weapon bases (there are only 5), open the folder and modify the shared file. Most of the stuff you will be changing has a description to the side.
 
 
 {MATERIALS}
@@ -74,3 +74,5 @@ That's it for the readme! If you didn't just skip to the bottom you probably was
 [R109]	- A few new thangs.
 [R118]	- Fixed kill credit (I HOPE!). Added beta M240 and HK21 for the upcomming machine guns pack. Also changed a few minor thangs.
 [R137]	- Added an unscoped bolt action awp and M76. Added gritty dirt stuff to hit effects so they look better.
+[R146]	- Added HL2 weapons and 2 new pistols; M9 and M1911. Thanks to Hellsing for hitgroup damage for the bullets!
+[R147]	- Added a 3d tracer effect for all tracer rounds.

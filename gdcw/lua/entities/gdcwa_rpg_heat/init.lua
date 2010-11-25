@@ -12,26 +12,37 @@ self.Entity:PhysicsInit( SOLID_VPHYSICS )      -- Make us work with physics,
 self.Entity:SetMoveType( MOVETYPE_NONE )   --after all, gmod is a physics  	
 self.Entity:SetSolid( SOLID_VPHYSICS )        -- CHEESECAKE!    >:3           
 self.Entity:SetColor(255,255,255,255)
- 
+
+ SmokeTrail = ents.Create("env_spritetrail")
+SmokeTrail:SetKeyValue("lifetime","0.5")
+SmokeTrail:SetKeyValue("startwidth","40")
+SmokeTrail:SetKeyValue("endwidth","200")
+SmokeTrail:SetKeyValue("spritename","trails/smoke.vmt")
+SmokeTrail:SetKeyValue("rendermode","5")
+SmokeTrail:SetKeyValue("rendercolor","200 200 200")
+SmokeTrail:SetPos(self.Entity:GetPos())
+SmokeTrail:SetParent(self.Entity)
+SmokeTrail:Spawn()
+SmokeTrail:Activate()
+
+Glow = ents.Create("env_sprite")
+Glow:SetPos(self.Entity:GetPos())
+Glow:SetKeyValue("renderfx", "0")
+Glow:SetKeyValue("rendermode", "5")
+Glow:SetKeyValue("renderamt", "255")
+Glow:SetKeyValue("rendercolor", "250 200 200")
+Glow:SetKeyValue("framerate12", "20")
+Glow:SetKeyValue("model", "light_glow03.spr")
+Glow:SetKeyValue("scale", "2.5")
+Glow:SetKeyValue("GlowProxySize", "100")
+Glow:SetParent(self.Entity)
+Glow:Spawn()
+Glow:Activate()
+
 end   
 
  function ENT:Think()
 	
- 	if (self.smoking == false) then
-		self.smoking = true
-	
-		FireTrail = ents.Create("env_spritetrail")
-		FireTrail:SetKeyValue("lifetime","0.5")
-		FireTrail:SetKeyValue("startwidth","20")
-		FireTrail:SetKeyValue("endwidth","200")
-		FireTrail:SetKeyValue("spritename","trails/smoke.vmt")
-		FireTrail:SetKeyValue("rendermode","5")
-		FireTrail:SetKeyValue("rendercolor","200 200 200")
-		FireTrail:SetPos(self.Entity:GetPos())
-		FireTrail:SetParent(self.Entity)
-		FireTrail:Spawn()
-		FireTrail:Activate()
-	end 
 
 		if self.timeleft < CurTime() then
 		self.Entity:Remove()				
@@ -58,11 +69,10 @@ end
 					local effectdata = EffectData()
 					effectdata:SetOrigin(tr.HitPos)
 					effectdata:SetNormal(tr.HitNormal)
-					effectdata:SetScale(2.5)			// Size of cloud
-					effectdata:SetRadius(2.5)			// Size of ring
-					effectdata:SetMagnitude(200)			// Size of flash
-					util.Effect( "gdca_splodering", effectdata )
-					util.Effect( "gdca_splodecolumn", effectdata )
+					effectdata:SetScale(2.11)			// Size of explosion
+					effectdata:SetRadius(1)			// Relative width of explosion
+					effectdata:SetMagnitude(14)			// Length of explosion trails
+					util.Effect( "gdca_cinematicboom", effectdata )
 					util.ScreenShake(tr.HitPos, 10, 5, 1, 3000 )
 					util.Decal("Scorch", tr.HitPos + tr.HitNormal, tr.HitPos - tr.HitNormal)
 

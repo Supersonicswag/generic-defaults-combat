@@ -4,7 +4,7 @@
 	"volume"				"1.0"
 	"CompatibilityAttenuation"		"ATTN_NORM"
 	"pitch"				"90, 110"
-	"soundlevel"			"SNDLVL_70dB"
+	"soundlevel"			"SNDLVL_80dB"
 	"rndwave"
 	{
 	"wave"				"Impacts/Impact_01.wav"
