@@ -1,0 +1,3 @@
+#This is the weapons data sheet as of revision 161. 
+
+|| Weapon ||
