@@ -1,3 +1,5 @@
 #This is the weapons data sheet as of revision 161. 
 
-|| *Weapon* || *Caliber* || *Muzzle Velocity* || *RPM* || *Trajectory Decimal* || *Ammunition Types* ||
+Trajectory and Ballistics info
+|| *Weapon* || *Caliber* || *Muzzle Velocity* || *RPM* || *Trajectory Decimal* ||
+|| M249     || 
