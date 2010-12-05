@@ -1,4 +1,4 @@
-#This is the weapons data sheet as of revision 161. 
+This is the weapons data sheet as of revision 161. 
 
 Trajectory and Ballistics info
 || *Weapon* || *Caliber* || *Velocity* (in"/sec) || *RPM* || *Trajectory Decimal* ||
@@ -19,8 +19,7 @@ Trajectory and Ballistics info
 || M260     || 70mm      || 13,200 - 16,500             || ~300  || N/A                  ||
 || UB-8     || 80mm      || 13,200 - 26,400             || ~300  || N/A                  ||
 || Mortar   || 81mm      || 5,280                       || ~20   || N/A                  ||
-|| MK19     || 40mm      || 9,000                       || ~300  || N/A                  ||
-|| MK19     || 40mm      || 9,000                       || ~300  || N/A                  ||
-|| MK19     || 40mm      || 9,000                       || ~300  || N/A                  ||
-|| MK19     || 40mm      || 9,000                       || ~300  || N/A                  ||
-|| MK19     || 40mm      || 9,000                       || ~300  || N/A                  ||
+|| RAM      || 81mm      || 2640 - 4620                 || ~30   || N/A                  ||
+|| GML      || 84mm      || 7,920                       || ~12   || N/A                  ||
+|| M101     || 105mm     || 13,200                      || ~8    || N/A                  ||
+|| M256     || 120mm     || 19,800 or 36,300            || ~8    || N/A                  ||
