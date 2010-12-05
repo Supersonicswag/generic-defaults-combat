@@ -2,4 +2,7 @@
 
 Trajectory and Ballistics info
 || *Weapon* || *Caliber* || *Muzzle Velocity* (in"/sec) || *RPM* || *Trajectory Decimal* ||
-|| M249     || 7.62mm    || 26400                       || ~860  || N/A                  ||
+|| M249     || 5.56mm    || 33,000                      || ~900  || N/A                  ||
+|| M240     || 7.62mm    || 26,400                      || ~860  || N/A                  ||
+|| M249     || 7.62mm    || 26,400                      || ~860  || N/A                  ||
+|| M249     || 7.62mm    || 33,000                      || ~860  || N/A                  ||
