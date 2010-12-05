@@ -1,5 +1,5 @@
 #This is the weapons data sheet as of revision 161. 
 
 Trajectory and Ballistics info
-|| *Weapon* || *Caliber* || *Muzzle Velocity* || *RPM* || *Trajectory Decimal* ||
-|| M249     || 
+|| *Weapon* || *Caliber* || *Muzzle Velocity* (in"/sec) || *RPM* || *Trajectory Decimal* ||
+|| M249     || 7.62mm    || 26400                       || ~860  || N/A                  ||
