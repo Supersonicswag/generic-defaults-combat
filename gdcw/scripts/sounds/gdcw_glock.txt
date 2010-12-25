@@ -1,0 +1,36 @@
+"GLOCKF.single"
+{
+	"channel"				"CHAN_WEAPON"
+	"volume"				"1.0"
+	"CompatibilityAttenuation"		"ATTN_NORM"
+	"pitch"				"PITCH_NORM"
+	"soundlevel"			"SNDLVL_150dB"
+	"wave"				")GDC/GLOCK/GLOCKF.wav"
+}
+"GenericGLOCK.Clipout"
+{
+	"channel"				"CHAN_RELOAD"
+	"volume"				"1.0"
+	"CompatibilityAttenuation"		"ATTN_NORM"
+	"pitch"				"PITCH_NORM"
+	"soundlevel"			"SNDLVL_70dB"
+	"wave"				")GDC/GLOCK/GlockClipout.wav"
+}
+"GenericGLOCK.Clipin"
+{
+	"channel"				"CHAN_RELOAD"
+	"volume"				"1.0"
+	"CompatibilityAttenuation"		"ATTN_NORM"
+	"pitch"				"PITCH_NORM"
+	"soundlevel"			"SNDLVL_70dB"
+	"wave"				")GDC/GLOCK/GlockClipin.wav"
+}
+"GenericGLOCK.Boltrelease"
+{
+	"channel"				"CHAN_RELOAD"
+	"volume"				"1.0"
+	"CompatibilityAttenuation"		"ATTN_NORM"
+	"pitch"				"PITCH_NORM"
+	"soundlevel"			"SNDLVL_70dB"
+	"wave"				")GDC/GLOCK/GlockSliderelease.wav"
+}

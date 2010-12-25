@@ -41,10 +41,10 @@ function ENT:Think()
 					local effectdata = EffectData()
 					effectdata:SetOrigin(tr.HitPos)
 					effectdata:SetNormal(tr.HitNormal)
-					effectdata:SetScale(0.5)
-					effectdata:SetRadius(0.5)
-					effectdata:SetMagnitude(10)			// Size of flash
-					util.Effect( "gdcw_splodecolumn", effectdata )
+					effectdata:SetScale(0.5)			// Size of explosion
+					effectdata:SetRadius(1)			        // Relative width of explosion
+					effectdata:SetMagnitude(14)			// Length of explosion trails
+					util.Effect( "gdcw_cinematicboom", effectdata )
 					util.ScreenShake(tr.HitPos, 10, 5, 0.1, 500 )
 					util.Decal("fadingScorch", tr.HitPos + tr.HitNormal, tr.HitPos - tr.HitNormal)
 					self.Entity:Remove()

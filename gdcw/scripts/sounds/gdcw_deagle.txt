@@ -1,0 +1,36 @@
+"DeagleF.single"
+{
+	"channel"				"CHAN_WEAPON"
+	"volume"				"1.0"
+	"CompatibilityAttenuation"		"ATTN_NORM"
+	"pitch"				"PITCH_NORM"
+	"soundlevel"			"SNDLVL_155dB"
+	"wave"				")GDC/Deagle/DeagleF.wav"
+}
+"GenericDeagl.Magin"
+{
+	"channel"				"CHAN_RELOAD"
+	"volume"				"1.0"
+	"CompatibilityAttenuation"		"ATTN_NORM"
+	"pitch"				"PITCH_NORM"
+	"soundlevel"			"SNDLVL_70dB"
+	"wave"				")GDC/Deagle/DeagleClipin.wav"
+}
+"GenericDeagl.Magout"
+{
+	"channel"				"CHAN_RELOAD"
+	"volume"				"1.0"
+	"CompatibilityAttenuation"		"ATTN_NORM"
+	"pitch"				"PITCH_NORM"
+	"soundlevel"			"SNDLVL_70dB"
+	"wave"				")GDC/Deagle/DeagleClipout.wav"
+}
+"GenericDeagl.Sliderelease"
+{
+	"channel"				"CHAN_RELOAD"
+	"volume"				"1.0"
+	"CompatibilityAttenuation"		"ATTN_NORM"
+	"pitch"				"PITCH_NORM"
+	"soundlevel"			"SNDLVL_70dB"
+	"wave"				")GDC/Deagle/DeagleSliderelease.wav"
+}

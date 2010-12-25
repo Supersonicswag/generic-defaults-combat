@@ -61,17 +61,17 @@ function ENT:Think()
 					util.BlastDamage(self.Entity, self.Entity, tr.HitPos, 30, 10)
 					local effectdata = EffectData()
 					effectdata:SetOrigin(tr.HitPos)
+					effectdata:SetScale(1.15)
+					effectdata:SetRadius(tr.MatType)
 					effectdata:SetNormal(tr.HitNormal)
-					effectdata:SetScale(1.3)
-					effectdata:SetRadius(1.3)
-					util.Effect( "gdcw_impact", effectdata )
+					util.Effect("gdcw_universal_impact",effectdata)
 					util.ScreenShake(tr.HitPos, 10, 5, 0.1, 200 )
 					util.Decal("ExplosiveGunshot", tr.HitPos + tr.HitNormal, tr.HitPos - tr.HitNormal)
 					end
 
 				if tr.Hit and tr.Entity:IsPlayer() || tr.Entity:IsNPC() then
 				local dmginfo = DamageInfo()
-					dmginfo:SetDamage( math.Rand(40,50) )
+					dmginfo:SetDamage( math.Rand(30,40) )
 					hitgroup = tr.HitGroup
 	if hitgroup == HITGROUP_HEAD 					then 	dmginfo:ScaleDamage( 5 ) 			end
 	if hitgroup == HITGROUP_STOMACH 					then 	dmginfo:ScaleDamage( 1 ) 			end

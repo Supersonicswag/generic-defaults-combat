@@ -1,5 +1,5 @@
 "VertexLitGeneric"
 {
-	"$baseTexture" "models\weapons\w_models\Stoke P226 '07\Slide"
-	"$bumpmap" "models\weapons\w_models\Stoke P226 '07\Slide_Normal" 
+	"$baseTexture" "models\weapons\v_models\Stoke P226 '07\Slide"
+	"$bumpmap" "models\weapons\v_models\Stoke P226 '07\Slide_Normal" 
 }

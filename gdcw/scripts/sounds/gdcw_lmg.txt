@@ -16,6 +16,15 @@
 	"soundlevel"			"SNDLVL_155dB"
 	"wave"				")GDC/LMG/M240F.wav"
 }
+"M249F.single"
+{
+	"channel"				"CHAN_WEAPON"
+	"volume"				"1.0"
+	"CompatibilityAttenuation"		"ATTN_NORM"
+	"pitch"				"98, 102"
+	"soundlevel"			"SNDLVL_155dB"
+	"wave"				")GDC/LMG/M249F.wav"
+}
 "HK416F.single"
 {
 	"channel"				"CHAN_WEAPON"

@@ -72,7 +72,7 @@ end
 					effectdata:SetScale(2.11)			// Size of explosion
 					effectdata:SetRadius(1)			// Relative width of explosion
 					effectdata:SetMagnitude(14)			// Length of explosion trails
-					util.Effect( "gdca_cinematicboom", effectdata )
+					util.Effect( "gdcw_cinematicboom", effectdata )
 					util.ScreenShake(tr.HitPos, 10, 5, 1, 3000 )
 					util.Decal("Scorch", tr.HitPos + tr.HitNormal, tr.HitPos - tr.HitNormal)
 

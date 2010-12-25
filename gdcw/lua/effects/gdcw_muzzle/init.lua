@@ -9,13 +9,11 @@ function EFFECT:Init(data)
 	self.Forward = data:GetNormal()
 	self.Angle = self.Forward:Angle()
 	self.Right = self.Angle:Right()
-	
-	local AddVel = self.WeaponEnt:GetOwner():GetVelocity()
-	
+
 	local emitter = ParticleEmitter(self.Position)
 		
 		local particle = emitter:Add("sprites/heatwave", self.Position - self.Forward*4)
-		particle:SetVelocity(80*self.Forward + 20*VectorRand() + 1.05*AddVel)
+		particle:SetVelocity(80*self.Forward + 20*VectorRand())
 		particle:SetDieTime(math.Rand(0.15,0.2))
 		particle:SetStartSize(math.random(10,13))
 		particle:SetEndSize(3)
@@ -25,7 +23,7 @@ function EFFECT:Init(data)
 		particle:SetAirResistance(160)
 		
 		local particle = emitter:Add("particle/particle_smokegrenade", self.Position)
-		particle:SetVelocity(80*self.Forward + 1.1*AddVel)
+		particle:SetVelocity(80*self.Forward)
 		particle:SetDieTime(math.Rand(0.2,0.3))
 		particle:SetStartAlpha(math.Rand(50,60))
 		particle:SetStartSize(math.random(3,4))
@@ -39,7 +37,7 @@ function EFFECT:Init(data)
 		
 	for i=-1,1,2 do 
 		local particle = emitter:Add("particle/particle_smokegrenade", self.Position)
-		particle:SetVelocity(80*i*self.Right + 1.1*AddVel)
+		particle:SetVelocity(80*i*self.Right)
 		particle:SetDieTime(math.Rand(0.2,0.3))
 		particle:SetStartAlpha(math.Rand(50,60))
 		particle:SetStartSize(math.random(2,3))
@@ -55,8 +53,7 @@ function EFFECT:Init(data)
 			for j=1,2 do
 				for i=-1,1,2 do 
 					local particle = emitter:Add("effects/muzzleflash"..math.random(1,4), self.Position - 3*self.Forward + 2*j*i*self.Right)
-					particle:SetVelocity(60*j*i*self.Right + AddVel)
-					particle:SetGravity(AddVel)
+					particle:SetVelocity(60*j*i*self.Right)
 					particle:SetDieTime(0.07)
 					particle:SetStartAlpha(250)
 					particle:SetStartSize(j)

@@ -32,10 +32,17 @@ npcs = {
 }
 
 wpns = {
+	{ "GDCW SG552", "gdcw_sg552" },
 	{ "GDCW HK21", "gdcw_hk21" },
 	{ "GDCW M240", "gdcw_m240" },
-	{ "GDCW Uzi", "gdcw_fulluzi" },
+	{ "GDCW Uzi", "gdcw_miniuzi" },
 	{ "GDCW P228", "gdcw_p228" },
+	{ "GDCW Glock 18", "gdcw_glock18" },
+	{ "GDCW FiveSeven", "gdcw_fiveseven" },
+	{ "GDCW M9", "gdcw_m9" },
+	{ "GDCW M1911", "gdcw_m1911" },
+	{ "GDCW Revolver", "gdcw_revolver" },
+	{ "GDCW Desert Eagle", "gdcw_deagle" },
 	{ "GDCW FAL", "gdcw_falscope" },
 	{ "GDCW M16 ACOG", "gdcw_m16acog" },
 	{ "GDCW M16 Red Dot", "gdcw_m16rdot" },

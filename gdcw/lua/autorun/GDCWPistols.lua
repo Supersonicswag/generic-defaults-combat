@@ -1,0 +1,8 @@
+list.Set( "NPCWeapons", "gdcw_p228", "GDCW P228" )
+list.Set( "NPCWeapons", "gdcw_m9", "GDCW M9" )
+list.Set( "NPCWeapons", "gdcw_fiveseven", "GDCW Fiveseven" )
+list.Set( "NPCWeapons", "gdcw_glock18", "GDCW Glock 18" )
+list.Set( "NPCWeapons", "gdcw_deagle", "GDCW Deagle" )
+list.Set( "NPCWeapons", "gdcw_m1911", "GDCW M1911" )
+list.Set( "NPCWeapons", "gdcw_revolver", "GDCW Revolver" )
+list.Set( "NPCWeapons", "gdcw_miniuzi", "GDCW Uzi" )

@@ -16,7 +16,7 @@ SWEP.Base 				= "gdcw_base_pistol"
 SWEP.Spawnable				= true
 SWEP.AdminSpawnable			= true
 
-SWEP.Primary.Sound			= Sound("P228F.single")
+SWEP.Primary.Sound			= Sound("M1911F.single")
 SWEP.Primary.Round			= ("gdcwa_11x22_350")
 SWEP.Primary.RPM				= 600						// This is in Rounds Per Minute
 SWEP.Primary.ClipSize			= 7						// Size of a clip

@@ -1,0 +1,45 @@
+"FiveSevenF.single"
+{
+	"channel"				"CHAN_WEAPON"
+	"volume"				"1.0"
+	"CompatibilityAttenuation"		"ATTN_NORM"
+	"pitch"				"PITCH_NORM"
+	"soundlevel"			"SNDLVL_150dB"
+	"wave"				")GDC/FiveSeven/FiveSevenF.wav"
+}
+"GenericFiveSeven.CLipOut"
+{
+	"channel"				"CHAN_RELOAD"
+	"volume"				"1.0"
+	"CompatibilityAttenuation"		"ATTN_NORM"
+	"pitch"				"PITCH_NORM"
+	"soundlevel"			"SNDLVL_100dB"
+	"wave"				")GDC/FiveSeven/FiveSevenClipout.wav"
+}
+"GenericFiveSeven.CLipIn"
+{
+	"channel"				"CHAN_RELOAD"
+	"volume"				"1.0"
+	"CompatibilityAttenuation"		"ATTN_NORM"
+	"pitch"				"PITCH_NORM"
+	"soundlevel"			"SNDLVL_100dB"
+	"wave"				")GDC/FiveSeven/FiveSevenClipin.wav"
+}
+"GenericFiveSeven.SlideRelease"
+{
+	"channel"				"CHAN_RELOAD"
+	"volume"				"1.0"
+	"CompatibilityAttenuation"		"ATTN_NORM"
+	"pitch"				"PITCH_NORM"
+	"soundlevel"			"SNDLVL_100dB"
+	"wave"				")GDC/FiveSeven/FiveSevenSlideRelease.wav"
+}
+"GenericFiveSeven.SlidePull"
+{
+	"channel"				"CHAN_RELOAD"
+	"volume"				"1.0"
+	"CompatibilityAttenuation"		"ATTN_NORM"
+	"pitch"				"PITCH_NORM"
+	"soundlevel"			"SNDLVL_100dB"
+	"wave"				")GDC/FiveSeven/FiveSevenSlidePull.wav"
+}

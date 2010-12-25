@@ -80,10 +80,10 @@ function ENT:Think()
 					util.BlastDamage(self.Entity, self.Entity, tr.HitPos, 50, 10)
 					local effectdata = EffectData()
 					effectdata:SetOrigin(tr.HitPos)
-					effectdata:SetNormal(tr.HitNormal)
 					effectdata:SetScale(1)
-					effectdata:SetRadius(1)
-					util.Effect( "gdcw_impact", effectdata )
+					effectdata:SetRadius(tr.MatType)
+					effectdata:SetNormal(tr.HitNormal)
+					util.Effect("gdcw_universal_impact",effectdata)
 					util.ScreenShake(tr.HitPos, 10, 5, 0.1, 200 )
 					util.Decal("ExplosiveGunshot", tr.HitPos + tr.HitNormal, tr.HitPos - tr.HitNormal)
 					end
@@ -106,7 +106,7 @@ function ENT:Think()
 					effectdata:SetOrigin(tr.HitPos)
 					effectdata:SetNormal(self.flightvector:GetNormalized())
 					effectdata:SetScale(0.9)
-					util.Effect( "gdcw_bloodychunkyviolence", effectdata ) 	// Nothing violent here!
+					util.Effect( "gdcw_bloodychunkyviolence", effectdata ) 	  	// Nothing violent here!
 					util.Effect( "BloodImpact", effectdata )			// Nothing violent here either!
 				end
 
