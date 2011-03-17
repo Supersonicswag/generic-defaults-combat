@@ -6,7 +6,7 @@ function ENT:Initialize()
 self.penetrate = 100
 self.flightvector = self.Entity:GetUp() * 200
 self.timeleft = CurTime() + 5
-self.Entity:SetModel( "models/led.mdl" ) 	
+self.Entity:SetModel( "models/props_junk/garbage_glassbottle001a.mdl" ) 	
 self.Entity:PhysicsInit( SOLID_VPHYSICS )      -- Make us work with physics,  	
 self.Entity:SetMoveType( MOVETYPE_NONE )   --after all, gmod is a physics  	
 self.Entity:SetSolid( SOLID_VPHYSICS )        -- CHEESECAKE!    >:3         

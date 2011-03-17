@@ -6,7 +6,7 @@ function ENT:Initialize()
 self.penetrate = 20
 self.flightvector = self.Entity:GetUp() * 450
 self.timeleft = CurTime() + 5
-self.Entity:SetModel( "models/combatmodels/tankshell_25mm.mdl" ) 	
+self.Entity:SetModel( "models/led2.mdl" ) 	
 self.Entity:PhysicsInit( SOLID_VPHYSICS )      -- Make us work with physics,  	
 self.Entity:SetMoveType( MOVETYPE_NONE )   --after all, gmod is a physics  	
 self.Entity:SetSolid( SOLID_VPHYSICS )        -- CHEESECAKE!    >:3      
@@ -59,10 +59,10 @@ function ENT:Think()
 					util.BlastDamage(self.Entity, self.Entity, tr.HitPos, 150, 70)
 					local effectdata = EffectData()
 					effectdata:SetOrigin(tr.HitPos)
+					effectdata:SetScale(1.8)
+					effectdata:SetRadius(tr.MatType)
 					effectdata:SetNormal(tr.HitNormal)
-					effectdata:SetScale(1.75)
-					effectdata:SetRadius(1.75)
-					util.Effect( "gdca_impact", effectdata )
+					util.Effect("gdca_universal_impact",effectdata)
 					util.ScreenShake(tr.HitPos, 10, 5, 1, 500 )
 					util.Decal("fadingScorch", tr.HitPos + tr.HitNormal, tr.HitPos - tr.HitNormal)
 

@@ -37,11 +37,13 @@ function ENT:Think()
 				if (tr.Hit) then
 					util.BlastDamage(self.Entity, self.Entity, tr.HitPos, 200, 50)
 					local effectdata = EffectData()
-					effectdata:SetOrigin(tr.HitPos)
-					effectdata:SetNormal(tr.HitNormal)
-					effectdata:SetScale(1)			// Size of explosion
-					effectdata:SetRadius(1.4)			// Relative width of explosion. Higher is narrower.
-					effectdata:SetMagnitude(10)			// Length of explosion trails
+					effectdata:SetOrigin(tr.HitPos)				// Position of Impact
+					effectdata:SetNormal(tr.HitNormal)			// Direction of Impact
+					effectdata:SetStart(self.flightvector:GetNormalized())	// Direction of Round
+					effectdata:SetEntity(self.Entity)			// Who done it?
+					effectdata:SetScale(1)				// Size of explosion
+					effectdata:SetRadius(tr.MatType)			// Texture of Impact
+					effectdata:SetMagnitude(15)				// Length of explosion trails	
 					util.Effect( "gdca_cinematicboom", effectdata )
 					util.ScreenShake(tr.HitPos, 10, 5, 0.5, 600 )
 					util.Decal("fadingScorch", tr.HitPos + tr.HitNormal, tr.HitPos - tr.HitNormal)

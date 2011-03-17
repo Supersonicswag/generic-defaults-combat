@@ -36,12 +36,14 @@ end
 
 			if tr.Hit then
 				util.BlastDamage(self.Entity, self.Entity, tr.HitPos, 1200, 200)		// Radius, Damage
-				local effectdata = EffectData()
-				effectdata:SetOrigin(tr.HitPos)
-				effectdata:SetNormal(tr.HitNormal)
-				effectdata:SetScale(4.5)			// Size of explosion
-				effectdata:SetRadius(1)			// Relative width of explosion. Higher is narrower.
-				effectdata:SetMagnitude(20)			// Length of explosion trails
+					local effectdata = EffectData()
+					effectdata:SetOrigin(tr.HitPos)				// Position of Impact
+					effectdata:SetNormal(tr.HitNormal)			// Direction of Impact
+					effectdata:SetStart(self.flightvector:GetNormalized())	// Direction of Round
+					effectdata:SetEntity(self.Entity)			// Who done it?
+					effectdata:SetScale(4.5)				// Size of explosion
+					effectdata:SetRadius(tr.MatType)			// Texture of Impact
+					effectdata:SetMagnitude(16)				// Length of explosion trails	
 				util.Effect( "gdca_cinematicboom", effectdata )
 				util.ScreenShake(tr.HitPos, 20, 5, 1, 2500 )
 				util.Decal("Scorch", tr.HitPos + tr.HitNormal, tr.HitPos - tr.HitNormal)
@@ -51,7 +53,7 @@ end
 				end
 	
 	self.Entity:SetPos(self.Entity:GetPos() + self.flightvector)
-	self.flightvector = self.flightvector + Vector(math.Rand(-0.3,0.3), math.Rand(-0.3,0.3),math.Rand(-0.3,0.2)) + Vector(0,0,-0.2)
+	self.flightvector = self.flightvector + Vector(math.Rand(-0.3,0.3), math.Rand(-0.3,0.3),math.Rand(-0.2,0.2)) + Vector(0,0,-0.2)
 	self.Entity:SetAngles(self.flightvector:Angle() + Angle(90,0,0))
 	self.Entity:NextThink( CurTime() )
 	return true

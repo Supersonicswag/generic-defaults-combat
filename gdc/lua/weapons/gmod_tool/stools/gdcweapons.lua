@@ -34,7 +34,7 @@ if ( CLIENT ) then
 	language.Add( "Tool_gdcweapons_help9", "1200 RPM, Armor Piercing Incindiary, Overheats after 25 rounds, 36300 Inches/Second" )
 	language.Add( "Tool_gdcweapons_help10", "30 meter blast radius. Effective against infantry" )
 	language.Add( "Tool_gdcweapons_help11", "1500 RPM, Tracer/Ball, Overheats after 75 rounds, 26400 Inches/Second" )
-	language.Add( "Tool_gdcweapons_help12", "8 RPM, High Explosive Anti-Tank(18m)/SABOT, 23100 Inches/Second(HEAT), 36300 Inches/Second(SABOT)" )
+	language.Add( "Tool_gdcweapons_help12", "8 RPM, High Explosive Anti-Tank(18m)/SABOT, 19800 Inches/Second(HEAT), 36300 Inches/Second(SABOT)" )
 	language.Add( "Tool_gdcweapons_help13", "Powerful 15m blast radius. Effective against vehicles" )
 	language.Add( "Tool_gdcweapons_help14", "20 RPM, High Explosive(23m)/White Phosphorus(15m), 5280 Inches/Second" )
 	language.Add( "Tool_gdcweapons_help15", "300 RPM, High Explosive(11m)/High Explosive Dual Purpose(9m), 9900 Inches/Second" )
@@ -47,6 +47,7 @@ if ( CLIENT ) then
 	language.Add( "Tool_gdcweapons_help22", "4 RPS, 8 Salvo, High Explosive Anti-Tank(15m)/FAE (Thermobaric)(25)/Penetrator(5m)." )
 	language.Add( "Tool_gdcweapons_help23", "420 RPM, Armor Piercing Incindiary, Armor Piercing Incindiary Tracer, High Explosive Incindiary(4m), Overheats after 33 rounds, 39600 Inches/Second" )
 	language.Add( "Tool_gdcweapons_help24", "600 RPM, Tracer(Green)/Ball, 29700 Inches/Second" )
+	language.Add( "Tool_gdcweapons_help25", "900 RPM, Tracer/Ball, 33000 Inches/Second" )
 
 
 	language.Add( "Tool_turret_type", "Type of weapon" )
@@ -243,6 +244,13 @@ if ( !trace.Hit ) then return end
 
 		elseif (gdcweaponsindex == 24) then
 	self.ent = ents.Create( "gdc_pkm" )
+	self.ent:SetPos( SpawnPos )
+	self.ent:SetAngles( trace.HitNormal:Angle() + Angle(90,0,0))
+	self.ent:Spawn()
+	self.ent:Activate()
+
+		elseif (gdcweaponsindex == 25) then
+	self.ent = ents.Create( "gdc_m249" )
 	self.ent:SetPos( SpawnPos )
 	self.ent:SetAngles( trace.HitNormal:Angle() + Angle(90,0,0))
 	self.ent:Spawn()
@@ -459,6 +467,13 @@ if ( !trace.Hit ) then return end
 	self.ent:Spawn()
 	self.ent:Activate()
 
+		elseif (gdcweaponsindex == 25) then
+	self.ent = ents.Create( "gdc_m249" )
+	self.ent:SetPos( SpawnPos )
+	self.ent:SetAngles( trace.HitNormal:Angle() + Angle(90,0,0))
+	self.ent:Spawn()
+	self.ent:Activate()
+
 	end
 
 	ply:AddCount( "gcombat", self.ent )
@@ -514,6 +529,7 @@ function TOOL.BuildCPanel( CPanel )
 		Ctype["Options"]["#UB-8 80mm"]		= { gdcweapons_gdcweaponsindex = "22" }
 		Ctype["Options"]["#KPV 14.5mm"]		= { gdcweapons_gdcweaponsindex = "23" }
 		Ctype["Options"]["#PKM 7.62mm"]		= { gdcweapons_gdcweaponsindex = "24" }
+		Ctype["Options"]["#M249 5.56mm"]		= { gdcweapons_gdcweaponsindex = "25" }
 
 	CPanel:AddControl("ComboBox", Ctype )
 	

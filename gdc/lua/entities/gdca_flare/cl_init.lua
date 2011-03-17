@@ -19,7 +19,7 @@
 	
 	pos = self:GetPos()
 		for i=1, 1 do
-			local particle = self.emitter:Add( "particle/particle_smokegrenade", pos)
+			local particle = self.emitter:Add( "particle/smokesprites_000"..math.random(1,9), pos)
 			if (particle) then
 				particle:SetVelocity(self:GetUp() )
 				particle:SetDieTime( math.Rand( 3, 7 ) )

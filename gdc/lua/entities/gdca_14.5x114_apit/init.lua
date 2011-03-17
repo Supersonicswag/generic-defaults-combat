@@ -63,10 +63,10 @@ function ENT:Think()
 					util.BlastDamage(self.Entity, self.Entity, tr.HitPos, 100, 70)		// Radius, Damage
 					local effectdata = EffectData()
 					effectdata:SetOrigin(tr.HitPos)
-					effectdata:SetNormal(tr.HitNormal)
 					effectdata:SetScale(1.5)
-					effectdata:SetRadius(1.5)
-					util.Effect( "gdca_impact", effectdata )
+					effectdata:SetRadius(tr.MatType)
+					effectdata:SetNormal(tr.HitNormal)
+					util.Effect("gdca_universal_impact",effectdata)
 					util.ScreenShake(tr.HitPos, 10, 5, 1, 300 )
 					util.Decal("fadingScorch", tr.HitPos + tr.HitNormal, tr.HitPos - tr.HitNormal)
 

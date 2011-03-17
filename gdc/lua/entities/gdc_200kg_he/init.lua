@@ -44,23 +44,20 @@ end
 function ENT:Think()
 
         if self.infire then
-		local effectdata = EffectData()
-			effectdata:SetOrigin(self.Entity:GetPos())
-			effectdata:SetNormal(Vector(0,0,1))
-			effectdata:SetScale(10)			// Size of explosion
-			effectdata:SetRadius(1)			// Relative width of explosion
-			effectdata:SetMagnitude(20)			// Length of explosion trails
-			util.Effect( "gdca_cinematicboom", effectdata )
-			util.ScreenShake(self.Entity:GetPos(), 20, 5, 1, 10000 )
+			local effectdata = EffectData()
+			effectdata:SetOrigin(self.Entity:GetPos())		// Position of Impact
+			effectdata:SetNormal(Vector(0,0,1))			// Direction of Impact
+			effectdata:SetEntity(self.Entity)			// Who done it?
+			effectdata:SetScale(10)					// Size of explosion
+			effectdata:SetRadius(1)					// Texture of Impact
+			effectdata:SetMagnitude(20)				// Length of explosion trails	
+			util.Effect( "gdca_bigboom", effectdata )
 
 		util.ScreenShake(self.Entity:GetPos(), 20, 5, 1, 20000 )
 		self.Entity:EmitSound( "Explosion.Boom")
 		self.Entity:EmitSound( "Explosion.Boom")
-		self.Entity:EmitSound( "Explosion.Boom")
-		self.Entity:EmitSound( "Explosion.Boom")
-		self.Entity:EmitSound( "Explosion.Boom")
 		cbt_hcgexplode( self.Entity:GetPos(), 2000, 1000, 7)
-		util.BlastDamage(self.Entity, self.Entity, self.Entity:GetPos(), 3000, 500)
+		util.BlastDamage(self.Entity, self.Entity, self.Entity:GetPos(), 3000, 1000)
 		self.Entity:Remove()
 	end
 end

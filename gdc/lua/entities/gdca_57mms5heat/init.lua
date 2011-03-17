@@ -5,7 +5,7 @@ include('shared.lua')
 function ENT:Initialize()   
 self.flightvector = self.Entity:GetUp() * 200
 self.timeleft = CurTime() + 5
-self.Entity:SetModel( "models/combatmodels/tankshell.mdl" )	
+self.Entity:SetModel( "models/props_junk/garbage_glassbottle001a.mdl" )	
 self.Entity:PhysicsInit( SOLID_VPHYSICS )      -- Make us work with physics,  	
 self.Entity:SetMoveType( MOVETYPE_NONE )   --after all, gmod is a physics  	
 self.Entity:SetSolid( SOLID_VPHYSICS )        -- CHEESECAKE!    >:3           
@@ -60,11 +60,13 @@ end
 				if tr.Hit then
 					util.BlastDamage(self.Entity, self.Entity, tr.HitPos, 500, 100)
 					local effectdata = EffectData()
-					effectdata:SetOrigin(tr.HitPos)
-					effectdata:SetNormal(tr.HitNormal)
-					effectdata:SetScale(2)			// Size of explosion
-					effectdata:SetRadius(1.3)			// Relative width of explosion. Higher is narrower.
-					effectdata:SetMagnitude(13)			// Length of explosion trails
+					effectdata:SetOrigin(tr.HitPos)				// Position of Impact
+					effectdata:SetNormal(tr.HitNormal)			// Direction of Impact
+					effectdata:SetStart(self.flightvector:GetNormalized())	// Direction of Round
+					effectdata:SetEntity(self.Entity)			// Who done it?
+					effectdata:SetScale(2)					// Size of explosion
+					effectdata:SetRadius(tr.MatType)			// Texture of Impact
+					effectdata:SetMagnitude(16)				// Length of explosion trails	
 					util.Effect( "gdca_cinematicboom", effectdata )
 					util.ScreenShake(tr.HitPos, 10, 5, 1, 2000 )
 					util.Decal("Scorch", tr.HitPos + tr.HitNormal, tr.HitPos - tr.HitNormal)

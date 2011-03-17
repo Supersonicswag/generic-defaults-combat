@@ -33,12 +33,16 @@ end
 			return true
 			end	
 	
-			if tr.Hit then
-
-				for k, v in pairs ( ents.FindInSphere( self.Entity:GetPos(), 600 ) ) do	// Find anything within 50 feet
-				if v:IsPlayer() || v:IsNPC() then		// If its alive then
-				v:Ignite( 3, 100 ) end		// Fry it for 3 seconds, and make it catch anything around it on fire too
-				end			
+				if tr.Hit then
+				for k, v in pairs ( ents.FindInSphere( self.Entity:GetPos(), 600 ) ) do		// Find anything within ~50 feet
+				if v:IsPlayer() || v:IsNPC() then					// If its alive then
+				local trace = {}						// Make sure there's not a wall in between
+				trace.start = self.Entity:GetPos()
+				trace.endpos = v:GetPos() + Vector(0,0,30)			// Trace to the torso
+				trace.filter = self.Entity
+				local tr = util.TraceLine( trace )				// If the trace hits a living thing then
+				if tr.Entity:IsPlayer() || tr.Entity:IsNPC() then v:Ignite( 5, 100 ) end end	// Fry it for 5 seconds
+				end	
 
 				util.BlastDamage(self.Entity, self.Entity, tr.HitPos, 600, 30)
 				local effectdata = EffectData()

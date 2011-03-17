@@ -8,7 +8,7 @@ math.randomseed(CurTime())
 self.flightvector = self.Entity:GetUp() * 450
 self.tracer = false
 self.timeleft = CurTime() + 5
-self.Entity:SetModel( "models/combatmodels/tankshell_25mm.mdl" ) 	
+self.Entity:SetModel( "models/led2.mdl" ) 	
 self.Entity:PhysicsInit( SOLID_VPHYSICS )	
 self.Entity:SetMoveType( MOVETYPE_NONE )
 self.Entity:SetSolid( SOLID_VPHYSICS )
@@ -59,10 +59,10 @@ function ENT:Think()
 			util.BlastDamage(self.Entity, self.Entity, tr.HitPos, 90, 70)		// Radius, Damage
 			local effectdata = EffectData()
 			effectdata:SetOrigin(tr.HitPos)
-			effectdata:SetNormal(tr.HitNormal)
 			effectdata:SetScale(1.35)
-			effectdata:SetRadius(1.35)
-			util.Effect( "gdca_impact", effectdata )
+			effectdata:SetRadius(tr.MatType)
+			effectdata:SetNormal(tr.HitNormal)
+			util.Effect("gdca_universal_impact",effectdata)
 			util.ScreenShake(tr.HitPos, 10, 5, 0.3, 300 )
 			util.Decal("ExplosiveGunshot", tr.HitPos + tr.HitNormal, tr.HitPos - tr.HitNormal)
 
@@ -74,7 +74,7 @@ function ENT:Think()
 			return true
 		end
 
-self.flightvector = self.flightvector + Vector(math.Rand(-0.4,0.4), math.Rand(-0.4,0.4),math.Rand(-0.4,0.4)) + Vector(0,0,-0.2)
+self.flightvector = self.flightvector + Vector(math.Rand(-0.4,0.4), math.Rand(-0.4,0.4),math.Rand(-0.4,0.4)) + Vector(0,0,-0.1)
 self.Entity:SetPos(self.Entity:GetPos() + self.flightvector)
 self.Entity:SetAngles(self.flightvector:Angle() + Angle(90,0,0))
 self.Entity:NextThink( CurTime() )

@@ -1,4 +1,3 @@
-
 AddCSLuaFile( "cl_init.lua" )
 AddCSLuaFile( "shared.lua" )
 
@@ -7,13 +6,20 @@ include('shared.lua')
 
 function ENT:Initialize()   
 
-	self.ammomodel = "models/props_c17/canister01a.mdl"
-	self.armed = false
+	util.PrecacheSound("30cal.single")
+	self.ammos = 1
+	self.match = 1
+	self.clipsize = 1
+	self.armed = 1
 	self.loading = false
 	self.reloadtime = 0
-	self.infire = false
+	self.matchtime	= 0
+	self.infire  = false
 	self.infire2 = false
-	self.Entity:SetModel( "models/props_lab/pipesystem02b.mdl" ) 	
+	self.infire3 = false
+	self.Tracer  = 0
+        self.TracerTimer = 1
+	self.Entity:SetModel( "models/props_lab/pipesystem02c.mdl" ) 	
 	self.Entity:PhysicsInit( SOLID_VPHYSICS )      -- Make us work with physics,  	
 	self.Entity:SetMoveType( MOVETYPE_VPHYSICS )   --after all, gmod is a physics  	
 	self.Entity:SetSolid( SOLID_VPHYSICS )        -- Toolbox     
@@ -25,7 +31,7 @@ function ENT:Initialize()
 		phys:Wake() 
 	end 
  
-	self.Inputs = Wire_CreateInputs( self.Entity, { "Fire", "Fire Tracer"} )
+	self.Inputs = Wire_CreateInputs( self.Entity, { "Fire", "Fire Tracer","Tracer On","Fire Match Grade"} )
 	self.Outputs = Wire_CreateOutputs( self.Entity, { "Can Fire"})
 end   
 
@@ -48,15 +54,25 @@ end
 
 function ENT:fire()
 
-		local ent = ents.Create( "gdca_12.7x99_ball" )
-		ent:SetPos( self.Entity:GetPos() +  self.Entity:GetUp() * 100)
-		ent:SetAngles( self.Entity:GetAngles() )
-		ent:Spawn()
-		ent:Activate()
+		if	 (self.TracerTimer>=self.Tracer) and (self.Tracer>=1)	then		// If it's not the tracer round, shoot a ball
+		local balla = ents.Create( "gdca_12.7x99_tracer" )
+		balla:SetPos( self.Entity:GetPos() +  self.Entity:GetUp() * 100)
+		balla:SetAngles( self.Entity:GetAngles() )
+		balla:Spawn()
+		balla:Activate()
+		self.TracerTimer = 1
+		else										// Else fire the tracer and reset to ball
+		local traca = ents.Create( "gdca_7.62x51_ball" )
+		traca:SetPos( self.Entity:GetPos() +  self.Entity:GetUp() * 100)
+		traca:SetAngles( self.Entity:GetAngles() )
+		traca:Spawn()
+		traca:Activate()
+		self.TracerTimer = self.TracerTimer+1
+		end
 		
 		local phys = self.Entity:GetPhysicsObject()  	
 		if (phys:IsValid()) then  		
-			phys:ApplyForceCenter( self.Entity:GetUp() * -12700 ) 
+		phys:ApplyForceCenter( self.Entity:GetUp() * -12700 ) 
 		end 
 		
 		local effectdata = EffectData()
@@ -64,9 +80,11 @@ function ENT:fire()
 		effectdata:SetNormal(self:GetUp())
 		effectdata:SetScale(0.4)
 		util.Effect( "gdca_muzzle", effectdata )
-		util.ScreenShake(self.Entity:GetPos(), 12, 5, 0.2, 200 )
-		self.Entity:EmitSound( "50cal.single", 500, 100 )
+		util.ScreenShake(self.Entity:GetPos(), 7, 5, 0.2, 200 )
+		self.Entity:EmitSound( "50cal.single" )
+		self.ammos = self.ammos-1
 	
+
 end
 
 function ENT:firetracer()
@@ -76,7 +94,8 @@ function ENT:firetracer()
 		ent:SetAngles( self.Entity:GetAngles() )
 		ent:Spawn()
 		ent:Activate()
-				
+		
+		
 		local phys = self.Entity:GetPhysicsObject()  	
 		if (phys:IsValid()) then  		
 			phys:ApplyForceCenter( self.Entity:GetUp() * -12700 ) 
@@ -87,15 +106,47 @@ function ENT:firetracer()
 		effectdata:SetNormal(self:GetUp())
 		effectdata:SetScale(0.4)
 		util.Effect( "gdca_muzzle", effectdata )
-		util.ScreenShake(self.Entity:GetPos(), 12, 5, 0.2, 200 )
-		self.Entity:EmitSound( "50cal.single", 500, 100 )
-	
+		util.ScreenShake(self.Entity:GetPos(), 7, 5, 0.2, 200 )
+		self.Entity:EmitSound( "50cal.single" )
+		self.ammos = self.ammos-1
+end
 
+function ENT:firematch()
+
+	local ent = ents.Create( "gdca_12.7x99_match" )
+		ent:SetPos( self.Entity:GetPos() +  self.Entity:GetUp() * 100)
+		ent:SetAngles( self.Entity:GetAngles() )
+		ent:Spawn()
+		ent:Activate()
+		
+		local phys = self.Entity:GetPhysicsObject()  	
+		if (phys:IsValid()) then  		
+			phys:ApplyForceCenter( self.Entity:GetUp() * -12700 ) 
+		end 
+		
+		local effectdata = EffectData()
+		effectdata:SetOrigin(self.Entity:GetPos() +  self.Entity:GetUp() * 30)
+		effectdata:SetNormal(self:GetUp())
+		effectdata:SetScale(0.4)
+		util.Effect( "gdca_muzzle", effectdata )
+		util.ScreenShake(self.Entity:GetPos(), 7, 5, 0.2, 200 )
+		self.Entity:EmitSound( "50cal.single" )
+		self.match = self.match-1
 end
 
 function ENT:Think()
 if FIELDS == nil and COMBATDAMAGEENGINE == nil then return end
-	
+
+	if self.ammos <= 0 then
+	self.reloadtime = CurTime()+0.13
+	self.ammos = self.clipsize
+	end
+
+	if self.match <= 0 then
+	self.matchtime = CurTime()+1
+	self.match = self.clipsize
+	end
+
 	if (self.reloadtime < CurTime()) then
 	Wire_TriggerOutput(self.Entity, "Can Fire", 1)
 	else
@@ -103,38 +154,60 @@ if FIELDS == nil and COMBATDAMAGEENGINE == nil then return end
 	end
 	
 	if self.inFire then
-	if (self.reloadtime < CurTime()) then	
-	self:fire()		
+	if (self.reloadtime < CurTime()) then
+	self:fire()
 	end
 	end
 	
 	if self.inFire2 and !self.inFire then
 	if (self.reloadtime < CurTime()) then
-	self:firetracer()
+	self:firetracer()			
 	end
 	end
 
-	self.Entity:NextThink( CurTime() + .13)
+	if self.inFire3 and !self.inFire and !self.inFire2 then
+	if (self.matchtime < CurTime()) then
+	self:firematch()		
+	end
+	end
+
+	self.Entity:NextThink( CurTime()+0.01)
 	return true
 end
 
 function ENT:TriggerInput(k, v)
-if(k=="Fire") then
+
+		if(k=="Fire") then
 		if((v or 0) >= 1) then
 			self.inFire = true
 		else
 			self.inFire = false
 		end
-	end
+		end
 	
-	if(k=="Fire Tracer") then
+		if(k=="Fire Tracer") then
 		if((v or 0) >= 1) then
 			self.inFire2 = true
 		else
 			self.inFire2 = false
 		end
-	end
+		end
 	
+		if(k=="Fire Match Grade") then
+		if((v or 0) >= 1) then
+			self.inFire3 = true
+		else
+			self.inFire3 = false
+		end
+		end
+
+		if(k=="Tracer On") then
+		if((v or 0) >= 1) then
+			self.Tracer = v or 0
+		else
+			self.Tracer = 0
+		end
+		end
 end
  
  

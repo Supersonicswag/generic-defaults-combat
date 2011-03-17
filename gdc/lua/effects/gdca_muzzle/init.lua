@@ -13,7 +13,7 @@
 		
 	for i=0, 20*self.Scale do
 	
-		local Smoke = self.Emitter:Add( "particle/smokestack", self.Origin )
+		local Smoke = self.Emitter:Add( "particle/smokesprites_000"..math.random(1,9), self.Origin )
 		if (Smoke) then
 			Smoke:SetVelocity( self.DirVec * math.random( 0,1000*self.Scale) + VectorRand()*200*self.Scale )
 			Smoke:SetDieTime( math.Rand( 0.5 , 1)*self.Scale )

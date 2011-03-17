@@ -7,7 +7,7 @@ function ENT:Initialize()
 math.randomseed(CurTime())
 self.flightvector = self.Entity:GetUp() * 300
 self.timeleft = CurTime() + 5
-self.Entity:SetModel( "models/combatmodels/tankshell_120mm.mdl" ) 	
+self.Entity:SetModel( "models/props_junk/garbage_glassbottle001a.mdl" ) 	
 self.Entity:PhysicsInit( SOLID_VPHYSICS )      -- Make us work with physics,  	
 self.Entity:SetMoveType( MOVETYPE_NONE )   --after all, gmod is a physics  	
 self.Entity:SetSolid( SOLID_VPHYSICS )        -- CHEESECAKE!    >:3         
@@ -15,7 +15,7 @@ self.Entity:SetSolid( SOLID_VPHYSICS )        -- CHEESECAKE!    >:3
 Glow = ents.Create("env_sprite")
 Glow:SetKeyValue("model","orangecore2.vmt")
 Glow:SetKeyValue("rendercolor","255 200 150")
-Glow:SetKeyValue("scale","0.4")
+Glow:SetKeyValue("scale","0.6")
 Glow:SetPos(self.Entity:GetPos())
 Glow:SetParent(self.Entity)
 Glow:Spawn()
@@ -44,11 +44,13 @@ function ENT:Think()
 			if (tr.Hit) then
 				util.BlastDamage(self.Entity, self.Entity, tr.HitPos, 700, 300)
 					local effectdata = EffectData()
-					effectdata:SetOrigin(tr.HitPos)
-					effectdata:SetNormal(tr.HitNormal)
-					effectdata:SetScale(3)			// Size of explosion
-					effectdata:SetRadius(1.3)			// Relative width of explosion. Higher is narrower.
-					effectdata:SetMagnitude(17)			// Length of explosion trails
+					effectdata:SetOrigin(tr.HitPos)				// Position of Impact
+					effectdata:SetNormal(tr.HitNormal)			// Direction of Impact
+					effectdata:SetStart(self.flightvector:GetNormalized())	// Direction of Round
+					effectdata:SetEntity(self.Entity)			// Who done it?
+					effectdata:SetScale(3)				// Size of explosion
+					effectdata:SetRadius(tr.MatType)			// Texture of Impact
+					effectdata:SetMagnitude(16)				// Length of explosion trails	
 					util.Effect( "gdca_cinematicboom", effectdata )
 					util.ScreenShake(tr.HitPos, 20, 5, 1, 1200 )
 					util.Decal("Scorch", tr.HitPos + tr.HitNormal, tr.HitPos - tr.HitNormal)

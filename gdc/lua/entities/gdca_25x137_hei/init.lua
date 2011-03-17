@@ -15,7 +15,7 @@ self.Entity:SetSolid( SOLID_VPHYSICS )        -- CHEESECAKE!    >:3
 Glow = ents.Create("env_sprite")
 Glow:SetKeyValue("model","orangecore2.vmt")
 Glow:SetKeyValue("rendercolor","255 150 100")
-Glow:SetKeyValue("scale","0.05")
+Glow:SetKeyValue("scale","0.08")
 Glow:SetPos(self.Entity:GetPos())
 Glow:SetParent(self.Entity)
 Glow:Spawn()
@@ -47,11 +47,13 @@ function ENT:Think()
 				if (tr.Hit) then
 					util.BlastDamage(self.Entity, self.Entity, tr.HitPos, 250, 60)
 					local effectdata = EffectData()
-					effectdata:SetOrigin(tr.HitPos)
-					effectdata:SetNormal(tr.HitNormal)
-					effectdata:SetScale(1.1)			// Size of explosion
-					effectdata:SetRadius(1.4)			// Relative width of explosion. Higher is narrower.
-					effectdata:SetMagnitude(11)			// Length of explosion trails
+					effectdata:SetOrigin(tr.HitPos)				// Position of Impact
+					effectdata:SetNormal(tr.HitNormal)			// Direction of Impact
+					effectdata:SetStart(self.flightvector:GetNormalized())	// Direction of Round
+					effectdata:SetEntity(self.Entity)			// Who done it?
+					effectdata:SetScale(1.1)				// Size of explosion
+					effectdata:SetRadius(tr.MatType)			// Texture of Impact
+					effectdata:SetMagnitude(15)				// Length of explosion trails	
 					util.Effect( "gdca_cinematicboom", effectdata )
 					util.ScreenShake(tr.HitPos, 10, 5, 0.5, 700 )
 					util.Decal("fadingScorch", tr.HitPos + tr.HitNormal, tr.HitPos - tr.HitNormal)

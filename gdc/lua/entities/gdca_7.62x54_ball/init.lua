@@ -36,10 +36,10 @@ function ENT:Think()
 			util.BlastDamage(self.Entity, self.Entity, tr.HitPos, 70, 50)		// Radius, Damage
 			local effectdata = EffectData()
 			effectdata:SetOrigin(tr.HitPos)
-			effectdata:SetNormal(tr.HitNormal)
 			effectdata:SetScale(1)
-			effectdata:SetRadius(1)
-			util.Effect( "gdca_impact", effectdata )
+			effectdata:SetRadius(tr.MatType)
+			effectdata:SetNormal(tr.HitNormal)
+			util.Effect("gdca_universal_impact",effectdata)
 			util.ScreenShake(tr.HitPos, 10, 5, 0.3, 200 )
 			util.Decal("ExplosiveGunshot", tr.HitPos + tr.HitNormal, tr.HitPos - tr.HitNormal)
 
@@ -51,7 +51,7 @@ function ENT:Think()
 			return true
 		end
 
-self.flightvector = self.flightvector + Vector(math.Rand(-0.3,0.3), math.Rand(-0.3,0.3),math.Rand(-0.3,0.3)) + Vector(0,0,-0.15)
+self.flightvector = self.flightvector + Vector(math.Rand(-0.3,0.3), math.Rand(-0.3,0.3),math.Rand(-0.3,0.3)) + Vector(0,0,-0.1)
 self.Entity:SetPos(self.Entity:GetPos() + self.flightvector)
 self.Entity:SetAngles(self.flightvector:Angle() + Angle(90,0,0))
 self.Entity:NextThink( CurTime() )
