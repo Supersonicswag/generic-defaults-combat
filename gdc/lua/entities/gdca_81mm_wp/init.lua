@@ -22,18 +22,28 @@ end
 		end
 
 	local trace = {}
-		trace.start = self.Entity:GetPos()
-		trace.endpos = self.Entity:GetPos() + self.flightvector
-		trace.filter = self.Entity 
+		trace.start 	= self.Entity:GetPos()
+		trace.endpos 	= self.Entity:GetPos() + self.flightvector
+		trace.filter 	= self.Entity 
+		trace.mask 	= MASK_SHOT + MASK_WATER			// Trace for stuff that bullets would normally hit
 	local tr = util.TraceLine( trace )
 
 
-			if tr.HitSky then
-			self.Entity:Remove()
-			return true
-			end	
-	
 				if tr.Hit then
+					if tr.HitSky then
+					self.Entity:Remove()
+					return true
+					end
+					if tr.MatType==83 then				//83 is wata
+					local effectdata = EffectData()
+					effectdata:SetOrigin( tr.HitPos )
+					effectdata:SetNormal( tr.HitNormal )		// In case you hit sideways water?
+					effectdata:SetScale( 30 )			// Big splash for big bullets
+					util.Effect( "watersplash", effectdata )
+					self.Entity:Remove()
+					return true
+					end
+
 				for k, v in pairs ( ents.FindInSphere( self.Entity:GetPos(), 600 ) ) do		// Find anything within ~50 feet
 				if v:IsPlayer() || v:IsNPC() then					// If its alive then
 				local trace = {}						// Make sure there's not a wall in between
@@ -42,7 +52,7 @@ end
 				trace.filter = self.Entity
 				local tr = util.TraceLine( trace )				// If the trace hits a living thing then
 				if tr.Entity:IsPlayer() || tr.Entity:IsNPC() then v:Ignite( 5, 100 ) end end	// Fry it for 5 seconds
-				end	
+				end		
 
 				util.BlastDamage(self.Entity, self.Entity, tr.HitPos, 600, 30)
 				local effectdata = EffectData()

@@ -1,0 +1,19 @@
+[GLITCHES]
+-Penetration will not remove self when trace starts inside prop.
+
+[ENGINE]
+-Make explosion radius function
+-Make explosion cone function
+-Make damage function
+-Make destroyed prop effect better
+
+[OPTIMIZE]
+-Penetration code(reduce if-then #; glitches)
+
+[FOR LOOKS]
+-Make penetrating effects dynamic; optimize
+
+
+[REQUESTS]
+HE/AP GMls
+Flamethrower

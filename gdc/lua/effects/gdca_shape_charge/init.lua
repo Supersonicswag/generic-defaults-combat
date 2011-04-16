@@ -62,7 +62,7 @@ local vOffset = data:GetOrigin()
  			 
  			end 
 			
-			local particle2 = emitter:Add( "particles/smokey", vOffset ) 
+			local particle2 = emitter:Add( "particle/smokesprites_000"..math.random(1,9), vOffset ) 
  			if (particle2) then 
  				 
  				particle2:SetVelocity( VectorRand() * math.Rand(1500, 2000) ) 

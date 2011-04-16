@@ -65,7 +65,7 @@ end
 function ENT:firewp()
 
 		local ent = ents.Create( "gdca_70mmhydrawp" )
-		ent:SetPos( self.Entity:GetPos() +  self.Entity:GetUp() * 250)
+		ent:SetPos( self.Entity:GetPos() +  self.Entity:GetUp() * 300)
 		ent:SetAngles( self.Entity:GetAngles() )
 		ent:Spawn()
 		ent:Activate()

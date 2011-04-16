@@ -7,45 +7,45 @@ include('shared.lua')
 function ENT:Initialize()   
 
 math.randomseed(CurTime())
-self.exploded = false
-self.armed = true
-self.ticking = true
-self.smoking = false
-self.penetrate = 10
-self.flightvector = self.Entity:GetUp() * 450
+self.penetrate = 15
+self.flightvector = self.Entity:GetUp() * 590
 self.timeleft = CurTime() + 5
-self.Entity:SetModel( "models/combatmodels/tankshell_40mm.mdl" ) 	
+self.Entity:SetModel( "models/led2.mdl" ) 	
 self.Entity:PhysicsInit( SOLID_VPHYSICS )      -- Make us work with physics,  	
 self.Entity:SetMoveType( MOVETYPE_NONE )   --after all, gmod is a physics  	
 self.Entity:SetSolid( SOLID_VPHYSICS )        -- CHEESECAKE!    >:3            
+
+Tracer = ents.Create("env_spritetrail")
+Tracer:SetKeyValue("lifetime","0.1")
+Tracer:SetKeyValue("startwidth","40")
+Tracer:SetKeyValue("endwidth","0")
+Tracer:SetKeyValue("spritename","trails/laser.vmt")
+Tracer:SetKeyValue("rendermode","5")
+Tracer:SetKeyValue("rendercolor","255 150 100")
+Tracer:SetPos(self.Entity:GetPos())
+Tracer:SetParent(self.Entity)
+Tracer:Spawn()
+Tracer:Activate()
+
+Glow = ents.Create("env_sprite")
+Glow:SetKeyValue("model","orangecore2.vmt")
+Glow:SetKeyValue("rendercolor","255 150 100")
+Glow:SetKeyValue("scale","0.20")
+Glow:SetPos(self.Entity:GetPos())
+Glow:SetParent(self.Entity)
+Glow:Spawn()
+Glow:Activate()
 
 self:Think()
  
 end   
 
 function ENT:Think()
-
-		if (self.smoking == false) then
-		self.smoking = true
 	
-		FireTrail = ents.Create("env_spritetrail")
-		FireTrail:SetKeyValue("lifetime","0.1")
-		FireTrail:SetKeyValue("startwidth","35")
-		FireTrail:SetKeyValue("endwidth","0")
-		FireTrail:SetKeyValue("spritename","trails/laser.vmt")
-		FireTrail:SetKeyValue("rendermode","5")
-		FireTrail:SetKeyValue("rendercolor","255 150 100")
-		FireTrail:SetPos(self.Entity:GetPos())
-		FireTrail:SetParent(self.Entity)
-		FireTrail:Spawn()
-		FireTrail:Activate()
-	end 
 
 		if self.timeleft < CurTime() then
-					self.exploded = true
-					self.Entity:Remove()
-					
-	end
+		self.Entity:Remove()				
+		end
 
 	local trace = {}
 		trace.start = self.Entity:GetPos()
@@ -56,24 +56,27 @@ function ENT:Think()
 			if tr.HitSky then
 			self.Entity:Remove()
 			return true
-		end		
+			end		
 
 
-			if tr.Hit then
-				util.BlastDamage(self.Entity, self.Entity, tr.HitPos, 150, 70)
+				if tr.Hit then
+					util.BlastDamage(self.Entity, self.Entity, tr.HitPos, 100, 70)		// Radius, Damage
 					local effectdata = EffectData()
 					effectdata:SetOrigin(tr.HitPos)
-					effectdata:SetNormal(tr.HitNormal)
 					effectdata:SetScale(1.5)
-					effectdata:SetRadius(1.5)
-					util.Effect( "gdca_impact", effectdata )
-					util.ScreenShake(tr.HitPos, 15, 5, 0.3, 200 )
-					util.Decal("ExplosiveGunshot", tr.HitPos + tr.HitNormal, tr.HitPos - tr.HitNormal)
+					effectdata:SetRadius(tr.MatType)
+					effectdata:SetNormal(tr.HitNormal)
+					util.Effect("gdca_universal_impact",effectdata)
+					util.ScreenShake(tr.HitPos, 10, 5, 1, 300 )
+					util.Decal("fadingScorch", tr.HitPos + tr.HitNormal, tr.HitPos - tr.HitNormal)
 
-				end
+					if tr.Entity:IsValid() then
+					local attack = gcombat.hcghit( tr.Entity, 140, 15, tr.HitPos, tr.HitPos)
+					end
+					end
 
 	local trace = {}
-		trace.start = tr.HitPos + self.flightvector:GetNormalized() * 10
+		trace.start = tr.HitPos + self.flightvector:GetNormalized() * 15
 		trace.endpos = tr.HitPos
 		trace.filter = self.Entity 
 	local pr = util.TraceLine( trace )
@@ -86,20 +89,17 @@ function ENT:Think()
 		self.penetrate = self.penetrate - (tr.HitPos:Distance(pr.HitPos))
 		end
 
-			if (tr.Entity:IsValid()) then
-			local attack = gcombat.hcghit( tr.Entity, 150, 100, tr.HitPos, tr.HitPos)
-			end
 
-		if !pr.StartSolid and tr.Hit and self.penetrate>0 then
-				util.BlastDamage(self.Entity, self.Entity, pr.HitPos, 150, 70)
+		if !pr.StartSolid and tr.Hit and pr.Hit and self.penetrate>0 then
+				util.BlastDamage(self.Entity, self.Entity, pr.HitPos, 100, 50)
 				self.Entity:SetPos(pr.HitPos + self.flightvector:GetNormalized()*5)
 					local effectdata = EffectData()
 					effectdata:SetOrigin(pr.HitPos)
 					effectdata:SetNormal(self.flightvector:GetNormalized())
-					effectdata:SetScale(1.5)
-					effectdata:SetRadius(1.5)
+					effectdata:SetScale(2)
+					effectdata:SetRadius(2)
 					util.Effect( "gdca_penetrate", effectdata )
-					util.ScreenShake(tr.HitPos, 10, 5, 0.3, 150 )
+					util.ScreenShake(tr.HitPos, 10, 5, 0.3, 300 )
 					util.Decal("ExplosiveGunshot", pr.HitPos + pr.HitNormal, pr.HitPos - pr.HitNormal)
 
 			end
@@ -114,7 +114,7 @@ function ENT:Think()
 		if !pr.Hit then
 	self.Entity:SetPos(self.Entity:GetPos() + self.flightvector)
 	end
-	self.flightvector = self.flightvector + Vector(math.Rand(-0.5,0.5), math.Rand(-0.5,0.5),math.Rand(-0.5,0.5)) + Vector(0,0,-0.2)
+	self.flightvector = self.flightvector + Vector(math.Rand(-0.3,0.3), math.Rand(-0.3,0.3),math.Rand(-0.3,0.3)) + Vector(0,0,-0.2)
 	self.Entity:SetAngles(self.flightvector:Angle() + Angle(90,0,0))
 	self.Entity:NextThink( CurTime() )
 	return true

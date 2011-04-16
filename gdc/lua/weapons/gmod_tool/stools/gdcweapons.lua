@@ -48,6 +48,7 @@ if ( CLIENT ) then
 	language.Add( "Tool_gdcweapons_help23", "420 RPM, Armor Piercing Incindiary, Armor Piercing Incindiary Tracer, High Explosive Incindiary(4m), Overheats after 33 rounds, 39600 Inches/Second" )
 	language.Add( "Tool_gdcweapons_help24", "600 RPM, Tracer(Green)/Ball, 29700 Inches/Second" )
 	language.Add( "Tool_gdcweapons_help25", "900 RPM, Tracer/Ball, 33000 Inches/Second" )
+	language.Add( "Tool_gdcweapons_help26", "Flamethrower, figure it out yourself." )
 
 
 	language.Add( "Tool_turret_type", "Type of weapon" )
@@ -251,6 +252,13 @@ if ( !trace.Hit ) then return end
 
 		elseif (gdcweaponsindex == 25) then
 	self.ent = ents.Create( "gdc_m249" )
+	self.ent:SetPos( SpawnPos )
+	self.ent:SetAngles( trace.HitNormal:Angle() + Angle(90,0,0))
+	self.ent:Spawn()
+	self.ent:Activate()
+
+		elseif (gdcweaponsindex == 26) then
+	self.ent = ents.Create( "gdc_flamethrower" )
 	self.ent:SetPos( SpawnPos )
 	self.ent:SetAngles( trace.HitNormal:Angle() + Angle(90,0,0))
 	self.ent:Spawn()
@@ -474,6 +482,13 @@ if ( !trace.Hit ) then return end
 	self.ent:Spawn()
 	self.ent:Activate()
 
+		elseif (gdcweaponsindex == 26) then
+	self.ent = ents.Create( "gdc_flamethrower" )
+	self.ent:SetPos( SpawnPos )
+	self.ent:SetAngles( trace.HitNormal:Angle() + Angle(90,0,0))
+	self.ent:Spawn()
+	self.ent:Activate()
+
 	end
 
 	ply:AddCount( "gcombat", self.ent )
@@ -504,32 +519,33 @@ function TOOL.BuildCPanel( CPanel )
 	// the pertenent cannon
 	local Ctype = {Label = "#Tool_turret_type", MenuButton = 0, Options={}}
 
-		Ctype["Options"]["#M240 7.62"]		= { gdcweapons_gdcweaponsindex = "0" }
-		Ctype["Options"]["#M2HB 12.7"]		= { gdcweapons_gdcweaponsindex = "1" }
-		Ctype["Options"]["#M197 20mm"]		= { gdcweapons_gdcweaponsindex = "2" }
-		Ctype["Options"]["#M242 25mm"]		= { gdcweapons_gdcweaponsindex = "3" }
-		Ctype["Options"]["#M230 30mm"]		= { gdcweapons_gdcweaponsindex = "4" }
-		Ctype["Options"]["#2A42 30mm"]		= { gdcweapons_gdcweaponsindex = "5" }
-		Ctype["Options"]["#L60 40mm"]		= { gdcweapons_gdcweaponsindex = "6" }
-		Ctype["Options"]["#M260 70mm"]		= { gdcweapons_gdcweaponsindex = "7" }
-		Ctype["Options"]["#M101 105mm"]		= { gdcweapons_gdcweaponsindex = "8" }
+		Ctype["Options"]["#M240 7.62"]			= { gdcweapons_gdcweaponsindex = "0" }
+		Ctype["Options"]["#M2HB 12.7"]			= { gdcweapons_gdcweaponsindex = "1" }
+		Ctype["Options"]["#M197 20mm"]			= { gdcweapons_gdcweaponsindex = "2" }
+		Ctype["Options"]["#M242 25mm"]			= { gdcweapons_gdcweaponsindex = "3" }
+		Ctype["Options"]["#M230 30mm"]			= { gdcweapons_gdcweaponsindex = "4" }
+		Ctype["Options"]["#2A42 30mm"]			= { gdcweapons_gdcweaponsindex = "5" }
+		Ctype["Options"]["#L60 40mm"]			= { gdcweapons_gdcweaponsindex = "6" }
+		Ctype["Options"]["#M260 70mm"]			= { gdcweapons_gdcweaponsindex = "7" }
+		Ctype["Options"]["#M101 105mm"]			= { gdcweapons_gdcweaponsindex = "8" }
 		Ctype["Options"]["#GAU-12 25mm"]		= { gdcweapons_gdcweaponsindex = "9" }
 		Ctype["Options"]["#2KG High Explosive Charge"]	= { gdcweapons_gdcweaponsindex = "10" }
 		Ctype["Options"]["#M134 7.62mm"]		= { gdcweapons_gdcweaponsindex = "11" }
-		Ctype["Options"]["#M256 120mm"]		= { gdcweapons_gdcweaponsindex = "12" }
-		Ctype["Options"]["#HEAT Shape Charge"]	= { gdcweapons_gdcweaponsindex = "13" }
+		Ctype["Options"]["#M256 120mm"]			= { gdcweapons_gdcweaponsindex = "12" }
+		Ctype["Options"]["#HEAT Shape Charge"]		= { gdcweapons_gdcweaponsindex = "13" }
 		Ctype["Options"]["#Mortar Launcher 81mm"]	= { gdcweapons_gdcweaponsindex = "14" }
-		Ctype["Options"]["#MK-19 40mm"]		= { gdcweapons_gdcweaponsindex = "15" }
-		Ctype["Options"]["#RAM 81mm "]		= { gdcweapons_gdcweaponsindex = "16" }
-		Ctype["Options"]["#GML 84mm "]		= { gdcweapons_gdcweaponsindex = "17" }
+		Ctype["Options"]["#MK-19 40mm"]			= { gdcweapons_gdcweaponsindex = "15" }
+		Ctype["Options"]["#RAM 81mm "]			= { gdcweapons_gdcweaponsindex = "16" }
+		Ctype["Options"]["#GML 84mm "]			= { gdcweapons_gdcweaponsindex = "17" }
 		Ctype["Options"]["#GAU-19 12.7mm"]		= { gdcweapons_gdcweaponsindex = "18" }
 		Ctype["Options"]["#Smoke Deployer"]		= { gdcweapons_gdcweaponsindex = "19" }
 		Ctype["Options"]["#Flare Deployer"]		= { gdcweapons_gdcweaponsindex = "20" }
-		Ctype["Options"]["#UB-16 57mm"]		= { gdcweapons_gdcweaponsindex = "21" }
-		Ctype["Options"]["#UB-8 80mm"]		= { gdcweapons_gdcweaponsindex = "22" }
-		Ctype["Options"]["#KPV 14.5mm"]		= { gdcweapons_gdcweaponsindex = "23" }
-		Ctype["Options"]["#PKM 7.62mm"]		= { gdcweapons_gdcweaponsindex = "24" }
+		Ctype["Options"]["#UB-16 57mm"]			= { gdcweapons_gdcweaponsindex = "21" }
+		Ctype["Options"]["#UB-8 80mm"]			= { gdcweapons_gdcweaponsindex = "22" }
+		Ctype["Options"]["#KPV 14.5mm"]			= { gdcweapons_gdcweaponsindex = "23" }
+		Ctype["Options"]["#PKM 7.62mm"]			= { gdcweapons_gdcweaponsindex = "24" }
 		Ctype["Options"]["#M249 5.56mm"]		= { gdcweapons_gdcweaponsindex = "25" }
+		Ctype["Options"]["#Flamer"]			= { gdcweapons_gdcweaponsindex = "26" }
 
 	CPanel:AddControl("ComboBox", Ctype )
 	

@@ -57,19 +57,29 @@ end
 	end
 
 	local trace = {}
-		trace.start = self.Entity:GetPos()
-		trace.endpos = self.Entity:GetPos() + self.flightvector*1.2
-		trace.filter = self.Entity 
+		trace.start 	= self.Entity:GetPos()
+		trace.endpos 	= self.Entity:GetPos() + self.flightvector
+		trace.filter 	= self.Entity 
+		trace.mask 	= MASK_SHOT + MASK_WATER			// Trace for stuff that bullets would normally hit
 	local tr = util.TraceLine( trace )
-	
 
-			if tr.HitSky then
-			self.Entity:Remove()
-			return true
-			end
 
-			if tr.Hit then
-				util.BlastDamage(self.Entity, self.Entity, tr.HitPos, 600, 150)
+				if tr.Hit then
+					if tr.HitSky then
+					self.Entity:Remove()
+					return true
+					end
+					if tr.MatType==83 then				//83 is wata
+					local effectdata = EffectData()
+					effectdata:SetOrigin( tr.HitPos )
+					effectdata:SetNormal( tr.HitNormal )		// In case you hit sideways water?
+					effectdata:SetScale( 70 )			// Big splash for big bullets
+					util.Effect( "watersplash", effectdata )
+					self.Entity:Remove()
+					return true
+					end
+
+					util.BlastDamage(self.Entity, self.Entity, tr.HitPos, 600, 150)
 					local effectdata = EffectData()
 					effectdata:SetOrigin(tr.HitPos)				// Position of Impact
 					effectdata:SetNormal(tr.HitNormal)			// Direction of Impact
@@ -84,11 +94,7 @@ end
 
 
 					if tr.Entity:IsValid() then
-					local attack = gcombat.hcgexplode( tr.HitPos, 300, 300, 10)		// Radius, Damage
-					local effectdata = EffectData()
-					effectdata:SetOrigin(tr.HitPos)
-					effectdata:SetStart(tr.HitPos)
-					util.Effect( "gdca_sparks", effectdata )	
+					local attack = gcombat.hcgexplode( tr.HitPos, 300, 300, 10)		// Radius, Damage	
 					end
 
 					self.Entity:Remove()	
