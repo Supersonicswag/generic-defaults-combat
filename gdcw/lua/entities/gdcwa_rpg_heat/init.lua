@@ -7,11 +7,11 @@ function ENT:Initialize()
 self.flightvector = self.Entity:GetUp() * ((115*39.37)/66)
 self.timeleft = CurTime() + 10
 self.Owner = self:GetOwner()
-self.Entity:SetModel( "models/combatmodels/tankshell.mdl" )
+self.Entity:SetModel( "models/led.mdl" )
 self.Entity:PhysicsInit( SOLID_VPHYSICS )      -- Make us work with physics,  	
 self.Entity:SetMoveType( MOVETYPE_NONE )   --after all, gmod is a physics  	
 self.Entity:SetSolid( SOLID_VPHYSICS )        -- CHEESECAKE!    >:3           
-self.Entity:SetColor(255,255,255,255)
+self.Entity:SetColor(255,255,255,0)
 
  SmokeTrail = ents.Create("env_spritetrail")
 SmokeTrail:SetKeyValue("lifetime","0.5")
@@ -30,7 +30,7 @@ Glow:SetPos(self.Entity:GetPos())
 Glow:SetKeyValue("renderfx", "0")
 Glow:SetKeyValue("rendermode", "5")
 Glow:SetKeyValue("renderamt", "255")
-Glow:SetKeyValue("rendercolor", "250 200 200")
+Glow:SetKeyValue("rendercolor", "250 200 150")
 Glow:SetKeyValue("framerate12", "20")
 Glow:SetKeyValue("model", "light_glow03.spr")
 Glow:SetKeyValue("scale", "2.5")
@@ -67,11 +67,12 @@ end
 				if tr.Hit then
 					util.BlastDamage(self.Entity, self.Owner, tr.HitPos, 600, 150)
 					local effectdata = EffectData()
-					effectdata:SetOrigin(tr.HitPos)
-					effectdata:SetNormal(tr.HitNormal)
+					effectdata:SetOrigin(tr.HitPos)			// Where is hits
+					effectdata:SetNormal(tr.HitNormal)		// Direction of particles
+					effectdata:SetEntity(self.Entity)		// Who done it?
 					effectdata:SetScale(2.11)			// Size of explosion
-					effectdata:SetRadius(1)			// Relative width of explosion
-					effectdata:SetMagnitude(14)			// Length of explosion trails
+					effectdata:SetRadius(tr.MatType)		// What texture it hits
+					effectdata:SetMagnitude(16)			// Length of explosion trails
 					util.Effect( "gdcw_cinematicboom", effectdata )
 					util.ScreenShake(tr.HitPos, 10, 5, 1, 3000 )
 					util.Decal("Scorch", tr.HitPos + tr.HitNormal, tr.HitPos - tr.HitNormal)

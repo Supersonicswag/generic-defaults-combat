@@ -51,7 +51,7 @@ SWEP.IronSightsPos = Vector (2.4537, 1.0923, 0.2696)
 SWEP.IronSightsAng = Vector (0.0186, -0.0547, 0)
 
 function SWEP:Initialize()
-
+	util.PrecacheSound(self.Primary.Sound)
 	if CLIENT then
 	
 		-- We need to get these so we can scale everything to the player's current resolution.
@@ -251,7 +251,9 @@ function SWEP:IronSight()
 
 		if self.Owner:KeyPressed(IN_ATTACK2) and !self.Owner:KeyDown(IN_USE) and !self.Owner:KeyDown(IN_SPEED) then
 			self.Owner:SetFOV( 75/self.Secondary.ScopeZoom, 0.15 )
-			self:SetWeaponHoldType("ar2")                          		// Hold type styles; ar2 pistol shotgun rpg normal melee grenade smg slam fist melee2 passive knife
+				if !self.Owner:KeyDown(IN_DUCK) and !self.Owner:KeyDown(IN_WALK) then
+				self:SetWeaponHoldType("rpg") else self:SetWeaponHoldType("ar2")  
+				end                         		
 			self.IronSightsPos = self.SightsPos					// Bring it up
 			self.IronSightsAng = self.SightsAng					// Bring it up
 			self:SetIronsights(true, self.Owner)
@@ -260,6 +262,7 @@ function SWEP:IronSight()
 			end
 
 	if (self.Owner:KeyReleased(IN_ATTACK2) || self.Owner:KeyDown(IN_SPEED)) and !self.Owner:KeyDown(IN_USE) and !self.Owner:KeyDown(IN_SPEED) then
+		self:SetWeaponHoldType("ar2")
 		self.Owner:SetFOV( 0, 0.2 )
 		self:SetIronsights(false, self.Owner)
 		-- Set the ironsight false
@@ -280,6 +283,8 @@ function SWEP:DrawHUD()
 
 
 	if  self.Owner:KeyDown(IN_ATTACK2) and (self:GetIronsights() == true) and (!self.Owner:KeyDown(IN_SPEED) and !self.Owner:KeyDown(IN_USE)) then
+
+self.AdjustMouseSensitivity(0.7 ) 
 
 	if self.Secondary.UseRangefinder then
 	local trace = {}
@@ -335,6 +340,11 @@ function SWEP:DrawHUD()
 			surface.SetTexture(surface.GetTextureID("scope/gdcw_elcanreticle"))
 			surface.DrawTexturedRect(self.ReticleTable.x, self.ReticleTable.y, self.ReticleTable.w, self.ReticleTable.h)
 			
+			-- Draw the MAGNIFIER
+			surface.SetDrawColor(0, 0, 0, 255)
+			surface.SetTexture(surface.GetTextureID("scope/gdcw_magnify"))
+			surface.DrawTexturedRect(self.ReticleTable.x, self.ReticleTable.y, self.ReticleTable.w, self.ReticleTable.h)
+
 			-- Draw the ELCAN SCOPE
 			surface.SetDrawColor(0, 0, 0, 255)
 			surface.SetTexture(surface.GetTextureID("scope/gdcw_elcansight"))

@@ -14,7 +14,6 @@ SWEP.ViewModelFlip			= true		// True for CSS models, False for HL2 models
 SWEP.Spawnable				= false
 SWEP.AdminSpawnable			= false
 
-
 SWEP.Primary.Sound 			= Sound("")				// Sound of the gun
 SWEP.Primary.Round 			= ("")					// What kind of bullet?
 SWEP.Primary.Cone			= 0.2					// Accuracy of NPCs
@@ -40,7 +39,8 @@ SWEP.IronSightsPos = Vector (2.4537, 1.0923, 0.2696)
 SWEP.IronSightsAng = Vector (0.0186, -0.0547, 0)
 
 function SWEP:Initialize()
-	self.Reloadaftershoot = 0 				-- Can't reload when firering
+	util.PrecacheSound(self.Primary.Sound)
+	self.Reloadaftershoot = 0 				-- Can't reload when firing
 	if !self.Owner:IsNPC() then
 		self:SetWeaponHoldType("ar2")                          	-- Hold type style ("ar2" "pistol" "shotgun" "rpg" "normal" "melee" "grenade" "smg")
 	end
@@ -54,6 +54,8 @@ function SWEP:Initialize()
 end
 
 function SWEP:Deploy()
+
+
 	self:SetWeaponHoldType("ar2")                          	// Hold type styles; ar2 pistol shotgun rpg normal melee grenade smg slam fist melee2 passive knife
 	self:SetIronsights(false, self.Owner)					// Set the ironsight false
 	self.Weapon:SendWeaponAnim( ACT_VM_DRAW )
@@ -83,6 +85,7 @@ function SWEP:PrimaryAttack()
 		self.Owner:SetAnimation( PLAYER_ATTACK1 )
 		self.Owner:MuzzleFlash()
 		self.Weapon:SetNextPrimaryFire(CurTime()+1/(self.Primary.RPM/60))
+
 	end
 end
 
@@ -98,15 +101,14 @@ function SWEP:FireRocket()
 	pos = self.Owner:GetShootPos()+self.Owner:GetAimVector()*50
 	end
 	if SERVER then
-		local rocket = ents.Create(self.Primary.Round)
-		if !rocket:IsValid() then return false end
-		rocket:SetAngles(aim:Angle()+Angle(90,0,0))
-		rocket:SetPos(pos)
-		rocket:SetOwner(self.Owner)
-		rocket:Spawn()
-		rocket.owner = self.Owner
-		rocket:Activate()
-	end
+		local bullet = ents.Create(self.Primary.Round)
+		if !bullet:IsValid() then return false end
+		bullet:SetAngles(aim:Angle()+Angle(90,0,0))
+		bullet:SetPos(pos)
+		bullet:SetOwner(self.Owner)
+		bullet:Spawn()
+		bullet:Activate()
+		end
 
 
 		if SERVER and !self.Owner:IsNPC() then
@@ -116,6 +118,41 @@ function SWEP:FireRocket()
 		self.Owner:SetEyeAngles(angle)
 		end
 end
+
+
+function SWEP:CSShootBullet(dmg, recoil, numbul, cone)
+
+	local bullet 	= {}
+	bullet.Num  	= 1
+	bullet.Src 	= self.Owner:GetShootPos()       					-- Source
+	bullet.Dir 	= self.Owner:GetAimVector()      					-- Dir of bullet
+	bullet.Spread 	= Vector(self.Primary.Cone, self.Primary.Cone, 0)     				-- Aim Cone
+	bullet.Tracer 	= 0       									-- Show a tracer on every x bullets
+	bullet.Force 	= 0.05 * dmg     								-- Amount of force to give to phys objects
+	bullet.Damage 	= dmg										-- Amount of damage to give to the bullets
+	bullet.Callback = HitImpact
+-- 	bullet.Callback	= function ( a, b, c ) BulletPenetration( 0, a, b, c ) end 			-- CALL THE FUNCTION BULLETPENETRATION
+
+	if self.Primary.UseTraces then
+	self.Owner:FireBullets(bullet)									
+	end
+end
+
+
+local HitImpact = function(attacker, tr, dmginfo)
+
+					local effectdata = EffectData()
+					effectdata:SetOrigin(tr.HitPos)
+					effectdata:SetScale(1)
+					effectdata:SetRadius(tr.MatType)
+					effectdata:SetNormal(tr.HitNormal)
+					util.Effect("gdcw_universal_impact",effectdata)
+					util.ScreenShake(tr.HitPos, 10, 5, 0.1, 200 )
+
+	return true
+end
+
+
 
 function SWEP:SecondaryAttack()
 	return false
@@ -175,9 +212,9 @@ function SWEP:IronSight()
 	-- If the key E (Use Key) is not pressed, then
 
 		if self.Owner:KeyPressed(IN_ATTACK2) then
-		-- When the right click is pressed, then
-
-			self:SetWeaponHoldType("ar2")                          		// Hold type styles; ar2 pistol shotgun rpg normal melee grenade smg slam fist melee2 passive knife
+				if !self.Owner:KeyDown(IN_DUCK) and !self.Owner:KeyDown(IN_WALK) then
+				self:SetWeaponHoldType("rpg") else self:SetWeaponHoldType("ar2")  
+				end  
 			self.Owner:SetFOV( self.Secondary.IronFOV, 0.3 )
 			self.IronSightsPos = self.SightsPos					// Bring it up
 			self.IronSightsAng = self.SightsAng					// Bring it up
@@ -190,6 +227,7 @@ function SWEP:IronSight()
 
 	if self.Owner:KeyReleased(IN_ATTACK2) and !self.Owner:KeyDown(IN_USE) and !self.Owner:KeyDown(IN_SPEED) then
 	-- If the right click is released, then
+		self:SetWeaponHoldType("ar2")                      // Hold type styles; ar2 pistol shotgun rpg normal melee grenade smg slam fist melee2 passive knife
 
 		self.Owner:SetFOV( 0, 0.3 )
 

@@ -3,16 +3,25 @@
 	"channel"				"CHAN_WEAPON"
 	"volume"				"1.0"
 	"CompatibilityAttenuation"		"ATTN_NORM"
-	"pitch"				"98, 102"
+	"pitch"				"PITCH_NORM"
 	"soundlevel"			"SNDLVL_155dB"
 	"wave"				")GDC/LMG/HK21F.wav"
+}
+"SL8F.single"
+{
+	"channel"				"CHAN_WEAPON"
+	"volume"				"1.0"
+	"CompatibilityAttenuation"		"ATTN_NORM"
+	"pitch"				"PITCH_NORM"
+	"soundlevel"			"SNDLVL_155dB"
+	"wave"				")GDC/LMG/SL8F.wav"
 }
 "M240F.single"
 {
 	"channel"				"CHAN_WEAPON"
 	"volume"				"1.0"
 	"CompatibilityAttenuation"		"ATTN_NORM"
-	"pitch"				"98, 102"
+	"pitch"				"PITCH_NORM"
 	"soundlevel"			"SNDLVL_155dB"
 	"wave"				")GDC/LMG/M240F.wav"
 }
@@ -21,7 +30,7 @@
 	"channel"				"CHAN_WEAPON"
 	"volume"				"1.0"
 	"CompatibilityAttenuation"		"ATTN_NORM"
-	"pitch"				"98, 102"
+	"pitch"				"PITCH_NORM"
 	"soundlevel"			"SNDLVL_155dB"
 	"wave"				")GDC/LMG/M249F.wav"
 }
@@ -30,7 +39,7 @@
 	"channel"				"CHAN_WEAPON"
 	"volume"				"1.0"
 	"CompatibilityAttenuation"		"ATTN_NORM"
-	"pitch"				"98, 102"
+	"pitch"				"PITCH_NORM"
 	"soundlevel"			"SNDLVL_155dB"
 	"wave"				")GDC/LMG/HK416F.wav"
 }
@@ -39,7 +48,7 @@
 	"channel"				"CHAN_WEAPON"
 	"volume"				"1.0"
 	"CompatibilityAttenuation"		"ATTN_NORM"
-	"pitch"				"98, 102"
+	"pitch"				"PITCH_NORM"
 	"soundlevel"			"SNDLVL_155dB"
 	"wave"				")GDC/LMG/M16F.wav"
 }
@@ -48,7 +57,7 @@
 	"channel"				"CHAN_WEAPON"
 	"volume"				"1.0"
 	"CompatibilityAttenuation"		"ATTN_NORM"
-	"pitch"				"98, 102"
+	"pitch"				"PITCH_NORM"
 	"soundlevel"			"SNDLVL_155dB"
 	"wave"				")GDC/LMG/AK47F.wav"
 }
@@ -57,7 +66,7 @@
 	"channel"				"CHAN_WEAPON"
 	"volume"				"1.0"
 	"CompatibilityAttenuation"		"ATTN_NORM"
-	"pitch"				"98, 102"
+	"pitch"				"PITCH_NORM"
 	"soundlevel"			"SNDLVL_155dB"
 	"wave"				")GDC/LMG/SL8F.wav"
 }

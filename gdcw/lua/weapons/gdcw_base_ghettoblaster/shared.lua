@@ -42,6 +42,7 @@ SWEP.GSightsPos = Vector (0, 0, 0)
 SWEP.GSightsAng = Vector (0, 0, -90)
 
 function SWEP:Initialize()
+	util.PrecacheSound(self.Primary.Sound)
 	self.Reloadaftershoot = 0 				-- Can't reload when firering
 	if !self.Owner:IsNPC() then
 		self:SetWeaponHoldType("pistol")                          	-- Hold type style ("ar2" "pistol" "shotgun" "rpg" "normal" "melee" "grenade" "smg")

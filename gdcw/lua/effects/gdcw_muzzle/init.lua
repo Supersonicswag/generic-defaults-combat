@@ -12,7 +12,7 @@ function EFFECT:Init(data)
 
 	local emitter = ParticleEmitter(self.Position)
 		
-		local particle = emitter:Add("sprites/heatwave", self.Position - self.Forward*4)
+		local particle = emitter:Add("sprites/heatwave", self.Position)
 		particle:SetVelocity(80*self.Forward + 20*VectorRand())
 		particle:SetDieTime(math.Rand(0.15,0.2))
 		particle:SetStartSize(math.random(10,13))
@@ -21,48 +21,46 @@ function EFFECT:Init(data)
 		particle:SetRollDelta(math.Rand(-1,1))
 		particle:SetGravity(Vector(0,0,100))
 		particle:SetAirResistance(160)
-		
-		local particle = emitter:Add("particle/particle_smokegrenade", self.Position)
-		particle:SetVelocity(80*self.Forward)
-		particle:SetDieTime(math.Rand(0.2,0.3))
-		particle:SetStartAlpha(math.Rand(50,60))
-		particle:SetStartSize(math.random(3,4))
-		particle:SetEndSize(math.Rand(17,28))
-		particle:SetRoll(math.Rand(180,480))
-		particle:SetRollDelta(math.Rand(-1,1))
-		particle:SetColor(245,245,245)
-		particle:SetLighting(true)
-		particle:SetAirResistance(80)
 
+		for i=0,4 do
+		local particle = emitter:Add("particle/smokesprites_000"..math.random(1,9), self.Position)
+		particle:SetVelocity(100*i*self.Forward)
+		particle:SetDieTime(math.Rand(0.2,0.6))
+		particle:SetStartAlpha(math.Rand(20,25))
+		particle:SetEndAlpha(0)
+		particle:SetStartSize(math.random(6,8))
+		particle:SetEndSize(math.Rand(30,40))
+		particle:SetRoll(math.Rand(180,480))
+		particle:SetRollDelta(math.Rand(-3,3))
+		particle:SetColor(170,170,170)
+		particle:SetAirResistance(350)
+		end
 		
-	for i=-1,1,2 do 
-		local particle = emitter:Add("particle/particle_smokegrenade", self.Position)
+		for i=-1,1 do 
+		local particle = emitter:Add("particle/smokesprites_000"..math.random(1,9), self.Position)
 		particle:SetVelocity(80*i*self.Right)
 		particle:SetDieTime(math.Rand(0.2,0.3))
 		particle:SetStartAlpha(math.Rand(50,60))
+		particle:SetEndAlpha(0)
 		particle:SetStartSize(math.random(2,3))
-		particle:SetEndSize(math.Rand(12,14))
+		particle:SetEndSize(math.Rand(14,16))
 		particle:SetRoll(math.Rand(180,480))
 		particle:SetRollDelta(math.Rand(-1,1))
-		particle:SetColor(245,245,245)
-		particle:SetLighting(true)
+		particle:SetColor(200,200,200)
 		particle:SetAirResistance(160)
-	end
+		end
 		
-		if math.random(1,4) == 1 then
-			for j=1,2 do
-				for i=-1,1,2 do 
-					local particle = emitter:Add("effects/muzzleflash"..math.random(1,4), self.Position - 3*self.Forward + 2*j*i*self.Right)
-					particle:SetVelocity(60*j*i*self.Right)
-					particle:SetDieTime(0.07)
-					particle:SetStartAlpha(250)
-					particle:SetStartSize(j)
-					particle:SetEndSize(4*j)
-					particle:SetRoll(math.Rand(180,480))
-					particle:SetRollDelta(math.Rand(-1,1))
-					particle:SetColor(255,255,255)	
-				end
-			end
+		for i=0,3 do 
+		local particle = emitter:Add("effects/muzzleflash"..math.random(1,4), self.Position)
+		particle:SetVelocity(self.Forward*(10+(i*5)))
+		particle:SetDieTime(0.06)
+		particle:SetStartAlpha(255)
+		particle:SetEndAlpha(0)
+		particle:SetStartSize(7-i)
+		particle:SetEndSize(15-i)
+		particle:SetRoll(math.Rand(180,480))
+		particle:SetRollDelta(math.Rand(-1,1))
+		particle:SetColor(255,255,255)	
 		end
 
 	emitter:Finish()

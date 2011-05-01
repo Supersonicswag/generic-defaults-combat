@@ -40,6 +40,7 @@ SWEP.IronSightsPos = Vector (2.4537, 1.0923, 0.2696)
 SWEP.IronSightsAng = Vector (0.0186, -0.0547, 0)
 
 function SWEP:Initialize()
+	util.PrecacheSound(self.Primary.Sound)
 	self.Reloadaftershoot = 0 				-- Can't reload when firering
 	if !self.Owner:IsNPC() then
 		self:SetWeaponHoldType("pistol")                          	-- Hold type style ("pistol" "pistol" "shotgun" "rpg" "normal" "melee" "grenade" "smg")

@@ -76,3 +76,4 @@ That's it for the readme! If you didn't just skip to the bottom you probably was
 [R137]	- Added an unscoped bolt action awp and M76. Added gritty dirt stuff to hit effects so they look better.
 [R146]	- Added HL2 weapons and 2 new pistols; M9 and M1911. Thanks to Hellsing for hitgroup damage for the bullets!
 [R147]	- Added a 3d tracer effect for all tracer rounds.
+[R176]	- Remade bullet code, reduced lag from penetration, new effects, small 3d tracer for .50 BMG, and some other stuff.

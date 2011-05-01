@@ -31,7 +31,7 @@ SWEP.Secondary.ClipSize			= 1					// Size of a clip
 SWEP.Secondary.DefaultClip			= 1					// Default number of bullets in a clip
 SWEP.Secondary.Automatic			= false					// Automatic/Semi Auto
 SWEP.Secondary.Ammo			= ""
-SWEP.Secondary.IronFOV			= 30	
+SWEP.Secondary.IronFOV			= 35	
 
 
 SWEP.data 				= {}					-- The starting firemode

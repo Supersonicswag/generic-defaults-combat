@@ -1,9 +1,12 @@
+
+list.Set( "NPCWeapons", "gdcw_ump", "GDCW UMP" )
 list.Set( "NPCWeapons", "gdcw_m4a1iron", "GDCW M4A1 Iron" )
 list.Set( "NPCWeapons", "gdcw_m4a1acog", "GDCW M4A1 ACOG" )
 list.Set( "NPCWeapons", "gdcw_m4a1holo", "GDCW M4A1 Holo" )
 list.Set( "NPCWeapons", "gdcw_ak47iron", "GDCW AK47" )
 list.Set( "NPCWeapons", "gdcw_hk416iron", "GDCW HK416" )
 list.Set( "NPCWeapons", "gdcw_p90iron", "GDCW P90" )
+list.Set( "NPCWeapons", "gdcw_mp5", "GDCW MP5" )
 list.Set( "NPCWeapons", "gdcw_g36cacog", "GDCW G36C" )
 list.Set( "NPCWeapons", "gdcw_m16holo", "GDCW M16 Holo" )
 list.Set( "NPCWeapons", "gdcw_m16acog", "GDCW M16 ACOG" )

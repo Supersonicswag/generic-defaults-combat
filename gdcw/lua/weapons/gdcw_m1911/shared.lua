@@ -18,12 +18,12 @@ SWEP.AdminSpawnable			= true
 
 SWEP.Primary.Sound			= Sound("M1911F.single")
 SWEP.Primary.Round			= ("gdcwa_11x22_350")
-SWEP.Primary.RPM				= 600						// This is in Rounds Per Minute
-SWEP.Primary.ClipSize			= 7						// Size of a clip
-SWEP.Primary.DefaultClip			= 8
+SWEP.Primary.RPM			= 700						// This is in Rounds Per Minute
+SWEP.Primary.ClipSize			= 8						// Size of a clip
+SWEP.Primary.DefaultClip		= 9
 SWEP.Primary.KickUp			= 0.4					// Maximum up recoil (rise)
 SWEP.Primary.KickDown			= 0.3					// Maximum down recoil (skeet)
-SWEP.Primary.KickHorizontal			= 0.3					// Maximum up recoil (stock)
+SWEP.Primary.KickHorizontal		= 0.3					// Maximum up recoil (stock)
 SWEP.Primary.Automatic			= false					// Automatic/Semi Auto
 SWEP.Primary.Ammo			= "pistol"
 
