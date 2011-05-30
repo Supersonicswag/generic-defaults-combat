@@ -37,7 +37,8 @@ SWEP.Secondary.UseParabolic		= true
 
 SWEP.data 				= {}					-- The starting firemode
 SWEP.data.ironsights			= 1
-SWEP.ScopeScale 				= 0.8
+SWEP.ScopeScale 			= 0.8
+SWEP.Velocity				= 850
 
 SWEP.IronSightsPos = Vector (3.7135, -3.3734, 1.3861)
 SWEP.IronSightsAng = Vector (0, 0, 0)

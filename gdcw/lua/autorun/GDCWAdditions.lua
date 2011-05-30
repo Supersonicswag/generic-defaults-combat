@@ -1,4 +1,5 @@
 
+list.Set( "NPCWeapons", "gdcw_masada", "GDCW Masada" )
 list.Set( "NPCWeapons", "gdcw_ump", "GDCW UMP" )
 list.Set( "NPCWeapons", "gdcw_m4a1iron", "GDCW M4A1 Iron" )
 list.Set( "NPCWeapons", "gdcw_m4a1acog", "GDCW M4A1 ACOG" )

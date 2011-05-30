@@ -38,15 +38,14 @@ SWEP.Secondary.UseSVD			= false
 SWEP.Secondary.UseParabolic		= false	
 SWEP.Secondary.UseElcan			= false
 SWEP.Secondary.UseGreenDuplex		= false	
-SWEP.Secondary.HasNVG			= false	
 
 SWEP.Secondary.UseRangefinder		= false	
 
 SWEP.data 				= {}					-- The starting firemode
 SWEP.data.ironsights			= 1
-SWEP.ScopeScale 				= 0.5
-SWEP.ReticleScale 				= 0.5
-SWEP.NVG				= 0
+SWEP.ScopeScale 			= 0.5
+SWEP.ReticleScale 			= 0.5
+SWEP.Velocity				= 850
 SWEP.IronSightsPos = Vector (2.4537, 1.0923, 0.2696)
 SWEP.IronSightsAng = Vector (0.0186, -0.0547, 0)
 
@@ -284,18 +283,9 @@ function SWEP:DrawHUD()
 
 	if  self.Owner:KeyDown(IN_ATTACK2) and (self:GetIronsights() == true) and (!self.Owner:KeyDown(IN_SPEED) and !self.Owner:KeyDown(IN_USE)) then
 
-self.AdjustMouseSensitivity(0.7 ) 
+self.AdjustMouseSensitivity(0.5 ) 
 
-	if self.Secondary.UseRangefinder then
-	local trace = {}
-		trace.start = self.Owner:GetShootPos()
-		trace.endpos = self.Owner:GetShootPos() + self.Owner:GetAimVector()*60000		// Laser Rangefinder
-		trace.filter = self.Owner
-	local tr = util.TraceLine( trace )
 
-	draw.SimpleText(tostring( math.Round(self.Owner:GetShootPos():Distance(tr.HitPos)/39.37) ),"ScoreboardText",ScrW() / 3, ScrH() * (44/60),Color(130,170,70,255))			// Range in meters
-	draw.SimpleText(tostring(  math.Round(((self.Owner:GetShootPos():Distance(tr.HitPos)/39.37)/850)*100)/100  ),"ScoreboardText",ScrW() / 3, ScrH() * (45/60),Color(170,130,70,255))		// Flight time
-	end
 			if self.Secondary.UseACOG then
 			-- Draw the FAKE SCOPE THANG
 			surface.SetDrawColor(0, 0, 0, 255)
@@ -340,11 +330,6 @@ self.AdjustMouseSensitivity(0.7 )
 			surface.SetTexture(surface.GetTextureID("scope/gdcw_elcanreticle"))
 			surface.DrawTexturedRect(self.ReticleTable.x, self.ReticleTable.y, self.ReticleTable.w, self.ReticleTable.h)
 			
-			-- Draw the MAGNIFIER
-			surface.SetDrawColor(0, 0, 0, 255)
-			surface.SetTexture(surface.GetTextureID("scope/gdcw_magnify"))
-			surface.DrawTexturedRect(self.ReticleTable.x, self.ReticleTable.y, self.ReticleTable.w, self.ReticleTable.h)
-
 			-- Draw the ELCAN SCOPE
 			surface.SetDrawColor(0, 0, 0, 255)
 			surface.SetTexture(surface.GetTextureID("scope/gdcw_elcansight"))
@@ -362,6 +347,23 @@ self.AdjustMouseSensitivity(0.7 )
 			surface.SetTexture(surface.GetTextureID("scope/gdcw_closedsight"))
 			surface.DrawTexturedRect(self.LensTable.x, self.LensTable.y, self.LensTable.w, self.LensTable.h)
 			end
+
+	if self.Secondary.UseRangefinder then
+	local trace = {}
+	trace.start = self.Owner:GetShootPos()
+	trace.endpos = self.Owner:GetShootPos() + self.Owner:GetAimVector()*60000		// Laser Rangefinder
+	trace.filter = self.Owner
+	local tr = util.TraceLine( trace )
+
+	self.Range = math.Round(self.Owner:GetShootPos():Distance(tr.HitPos)/39.37)
+	self.Time = math.Round(((self.Range)/self.Velocity)*100)/100
+	self.Drop = math.Round((9.8*(self.Time*self.Time))*100)/50
+
+	draw.SimpleText( "RANGE " ..tostring(self.Range) .. "m","ScoreboardText",ScrW() / 3, ScrH() * (44/60),Color(130,170,70,255))			//Range in meters
+	draw.SimpleText( "TIME " ..tostring(self.Time) .. "s","ScoreboardText",ScrW() / 3, ScrH() * (45/60),Color(170,130,70,255))			//Flight time in seconds
+	draw.SimpleText( "DROP " ..tostring(self.Drop) .. "m","ScoreboardText",ScrW() / 3, ScrH() * (46/60),Color(230,70,70,255))			//Drop in meters
+	end
+
 	end
 end
 

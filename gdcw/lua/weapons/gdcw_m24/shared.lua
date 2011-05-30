@@ -37,7 +37,8 @@ SWEP.Secondary.UseMilDot			= true
 
 SWEP.data 				= {}					-- The starting firemode
 SWEP.data.ironsights			= 1
-SWEP.ScopeScale 				= 0.7
+SWEP.ScopeScale 			= 0.7
+SWEP.Velocity				= 730
 
 SWEP.IronSightsPos = Vector (2.894, 0, 1.7624)
 SWEP.IronSightsAng = Vector (0, 0, 0)

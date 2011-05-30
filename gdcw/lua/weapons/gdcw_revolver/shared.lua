@@ -8,7 +8,7 @@ SWEP.MuzzleAttachment			= "1" 	-- Should be "1" for CSS models or "muzzle" for h
 SWEP.ShellEjectAttachment		= "2" 	-- Should be "2" for CSS models or "1" for hl2 models
 SWEP.DrawCrosshair			= false	
 
-SWEP.ViewModelFOV			= 60
+SWEP.ViewModelFOV			= 55
 SWEP.ViewModelFlip			= true
 SWEP.ViewModel				= "models/weapons/v_GDCW_Revolv.mdl"
 SWEP.WorldModel				= "models/weapons/w_357.mdl"

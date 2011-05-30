@@ -7,39 +7,57 @@
 	"soundlevel"			"SNDLVL_150dB"
 	"wave"				")GDC/AWP/AWPF.wav"
 }
-"GenericAWP96.Boltback"
+"GenericAWP.BoltBack"
 {
 	"channel"				"CHAN_RELOAD"
 	"volume"				"1.0"
 	"CompatibilityAttenuation"		"ATTN_NORM"
 	"pitch"				"PITCH_NORM"
 	"soundlevel"			"SNDLVL_70dB"
-	"wave"				")GDC/AWP/AWPBoltback.wav"
+	"wave"				")GDC/AWP/AWPBoltBack.wav"
 }
-"GenericAWP96.Boltforward"
+"GenericAWP.BoltPush"
 {
 	"channel"				"CHAN_RELOAD"
 	"volume"				"1.0"
 	"CompatibilityAttenuation"		"ATTN_NORM"
 	"pitch"				"PITCH_NORM"
 	"soundlevel"			"SNDLVL_70dB"
-	"wave"				")GDC/AWP/AWPBoltforward.wav"
+	"wave"				")GDC/AWP/AWPBoltPush.wav"
 }
-"GenericAWP96.Magin"
+"GenericAWP.BoltLock"
 {
 	"channel"				"CHAN_RELOAD"
 	"volume"				"1.0"
 	"CompatibilityAttenuation"		"ATTN_NORM"
 	"pitch"				"PITCH_NORM"
 	"soundlevel"			"SNDLVL_70dB"
-	"wave"				")GDC/AWP/AWPMagin.wav"
+	"wave"				")GDC/AWP/AWPBoltLock.wav"
 }
-"GenericAWP96.Magout"
+"GenericAWP.ClipOut"
 {
 	"channel"				"CHAN_RELOAD"
 	"volume"				"1.0"
 	"CompatibilityAttenuation"		"ATTN_NORM"
 	"pitch"				"PITCH_NORM"
 	"soundlevel"			"SNDLVL_70dB"
-	"wave"				")GDC/AWP/AWPMagout.wav"
+	"wave"				")GDC/AWP/AWPClipOut.wav"
+}
+"GenericAWP.ClipIn"
+{
+	"channel"				"CHAN_RELOAD"
+	"volume"				"1.0"
+	"CompatibilityAttenuation"		"ATTN_NORM"
+	"pitch"				"PITCH_NORM"
+	"soundlevel"			"SNDLVL_70dB"
+	"wave"				")GDC/AWP/AWPClipIn.wav"
+}
+"GenericAWP.ClipTap"
+{
+	"channel"				"CHAN_RELOAD"
+	"volume"				"1.0"
+	"CompatibilityAttenuation"		"ATTN_NORM"
+	"pitch"				"PITCH_NORM"
+	"soundlevel"			"SNDLVL_70dB"
+	"wave"				")GDC/AWP/AWPClipTap.wav"
 }

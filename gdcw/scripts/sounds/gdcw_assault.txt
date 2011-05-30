@@ -1,0 +1,44 @@
+"MasadaF.single"
+{
+	"channel"				"CHAN_WEAPON"
+	"volume"				"1.0"
+	"CompatibilityAttenuation"		"ATTN_NORM"
+	"soundlevel"			"SNDLVL_150dB"
+	"wave"				")GDC/Assault/MasadaF.wav"
+}
+"Generic_ACR.Clipin"
+{
+	"channel"				"CHAN_RELOAD"
+	"volume"				"1.0"
+	"CompatibilityAttenuation"		"ATTN_NORM"
+	"pitch"				"PITCH_NORM"
+	"soundlevel"			"SNDLVL_70dB"
+	"wave"				")GDC/Assault/MasadaClipin.wav"
+}
+"Generic_ACR.Clipout"
+{
+	"channel"				"CHAN_RELOAD"
+	"volume"				"1.0"
+	"CompatibilityAttenuation"		"ATTN_NORM"
+	"pitch"				"PITCH_NORM"
+	"soundlevel"			"SNDLVL_70dB"
+	"wave"				")GDC/Assault/MasadaClipout.wav"
+}
+"Generic_ACR.Deploy"
+{
+	"channel"				"CHAN_RELOAD"
+	"volume"				"1.0"
+	"CompatibilityAttenuation"		"ATTN_NORM"
+	"pitch"				"PITCH_NORM"
+	"soundlevel"			"SNDLVL_70dB"
+	"wave"				")GDC/Assault/MasadaDeploy.wav"
+}
+"Generic_ACR.Boltpull"
+{
+	"channel"				"CHAN_RELOAD"
+	"volume"				"1.0"
+	"CompatibilityAttenuation"		"ATTN_NORM"
+	"pitch"				"PITCH_NORM"
+	"soundlevel"			"SNDLVL_70dB"
+	"wave"				")GDC/Assault/MasadaBoltpull.wav"
+}

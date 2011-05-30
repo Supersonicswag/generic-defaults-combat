@@ -120,40 +120,6 @@ function SWEP:FireRocket()
 end
 
 
-function SWEP:CSShootBullet(dmg, recoil, numbul, cone)
-
-	local bullet 	= {}
-	bullet.Num  	= 1
-	bullet.Src 	= self.Owner:GetShootPos()       					-- Source
-	bullet.Dir 	= self.Owner:GetAimVector()      					-- Dir of bullet
-	bullet.Spread 	= Vector(self.Primary.Cone, self.Primary.Cone, 0)     				-- Aim Cone
-	bullet.Tracer 	= 0       									-- Show a tracer on every x bullets
-	bullet.Force 	= 0.05 * dmg     								-- Amount of force to give to phys objects
-	bullet.Damage 	= dmg										-- Amount of damage to give to the bullets
-	bullet.Callback = HitImpact
--- 	bullet.Callback	= function ( a, b, c ) BulletPenetration( 0, a, b, c ) end 			-- CALL THE FUNCTION BULLETPENETRATION
-
-	if self.Primary.UseTraces then
-	self.Owner:FireBullets(bullet)									
-	end
-end
-
-
-local HitImpact = function(attacker, tr, dmginfo)
-
-					local effectdata = EffectData()
-					effectdata:SetOrigin(tr.HitPos)
-					effectdata:SetScale(1)
-					effectdata:SetRadius(tr.MatType)
-					effectdata:SetNormal(tr.HitNormal)
-					util.Effect("gdcw_universal_impact",effectdata)
-					util.ScreenShake(tr.HitPos, 10, 5, 0.1, 200 )
-
-	return true
-end
-
-
-
 function SWEP:SecondaryAttack()
 	return false
 end

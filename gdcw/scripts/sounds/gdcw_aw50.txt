@@ -1,0 +1,63 @@
+"AW50F.single"
+{
+	"channel"				"CHAN_WEAPON"
+	"volume"				"1.0"
+	"CompatibilityAttenuation"		"ATTN_NORM"
+	"pitch"				"PITCH_NORM"
+	"soundlevel"			"SNDLVL_150dB"
+	"wave"				")GDC/Aw50/Aw50F.wav"
+}
+"Generic_AW.Boltpull"
+{
+	"channel"				"CHAN_RELOAD"
+	"volume"				"1.0"
+	"CompatibilityAttenuation"		"ATTN_NORM"
+	"pitch"				"PITCH_NORM"
+	"soundlevel"			"SNDLVL_70dB"
+	"wave"				")GDC/AW50/AW50Boltpull.wav"
+}
+"Generic_AW.Boltforward1"
+{
+	"channel"				"CHAN_RELOAD"
+	"volume"				"1.0"
+	"CompatibilityAttenuation"		"ATTN_NORM"
+	"pitch"				"PITCH_NORM"
+	"soundlevel"			"SNDLVL_70dB"
+	"wave"				")GDC/AW50/AW50Boltforward1.wav"
+}
+"Generic_AW.Boltforward2"
+{
+	"channel"				"CHAN_RELOAD"
+	"volume"				"1.0"
+	"CompatibilityAttenuation"		"ATTN_NORM"
+	"pitch"				"PITCH_NORM"
+	"soundlevel"			"SNDLVL_70dB"
+	"wave"				")GDC/AW50/AW50Boltforward2.wav"
+}
+"Generic_AW.Clipout"
+{
+	"channel"				"CHAN_RELOAD"
+	"volume"				"1.0"
+	"CompatibilityAttenuation"		"ATTN_NORM"
+	"pitch"				"PITCH_NORM"
+	"soundlevel"			"SNDLVL_70dB"
+	"wave"				")GDC/AW50/AW50Clipout.wav"
+}
+"Generic_AW.Cliptap"
+{
+	"channel"				"CHAN_RELOAD"
+	"volume"				"1.0"
+	"CompatibilityAttenuation"		"ATTN_NORM"
+	"pitch"				"PITCH_NORM"
+	"soundlevel"			"SNDLVL_70dB"
+	"wave"				")GDC/AW50/AW50Cliptap.wav"
+}
+"Generic_AW.Clipin"
+{
+	"channel"				"CHAN_RELOAD"
+	"volume"				"1.0"
+	"CompatibilityAttenuation"		"ATTN_NORM"
+	"pitch"				"PITCH_NORM"
+	"soundlevel"			"SNDLVL_70dB"
+	"wave"				")GDC/AW50/AW50Clipin.wav"
+}
