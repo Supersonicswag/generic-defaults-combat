@@ -355,13 +355,13 @@ self.AdjustMouseSensitivity(0.5 )
 	trace.filter = self.Owner
 	local tr = util.TraceLine( trace )
 
-	self.Range = math.Round(self.Owner:GetShootPos():Distance(tr.HitPos)/39.37)
+	self.Range = self.Owner:GetShootPos():Distance(tr.HitPos)/39.37
 	self.Time = math.Round(((self.Range)/self.Velocity)*100)/100
-	self.Drop = math.Round((9.8*(self.Time*self.Time))*100)/50
+	self.Drop = math.Round((9.8*(self.Time^2))*100)/200
 
-	draw.SimpleText( "RANGE " ..tostring(self.Range) .. "m","ScoreboardText",ScrW() / 3, ScrH() * (44/60),Color(130,170,70,255))			//Range in meters
-	draw.SimpleText( "TIME " ..tostring(self.Time) .. "s","ScoreboardText",ScrW() / 3, ScrH() * (45/60),Color(170,130,70,255))			//Flight time in seconds
-	draw.SimpleText( "DROP " ..tostring(self.Drop) .. "m","ScoreboardText",ScrW() / 3, ScrH() * (46/60),Color(230,70,70,255))			//Drop in meters
+	draw.SimpleText( "RANGE " ..tostring(math.Round(self.Range)) .. "m","ScoreboardText",ScrW() / 3, ScrH() * (44/60),Color(130,170,70,255))			//Range in meters
+	draw.SimpleText( "TIME " ..tostring(self.Time) .. "s","ScoreboardText",ScrW() / 3, ScrH() * (45/60),Color(170,130,70,255))					//Flight time in seconds
+	draw.SimpleText( "DROP " ..tostring(self.Drop) .. "m","ScoreboardText",ScrW() / 3, ScrH() * (46/60),Color(230,70,70,255))					//Drop in meters
 	end
 
 	end
