@@ -3,7 +3,7 @@ SWEP.Category				= "Generic Default's Weapons"
 SWEP.Author				= "Generic Default"
 SWEP.Contact				= "AIDS!"
 SWEP.Purpose				= "Drive by shootings."
-SWEP.Instructions				= "Round: 9mm \nVelocity: ~390 m/s \nSights: Iron \nCapacity: 32 rounds \nRate of Fire: 600 rounds per minute"
+SWEP.Instructions				= "Round: 9mm \nVelocity: ~375 m/s \nSights: Iron \nCapacity: 32 rounds \nRate of Fire: 950 rounds per minute"
 SWEP.MuzzleAttachment			= "1" 	-- Should be "1" for CSS models or "muzzle" for hl2 models
 SWEP.ShellEjectAttachment			= "2" 	-- Should be "2" for CSS models or "1" for hl2 models
 SWEP.DrawCrosshair			= false	
@@ -18,7 +18,7 @@ SWEP.AdminSpawnable			= true
 
 SWEP.Primary.Sound			= Sound("UZIF.single")
 SWEP.Primary.Round			= ("gdcwa_9x19_390")
-SWEP.Primary.RPM				= 600						// This is in Rounds Per Minute
+SWEP.Primary.RPM				= 950						// This is in Rounds Per Minute
 SWEP.Primary.ClipSize			= 32						// Size of a clip
 SWEP.Primary.DefaultClip			= 33
 SWEP.Primary.KickUp			= 0.4					// Maximum up recoil (rise)

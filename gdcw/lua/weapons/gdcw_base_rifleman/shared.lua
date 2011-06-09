@@ -283,9 +283,6 @@ function SWEP:DrawHUD()
 
 	if  self.Owner:KeyDown(IN_ATTACK2) and (self:GetIronsights() == true) and (!self.Owner:KeyDown(IN_SPEED) and !self.Owner:KeyDown(IN_USE)) then
 
-self.AdjustMouseSensitivity(0.5 ) 
-
-
 			if self.Secondary.UseACOG then
 			-- Draw the FAKE SCOPE THANG
 			surface.SetDrawColor(0, 0, 0, 255)
@@ -365,6 +362,15 @@ self.AdjustMouseSensitivity(0.5 )
 	end
 
 	end
+end
+
+function SWEP:AdjustMouseSensitivity()
+     
+	if self.Owner:KeyDown(IN_ATTACK2) then
+        return (1/(self.Secondary.ScopeZoom/2))
+    	else 
+    	return 1
+     	end
 end
 
 /*---------------------------------------------------------
