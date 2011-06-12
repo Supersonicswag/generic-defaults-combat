@@ -28,4 +28,4 @@ This is the weapons data sheet as of revision 161.
 
 ACCURATE TRAJECTORY ALGORITHM FOR ALL CONSTANT VELOCITY ROUNDS:
 
-Compensate = (atan(DECIMAL * Distance*cos(PitchTurret:angles():pitch())))
+Add Pitch = (atan(DECIMAL*DISTANCE*cos(TURRETPITCH))
