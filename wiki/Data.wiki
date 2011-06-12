@@ -23,3 +23,9 @@ This is the weapons data sheet as of revision 161.
 || GML      || 84mm      || 7,920                       || ~12   || N/A                  ||
 || M101     || 105mm     || 13,200                      || ~8    || N/A                  ||
 || M256     || 120mm     || 19,800 *or* 36,300          || ~8    || N/A                  ||
+
+
+
+ACCURATE TRAJECTORY ALGORITHM FOR ALL CONSTANT VELOCITY ROUNDS:
+
+Compensate = (atan(DECIMAL * Distance*cos(PitchTurret:angles():pitch())))
