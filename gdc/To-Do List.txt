@@ -1,6 +1,5 @@
 [GLITCHES]
--Penetration will not remove self when trace starts inside prop.
-
+-Penetration will not remove self when trace starts inside prop.	// DUN
 [ENGINE]
 -Make explosion radius function
 -Make explosion cone function
@@ -8,10 +7,10 @@
 -Make destroyed prop effect better
 
 [OPTIMIZE]
--Penetration code(reduce if-then #; glitches)
+-Penetration code(reduce if-then #; glitches)				// DUN
 
 [FOR LOOKS]
--Make penetrating effects dynamic; optimize
+-Make penetrating effects dynamic; optimize				// DUN
 
 
 [REQUESTS]

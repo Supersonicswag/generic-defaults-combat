@@ -8,45 +8,25 @@ util.PrecacheSound( "weapons/rpg/rocket1.wav" )
 
 function ENT:Initialize()   
 
-self.Target = self.Entity:GetVar("Target",Vector)
+self.Target 		= self.Guider:GetVar("Target",Vector)
+self.FlightData 	= self.Guider:GetVar("FlightData",Vector)
+self.W 			= 1
+self.Zmod 		= 0.25
+self.DistanceCutoff 	= 4000
+
 self.Accelerator 	= 20
 self.AccelRate		= 1
-self.AccelMax		= 170
-self.flightvector = self.Entity:GetUp() * 30
-self.timeleft = CurTime() + 7
-self.nexttarGet = CurTime()
+self.AccelMax		= 100
+self.flightvector = self.Entity:GetUp() * self.Accelerator
+self.timeleft = CurTime() + 10
+self.ArmedTime = CurTime() + 1
+self.Armed = false
 self.Entity:SetModel( "models/props_c17/canister01a.mdl" ) 	
 self.Entity:PhysicsInit( SOLID_VPHYSICS )      -- Make us work with physics,  	
 self.Entity:SetMoveType( MOVETYPE_NONE )   --after all, gmod is a physics  	
 self.Entity:SetSolid( SOLID_VPHYSICS )        -- CHEESECAKE!    >:3 
 self.Sound = CreateSound( self.Entity, Sound( "weapons/rpg/rocket1.wav" ) ) 
 self.Sound:Play()
-
-SmokeTrail = ents.Create("env_spritetrail")
-SmokeTrail:SetKeyValue("lifetime","1")
-SmokeTrail:SetKeyValue("startwidth","40")
-SmokeTrail:SetKeyValue("endwidth","200")
-SmokeTrail:SetKeyValue("spritename","trails/smoke.vmt")
-SmokeTrail:SetKeyValue("rendermode","5")
-SmokeTrail:SetKeyValue("rendercolor","200 200 200")
-SmokeTrail:SetPos(self.Entity:GetPos())
-SmokeTrail:SetParent(self.Entity)
-SmokeTrail:Spawn()
-SmokeTrail:Activate()
-
-Glow = ents.Create("env_sprite")
-Glow:SetPos(self.Entity:GetPos())
-Glow:SetKeyValue("renderfx", "0")
-Glow:SetKeyValue("rendermode", "5")
-Glow:SetKeyValue("renderamt", "255")
-Glow:SetKeyValue("rendercolor", "250 200 150")
-Glow:SetKeyValue("framerate12", "20")
-Glow:SetKeyValue("model", "light_glow03.spr")
-Glow:SetKeyValue("scale", "2.5")
-Glow:SetKeyValue("GlowProxySize", "130")
-Glow:SetParent(self.Entity)
-Glow:Spawn()
-Glow:Activate()
 
 self:Think()
 end   
@@ -59,9 +39,23 @@ end
 	
 if (self.Accelerator<self.AccelMax) then self.Accelerator = self.Accelerator+self.AccelRate	end	// Speed it up!
 
+	self.Target = self.Guider:GetVar("Target",Vector)				// Refresh target position
+	self.Distance = ((self.Target-Vector(0,0,self.Target.z))-self:GetPos()):Length()// Horizontal Distance
+
+	if self.Distance>self.DistanceCutoff then					// If you are far away
+	self.Zadd = Vector(0,0,	self.Distance*self.Zmod	)				// Add to the Z coordinate
+	else self.Zadd = Vector(0,0,0) end						// Or else go straight for it
+
+	self.Target = self.Target + self.Zadd						// Add Distance * Z Multiplier
+
+
 	if self.timeleft < CurTime() then
 	self.Entity:Remove()				
 	end
+
+		if self.ArmedTime < CurTime() and !self.Armed then
+		self.Armed = true				
+		end
 
 	local trace = {}
 		trace.start 	= self.Entity:GetPos()
@@ -85,31 +79,44 @@ if (self.Accelerator<self.AccelMax) then self.Accelerator = self.Accelerator+sel
 					self.Entity:Remove()
 					return true
 					end
-
-			util.BlastDamage(self.Entity, self.Entity, tr.HitPos, 600, 150)
+			if (self.Armed) then
+			util.BlastDamage(self.Entity, self.Entity, tr.HitPos, 900, 150)
 			local effectdata = EffectData()
 			effectdata:SetOrigin(tr.HitPos)				// Position of Impact
 			effectdata:SetNormal(tr.HitNormal)			// Direction of Impact
 			effectdata:SetStart(self.flightvector:GetNormalized())	// Direction of Round
 			effectdata:SetEntity(self.Entity)			// Who done it?
-			effectdata:SetScale(3)					// Size of explosion
+			effectdata:SetScale(4.5)				// Size of explosion
 			effectdata:SetRadius(tr.MatType)			// Texture of Impact
-			effectdata:SetMagnitude(16)				// Length of explosion trails
+			effectdata:SetMagnitude(17)				// Length of explosion trails
 			util.Effect( "gdca_cinematicboom", effectdata )
-			util.ScreenShake(tr.HitPos, 10, 5, 1, 2000 )
+			util.ScreenShake(tr.HitPos, 10, 5, 1, 4000 )
 			util.Decal("Scorch", tr.HitPos + tr.HitNormal, tr.HitPos - tr.HitNormal)
-			local attack =  gcombat.hcgexplode( tr.HitPos, 400, 400, 10)
+			local attack =  gcombat.hcgexplode( tr.HitPos, 500, 1000, 10)
 			self.Entity:Remove()
+			else 
+			util.BlastDamage(self.Entity, self.Entity, tr.HitPos, 90, 100)	// Without detonation
+			local effectdata = EffectData()
+			effectdata:SetOrigin(tr.HitPos)				// Position of Impact
+			effectdata:SetNormal(tr.HitNormal)			// Direction of Impact
+			effectdata:SetStart(self.flightvector:GetNormalized())	// Direction of Round
+			effectdata:SetEntity(self.Entity)			// Who done it?
+			effectdata:SetScale(0.5)				// Size of explosion
+			effectdata:SetRadius(tr.MatType)			// Texture of Impact
+			effectdata:SetMagnitude(15)				// Length of explosion trails
+			util.Effect( "gdca_cinematicboom", effectdata )
+			self.Entity:Remove()
+			end
 			end
 
 
 	if self.Target != Vector(0,0,0) then
 	ForwardAngle = self.Entity:GetUp():Angle()
-	TangY = (self.Target - self:GetPos()):GetNormalized():Angle().y
-	AddY = math.Clamp(math.AngleDifference(TangY, self.Entity:GetUp():Angle().y)*5,-self.Accelerator/100,self.Accelerator/100)
-	TangP = (self.Target - self:GetPos()):GetNormalized():Angle().p
-	AddP = math.Clamp(math.AngleDifference(TangP, self.Entity:GetUp():Angle().p)*5,-self.Accelerator/100,self.Accelerator/100)
-	self.Entity:SetAngles((Angle(AddP,AddY,0) + ForwardAngle) + Angle(90,0,0) + Angle(math.Rand(-0.8,0.8),math.Rand(-0.8,0.8),math.Rand(-0.8,0.8)))
+	TangY = math.NormalizeAngle((self.Target - self:GetPos()):GetNormalized():Angle().y)
+	AddY = math.Clamp(math.AngleDifference(TangY, self.Entity:GetUp():Angle().y)*1,-self.Accelerator/200,self.Accelerator/200)
+	TangP = math.NormalizeAngle((self.Target - self:GetPos()):GetNormalized():Angle().p)
+	AddP = math.Clamp(math.AngleDifference(TangP, self.Entity:GetUp():Angle().p)*5,-0.5,1.0)
+	self.Entity:SetAngles((Angle(AddP,AddY,0) + ForwardAngle) + Angle(90,0,0) + Angle(math.Rand(-self.W,self.W),math.Rand(-self.W,self.W),math.Rand(-self.W,self.W)))
 	else
 	self.Entity:SetAngles(self.flightvector:Angle() + Angle(90,0,0))
 	end

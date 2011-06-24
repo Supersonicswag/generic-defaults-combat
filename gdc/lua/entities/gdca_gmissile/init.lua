@@ -5,7 +5,10 @@ include('shared.lua')
 util.PrecacheSound( "weapons/rpg/rocket1.wav" )
 
 function ENT:Initialize()   
-self.flightvector = self.Entity:GetUp() * 30
+self.Accelerator 	= 50
+self.AccelRate		= 1
+self.AccelMax		= 170
+self.flightvector = self.Entity:GetUp() * self.Accelerator
 self.timeleft = CurTime() + 10
 self.nexttarGet = CurTime()
 self.Entity:SetModel( "models/props_c17/canister01a.mdl" ) 	
@@ -16,6 +19,7 @@ self.Sound = CreateSound( self.Entity, Sound( "weapons/rpg/rocket1.wav" ) )
 self.Sound:Play()
 self.Target = self.Entity    
 self.Flared = false
+self.TPos = self.Target:GetPos()
 
 SmokeTrail = ents.Create("env_spritetrail")
 SmokeTrail:SetKeyValue("lifetime","1")
@@ -52,13 +56,15 @@ end
 
  function ENT:Think()
 	
+if (self.Accelerator<self.AccelMax) then self.Accelerator = self.Accelerator+self.AccelRate	end	// Speed it up!
+
 	if self.timeleft < CurTime() then
 	self.Entity:Remove()				
 	end
 
 	local trace = {}
 		trace.start 	= self.Entity:GetPos()
-		trace.endpos 	= self.Entity:GetPos() + self.flightvector
+		trace.endpos 	= self.Entity:GetPos() + self.flightvector*1.1
 		trace.filter 	= self.Entity 
 		trace.mask 	= MASK_SHOT + MASK_WATER			// Trace for stuff that bullets would normally hit
 	local tr = util.TraceLine( trace )
@@ -122,16 +128,25 @@ end
 
 	if (self.Target:IsValid()) and (self.Target != self.Entity) and (self.Target:GetPos():Distance(self:GetPos()) < distance && self:GetUp():DotProduct((self.Target:GetPos() - self:GetPos()):GetNormalized()) > 0.50) then
 	ForwardAngle = self.Entity:GetUp():Angle()
-	TangY = (self.Target:GetPos() - self:GetPos()):GetNormalized():Angle().y
-	AddY = math.Clamp(math.AngleDifference(TangY, self.Entity:GetUp():Angle().y)*15,-1.2,1.2)
-	TangP = (self.Target:GetPos() - self:GetPos()):GetNormalized():Angle().p
-	AddP = math.Clamp(math.AngleDifference(TangP, self.Entity:GetUp():Angle().p)*15,-1.2,1.2)
+			
+	IDist 		= (self.Target:GetPos() - self:GetPos()):Length()	// In Units
+	ITime 		= IDist/self.Accelerator				// In server ticks, 1/66 second
+	TVel 		= (self.Target:GetPos()-self.TPos)			// Net Velocity (Delta Distance)	
+	Multiplexah	= math.Clamp(TVel:Length()/20,0,1)			// Limit the intercept by target speed
+	IPos 		= self.Target:GetPos()+(TVel*ITime*Multiplexah)		// Fly to intercept
+
+	self.TPos 	= self.Target:GetPos()					// Refresh the target position
+
+	TangY = (IPos - self:GetPos()):GetNormalized():Angle().y
+	AddY = math.Clamp(math.AngleDifference(TangY, self.Entity:GetUp():Angle().y)*15,-self.Accelerator/100,self.Accelerator/100)
+	TangP = (IPos - self:GetPos()):GetNormalized():Angle().p
+	AddP = math.Clamp(math.AngleDifference(TangP, self.Entity:GetUp():Angle().p)*15,-self.Accelerator/100,self.Accelerator/100)
 	self.Entity:SetAngles((Angle(AddP,AddY,0) + ForwardAngle) + Angle(90,0,0) + Angle(math.Rand(-0.8,0.8),math.Rand(-0.8,0.8),math.Rand(-0.8,0.8)))
 	else
 	self.Entity:SetAngles(self.flightvector:Angle() + Angle(90,0,0))
 	end
 
-	self.flightvector = self.Entity:GetUp()*120 + Vector(math.Rand(-0.3,0.3), math.Rand(-0.3,0.3),math.Rand(-0.3,0.3))
+	self.flightvector = self.Entity:GetUp()*self.Accelerator
 	self.Entity:SetPos(self.Entity:GetPos() + self.flightvector)
 	self.Entity:NextThink( CurTime() )
 	return true

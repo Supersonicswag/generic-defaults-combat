@@ -48,7 +48,7 @@ if ( CLIENT ) then
 	language.Add( "Tool_gdcweapons_help23", "420 RPM, Armor Piercing Incindiary, Armor Piercing Incindiary Tracer, High Explosive Incindiary(4m), Overheats after 33 rounds, 39600 Inches/Second" )
 	language.Add( "Tool_gdcweapons_help24", "600 RPM, Tracer(Green)/Ball, 29700 Inches/Second" )
 	language.Add( "Tool_gdcweapons_help25", "900 RPM, Tracer/Ball, 33000 Inches/Second" )
-	language.Add( "Tool_gdcweapons_help26", "Flamethrower, figure it out yourself." )
+	language.Add( "Tool_gdcweapons_help26", "Anti Tank Guided Missile Launcher. For now top attack only, future inputs will work. (23m)" )
 
 
 	language.Add( "Tool_turret_type", "Type of weapon" )
@@ -258,7 +258,7 @@ if ( !trace.Hit ) then return end
 	self.ent:Activate()
 
 		elseif (gdcweaponsindex == 26) then
-	self.ent = ents.Create( "gdc_flamethrower" )
+	self.ent = ents.Create( "gdc_atgml" )
 	self.ent:SetPos( SpawnPos )
 	self.ent:SetAngles( trace.HitNormal:Angle() + Angle(90,0,0))
 	self.ent:Spawn()
@@ -483,7 +483,7 @@ if ( !trace.Hit ) then return end
 	self.ent:Activate()
 
 		elseif (gdcweaponsindex == 26) then
-	self.ent = ents.Create( "gdc_flamethrower" )
+	self.ent = ents.Create( "gdc_atgml" )
 	self.ent:SetPos( SpawnPos )
 	self.ent:SetAngles( trace.HitNormal:Angle() + Angle(90,0,0))
 	self.ent:Spawn()
@@ -545,7 +545,7 @@ function TOOL.BuildCPanel( CPanel )
 		Ctype["Options"]["#KPV 14.5mm"]			= { gdcweapons_gdcweaponsindex = "23" }
 		Ctype["Options"]["#PKM 7.62mm"]			= { gdcweapons_gdcweaponsindex = "24" }
 		Ctype["Options"]["#M249 5.56mm"]		= { gdcweapons_gdcweaponsindex = "25" }
-		Ctype["Options"]["#Flamer"]			= { gdcweapons_gdcweaponsindex = "26" }
+		Ctype["Options"]["#ATGML"]			= { gdcweapons_gdcweaponsindex = "26" }
 
 	CPanel:AddControl("ComboBox", Ctype )
 	
