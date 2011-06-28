@@ -1,0 +1,11 @@
+"AddonInfo"
+{
+	"name"		"GDC CSS Weapons"
+	"version"	"2"
+	"up_date"	"June 28th 2011"
+	"author_name"	"Generic Default"
+	"author_email"	"DON'T EMAIL ME I WONT ANSWER"
+	"author_url"	"https://generic-defaults-combat.googlecode.com/svn"
+	"info"		"GDC CSS SWEPS. These are counter strike guns using my awsome GDCW base. Perfect for multiplayer."
+	"override"	"0"
+}

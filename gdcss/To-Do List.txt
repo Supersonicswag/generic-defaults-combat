@@ -1,0 +1,19 @@
+[GLITCHES]
+-Penetration will not remove self when trace starts inside prop.	// DUN
+-Sound scripts(?)
+-Glock bullets hit in front
+-Recoil in MP
+-Shotgun ammo
+[OPTIMIZE]
+-Penetration code(reduce if-then #; glitches)				// DUN
+-Scope Sensitivity							// DUN
+-Scope mats not DLing(?)
+
+[FOR LOOKS]
+-Make penetrating effects dynamic; optimize				// DUN
+-Kill icons
+-Weapon icons
+-Suppressors
+-Shotguns
+
+[REQUESTS]
