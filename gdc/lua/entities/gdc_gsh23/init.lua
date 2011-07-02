@@ -134,7 +134,7 @@ end
 function ENT:TriggerInput(k, v)
 
 	if(k=="Fire AP-T") then
-		if((v or 0) == 529) then		// See a pattern with the non-menu'd weapons?
+		if((v or 0) == 1) then		// See a pattern with the non-menu'd weapons? 529
 		self.inFireAPT = true
 		else
 		self.inFireAPT = false
@@ -142,7 +142,7 @@ function ENT:TriggerInput(k, v)
 		end
 	
 	if(k=="Fire HEFI-T") then
-		if((v or 0) == 529) then
+		if((v or 0) == 1) then
 		self.inFireHEFIT = true
 		else
 		self.inFireHEFIT = false

@@ -46,6 +46,7 @@ function ENT:Think()
 		effectdata:SetRadius(3)			// Size of ring
 		effectdata:SetMagnitude(200)			// Size of flash
 		util.Effect( "gdca_airburst", effectdata )
+			WorldSound( "Explosion.Boom", self.Entity:GetPos())
 		util.ScreenShake(self.Entity:GetPos(), 20, 5, 1, 3000 )
 		cbt_hcgexplode( self.Entity:GetPos(), 600, 500, 7)
 		util.BlastDamage(self.Entity, self.Entity, self.Entity:GetPos(), 1100, 200)

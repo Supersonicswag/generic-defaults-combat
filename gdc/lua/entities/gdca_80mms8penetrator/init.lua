@@ -160,7 +160,7 @@ function ENT:Think()
 	self.Entity:SetPos(self.Entity:GetPos() + self.Flightvector)
 	end									// This one sets a normal flight path if there is no impact
 
-self.Flightvector = self.Flightvector - self.flightvector/100 + self.Entity:GetUp()*5 + (VectorRand():GetNormalized()*self.Drift) + Vector(0,0,-0.1)
+self.Flightvector = self.Flightvector - self.Flightvector/100 + self.Entity:GetUp()*5 + (VectorRand():GetNormalized()*self.Drift) + Vector(0,0,-0.1)
 self.Entity:SetAngles(self.Flightvector:Angle() + Angle(90,0,0))
 self.Entity:NextThink( CurTime() )
 return true
