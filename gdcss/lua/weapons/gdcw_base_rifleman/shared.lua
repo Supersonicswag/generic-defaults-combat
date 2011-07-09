@@ -362,11 +362,19 @@ function SWEP:DrawHUD()
 	end
 end
 
+function SWEP:AdjustMouseSensitivity()
+     
+	if self.Owner:KeyDown(IN_ATTACK2) then
+        return (1/(self.Secondary.ScopeZoom/2))
+    	else 
+    	return 1
+     	end
+end
+
 /*---------------------------------------------------------
 Think
 ---------------------------------------------------------*/
 function SWEP:Think()
-	self.MouseSensitivity = 1
 	self:IronSight()
 	if !self.Owner:IsNPC() then
 	if self.Idle and CurTime() >= self.Idle then
