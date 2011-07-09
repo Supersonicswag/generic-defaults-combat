@@ -1,0 +1,5 @@
+game_sounds_manifest
+{
+	"precache_file"		"scripts/sounds/weapon_gdc.txt"
+	"precache_file"		"scripts/sounds/weapon_gdc_impacts.txt"
+}
