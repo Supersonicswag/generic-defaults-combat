@@ -1,0 +1,6 @@
+list.Set( "NPCWeapons", "gdcw_m240", "GDCW M240" )
+list.Set( "NPCWeapons", "gdcw_hk21", "GDCW HK21" )
+list.Set( "NPCWeapons", "gdcw_ak47gunner", "GDCW AK47 Drum" )
+list.Set( "NPCWeapons", "gdcw_m16gunner", "GDCW M16 Drum" )
+list.Set( "NPCWeapons", "gdcw_hk416gunner", "GDCW HK416 Drum" )
+list.Set( "NPCWeapons", "gdcw_sl8gunner", "GDCW Sl8" )

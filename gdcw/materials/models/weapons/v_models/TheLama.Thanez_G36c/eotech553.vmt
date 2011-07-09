@@ -1,0 +1,7 @@
+VertexLitGeneric
+{
+	"$baseTexture" "models\weapons\v_models\TheLama.Thanez_G36c\eotech553"
+	"$bumpmap"     "models\weapons\v_models\TheLama.Thanez_G36c\eotech_normal"
+	"$halflambert" 	"1"
+}
+	
