@@ -116,10 +116,6 @@ function SWEP:FireRound1()
 		if !self.Owner:IsNPC() then
 		local anglo = Angle(math.Rand(-self.Primary.KickDown,self.Primary.KickUp), math.Rand(-self.Primary.KickHorizontal,self.Primary.KickHorizontal), 0)
 		self.Owner:ViewPunch(anglo)
-		if !MULTIPLAYER then
-		angle = self.Owner:EyeAngles() - anglo
-		self.Owner:SetEyeAngles(angle)			// Setting eye angles lags in MP, only do it in SP
-		end
 		end
 end
 
