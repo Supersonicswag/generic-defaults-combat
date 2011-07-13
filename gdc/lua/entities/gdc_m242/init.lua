@@ -105,7 +105,7 @@ function ENT:firehei()
 end
 
 function ENT:Think()
-if FIELDS == nil and COMBATDAMAGEENGINE == nil then return end
+
 	if self.ammos <= 0 then
 	self.reloadtime = CurTime()+0.2
 	self.ammos = self.clipsize

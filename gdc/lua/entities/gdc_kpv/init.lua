@@ -113,7 +113,7 @@ function ENT:firehei()
 end
 
 function ENT:Think()
-if FIELDS == nil and COMBATDAMAGEENGINE == nil then return end
+
 	
 	if (self.reloadtime < CurTime()) then
 	Wire_TriggerOutput(self.Entity, "Can Fire", 1)

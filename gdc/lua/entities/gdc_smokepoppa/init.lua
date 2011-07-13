@@ -63,7 +63,7 @@ function ENT:popsmoke()
 end
 
 function ENT:Think()
-if FIELDS == nil and COMBATDAMAGEENGINE == nil then return end
+
 Wire_TriggerOutput(self.Entity, "Shots", self.ammos)
 	if self.ammos <= 0 then
 	self.reloadtime = CurTime()+15

@@ -93,7 +93,7 @@ function ENT:FireAPI()
 end
 
 function ENT:Think()
-if FIELDS == nil and COMBATDAMAGEENGINE == nil then return end
+
 
 			if self.heat>0 then
 			Wire_TriggerOutput(self.Entity, "Heat", self.heat)

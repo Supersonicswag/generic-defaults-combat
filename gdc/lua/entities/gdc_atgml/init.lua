@@ -47,7 +47,7 @@ function ENT:SpawnFunction( ply, tr)
 end
 
 function ENT:Think()
-if FIELDS == nil and COMBATDAMAGEENGINE == nil then return end
+
 	if self.ammos <= 0 then
 	self.reloadtime = CurTime()+10
 	self.ammos = self.clipsize

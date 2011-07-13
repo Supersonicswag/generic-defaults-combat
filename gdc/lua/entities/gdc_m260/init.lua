@@ -77,7 +77,7 @@ function ENT:firewp()
 end
 
 function ENT:Think()
-if FIELDS == nil and COMBATDAMAGEENGINE == nil then return end
+
 Wire_TriggerOutput(self.Entity, "shots", self.ammos)
 
 	if self.ammos <= 0 then
