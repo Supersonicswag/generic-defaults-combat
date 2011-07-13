@@ -48,7 +48,7 @@ if ( CLIENT ) then
 	language.Add( "Tool_gdcweapons_help23", "420 RPM, Armor Piercing Incindiary, Armor Piercing Incindiary Tracer, High Explosive Incindiary(4m), Overheats after 33 rounds, 39600 Inches/Second" )
 	language.Add( "Tool_gdcweapons_help24", "600 RPM, Tracer(Green)/Ball, 29700 Inches/Second" )
 	language.Add( "Tool_gdcweapons_help25", "900 RPM, Tracer/Ball, 33000 Inches/Second" )
-	language.Add( "Tool_gdcweapons_help26", "Anti Tank Guided Missile Launcher. For now top attack only, future inputs will work. (23m)" )
+	language.Add( "Tool_gdcweapons_help26", "Anti Tank Guided Missile Launcher. For now top attack only, future inputs will work. HEAT(23m)" )
 
 
 	language.Add( "Tool_turret_type", "Type of weapon" )
@@ -61,10 +61,6 @@ end
 
 function TOOL:LeftClick( trace )
 local ply = self:GetOwner()
-if FIELDS == nil and COMBATDAMAGEENGINE == nil then
-	ply:PrintMessage( HUD_PRINTCENTER, "You need Gcombat Core to use GDC" )  
-	return 
-end
 if (!ply:CheckLimit( "gcombat" )) then return end
 if ( !trace.Hit ) then return end
 	
@@ -286,10 +282,6 @@ end
 
 function TOOL:RightClick( trace )
 local ply = self:GetOwner()
-if FIELDS == nil and COMBATDAMAGEENGINE == nil then
-	ply:PrintMessage( HUD_PRINTCENTER, "You need Gcombat Core to use GCX" )  
-	return 
-end
 if (!ply:CheckLimit( "gcombat" )) then return end	
 if ( !trace.Hit ) then return end
 	

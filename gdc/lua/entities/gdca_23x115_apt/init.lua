@@ -107,9 +107,8 @@ function ENT:Think()
 			util.ScreenShake(tr.HitPos, 10, 5, 0.1, self.BlastRadius*2 )
 			util.Decal("ExplosiveGunshot", tr.HitPos + tr.HitNormal, tr.HitPos - tr.HitNormal)
 
-
-			if tr.Entity:IsValid() then
-			local attack =  gcombat.hcghit( tr.Entity, 200, 25, tr.HitPos, tr.HitPos) 	// Entity, Damage, Pierce
+			if tr.Entity:IsValid() and GDCENGINE then
+			local attack =  gdc.caphit( tr.Entity, 200) 	// Entity, Damage
 			end
 			///
 

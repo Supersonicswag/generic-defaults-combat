@@ -65,11 +65,10 @@ function ENT:Think()
 					util.Effect( "gdca_cinematicboom", effectdata )
 					util.ScreenShake(tr.HitPos, 20, 5, 1, 1200 )
 					util.Decal("Scorch", tr.HitPos + tr.HitNormal, tr.HitPos - tr.HitNormal)
-					local attack = cbt_hcgexplode( tr.HitPos, 200, 1500, 7)
+			if GDCENGINE then	
+			local attack = gdc.gdcsplode( tr.HitPos, 400, 1500, self.Entity)	// Position, Radius, Damage, Self		
+			end	
 
-					if (tr.Entity:IsValid()) then				
-					local attack = cbt_dealhcghit( tr.Entity, 1500, 20, tr.HitPos , tr.HitPos)										
-					end
 
 					self.Entity:Remove()
 					end

@@ -99,13 +99,12 @@ if (self.Accelerator<self.AccelMax) then self.Accelerator = self.Accelerator+sel
 					util.Decal("Scorch", tr.HitPos + tr.HitNormal, tr.HitPos - tr.HitNormal)
 
 
-					if tr.Entity:IsValid() then
-					local attack = gcombat.hcgexplode( tr.HitPos, 300, 300, 10)		// Radius, Damage	
-					end
-
-					self.Entity:Remove()	
-					end
-	
+			if GDCENGINE then	
+			local attack = gdc.gdcsplode( tr.HitPos, 300, 300, self.Entity)	// Position, Radius, Damage, Self		
+			end	
+			self.Entity:Remove() 
+			end
+			
 
 	local EIS = ents.FindInSphere(self:GetPos(), 40000)
 	local distance = 40000

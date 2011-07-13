@@ -77,9 +77,9 @@ function ENT:Think()
 					util.ScreenShake(tr.HitPos, 10, 5, 0.5, 600 )
 					util.Decal("fadingScorch", tr.HitPos + tr.HitNormal, tr.HitPos - tr.HitNormal)
 
-					if tr.Entity:IsValid() then
-					local attack = gcombat.hcgexplode( tr.HitPos, 30, 80, 6)		// Radius, Damage	
-					end
+			if GDCENGINE then	
+			local attack = gdc.gdcsplode( tr.HitPos, 40, 80, self.Entity)	// Position, Radius, Damage, Self		
+			end	
 
 					self.Entity:Remove()
 					end

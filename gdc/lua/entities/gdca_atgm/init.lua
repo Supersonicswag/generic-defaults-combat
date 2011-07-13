@@ -39,7 +39,9 @@ end
 	
 if (self.Accelerator<self.AccelMax) then self.Accelerator = self.Accelerator+self.AccelRate	end	// Speed it up!
 
-	self.Target = self.Guider:GetVar("Target",Vector)				// Refresh target position
+if !self.Guider:IsValid() then self.Guider = self.Entity end
+	self.Target = self.Guider:GetVar("Target",Vector) 		// Refresh target position
+
 	self.Distance = ((self.Target-Vector(0,0,self.Target.z))-self:GetPos()):Length()// Horizontal Distance
 
 	if self.Distance>self.DistanceCutoff then					// If you are far away
@@ -49,7 +51,7 @@ if (self.Accelerator<self.AccelMax) then self.Accelerator = self.Accelerator+sel
 	self.Target = self.Target + self.Zadd						// Add Distance * Z Multiplier
 
 
-	if self.timeleft < CurTime() then
+	if self.timeleft < CurTime() || !self.Guider:IsValid() then
 	self.Entity:Remove()				
 	end
 
@@ -92,7 +94,9 @@ if (self.Accelerator<self.AccelMax) then self.Accelerator = self.Accelerator+sel
 			util.Effect( "gdca_cinematicboom", effectdata )
 			util.ScreenShake(tr.HitPos, 10, 5, 1, 4000 )
 			util.Decal("Scorch", tr.HitPos + tr.HitNormal, tr.HitPos - tr.HitNormal)
-			local attack =  gcombat.hcgexplode( tr.HitPos, 500, 1000, 10)
+			if GDCENGINE then	
+			local attack = gdc.gdcsplode( tr.HitPos, 500, 800, self.Entity)	// Position, Radius, Damage, Self		
+			end	
 			self.Entity:Remove()
 			else 
 			util.BlastDamage(self.Entity, self.Entity, tr.HitPos, 90, 100)	// Without detonation

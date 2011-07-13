@@ -56,7 +56,9 @@ function ENT:Think()
 		util.ScreenShake(self.Entity:GetPos(), 20, 5, 1, 20000 )
 		self.Entity:EmitSound( "Explosion.Boom")
 		self.Entity:EmitSound( "Explosion.Boom")
-		cbt_hcgexplode( self.Entity:GetPos(), 2000, 2000, 7)
+			if GDCENGINE then	
+			local attack = gdc.gdcsplode( self.Entity:GetPos(), 2000, 4000, self.Entity)	// Position, Radius, Damage, Self		
+			end	
 		util.BlastDamage(self.Entity, self.Entity, self.Entity:GetPos(), 4000, 1000)
 		self.Entity:Remove()
 	end

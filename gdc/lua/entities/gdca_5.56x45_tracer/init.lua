@@ -107,8 +107,8 @@ function ENT:Think()
 			util.Decal("ExplosiveGunshot", tr.HitPos + tr.HitNormal, tr.HitPos - tr.HitNormal)
 
 
-			if tr.Entity:IsValid() then
-			local attack =  gcombat.hcghit( tr.Entity, 70, 25, tr.HitPos, tr.HitPos) 	// Entity, Damage, Pierce
+			if tr.Entity:IsValid() and GDCENGINE then
+			local attack =  gdc.caphit( tr.Entity, 50) 	// Entity, Damage
 			end
 			///
 

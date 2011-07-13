@@ -49,7 +49,7 @@ end
 function ENT:Think()
 if FIELDS == nil and COMBATDAMAGEENGINE == nil then return end
 	if self.ammos <= 0 then
-	self.reloadtime = CurTime()+5
+	self.reloadtime = CurTime()+10
 	self.ammos = self.clipsize
 	end
 	
@@ -60,12 +60,12 @@ if FIELDS == nil and COMBATDAMAGEENGINE == nil then return end
 	end
 	
 	if self.inFire then
-	if (self.reloadtime < CurTime()) then
+	if (self.reloadtime < CurTime()) and self.Target then
 	self:fireatgm()	
 	end
 	end
 
-	self.Entity:NextThink( CurTime() + .01)
+	self.Entity:NextThink( CurTime() + .1)
 	return true
 end
 

@@ -98,7 +98,9 @@ if (self.Accelerator<self.AccelMax) then self.Accelerator = self.Accelerator+sel
 			util.Effect( "gdca_cinematicboom", effectdata )
 			util.ScreenShake(tr.HitPos, 10, 5, 1, 2000 )
 			util.Decal("Scorch", tr.HitPos + tr.HitNormal, tr.HitPos - tr.HitNormal)
-			local attack =  gcombat.hcgexplode( tr.HitPos, 400, 400, 10)
+			if GDCENGINE then	
+			local attack = gdc.gdcsplode( tr.HitPos, 400, 400, self.Entity)	// Position, Radius, Damage, Self		
+			end	
 			self.Entity:Remove()
 			end
 
