@@ -53,7 +53,7 @@ function gdc.caphit( entity, damage )
 
 		if entity:GetPhysicsObject():GetVelocity():Length() > 0 then
 		//phys:ApplyForceCenter(entity:GetPhysicsObject():GetVelocity()*phys:GetMass())
-		phys:SetVelocity(entity:GetPhysicsObject():GetVelocity())
+		phys:SetVelocity(entity:GetPhysicsObject():GetVelocity()*66)
 		elseif entity:GetParent():IsValid() then
 		//phys:ApplyForceCenter(entity:GetParent():GetPhysicsObject():GetVelocity()*phys:GetMass())
 		phys:SetVelocity(entity:GetParent():GetPhysicsObject():GetVelocity())
