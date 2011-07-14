@@ -12,6 +12,9 @@
 
 [FOR LOOKS]
 -Make penetrating effects dynamic; optimize				// DUN
+-Reduce bullet impact smoke						// DUN
+-Transfer material to destroyed stuff					// DUN
+-Make big props smoke more
 
 
 [REQUESTS]

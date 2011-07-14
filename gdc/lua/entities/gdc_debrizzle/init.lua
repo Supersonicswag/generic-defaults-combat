@@ -19,6 +19,7 @@ function ENT:Initialize()
 	local phys = self.Entity:GetPhysicsObject()  	
 	local pos = self.Entity:GetPos()
 	local mass = phys:GetMass()
+	self.Cola = self.Entity:GetColor()
 
 	if phys:IsValid() then  		
 	phys:Wake()
@@ -33,12 +34,11 @@ function ENT:Think()
 	self.Entity:Remove()
 	end
 	 
-	if (self.Entity:GetPhysicsObject():GetVelocity():Length()>5 ) then
+	if (self.Entity:GetPhysicsObject():GetVelocity():Length()>0 ) then
 	local effectdata = EffectData()
 	effectdata:SetOrigin(self.Entity:GetPos())
 	effectdata:SetStart(self.Entity:GetPos())
-	effectdata:SetScale( 10 )
-	effectdata:SetRadius( 100 )
+	effectdata:SetScale( math.Clamp(self.Entity:BoundingRadius()/70,0.8,3) )
 	util.Effect( "gdca_debrismoke", effectdata )				
 	end
 	local yarg = math.Clamp(100/(self.Entity:GetPhysicsObject():GetVelocity():Length()),0.04,0.2)

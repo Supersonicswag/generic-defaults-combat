@@ -46,6 +46,8 @@ function gdc.caphit( entity, damage )
 		local wreck = ents.Create( "gdc_debrizzle" )
 		wreck:SetModel( entity:GetModel() )
 		wreck:SetAngles( entity:GetAngles() )
+		wreck:SetMaterial(entity:GetMaterial() )
+		wreck:SetColor(entity:GetColor() )
 		wreck:SetPos( entity:GetPos() )
 		wreck:Spawn()
 
@@ -54,9 +56,12 @@ function gdc.caphit( entity, damage )
 		if entity:GetPhysicsObject():GetVelocity():Length() > 0 then
 		//phys:ApplyForceCenter(entity:GetPhysicsObject():GetVelocity()*phys:GetMass())
 		phys:SetVelocity(entity:GetPhysicsObject():GetVelocity()*66)
+		phys:ApplyForceOffset(VectorRand():GetNormalized()*50,entity:GetPos()+VectorRand():GetNormalized()*50 )
+
 		elseif entity:GetParent():IsValid() then
 		//phys:ApplyForceCenter(entity:GetParent():GetPhysicsObject():GetVelocity()*phys:GetMass())
 		phys:SetVelocity(entity:GetParent():GetPhysicsObject():GetVelocity())
+		phys:ApplyForceOffset(VectorRand():GetNormalized()*50,entity:GetPos()+VectorRand():GetNormalized()*50 )
 		end
 
 		wreck:Activate()
