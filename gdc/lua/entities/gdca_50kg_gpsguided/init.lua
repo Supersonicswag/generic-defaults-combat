@@ -79,7 +79,7 @@ end
 		self.AngP	= math.AngleDifference(self.TargetAngle.p, Up:Angle().p)
 		self.AngY	= math.AngleDifference(self.TargetAngle.y, Up:Angle().y)
 		self.Rotate 	= Angle(math.Clamp(-self.AngP*5,-20,10),math.Clamp(-self.AngY*5,-20,20),0)
-		local AddVector = (self.Entity:GetAngles():Forward()-(self.Entity:GetAngles()+self.Rotate):Forward())*(self.flightvector:Length()/130)
+		local AddVector = (self.Entity:GetAngles():Forward()-(self.Entity:GetAngles()+self.Rotate):Forward())*(self.flightvector:Length()/100)
 
 	self.Entity:SetAngles(self.flightvector:Angle())
 	self.Entity:SetPos(self.Entity:GetPos() + self.flightvector)

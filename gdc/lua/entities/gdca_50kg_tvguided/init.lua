@@ -71,7 +71,7 @@ end
 				end
 
 		self.Rotate 	= Angle(math.Clamp(self.Dropper.TVRotate.p,-20,10),math.Clamp(self.Dropper.TVRotate.y,-20,20),0)
-		local AddVector = (self.Entity:GetAngles():Forward()-(self.Entity:GetAngles()+self.Rotate):Forward())*(math.Clamp(self.flightvector:Length(),0,50)/130)
+		local AddVector = (self.Entity:GetAngles():Forward()-(self.Entity:GetAngles()+self.Rotate):Forward())*(math.Clamp(self.flightvector:Length(),0,50)/80)
 
 	self.Entity:SetAngles(self.flightvector:Angle())
 	self.Entity:SetPos(self.Entity:GetPos() + self.flightvector)

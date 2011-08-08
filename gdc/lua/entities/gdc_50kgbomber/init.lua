@@ -22,6 +22,7 @@ function ENT:Initialize()
 	self.TVRotate 		= Angle(0,0,0)
 	self.Velo 		= Vector(0,0,0)
 	self.Pos2 		= self.Entity:GetPos()
+
 	self.Entity:SetModel( "models/props_phx/ww2bomb.mdl" ) 	
 	self.Entity:PhysicsInit( SOLID_VPHYSICS )      -- Make us work with physics,  	
 	self.Entity:SetMoveType( MOVETYPE_VPHYSICS )   --after all, gmod is a physics  	
@@ -89,13 +90,13 @@ function ENT:Think()
 	end
 	end
 
-	if self.Dropping2 then
+	if self.Dropping2 and !self.Dropping1 then
 	if (self.reloadtime < CurTime()) then
 	self:dropgps()	
 	end
 	end
 
-	if self.Dropping3 then
+	if self.Dropping3 and !self.Dropping2 and !self.Dropping1 then
 	if (self.reloadtime < CurTime()) then
 	self:droptv()	
 	end
