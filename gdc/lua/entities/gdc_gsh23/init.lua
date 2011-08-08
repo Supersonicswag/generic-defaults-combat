@@ -18,6 +18,8 @@ function ENT:Initialize()
 	self.inFireAPT = false
 	self.inFireHEFIT = false
 	self.heat = 0
+	self.Velo = Vector(0,0,0)
+	self.Pos2 = self.Entity:GetPos()
 	self.Entity:SetModel( "models/props_c17/signpole001.mdl" ) 	
 	self.Entity:PhysicsInit( SOLID_VPHYSICS )      -- Make us work with physics,  	
 	self.Entity:SetMoveType( MOVETYPE_VPHYSICS )   --after all, gmod is a physics  	
@@ -66,9 +68,12 @@ function ENT:fireapt()
 		effectdata:SetOrigin(self.Entity:GetPos() +  self.Entity:GetUp() * 110)
 		effectdata:SetNormal(self:GetUp())
 		effectdata:SetScale(0.6)
-		util.Effect( "gdca_muzzle", effectdata )
+		effectdata:SetRadius(2)
+		effectdata:SetMagnitude(self.Velo:Length())
+		effectdata:SetAngle(self.Velo:Angle())
+		util.Effect( "gdca_highrpmmuzzle", effectdata )
 		util.ScreenShake(self.Entity:GetPos(), 12, 5, 0.1, 400 )
-		self.Entity:EmitSound( "GSh23.Single" )
+		self.Entity:EmitSound( "GSh23.Emit" )
 	
 
 end
@@ -90,14 +95,18 @@ function ENT:firehefit()
 		effectdata:SetOrigin(self.Entity:GetPos() +  self.Entity:GetUp() * 110)
 		effectdata:SetNormal(self:GetUp())
 		effectdata:SetScale(0.6)
-		util.Effect( "gdca_muzzle", effectdata )
+		effectdata:SetRadius(2)
+		effectdata:SetMagnitude(self.Velo:Length())
+		effectdata:SetAngle(self.Velo:Angle())
+		util.Effect( "gdca_highrpmmuzzle", effectdata )
 		util.ScreenShake(self.Entity:GetPos(), 12, 5, 0.1, 400 )
-		self.Entity:EmitSound( "GSh23.Single" )
+		self.Entity:EmitSound( "GSh23.Emit" )
 	
 end
 
 function ENT:Think()
-
+	self.Velo = (self.Entity:GetPos()-self.Pos2)*33.4
+	self.Pos2 = self.Entity:GetPos()
 
 			if self.heat>0 then
 			Wire_TriggerOutput(self.Entity, "Heat", self.heat)

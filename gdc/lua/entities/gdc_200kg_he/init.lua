@@ -43,7 +43,7 @@ end
 
 function ENT:Think()
 
-        if self.infire then
+        		if self.infire then
 			local effectdata = EffectData()
 			effectdata:SetOrigin(self.Entity:GetPos())		// Position of Impact
 			effectdata:SetNormal(Vector(0,0,1))			// Direction of Impact
@@ -52,16 +52,16 @@ function ENT:Think()
 			effectdata:SetRadius(1)					// Texture of Impact
 			effectdata:SetMagnitude(20)				// Length of explosion trails	
 			util.Effect( "gdca_bigboom", effectdata )
-
-		util.ScreenShake(self.Entity:GetPos(), 20, 5, 1, 20000 )
-		self.Entity:EmitSound( "Explosion.Boom")
-		self.Entity:EmitSound( "Explosion.Boom")
+			util.ScreenShake(self.Entity:GetPos(), 20, 5, 1, 20000 )
 			if GDCENGINE then	
 			local attack = gdc.gdcsplode( self.Entity:GetPos(), 2000, 4000, self.Entity)	// Position, Radius, Damage, Self		
 			end	
 		util.BlastDamage(self.Entity, self.Entity, self.Entity:GetPos(), 4000, 1000)
 		self.Entity:Remove()
 	end
+
+	self.Entity:NextThink( CurTime() + 0.01)
+	return true
 end
 		
 

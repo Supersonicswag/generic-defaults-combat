@@ -6,7 +6,6 @@ include('shared.lua')
 
 function ENT:Initialize()   
 
-	util.PrecacheSound("M249.single")
 	self.ammos = 1
 	self.match = 1
 	self.clipsize = 1
@@ -19,6 +18,8 @@ function ENT:Initialize()
 	self.infire3 = false
 	self.Tracer  = 0
         self.TracerTimer = 1
+	self.Velo = Vector(0,0,0)
+	self.Pos2 = self.Entity:GetPos()
 	self.Entity:SetModel( "models/props_lab/pipesystem02c.mdl" ) 	
 	self.Entity:PhysicsInit( SOLID_VPHYSICS )      -- Make us work with physics,  	
 	self.Entity:SetMoveType( MOVETYPE_VPHYSICS )   --after all, gmod is a physics  	
@@ -79,9 +80,12 @@ function ENT:fire()
 		effectdata:SetOrigin(self.Entity:GetPos() +  self.Entity:GetUp() * 20)
 		effectdata:SetNormal(self:GetUp())
 		effectdata:SetScale(0.2)
-		util.Effect( "gdca_muzzle", effectdata )
+		effectdata:SetRadius(1)
+		effectdata:SetMagnitude(self.Velo:Length())
+		effectdata:SetAngle(self.Velo:Angle())	
+		util.Effect( "gdca_lowcalmuzzle", effectdata )
 		util.ScreenShake(self.Entity:GetPos(), 7, 5, 0.2, 100 )
-		self.Entity:EmitSound( "M249.single" )
+		self.Entity:EmitSound( "M249.Emit" )
 		self.ammos = self.ammos-1
 	
 
@@ -105,9 +109,12 @@ function ENT:firetracer()
 		effectdata:SetOrigin(self.Entity:GetPos() +  self.Entity:GetUp() * 20)
 		effectdata:SetNormal(self:GetUp())
 		effectdata:SetScale(0.2)
-		util.Effect( "gdca_muzzle", effectdata )
+		effectdata:SetRadius(1)
+		effectdata:SetMagnitude(self.Velo:Length())
+		effectdata:SetAngle(self.Velo:Angle())	
+		util.Effect( "gdca_lowcalmuzzle", effectdata )
 		util.ScreenShake(self.Entity:GetPos(), 7, 5, 0.2, 100 )
-		self.Entity:EmitSound( "M249.single" )
+		self.Entity:EmitSound( "M249.Emit" )
 		self.ammos = self.ammos-1
 end
 
@@ -128,14 +135,18 @@ function ENT:firematch()
 		effectdata:SetOrigin(self.Entity:GetPos() +  self.Entity:GetUp() * 20)
 		effectdata:SetNormal(self:GetUp())
 		effectdata:SetScale(0.2)
-		util.Effect( "gdca_muzzle", effectdata )
+		effectdata:SetRadius(1)
+		effectdata:SetMagnitude(self.Velo:Length())
+		effectdata:SetAngle(self.Velo:Angle())	
+		util.Effect( "gdca_lowcalmuzzle", effectdata )
 		util.ScreenShake(self.Entity:GetPos(), 7, 5, 0.2, 100 )
-		self.Entity:EmitSound( "M249.single" )
+		self.Entity:EmitSound( "M249.Emit" )
 		self.match = self.match-1
 end
 
 function ENT:Think()
-
+	self.Velo = (self.Entity:GetPos()-self.Pos2)*66
+	self.Pos2 = self.Entity:GetPos()
 
 	if self.ammos <= 0 then
 	self.reloadtime = CurTime()+0.066

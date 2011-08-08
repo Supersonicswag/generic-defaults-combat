@@ -16,6 +16,8 @@ function ENT:Initialize()
 	self.infirefae = false
 	self.infirepenetrator = false
 	self.heat = 0
+	self.Velo = Vector(0,0,0)
+	self.Pos2 = self.Entity:GetPos()
 	self.Entity:SetModel( "models/props_pipes/pipecluster08d_extender64.mdl" ) 	
 	self.Entity:PhysicsInit( SOLID_VPHYSICS )      -- Make us work with physics,  	
 	self.Entity:SetMoveType( MOVETYPE_VPHYSICS )   --after all, gmod is a physics  	
@@ -48,8 +50,17 @@ end
 		ent:SetAngles( self.Entity:GetAngles() )
 		ent:Spawn()
 		ent:Activate()
-		self.heat = self.heat+40		
-		self.Entity:EmitSound( "M260.single" )
+		self.heat = self.heat+40	
+	
+		local effectdata = EffectData()
+		effectdata:SetOrigin(self.Entity:GetPos() +  self.Entity:GetUp() * 30)
+		effectdata:SetNormal(self:GetUp())
+		effectdata:SetScale(1.2)
+		effectdata:SetRadius(1)
+		effectdata:SetMagnitude(self.Velo:Length())
+		effectdata:SetAngle(self.Velo:Angle())
+		util.Effect( "gdca_rocketlaunch", effectdata )
+		self.Entity:EmitSound( "RocketPod.Emit" )
 		self.ammos = self.ammos-1
 	end
 
@@ -59,8 +70,17 @@ end
 		ent:SetAngles( self.Entity:GetAngles() )
 		ent:Spawn()
 		ent:Activate()
-		self.heat = self.heat+40		
-		self.Entity:EmitSound( "M260.single" )
+		self.heat = self.heat+40	
+	
+		local effectdata = EffectData()
+		effectdata:SetOrigin(self.Entity:GetPos() +  self.Entity:GetUp() * 30)
+		effectdata:SetNormal(self:GetUp())
+		effectdata:SetScale(1.2)
+		effectdata:SetRadius(1)
+		effectdata:SetMagnitude(self.Velo:Length())
+		effectdata:SetAngle(self.Velo:Angle())
+		util.Effect( "gdca_rocketlaunch", effectdata )
+		self.Entity:EmitSound( "RocketPod.Emit" )
 		self.ammos = self.ammos-1
 	end
 
@@ -72,11 +92,22 @@ end
 		ent:Spawn()
 		ent:Activate()
 		self.heat = self.heat+40
-		self.Entity:EmitSound( "M260.single" )
+
+		local effectdata = EffectData()
+		effectdata:SetOrigin(self.Entity:GetPos() +  self.Entity:GetUp() * 30)
+		effectdata:SetNormal(self:GetUp())
+		effectdata:SetScale(1.2)
+		effectdata:SetRadius(1)
+		effectdata:SetMagnitude(self.Velo:Length())
+		effectdata:SetAngle(self.Velo:Angle())
+		util.Effect( "gdca_rocketlaunch", effectdata )
+		self.Entity:EmitSound( "RocketPod.Emit" )
 		self.ammos = self.ammos-1
 	end
 
 function ENT:Think()
+	self.Velo = (self.Entity:GetPos()-self.Pos2)*4
+	self.Pos2 = self.Entity:GetPos()
 
 Wire_TriggerOutput(self.Entity, "Shots", self.ammos)
 

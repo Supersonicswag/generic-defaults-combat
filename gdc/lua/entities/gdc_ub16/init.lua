@@ -7,7 +7,6 @@ include('shared.lua')
 
 function ENT:Initialize()   
 
-	self.ammomodel = "models/props_c17/canister01a.mdl"
 	self.ammos = 16
 	self.clipsize = 16
 	self.armed = false
@@ -16,6 +15,8 @@ function ENT:Initialize()
 	self.infire = false
 	self.infire2 = false
 	self.heat = 0
+	self.Velo = Vector(0,0,0)
+	self.Pos2 = self.Entity:GetPos()
 	self.Entity:SetModel( "models/props_pipes/pipecluster08d_extender64.mdl" ) 
 	self.Entity:PhysicsInit( SOLID_VPHYSICS )      -- Make us work with physics,  	
 	self.Entity:SetMoveType( MOVETYPE_VPHYSICS )   --after all, gmod is a physics  	
@@ -58,7 +59,16 @@ function ENT:firefrag()
 		ent:Spawn()
 		ent:Activate()
 		self.heat = self.heat+30
-		self.Entity:EmitSound( "M260.single" )
+
+		local effectdata = EffectData()
+		effectdata:SetOrigin(self.Entity:GetPos() +  self.Entity:GetUp() * 30)
+		effectdata:SetNormal(self:GetUp())
+		effectdata:SetScale(0.8)
+		effectdata:SetRadius(1)
+		effectdata:SetMagnitude(self.Velo:Length())
+		effectdata:SetAngle(self.Velo:Angle())
+		util.Effect( "gdca_rocketlaunch", effectdata )
+		self.Entity:EmitSound( "RocketPod.Emit" )
 		self.ammos = self.ammos-1
 	
 
@@ -71,14 +81,25 @@ function ENT:fireheat()
 		ent:SetAngles( self.Entity:GetAngles() )
 		ent:Spawn()
 		ent:Activate()
-		self.heat = self.heat+30		
-		self.Entity:EmitSound( "M260.single" )
+		self.heat = self.heat+30	
+	
+		local effectdata = EffectData()
+		effectdata:SetOrigin(self.Entity:GetPos() +  self.Entity:GetUp() * 30)
+		effectdata:SetNormal(self:GetUp())
+		effectdata:SetScale(0.8)
+		effectdata:SetRadius(1)
+		effectdata:SetMagnitude(self.Velo:Length())
+		effectdata:SetAngle(self.Velo:Angle())
+		util.Effect( "gdca_rocketlaunch", effectdata )
+		self.Entity:EmitSound( "RocketPod.Emit" )
 		self.ammos = self.ammos-1
 	
 
 end
 
 function ENT:Think()
+	self.Velo = (self.Entity:GetPos()-self.Pos2)*8.34
+	self.Pos2 = self.Entity:GetPos()
 
 Wire_TriggerOutput(self.Entity, "Shots", self.ammos)
 

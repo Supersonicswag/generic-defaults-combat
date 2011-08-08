@@ -6,7 +6,6 @@ include('shared.lua')
 
 function ENT:Initialize()   
 
-	util.PrecacheSound("30cal.single")
 	self.ammos = 1
 	self.match = 1
 	self.clipsize = 1
@@ -19,6 +18,8 @@ function ENT:Initialize()
 	self.infire3 = false
 	self.Tracer  = 0
         self.TracerTimer = 1
+	self.Velo = Vector(0,0,0)
+	self.Pos2 = self.Entity:GetPos()
 	self.Entity:SetModel( "models/props_lab/pipesystem02c.mdl" ) 	
 	self.Entity:PhysicsInit( SOLID_VPHYSICS )      -- Make us work with physics,  	
 	self.Entity:SetMoveType( MOVETYPE_VPHYSICS )   --after all, gmod is a physics  	
@@ -56,14 +57,14 @@ function ENT:fire()
 
 		if	 (self.TracerTimer>=self.Tracer) and (self.Tracer>=1)	then		// If it's not the tracer round, shoot a ball
 		local balla = ents.Create( "gdca_7.62x51_tracer" )
-		balla:SetPos( self.Entity:GetPos() +  self.Entity:GetUp() * 100)
+		balla:SetPos( self.Entity:GetPos() +  self.Entity:GetUp() * 150)
 		balla:SetAngles( self.Entity:GetAngles() )
 		balla:Spawn()
 		balla:Activate()
 		self.TracerTimer = 1
 		else										// Else fire the tracer and reset to ball
 		local traca = ents.Create( "gdca_7.62x51_ball" )
-		traca:SetPos( self.Entity:GetPos() +  self.Entity:GetUp() * 100)
+		traca:SetPos( self.Entity:GetPos() +  self.Entity:GetUp() * 150)
 		traca:SetAngles( self.Entity:GetAngles() )
 		traca:Spawn()
 		traca:Activate()
@@ -79,9 +80,12 @@ function ENT:fire()
 		effectdata:SetOrigin(self.Entity:GetPos() +  self.Entity:GetUp() * 20)
 		effectdata:SetNormal(self:GetUp())
 		effectdata:SetScale(0.3)
-		util.Effect( "gdca_muzzle", effectdata )
+		effectdata:SetRadius(2)
+		effectdata:SetMagnitude(self.Velo:Length())
+		effectdata:SetAngle(self.Velo:Angle())	
+		util.Effect( "gdca_lowcalmuzzle", effectdata )
 		util.ScreenShake(self.Entity:GetPos(), 7, 5, 0.2, 140 )
-		self.Entity:EmitSound( "30cal.single" )
+		self.Entity:EmitSound( "M240.Emit" )
 		self.ammos = self.ammos-1
 	
 
@@ -90,7 +94,7 @@ end
 function ENT:firetracer()
 
 	local ent = ents.Create( "gdca_7.62x51_tracer" )
-		ent:SetPos( self.Entity:GetPos() +  self.Entity:GetUp() * 100)
+		ent:SetPos( self.Entity:GetPos() +  self.Entity:GetUp() * 150)
 		ent:SetAngles( self.Entity:GetAngles() )
 		ent:Spawn()
 		ent:Activate()
@@ -105,16 +109,19 @@ function ENT:firetracer()
 		effectdata:SetOrigin(self.Entity:GetPos() +  self.Entity:GetUp() * 20)
 		effectdata:SetNormal(self:GetUp())
 		effectdata:SetScale(0.3)
-		util.Effect( "gdca_muzzle", effectdata )
+		effectdata:SetRadius(2)
+		effectdata:SetMagnitude(self.Velo:Length())
+		effectdata:SetAngle(self.Velo:Angle())	
+		util.Effect( "gdca_lowcalmuzzle", effectdata )
 		util.ScreenShake(self.Entity:GetPos(), 7, 5, 0.2, 140 )
-		self.Entity:EmitSound( "30cal.single" )
+		self.Entity:EmitSound( "M240.Emit" )
 		self.ammos = self.ammos-1
 end
 
 function ENT:firematch()
 
 	local ent = ents.Create( "gdca_7.62x51_match" )
-		ent:SetPos( self.Entity:GetPos() +  self.Entity:GetUp() * 100)
+		ent:SetPos( self.Entity:GetPos() +  self.Entity:GetUp() * 150)
 		ent:SetAngles( self.Entity:GetAngles() )
 		ent:Spawn()
 		ent:Activate()
@@ -128,13 +135,18 @@ function ENT:firematch()
 		effectdata:SetOrigin(self.Entity:GetPos() +  self.Entity:GetUp() * 20)
 		effectdata:SetNormal(self:GetUp())
 		effectdata:SetScale(0.3)
-		util.Effect( "gdca_muzzle", effectdata )
+		effectdata:SetRadius(2)
+		effectdata:SetMagnitude(self.Velo:Length())
+		effectdata:SetAngle(self.Velo:Angle())	
+		util.Effect( "gdca_lowcalmuzzle", effectdata )
 		util.ScreenShake(self.Entity:GetPos(), 7, 5, 0.2, 140 )
-		self.Entity:EmitSound( "30cal.single" )
+		self.Entity:EmitSound( "M240.Emit" )
 		self.match = self.match-1
 end
 
 function ENT:Think()
+	self.Velo = (self.Entity:GetPos()-self.Pos2)*66
+	self.Pos2 = self.Entity:GetPos()
 
 	if self.ammos <= 0 then
 	self.reloadtime = CurTime()+0.07

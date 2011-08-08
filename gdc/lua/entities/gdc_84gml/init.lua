@@ -9,8 +9,6 @@ util.PrecacheSound("GML.single")
 
 function ENT:Initialize()   
 
-
-	self.ammomodel = "models/props_c17/canister01a.mdl"
 	self.ammos = 1
 	self.clipsize = 1
 	self.armed = false
@@ -18,6 +16,8 @@ function ENT:Initialize()
 	self.reloadtime = 0
 	self.infire = false
 	self.infire2 = false
+	self.Velo = Vector(0,0,0)
+	self.Pos2 = self.Entity:GetPos()
 	self.Entity:SetModel( "models/props_pipes/pipecluster08d_extender64.mdl" ) 	
 	self.Entity:PhysicsInit( SOLID_VPHYSICS )      -- Make us work with physics,  	
 	self.Entity:SetMoveType( MOVETYPE_VPHYSICS )   --after all, gmod is a physics  	
@@ -56,25 +56,33 @@ end
 function ENT:fire()
 
 	local ent = ents.Create( "gdca_gmissile" )
-		ent:SetPos( self.Entity:GetPos() +  self.Entity:GetUp() * 100)
+		ent:SetPos( self.Entity:GetPos() +  self.Entity:GetUp() * 200)
 		ent:SetAngles( self.Entity:GetAngles() )
 		ent:Spawn()
 		ent:Activate()
 		
-		
 		local phys = self.Entity:GetPhysicsObject()  	
 		if (phys:IsValid()) then  		
-			phys:ApplyForceCenter( self.Entity:GetUp() * -800 ) 
+		phys:ApplyForceCenter( self.Entity:GetUp() * -800 ) 
 		end 
-		
-		util.ScreenShake(self.Entity:GetPos(), 30, 5, 0.2, 300 )
-		self.Entity:EmitSound( "GML.single" )
+	
+		local effectdata = EffectData()
+		effectdata:SetOrigin(self.Entity:GetPos() +  self.Entity:GetUp() * 30)
+		effectdata:SetNormal(self:GetUp())
+		effectdata:SetScale(1.2)
+		effectdata:SetRadius(2)
+		effectdata:SetMagnitude(self.Velo:Length())
+		effectdata:SetAngle(self.Velo:Angle())
+		util.Effect( "gdca_rocketlaunch", effectdata )
+		self.Entity:EmitSound( "GML.Emit" )
 		self.ammos = self.ammos-1
 	
 
 end
 
 function ENT:Think()
+	self.Velo = (self.Entity:GetPos()-self.Pos2)*66
+	self.Pos2 = self.Entity:GetPos()
 
 	if self.ammos <= 0 then
 	self.reloadtime = CurTime()+5
@@ -131,7 +139,7 @@ end
 function ENT:firegps()
 
 		local GPSMISSILE = ents.Create( "gdca_gpsmissile" )
-		GPSMISSILE:SetPos( self.Entity:GetPos() +  self.Entity:GetUp() * 100)
+		GPSMISSILE:SetPos( self.Entity:GetPos() +  self.Entity:GetUp() * 200)
 		GPSMISSILE:SetAngles( self.Entity:GetAngles() )
 		GPSMISSILE:Spawn()
 		GPSMISSILE:Initialize()
@@ -140,12 +148,18 @@ function ENT:firegps()
 
 		local phys = self.Entity:GetPhysicsObject()  	
 		if (phys:IsValid()) then  		
-			phys:ApplyForceCenter( self.Entity:GetUp() * -800 ) 
-
+		phys:ApplyForceCenter( self.Entity:GetUp() * -800 ) 
 		end 
 		
-		util.ScreenShake(self.Entity:GetPos(), 30, 5, 0.2, 300 )
-		self.Entity:EmitSound( "GML.single" )
+		local effectdata = EffectData()
+		effectdata:SetOrigin(self.Entity:GetPos() +  self.Entity:GetUp() * 30)
+		effectdata:SetNormal(self:GetUp())
+		effectdata:SetScale(1.2)
+		effectdata:SetRadius(2)
+		effectdata:SetMagnitude(self.Velo:Length())
+		effectdata:SetAngle(self.Velo:Angle())
+		util.Effect( "gdca_rocketlaunch", effectdata )
+		self.Entity:EmitSound( "GML.Emit" )
 		self.ammos = self.ammos-1
 	
 

@@ -1,208 +1,396 @@
-"30cal.Single"
+"M249.Emit"
 {
-	"channel"				"CHAN_WEAPON"
-	"volume"				"1.0"
-	"pitch"				"PITCH_NORM"
-	"soundlevel"			"SNDLVL_155dB"
-	"wave"				")GDC/30cal.wav"
+	"channel"			"CHAN_WEAPON"
+	"volume"			"1.0"
+	"pitch"				"105"
+	"soundlevel"			"SNDLVL_90dB"
+	"wave"				")GDC/M240Emit.wav"
 }
-"50cal.Single"
+"M249.Split"
 {
-	"channel"				"CHAN_WEAPON"
-	"volume"				"1.0"
-	"pitch"				"PITCH_NORM"
-	"soundlevel"			"SNDLVL_155dB"
-	"wave"				")GDC/50cal.wav"
-}
-"Bushmaster.Single"
-{
-	"channel"				"CHAN_WEAPON"
-	"volume"				"1.0"
-	"pitch"				"99, 101"
-	"soundlevel"			"SNDLVL_155dB"
-	"wave"				")GDC/Bushmaster.wav"
-}
-"Bofors.Single"
-{
-	"channel"				"CHAN_WEAPON"
-	"volume"				"1.0"
-	"pitch"				"PITCH_NORM"
-	"soundlevel"			"SNDLVL_155dB"
-	"wave"				")GDC/Bofizzle.wav"
-}
-"120mm.Single"
-{
-	"channel"				"CHAN_WEAPON"
-	"volume"				"1.0"
-	"pitch"				"PITCH_NORM"
-	"soundlevel"			"SNDLVL_155dB"
-	"wave"				"^GDC/120mm.wav"
-}
-"M101.Single"
-{
-	"channel"				"CHAN_WEAPON"
-	"volume"				"1.0"
-	"pitch"				"PITCH_NORM"
-	"soundlevel"			"SNDLVL_155dB"
-	"wave"				"^GDC/M101.wav"
-}
-"M230.Single"
-{
-	"channel"				"CHAN_WEAPON"
-	"volume"				"1.0"
-	"pitch"				"PITCH_NORM"
-	"soundlevel"			"SNDLVL_155dB"
-	"wave"				")GDC/M230.wav"
-}
-"M197.Single"
-{
-	"channel"				"CHAN_WEAPON"
-	"volume"				"1.0"
-	"pitch"				"PITCH_NORM"
-	"soundlevel"			"SNDLVL_155dB"
-	"wave"				")GDC/M197.wav"
-}
-"2A42.Single"
-{
-	"channel"				"CHAN_WEAPON"
-	"volume"				"1.0"
-	"pitch"				"PITCH_NORM"
-	"soundlevel"			"SNDLVL_155dB"
-	"wave"				")GDC/2A42.wav"
-}
-"GAU12.Single"
-{
-	"channel"				"CHAN_WEAPON"
-	"volume"				"1.0"
-	"pitch"				"PITCH_NORM"
-	"soundlevel"			"SNDLVL_155dB"
-	"wave"				")GDC/GAU12.wav"
-}
-"M134.Single"
-{
-	"channel"				"CHAN_WEAPON"
-	"volume"				"1.0"
-	"pitch"				"PITCH_NORM"
-	"soundlevel"			"SNDLVL_155dB"
-	"wave"				")GDC/M134.wav"
-}
-"M260.Single"
-{
-	"channel"				"CHAN_WEAPON"
-	"volume"				"1.0"
-	"pitch"				"PITCH_NORM"
-	"soundlevel"			"SNDLVL_155dB"
-	"wave"				")GDC/M260.wav"
-}
-"81mm.Single"
-{
-	"channel"				"CHAN_WEAPON"
-	"volume"				"1.0"
-	"pitch"				"PITCH_NORM"
-	"soundlevel"			"SNDLVL_155dB"
-	"wave"				")GDC/81mm.wav"
-}
-"MK19.Single"
-{
-	"channel"				"CHAN_WEAPON"
-	"volume"				"1.0"
-	"pitch"				"PITCH_NORM"
-	"soundlevel"			"SNDLVL_155dB"
-	"wave"				")GDC/MK19.wav"
-}
-"RAM.Single"
-{
-	"channel"				"CHAN_WEAPON"
-	"volume"				"1.0"
-	"pitch"				"PITCH_NORM"
-	"soundlevel"			"SNDLVL_155dB"
-	"wave"				")GDC/RAM.wav"
-}
-"GML.Single"
-{
-	"channel"				"CHAN_WEAPON"
-	"volume"				"1.0"
-	"pitch"				"PITCH_NORM"
-	"soundlevel"			"SNDLVL_155dB"
-	"wave"				")GDC/GML.wav"
-}
-"GAU19.Single"
-{
-	"channel"				"CHAN_WEAPON"
-	"volume"				"1.0"
-	"pitch"				"PITCH_NORM"
-	"soundlevel"			"SNDLVL_155dB"
-	"wave"				")GDC/GAU19.wav"
-}
-"KPV.Single"
-{
-	"channel"				"CHAN_WEAPON"
-	"volume"				"1.0"
-	"pitch"				"PITCH_NORM"
-	"soundlevel"			"SNDLVL_155dB"
-	"wave"				")GDC/KPV.wav"
-}
-"GSh23.Single"
-{
-	"channel"				"CHAN_WEAPON"
-	"volume"				"1.0"
-	"pitch"				"PITCH_NORM"
-	"soundlevel"			"SNDLVL_155dB"
-	"wave"				")GDC/GShAutoCannon.wav"
-}
-"GSh30.Single"
-{
-	"channel"				"CHAN_WEAPON"
-	"volume"				"1.0"
-	"pitch"				"85"
-	"soundlevel"			"SNDLVL_155dB"
-	"wave"				")GDC/GShAutoCannon.wav"
-}
-"PKM.Single"
-{
-	"channel"				"CHAN_WEAPON"
-	"volume"				"1.0"
-	"pitch"				"100"
-	"soundlevel"			"SNDLVL_155dB"
-	"wave"				")GDC/PKM.wav"
-}
-"M249.Single"
-{
-	"channel"				"CHAN_WEAPON"
-	"volume"				"1.0"
+	"channel"			"CHAN_WEAPON"
+	"volume"			"1.0"
 	"pitch"				"105"
 	"soundlevel"			"SNDLVL_155dB"
-	"wave"				")GDC/30cal.wav"
+	"wave"				"^GDC/M240Split.wav"
 }
-"Flare.Single"
+"M240.Emit"
 {
-	"channel"				"CHAN_WEAPON"
-	"volume"				"1.0"
+	"channel"			"CHAN_WEAPON"
+	"volume"			"1.0"
 	"pitch"				"PITCH_NORM"
-	"soundlevel"			"SNDLVL_100dB"
-	"wave"				")GDC/Flare.wav"
+	"soundlevel"			"SNDLVL_90dB"
+	"wave"				")GDC/M240Emit.wav"
 }
+"M240.Split"
+{
+	"channel"			"CHAN_WEAPON"
+	"volume"			"1.0"
+	"pitch"				"PITCH_NORM"
+	"soundlevel"			"SNDLVL_155dB"
+	"wave"				"^GDC/M240Split.wav"
+}
+"PKM.Split"
+{
+	"channel"			"CHAN_WEAPON"
+	"volume"			"1.0"
+	"pitch"				"100"
+	"soundlevel"			"SNDLVL_155dB"
+	"wave"				"^GDC/PKMSplit.wav"
+}
+"PKM.Emit"
+{
+	"channel"			"CHAN_WEAPON"
+	"volume"			"1.0"
+	"pitch"				"100"
+	"soundlevel"			"SNDLVL_90dB"
+	"wave"				")GDC/PKMEmit.wav"
+}
+"M134.Split"
+{
+	"channel"			"CHAN_WEAPON"
+	"volume"			"1.0"
+	"pitch"				"PITCH_NORM"
+	"soundlevel"			"SNDLVL_155dB"
+	"wave"				"^GDC/M134Split.wav"
+}
+"M134.Emit"
+{
+	"channel"			"CHAN_WEAPON"
+	"volume"			"1.0"
+	"pitch"				"PITCH_NORM"
+	"soundlevel"			"SNDLVL_90dB"
+	"wave"				")GDC/M134Emit.wav"
+}
+"M2HB.Emit"
+{
+	"channel"			"CHAN_WEAPON"
+	"volume"			"1.0"
+	"pitch"				"PITCH_NORM"
+	"soundlevel"			"SNDLVL_90dB"
+	"wave"				")GDC/M2HBEmit.wav"
+}
+"M2HB.Split"
+{
+	"channel"			"CHAN_WEAPON"
+	"volume"			"1.0"
+	"pitch"				"PITCH_NORM"
+	"soundlevel"			"SNDLVL_155dB"
+	"wave"				"^GDC/M2HBSplit.wav"
+}
+"GAU19.Emit"
+{
+	"channel"			"CHAN_WEAPON"
+	"volume"			"1.0"
+	"pitch"				"PITCH_NORM"
+	"soundlevel"			"SNDLVL_90dB"
+	"wave"				")GDC/GAU19Emit.wav"
+}
+"GAU19.Split"
+{
+	"channel"			"CHAN_WEAPON"
+	"volume"			"1.0"
+	"pitch"				"PITCH_NORM"
+	"soundlevel"			"SNDLVL_155dB"
+	"wave"				"^GDC/GAU19Split.wav"
+}
+"KPV.Emit"
+{
+	"channel"			"CHAN_WEAPON"
+	"volume"			"1.0"
+	"pitch"				"PITCH_NORM"
+	"soundlevel"			"SNDLVL_90dB"
+	"wave"				")GDC/KPVEmit.wav"
+}
+"KPV.Split"
+{
+	"channel"			"CHAN_WEAPON"
+	"volume"			"1.0"
+	"pitch"				"PITCH_NORM"
+	"soundlevel"			"SNDLVL_155dB"
+	"wave"				"^GDC/KPVSplit.wav"
+}
+"M197.Emit"
+{
+	"channel"			"CHAN_WEAPON"
+	"volume"			"1.0"
+	"pitch"				"PITCH_NORM"
+	"soundlevel"			"SNDLVL_90dB"
+	"wave"				")GDC/M197Emit.wav"
+}
+"M197.Split"
+{
+	"channel"			"CHAN_WEAPON"
+	"volume"			"1.0"
+	"pitch"				"PITCH_NORM"
+	"soundlevel"			"SNDLVL_155dB"
+	"wave"				"^GDC/M197Split.wav"
+}
+"M242.Emit"
+{
+	"channel"			"CHAN_WEAPON"
+	"volume"			"1.0"
+	"pitch"				"PITCH_NORM"
+	"soundlevel"			"SNDLVL_90dB"
+	"wave"				")GDC/M242Emit.wav"
+}
+"M242.Split"
+{
+	"channel"			"CHAN_WEAPON"
+	"volume"			"1.0"
+	"pitch"				"PITCH_NORM"
+	"soundlevel"			"SNDLVL_155dB"
+	"wave"				"^GDC/M242Split.wav"
+}
+"GAU12.Emit"
+{
+	"channel"			"CHAN_WEAPON"
+	"volume"			"1.0"
+	"pitch"				"PITCH_NORM"
+	"soundlevel"			"SNDLVL_90dB"
+	"wave"				")GDC/GAU12Emit.wav"
+}
+"GAU12.Split"
+{
+	"channel"			"CHAN_WEAPON"
+	"volume"			"1.0"
+	"pitch"				"PITCH_NORM"
+	"soundlevel"			"SNDLVL_155dB"
+	"wave"				"^GDC/GAU12Split.wav"
+}
+"M230.Emit"
+{
+	"channel"			"CHAN_WEAPON"
+	"volume"			"1.0"
+	"pitch"				"PITCH_NORM"
+	"soundlevel"			"SNDLVL_90dB"
+	"wave"				")GDC/M230Emit.wav"
+}
+"M230.Split"
+{
+	"channel"			"CHAN_WEAPON"
+	"volume"			"1.0"
+	"pitch"				"PITCH_NORM"
+	"soundlevel"			"SNDLVL_155dB"
+	"wave"				"^GDC/M230Split.wav"
+}
+"2A42.Emit"
+{
+	"channel"			"CHAN_WEAPON"
+	"volume"			"1.0"
+	"pitch"				"PITCH_NORM"
+	"soundlevel"			"SNDLVL_90dB"
+	"wave"				")GDC/2A42Emit.wav"
+}
+"2A42.Split"
+{
+	"channel"			"CHAN_WEAPON"
+	"volume"			"1.0"
+	"pitch"				"PITCH_NORM"
+	"soundlevel"			"SNDLVL_155dB"
+	"wave"				"^GDC/2A42Split.wav"
+}
+"MK19.Emit"
+{
+	"channel"			"CHAN_WEAPON"
+	"volume"			"1.0"
+	"pitch"				"PITCH_NORM"
+	"soundlevel"			"SNDLVL_90dB"
+	"wave"				")GDC/MK19Emit.wav"
+}
+"MK19.Split"
+{
+	"channel"			"CHAN_WEAPON"
+	"volume"			"1.0"
+	"pitch"				"PITCH_NORM"
+	"soundlevel"			"SNDLVL_155dB"
+	"wave"				"^GDC/MK19Split.wav"
+}
+"L60.Emit"
+{
+	"channel"			"CHAN_WEAPON"
+	"volume"			"1.0"
+	"pitch"				"PITCH_NORM"
+	"soundlevel"			"SNDLVL_90dB"
+	"wave"				")GDC/L60Emit.wav"
+}
+"L60.Split"
+{
+	"channel"			"CHAN_WEAPON"
+	"volume"			"1.0"
+	"pitch"				"PITCH_NORM"
+	"soundlevel"			"SNDLVL_155dB"
+	"wave"				"^GDC/L60Split.wav"
+}
+"RocketPod.Emit"
+{
+	"channel"			"CHAN_WEAPON"
+	"volume"			"1.0"
+	"pitch"				"PITCH_NORM"
+	"soundlevel"			"SNDLVL_90dB"
+	"wave"				")GDC/RocketPodEmit.wav"
+}
+"RocketPod.Split"
+{
+	"channel"			"CHAN_WEAPON"
+	"volume"			"1.0"
+	"pitch"				"PITCH_NORM"
+	"soundlevel"			"SNDLVL_155dB"
+	"wave"				"^GDC/RocketPodSplit.wav"
+}
+"Mortar.Emit"
+{
+	"channel"			"CHAN_WEAPON"
+	"volume"			"1.0"
+	"pitch"				"PITCH_NORM"
+	"soundlevel"			"SNDLVL_90dB"
+	"wave"				")GDC/MortarEmit.wav"
+}
+"Mortar.Split"
+{
+	"channel"			"CHAN_CANNON"
+	"volume"			"1.0"
+	"pitch"				"PITCH_NORM"
+	"soundlevel"			"SNDLVL_155dB"
+	"wave"				"^GDC/MortarSplit.wav"
+}
+"RAM.Emit"
+{
+	"channel"			"CHAN_WEAPON"
+	"volume"			"1.0"
+	"pitch"				"PITCH_NORM"
+	"soundlevel"			"SNDLVL_90dB"
+	"wave"				")GDC/RAMEmit.wav"
+}
+"RAM.Split"
+{
+	"channel"			"CHAN_ROCKET"
+	"volume"			"1.0"
+	"pitch"				"PITCH_NORM"
+	"soundlevel"			"SNDLVL_155dB"
+	"wave"				"^GDC/RAMSplit.wav"
+}
+"GML.Emit"
+{
+	"channel"			"CHAN_WEAPON"
+	"volume"			"1.0"
+	"pitch"				"PITCH_NORM"
+	"soundlevel"			"SNDLVL_90dB"
+	"wave"				")GDC/GMLEmit.wav"
+}
+"GML.Split"
+{
+	"channel"			"CHAN_ROCKET"
+	"volume"			"1.0"
+	"pitch"				"PITCH_NORM"
+	"soundlevel"			"SNDLVL_155dB"
+	"wave"				"^GDC/GMLSplit.wav"
+}
+"M101.Emit"
+{
+	"channel"			"CHAN_WEAPON"
+	"volume"			"1.0"
+	"pitch"				"PITCH_NORM"
+	"soundlevel"			"SNDLVL_90dB"
+	"wave"				")GDC/M101Emit.wav"
+}
+"M101.Split"
+{
+	"channel"			"CHAN_CANNON"
+	"volume"			"1.0"
+	"pitch"				"PITCH_NORM"
+	"soundlevel"			"SNDLVL_155dB"
+	"wave"				"^GDC/M101Split.wav"
+}
+"M256.Emit"
+{
+	"channel"			"CHAN_WEAPON"
+	"volume"			"1.0"
+	"pitch"				"PITCH_NORM"
+	"soundlevel"			"SNDLVL_90dB"
+	"wave"				")GDC/M256Emit.wav"
+}
+"M256.Split"
+{
+	"channel"			"CHAN_CANNON"
+	"volume"			"1.0"
+	"pitch"				"PITCH_NORM"
+	"soundlevel"			"SNDLVL_155dB"
+	"wave"				"^GDC/M256Split.wav"
+}
+"GSH23.Emit"
+{
+	"channel"			"CHAN_WEAPON"
+	"volume"			"1.0"
+	"pitch"				"110"
+	"soundlevel"			"SNDLVL_90dB"
+	"wave"				")GDC/GSHEmit.wav"
+}
+"GSH23.Split"
+{
+	"channel"			"CHAN_WEAPON"
+	"volume"			"1.0"
+	"pitch"				"110"
+	"soundlevel"			"SNDLVL_155dB"
+	"wave"				"^GDC/GSHSplit.wav"
+}
+"GSH30.Emit"
+{
+	"channel"			"CHAN_WEAPON"
+	"volume"			"1.0"
+	"pitch"				"PITCH_NORM"
+	"soundlevel"			"SNDLVL_90dB"
+	"wave"				")GDC/GSHEmit.wav"
+}
+"GSH30.Split"
+{
+	"channel"			"CHAN_WEAPON"
+	"volume"			"1.0"
+	"pitch"				"PITCH_NORM"
+	"soundlevel"			"SNDLVL_155dB"
+	"wave"				"^GDC/GSHSplit.wav"
+}
+
+
+"Flare.Emit"
+{
+	"channel"			"CHAN_STATIC"
+	"volume"			"1.0"
+	"pitch"				"PITCH_NORM"
+	"soundlevel"			"SNDLVL_90dB"
+	"wave"				")GDC/FlareEmit.wav"
+}
+"Flare.Split"
+{
+	"channel"			"CHAN_STATIC"
+	"volume"			"1.0"
+	"pitch"				"PITCH_NORM"
+	"soundlevel"			"SNDLVL_130dB"
+	"wave"				"^GDC/FlareSplit.wav"
+}
+
 "Explosion.Boom"
 {
-	"channel"				"CHAN_EXPLOSION"
-	"volume"				"1.0"
+	"channel"			"CHAN_EXPLOSION"
+	"volume"			"1.0"
 	"pitch"				"90, 120"
 	"soundlevel"			"SNDLVL_155dB"
-	"wave"				"^Impacts/Explosion2.wav"
+	"wave"				"^GDC/ExplosionBoom.wav"
 }
-"Bullet.Impact"
+
+"ThunderousExplosion.Boom"
 {
-	"channel"				"CHAN_STATIC"
-	"volume"				"1.0"
-	"CompatibilityAttenuation"		"ATTN_NORM"
-	"pitch"				"90, 110"
-	"soundlevel"			"SNDLVL_90dB"
-	"rndwave"
-	{
-	"wave"				"Impacts/Impact_01.wav"
-	"wave"				"Impacts/Impact_02.wav"
-	"wave"				"Impacts/Impact_03.wav"
-	"wave"				"Impacts/Impact_04.wav"
-	"wave"				"Impacts/Impact_05.wav"
-	}
+	"channel"			"CHAN_EXPLOSION"
+	"volume"			"1.0"
+	"pitch"				"PITCH_NORM"
+	"soundlevel"			"SNDLVL_155dB"
+	"wave"				"@GDC/200KGExplosion.wav"
+}
+"ThunderousExplosion2.Boom"
+{
+	"channel"			"CHAN_EXPLOSION"
+	"volume"			"1.0"
+	"pitch"				"PITCH_NORM"
+	"soundlevel"			"SNDLVL_155dB"
+	"wave"				"@GDC/200KGExplosion.wav"
 }

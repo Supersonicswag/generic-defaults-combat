@@ -21,6 +21,8 @@ function ENT:Initialize()
 	self.reloadtime = 0
 	self.infireFrag = false
 	self.heat = 0
+	self.Velo = Vector(0,0,0)
+	self.Pos2 = self.Entity:GetPos()
 	self.Entity:SetModel( "models/props_pipes/pipecluster08d_extender64.mdl" ) 	
 	self.Entity:PhysicsInit( SOLID_VPHYSICS )      -- Make us work with physics,  	
 	self.Entity:SetMoveType( MOVETYPE_VPHYSICS )   --after all, gmod is a physics  	
@@ -49,25 +51,45 @@ end
 
 	function ENT:firefrag()
 		local ent = ents.Create( "gdca_122mms13frag" )
-		ent:SetPos( self.Entity:GetPos() +  self.Entity:GetUp() * 350)
+		ent:SetPos( self.Entity:GetPos() +  self.Entity:GetUp() * 300)
 		ent:SetAngles( self.Entity:GetAngles() )
 		ent:Spawn()
-		ent:Activate()		
-		self.Entity:EmitSound( "M260.single" )
+		ent:Activate()	
+	
+		local effectdata = EffectData()
+		effectdata:SetOrigin(self.Entity:GetPos() +  self.Entity:GetUp() * 30)
+		effectdata:SetNormal(self:GetUp())
+		effectdata:SetScale(1.5)
+		effectdata:SetRadius(1)
+		effectdata:SetMagnitude(self.Velo:Length())
+		effectdata:SetAngle(self.Velo:Angle())
+		util.Effect( "gdca_rocketlaunch", effectdata )
+		self.Entity:EmitSound( "RocketPod.Emit" )
 		self.ammos = self.ammos-1
 	end
 
 	function ENT:fireillum()
 		local ent = ents.Create( "gdca_122mm_illuminator" )
-		ent:SetPos( self.Entity:GetPos() +  self.Entity:GetUp() * 350)
+		ent:SetPos( self.Entity:GetPos() +  self.Entity:GetUp() * 300)
 		ent:SetAngles( self.Entity:GetAngles() )
 		ent:Spawn()
-		ent:Activate()		
-		self.Entity:EmitSound( "M260.single" )
+		ent:Activate()	
+	
+		local effectdata = EffectData()
+		effectdata:SetOrigin(self.Entity:GetPos() +  self.Entity:GetUp() * 30)
+		effectdata:SetNormal(self:GetUp())
+		effectdata:SetScale(1.5)
+		effectdata:SetRadius(1)
+		effectdata:SetMagnitude(self.Velo:Length())
+		effectdata:SetAngle(self.Velo:Angle())
+		util.Effect( "gdca_rocketlaunch", effectdata )
+		self.Entity:EmitSound( "RocketPod.Emit" )
 		self.ammos = self.ammos-1
 	end
 
 function ENT:Think()
+	self.Velo = (self.Entity:GetPos()-self.Pos2)*10
+	self.Pos2 = self.Entity:GetPos()
 
 	if self.ammos <= 0 then
 	self.reloadtime = CurTime()+10

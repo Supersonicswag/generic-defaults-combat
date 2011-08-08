@@ -6,7 +6,10 @@
 
 
 This is a temporary fix for the lack of scripted sounds until Garry decides to fix what he broke. 
-This is valid as of July 13 2011.
+This is valid as of August 7th 2011.
 This is 5 steps so get it right.
+
+
+
 
 This must be done every time new sounds are added to GDC, for both the server and the client. Not my fault!

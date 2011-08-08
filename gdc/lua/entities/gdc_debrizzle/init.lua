@@ -24,7 +24,7 @@ function ENT:Initialize()
 	if phys:IsValid() then  		
 	phys:Wake()
 	phys:EnableGravity(true)
-	phys:ApplyForceCenter(VectorRand():GetNormalized() * math.random(200,400)*mass)
+	phys:ApplyForceCenter(VectorRand():GetNormalized() * math.random(200,400))
 	end 
  
 end   
@@ -38,10 +38,10 @@ function ENT:Think()
 	local effectdata = EffectData()
 	effectdata:SetOrigin(self.Entity:GetPos())
 	effectdata:SetStart(self.Entity:GetPos())
-	effectdata:SetScale( math.Clamp(self.Entity:BoundingRadius()/70,0.8,3) )
+	effectdata:SetScale( math.Clamp(self.Entity:BoundingRadius()/50,0.8,3) )
 	util.Effect( "gdca_debrismoke", effectdata )				
 	end
-	local yarg = math.Clamp(100/(self.Entity:GetPhysicsObject():GetVelocity():Length()),0.04,0.2)
+	local yarg = math.Clamp(100/(self.Entity:GetPhysicsObject():GetVelocity():Length()),0.04,0.3)
 	self.Entity:NextThink( CurTime() + yarg)
 										//models/props_wasteland/metal_tram001a
 	return true

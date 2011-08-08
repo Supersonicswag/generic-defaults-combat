@@ -76,7 +76,7 @@ end
 					effectdata:SetScale(3)			// Size of cloud
 					effectdata:SetRadius(3)			// Size of ring
 					effectdata:SetMagnitude(300)			// Size of flash
-					util.Effect( "gdca_airburst", effectdata )
+					util.Effect( "gdca_thermobaric", effectdata )
 					util.ScreenShake(tr.HitPos, 10, 5, 1, 3000 )
 					util.Decal("Scorch", tr.HitPos + tr.HitNormal, tr.HitPos - tr.HitNormal)
 			if GDCENGINE then	
@@ -86,7 +86,7 @@ end
 					end
 	
 	self.Entity:SetPos(self.Entity:GetPos() + self.flightvector)
-	self.flightvector =  self.flightvector - self.flightvector/80 + self.Entity:GetUp()*5 + Vector(math.Rand(-0.3,0.3), math.Rand(-0.3,0.3),math.Rand(-0.2,0.2)) + Vector(0,0,-0.10)
+	self.flightvector =  self.flightvector - self.flightvector/80 + self.Entity:GetUp()*5 + Vector(math.Rand(-0.3,0.3), math.Rand(-0.3,0.3),math.Rand(-0.2,0.2)) + Vector(0,0,-0.111)
 	self.Entity:SetAngles(self.flightvector:Angle() + Angle(90,0,0))
 	self.Entity:NextThink( CurTime() )
 	return true

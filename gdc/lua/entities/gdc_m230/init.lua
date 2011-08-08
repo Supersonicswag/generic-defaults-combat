@@ -15,6 +15,8 @@ function ENT:Initialize()
 	self.reloadtime = 0
 	self.infire = false
 	self.heat = 0
+	self.Velo = Vector(0,0,0)
+	self.Pos2 = self.Entity:GetPos()
 	self.Entity:SetModel( "models/props_lab/pipesystem01a.mdl" ) 	
 	self.Entity:PhysicsInit( SOLID_VPHYSICS )      -- Make us work with physics,  	
 	self.Entity:SetMoveType( MOVETYPE_VPHYSICS )   --after all, gmod is a physics  	
@@ -60,24 +62,26 @@ function ENT:firerac5()
 		
 		local phys = self.Entity:GetPhysicsObject()  	
 		if (phys:IsValid()) then  		
-			phys:ApplyForceCenter( self.Entity:GetUp() * -30000 ) 
+		phys:ApplyForceCenter( self.Entity:GetUp() * -30000 ) 
 		end 
 		
-		self.Entity:EmitSound( "M230.single" )
-
-		
 		local effectdata = EffectData()
-		effectdata:SetOrigin(self.Entity:GetPos() +  self.Entity:GetUp() * 40)
+		effectdata:SetOrigin(self.Entity:GetPos() +  self.Entity:GetUp() * 30)
 		effectdata:SetNormal(self:GetUp())
-		effectdata:SetScale(0.6)
-		util.Effect( "gdca_muzzle", effectdata )
+		effectdata:SetScale(0.7)
+		effectdata:SetRadius(4)
+		effectdata:SetMagnitude(self.Velo:Length())
+		effectdata:SetAngle(self.Velo:Angle())
+		util.Effect( "gdca_autocannonmuzzle", effectdata )
+		self.Entity:EmitSound( "M230.Emit" )
 		util.ScreenShake(self.Entity:GetPos(), 25, 5, 0.2, 350 )
 	
 
 end
 
 function ENT:Think()
-
+	self.Velo = (self.Entity:GetPos()-self.Pos2)*10
+	self.Pos2 = self.Entity:GetPos()
 
 			if self.heat>0 then
 			Wire_TriggerOutput(self.Entity, "Heat", self.heat)

@@ -9,7 +9,6 @@ function ENT:Initialize()
 
 
 	self.heat = 0
-	util.PrecacheSound("GAU19.single")
 	self.ammos = 1
 	self.match = 1
 	self.clipsize = 1
@@ -21,6 +20,8 @@ function ENT:Initialize()
 	self.infire2 = false
 	self.Tracer  = 0
         self.TracerTimer = 1
+	self.Velo = Vector(0,0,0)
+	self.Pos2 = self.Entity:GetPos()
 	self.Entity:SetModel( "models/props_lab/pipesystem02b.mdl" ) 	
 	self.Entity:PhysicsInit( SOLID_VPHYSICS )      -- Make us work with physics,  	
 	self.Entity:SetMoveType( MOVETYPE_VPHYSICS )   --after all, gmod is a physics  	
@@ -83,9 +84,12 @@ function ENT:fire()
 		effectdata:SetOrigin(self.Entity:GetPos() +  self.Entity:GetUp() * 30)
 		effectdata:SetNormal(self:GetUp())
 		effectdata:SetScale(0.4)
-		util.Effect( "gdca_muzzle", effectdata )
+		effectdata:SetRadius(6)
+		effectdata:SetMagnitude(self.Velo:Length())
+		effectdata:SetAngle(self.Velo:Angle())
+		util.Effect( "gdca_lowcalmuzzle", effectdata )
 		util.ScreenShake(self.Entity:GetPos(), 7, 5, 0.2, 200 )
-		self.Entity:EmitSound( "GAU19.single" )
+		self.Entity:EmitSound( "GAU19.Emit" )
 		self.ammos = self.ammos-1
 	
 
@@ -109,15 +113,19 @@ function ENT:firetracer()
 		effectdata:SetOrigin(self.Entity:GetPos() +  self.Entity:GetUp() * 30)
 		effectdata:SetNormal(self:GetUp())
 		effectdata:SetScale(0.4)
-		util.Effect( "gdca_muzzle", effectdata )
+		effectdata:SetRadius(6)
+		effectdata:SetMagnitude(self.Velo:Length())
+		effectdata:SetAngle(self.Velo:Angle())
+		util.Effect( "gdca_lowcalmuzzle", effectdata )
 		util.ScreenShake(self.Entity:GetPos(), 7, 5, 0.2, 200 )
-		self.Entity:EmitSound( "GAU19.single" )
+		self.Entity:EmitSound( "GAU19.Emit" )
 	
 
 end
 
 function ENT:Think()
-
+	self.Velo = (self.Entity:GetPos()-self.Pos2)*16.7
+	self.Pos2 = self.Entity:GetPos()
 
 			if self.heat>0 then
 			Wire_TriggerOutput(self.Entity, "Heat", self.heat)

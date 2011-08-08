@@ -178,7 +178,7 @@ end
  function EFFECT:Metal()
 	self.Emitter = ParticleEmitter( self.Pos )
 		
-	for i=0, 10*self.Scale do
+	for i=0, 5*self.Scale do
 		local Smoke = self.Emitter:Add( "particle/smokesprites_000"..math.random(1,9), self.Pos )
 		if (Smoke) then
 		Smoke:SetVelocity( self.DirVec * math.random( 20,70*self.Scale) + VectorRand():GetNormalized()*150*self.Scale )
@@ -251,7 +251,7 @@ end
 		end
 	end
 
-	for i=0, 10*self.Scale do
+	for i=0, 5*self.Scale do
 		local Smoke = self.Emitter:Add( "particle/smokesprites_000"..math.random(1,9), self.Pos )
 		if (Smoke) then
 		Smoke:SetVelocity( self.DirVec * math.random( 20,70*self.Scale) + VectorRand():GetNormalized()*150*self.Scale )

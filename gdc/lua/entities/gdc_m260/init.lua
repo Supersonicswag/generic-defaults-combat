@@ -14,6 +14,8 @@ function ENT:Initialize()
 	self.loading = false
 	self.reloadtime = 0
 	self.infire = false
+	self.Velo = Vector(0,0,0)
+	self.Pos2 = self.Entity:GetPos()
 	self.Entity:SetModel( "models/props_junk/plasticbucket001a.mdl" ) 	
 	self.Entity:PhysicsInit( SOLID_VPHYSICS )      -- Make us work with physics,  	
 	self.Entity:SetMoveType( MOVETYPE_VPHYSICS )   --after all, gmod is a physics  	
@@ -51,12 +53,20 @@ end
 function ENT:firehe()
 
 		local ent = ents.Create( "gdca_70mmhydrahe" )
-		ent:SetPos( self.Entity:GetPos() +  self.Entity:GetUp() * 250)
+		ent:SetPos( self.Entity:GetPos() +  self.Entity:GetUp() * 300 + self.Velo)
 		ent:SetAngles( self.Entity:GetAngles() )
 		ent:Spawn()
 		ent:Activate()
-		
-		self.Entity:EmitSound( "M260.single" )
+
+		local effectdata = EffectData()
+		effectdata:SetOrigin(self.Entity:GetPos() +  self.Entity:GetUp() * 30)
+		effectdata:SetNormal(self:GetUp())
+		effectdata:SetScale(1)
+		effectdata:SetRadius(1)
+		effectdata:SetMagnitude(self.Velo:Length())
+		effectdata:SetAngle(self.Velo:Angle())
+		util.Effect( "gdca_rocketlaunch", effectdata )
+		self.Entity:EmitSound( "RocketPod.Emit" )
 		self.ammos = self.ammos-1
 	
 
@@ -65,18 +75,28 @@ end
 function ENT:firewp()
 
 		local ent = ents.Create( "gdca_70mmhydrawp" )
-		ent:SetPos( self.Entity:GetPos() +  self.Entity:GetUp() * 300)
+		ent:SetPos( self.Entity:GetPos() +  self.Entity:GetUp() * 300 + self.Velo)
 		ent:SetAngles( self.Entity:GetAngles() )
 		ent:Spawn()
 		ent:Activate()
 		
-		self.Entity:EmitSound( "M260.single" )
+		local effectdata = EffectData()
+		effectdata:SetOrigin(self.Entity:GetPos() +  self.Entity:GetUp() * 30)
+		effectdata:SetNormal(self:GetUp())
+		effectdata:SetScale(1)
+		effectdata:SetRadius(1)
+		effectdata:SetMagnitude(self.Velo:Length())
+		effectdata:SetAngle(self.Velo:Angle())
+		util.Effect( "gdca_rocketlaunch", effectdata )
+		self.Entity:EmitSound( "RocketPod.Emit" )
 		self.ammos = self.ammos-1
 	
 
 end
 
 function ENT:Think()
+	self.Velo = (self.Entity:GetPos()-self.Pos2)*7
+	self.Pos2 = self.Entity:GetPos()
 
 Wire_TriggerOutput(self.Entity, "shots", self.ammos)
 

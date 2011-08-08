@@ -67,7 +67,7 @@ function ENT:Think()
 
 
 	self.Entity:SetPos(self.Entity:GetPos() + self.flightvector)
-	self.flightvector = self.flightvector + Vector(math.Rand(-0.3,0.3), math.Rand(-0.3,0.3),math.Rand(-0.3,0.3)) + Vector(0,0,-0.2)
+	self.flightvector = self.flightvector + Vector(math.Rand(-0.3,0.3), math.Rand(-0.3,0.3),math.Rand(-0.3,0.3)) + Vector(0,0,-0.111)
 	self.Entity:SetAngles(self.flightvector:Angle() + Angle(90,0,0))
 	self.Entity:NextThink( CurTime() )
 	return true

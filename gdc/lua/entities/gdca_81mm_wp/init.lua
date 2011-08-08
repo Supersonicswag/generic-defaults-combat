@@ -47,19 +47,20 @@ end
 				for k, v in pairs ( ents.FindInSphere( self.Entity:GetPos(), 600 ) ) do		// Find anything within ~50 feet
 				if v:IsPlayer() || v:IsNPC() then					// If its alive then
 				local trace = {}						// Make sure there's not a wall in between
-				trace.start = self.Entity:GetPos()
+				trace.start = tr.HitPos+tr.HitNormal*30
 				trace.endpos = v:GetPos() + Vector(0,0,30)			// Trace to the torso
 				trace.filter = self.Entity
-				local tr = util.TraceLine( trace )				// If the trace hits a living thing then
-				if tr.Entity:IsPlayer() || tr.Entity:IsNPC() then v:Ignite( 5, 100 ) end end	// Fry it for 5 seconds
+				local wp = util.TraceLine( trace )				// If the trace hits a living thing then
+				if wp.Entity:IsPlayer() || wp.Entity:IsNPC() then v:Ignite( 5, 100 ) end end	// Fry it for 5 seconds
 				end		
 
 				util.BlastDamage(self.Entity, self.Entity, tr.HitPos, 600, 30)
 				local effectdata = EffectData()
 				effectdata:SetOrigin(tr.HitPos)
 				effectdata:SetNormal(tr.HitNormal)
-				effectdata:SetScale(4)
-				effectdata:SetRadius(4.3)
+				effectdata:SetScale(3.5)
+				effectdata:SetRadius(4.0)
+				effectdata:SetMagnitude(20)
 				util.Effect( "gdca_whitephosphorus", effectdata )
 				util.ScreenShake(tr.HitPos, 10, 5, 1, 3000 )
 				util.Decal("Scorch", tr.HitPos + tr.HitNormal, tr.HitPos - tr.HitNormal)

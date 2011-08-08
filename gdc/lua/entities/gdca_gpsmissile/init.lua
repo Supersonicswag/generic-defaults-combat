@@ -8,7 +8,7 @@ util.PrecacheSound( "weapons/rpg/rocket1.wav" )
 
 function ENT:Initialize()   
 
-self.Target = self.Entity:GetVar("Target",Vector)
+self.Target = self.Entity:GetVar("Target")
 self.Accelerator 	= 20
 self.AccelRate		= 1
 self.AccelMax		= 170

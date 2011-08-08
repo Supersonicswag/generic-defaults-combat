@@ -59,9 +59,9 @@ function ENT:Think()
 					effectdata:SetNormal(tr.HitNormal)			// Direction of Impact
 					effectdata:SetStart(self.flightvector:GetNormalized())	// Direction of Round
 					effectdata:SetEntity(self.Entity)			// Who done it?
-					effectdata:SetScale(3)				// Size of explosion
+					effectdata:SetScale(3.5)				// Size of explosion
 					effectdata:SetRadius(tr.MatType)			// Texture of Impact
-					effectdata:SetMagnitude(16)				// Length of explosion trails	
+					effectdata:SetMagnitude(18)				// Length of explosion trails	
 					util.Effect( "gdca_cinematicboom", effectdata )
 					util.ScreenShake(tr.HitPos, 20, 5, 1, 1200 )
 					util.Decal("Scorch", tr.HitPos + tr.HitNormal, tr.HitPos - tr.HitNormal)
@@ -75,7 +75,7 @@ function ENT:Think()
 
 
 	self.Entity:SetPos(self.Entity:GetPos() + self.flightvector)
-	self.flightvector = self.flightvector + Vector(math.Rand(-0.1,0.1), math.Rand(-0.1,0.1),math.Rand(-0.1,0.1)) + Vector(0,0,-0.15)
+	self.flightvector = self.flightvector + Vector(math.Rand(-0.1,0.1), math.Rand(-0.1,0.1),math.Rand(-0.1,0.1)) + Vector(0,0,-0.111)
 	self.Entity:SetAngles(self.flightvector:Angle() + Angle(90,0,0))
 	self.Entity:NextThink( CurTime() )
 	return true

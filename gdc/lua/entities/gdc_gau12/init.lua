@@ -7,12 +7,16 @@ include('shared.lua')
 
 function ENT:Initialize()   
 
-	self.armed = false
 	self.loading = false
 	self.reloadtime = 0
-	self.infire = false
-	self.infire2 = false
+	self.FireAPI 	= false
+	self.FireAPIT 	= false
+	self.FireHEI 	= false
+	self.FireHEIT 	= false
+	self.Airburst 	= 0
 	self.heat = 0
+	self.Velo = Vector(0,0,0)
+	self.Pos2 = self.Entity:GetPos()
 	self.Entity:SetModel( "models/props_lab/pipesystem01b.mdl" ) 	
 	self.Entity:PhysicsInit( SOLID_VPHYSICS )      -- Make us work with physics,  	
 	self.Entity:SetMoveType( MOVETYPE_VPHYSICS )   --after all, gmod is a physics  	
@@ -26,7 +30,7 @@ function ENT:Initialize()
 		phys:Wake() 
 	end 
  
-	self.Inputs = Wire_CreateInputs( self.Entity, { "Fire API", "Fire HEI" } )
+	self.Inputs = Wire_CreateInputs( self.Entity, { "Fire API", "Fire APIT", "Fire HEI", "Fire HEIT", "Airburst Time"} )
 	self.Outputs = Wire_CreateOutputs( self.Entity, { "Can Fire", "Heat"})
 end   
 
@@ -42,7 +46,6 @@ function ENT:SpawnFunction( ply, tr)
 end
 
 function ENT:fireapi()
-
 		local ent = ents.Create( "gdca_25x137_api" )
 		ent:SetPos( self.Entity:GetPos() +  self.Entity:GetUp() * 200)
 		ent:SetAngles( self.Entity:GetAngles() )
@@ -56,18 +59,19 @@ function ENT:fireapi()
 		end 
 		
 		local effectdata = EffectData()
-		effectdata:SetOrigin(self.Entity:GetPos() +  self.Entity:GetUp() * 20)
+		effectdata:SetOrigin(self.Entity:GetPos() +  self.Entity:GetUp() * 40)
 		effectdata:SetNormal(self:GetUp())
 		effectdata:SetScale(0.6)
-		util.Effect( "gdca_muzzle", effectdata )
+		effectdata:SetRadius(1)
+		effectdata:SetMagnitude(self.Velo:Length())
+		effectdata:SetAngle(self.Velo:Angle())
+		util.Effect( "gdca_highrpmmuzzle", effectdata )
 		util.ScreenShake(self.Entity:GetPos(), 20, 5, 0.1, 400 )
-		self.Entity:EmitSound( "GAU12.single" )
-
+		self.Entity:EmitSound( "GAU12.Emit" )
 end
 
-function ENT:firehei()
-
-		local ent = ents.Create( "gdca_25x137_hei" )
+function ENT:fireapit()
+		local ent = ents.Create( "gdca_25x137_apit" )
 		ent:SetPos( self.Entity:GetPos() +  self.Entity:GetUp() * 200)
 		ent:SetAngles( self.Entity:GetAngles() )
 		ent:Spawn()
@@ -80,17 +84,74 @@ function ENT:firehei()
 		end 
 		
 		local effectdata = EffectData()
-		effectdata:SetOrigin(self.Entity:GetPos() +  self.Entity:GetUp() * 20)
+		effectdata:SetOrigin(self.Entity:GetPos() +  self.Entity:GetUp() * 40)
 		effectdata:SetNormal(self:GetUp())
 		effectdata:SetScale(0.6)
-		util.Effect( "gdca_muzzle", effectdata )
+		effectdata:SetRadius(1)
+		effectdata:SetMagnitude(self.Velo:Length())
+		effectdata:SetAngle(self.Velo:Angle())
+		util.Effect( "gdca_highrpmmuzzle", effectdata )
 		util.ScreenShake(self.Entity:GetPos(), 20, 5, 0.1, 400 )
-		self.Entity:EmitSound( "GAU12.single" )
+		self.Entity:EmitSound( "GAU12.Emit" )
+end
+
+function ENT:firehei()
+		local ent = ents.Create( "gdca_25x137_hei" )
+		ent:SetPos( self.Entity:GetPos() +  self.Entity:GetUp() * 200)
+		ent:SetAngles( self.Entity:GetAngles() )
+		ent.Gun = self.Entity
+		ent:Spawn()
+		ent:Activate()
+		self.heat = self.heat+5
+
+		local phys = self.Entity:GetPhysicsObject()  	
+		if (phys:IsValid()) then  		
+		phys:ApplyForceCenter( self.Entity:GetUp() * -25000 ) 
+		end 
+		
+		local effectdata = EffectData()
+		effectdata:SetOrigin(self.Entity:GetPos() +  self.Entity:GetUp() * 40)
+		effectdata:SetNormal(self:GetUp())
+		effectdata:SetScale(0.6)
+		effectdata:SetRadius(1)
+		effectdata:SetMagnitude(self.Velo:Length())
+		effectdata:SetAngle(self.Velo:Angle())
+		util.Effect( "gdca_highrpmmuzzle", effectdata )
+		util.ScreenShake(self.Entity:GetPos(), 20, 5, 0.1, 400 )
+		self.Entity:EmitSound( "GAU12.Emit" )
+end
+
+function ENT:fireheit()
+
+		local ent = ents.Create( "gdca_25x137_heit" )
+		ent:SetPos( self.Entity:GetPos() +  self.Entity:GetUp() * 200)
+		ent:SetAngles( self.Entity:GetAngles() )
+		ent.Gun = self.Entity
+		ent:Spawn()
+		ent:Activate()
+		self.heat = self.heat+5
+
+		local phys = self.Entity:GetPhysicsObject()  	
+		if (phys:IsValid()) then  		
+		phys:ApplyForceCenter( self.Entity:GetUp() * -25000 ) 
+		end 
+		
+		local effectdata = EffectData()
+		effectdata:SetOrigin(self.Entity:GetPos() +  self.Entity:GetUp() * 40)
+		effectdata:SetNormal(self:GetUp())
+		effectdata:SetScale(0.6)
+		effectdata:SetRadius(1)
+		effectdata:SetMagnitude(self.Velo:Length())
+		effectdata:SetAngle(self.Velo:Angle())
+		util.Effect( "gdca_highrpmmuzzle", effectdata )
+		util.ScreenShake(self.Entity:GetPos(), 20, 5, 0.1, 400 )
+		self.Entity:EmitSound( "GAU12.Emit" )
 
 end
 
 function ENT:Think()
-
+	self.Velo = (self.Entity:GetPos()-self.Pos2)*25
+	self.Pos2 = self.Entity:GetPos()
 
 			if self.heat>0 then
 			Wire_TriggerOutput(self.Entity, "Heat", self.heat)
@@ -107,44 +168,70 @@ function ENT:Think()
 		Wire_TriggerOutput(self.Entity, "Can Fire", 0)
 		end
 	
-		if (self.inFire == true) then
-		if (self.reloadtime < CurTime()) then
-		self:fireapi()	
-		end
-		end
+	if self.FireAPI then
+	if (self.reloadtime < CurTime()) then
+	self:fireapi()	
+	end
+	end
 
-		if (self.inFire2 == true) then
-		if (self.reloadtime < CurTime()) then
-		self:firehei()	
-		end
-		end
+	if self.FireAPIT and !self.FireAPI then
+	if (self.reloadtime < CurTime()) then
+	self:fireapit()	
+	end
+	end
+	
+	if self.FireHEI and !self.FireAPI and !self.FireAPIT then
+	if (self.reloadtime < CurTime()) then
+	self:firehei()	
+	end
+	end
+	if self.FireHEIT and !self.FireAPI and !self.FireAPIT and !self.FireHEI then
+	if (self.reloadtime < CurTime()) then
+	self:fireheit()	
+	end
+	end
 
-	self.Entity:NextThink( CurTime() + .05)
+	self.Entity:NextThink( CurTime() + .04)
 	return true
 end
 
 function ENT:TriggerInput(k, v)
 		if(k=="Fire API") then
 		if((v or 0) >= 1) then
-		self.inFire = true
+		self.FireAPI = true
 		else
-		self.inFire = false
-		end
-		end
-
-		if(k=="Fire HEI") then
-		if((v or 0) >= 1) then
-		self.inFire2 = true
-		else
-		self.inFire2 = false
+		self.FireAPI = false
 		end
 		end
 	
-if(k=="Reload") then
+		if(k=="Fire HEI") then
 		if((v or 0) >= 1) then
-			self.ammos = 0
+		self.FireHEI = true
+		else
+		self.FireHEI = false
 		end
-	end
+		end
+
+		if(k=="Fire HEIT") then
+		if((v or 0) >= 1) then
+		self.FireHEIT = true
+		else
+		self.FireHEIT = false
+		end
+		end
+
+		if(k=="Fire APIT") then
+		if((v or 0) >= 1) then
+		self.FireAPIT = true
+		else
+		self.FireAPIT = false
+		end
+		end
+	
+		if(k=="Airburst Time") then
+		if((v or 0) >= 0) then
+		self.Airburst = v
+		else	self.Airburst = 0	end	end
 	
 end
  

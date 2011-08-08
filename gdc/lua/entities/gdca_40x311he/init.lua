@@ -4,11 +4,12 @@ include('shared.lua')
 
 function ENT:Initialize()   
 
-self.tracer = false
 self.flightvector = self.Entity:GetUp() * 300
 self.timeleft = CurTime() + 5
+if self.Gun.Airburst>0.1 				then
+self.AirburstTime = CurTime() + self.Gun.Airburst 	else
+self.AirburstTime = CurTime() + 5 			end
 self.Entity:SetModel( "models/led2.mdl" )
-self.Entity:SetGravity( 0.5 ) 	
 self.Entity:PhysicsInit( SOLID_VPHYSICS )      -- Make us work with physics,  	
 self.Entity:SetMoveType( MOVETYPE_NONE )   --after all, gmod is a physics  	
 self.Entity:SetSolid( SOLID_VPHYSICS )        -- CHEESECAKE!    >:3           
@@ -43,6 +44,18 @@ end
 		if self.timeleft < CurTime() then
 		self.Entity:Remove()				
 		end
+
+			if self.AirburstTime < CurTime() then
+			util.BlastDamage(self.Entity, self.Entity, self.Entity:GetPos(), 700, 100)
+			local effectdata = EffectData()
+			effectdata:SetOrigin(self.Entity:GetPos())
+			effectdata:SetScale(2)
+			effectdata:SetMagnitude(20)
+			util.Effect( "gdca_airburst", effectdata )
+			if GDCENGINE then	
+			local attack = gdc.gdcsplode( self.Entity:GetPos(), 200, 130, self.Entity)	// Position, Radius, Damage, Self		
+			end	
+			self.Entity:Remove()	end
 
 	local trace = {}
 		trace.start 	= self.Entity:GetPos()

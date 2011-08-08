@@ -5,11 +5,8 @@ AddCSLuaFile( "shared.lua" )
 include('entities/base_wire_entity/init.lua'); 
 include('shared.lua')
 
-util.PrecacheSound("arty/artyfire.wav")
-
 function ENT:Initialize()   
 
-	self.ammomodel = "models/props_c17/canister01a.mdl"
 	self.ammos =1
 	self.clipsize = 1
 	self.armed = false
@@ -17,6 +14,8 @@ function ENT:Initialize()
 	self.reloadtime = 0
 	self.infire = false
 	self.infire2 = false
+	self.Velo = Vector(0,0,0)
+	self.Pos2 = self.Entity:GetPos()
 	self.Entity:SetModel( "models/props_pipes/pipecluster08d_extender128.mdl" ) 	
 	self.Entity:PhysicsInit( SOLID_VPHYSICS )      -- Make us work with physics,  	
 	self.Entity:SetMoveType( MOVETYPE_VPHYSICS )   --after all, gmod is a physics  	
@@ -69,9 +68,12 @@ function ENT:firewp()
 		effectdata:SetOrigin(self.Entity:GetPos() +  self.Entity:GetUp() * 80)
 		effectdata:SetNormal(self:GetUp())
 		effectdata:SetScale(1.6)
-		util.Effect( "gdca_tanksmoke", effectdata )
+		effectdata:SetRadius(3)
+		effectdata:SetMagnitude(self.Velo:Length())
+		effectdata:SetAngle(self.Velo:Angle())
+		util.Effect( "gdca_cannonmuzzle", effectdata )
 		util.ScreenShake(self.Entity:GetPos(), 90, 5, 0.3, 1050 )
-		self.Entity:EmitSound( "M101.single", 500, 100 )
+		self.Entity:EmitSound( "M101.Emit" )
 		self.ammos = self.ammos-1
 	
 
@@ -96,15 +98,20 @@ function ENT:firehe()
 		effectdata:SetOrigin(self.Entity:GetPos() +  self.Entity:GetUp() * 80)
 		effectdata:SetNormal(self:GetUp())
 		effectdata:SetScale(1.6)
-		util.Effect( "gdca_tanksmoke", effectdata )
+		effectdata:SetRadius(3)
+		effectdata:SetMagnitude(self.Velo:Length())
+		effectdata:SetAngle(self.Velo:Angle())
+		util.Effect( "gdca_cannonmuzzle", effectdata )
 		util.ScreenShake(self.Entity:GetPos(), 90, 5, 0.3, 1050 )
-		self.Entity:EmitSound( "M101.single" )
+		self.Entity:EmitSound( "M101.Emit" )
 		self.ammos = self.ammos-1
 	
 
 end
 
 function ENT:Think()
+	self.Velo = (self.Entity:GetPos()-self.Pos2)*66
+	self.Pos2 = self.Entity:GetPos()
 
 	if self.ammos <= 0 then
 	self.reloadtime = CurTime()+7

@@ -5,7 +5,12 @@ include('shared.lua')
 function ENT:Initialize()   
 
 self.flightvector = self.Entity:GetUp() * 80
-self.timeleft = CurTime() + 4
+self.timeleft = CurTime() + 15
+
+if self.Gun.Airburst>0.5	 			then
+self.AirburstTime = CurTime() + self.Gun.Airburst 	else
+self.AirburstTime = CurTime() + 4 			end
+
 self.Entity:SetModel( "models/props_junk/garbage_glassbottle001a.mdl" )
 self.Entity:SetGravity( 0.5 ) 	
 self.Entity:PhysicsInit( SOLID_VPHYSICS )      -- Make us work with physics,  	
@@ -17,7 +22,7 @@ end
 
  function ENT:Think()
 	
-		if self.timeleft < CurTime() then
+		if (self.timeleft < CurTime()) || (self.AirburstTime < CurTime()) then
 		local ent = ents.Create( "gdca_illuminator" )
 		ent:SetPos( self.Entity:GetPos())
 		ent:SetAngles( self.Entity:GetAngles() )

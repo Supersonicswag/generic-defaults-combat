@@ -15,18 +15,16 @@ self.Size = 5*self.Scale
 
 self.emitter = ParticleEmitter( Pos )
 self.Origin = Pos	
-			if Scale<2.1 then
-				WorldSound( "ambient/explosions/explode_" .. math.random(1, 4) .. ".wav", Pos, 100, 100 )
-			else
-				WorldSound( "Explosion.Boom", Pos)
-				WorldSound( "ambient/explosions/explode_" .. math.random(1, 4) .. ".wav", Pos, 100, 100 )
-			end
+
+
+				WorldSound( "ThunderousExplosion.Boom", Pos)
+				WorldSound( "ThunderousExplosion2.Boom", Pos)
 
 
 
-		for i=1,5 do 
-			local Flash = self.emitter:Add( "effects/muzzleflash"..math.random(1,4), Pos )
-			if (Flash) then
+				for i=1,5 do 
+				local Flash = self.emitter:Add( "effects/muzzleflash"..math.random(1,4), Pos )
+				if (Flash) then
 				Flash:SetVelocity( DirVec*100 )
 				Flash:SetAirResistance( 200 )
 				Flash:SetDieTime( 0.2 )
@@ -37,12 +35,26 @@ self.Origin = Pos
 				Flash:SetRoll( math.Rand(180,480) )
 				Flash:SetRollDelta( math.Rand(-1,1) )
 				Flash:SetColor(255,255,255)	
-			end
-		end
+				end
+				end
 
-		for i=1, 15*Scale do
-			local Dust = self.emitter:Add( "particle/particle_composite", Pos )
-			if (Dust) then
+				local Distort = self.emitter:Add( "sprites/heatwave", Pos )
+				if (Distort) then
+				Distort:SetVelocity( self.DirVec )
+				Distort:SetAirResistance( 200 )
+				Distort:SetDieTime( 0.1 )
+				Distort:SetStartAlpha( 255 )
+				Distort:SetEndAlpha( 0 )
+				Distort:SetStartSize( 5000 )
+				Distort:SetEndSize( 0 )
+				Distort:SetRoll( math.Rand(180,480) )
+				Distort:SetRollDelta( math.Rand(-1,1) )
+				Distort:SetColor(255,255,255)	
+				end
+
+				for i=1, 15*Scale do
+				local Dust = self.emitter:Add( "particle/particle_composite", Pos )
+				if (Dust) then
 				Dust:SetVelocity( DirVec * math.random( 100,400)*Scale + ((VectorRand():GetNormalized()*300/Radius)*Scale) )
 				Dust:SetDieTime( math.Rand( 1 , 4 ) )
 				Dust:SetStartAlpha( 230-((-1+Radius)*120) )
@@ -54,12 +66,12 @@ self.Origin = Pos
 				Dust:SetAirResistance( 150 ) 			 
 				Dust:SetGravity( Vector( 0, 0, math.Rand(-100, -400) ) ) 			
 				Dust:SetColor( 80,75,70 )
-			end
-		end
+				end
+				end
 
-		for i=1, 10*Scale do
-			local Dust = self.emitter:Add( "particle/smokesprites_000"..math.random(1,9), Pos )
-			if (Dust) then
+				for i=1, 10*Scale do
+				local Dust = self.emitter:Add( "particle/smokesprites_000"..math.random(1,9), Pos )
+				if (Dust) then
 				Dust:SetVelocity( DirVec * math.random( 100,400)*Scale + ((VectorRand():GetNormalized()*600/Radius)*Scale) )
 				Dust:SetDieTime( math.Rand( 0.5, 3 )*Scale )
 				Dust:SetStartAlpha( 50 )
@@ -71,8 +83,8 @@ self.Origin = Pos
 				Dust:SetAirResistance( 250 ) 			 
 				Dust:SetGravity( Vector( math.Rand( -200 , 200 ), math.Rand( -200 , 200 ), math.Rand( 10 , 100 ) ) )		
 				Dust:SetColor( 80,77,74 )
-			end
-		end
+				end
+				end
 
 
 				local Density = 20*Scale					/// This part is for the shrapnel ///
@@ -80,8 +92,8 @@ self.Origin = Pos
 				for i=0, Density do	
 				Angle:RotateAroundAxis(Angle:Forward(), (360/Density))
 				local ShootVector = Angle:Up()
-			local Debris = self.emitter:Add( "effects/fleck_cement"..math.random(1,2), Pos )
-			if (Debris) then
+				local Debris = self.emitter:Add( "effects/fleck_cement"..math.random(1,2), Pos )
+				if (Debris) then
 				Debris:SetVelocity( (ShootVector * math.Rand(100,1500*Scale)) + DirVec * math.random( 30,300)*Scale )
 				Debris:SetDieTime( math.random( 1, 5) )
 				Debris:SetStartAlpha( 255 )
@@ -92,17 +104,17 @@ self.Origin = Pos
 				Debris:SetAirResistance( 40 ) 			 			
 				Debris:SetColor( 53,50,45 )
 				Debris:SetGravity( Vector( 0, 0, -600) ) 	
-			end
-		end
+				end
+				end
 
 
 
-	for i = 1, DebrizzlemyNizzle do 	
-		Angle:RotateAroundAxis(Angle:Forward(), (360/DebrizzlemyNizzle))
-		local DustRing = Angle:Up()
-		local RanVec = DirVec*math.Rand(1, 5) + (DustRing*math.Rand(3, 5)/Radius)
+			for i = 1, DebrizzlemyNizzle do 	
+			Angle:RotateAroundAxis(Angle:Forward(), (360/DebrizzlemyNizzle))
+			local DustRing = Angle:Up()
+			local RanVec = DirVec*math.Rand(1, 5) + (DustRing*math.Rand(3, 5)/Radius)
 
-		for k = 3, self.Particles do
+			for k = 3, self.Particles do
 			local Rcolor = math.random(-20,20)
 			local particle1 = self.emitter:Add( "particle/smokesprites_000"..math.random(1,9), Pos )				
 			particle1:SetVelocity((VectorRand():GetNormalized()*math.Rand(1, 2) * self.Size) + (RanVec*self.Size*k*3.5))	
@@ -116,8 +128,8 @@ self.Origin = Pos
 			particle1:SetRoll( math.random( -500, 500 )/100 )	
 			particle1:SetRollDelta( math.random( -1, 1 ) )	
 			particle1:SetColor( 90+Rcolor,86+Rcolor,75+Rcolor )
-		end
-	end
+			end
+			end
 
 
 				local Density = 40*self.Scale					/// This part is for the dust ring ///

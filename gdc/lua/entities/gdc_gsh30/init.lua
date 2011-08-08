@@ -18,6 +18,9 @@ function ENT:Initialize()
 	self.inFireAPT = false
 	self.inFireHET = false
 	self.heat = 0
+	self.Airburst 	= 0
+	self.Velo = Vector(0,0,0)
+	self.Pos2 = self.Entity:GetPos()
 	self.Entity:SetModel( "models/props_c17/signpole001.mdl" ) 	
 	self.Entity:PhysicsInit( SOLID_VPHYSICS )      -- Make us work with physics,  	
 	self.Entity:SetMoveType( MOVETYPE_VPHYSICS )   --after all, gmod is a physics  	
@@ -30,7 +33,7 @@ function ENT:Initialize()
 	phys:Wake() 
 	end 
  
-	self.Inputs = Wire_CreateInputs( self.Entity, { "Fire AP-T", "Fire HE-T"} )
+	self.Inputs = Wire_CreateInputs( self.Entity, { "Fire AP-T", "Fire HE-T", "Airburst Time"} )
 	self.Outputs = Wire_CreateOutputs( self.Entity, { "Can Fire", "Heat"})
 end   
 
@@ -66,17 +69,21 @@ function ENT:fireapt()
 		effectdata:SetOrigin(self.Entity:GetPos() +  self.Entity:GetUp() * 110)
 		effectdata:SetNormal(self:GetUp())
 		effectdata:SetScale(0.7)
-		util.Effect( "gdca_muzzle", effectdata )
+		effectdata:SetRadius(3)
+		effectdata:SetMagnitude(self.Velo:Length())
+		effectdata:SetAngle(self.Velo:Angle())
+		util.Effect( "gdca_highrpmmuzzle", effectdata )
 		util.ScreenShake(self.Entity:GetPos(), 12, 5, 0.1, 600 )
-		self.Entity:EmitSound( "GSh30.Single" )
+		self.Entity:EmitSound( "GSh30.Emit" )
 	
 
 end
 
 function ENT:fireHET()
-	local ent = ents.Create( "gdca_30x165_HET" )
+	local ent = ents.Create( "gdca_30x165_het" )
 		ent:SetPos( self.Entity:GetPos() +  self.Entity:GetUp() * 250)
 		ent:SetAngles( self.Entity:GetAngles() )
+		ent.Gun = self.Entity
 		ent:Spawn()
 		ent:Activate()
 		self.heat = self.heat+6
@@ -90,14 +97,18 @@ function ENT:fireHET()
 		effectdata:SetOrigin(self.Entity:GetPos() +  self.Entity:GetUp() * 110)
 		effectdata:SetNormal(self:GetUp())
 		effectdata:SetScale(0.7)
-		util.Effect( "gdca_muzzle", effectdata )
+		effectdata:SetRadius(3)
+		effectdata:SetMagnitude(self.Velo:Length())
+		effectdata:SetAngle(self.Velo:Angle())
+		util.Effect( "gdca_highrpmmuzzle", effectdata )
 		util.ScreenShake(self.Entity:GetPos(), 12, 5, 0.1, 600 )
-		self.Entity:EmitSound( "GSh30.Single" )
+		self.Entity:EmitSound( "GSh30.Emit" )
 	
 end
 
 function ENT:Think()
-
+	self.Velo = (self.Entity:GetPos()-self.Pos2)*33.4
+	self.Pos2 = self.Entity:GetPos()
 
 			if self.heat>0 then
 			Wire_TriggerOutput(self.Entity, "Heat", self.heat)
@@ -133,7 +144,7 @@ end
 
 function ENT:TriggerInput(k, v)
 
-	if(k=="Fire AP-T") then
+		if(k=="Fire AP-T") then
 		if((v or 0) == 900) then		// See a pattern with the non-menu'd weapons?
 		self.inFireAPT = true
 		else
@@ -141,13 +152,18 @@ function ENT:TriggerInput(k, v)
 		end
 		end
 	
-	if(k=="Fire HE-T") then
+		if(k=="Fire HE-T") then
 		if((v or 0) == 900) then
 		self.inFireHET = true
 		else
 		self.inFireHET = false
 		end
 		end
+
+		if(k=="Airburst Time") then
+		if((v or 0) >= 0) then
+		self.Airburst = v
+		else	self.Airburst = 0	end	end
 	
 end
  

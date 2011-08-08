@@ -9,7 +9,6 @@ util.PrecacheSound("arty/artyfire.wav")
 
 function ENT:Initialize()   
 
-	self.ammomodel = "models/props_c17/canister01a.mdl"
 	self.ammos =1
 	self.clipsize = 1
 	self.armed = false
@@ -17,6 +16,8 @@ function ENT:Initialize()
 	self.reloadtime = 0
 	self.infire = false
 	self.infire2 = false
+	self.Velo = Vector(0,0,0)
+	self.Pos2 = self.Entity:GetPos()
 	self.Entity:SetModel( "models/props_pipes/pipecluster08d_extender128.mdl" ) 	
 	self.Entity:PhysicsInit( SOLID_VPHYSICS )      -- Make us work with physics,  	
 	self.Entity:SetMoveType( MOVETYPE_VPHYSICS )   --after all, gmod is a physics  	
@@ -62,16 +63,19 @@ function ENT:firesabot()
 		
 		local phys = self.Entity:GetPhysicsObject()  	
 		if (phys:IsValid()) then  		
-			phys:ApplyForceCenter( self.Entity:GetUp() * -120000 ) 
+		phys:ApplyForceCenter( self.Entity:GetUp() * -120000 ) 
 		end 
 		
 		local effectdata = EffectData()
 		effectdata:SetOrigin(self.Entity:GetPos() +  self.Entity:GetUp() * 80)
 		effectdata:SetNormal(self:GetUp())
 		effectdata:SetScale(2)
-		util.Effect( "gdca_tanksmoke", effectdata )
+		effectdata:SetRadius(4)
+		effectdata:SetMagnitude(self.Velo:Length())
+		effectdata:SetAngle(self.Velo:Angle())
+		util.Effect( "gdca_cannonmuzzle", effectdata )
 		util.ScreenShake(self.Entity:GetPos(), 95, 5, 0.4, 1200 )
-		self.Entity:EmitSound( "120mm.single", 500, 100 )
+		self.Entity:EmitSound( "M256.Emit" )
 		self.ammos = self.ammos-1
 	
 
@@ -96,15 +100,20 @@ function ENT:fireheat()
 		effectdata:SetOrigin(self.Entity:GetPos() +  self.Entity:GetUp() * 80)
 		effectdata:SetNormal(self:GetUp())
 		effectdata:SetScale(2)
-		util.Effect( "gdca_tanksmoke", effectdata )
+		effectdata:SetRadius(4)
+		effectdata:SetMagnitude(self.Velo:Length())
+		effectdata:SetAngle(self.Velo:Angle())
+		util.Effect( "gdca_cannonmuzzle", effectdata )
 		util.ScreenShake(self.Entity:GetPos(), 95, 5, 0.4, 1200 )
-		self.Entity:EmitSound( "120mm.single" )
+		self.Entity:EmitSound( "M256.Emit" )
 		self.ammos = self.ammos-1
 	
 
 end
 
 function ENT:Think()
+	self.Velo = (self.Entity:GetPos()-self.Pos2)*66
+	self.Pos2 = self.Entity:GetPos()
 
 	if self.ammos <= 0 then
 	self.reloadtime = CurTime()+7

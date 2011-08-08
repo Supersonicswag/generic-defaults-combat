@@ -1,6 +1,6 @@
  ENT.Type 			= "anim"  
  ENT.Base 			= "base_gmodentity"     
- ENT.PrintName			= "Destroyed Stuff"  
+ ENT.PrintName			= "Debris"  
  ENT.Author			= "Generic Default"  
  ENT.Contact			= "AIDS"  
  ENT.Purpose			= "Looks Cool"  

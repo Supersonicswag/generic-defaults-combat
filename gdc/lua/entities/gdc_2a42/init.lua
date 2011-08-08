@@ -9,16 +9,18 @@ util.PrecacheSound("arty/cannon.wav")
 
 function ENT:Initialize()   
 
-	self.ammomodel = "models/props_c17/canister01a.mdl"
-	self.ammos = 1
-	self.clipsize = 1
-	self.armed = false
-	self.loading = false
+	self.ammos 	= 1
+	self.clipsize 	= 1
+	self.armed 	= false
+	self.loading 	= false
 	self.reloadtime = 0
-	self.infire = false
-	self.infire2 = false
-	self.inFireAP = false
-	self.inFireAPT = false
+	self.infire 	= false
+	self.infire2 	= false
+	self.inFireAP 	= false
+	self.inFireAPT 	= false
+	self.Airburst 	= 0
+	self.Velo = Vector(0,0,0)
+	self.Pos2 = self.Entity:GetPos()
 	self.Entity:SetModel( "models/props_lab/pipesystem01a.mdl" ) 	
 	self.Entity:PhysicsInit( SOLID_VPHYSICS )      -- Make us work with physics,  	
 	self.Entity:SetMoveType( MOVETYPE_VPHYSICS )   --after all, gmod is a physics  	
@@ -30,7 +32,7 @@ function ENT:Initialize()
 	phys:Wake() 
 	end 
  
-	self.Inputs = Wire_CreateInputs( self.Entity, { "Fire", "Fire Tracer", "Fire AP", "Fire APT"} )
+	self.Inputs = Wire_CreateInputs( self.Entity, { "Fire", "Fire Tracer", "Fire AP", "Fire APT", "Airburst Time"} )
 
 end   
 
@@ -56,6 +58,7 @@ function ENT:fire()
 		local ent = ents.Create( "gdca_30x165_he" )
 		ent:SetPos( self.Entity:GetPos() +  self.Entity:GetUp() * 100)
 		ent:SetAngles( self.Entity:GetAngles() )
+		ent.Gun = self.Entity
 		ent:Spawn()
 		ent:Activate()
 		
@@ -67,10 +70,13 @@ function ENT:fire()
 		local effectdata = EffectData()
 		effectdata:SetOrigin(self.Entity:GetPos() +  self.Entity:GetUp() * 30)
 		effectdata:SetNormal(self:GetUp())
-		effectdata:SetScale(0.7)
-		util.Effect( "gdca_muzzle", effectdata )
+		effectdata:SetScale(0.8)
+		effectdata:SetRadius(5)
+		effectdata:SetMagnitude(self.Velo:Length())
+		effectdata:SetAngle(self.Velo:Angle())
+		util.Effect( "gdca_autocannonmuzzle", effectdata )
 		util.ScreenShake(self.Entity:GetPos(), 30, 5, 0.2, 400 )
-		self.Entity:EmitSound( "2A42.single" )
+		self.Entity:EmitSound( "2A42.Emit" )
 		self.ammos = self.ammos-1
 end
 
@@ -79,9 +85,9 @@ function ENT:firetracer()
 	local ent = ents.Create( "gdca_30x165_het" )
 		ent:SetPos( self.Entity:GetPos() +  self.Entity:GetUp() * 100)
 		ent:SetAngles( self.Entity:GetAngles() )
+		ent.Gun = self.Entity
 		ent:Spawn()
 		ent:Activate()
-		self.armed = false
 
 		local phys = self.Entity:GetPhysicsObject()  	
 		if (phys:IsValid()) then  		
@@ -91,10 +97,13 @@ function ENT:firetracer()
 		local effectdata = EffectData()
 		effectdata:SetOrigin(self.Entity:GetPos() +  self.Entity:GetUp() * 30)
 		effectdata:SetNormal(self:GetUp())
-		effectdata:SetScale(0.7)
-		util.Effect( "gdca_muzzle", effectdata )
+		effectdata:SetScale(0.8)
+		effectdata:SetRadius(5)
+		effectdata:SetMagnitude(self.Velo:Length())
+		effectdata:SetAngle(self.Velo:Angle())
+		util.Effect( "gdca_autocannonmuzzle", effectdata )
 		util.ScreenShake(self.Entity:GetPos(), 30, 5, 0.2, 400 )
-		self.Entity:EmitSound( "2A42.single" )
+		self.Entity:EmitSound( "2A42.Emit" )
 		self.ammos = self.ammos-1
 end
 
@@ -114,10 +123,13 @@ function ENT:fireap()
 		local effectdata = EffectData()
 		effectdata:SetOrigin(self.Entity:GetPos() +  self.Entity:GetUp() * 30)
 		effectdata:SetNormal(self:GetUp())
-		effectdata:SetScale(0.7)
-		util.Effect( "gdca_muzzle", effectdata )
+		effectdata:SetScale(0.8)
+		effectdata:SetRadius(5)
+		effectdata:SetMagnitude(self.Velo:Length())
+		effectdata:SetAngle(self.Velo:Angle())
+		util.Effect( "gdca_autocannonmuzzle", effectdata )
 		util.ScreenShake(self.Entity:GetPos(), 30, 5, 0.2, 400 )
-		self.Entity:EmitSound( "2A42.single" )
+		self.Entity:EmitSound( "2A42.Emit" )
 		self.ammos = self.ammos-1
 end
 
@@ -137,25 +149,25 @@ function ENT:fireapt()
 		local effectdata = EffectData()
 		effectdata:SetOrigin(self.Entity:GetPos() +  self.Entity:GetUp() * 30)
 		effectdata:SetNormal(self:GetUp())
-		effectdata:SetScale(0.7)
-		util.Effect( "gdca_muzzle", effectdata )
+		effectdata:SetScale(0.8)
+		effectdata:SetRadius(5)
+		effectdata:SetMagnitude(self.Velo:Length())
+		effectdata:SetAngle(self.Velo:Angle())
+		util.Effect( "gdca_autocannonmuzzle", effectdata )
 		util.ScreenShake(self.Entity:GetPos(), 30, 5, 0.2, 400 )
-		self.Entity:EmitSound( "2A42.single" )
+		self.Entity:EmitSound( "2A42.Emit" )
 		self.ammos = self.ammos-1
 end
 
 function ENT:Think()
+	self.Velo = (self.Entity:GetPos()-self.Pos2)*66
+	self.Pos2 = self.Entity:GetPos()
 
 	if self.ammos <= 0 then
 	self.reloadtime = CurTime()+0.3
 	self.ammos = self.clipsize
 	end
 	
-	if (self.reloadtime < CurTime()) then
-	Wire_TriggerOutput(self.Entity, "Can Fire", 1)
-	else
-	Wire_TriggerOutput(self.Entity, "Can Fire", 0)
-	end
 	
 	if self.inFire then
 	if (self.reloadtime < CurTime()) then
@@ -218,6 +230,11 @@ function ENT:TriggerInput(k, v)
 		self.inFireAPT = false
 		end
 		end
+
+		if(k=="Airburst Time") then
+		if((v or 0) >= 0) then
+		self.Airburst = v
+		else	self.Airburst = 0	end	end
 	
 end
  

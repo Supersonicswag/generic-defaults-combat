@@ -1,4 +1,3 @@
-
 TOOL.Category		= "GDC"
 TOOL.Name		= "#Generic Defaults Combat"
 TOOL.Command		= nil
@@ -11,7 +10,7 @@ TOOL.ent = {}
 cleanup.Register( "gdcweapons" )
 
 	if SERVER then
-	CreateConVar( 'sbox_maxgcombat', 10 )
+	CreateConVar( 'sbox_maxgdc', 10 )
 	end
 
 // Add Default Language translation (saves adding it to the txt files)
@@ -25,14 +24,14 @@ if ( CLIENT ) then
 	language.Add( "Tool_gdcweapons_help0", "~860 RPM, Tracer/Ball, 26400 Inches/Second" )
 	language.Add( "Tool_gdcweapons_help1", "~460 RPM, Tracer/Ball, 29700 Inches/Second" )
 	language.Add( "Tool_gdcweapons_help2", "~700 RPM, High Explosive(5m), 23100 Inches/Second" )
-	language.Add( "Tool_gdcweapons_help3", "300 RPM, High Explosive Incindiary(6.5m)/Armor Piercing Incindiary, 36300 Inches/Second" )
+	language.Add( "Tool_gdcweapons_help3", "300 RPM, High Explosive Incindiary[Tracer](6.5m)/Armor Piercing Incindiary[Tracer], 36300 Inches/Second" )
 	language.Add( "Tool_gdcweapons_help4", "~600 RPM, High Explosive Incindiary(7m), 19800 Inches/Second" )
 	language.Add( "Tool_gdcweapons_help5", "200 RPM, High Explosive(8m), 33000 Inches/Second" )
 	language.Add( "Tool_gdcweapons_help6", "120 RPM, High Explosive(13m), 19800 Inches/Second" )
 	language.Add( "Tool_gdcweapons_help7", "7 RPS, 7 Salvo, High Explosive(18m)/White Phosphorus(15m), 13200 Inches/Second" )
 	language.Add( "Tool_gdcweapons_help8", "8 RPM, High Explosive(31m)/White Phosphorus(25m), 19800 Inches/Second" )
-	language.Add( "Tool_gdcweapons_help9", "1200 RPM, Armor Piercing Incindiary, Overheats after 25 rounds, 36300 Inches/Second" )
-	language.Add( "Tool_gdcweapons_help10", "30 meter blast radius. Effective against infantry" )
+	language.Add( "Tool_gdcweapons_help9", "1500 RPM, Armor Piercing Incindiary[Tracer]/High Explosive Incindiary[Tracer](6.5m), Overheats after 25 rounds, 36300 Inches/Second" )
+	language.Add( "Tool_gdcweapons_help10", "30 meter blast radius. Effective against infantry and light vehicles" )
 	language.Add( "Tool_gdcweapons_help11", "1500 RPM, Tracer/Ball, Overheats after 75 rounds, 26400 Inches/Second" )
 	language.Add( "Tool_gdcweapons_help12", "8 RPM, High Explosive Anti-Tank(18m)/SABOT, 19800 Inches/Second(HEAT), 36300 Inches/Second(SABOT)" )
 	language.Add( "Tool_gdcweapons_help13", "Powerful 15m blast radius. Effective against vehicles" )
@@ -44,24 +43,25 @@ if ( CLIENT ) then
 	language.Add( "Tool_gdcweapons_help19", "Smoke deployer." )
 	language.Add( "Tool_gdcweapons_help20", "Flare deployer, 10 salvo. Flares can be used as smoke, signals, or IR jammers (GMLS will track it)" )
 	language.Add( "Tool_gdcweapons_help21", "10 RPS, 16 Salvo, High Explosive Fragmentation(13m)/High Explosive Anti-Tank(8m)" )
-	language.Add( "Tool_gdcweapons_help22", "4 RPS, 8 Salvo, High Explosive Anti-Tank(15m)/FAE (Thermobaric)(25)/Penetrator(5m)." )
-	language.Add( "Tool_gdcweapons_help23", "420 RPM, Armor Piercing Incindiary, Armor Piercing Incindiary Tracer, High Explosive Incindiary(4m), Overheats after 33 rounds, 39600 Inches/Second" )
+	language.Add( "Tool_gdcweapons_help22", "4 RPS, 8 Salvo, High Explosive Anti-Tank(15m)/FAE (Thermobaric)(25m)/Penetrator(5m)." )
+	language.Add( "Tool_gdcweapons_help23", "600 RPM, Armor Piercing Incindiary, Armor Piercing Incindiary Tracer, High Explosive Incindiary(4m), Overheats after 33 rounds, 39600 Inches/Second" )
 	language.Add( "Tool_gdcweapons_help24", "600 RPM, Tracer(Green)/Ball, 29700 Inches/Second" )
 	language.Add( "Tool_gdcweapons_help25", "900 RPM, Tracer/Ball, 33000 Inches/Second" )
 	language.Add( "Tool_gdcweapons_help26", "Anti Tank Guided Missile Launcher. For now top attack only, future inputs will work. HEAT(23m)" )
+	language.Add( "Tool_gdcweapons_help27", "50kg High Explosive Bomb. Use outputs for TV guidance. High Explosive(35m)" )
 
 
 	language.Add( "Tool_turret_type", "Type of weapon" )
 	language.Add( "Undone_gdcweapons", "Undone weapon" )
 	language.Add( "Cleanup_gdcweapons", "Weapon" )
 	language.Add( "Cleaned_gdcweapons", "Cleaned up all Weapons" )
-	language.Add( "SBoxLimit_gcombats", "Dude you already have enough guns!" )
+	language.Add( "SBoxLimit_gdc", "You already have enough guns!" )
 
 end
 
 function TOOL:LeftClick( trace )
 local ply = self:GetOwner()
-if (!ply:CheckLimit( "gcombat" )) then return end
+if (!ply:CheckLimit( "gdc" )) then return end
 if ( !trace.Hit ) then return end
 	
 	if ( SERVER && !util.IsValidPhysicsObject( trace.Entity, trace.PhysicsBone ) ) then return false end
@@ -69,7 +69,7 @@ if ( !trace.Hit ) then return end
 	
 	local gdcweaponsindex	= self:GetClientNumber( "gdcweaponsindex" ) 
 	
-	local SpawnPos = trace.HitPos + trace.HitNormal * 50
+	local SpawnPos = trace.HitPos + trace.HitNormal * 30
 
 		if (gdcweaponsindex == 0) then
 	self.ent = ents.Create( "gdc_m240" )
@@ -255,6 +255,13 @@ if ( !trace.Hit ) then return end
 
 		elseif (gdcweaponsindex == 26) then
 	self.ent = ents.Create( "gdc_atgml" )
+	self.ent:SetPos( SpawnPos )
+	self.ent:SetAngles( trace.HitNormal:Angle() + Angle(90,0,0))
+	self.ent:Spawn()
+	self.ent:Activate()
+
+		elseif (gdcweaponsindex == 27) then
+	self.ent = ents.Create( "gdc_50kgbomber" )
 	self.ent:SetPos( SpawnPos )
 	self.ent:SetAngles( trace.HitNormal:Angle() + Angle(90,0,0))
 	self.ent:Spawn()
@@ -268,7 +275,7 @@ if ( !trace.Hit ) then return end
 	local weld = constraint.Weld(self.ent, trace.Entity, 0, trace.PhysicsBone, 0)
 	local nocollide = constraint.NoCollide(self.ent, trace.Entity, 0, trace.PhysicsBone)
 	end 
-	ply:AddCount( "gcombat", self.ent )
+	ply:AddCount( "gdc", self.ent )
 	
 	undo.Create("gdcweapons")
 	undo.AddEntity( self.ent )
@@ -282,7 +289,7 @@ end
 
 function TOOL:RightClick( trace )
 local ply = self:GetOwner()
-if (!ply:CheckLimit( "gcombat" )) then return end	
+if (!ply:CheckLimit( "gdc" )) then return end	
 if ( !trace.Hit ) then return end
 	
 	if ( SERVER && !util.IsValidPhysicsObject( trace.Entity, trace.PhysicsBone ) ) then return false end
@@ -290,7 +297,7 @@ if ( !trace.Hit ) then return end
 	
 	local gdcweaponsindex	= self:GetClientNumber( "gdcweaponsindex" ) 
 	
-	local SpawnPos = trace.HitPos + trace.HitNormal * 50
+	local SpawnPos = trace.HitPos + trace.HitNormal * 30
 
 		if (gdcweaponsindex == 0) then
 	self.ent = ents.Create( "gdc_m240" )
@@ -481,9 +488,16 @@ if ( !trace.Hit ) then return end
 	self.ent:Spawn()
 	self.ent:Activate()
 
+		elseif (gdcweaponsindex == 27) then
+	self.ent = ents.Create( "gdc_50kgbomber" )
+	self.ent:SetPos( SpawnPos )
+	self.ent:SetAngles( trace.HitNormal:Angle() + Angle(90,0,0))
+	self.ent:Spawn()
+	self.ent:Activate()
+
 	end
 
-	ply:AddCount( "gcombat", self.ent )
+	ply:AddCount( "gdc", self.ent )
 	undo.Create("gdcweapons")
 	undo.AddEntity( self.ent )
 	undo.AddEntity( weld )
@@ -538,6 +552,7 @@ function TOOL.BuildCPanel( CPanel )
 		Ctype["Options"]["#PKM 7.62mm"]			= { gdcweapons_gdcweaponsindex = "24" }
 		Ctype["Options"]["#M249 5.56mm"]		= { gdcweapons_gdcweaponsindex = "25" }
 		Ctype["Options"]["#ATGML"]			= { gdcweapons_gdcweaponsindex = "26" }
+		Ctype["Options"]["#50KG Bomb"]			= { gdcweapons_gdcweaponsindex = "27" }
 
 	CPanel:AddControl("ComboBox", Ctype )
 	

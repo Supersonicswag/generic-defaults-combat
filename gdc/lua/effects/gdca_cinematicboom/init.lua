@@ -10,6 +10,7 @@ local mats={
 	[MAT_ALIENFLESH]		={5,9},
 	[MAT_ANTLION]			={5,9},
 	[MAT_BLOODYFLESH]		={5,8},
+	[45]				={5,8},	// Metrocop heads are a source glitch, they have no enumeration
 	[MAT_CLIP]			={3,5},
 	[MAT_COMPUTER]			={4,5},
 	[MAT_FLESH]			={5,8},
@@ -91,6 +92,21 @@ end
 		Flash:SetRollDelta( math.Rand(-1,1) )
 		Flash:SetColor(255,255,255)	
 		end
+		end
+
+
+		local Distort = self.Emitter:Add( "sprites/heatwave", self.Pos )
+		if (Distort) then
+		Distort:SetVelocity( self.DirVec )
+		Distort:SetAirResistance( 200 )
+		Distort:SetDieTime( 0.1 )
+		Distort:SetStartAlpha( 255 )
+		Distort:SetEndAlpha( 0 )
+		Distort:SetStartSize( self.Scale*600 )
+		Distort:SetEndSize( 0 )
+		Distort:SetRoll( math.Rand(180,480) )
+		Distort:SetRollDelta( math.Rand(-1,1) )
+		Distort:SetColor(255,255,255)	
 		end
 
 		for i=1, 20*self.Scale do
@@ -185,6 +201,20 @@ function EFFECT:Dirt()
 		end
 		end
 
+		local Distort = self.Emitter:Add( "sprites/heatwave", self.Pos )
+		if (Distort) then
+		Distort:SetVelocity( self.DirVec )
+		Distort:SetAirResistance( 200 )
+		Distort:SetDieTime( 0.1 )
+		Distort:SetStartAlpha( 255 )
+		Distort:SetEndAlpha( 0 )
+		Distort:SetStartSize( self.Scale*600 )
+		Distort:SetEndSize( 0 )
+		Distort:SetRoll( math.Rand(180,480) )
+		Distort:SetRollDelta( math.Rand(-1,1) )
+		Distort:SetColor(255,255,255)	
+		end
+
 		for i=1, 20*self.Scale do
 		local Dust = self.Emitter:Add( "particle/particle_composite", self.Pos )	
 		if (Dust) then
@@ -276,6 +306,20 @@ function EFFECT:Dirt()
 		Smoke:SetGravity( Vector( 0, 0, math.Rand(-100, -400) ) ) 			
 		Smoke:SetColor( 90,83,68 )
 		end
+		end
+
+		local Distort = self.Emitter:Add( "sprites/heatwave", self.Pos )
+		if (Distort) then
+		Distort:SetVelocity( self.DirVec )
+		Distort:SetAirResistance( 200 )
+		Distort:SetDieTime( 0.1 )
+		Distort:SetStartAlpha( 255 )
+		Distort:SetEndAlpha( 0 )
+		Distort:SetStartSize( self.Scale*600 )
+		Distort:SetEndSize( 0 )
+		Distort:SetRoll( math.Rand(180,480) )
+		Distort:SetRollDelta( math.Rand(-1,1) )
+		Distort:SetColor(255,255,255)	
 		end
 
 		for i=0, 20*self.Scale do		// This is the dirt kickup
@@ -406,7 +450,7 @@ function EFFECT:Dirt()
  function EFFECT:Metal()
 			WorldSound( "Bullet.Impact", self.Pos)
 
-		for i=1,5 do 				// Blast flash
+		for i=1,3 do 				// Blast flash
 		local Flash = self.Emitter:Add( "effects/muzzleflash"..math.random(1,4), self.Pos )
 		if (Flash) then
 		Flash:SetVelocity( self.DirVec*100 )
@@ -422,7 +466,21 @@ function EFFECT:Dirt()
 		end
 		end
 
-		for i=0, 30*self.Scale do
+		local Distort = self.Emitter:Add( "sprites/heatwave", self.Pos )
+		if (Distort) then
+		Distort:SetVelocity( self.DirVec )
+		Distort:SetAirResistance( 200 )
+		Distort:SetDieTime( 0.1 )
+		Distort:SetStartAlpha( 255 )
+		Distort:SetEndAlpha( 0 )
+		Distort:SetStartSize( self.Scale*600 )
+		Distort:SetEndSize( 0 )
+		Distort:SetRoll( math.Rand(180,480) )
+		Distort:SetRollDelta( math.Rand(-1,1) )
+		Distort:SetColor(255,255,255)	
+		end
+
+		for i=0, 20*self.Scale do
 		local Whisp = self.Emitter:Add( "particle/smokesprites_000"..math.random(1,9), self.Pos )
 		if (Whisp) then
 		Whisp:SetVelocity(VectorRand():GetNormalized() * math.random( 200,1000*self.Scale) )
@@ -491,7 +549,21 @@ end
 		end
 		end
 
-		for i=0, 30*self.Scale do
+		local Distort = self.Emitter:Add( "sprites/heatwave", self.Pos )
+		if (Distort) then
+		Distort:SetVelocity( self.DirVec )
+		Distort:SetAirResistance( 200 )
+		Distort:SetDieTime( 0.1 )
+		Distort:SetStartAlpha( 255 )
+		Distort:SetEndAlpha( 0 )
+		Distort:SetStartSize( self.Scale*600 )
+		Distort:SetEndSize( 0 )
+		Distort:SetRoll( math.Rand(180,480) )
+		Distort:SetRollDelta( math.Rand(-1,1) )
+		Distort:SetColor(255,255,255)	
+		end
+
+		for i=0, 20*self.Scale do
 		local Whisp = self.Emitter:Add( "particle/smokesprites_000"..math.random(1,9), self.Pos )
 		if (Whisp) then
 		Whisp:SetVelocity(VectorRand():GetNormalized() * math.random( 200,1200*self.Scale) )
@@ -567,6 +639,20 @@ end
 		end
 		end
 
+		local Distort = self.Emitter:Add( "sprites/heatwave", self.Pos )
+		if (Distort) then
+		Distort:SetVelocity( self.DirVec )
+		Distort:SetAirResistance( 200 )
+		Distort:SetDieTime( 0.1 )
+		Distort:SetStartAlpha( 255 )
+		Distort:SetEndAlpha( 0 )
+		Distort:SetStartSize( self.Scale*600 )
+		Distort:SetEndSize( 0 )
+		Distort:SetRoll( math.Rand(180,480) )
+		Distort:SetRollDelta( math.Rand(-1,1) )
+		Distort:SetColor(255,255,255)	
+		end
+
 		for i=0, 30*self.Scale do
 		local Whisp = self.Emitter:Add( "particle/smokesprites_000"..math.random(1,9), self.Pos )
 		if (Whisp) then
@@ -617,6 +703,20 @@ end
 		Flash:SetRollDelta( math.Rand(-1,1) )
 		Flash:SetColor(255,255,255)	
 		end
+		end
+
+		local Distort = self.Emitter:Add( "sprites/heatwave", self.Pos )
+		if (Distort) then
+		Distort:SetVelocity( self.DirVec )
+		Distort:SetAirResistance( 200 )
+		Distort:SetDieTime( 0.1 )
+		Distort:SetStartAlpha( 255 )
+		Distort:SetEndAlpha( 0 )
+		Distort:SetStartSize( self.Scale*600 )
+		Distort:SetEndSize( 0 )
+		Distort:SetRoll( math.Rand(180,480) )
+		Distort:SetRollDelta( math.Rand(-1,1) )
+		Distort:SetColor(255,255,255)	
 		end
 
 		for i=0, 30*self.Scale do
@@ -673,6 +773,20 @@ end
 		Smoke:SetGravity( Vector( math.Rand(-50, 50) * self.Scale, math.Rand(-50, 50) * self.Scale, math.Rand(0, -200) ) ) 			
 		Smoke:SetColor( 70,35,35 )
 		end
+		end
+
+		local Distort = self.Emitter:Add( "sprites/heatwave", self.Pos )
+		if (Distort) then
+		Distort:SetVelocity( self.DirVec )
+		Distort:SetAirResistance( 200 )
+		Distort:SetDieTime( 0.1 )
+		Distort:SetStartAlpha( 255 )
+		Distort:SetEndAlpha( 0 )
+		Distort:SetStartSize( self.Scale*600 )
+		Distort:SetEndSize( 0 )
+		Distort:SetRoll( math.Rand(180,480) )
+		Distort:SetRollDelta( math.Rand(-1,1) )
+		Distort:SetColor(255,255,255)	
 		end
 
 		for i=0, 20*self.Scale do		// Add some finer details....
@@ -745,6 +859,20 @@ end
 		Smoke:SetGravity( Vector( math.Rand(-50, 50) * self.Scale, math.Rand(-50, 50) * self.Scale, math.Rand(0, -200) ) ) 			
 		Smoke:SetColor( 120,120,0 )
 		end
+		end
+
+		local Distort = self.Emitter:Add( "sprites/heatwave", self.Pos )
+		if (Distort) then
+		Distort:SetVelocity( self.DirVec )
+		Distort:SetAirResistance( 200 )
+		Distort:SetDieTime( 0.1 )
+		Distort:SetStartAlpha( 255 )
+		Distort:SetEndAlpha( 0 )
+		Distort:SetStartSize( self.Scale*600 )
+		Distort:SetEndSize( 0 )
+		Distort:SetRoll( math.Rand(180,480) )
+		Distort:SetRollDelta( math.Rand(-1,1) )
+		Distort:SetColor(255,255,255)	
 		end
 
 		for i=0, 20*self.Scale do		// Add some finer details....

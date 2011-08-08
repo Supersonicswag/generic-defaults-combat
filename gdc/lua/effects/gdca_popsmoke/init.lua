@@ -1,7 +1,4 @@
 
-
-EFFECT.Mat = Material( "effects/select_ring" )
-
 /*---------------------------------------------------------
    Initializes the effect. The data is a table of data 
    which was passed from the server.
@@ -18,7 +15,7 @@ local vOffset = data:GetOrigin()
 			local particle2 = emitter:Add( "particle/smokesprites_000"..math.random(1,9), vOffset ) 
  			if (particle2) then 
  				 
- 				particle2:SetVelocity( VectorRand():GetNormalized() * math.Rand(1000, 2000) ) 
+ 				particle2:SetVelocity( VectorRand():GetNormalized() * math.Rand(2000, 3000) ) 
  				particle2:SetDieTime( math.Rand(10, 20) )  				 
  				particle2:SetStartAlpha( 120 ) 
  				particle2:SetEndAlpha( 0 )  				 

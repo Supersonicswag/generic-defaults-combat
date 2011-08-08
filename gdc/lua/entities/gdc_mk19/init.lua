@@ -12,11 +12,12 @@ function ENT:Initialize()
 	self.ammomodel = "models/props_c17/canister01a.mdl"
 	self.ammos = 32
 	self.clipsize = 32
-	self.armed = false
 	self.loading = false
 	self.reloadtime = 0
 	self.infire = false
 	self.infire2 = false
+	self.Velo = Vector(0,0,0)
+	self.Pos2 = self.Entity:GetPos()
 	self.Entity:SetModel( "models/props_lab/pipesystem01b.mdl" ) 	
 	self.Entity:PhysicsInit( SOLID_VPHYSICS )      -- Make us work with physics,  	
 	self.Entity:SetMoveType( MOVETYPE_VPHYSICS )   --after all, gmod is a physics  	
@@ -29,7 +30,7 @@ function ENT:Initialize()
 		phys:Wake() 
 	end 
  
-	self.Inputs = Wire_CreateInputs( self.Entity, { "Fire HE", "Fire HEDP" } )
+	self.Inputs = Wire_CreateInputs( self.Entity, { "Fire HE", "Fire HEDP", "Fire Marker" } )
 	self.Outputs = Wire_CreateOutputs( self.Entity, { "Can Fire"})
 end   
 
@@ -59,19 +60,21 @@ function ENT:firehedp()
 		ent:Activate()
 		self.armed = false
 		
-		
 		local phys = self.Entity:GetPhysicsObject()  	
 		if (phys:IsValid()) then  		
-			phys:ApplyForceCenter( self.Entity:GetUp() * -10000 ) 
+		phys:ApplyForceCenter( self.Entity:GetUp() * -10000 ) 
 		end 
 		
 		local effectdata = EffectData()
 		effectdata:SetOrigin(self.Entity:GetPos() +  self.Entity:GetUp() * 30)
 		effectdata:SetNormal(self:GetUp())
 		effectdata:SetScale(0.5)
-		util.Effect( "gdca_tanksmoke", effectdata )
+		effectdata:SetRadius(1)
+		effectdata:SetMagnitude(self.Velo:Length())
+		effectdata:SetAngle(self.Velo:Angle())
+		util.Effect( "gdca_cannonmuzzle", effectdata )
 		util.ScreenShake(self.Entity:GetPos(), 20, 5, 0.2, 200 )
-		self.Entity:EmitSound( "MK19.single" )
+		self.Entity:EmitSound( "MK19.Emit" )
 		self.ammos = self.ammos-1
 	
 
@@ -86,25 +89,55 @@ function ENT:firehe()
 		ent:Activate()
 		self.armed = false
 		
-		
 		local phys = self.Entity:GetPhysicsObject()  	
 		if (phys:IsValid()) then  		
-			phys:ApplyForceCenter( self.Entity:GetUp() * -10000 ) 
+		phys:ApplyForceCenter( self.Entity:GetUp() * -10000 ) 
 		end 
 		
 		local effectdata = EffectData()
 		effectdata:SetOrigin(self.Entity:GetPos() +  self.Entity:GetUp() * 30)
 		effectdata:SetNormal(self:GetUp())
-		effectdata:SetScale(0.3)
-		util.Effect( "gdca_tanksmoke", effectdata )
+		effectdata:SetScale(0.5)
+		effectdata:SetRadius(1)
+		effectdata:SetMagnitude(self.Velo:Length())
+		effectdata:SetAngle(self.Velo:Angle())
+		util.Effect( "gdca_cannonmuzzle", effectdata )
 		util.ScreenShake(self.Entity:GetPos(), 20, 5, 0.2, 200 )
-		self.Entity:EmitSound( "MK19.single" )
+		self.Entity:EmitSound( "MK19.Emit" )
 		self.ammos = self.ammos-1
-	
+
+end
+
+function ENT:firemarker()
+
+	local ent = ents.Create( "gdca_40x53_marker" )
+		ent:SetPos( self.Entity:GetPos() +  self.Entity:GetUp() * 150)
+		ent:SetAngles( self.Entity:GetAngles() )
+		ent:Spawn()
+		ent:Activate()
+		
+		local phys = self.Entity:GetPhysicsObject()  	
+		if (phys:IsValid()) then  		
+		phys:ApplyForceCenter( self.Entity:GetUp() * -10000 ) 
+		end 
+		
+		local effectdata = EffectData()
+		effectdata:SetOrigin(self.Entity:GetPos() +  self.Entity:GetUp() * 30)
+		effectdata:SetNormal(self:GetUp())
+		effectdata:SetScale(0.5)
+		effectdata:SetRadius(1)
+		effectdata:SetMagnitude(self.Velo:Length())
+		effectdata:SetAngle(self.Velo:Angle())
+		util.Effect( "gdca_cannonmuzzle", effectdata )
+		util.ScreenShake(self.Entity:GetPos(), 20, 5, 0.2, 200 )
+		self.Entity:EmitSound( "MK19.Emit" )
+		self.ammos = self.ammos-1
 
 end
 
 function ENT:Think()
+	self.Velo = (self.Entity:GetPos()-self.Pos2)*4.54
+	self.Pos2 = self.Entity:GetPos()
 
 	if self.ammos <= 0 then
 	self.reloadtime = CurTime()+8
@@ -129,26 +162,41 @@ function ENT:Think()
 	end
 	end
 
+	if self.inFire3 and !self.inFire then
+	if (self.reloadtime < CurTime()) then
+	self:firemarker()	
+	end
+	end
+
 	self.Entity:NextThink( CurTime() + .22)
 	return true
 end
 
 function ENT:TriggerInput(k, v)
-if(k=="Fire HEDP") then
+
+		if(k=="Fire HEDP") then
 		if((v or 0) >= 1) then
-			self.inFire = true
+		self.inFire = true
 		else
-			self.inFire = false
+		self.inFire = false
 		end
-	end
+		end
 	
-	if(k=="Fire HE") then
+		if(k=="Fire HE") then
 		if((v or 0) >= 1) then
-			self.inFire2 = true
+		self.inFire2 = true
 		else
-			self.inFire2 = false
+		self.inFire2 = false
 		end
-	end
+		end
+
+		if(k=="Fire Marker") then
+		if((v or 0) >= 1) then
+		self.inFire3 = true
+		else
+		self.inFire3 = false
+		end
+		end
 	
 end
  

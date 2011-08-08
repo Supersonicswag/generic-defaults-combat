@@ -110,7 +110,7 @@ function ENT:Think()
 			effectdata:SetRadius(tr.MatType)			// Texture of Impact
 			util.Effect("gdca_universal_impact",effectdata)
 			util.ScreenShake(tr.HitPos, 10, 5, 0.1, self.BlastRadius*2 )
-			util.Decal("ExplosiveGunshot", tr.HitPos + tr.HitNormal, tr.HitPos - tr.HitNormal)
+			util.Decal("fadingScorch", tr.HitPos + tr.HitNormal, tr.HitPos - tr.HitNormal)
 
 
 			if tr.Entity:IsValid() and GDCENGINE then
@@ -151,7 +151,7 @@ function ENT:Think()
 	effectdata:SetRadius(pr.MatType)					// Texture of Impact
 	util.Effect( "gdca_universal_penetrate", effectdata )			// Make some debris
 	util.ScreenShake(pr.HitPos, 10, 5, 0.1, self.BlastRadius*2 )				// Compression in the material
-	util.Decal("ExplosiveGunshot", pr.HitPos + pr.HitNormal,pr.HitPos - pr.HitNormal)	// Bullet hole in the exit
+	util.Decal("fadingScorch", pr.HitPos + pr.HitNormal,pr.HitPos - pr.HitNormal)	// Bullet hole in the exit
 
 	end									// This one ends the penetration code
 	end									// This one ends the impact code
@@ -160,7 +160,7 @@ function ENT:Think()
 	self.Entity:SetPos(self.Entity:GetPos() + self.Flightvector)
 	end									// This one sets a normal flight path if there is no impact
 
-self.Flightvector = self.Flightvector - self.Flightvector/100 + self.Entity:GetUp()*5 + (VectorRand():GetNormalized()*self.Drift) + Vector(0,0,-0.1)
+self.Flightvector = self.Flightvector - self.Flightvector/100 + self.Entity:GetUp()*5 + (VectorRand():GetNormalized()*self.Drift) + Vector(0,0,-0.111)
 self.Entity:SetAngles(self.Flightvector:Angle() + Angle(90,0,0))
 self.Entity:NextThink( CurTime() )
 return true
