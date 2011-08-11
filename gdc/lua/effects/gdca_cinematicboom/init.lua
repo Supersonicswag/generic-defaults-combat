@@ -28,13 +28,6 @@ local mats={
 	[MAT_GLASS]			={4,7},
 }
 
-local sounds={
-	[1]={"Bullet.Dirt",},
-	[2]={"Bullet.Concrete",},
-	[3]={"Bullet.Metal",},
-	[4]={"Bullet.Glass",},
-	[5]={"Bullet.Flesh",},
-}
 
 function EFFECT:Init(data)
 self.Entity 		= data:GetEntity()		// Entity determines what is creating the dynamic light			//
@@ -448,7 +441,6 @@ function EFFECT:Dirt()
  end
 
  function EFFECT:Metal()
-			WorldSound( "Bullet.Impact", self.Pos)
 
 		for i=1,3 do 				// Blast flash
 		local Flash = self.Emitter:Add( "effects/muzzleflash"..math.random(1,4), self.Pos )
@@ -531,7 +523,6 @@ end
 
 
  function EFFECT:Smoke()
-				WorldSound( "Bullet.Impact", self.Pos)
 
 		for i=1,5 do 				// Blast flash
 		local Flash = self.Emitter:Add( "effects/muzzleflash"..math.random(1,4), self.Pos )
@@ -758,6 +749,7 @@ end
 end
 
  function EFFECT:Blood()
+
 		for i=0, 30*self.Scale do		// If you recieve over 50,000 joules of energy, you become red mist.
 		local Smoke = self.Emitter:Add( "particle/particle_composite", self.Pos )
 		if (Smoke) then

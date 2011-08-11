@@ -1,5 +1,10 @@
 [GLITCHES]
--Penetration will not remove self when trace starts inside prop.	// DUN
+-Penetration will not remove self when trace starts inside prop.	// FIXED
+-Bofors 								// Fine
+-30mm									// Fine
+-200kg effect error							// FIXED
+-Revise effect impact sounds						// 
+
 
 [ENGINE]
 -Make explosion sphere function						// DUN

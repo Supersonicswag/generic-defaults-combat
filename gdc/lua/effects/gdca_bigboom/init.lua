@@ -7,11 +7,12 @@ local Radius = data:GetRadius()
 local DirVec = data:GetNormal()
 local Particles = data:GetMagnitude()
 local Angle = DirVec:Angle()
-local DebrizzlemyNizzle = 10+data:GetScale()	
+local DebrizzlemyNizzle = 15+data:GetScale()	
 
 self.Particles = data:GetMagnitude()
 self.Scale = data:GetScale()	
 self.Size = 5*self.Scale
+self.DirVec = DirVec
 
 self.emitter = ParticleEmitter( Pos )
 self.Origin = Pos	
@@ -31,7 +32,7 @@ self.Origin = Pos
 				Flash:SetStartAlpha( 255 )
 				Flash:SetEndAlpha( 0 )
 				Flash:SetStartSize( 1 )
-				Flash:SetEndSize( Scale*500 )
+				Flash:SetEndSize( 4000 )
 				Flash:SetRoll( math.Rand(180,480) )
 				Flash:SetRollDelta( math.Rand(-1,1) )
 				Flash:SetColor(255,255,255)	
@@ -45,7 +46,7 @@ self.Origin = Pos
 				Distort:SetDieTime( 0.1 )
 				Distort:SetStartAlpha( 255 )
 				Distort:SetEndAlpha( 0 )
-				Distort:SetStartSize( 5000 )
+				Distort:SetStartSize( 7000 )
 				Distort:SetEndSize( 0 )
 				Distort:SetRoll( math.Rand(180,480) )
 				Distort:SetRollDelta( math.Rand(-1,1) )
@@ -69,7 +70,7 @@ self.Origin = Pos
 				end
 				end
 
-				for i=1, 10*Scale do
+				for i=1, 5*Scale do
 				local Dust = self.emitter:Add( "particle/smokesprites_000"..math.random(1,9), Pos )
 				if (Dust) then
 				Dust:SetVelocity( DirVec * math.random( 100,400)*Scale + ((VectorRand():GetNormalized()*600/Radius)*Scale) )
@@ -112,7 +113,7 @@ self.Origin = Pos
 			for i = 1, DebrizzlemyNizzle do 	
 			Angle:RotateAroundAxis(Angle:Forward(), (360/DebrizzlemyNizzle))
 			local DustRing = Angle:Up()
-			local RanVec = DirVec*math.Rand(1, 5) + (DustRing*math.Rand(3, 5)/Radius)
+			local RanVec = DirVec*math.Rand(1, 5) + (DustRing*math.Rand(2, 5)/Radius)
 
 			for k = 3, self.Particles do
 			local Rcolor = math.random(-20,20)
@@ -139,7 +140,7 @@ self.Origin = Pos
 				local ShootVector = Angle:Up()
 				local Smoke = self.emitter:Add( "particle/smokesprites_000"..math.random(1,9), Pos )
 				if (Smoke) then
-				Smoke:SetVelocity( ShootVector * math.Rand(500,1000*self.Scale) )
+				Smoke:SetVelocity( ShootVector * math.Rand(500,1500*self.Scale) )
 				Smoke:SetDieTime( math.Rand( 0.5 , 3 )*Scale  )
 				Smoke:SetStartAlpha( math.Rand( 80, 90 ) )
 				Smoke:SetEndAlpha( 0 )
@@ -153,14 +154,14 @@ self.Origin = Pos
 				end	
 				end
 
-				local Density = 30*self.Scale					/// This part is for the shockwave ///
+				local Density = 40*self.Scale					/// This part is for the shockwave ///
 				local Angle = DirVec:Angle()
 				for i=0, Density do	
 				Angle:RotateAroundAxis(Angle:Forward(), (360/Density))
 				local ShootVector = Angle:Up()
 				local Smoke = self.emitter:Add( "particle/smokesprites_000"..math.random(1,9), Pos )
 				if (Smoke) then
-				Smoke:SetVelocity( ShootVector * math.Rand(13000,13500) ) // Speed of sound in inches/sec is about 13500
+				Smoke:SetVelocity( ShootVector * math.Rand(17000,18000) ) // Speed of sound in units/sec is about 18000
 				Smoke:SetDieTime( math.Rand( 0.75 , 1 )  )
 				Smoke:SetStartAlpha( math.Rand( 90, 120 ) )
 				Smoke:SetEndAlpha( 0 )

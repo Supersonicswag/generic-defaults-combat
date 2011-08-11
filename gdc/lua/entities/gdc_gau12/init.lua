@@ -47,7 +47,7 @@ end
 
 function ENT:fireapi()
 		local ent = ents.Create( "gdca_25x137_api" )
-		ent:SetPos( self.Entity:GetPos() +  self.Entity:GetUp() * 200)
+		ent:SetPos( self.Entity:GetPos() +  self.Entity:GetUp() * 300)
 		ent:SetAngles( self.Entity:GetAngles() )
 		ent:Spawn()
 		ent:Activate()
@@ -72,7 +72,7 @@ end
 
 function ENT:fireapit()
 		local ent = ents.Create( "gdca_25x137_apit" )
-		ent:SetPos( self.Entity:GetPos() +  self.Entity:GetUp() * 200)
+		ent:SetPos( self.Entity:GetPos() +  self.Entity:GetUp() * 300)
 		ent:SetAngles( self.Entity:GetAngles() )
 		ent:Spawn()
 		ent:Activate()
@@ -97,7 +97,7 @@ end
 
 function ENT:firehei()
 		local ent = ents.Create( "gdca_25x137_hei" )
-		ent:SetPos( self.Entity:GetPos() +  self.Entity:GetUp() * 200)
+		ent:SetPos( self.Entity:GetPos() +  self.Entity:GetUp() * 300)
 		ent:SetAngles( self.Entity:GetAngles() )
 		ent.Gun = self.Entity
 		ent:Spawn()
@@ -124,7 +124,7 @@ end
 function ENT:fireheit()
 
 		local ent = ents.Create( "gdca_25x137_heit" )
-		ent:SetPos( self.Entity:GetPos() +  self.Entity:GetUp() * 200)
+		ent:SetPos( self.Entity:GetPos() +  self.Entity:GetUp() * 300)
 		ent:SetAngles( self.Entity:GetAngles() )
 		ent.Gun = self.Entity
 		ent:Spawn()
