@@ -40,7 +40,7 @@ if ( CLIENT ) then
 	language.Add( "Tool_gdcweapons_help16", "30 RPM, High Explosive(25m), 2640-4620- Inches/Second" )
 	language.Add( "Tool_gdcweapons_help17", "12 RPM, High Explosive(15m). IR Guided, GPS Guided, No coordinates will fire straight. BE CAREFUL! Don't fire at anything with unwanted targets in the general direction!" )
 	language.Add( "Tool_gdcweapons_help18", "~1100 RPM, Tracer/Ball, Overheats after 50 rounds, 29700 Inches/Second" )
-	language.Add( "Tool_gdcweapons_help19", "Smoke deployer." )
+	language.Add( "Tool_gdcweapons_help19", "Smoke deployer. Makes a big cloud of smoke for cover or whatever." )
 	language.Add( "Tool_gdcweapons_help20", "Flare deployer, 10 salvo. Flares can be used as smoke, signals, or IR jammers (GMLS will track it)" )
 	language.Add( "Tool_gdcweapons_help21", "10 RPS, 16 Salvo, High Explosive Fragmentation(13m)/High Explosive Anti-Tank(8m)" )
 	language.Add( "Tool_gdcweapons_help22", "4 RPS, 8 Salvo, High Explosive Anti-Tank(15m)/FAE (Thermobaric)(25m)/Penetrator(5m)." )
@@ -48,7 +48,7 @@ if ( CLIENT ) then
 	language.Add( "Tool_gdcweapons_help24", "600 RPM, Tracer(Green)/Ball, 29700 Inches/Second" )
 	language.Add( "Tool_gdcweapons_help25", "900 RPM, Tracer/Ball, 33000 Inches/Second" )
 	language.Add( "Tool_gdcweapons_help26", "Anti Tank Guided Missile Launcher. For now top attack only, future inputs will work. HEAT(23m)" )
-	language.Add( "Tool_gdcweapons_help27", "50kg High Explosive Bomb. Use outputs for TV guidance. High Explosive(35m)" )
+	language.Add( "Tool_gdcweapons_help27", "50kg High Explosive Bomb. Use outputs for TV guidance (+-20 input angle). High Explosive(35m)" )
 
 
 	language.Add( "Tool_turret_type", "Type of weapon" )

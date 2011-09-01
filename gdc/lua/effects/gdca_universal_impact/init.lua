@@ -1,9 +1,4 @@
 
-					//Sound,Impact
-
-					// 1        2       3      4      5
-					//Dirt, Concrete, Metal, Glass, Flesh
-
 					// 1     2     3      4      5      6      7      8         9
 					//Dust, Dirt, Sand, Metal, Smoke, Wood,  Glass, Blood, YellowBlood
 local mats={				
@@ -57,7 +52,7 @@ end
 	WorldSound( "Bullet.Concrete", self.Pos)
 	self.Emitter = ParticleEmitter( self.Pos )
 		
-	for i=0, 15*self.Scale do
+	for i=0, 10+(self.Scale*5) do
 		local Smoke = self.Emitter:Add( "particle/smokesprites_000"..math.random(1,9), self.Pos )
 		if (Smoke) then
 		Smoke:SetVelocity( self.DirVec * math.random( 20,500*self.Scale) + VectorRand():GetNormalized()*100*self.Scale )
@@ -74,7 +69,7 @@ end
 		end
 	end
 
-	for i=0, 10*self.Scale do
+	for i=0, 7+(self.Scale*3) do
 		local Smoke = self.Emitter:Add( "particle/particle_composite", self.Pos )
 		if (Smoke) then
 		Smoke:SetVelocity( self.DirVec * math.random( 0,400*self.Scale) + VectorRand():GetNormalized()*5*self.Scale )
@@ -91,7 +86,7 @@ end
 		end
 	end
 
-	for i=0, 10*self.Scale do
+	for i=0, 10+(self.Scale*5) do
 		local Debris = self.Emitter:Add( "effects/fleck_cement"..math.random(1,2), self.Pos )
 		if (Debris) then
 		Debris:SetVelocity ( self.DirVec * math.random(200,300*self.Scale) + VectorRand():GetNormalized() * 300*self.Scale )
@@ -131,7 +126,7 @@ end
 
 	self.Emitter = ParticleEmitter( self.Pos )
 		
-	for i=0, 15*self.Scale do
+	for i=0, 10+(self.Scale*5) do
 		local Smoke = self.Emitter:Add( "particle/smokesprites_000"..math.random(1,9), self.Pos )
 		if (Smoke) then
 		Smoke:SetVelocity( self.DirVec * math.random( 20,500*self.Scale) + VectorRand():GetNormalized()*100*self.Scale )
@@ -148,7 +143,7 @@ end
 		end
 	end
 
-	for i=0, 10*self.Scale do
+	for i=0, 7+(self.Scale*3) do
 		local Smoke = self.Emitter:Add( "particle/particle_composite", self.Pos )
 		if (Smoke) then
 		Smoke:SetVelocity( self.DirVec * math.random( 0,400*self.Scale) + VectorRand():GetNormalized()*5*self.Scale )
@@ -165,7 +160,7 @@ end
 		end
 	end
 
-	for i=0, 15*self.Scale do
+	for i=0, 10+(self.Scale*5) do
 		local Debris = self.Emitter:Add( "effects/fleck_cement"..math.random(1,2), self.Pos )
 		if (Debris) then
 		Debris:SetVelocity ( self.DirVec * math.random(200,300*self.Scale) + VectorRand():GetNormalized() * 300*self.Scale )
@@ -204,7 +199,7 @@ end
 	WorldSound( "Bullet.Dirt", self.Pos)
 	self.Emitter = ParticleEmitter( self.Pos )
 		
-	for i=0, 15*self.Scale do
+	for i=0, 10+(self.Scale*5) do
 		local Smoke = self.Emitter:Add( "particle/particle_composite", self.Pos )
 		if (Smoke) then
 		Smoke:SetVelocity( self.DirVec * math.random( 20,500*self.Scale) + VectorRand():GetNormalized()*100*self.Scale )
@@ -221,7 +216,7 @@ end
 		end
 	end
 
-	for i=0, 20*self.Scale do
+	for i=0, 10+(self.Scale*10) do
 		local Smoke = self.Emitter:Add( "particle/particle_composite", self.Pos )
 		if (Smoke) then
 		Smoke:SetVelocity( self.DirVec * math.random( 20,400*self.Scale) + VectorRand():GetNormalized()*20*self.Scale )
@@ -483,8 +478,8 @@ end
 
  function EFFECT:Blood()
 	WorldSound( "Bullet.Flesh", self.Pos)
-	for i=0, (10)*self.Scale do
 
+	for i=0, 10+(self.Scale*5) do
 		// Some blood spray out front and the back
 		local Spray = self.Emitter:Add( "particle/particle_composite", self.Pos )
 		if (Spray) then
@@ -502,7 +497,7 @@ end
 	end
 
 		// Some mist for effect
-	for i=0, (15)*self.Scale do
+	for i=0, 10+(self.Scale*5) do
 		local Mist = self.Emitter:Add( "particle/smokesprites_000"..math.random(1,9), self.Pos )
 		if (Mist) then
 		Mist:SetVelocity( (self.PenVec*i*self.Scale*35) + (VectorRand():GetNormalized()*30*self.Scale) )
@@ -540,7 +535,7 @@ end
 	end
 
 		// Some dust kickup like in the movies
-	for i=0, 8*self.Scale do
+	for i=0, 5+(self.Scale*3) do
 		local Smoke = self.Emitter:Add( "particle/smokesprites_000"..math.random(1,9), self.Pos )
 		if (Smoke) then
 		Smoke:SetVelocity( self.DirVec*math.random( 10,30*self.Scale) + VectorRand():GetNormalized()*120*self.Scale )

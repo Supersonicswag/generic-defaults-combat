@@ -54,7 +54,7 @@ end
 function ENT:firefrag()
 
 		local ent = ents.Create( "gdca_57mms5frag" )
-		ent:SetPos( self.Entity:GetPos() +  self.Entity:GetUp() * 300)
+		ent:SetPos( self.Entity:GetPos() +  self.Entity:GetUp() * 300 + self.Velo)
 		ent:SetAngles( self.Entity:GetAngles() )
 		ent:Spawn()
 		ent:Activate()
@@ -77,7 +77,7 @@ end
 function ENT:fireheat()
 
 		local ent = ents.Create( "gdca_57mms5heat" )
-		ent:SetPos( self.Entity:GetPos() +  self.Entity:GetUp() * 300)
+		ent:SetPos( self.Entity:GetPos() +  self.Entity:GetUp() * 300 + self.Velo)
 		ent:SetAngles( self.Entity:GetAngles() )
 		ent:Spawn()
 		ent:Activate()
@@ -98,7 +98,7 @@ function ENT:fireheat()
 end
 
 function ENT:Think()
-	self.Velo = (self.Entity:GetPos()-self.Pos2)*8.34
+	self.Velo = (self.Entity:GetPos()-self.Pos2)/9
 	self.Pos2 = self.Entity:GetPos()
 
 Wire_TriggerOutput(self.Entity, "Shots", self.ammos)

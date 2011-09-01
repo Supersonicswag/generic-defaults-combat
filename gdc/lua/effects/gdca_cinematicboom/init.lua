@@ -1,9 +1,4 @@
 
-					//Sound,Impact
-
-					// 1        2       3      4      5
-					//Dirt, Concrete, Metal, Glass, Flesh
-
 					// 1     2     3      4      5      6      7      8         9
 					//Dust, Dirt, Sand, Metal, Smoke, Wood,  Glass, Blood, YellowBlood
 local mats={				

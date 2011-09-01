@@ -3,7 +3,8 @@
 -Bofors 								// Fine
 -30mm									// Fine
 -200kg effect error							// FIXED
--Revise effect impact sounds						// 
+-Revise effect impact sounds						// FIXED
+-Fix rocket spawn offset						// IN PROGRESS
 
 
 [ENGINE]
@@ -14,7 +15,7 @@
 
 [OPTIMIZE]
 -Penetration code(reduce if-then #; glitches)				// DUN
--Make sounds distant fading; sound overhaul				// IN TRIAL
+-Make sounds distant fading; sound overhaul				// DUN
 -Reduce metal and plastic smoke						// DUN
 
 [FOR LOOKS]

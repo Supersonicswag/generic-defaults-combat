@@ -46,7 +46,7 @@ end
 
 	function ENT:fireheat()
 		local ent = ents.Create( "gdca_80mms8heat" )
-		ent:SetPos( self.Entity:GetPos() +  self.Entity:GetUp() * 300)
+		ent:SetPos( self.Entity:GetPos() +  self.Entity:GetUp() * 300 + self.Velo)
 		ent:SetAngles( self.Entity:GetAngles() )
 		ent:Spawn()
 		ent:Activate()
@@ -66,7 +66,7 @@ end
 
 	function ENT:firefae()
 		local ent = ents.Create( "gdca_80mms8fae" )
-		ent:SetPos( self.Entity:GetPos() +  self.Entity:GetUp() * 300)
+		ent:SetPos( self.Entity:GetPos() +  self.Entity:GetUp() * 300 + self.Velo)
 		ent:SetAngles( self.Entity:GetAngles() )
 		ent:Spawn()
 		ent:Activate()
@@ -87,7 +87,7 @@ end
 	function ENT:firepenetrator()
 
 		local ent = ents.Create( "gdca_80mms8penetrator" )
-		ent:SetPos( self.Entity:GetPos() +  self.Entity:GetUp() * 300)
+		ent:SetPos( self.Entity:GetPos() +  self.Entity:GetUp() * 300 + self.Velo)
 		ent:SetAngles( self.Entity:GetAngles() )
 		ent:Spawn()
 		ent:Activate()
@@ -106,7 +106,7 @@ end
 	end
 
 function ENT:Think()
-	self.Velo = (self.Entity:GetPos()-self.Pos2)*4
+	self.Velo = (self.Entity:GetPos()-self.Pos2)/19
 	self.Pos2 = self.Entity:GetPos()
 
 Wire_TriggerOutput(self.Entity, "Shots", self.ammos)

@@ -5,6 +5,10 @@
 /*---------------------------------------------------------
 Sounds
 ---------------------------------------------------------*/
+resource.AddFile( "scripts/sounds/weapon_gdc.txt" );
+resource.AddFile( "scripts/sounds/weapon_gdc_impacts.txt" );
+
+
 
 resource.AddFile( "sound/GDC/M249Emit.wav" );
 resource.AddFile( "sound/GDC/M249Split.wav" );

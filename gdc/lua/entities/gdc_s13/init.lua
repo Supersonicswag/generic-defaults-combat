@@ -51,7 +51,7 @@ end
 
 	function ENT:firefrag()
 		local ent = ents.Create( "gdca_122mms13frag" )
-		ent:SetPos( self.Entity:GetPos() +  self.Entity:GetUp() * 300)
+		ent:SetPos( self.Entity:GetPos() +  self.Entity:GetUp() * 300 + self.Velo)
 		ent:SetAngles( self.Entity:GetAngles() )
 		ent:Spawn()
 		ent:Activate()	
@@ -70,7 +70,7 @@ end
 
 	function ENT:fireillum()
 		local ent = ents.Create( "gdca_122mm_illuminator" )
-		ent:SetPos( self.Entity:GetPos() +  self.Entity:GetUp() * 300)
+		ent:SetPos( self.Entity:GetPos() +  self.Entity:GetUp() * 300 + self.Velo)
 		ent:SetAngles( self.Entity:GetAngles() )
 		ent:Spawn()
 		ent:Activate()	
@@ -88,7 +88,7 @@ end
 	end
 
 function ENT:Think()
-	self.Velo = (self.Entity:GetPos()-self.Pos2)*10
+	self.Velo = (self.Entity:GetPos()-self.Pos2)/7
 	self.Pos2 = self.Entity:GetPos()
 
 	if self.ammos <= 0 then

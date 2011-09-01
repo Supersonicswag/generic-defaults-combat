@@ -7,7 +7,6 @@ include('shared.lua')
 
 function ENT:Initialize()   
 
-	self.ammomodel = "models/props_c17/canister01a.mdl"
 	self.ammos = 7
 	self.clipsize = 7
 	self.armed = false
@@ -95,7 +94,7 @@ function ENT:firewp()
 end
 
 function ENT:Think()
-	self.Velo = (self.Entity:GetPos()-self.Pos2)*7
+	self.Velo = (self.Entity:GetPos()-self.Pos2)/10
 	self.Pos2 = self.Entity:GetPos()
 
 Wire_TriggerOutput(self.Entity, "shots", self.ammos)

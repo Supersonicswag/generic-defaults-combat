@@ -47,7 +47,7 @@ end
 function ENT:fireatgm()
 
 		local GPSMISSILE = ents.Create( "gdca_atgm" )
-		GPSMISSILE:SetPos( self.Entity:GetPos() + (self.Entity:GetUp()*200))
+		GPSMISSILE:SetPos( self.Entity:GetPos() + (self.Entity:GetUp()*300) + self.Velo)
 		GPSMISSILE:SetAngles( self.Entity:GetAngles() )
 		GPSMISSILE.Guider = self.Entity
 		GPSMISSILE:Spawn()
@@ -75,7 +75,7 @@ function ENT:fireatgm()
 end
 
 function ENT:Think()
-	self.Velo = (self.Entity:GetPos()-self.Pos2)*66
+	self.Velo = (self.Entity:GetPos()-self.Pos2)
 	self.Pos2 = self.Entity:GetPos()
 
 	if self.ammos <= 0 then
