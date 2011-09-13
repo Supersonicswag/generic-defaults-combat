@@ -4,7 +4,7 @@ include('shared.lua')
 
 function ENT:Initialize()   
 self.Owner = self:GetOwner()
-self.flightvector = self.Entity:GetUp() * ((360*39.37)/66)             	-- Velocity in m/s, inches to meters conversion, ticks per second.FIRST NUMMER = SPEED
+self.flightvector = self.Entity:GetUp() * ((360*52.5)/66)             	-- Velocity in m/s, inches to meters conversion, ticks per second.FIRST NUMMER = SPEED
 self.timeleft = CurTime() + 8
 self.Entity:SetModel( "models/led.mdl" ) 	
 self.Entity:PhysicsInit( SOLID_VPHYSICS )      -- Make us work with physics,  	

@@ -4,7 +4,7 @@ include('shared.lua')
 
 function ENT:Initialize()   
 
-self.flightvector = self.Entity:GetUp() * ((115*39.37)/66)
+self.flightvector = self.Entity:GetUp() * ((115*52.5)/66)
 self.timeleft = CurTime() + 10
 self.Owner = self:GetOwner()
 self.Entity:SetModel( "models/props_junk/garbage_glassbottle001a.mdl" )

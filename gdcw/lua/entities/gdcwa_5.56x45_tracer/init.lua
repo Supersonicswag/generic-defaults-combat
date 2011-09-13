@@ -29,7 +29,7 @@ math.randomseed(CurTime())
 
 self.Owner 		= self:GetOwner()			// Who dun it!
 self.Penetrate 		= 9					// How deep Generic Default goes
-self.Flightvector 	= self.Entity:GetUp()*((900*39.37)/66)	// Velocity in m/s, FIRST NUMMER is SPEED (FrameTime)
+self.Flightvector 	= self.Entity:GetUp()*((900*52.5)/66)	// Velocity in m/s, FIRST NUMMER is SPEED (FrameTime)
 self.Timeleft 		= CurTime() + 5				// How long before auto-remove?
 self.Impacted 		= false					// Important for flight continuation, see line 173
 self.Splatter 		= false					// Carries blood and AIDS after the round passes through someone
