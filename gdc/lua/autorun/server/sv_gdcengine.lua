@@ -54,12 +54,10 @@ function gdc.caphit( entity, damage )
 		local phys = wreck:GetPhysicsObject()
 
 		if entity:GetPhysicsObject():GetVelocity():Length() > 0 then
-		//phys:ApplyForceCenter(entity:GetPhysicsObject():GetVelocity()*phys:GetMass())
 		phys:SetVelocity(entity:GetPhysicsObject():GetVelocity()*66)
 		phys:ApplyForceOffset(VectorRand():GetNormalized()*50,entity:GetPos()+VectorRand():GetNormalized()*50 )
 
 		elseif entity:GetParent():IsValid() then
-		//phys:ApplyForceCenter(entity:GetParent():GetPhysicsObject():GetVelocity()*phys:GetMass())
 		phys:SetVelocity(entity:GetParent():GetPhysicsObject():GetVelocity())
 		phys:ApplyForceOffset(VectorRand():GetNormalized()*50,entity:GetPos()+VectorRand():GetNormalized()*50 )
 		end
@@ -91,9 +89,9 @@ function gdc.gdcsplode( position, radius, damage, shell)
 		local hitat = trace.HitPos
 		local dist = (position-i:LocalToWorld(i:OBBCenter())):Length()
 		local destructy = damage*math.Clamp((radius-dist)/(radius/2),0,1)	// Mutiply damage by distance fraction
-		cbt_dealcaphit( i, destructy)
-		end
-	end
+		cbt_dealcaphit( i, destructy)	//					|---------------------------------|
+		end				//					<--------((((((((O))))))))-------->
+	end					//					But keep it maximum until 1/2 radius out
 	
 end
 

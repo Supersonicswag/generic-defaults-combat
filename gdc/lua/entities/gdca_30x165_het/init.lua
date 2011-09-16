@@ -48,14 +48,14 @@ function ENT:Think()
 		end
 
 			if self.AirburstTime < CurTime() then
-			util.BlastDamage(self.Entity, self.Entity, self.Entity:GetPos(), 400, 60)
+			util.BlastDamage(self.Entity, self.Entity, self.Entity:GetPos(), 600, 60)
 			local effectdata = EffectData()
 			effectdata:SetOrigin(self.Entity:GetPos())
 			effectdata:SetScale(1.3)
 			effectdata:SetMagnitude(20)
 			util.Effect( "gdca_airburst", effectdata )
 			if GDCENGINE then	
-			local attack = gdc.gdcsplode( self.Entity:GetPos(), 130, 80, self.Entity)	// Position, Radius, Damage, Self		
+			local attack = gdc.gdcsplode( self.Entity:GetPos(), 600, 60, self.Entity)	// Position, Radius, Damage, Self		
 			end	
 			self.Entity:Remove()	end
 

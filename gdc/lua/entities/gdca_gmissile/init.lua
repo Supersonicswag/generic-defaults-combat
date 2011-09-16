@@ -137,9 +137,9 @@ if (self.Accelerator<self.AccelMax) then self.Accelerator = self.Accelerator+sel
 	self.TPos 	= self.Target:GetPos()					// Refresh the target position
 
 	TangY = (IPos - self:GetPos()):GetNormalized():Angle().y
-	AddY = math.Clamp(math.AngleDifference(TangY, self.Entity:GetUp():Angle().y)*15,-self.Accelerator/100,self.Accelerator/100)
+	AddY = math.Clamp(math.AngleDifference(TangY, self.Entity:GetUp():Angle().y)*15,-self.Accelerator/150,self.Accelerator/150)
 	TangP = (IPos - self:GetPos()):GetNormalized():Angle().p
-	AddP = math.Clamp(math.AngleDifference(TangP, self.Entity:GetUp():Angle().p)*15,-self.Accelerator/100,self.Accelerator/100)
+	AddP = math.Clamp(math.AngleDifference(TangP, self.Entity:GetUp():Angle().p)*15,-self.Accelerator/150,self.Accelerator/150)
 	self.Entity:SetAngles((Angle(AddP,AddY,0) + ForwardAngle) + Angle(90,0,0) + Angle(math.Rand(-0.8,0.8),math.Rand(-0.8,0.8),math.Rand(-0.8,0.8)))
 	else
 	self.Entity:SetAngles(self.flightvector:Angle() + Angle(90,0,0))

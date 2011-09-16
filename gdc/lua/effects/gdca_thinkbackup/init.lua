@@ -1,10 +1,10 @@
 function EFFECT:Init( data )
 
-local Pos = data:GetOrigin()
-local Scale = data:GetScale()	
-local DirVec = data:GetNormal()
-local Particles = data:GetMagnitude()
-local Angle = DirVec:Angle()
+local Pos 		= data:GetOrigin()
+local Scale 		= data:GetScale()	
+local DirVec 		= data:GetNormal()
+local Particles 	= data:GetMagnitude()
+local Angle 		= DirVec:Angle()
 
 self.emitter = ParticleEmitter( Pos )
 self.IsDead = false
@@ -13,7 +13,8 @@ self.Ptable = {}
 
 	for i = 1, Particles do 	
 			Angle:RotateAroundAxis(Angle:Forward(), (360/Particles))
-				local DustRing = Angle:Up()
+			
+local DustRing = Angle:Up()
 		self.Ptable[i] = {}		
 		self.Ptable[i].RanVec = (DirVec*math.Rand(0, 5) + DustRing*math.Rand(3, 5))
 		self.Ptable[i].RanNum = math.random(10,15) + 1	

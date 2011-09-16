@@ -57,6 +57,8 @@ resource.AddFile( "sound/GDC/GMLSplit.wav" );
 resource.AddFile( "sound/GDC/RAMEmit.wav" );
 resource.AddFile( "sound/GDC/RAMSplit.wav" );
 
+resource.AddFile( "sound/GDC/FlamerEmit.wav" );
+resource.AddFile( "sound/GDC/FlamerStop.wav" );
 resource.AddFile( "sound/GDC/FlareEmit.wav" );
 resource.AddFile( "sound/GDC/FlareSplit.wav" );
 resource.AddFile( "sound/GDC/ExplosionBoom.wav" );

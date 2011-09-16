@@ -4,7 +4,7 @@
 -30mm									// Fine
 -200kg effect error							// FIXED
 -Revise effect impact sounds						// FIXED
--Fix rocket spawn offset						// IN PROGRESS
+-Fix rocket spawn offset						// FIXED
 
 
 [ENGINE]
@@ -17,6 +17,7 @@
 -Penetration code(reduce if-then #; glitches)				// DUN
 -Make sounds distant fading; sound overhaul				// DUN
 -Reduce metal and plastic smoke						// DUN
+-Increase airburst radius						// DUN
 
 [FOR LOOKS]
 -Make penetrating effects dynamic; optimize				// DUN
@@ -26,7 +27,7 @@
 -Make a better WP effect						// DUN
 
 [REQUESTS]
--Flamethrower								// INDEFINITELY DELAYED
+-Flamethrower								// DUN; TESTING
 -Smoke rounds for MK-19							// DUN
 -Airburst for all medium caliber weapons				// DUN
 -Bomb Droppers								// DUN

@@ -352,6 +352,25 @@
 }
 
 
+
+"Flamer.Emit"
+{
+	"pitch"				"100"
+	"channel"			"CHAN_FIYAA"
+	"soundlevel"			"SNDLVL_100dB"
+	"volume"			"VOL_NORM"
+	"wave"				")GDC/FlamerEmit.wav"
+}
+"Flamer.Stop"
+{
+	"pitch"				"100"
+	"channel"			"CHAN_FIYAA"
+	"soundlevel"			"SNDLVL_100dB"
+	"volume"			"VOL_NORM"
+	"wave"				")GDC/FlamerStop.wav"
+}
+
+
 "Flare.Emit"
 {
 	"channel"			"CHAN_STATIC"

@@ -49,6 +49,7 @@ if ( CLIENT ) then
 	language.Add( "Tool_gdcweapons_help25", "900 RPM, Tracer/Ball, 33000 Inches/Second" )
 	language.Add( "Tool_gdcweapons_help26", "Anti Tank Guided Missile Launcher. For now top attack only, future inputs will work. HEAT(23m)" )
 	language.Add( "Tool_gdcweapons_help27", "50kg High Explosive Bomb. Use outputs for TV guidance (+-20 input angle). High Explosive(35m)" )
+	language.Add( "Tool_gdcweapons_help28", "Oxidated flamethrower. 45 meter range, ~10 degree burn field." )
 
 
 	language.Add( "Tool_turret_type", "Type of weapon" )
@@ -266,6 +267,14 @@ if ( !trace.Hit ) then return end
 	self.ent:SetAngles( trace.HitNormal:Angle() + Angle(90,0,0))
 	self.ent:Spawn()
 	self.ent:Activate()
+
+		elseif (gdcweaponsindex == 28) then
+	self.ent = ents.Create( "gdc_flamethrower" )
+	self.ent:SetPos( SpawnPos )
+	self.ent:SetAngles( trace.HitNormal:Angle() + Angle(90,0,0))
+	self.ent:Spawn()
+	self.ent:Activate()
+
 
 	end
 	
@@ -495,6 +504,14 @@ if ( !trace.Hit ) then return end
 	self.ent:Spawn()
 	self.ent:Activate()
 
+		elseif (gdcweaponsindex == 28) then
+	self.ent = ents.Create( "gdc_flamethrower" )
+	self.ent:SetPos( SpawnPos )
+	self.ent:SetAngles( trace.HitNormal:Angle() + Angle(90,0,0))
+	self.ent:Spawn()
+	self.ent:Activate()
+
+
 	end
 
 	ply:AddCount( "gdc", self.ent )
@@ -520,9 +537,7 @@ function TOOL.BuildCPanel( CPanel )
 
 	// HEADER
 	CPanel:AddControl( "Header", { Text = "#Tool_gdcweapons_name", Description	= "#Tool_gdcweapons_desc" }  )
-	
-	
-	// the pertenent cannon
+
 	local Ctype = {Label = "#Tool_turret_type", MenuButton = 0, Options={}}
 
 		Ctype["Options"]["#M240 7.62"]			= { gdcweapons_gdcweaponsindex = "0" }
@@ -553,6 +568,7 @@ function TOOL.BuildCPanel( CPanel )
 		Ctype["Options"]["#M249 5.56mm"]		= { gdcweapons_gdcweaponsindex = "25" }
 		Ctype["Options"]["#ATGML"]			= { gdcweapons_gdcweaponsindex = "26" }
 		Ctype["Options"]["#50KG Bomb"]			= { gdcweapons_gdcweaponsindex = "27" }
+		Ctype["Options"]["#Flamer"]			= { gdcweapons_gdcweaponsindex = "28" }
 
 	CPanel:AddControl("ComboBox", Ctype )
 	

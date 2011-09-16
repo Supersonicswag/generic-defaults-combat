@@ -34,21 +34,5 @@
  				particle:SetGravity( VectorRand():GetNormalized()*math.Rand(50, 100) ) 
 			end
 
-			for i=1, 10 do
-				local particle = self.emitter:Add( "effects/fire_cloud1", pos + (self:GetUp() * -40 * i) )
-
-				particle:SetVelocity((self:GetUp() * -500) )
-				particle:SetDieTime( 0.06 )
-				particle:SetStartAlpha( 255 )
-				particle:SetEndAlpha( 0 )
-				particle:SetStartSize( 20 )
-				particle:SetEndSize( math.Rand( 25, 35 ) )
-				particle:SetRoll( math.Rand( -5, 5 ) )
-				particle:SetRollDelta( 0 )
-				particle:SetAirResistance(10)
-				particle:SetColor( 255,255,255 )
-
-			end
-		
-		end
+	end
 end

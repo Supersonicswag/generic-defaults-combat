@@ -54,7 +54,7 @@ end
 					effectdata:SetEntity(self.Entity)			// Who done it?
 					effectdata:SetScale(4.5)				// Size of explosion
 					effectdata:SetRadius(tr.MatType)			// Texture of Impact
-					effectdata:SetMagnitude(16)				// Length of explosion trails	
+					effectdata:SetMagnitude(20)				// Length of explosion trails	
 				util.Effect( "gdca_cinematicboom", effectdata )
 				util.ScreenShake(tr.HitPos, 20, 5, 1, 2500 )
 				util.Decal("Scorch", tr.HitPos + tr.HitNormal, tr.HitPos - tr.HitNormal)

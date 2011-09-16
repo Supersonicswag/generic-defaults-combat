@@ -23,7 +23,7 @@ local mats={
 	[MAT_GLASS]			={4,7},
 }
 
-
+//Scale = ent:GetNWInt("Scale")
 function EFFECT:Init(data)
 self.Entity 		= data:GetEntity()		// Entity determines what is creating the dynamic light			//
 self.Pos 		= data:GetOrigin()		// Origin determines the global position of the effect			//
@@ -101,7 +101,7 @@ end
 		local Dust = self.Emitter:Add( "particle/particle_composite", self.Pos )	
 		if (Dust) then
 		Dust:SetVelocity( self.DirVec * math.random( 100,400)*self.Scale + ((VectorRand():GetNormalized()*300)*self.Scale) )
-		Dust:SetDieTime( math.Rand( 2 , 3 ) )
+		Dust:SetDieTime( math.Rand( 2 , 4 ) )
 		Dust:SetStartAlpha( 230 )
 		Dust:SetEndAlpha( 0 )
 		Dust:SetStartSize( (50*self.Scale) )
@@ -158,12 +158,12 @@ end
 			local particle1 = self.Emitter:Add( "particle/smokesprites_000"..math.random(1,9), self.Pos )				
 			particle1:SetVelocity((VectorRand():GetNormalized()*math.Rand(1, 2) * self.Size) + (RanVec*self.Size*k*3.5))	
 			particle1:SetDieTime( math.Rand( 0.5, 4 )*self.Scale )	
-			particle1:SetStartAlpha( math.Rand( 90, 100 ) )			
+			particle1:SetStartAlpha( math.Rand( 120, 140 )-(k*3) )			
 			particle1:SetEndAlpha(0)	
 			particle1:SetGravity((VectorRand():GetNormalized()*math.Rand(5, 10)* self.Size) + Vector(0,0,-50))
 			particle1:SetAirResistance( 200+self.Scale*20 ) 		
-			particle1:SetStartSize( (5*self.Size)-((k/self.Particles)*self.Size*3) )	
-			particle1:SetEndSize( (20*self.Size)-((k/self.Particles)*self.Size) )
+			particle1:SetStartSize( (5*self.Size)-((k/self.Particles)*self.Size*2) )	
+			particle1:SetEndSize( (20*self.Size)-((k/self.Particles)*self.Size*10) )
 			particle1:SetRoll( math.random( -500, 500 )/100 )	
 			particle1:SetRollDelta( math.random( -0.5, 0.5 ) )	
 			particle1:SetColor( 90+Rcolor,87+Rcolor,80+Rcolor )
