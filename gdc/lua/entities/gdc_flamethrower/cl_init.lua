@@ -98,13 +98,13 @@ if !self:GetNetworkedBool("fire") then return end
 
 
 		for i=1, (8) do
-		local particle = self.emitter:Add( "particles/flamelet"..math.random(1,5), pos +(i*80*self:GetUp()))
+		local particle = self.emitter:Add( "particles/flamelet"..math.random(1,5), pos +((i-1)*80*self:GetUp()))
 			if (particle) then
 			particle:SetVelocity(self:GetUp() * math.Rand(500, 1000) * i )
 			particle:SetDieTime( math.Rand( 0.3, 0.5 ) )
 			particle:SetStartAlpha( 200 )
 			particle:SetEndAlpha( 0 )
-			particle:SetStartSize( 30 )
+			particle:SetStartSize( 10 + (i*10) )
 			particle:SetEndSize( 50 + (i*20) )
 			particle:SetRoll( math.Rand(0, 360) )
 			particle:SetRollDelta( math.Rand(-5, 5) )

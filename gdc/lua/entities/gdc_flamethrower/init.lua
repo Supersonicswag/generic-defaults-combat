@@ -8,7 +8,7 @@ function ENT:Initialize()
 	self.Entity:PhysicsInit( SOLID_VPHYSICS )
 	self.Entity:SetMoveType( MOVETYPE_VPHYSICS )	
 	self.Entity:SetSolid( SOLID_VPHYSICS )
-	self.Entity:SetColor(250,80,0,255)
+	self.Entity:SetColor(70,70,70,255)
 
       
 	local phys = self.Entity:GetPhysicsObject()  	
