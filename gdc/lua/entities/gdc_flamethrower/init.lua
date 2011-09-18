@@ -1,5 +1,7 @@
 AddCSLuaFile( "cl_init.lua" )
 AddCSLuaFile( "shared.lua" )
+
+include('entities/base_wire_entity/init.lua'); 
 include('shared.lua')
 
 function ENT:Initialize()   
@@ -21,7 +23,7 @@ function ENT:Initialize()
 	self.Burning = false
 	self:SetNetworkedBool( "fire", false)
 	self.SoundString = "Flamer.Emit"
- 
+ 	//self.Owner = self.Entity:GetPlayer() print(tostring(self.Owner))
 	self.Sound = CreateSound(self.Entity,self.SoundString )
 
 
@@ -62,7 +64,7 @@ function ENT:Think()
 			dmginfo:SetInflictor( self.Entity )
 			t.Entity:TakeDamageInfo( dmginfo ) 	
 			end
-			if t.Entity:IsValid() and GDCENGINE then	local attack =  gdc.caphit( t.Entity, 3)	end
+			if t.Entity:IsValid() and GDCENGINE and !string.find(tostring(t:GetClass()), "gdca_", 0) then	local attack =  gdc.caphit( t.Entity, 3) end
 		end 
 		end
 

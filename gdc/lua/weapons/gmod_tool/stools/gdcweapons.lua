@@ -49,7 +49,7 @@ if ( CLIENT ) then
 	language.Add( "Tool_gdcweapons_help25", "900 RPM, Tracer/Ball, 33000 Inches/Second" )
 	language.Add( "Tool_gdcweapons_help26", "Anti Tank Guided Missile Launcher. For now top attack only, future inputs will work. HEAT(23m)" )
 	language.Add( "Tool_gdcweapons_help27", "50kg High Explosive Bomb. Use outputs for TV guidance (+-20 input angle). High Explosive(35m)" )
-	language.Add( "Tool_gdcweapons_help28", "Oxidated flamethrower. 45 meter range, ~10 degree burn field." )
+	language.Add( "Tool_gdcweapons_help28", "Oxidated flamethrower. 45 meter range, ~10 degree burn cone." )
 
 
 	language.Add( "Tool_turret_type", "Type of weapon" )
@@ -64,12 +64,10 @@ function TOOL:LeftClick( trace )
 local ply = self:GetOwner()
 if (!ply:CheckLimit( "gdc" )) then return end
 if ( !trace.Hit ) then return end
-	
-	if ( SERVER && !util.IsValidPhysicsObject( trace.Entity, trace.PhysicsBone ) ) then return false end
-	if (CLIENT) then return true end
-	
+if ( SERVER && !util.IsValidPhysicsObject( trace.Entity, trace.PhysicsBone ) ) then return false end
+if (CLIENT) then return true end
+
 	local gdcweaponsindex	= self:GetClientNumber( "gdcweaponsindex" ) 
-	
 	local SpawnPos = trace.HitPos + trace.HitNormal * 30
 
 		if (gdcweaponsindex == 0) then

@@ -1,11 +1,9 @@
 [GLITCHES]
 -Penetration will not remove self when trace starts inside prop.	// FIXED
--Bofors 								// Fine
--30mm									// Fine
 -200kg effect error							// FIXED
 -Revise effect impact sounds						// FIXED
 -Fix rocket spawn offset						// FIXED
-
+-Flamethrower (Wire;Limit;Damage Ents)					// DUN; IN PROGRESS; DUN
 
 [ENGINE]
 -Make explosion sphere function						// DUN
@@ -27,7 +25,7 @@
 -Make a better WP effect						// DUN
 
 [REQUESTS]
--Flamethrower								// DUN; TESTING
+-Flamethrower								// DUN; EVALUATING;
 -Smoke rounds for MK-19							// DUN
 -Airburst for all medium caliber weapons				// DUN
 -Bomb Droppers								// DUN
