@@ -11,7 +11,6 @@ function ENT:Initialize()
 	self.exploded = false
 	self.fuseleft = CurTime() + math.random(3,6)
 	self.minsmoke = CurTime() + 1
-	self.deathtype = 0	
 	self.Entity:PhysicsInit( SOLID_VPHYSICS )
 	self.Entity:SetMoveType( MOVETYPE_VPHYSICS )
 	self.Entity:SetSolid( SOLID_VPHYSICS ) 
@@ -34,15 +33,7 @@ function ENT:Think()
 	self.Entity:Remove()
 	end
 	 
-	if (self.Entity:GetPhysicsObject():GetVelocity():Length()>0 ) then
-	local effectdata = EffectData()
-	effectdata:SetOrigin(self.Entity:GetPos())
-	effectdata:SetStart(self.Entity:GetPos())
-	effectdata:SetScale( math.Clamp(self.Entity:BoundingRadius()/50,0.8,3) )
-	util.Effect( "gdca_debrismoke", effectdata )				
-	end
-	local yarg = math.Clamp(100/(self.Entity:GetPhysicsObject():GetVelocity():Length()),0.04,0.3)
-	self.Entity:NextThink( CurTime() + yarg)
+	self.Entity:NextThink( CurTime() + 0.3)
 										//models/props_wasteland/metal_tram001a
 	return true
 end

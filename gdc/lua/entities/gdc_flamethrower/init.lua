@@ -1,29 +1,41 @@
 AddCSLuaFile( "cl_init.lua" )
 AddCSLuaFile( "shared.lua" )
-
-include('entities/base_wire_entity/init.lua'); 
+include('entities/base_wire_entity/init.lua');
 include('shared.lua')
 
-function ENT:Initialize()   
+function ENT:Initialize()
 		
-	self.Entity:SetModel( "models/props_pipes/pipecluster08d_extender64.mdl" ) 	
+	self.Entity:SetModel( "models/props_pipes/pipecluster08d_extender64.mdl" )
 	self.Entity:PhysicsInit( SOLID_VPHYSICS )
-	self.Entity:SetMoveType( MOVETYPE_VPHYSICS )	
+	self.Entity:SetMoveType( MOVETYPE_VPHYSICS )
 	self.Entity:SetSolid( SOLID_VPHYSICS )
 	self.Entity:SetColor(70,70,70,255)
 
       
-	local phys = self.Entity:GetPhysicsObject()  	
-	if (phys:IsValid()) then  		
-	phys:Wake() 
-	end 
-	
+	local phys = self.Entity:GetPhysicsObject()
+	if (phys:IsValid()) then
+	phys:Wake()
+	end
+
+
+
+	local CheckHo = ents.FindByClass( "gdc_flamethrower" )		
+	PrintTable( CheckHo )
+	for _,t in pairs(CheckHo) do
+	if t.Entity:IsValid() and (t.Entity!=self.Entity) and (t.Entity:GetClass()=="gdc_flamethrower") then
+	if t:GetPos():Distance(self:GetPos())<1000 then
+	self.Entity:Remove() 		print("Removed Extra Flamer")	
+	end
+	end
+	end
+
+	self.Velo = 0
+	self.Pos2 = self.Entity:GetPos()
 	self.Heat = 0
 	self.CoolTime = 0
 	self.Burning = false
 	self:SetNetworkedBool( "fire", false)
 	self.SoundString = "Flamer.Emit"
- 	//self.Owner = self.Entity:GetPlayer() print(tostring(self.Owner))
 	self.Sound = CreateSound(self.Entity,self.SoundString )
 
 
@@ -34,6 +46,8 @@ end
 
 
 function ENT:Think()
+	self.Velo = (self.Entity:GetPos()-self.Pos2):Length()
+	self.Pos2 = self.Entity:GetPos()
 
 	if self.Burning then
 
@@ -64,7 +78,8 @@ function ENT:Think()
 			dmginfo:SetInflictor( self.Entity )
 			t.Entity:TakeDamageInfo( dmginfo ) 	
 			end
-			if t.Entity:IsValid() and GDCENGINE and !string.find(tostring(t:GetClass()), "gdca_", 0) then	local attack =  gdc.caphit( t.Entity, 3) end
+			if t.Entity:IsValid() and GDCENGINE and !string.find(tostring(t:GetClass()), "gdca_", 0) 	then
+			local attack 			=  gdc.caphit( t.Entity, 2) 					end
 		end 
 		end
 
@@ -96,10 +111,11 @@ function ENT:TriggerInput(k, v)
 
 		if (k == "Burn") then
 		if ((v or 0)>0) then
-		if (!self.Burning and (self.CoolTime<CurTime())) 	then 	self.Burning = true
-									self:SetNetworkedBool( "fire", true) 	
-									self.Sound = CreateSound(self.Entity,self.SoundString )
-									self.Sound:Play()
+		if !self.Burning and (self.CoolTime<CurTime()) and (self.Velo<24) 	then 	
+										self.Burning = true
+										self:SetNetworkedBool( "fire", true) 	
+										self.Sound = CreateSound(self.Entity,self.SoundString)
+										self.Sound:Play()
 		end
 		else
 		if (self.Burning) 			then 	self.Burning = false

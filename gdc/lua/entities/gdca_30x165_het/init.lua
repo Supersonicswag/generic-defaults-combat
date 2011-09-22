@@ -97,7 +97,7 @@ function ENT:Think()
 					util.Decal("Scorch", tr.HitPos + tr.HitNormal, tr.HitPos - tr.HitNormal)
 
 			if GDCENGINE then	
-			local attack = gdc.gdcsplode( tr.HitPos, 40, 120, self.Entity)	// Position, Radius, Damage, Self		
+			local attack = gdc.gdcsplode( tr.HitPos, 90, 120, self.Entity)	// Position, Radius, Damage, Self		
 			end	
 			///
 
