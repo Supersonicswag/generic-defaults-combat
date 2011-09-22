@@ -20,7 +20,6 @@ function ENT:Initialize()
 
 
 	local CheckHo = ents.FindByClass( "gdc_flamethrower" )		
-	PrintTable( CheckHo )
 	for _,t in pairs(CheckHo) do
 	if t.Entity:IsValid() and (t.Entity!=self.Entity) and (t.Entity:GetClass()=="gdc_flamethrower") then
 	if t:GetPos():Distance(self:GetPos())<1000 then
