@@ -28,12 +28,14 @@ function ENT:Initialize()
 	end
 	end
 
-	self.Velo = 0
-	self.Pos2 = self.Entity:GetPos()
-	self.Heat = 0
-	self.CoolTime = 0
-	self.Burning = false
+	self.Velo 				= 0
+	self.Pos2 				= self.Entity:GetPos()
+	self.Heat 				= 0
+	self.CoolTime 				= 0
+	self.Range 				= 1575
+	self.Burning 				= false
 	self:SetNetworkedBool( "fire", false)
+	self:SetNetworkedBool( "hp", false)
 	self.SoundString = "Flamer.Emit"
 	self.Sound = CreateSound(self.Entity,self.SoundString )
 
@@ -53,7 +55,7 @@ function ENT:Think()
 	self.Heat = self.Heat+1.25
 	self.Sound:ChangePitch( 100-(self.Heat/1.75),0.133 )
 
-	local EIS = ents.FindInCone(self:GetPos()+self.Entity:GetUp()*30, self.Entity:GetUp(), 2300, 10)
+	local EIS = ents.FindInCone(self:GetPos()+self.Entity:GetUp()*30, self.Entity:GetUp(), self.Range, 10)
 		for _,t in pairs(EIS) do	if t:IsValid() and t:GetPhysicsObject():IsValid() then
 		if self:GetUp():DotProduct((t:GetPos() - self:GetPos()):GetNormalized())>0.993 then
 
@@ -112,6 +114,9 @@ function ENT:TriggerInput(k, v)
 		if ((v or 0)>0) then
 		if !self.Burning and (self.CoolTime<CurTime()) and (self.Velo<24) 	then 	
 										self.Burning = true
+										if self.Range != 2360 then 
+										if v==2360 then
+										self.Range = 2360 self:SetNetworkedBool( "hp", true) end end
 										self:SetNetworkedBool( "fire", true) 	
 										self.Sound = CreateSound(self.Entity,self.SoundString)
 										self.Sound:Play()

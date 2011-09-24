@@ -49,7 +49,7 @@ if ( CLIENT ) then
 	language.Add( "Tool_gdcweapons_help25", "900 RPM, Tracer/Ball, 33000 Inches/Second" )
 	language.Add( "Tool_gdcweapons_help26", "Anti Tank Guided Missile Launcher. For now top attack only, future inputs will work. HEAT(23m)" )
 	language.Add( "Tool_gdcweapons_help27", "50kg High Explosive Bomb. Use outputs for TV guidance (+-20 input angle). High Explosive(35m)" )
-	language.Add( "Tool_gdcweapons_help28", "Oxidated flamethrower. 45 meter range, ~10 degree burn cone. Limited to 1 per dupe." )
+	language.Add( "Tool_gdcweapons_help28", "Oxidated flamethrower. 30 meter range, ~10 degree burn cone. Limited to 1 per dupe." )
 
 
 	language.Add( "Tool_turret_type", "Type of weapon" )

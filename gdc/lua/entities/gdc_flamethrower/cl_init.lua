@@ -77,6 +77,8 @@ if !self:GetNetworkedBool("fire") then return end
 	if self:GetNetworkedBool("fire") then
 		pos = self:GetPos()
 
+	if self:GetNetworkedBool("hp") then
+
 		for i=1, (8) do
 		local particle = self.emitter:Add( "particles/flamelet"..math.random(1,5), pos +(i*70*self:GetUp()))
 			if (particle) then
@@ -116,8 +118,51 @@ if !self:GetNetworkedBool("fire") then return end
 			end
 		end
 
+			else // This switches the high pressure check
 
-	end
+
+		for i=1, (8) do
+		local particle = self.emitter:Add( "particles/flamelet"..math.random(1,5), pos +(i*100*self:GetUp()))
+			if (particle) then
+			particle:SetVelocity(self:GetUp() * 5000 + VectorRand():GetNormalized()*100 )
+			particle:SetDieTime( math.Rand( 0.2, 0.3 ) )
+			particle:SetStartAlpha( 230 )
+			particle:SetEndAlpha( 0 )
+			particle:SetStartSize( 20 )
+			particle:SetEndSize( 160 )
+			particle:SetRoll( math.Rand(0, 360) )
+			particle:SetRollDelta( math.Rand(-5, 5) )
+			particle:SetColor( 255 , 255 , 255 )
+			particle:SetAirResistance( 150 )
+ 			particle:SetGravity( Vector(0,0,10)*math.Rand(350, 500) ) 
+			particle:SetCollide( true ) 
+ 			//particle:SetBounce( 0.01 ) 
+			end
+		end
+
+
+		for i=1, (6) do
+		local particle = self.emitter:Add( "particles/flamelet"..math.random(1,5), pos +((i-1)*80*self:GetUp()))
+			if (particle) then
+			particle:SetVelocity(self:GetUp() * math.Rand(500, 1000) * i )
+			particle:SetDieTime( math.Rand( 0.3, 0.5 ) )
+			particle:SetStartAlpha( 200 )
+			particle:SetEndAlpha( 0 )
+			particle:SetStartSize( 5 + (i*10) )
+			particle:SetEndSize( 30 + (i*15) )
+			particle:SetRoll( math.Rand(0, 360) )
+			particle:SetRollDelta( math.Rand(-5, 5) )
+			particle:SetColor( 255 , 255 , 255 )
+			particle:SetAirResistance( 200 )
+ 			particle:SetGravity( Vector(0,0,5)*math.Rand(200, 400) ) 
+			particle:SetCollide( true ) 
+ 			//particle:SetBounce( 0.01 ) 
+			end
+		end
+
+
+		end 	// Ends the high pressure check
+	end		// Ends the Fire check
 
 
 end
