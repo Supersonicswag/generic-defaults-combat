@@ -352,7 +352,7 @@ function SWEP:DrawHUD()
 	trace.filter = self.Owner
 	local tr = util.TraceLine( trace )
 
-	self.Range = self.Owner:GetShootPos():Distance(tr.HitPos)/39.37
+	self.Range = self.Owner:GetShootPos():Distance(tr.HitPos)/52.5
 	self.Time = math.Round(((self.Range)/self.Velocity)*100)/100
 	self.Drop = math.Round((9.8*(self.Time^2))*100)/200
 
