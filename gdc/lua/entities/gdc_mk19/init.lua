@@ -9,7 +9,15 @@ util.PrecacheSound("arty/artyfire.wav")
 
 function ENT:Initialize()   
 
-	self.ammomodel = "models/props_c17/canister01a.mdl"
+	local CheckHo = ents.FindByClass( "gdc_mk19" )		
+	for _,t in pairs(CheckHo) do
+	if t.Entity:IsValid() and (t.Entity!=self.Entity) and (t.Entity:GetClass()=="gdc_mk19") then
+	if t:GetPos():Distance(self:GetPos())<100 then
+	self.Entity:Remove() 		print("Removed Extra MK-19")	
+	end
+	end
+	end
+
 	self.ammos = 32
 	self.clipsize = 32
 	self.loading = false

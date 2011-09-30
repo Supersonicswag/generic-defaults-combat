@@ -5,6 +5,16 @@ include('shared.lua')
 util.PrecacheSound( "weapons/rpg/rocket1.wav" )
 
 function ENT:Initialize()   
+
+	local CheckHo = ents.FindByClass( "gdc_gmissile" )		
+	for _,t in pairs(CheckHo) do
+	if t.Entity:IsValid() and (t.Entity!=self.Entity) and (t.Entity:GetClass()=="gdc_gmissile") then
+	if t:GetPos():Distance(self:GetPos())<1000 then
+	self.Entity:Remove()
+	end
+	end
+	end
+
 self.Accelerator 	= 50
 self.AccelRate		= 1
 self.AccelMax		= 170

@@ -3,7 +3,17 @@ AddCSLuaFile( "shared.lua" )
 include('entities/base_wire_entity/init.lua'); 
 include('shared.lua')
 
-function ENT:Initialize()   
+function ENT:Initialize()  
+
+	local CheckHo = ents.FindByClass( "gdc_m197" )		
+	for _,t in pairs(CheckHo) do
+	if t.Entity:IsValid() and (t.Entity!=self.Entity) and (t.Entity:GetClass()=="gdc_m197") then
+	if t:GetPos():Distance(self:GetPos())<1000 then
+	self.Entity:Remove() 		print("Removed Extra M197")	
+	end
+	end
+	end
+ 
 	self.reloadtime = 0
 	self.InFireHEI = false
 	self.InFireHEIT = false

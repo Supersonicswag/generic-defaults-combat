@@ -7,7 +7,6 @@ include('shared.lua')
 
 function ENT:Initialize()   
 
-
 	self.ammos = 1
 	self.clipsize = 1
 	self.armed = false

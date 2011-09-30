@@ -5,9 +5,9 @@ AddCSLuaFile( "shared.lua" )
 include('entities/base_wire_entity/init.lua'); 
 include('shared.lua')
 
-util.PrecacheSound("arty/artyfire.wav")
 
 function ENT:Initialize()   
+
 
 	self.ammos =1
 	self.clipsize = 1

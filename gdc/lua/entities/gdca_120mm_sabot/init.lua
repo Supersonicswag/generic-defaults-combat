@@ -25,7 +25,15 @@ local mats={					// Multipliers for materials
 }						// This determines how much the bullet will penetrate in stuff
 
 function ENT:Initialize()   
-math.randomseed(CurTime())
+
+	local CheckHo = ents.FindByClass( "gdc_120mm_sabot" )		
+	for _,t in pairs(CheckHo) do
+	if t.Entity:IsValid() and (t.Entity!=self.Entity) and (t.Entity:GetClass()=="gdc_120mm_sabot") then
+	if t:GetPos():Distance(self:GetPos())<1000 then
+	self.Entity:Remove()
+	end
+	end
+	end
 
 self.Penetrate 		= 70					// How deep Generic Default goes (in yo mama)
 self.Flightvector 	= self.Entity:GetUp()*550		// Velocity in inches/sec

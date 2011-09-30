@@ -7,6 +7,15 @@ include('shared.lua')
 
 function ENT:Initialize()   
 
+	local CheckHo = ents.FindByClass( "gdc_mortar" )		
+	for _,t in pairs(CheckHo) do
+	if t.Entity:IsValid() and (t.Entity!=self.Entity) and (t.Entity:GetClass()=="gdc_mortar") then
+	if t:GetPos():Distance(self:GetPos())<100 then
+	self.Entity:Remove() 		print("Removed Extra Mortar")	
+	end
+	end
+	end
+
 	self.ammos =1
 	self.clipsize = 1
 	self.armed = false

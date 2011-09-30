@@ -7,6 +7,15 @@ include('shared.lua')
 
 function ENT:Initialize()   
 
+	local CheckHo = ents.FindByClass( "gdc_m101" )		
+	for _,t in pairs(CheckHo) do
+	if t.Entity:IsValid() and (t.Entity!=self.Entity) and (t.Entity:GetClass()=="gdc_m101") then
+	if t:GetPos():Distance(self:GetPos())<500 then
+	self.Entity:Remove() 		print("Removed Extra M101")	
+	end
+	end
+	end
+
 	self.ammos =1
 	self.clipsize = 1
 	self.armed = false

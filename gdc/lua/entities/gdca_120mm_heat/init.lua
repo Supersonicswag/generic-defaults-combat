@@ -2,9 +2,17 @@ AddCSLuaFile( "cl_init.lua" )
 AddCSLuaFile( "shared.lua" )
 include('shared.lua')
 
-function ENT:Initialize()   
+function ENT:Initialize()  
+ 
+	local CheckHo = ents.FindByClass( "gdc_120mm_heat" )		
+	for _,t in pairs(CheckHo) do
+	if t.Entity:IsValid() and (t.Entity!=self.Entity) and (t.Entity:GetClass()=="gdc_120mm_heat") then
+	if t:GetPos():Distance(self:GetPos())<800 then
+	self.Entity:Remove()	
+	end
+	end
+	end
 
-math.randomseed(CurTime())
 self.flightvector = self.Entity:GetUp() * 300
 self.timeleft = CurTime() + 5
 self.Entity:SetModel( "models/props_junk/garbage_glassbottle001a.mdl" ) 	

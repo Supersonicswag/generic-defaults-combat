@@ -11,7 +11,15 @@ include('shared.lua')
 
 function ENT:Initialize()   
 
-	self.ammomodel = "models/props_c17/canister01a.mdl"
+	local CheckHo = ents.FindByClass( "gdc_gsh23" )		
+	for _,t in pairs(CheckHo) do
+	if t.Entity:IsValid() and (t.Entity!=self.Entity) and (t.Entity:GetClass()=="gdc_gsh23") then
+	if t:GetPos():Distance(self:GetPos())<1000 then
+	self.Entity:Remove() 		print("Removed Extra GSH-23")	
+	end
+	end
+	end
+
 	self.armed = false
 	self.loading = false
 	self.reloadtime = 0

@@ -7,6 +7,16 @@ include('shared.lua')
 
 function ENT:Initialize()   
 
+
+	local CheckHo = ents.FindByClass( "gdc_gau12" )		
+	for _,t in pairs(CheckHo) do
+	if t.Entity:IsValid() and (t.Entity!=self.Entity) and (t.Entity:GetClass()=="gdc_flamethrower") then
+	if t:GetPos():Distance(self:GetPos())<1000 then
+	self.Entity:Remove() 		print("Removed Extra GAU-12")	
+	end
+	end
+	end
+
 	self.loading = false
 	self.reloadtime = 0
 	self.FireAPI 	= false
