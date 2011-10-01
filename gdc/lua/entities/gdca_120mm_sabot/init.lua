@@ -26,10 +26,10 @@ local mats={					// Multipliers for materials
 
 function ENT:Initialize()   
 
-	local CheckHo = ents.FindByClass( "gdc_120mm_sabot" )		
+	local CheckHo = ents.FindByClass( "gdca_120mm_sabot" )		
 	for _,t in pairs(CheckHo) do
-	if t.Entity:IsValid() and (t.Entity!=self.Entity) and (t.Entity:GetClass()=="gdc_120mm_sabot") then
-	if t:GetPos():Distance(self:GetPos())<1000 then
+	if t.Entity:IsValid() and (t.Entity!=self.Entity) and (t.Entity:GetClass()=="gdca_120mm_sabot") then
+	if t:GetPos():Distance(self:GetPos())<300 then
 	self.Entity:Remove()
 	end
 	end

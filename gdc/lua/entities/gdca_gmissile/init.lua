@@ -6,10 +6,10 @@ util.PrecacheSound( "weapons/rpg/rocket1.wav" )
 
 function ENT:Initialize()   
 
-	local CheckHo = ents.FindByClass( "gdc_gmissile" )		
+	local CheckHo = ents.FindByClass( "gdca_gmissile" )		
 	for _,t in pairs(CheckHo) do
-	if t.Entity:IsValid() and (t.Entity!=self.Entity) and (t.Entity:GetClass()=="gdc_gmissile") then
-	if t:GetPos():Distance(self:GetPos())<1000 then
+	if t.Entity:IsValid() and (t.Entity!=self.Entity) and (t.Entity:GetClass()=="gdca_gmissile") then
+	if t:GetPos():Distance(self:GetPos())<200 then
 	self.Entity:Remove()
 	end
 	end

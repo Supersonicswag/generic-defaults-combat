@@ -41,25 +41,6 @@ self.Entity:PhysicsInit( SOLID_VPHYSICS )
 self.Entity:SetMoveType( MOVETYPE_NONE )
 self.Entity:SetSolid( SOLID_VPHYSICS )
        
-Trail = ents.Create("env_spritetrail")				// The streak of the tracer
-Trail:SetKeyValue("lifetime","0.1")
-Trail:SetKeyValue("startwidth","25")
-Trail:SetKeyValue("endwidth","5")
-Trail:SetKeyValue("spritename","trails/laser.vmt")
-Trail:SetKeyValue("rendermode","5")
-Trail:SetKeyValue("rendercolor","255 150 100")
-Trail:SetPos(self.Entity:GetPos())
-Trail:SetParent(self.Entity)
-Trail:Spawn()
-Trail:Activate()
-Glow = ents.Create("env_sprite")				// The ball of the tracer
-Glow:SetKeyValue("model","orangecore2.vmt")
-Glow:SetKeyValue("rendercolor","255 150 100")
-Glow:SetKeyValue("scale","0.10")
-Glow:SetPos(self.Entity:GetPos())
-Glow:SetParent(self.Entity)
-Glow:Spawn()
-Glow:Activate()
 
 self:Think()
 end   

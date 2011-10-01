@@ -8,11 +8,11 @@ util.PrecacheSound( "weapons/rpg/rocket1.wav" )
 
 function ENT:Initialize()   
 
-	local CheckHo = ents.FindByClass( "gdc_atgm" )		
+	local CheckHo = ents.FindByClass( "gdca_atgm" )		
 	for _,t in pairs(CheckHo) do
-	if t.Entity:IsValid() and (t.Entity!=self.Entity) and (t.Entity:GetClass()=="gdc_atgm") then
+	if t.Entity:IsValid() and (t.Entity!=self.Entity) and (t.Entity:GetClass()=="gdca_atgm") then
 	if t:GetPos():Distance(self:GetPos())<800 then
-	self.Entity:Remove() 		print("Removed Extra ATGM")	
+	self.Entity:Remove()
 	end
 	end
 	end

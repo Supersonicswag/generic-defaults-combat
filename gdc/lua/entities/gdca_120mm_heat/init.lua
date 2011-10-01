@@ -4,9 +4,9 @@ include('shared.lua')
 
 function ENT:Initialize()  
  
-	local CheckHo = ents.FindByClass( "gdc_120mm_heat" )		
+	local CheckHo = ents.FindByClass( "gdca_120mm_heat" )		
 	for _,t in pairs(CheckHo) do
-	if t.Entity:IsValid() and (t.Entity!=self.Entity) and (t.Entity:GetClass()=="gdc_120mm_heat") then
+	if t.Entity:IsValid() and (t.Entity!=self.Entity) and (t.Entity:GetClass()=="gdca_120mm_heat") then
 	if t:GetPos():Distance(self:GetPos())<800 then
 	self.Entity:Remove()	
 	end
