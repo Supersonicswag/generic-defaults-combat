@@ -56,7 +56,7 @@ function ENT:Think()
 	self.Sound:ChangePitch( 100-(self.Heat/1.75),0.133 )
 
 	local EIS = ents.FindInCone(self:GetPos()+self.Entity:GetUp()*30, self.Entity:GetUp(), self.Range, 10)
-		for _,t in pairs(EIS) do	if t:IsValid() and t:GetPhysicsObject():IsValid() then
+		for _,t in pairs(EIS) do	if t.Entity:IsValid() and t.Entity:GetPhysicsObject():IsValid() then
 		if self:GetUp():DotProduct((t:GetPos() - self:GetPos()):GetNormalized())>0.993 then
 
 
@@ -69,7 +69,7 @@ function ENT:Think()
 
 		if tr.Hit then
 		if tr.Entity==t.Entity			then
-			if !t.Entity:IsOnFire()	then	t.Entity:Ignite( 6, 100 )	end 
+			if !t.Entity:IsOnFire()	then	t.Entity:Ignite( math.Rand(1,4), 0 )	end 
 			if (t.Entity:IsPlayer() || t.Entity:IsNPC()) then
 			local dmginfo = DamageInfo()
 			dmginfo:SetDamage( 1 ) 

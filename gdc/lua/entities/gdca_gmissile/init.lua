@@ -122,7 +122,7 @@ if (self.Accelerator<self.AccelMax) then self.Accelerator = self.Accelerator+sel
 		for _,t in pairs(EIS) do
 			if !(t:GetClass() == "gdca_flare") and !self.Flared then
 			if (t:IsValid() and (t:GetClass() == "prop_physics" || t:GetClass() == "prop_vehicle_prisoner_pod" || t:GetClass() == "prop_vehicle_jeep" || t:GetClass() == "prop_vehicle_airboat" || t:GetClass() == "gdca_flare" || t:IsNPC()) and (t:GetVelocity():Length() > 0)) then
-				if (t:GetPos():Distance(self:GetPos()) < distance && self:GetUp():DotProduct((t:GetPos() - self:GetPos()):GetNormalized()) > 0.98) then
+				if (t:GetPos():Distance(self:GetPos()) < distance && self:GetUp():DotProduct((t:GetPos() - self:GetPos()):GetNormalized()) > 0.99) then
 						self.Target = t
 				end
 				end

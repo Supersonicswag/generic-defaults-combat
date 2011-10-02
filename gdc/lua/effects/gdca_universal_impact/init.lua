@@ -240,11 +240,11 @@ end
 	WorldSound( "Bullet.Metal", self.Pos)
 	self.Emitter = ParticleEmitter( self.Pos )
 		
-	for i=0, 10+self.Scale do
+	for i=0, 6 do
 		local Smoke = self.Emitter:Add( "particle/smokesprites_000"..math.random(1,9), self.Pos )
 		if (Smoke) then
 		Smoke:SetVelocity( self.DirVec * math.random( 20,70*self.Scale) + VectorRand():GetNormalized()*150*self.Scale )
-		Smoke:SetDieTime( math.Rand( 3 , 7 )*self.Scale )
+		Smoke:SetDieTime( math.Rand( 1 , 3 ) )
 		Smoke:SetStartAlpha( math.Rand( 30, 40 ) )
 		Smoke:SetEndAlpha( 0 )
 		Smoke:SetStartSize( 30*self.Scale )
@@ -297,7 +297,7 @@ end
 	WorldSound( "Bullet.Tile", self.Pos)
 	self.Emitter = ParticleEmitter( self.Pos )
 		
-	for i=0, (5+self.Scale) do
+	for i=0, 3 do
 		local Smoke = self.Emitter:Add( "particle/smokestack", self.Pos )
 		if (Smoke) then
 		Smoke:SetVelocity( self.DirVec * math.random( 20,70*self.Scale) + VectorRand():GetNormalized()*150*self.Scale )
@@ -314,7 +314,7 @@ end
 		end
 	end
 
-	for i=0, (5+self.Scale) do
+	for i=0, 3 do
 		local Smoke = self.Emitter:Add( "particle/smokesprites_000"..math.random(1,9), self.Pos )
 		if (Smoke) then
 		Smoke:SetVelocity( self.DirVec * math.random( 20,70*self.Scale) + VectorRand():GetNormalized()*150*self.Scale )
@@ -387,7 +387,7 @@ end
 		end
 	end
 
-	for i=0, (13+self.Scale) do
+	for i=0, (8+self.Scale) do
 		local Smoke = self.Emitter:Add( "particle/smokesprites_000"..math.random(1,9), self.Pos )
 		if (Smoke) then
 		Smoke:SetVelocity( self.DirVec * math.random( 20,70*self.Scale) + VectorRand():GetNormalized()*130*self.Scale )
@@ -426,7 +426,7 @@ end
 
  function EFFECT:Glass()
 	WorldSound( "Bullet.Glass", self.Pos)
-	for i=0, 5*self.Scale do
+	for i=0, 5 do
 		local Smoke = self.Emitter:Add( "particle/smokesprites_000"..math.random(1,9), self.Pos )
 		if (Smoke) then
 		Smoke:SetVelocity( self.DirVec * math.random( 20,70*self.Scale) + VectorRand():GetNormalized()*150*self.Scale )
@@ -479,7 +479,7 @@ end
  function EFFECT:Blood()
 	WorldSound( "Bullet.Flesh", self.Pos)
 
-	for i=0, 10+(self.Scale*5) do
+	for i=0, 10+(self.Scale*10) do
 		// Some blood spray out front and the back
 		local Spray = self.Emitter:Add( "particle/particle_composite", self.Pos )
 		if (Spray) then
