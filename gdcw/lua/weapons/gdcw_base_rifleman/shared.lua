@@ -354,7 +354,7 @@ function SWEP:DrawHUD()
 
 	self.Range = self.Owner:GetShootPos():Distance(tr.HitPos)/52.5
 	self.Time = math.Round(((self.Range)/self.Velocity)*100)/100
-	self.Drop = math.Round((9.8*(self.Time^2))*100)/200
+	self.Drop = math.Round((4.9*(self.Time^2))*100)/100
 
 	draw.SimpleText( "RANGE " ..tostring(math.Round(self.Range)) .. "m","ScoreboardText",ScrW() / 3, ScrH() * (44/60),Color(130,170,70,255))			//Range in meters
 	draw.SimpleText( "TIME " ..tostring(self.Time) .. "s","ScoreboardText",ScrW() / 3, ScrH() * (45/60),Color(170,130,70,255))					//Flight time in seconds
