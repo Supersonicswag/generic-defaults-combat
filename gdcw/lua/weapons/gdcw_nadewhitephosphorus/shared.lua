@@ -55,7 +55,7 @@ end
 
 function SWEP:Throw()
 	self.Weapon:SendWeaponAnim(ACT_VM_THROW)
-	timer.Simple( 0.15, self.SwingArm, self )
+	timer.Simple( 0.01, self.SwingArm, self )
 	timer.Simple( 0.15, self.Grenada, self )
 	timer.Simple( 1, self.Reload, self )
 	timer.Simple( 1, self.Deploy, self )
