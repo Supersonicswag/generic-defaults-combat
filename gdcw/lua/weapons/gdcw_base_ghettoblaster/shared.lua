@@ -35,6 +35,7 @@ SWEP.Secondary.IronFOV			= 0					// How much you 'zoom' in. Less is more!
 
 SWEP.data 				= {}					-- The starting firemode
 SWEP.data.ironsights			= 1
+SWEP.Single				= nil
 
 SWEP.IronSightsPos = Vector (2.4537, 1.0923, 0.2696)
 SWEP.IronSightsAng = Vector (0.0186, -0.0547, 0)
@@ -57,6 +58,11 @@ function SWEP:Initialize()
 end
 
 function SWEP:Deploy()
+
+if SinglePlayer() then self.Single=true
+else
+self.Single=false
+end
 	self:SetWeaponHoldType("pistol")                          	// Hold type styles; ar2 pistol shotgun rpg normal melee grenade smg slam fist melee2 passive knife
 	self:SetIronsights(false, self.Owner)					// Set the ironsight false
 	self.Weapon:SendWeaponAnim( ACT_VM_DRAW )
@@ -90,10 +96,12 @@ end
 
 function SWEP:FireRocket()
 	if (self:GetIronsights() == true) and self.Owner:KeyDown(IN_ATTACK2) then
-	aim = self.Owner:GetAimVector()
+	aim = self.Owner:GetAimVector()+(VectorRand()*self.Primary.Cone/360)
 	else 
-	aim = self.Owner:GetAimVector()+Vector(math.Rand(-0.02,0.02), math.Rand(-0.02,0.02),math.Rand(-0.02,0.02))
+	//////aim = self.Owner:GetAimVector()+Vector(math.Rand(-0.02,0.02), math.Rand(-0.02,0.02),math.Rand(-0.02,0.02))
+	aim = self.Owner:GetAimVector()+(VectorRand()*math.Rand(0,0.04))
 	end
+
 	if !self.Owner:IsNPC() then
 	pos = self.Owner:GetShootPos()
 	else
@@ -109,12 +117,20 @@ function SWEP:FireRocket()
 	rocket.owner = self.Owner
 	rocket:Activate()
 	end
-		if SERVER and !self.Owner:IsNPC() then
+
+						// RECOIL FOR SINGLEPLAYER IS RIGHT BELOW THESE WORDS
+		if SERVER and (self.Single) and !self.Owner:IsNPC() then
 		local anglo = Angle(math.Rand(-self.Primary.KickDown,self.Primary.KickUp), math.Rand(-self.Primary.KickHorizontal,self.Primary.KickHorizontal), 0)
 		self.Owner:ViewPunch(anglo)
 		angle = self.Owner:EyeAngles() - anglo
 		self.Owner:SetEyeAngles(angle)
 		end
+
+	if (!self.Single)  and !self.Owner:IsNPC() then		// RECOIL FOR MULTIPLAYER IS RIGHT BELOW THESE WORDS
+	self.Primary.Cone = math.Clamp(self.Primary.Cone+self.Primary.ConeIncrement,0,self.Primary.ConeMax)
+	local anglo = Angle(math.Rand(-self.Primary.KickDown,self.Primary.KickUp), math.Rand(-self.Primary.KickHorizontal,self.Primary.KickHorizontal), 0)
+	self.Owner:ViewPunch(anglo)
+	end
 end
 
 function SWEP:SecondaryAttack()
@@ -223,6 +239,10 @@ function SWEP:Think()
 	self.Idle = nil
 	self:SendWeaponAnim(ACT_VM_IDLE)
 	end end
+
+	if	(self.Primary.Cone>0.09)	then
+	self.Primary.Cone = self.Primary.Cone - self.Primary.ConeDecrement	end
+
 end
 
 /*---------------------------------------------------------

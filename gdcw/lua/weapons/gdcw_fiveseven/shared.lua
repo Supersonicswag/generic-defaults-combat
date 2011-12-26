@@ -18,18 +18,22 @@ SWEP.AdminSpawnable			= true
 
 SWEP.Primary.Sound			= Sound("FiveSevenF.single")
 SWEP.Primary.Round			= ("gdcwa_5.7x28_625")
-SWEP.Primary.RPM				= 1000						// This is in Rounds Per Minute
+SWEP.Primary.RPM			= 1000						// This is in Rounds Per Minute
 SWEP.Primary.ClipSize			= 20						// Size of a clip
-SWEP.Primary.DefaultClip			= 21
+SWEP.Primary.DefaultClip		= 21
+SWEP.Primary.ConeSpray			= 1.5					// Hip fire accuracy
+SWEP.Primary.ConeIncrement		= 1.0					// Rate of innacuracy
+SWEP.Primary.ConeMax			= 3.0					// Maximum Innacuracy
+SWEP.Primary.ConeDecrement		= 0.1					// Rate of accuracy
 SWEP.Primary.KickUp			= 0.3					// Maximum up recoil (rise)
 SWEP.Primary.KickDown			= 0.3					// Maximum down recoil (skeet)
-SWEP.Primary.KickHorizontal			= 0.3					// Maximum up recoil (stock)
+SWEP.Primary.KickHorizontal		= 0.3					// Maximum up recoil (stock)
 SWEP.Primary.Automatic			= false					// Automatic/Semi Auto
 SWEP.Primary.Ammo			= "smg1"
 
 SWEP.Secondary.ClipSize			= 1						// Size of a clip
-SWEP.Secondary.DefaultClip			= 1						// Default number of bullets in a clip
-SWEP.Secondary.Automatic			= false						// Automatic/Semi Auto
+SWEP.Secondary.DefaultClip		= 1						// Default number of bullets in a clip
+SWEP.Secondary.Automatic		= false						// Automatic/Semi Auto
 SWEP.Secondary.Ammo			= ""
 SWEP.Secondary.IronFOV			= 50						// How much you 'zoom' in. Less is more! 	
 

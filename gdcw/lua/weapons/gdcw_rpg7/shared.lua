@@ -1,14 +1,14 @@
 // Variables that are used on both client and server
-SWEP.Category				= "Generic Default's Explosives and Grenadier"
+SWEP.Category				= "Generic Default's Explosives"
 SWEP.Author				= "Generic Default"
 SWEP.Contact				= "AIDS!"
 SWEP.Purpose				= "Jihadding"
-SWEP.Instructions				= "Rounds:\n PG-7V 85mm HEAT, 10 meter casualty radius. \nVelocity: 115-295 m/s \nSights: Iron \nCapacity: 1 round \nRate of Fire: ~20 rounds per minute \n Press E to change warhead type."
+SWEP.Instructions				= "Rounds:\n PG-7V 85mm HEAT, 10 meter casualty radius. \nVelocity: 115-295 m/s \nSights: Iron \nCapacity: 1 round \nRate of Fire: ~20 rounds per minute"
 SWEP.MuzzleAttachment			= "1" 	-- Should be "1" for CSS models or "muzzle" for hl2 models
 SWEP.ShellEjectAttachment			= "2" 	-- Should be "2" for CSS models or "1" for hl2 models
 SWEP.DrawCrosshair			= false	
 
-SWEP.ViewModelFOV			= 65
+SWEP.ViewModelFOV			= 55
 SWEP.ViewModelFlip			= false
 SWEP.ViewModel				= "models/weapons/v_RL7.mdl"
 SWEP.WorldModel				= "models/weapons/w_GDC_RPG7.mdl"
@@ -17,15 +17,15 @@ SWEP.Spawnable				= true
 SWEP.AdminSpawnable			= true
 
 SWEP.Primary.Round 			= ("gdcwa_rpg_heat")	
-SWEP.Primary.RPM				= 20					// This is in Rounds Per Minute
+SWEP.Primary.RPM			= 20					// This is in Rounds Per Minute
 SWEP.Primary.ClipSize			= 1					// Size of a clip
-SWEP.Primary.DefaultClip			= 1					// Default number of bullets in a clip
+SWEP.Primary.DefaultClip		= 1					// Default number of bullets in a clip
 SWEP.Primary.Automatic			= false					// Automatic/Semi Auto
 SWEP.Primary.Ammo			= "RPG_Round"
 
 SWEP.Secondary.ClipSize			= 1					// Size of a clip
-SWEP.Secondary.DefaultClip			= 1					// Default number of bullets in a clip
-SWEP.Secondary.Automatic			= false					// Automatic/Semi Auto
+SWEP.Secondary.DefaultClip		= 1					// Default number of bullets in a clip
+SWEP.Secondary.Automatic		= false					// Automatic/Semi Auto
 SWEP.Secondary.Ammo			= ""
 
 SWEP.data 				= {}					-- The starting firemode
@@ -57,14 +57,14 @@ function SWEP:Deploy()
 end
 
 function SWEP:Precache()
-	util.PrecacheSound("RPG7F.single")
+	util.PrecacheSound("RPGF.single")
 end
 
 
 function SWEP:PrimaryAttack()
 	if self:CanPrimaryAttack() then
 		self:FireRocket()
-		self.Weapon:EmitSound("RPG7F.single")
+		self.Weapon:EmitSound("RPGF.single")
 		self.Weapon:TakePrimaryAmmo(1)
 		self.Weapon:SendWeaponAnim( ACT_VM_PRIMARYATTACK )
 		local fx 		= EffectData()
@@ -106,15 +106,11 @@ function SWEP:Reload()
 
 	self.Weapon:DefaultReload(ACT_VM_RELOAD) 
 	-- Animation when you're reloading
+		self:SetIronsights(false, self.Owner)
 
 	if ( self.Weapon:Clip1() < self.Primary.ClipSize ) and !self.Owner:IsNPC() then
 	-- When the current clip < full clip and the rest of your ammo > 0, then
 
-		self.Owner:SetFOV( 0, 0.5 )
-		-- Zoom = 0
-
-		self:SetIronsights(false)
-		-- Set the ironsight to false
 
 end
 	

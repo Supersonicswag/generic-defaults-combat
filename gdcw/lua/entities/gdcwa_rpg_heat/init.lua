@@ -13,6 +13,14 @@ self.Entity:SetMoveType( MOVETYPE_NONE )   --after all, gmod is a physics
 self.Entity:SetSolid( SOLID_VPHYSICS )        -- CHEESECAKE!    >:3           
 self.Entity:SetColor(45,55,40,255)
 
+Glow = ents.Create("env_sprite")
+Glow:SetKeyValue("model","orangecore2.vmt")
+Glow:SetKeyValue("rendercolor","255 150 100")
+Glow:SetKeyValue("scale","0.3")
+Glow:SetPos(self.Entity:GetPos())
+Glow:SetParent(self.Entity)
+Glow:Spawn()
+Glow:Activate()
 
 end   
 
@@ -45,9 +53,9 @@ end
 					effectdata:SetOrigin(tr.HitPos)			// Where is hits
 					effectdata:SetNormal(tr.HitNormal)		// Direction of particles
 					effectdata:SetEntity(self.Entity)		// Who done it?
-					effectdata:SetScale(2.11)			// Size of explosion
+					effectdata:SetScale(1.8)			// Size of explosion
 					effectdata:SetRadius(tr.MatType)		// What texture it hits
-					effectdata:SetMagnitude(16)			// Length of explosion trails
+					effectdata:SetMagnitude(18)			// Length of explosion trails
 					util.Effect( "gdcw_cinematicboom", effectdata )
 					util.ScreenShake(tr.HitPos, 10, 5, 1, 3000 )
 					util.Decal("Scorch", tr.HitPos + tr.HitNormal, tr.HitPos - tr.HitNormal)

@@ -1,0 +1,21 @@
+"Refract"
+{
+ 	"$model" 1
+	"$nodecal" 1
+//	"$bluramount" 1
+ 	"$refractamount" "-.05"
+	"$REFRACTTINT" "{245 250 255}"
+	"$scale" "[1 1]"
+	"$normalmap" "scope/gdcw_magnify"
+	"Refract_DX60"
+	{
+		"$fallbackmaterial" "models/props_c17/fisheyelens_DX60"
+	}
+
+	"Refract_DX60"
+	{
+		"$fallbackmaterial" "models/props_c17/fisheyelens_dx60"
+	}
+}
+
+

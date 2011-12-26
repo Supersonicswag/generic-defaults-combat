@@ -18,12 +18,16 @@ SWEP.AdminSpawnable			= true
 
 SWEP.Primary.Sound			= Sound("M24F.single")
 SWEP.Primary.Round			= ("gdcwa_7.62x51_lowvel")
-SWEP.Primary.RPM				= 40					// This is in Rounds Per Minute
+SWEP.Primary.RPM			= 40					// This is in Rounds Per Minute
 SWEP.Primary.ClipSize			= 5					// Size of a clip
-SWEP.Primary.DefaultClip			= 6					// Default number of bullets in a clip
+SWEP.Primary.DefaultClip		= 6					// Default number of bullets in a clip
+SWEP.Primary.ConeSpray			= 2.0					// Hip fire accuracy
+SWEP.Primary.ConeIncrement		= 3.0					// Rate of innacuracy
+SWEP.Primary.ConeMax			= 4.0					// Maximum Innacuracy
+SWEP.Primary.ConeDecrement		= 0.1					// Rate of accuracy
 SWEP.Primary.KickUp			= 0.6						// Maximum up recoil (rise)
 SWEP.Primary.KickDown			= 0.6						// Maximum down recoil (skeet)
-SWEP.Primary.KickHorizontal			= 0.6						// Maximum up recoil (stock)
+SWEP.Primary.KickHorizontal		= 0.6						// Maximum up recoil (stock)
 SWEP.Primary.Automatic			= false					// Automatic/Semi Auto
 SWEP.Primary.Ammo			= "ar2"
 

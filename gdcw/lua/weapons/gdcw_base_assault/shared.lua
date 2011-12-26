@@ -3,9 +3,9 @@ SWEP.Category				= "Generic Default's Weapons"
 SWEP.Author				= "Generic Default"
 SWEP.Contact				= ""
 SWEP.Purpose				= ""
-SWEP.Instructions				= ""
+SWEP.Instructions			= ""
 SWEP.MuzzleAttachment			= "1" 		// Should be "1" for CSS models or "muzzle" for hl2 models
-SWEP.ShellEjectAttachment			= "2" 		// Should be "2" for CSS models or "1" for hl2 models
+SWEP.ShellEjectAttachment		= "2" 		// Should be "2" for CSS models or "1" for hl2 models
 SWEP.DrawCrosshair			= false		// Hell no, crosshairs r 4 nubz!
 SWEP.ViewModelFOV			= 65		// How big the gun will look
 SWEP.ViewModelFlip			= true		// True for CSS models, False for HL2 models
@@ -16,29 +16,35 @@ SWEP.AdminSpawnable			= false
 
 SWEP.Primary.Sound 			= Sound("")				// Sound of the gun
 SWEP.Primary.Round 			= ("")					// What kind of bullet?
-SWEP.Primary.Cone			= 0.2					// Accuracy of NPCs
-SWEP.Primary.RPM				= 0					// This is in Rounds Per Minute
+SWEP.Primary.Cone			= 0.0					// This is the variable
+SWEP.Primary.ConeSpray			= 2.0					// Hip fire accuracy
+SWEP.Primary.ConeIncrement		= 1.0					// Rate of innacuracy
+SWEP.Primary.ConeMax			= 4.0					// Maximum Innacuracy
+SWEP.Primary.ConeDecrement		= 0.1					// Rate of accuracy
+SWEP.Primary.RPM			= 0					// This is in Rounds Per Minute
 SWEP.Primary.ClipSize			= 0					// Size of a clip
-SWEP.Primary.DefaultClip			= 0					// Default number of bullets in a clip
+SWEP.Primary.DefaultClip		= 0					// Default number of bullets in a clip
 SWEP.Primary.KickUp			= 0					// Maximum up recoil (rise)
 SWEP.Primary.KickDown			= 0					// Maximum down recoil (skeet)
-SWEP.Primary.KickHorizontal			= 0					// Maximum side recoil (koolaid)
+SWEP.Primary.KickHorizontal		= 0					// Maximum side recoil (koolaid)
 SWEP.Primary.Automatic			= true					// Automatic/Semi Auto
-SWEP.Primary.Ammo			= "none"					// What kind of ammo
+SWEP.Primary.Ammo			= "none"				// What kind of ammo
 
 SWEP.Secondary.ClipSize			= 0					// Size of a clip
-SWEP.Secondary.DefaultClip			= 0					// Default number of bullets in a clip
-SWEP.Secondary.Automatic			= false					// Automatic/Semi Auto
+SWEP.Secondary.DefaultClip		= 0					// Default number of bullets in a clip
+SWEP.Secondary.Automatic		= false					// Automatic/Semi Auto
 SWEP.Secondary.Ammo			= "none"
 SWEP.Secondary.IronFOV			= 0					// How much you 'zoom' in. Less is more! 
 
 SWEP.data 				= {}					-- The starting firemode
 SWEP.data.ironsights			= 1
 
+SWEP.Single				= nil
 SWEP.IronSightsPos = Vector (2.4537, 1.0923, 0.2696)
 SWEP.IronSightsAng = Vector (0.0186, -0.0547, 0)
 
 function SWEP:Initialize()
+
 	util.PrecacheSound(self.Primary.Sound)
 	self.Reloadaftershoot = 0 				-- Can't reload when firing
 	if !self.Owner:IsNPC() then
@@ -55,7 +61,10 @@ end
 
 function SWEP:Deploy()
 
-
+if SinglePlayer() then self.Single=true
+else
+self.Single=false
+end
 	self:SetWeaponHoldType("ar2")                          	// Hold type styles; ar2 pistol shotgun rpg normal melee grenade smg slam fist melee2 passive knife
 	self:SetIronsights(false, self.Owner)					// Set the ironsight false
 	self.Weapon:SendWeaponAnim( ACT_VM_DRAW )
@@ -89,17 +98,21 @@ function SWEP:PrimaryAttack()
 	end
 end
 
-function SWEP:FireRocket()
+function SWEP:FireRocket() 
+
 	if (self:GetIronsights() == true) and self.Owner:KeyDown(IN_ATTACK2) then
-	aim = self.Owner:GetAimVector()
+	aim = self.Owner:GetAimVector()+(VectorRand()*self.Primary.Cone/360)
 	else 
-	aim = self.Owner:GetAimVector()+Vector(math.Rand(-0.02,0.02), math.Rand(-0.02,0.02),math.Rand(-0.02,0.02))
+	//////aim = self.Owner:GetAimVector()+Vector(math.Rand(-0.02,0.02), math.Rand(-0.02,0.02),math.Rand(-0.02,0.02))
+	aim = self.Owner:GetAimVector()+(VectorRand()*math.Rand(0,0.04))
 	end
+
 	if !self.Owner:IsNPC() then
 	pos = self.Owner:GetShootPos()
 	else
 	pos = self.Owner:GetShootPos()+self.Owner:GetAimVector()*50
 	end
+
 	if SERVER then
 		local bullet = ents.Create(self.Primary.Round)
 		if !bullet:IsValid() then return false end
@@ -110,13 +123,19 @@ function SWEP:FireRocket()
 		bullet:Activate()
 		end
 
-
-		if SERVER and !self.Owner:IsNPC() then
+						// RECOIL FOR SINGLEPLAYER IS RIGHT BELOW THESE WORDS
+		if SERVER and (self.Single) and !self.Owner:IsNPC() then
 		local anglo = Angle(math.Rand(-self.Primary.KickDown,self.Primary.KickUp), math.Rand(-self.Primary.KickHorizontal,self.Primary.KickHorizontal), 0)
 		self.Owner:ViewPunch(anglo)
 		angle = self.Owner:EyeAngles() - anglo
 		self.Owner:SetEyeAngles(angle)
 		end
+
+	if (!self.Single)  and !self.Owner:IsNPC() then		// RECOIL FOR MULTIPLAYER IS RIGHT BELOW THESE WORDS
+	self.Primary.Cone = math.Clamp(self.Primary.Cone+self.Primary.ConeIncrement,0,self.Primary.ConeMax)
+	local anglo = Angle(math.Rand(-self.Primary.KickDown,self.Primary.KickUp), math.Rand(-self.Primary.KickHorizontal,self.Primary.KickHorizontal), 0)
+	self.Owner:ViewPunch(anglo)
+	end
 end
 
 
@@ -218,6 +237,15 @@ Think
 function SWEP:Think()
 
 self:IronSight()
+
+	if !self.Owner:IsNPC() then
+	if self.Idle and CurTime() >= self.Idle then
+	self.Idle = nil
+	self:SendWeaponAnim(ACT_VM_IDLE)
+	end end
+
+	if	(self.Primary.Cone>0.09)	then
+	self.Primary.Cone = self.Primary.Cone - self.Primary.ConeDecrement	end
 
 end
 

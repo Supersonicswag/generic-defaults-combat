@@ -21,14 +21,18 @@ SWEP.Primary.Round1 			= ("gdcwa_buckshot")		// Buckshot
 SWEP.Primary.Round2			= ("gdcwa_slug")			// Slug
 SWEP.Primary.Round3 			= ("gdcwa_breach")			// Door breaching round
 SWEP.Primary.Round4 			= ("gdcwa_frag12")			// FRAG-12 grenade
-SWEP.Primary.RPM				= 300				// This is in Rounds Per Minute
+SWEP.Primary.RPM			= 300				// This is in Rounds Per Minute
 SWEP.Primary.MRAD			= 15				// Accuracy of pellets in MILIRADIANS; 1 Radian = ~57.3 Degrees
 SWEP.Primary.Pellets			= 9				// Numba of pellets
 SWEP.Primary.ClipSize			= 8				// Size of a clip
-SWEP.Primary.DefaultClip			= 9				// Default number of bullets in a clip
+SWEP.Primary.DefaultClip		= 9				// Default number of bullets in a clip
+SWEP.Primary.ConeSpray			= 2.0					// Hip fire accuracy
+SWEP.Primary.ConeIncrement		= 5.0					// Rate of innacuracy
+SWEP.Primary.ConeMax			= 5.0					// Maximum Innacuracy
+SWEP.Primary.ConeDecrement		= 0.1					// Rate of accuracy
 SWEP.Primary.KickUp			= 1				// Maximum up recoil (rise)
 SWEP.Primary.KickDown			= 0.8				// Maximum down recoil (skeet)
-SWEP.Primary.KickHorizontal			= 0.6				// Maximum up recoil (stock)
+SWEP.Primary.KickHorizontal		= 0.6				// Maximum up recoil (stock)
 SWEP.Primary.Automatic			= false				// Automatic/Semi Auto
 SWEP.Primary.Ammo			= "buckshot"
 

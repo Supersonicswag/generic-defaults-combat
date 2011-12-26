@@ -1,0 +1,7 @@
+"VertexLitGeneric"
+{
+	"$baseTexture" "models\weapons\v_models\schmungs.m249\sight"
+	"$envmap" "env_cubemap"
+	"$envmapmask" "models\weapons\v_models\schmungs.m249\sight_ref"
+	"$no_draw"	 "1"
+}

@@ -17,23 +17,27 @@ SWEP.AdminSpawnable			= false
 
 SWEP.Primary.Sound 			= Sound("")				// Sound of the gun
 SWEP.Primary.Round 			= ("")					// What kind of bullet?
-SWEP.Primary.RPM				= 0					// This is in Rounds Per Minute
-SWEP.Primary.Cone			= 0.15					// Accuracy of NPCs
+SWEP.Primary.RPM			= 0					// This is in Rounds Per Minute
+SWEP.Primary.Cone			= 0.0					// This is the variable
+SWEP.Primary.ConeSpray			= 2.0					// Hip fire accuracy
+SWEP.Primary.ConeIncrement		= 1.0					// Rate of innacuracy
+SWEP.Primary.ConeMax			= 4.0					// Maximum Innacuracy
+SWEP.Primary.ConeDecrement		= 0.1					// Rate of accuracy
 SWEP.Primary.ClipSize			= 0					// Size of a clip
-SWEP.Primary.DefaultClip			= 0					// Default number of bullets in a clip
+SWEP.Primary.DefaultClip		= 0					// Default number of bullets in a clip
 SWEP.Primary.KickUp			= 0					// Maximum up recoil (rise)
 SWEP.Primary.KickDown			= 0					// Maximum down recoil (skeet)
-SWEP.Primary.KickHorizontal			= 0					// Maximum up recoil (stock)
+SWEP.Primary.KickHorizontal		= 0					// Maximum up recoil (stock)
 SWEP.Primary.Automatic			= true					// Automatic/Semi Auto
-SWEP.Primary.Ammo			= "none"					// What kind of ammo
+SWEP.Primary.Ammo			= "none"				// What kind of ammo
 
 SWEP.Secondary.ClipSize			= 0					// Size of a clip
-SWEP.Secondary.DefaultClip			= 0					// Default number of bullets in a clip
-SWEP.Secondary.Automatic			= false					// Automatic/Semi Auto
+SWEP.Secondary.DefaultClip		= 0					// Default number of bullets in a clip
+SWEP.Secondary.Automatic		= false					// Automatic/Semi Auto
 SWEP.Secondary.Ammo			= "none"
-SWEP.Secondary.ScopeZoom			= 0
+SWEP.Secondary.ScopeZoom		= 0
 SWEP.Secondary.UseACOG			= false	
-SWEP.Secondary.UseMilDot			= false		
+SWEP.Secondary.UseMilDot		= false		
 SWEP.Secondary.UseSVD			= false	
 SWEP.Secondary.UseParabolic		= false	
 SWEP.Secondary.UseElcan			= false
@@ -43,6 +47,7 @@ SWEP.Secondary.UseRangefinder		= false
 
 SWEP.data 				= {}					-- The starting firemode
 SWEP.data.ironsights			= 1
+SWEP.Single				= nil
 SWEP.ScopeScale 			= 0.5
 SWEP.ReticleScale 			= 0.5
 SWEP.Velocity				= 850
@@ -127,6 +132,11 @@ function SWEP:Initialize()
 end
 
 function SWEP:Deploy()
+
+if SinglePlayer() then self.Single=true
+else
+self.Single=false
+end
 	self:SetWeaponHoldType("ar2")                          	// Hold type styles; ar2 pistol shotgun rpg normal melee grenade smg slam fist melee2 passive knife
 	self:SetIronsights(false, self.Owner)					// Set the ironsight false
 	self.Weapon:SendWeaponAnim( ACT_VM_DRAW )
@@ -158,11 +168,14 @@ function SWEP:PrimaryAttack()
 end
 
 function SWEP:FireRocket()
+
 	if (self:GetIronsights() == true) and self.Owner:KeyDown(IN_ATTACK2) then
-	aim = self.Owner:GetAimVector()
+	aim = self.Owner:GetAimVector()+(VectorRand()*self.Primary.Cone/360)
 	else 
-	aim = self.Owner:GetAimVector()+Vector(math.Rand(-0.02,0.02), math.Rand(-0.02,0.02),math.Rand(-0.02,0.02))
+	//////aim = self.Owner:GetAimVector()+Vector(math.Rand(-0.02,0.02), math.Rand(-0.02,0.02),math.Rand(-0.02,0.02))
+	aim = self.Owner:GetAimVector()+(VectorRand()*math.Rand(0,0.04))
 	end
+
 	if !self.Owner:IsNPC() then
 	pos = self.Owner:GetShootPos()
 	else
@@ -178,12 +191,20 @@ function SWEP:FireRocket()
 	rocket.owner = self.Owner
 	rocket:Activate()
 	end
-		if SERVER and !self.Owner:IsNPC() then
+
+						// RECOIL FOR SINGLEPLAYER IS RIGHT BELOW THESE WORDS
+		if SERVER and self.Single and !self.Owner:IsNPC() then
 		local anglo = Angle(math.Rand(-self.Primary.KickDown,self.Primary.KickUp), math.Rand(-self.Primary.KickHorizontal,self.Primary.KickHorizontal), 0)		
 		self.Owner:ViewPunch(anglo)
 		angle = self.Owner:EyeAngles() - anglo
 		self.Owner:SetEyeAngles(angle)
 		end
+
+	if !self.Single  and !self.Owner:IsNPC() then		// RECOIL FOR MULTIPLAYER IS RIGHT BELOW THESE WORDS
+	self.Primary.Cone = math.Clamp(self.Primary.Cone+self.Primary.ConeIncrement,0,self.Primary.ConeMax)
+	local anglo = Angle(math.Rand(-self.Primary.KickDown,self.Primary.KickUp), math.Rand(-self.Primary.KickHorizontal,self.Primary.KickHorizontal), 0)
+	self.Owner:ViewPunch(anglo)
+	end
 end
 
 function SWEP:SecondaryAttack()
@@ -384,6 +405,9 @@ function SWEP:Think()
 	self.Idle = nil
 	self:SendWeaponAnim(ACT_VM_IDLE)
 	end end
+
+	if	(self.Primary.Cone>0.09)	then
+	self.Primary.Cone = self.Primary.Cone - self.Primary.ConeDecrement	end
 
 end
 

@@ -18,9 +18,13 @@ SWEP.AdminSpawnable			= true
 
 SWEP.Primary.Sound			= Sound("AK47F.single")
 SWEP.Primary.Round			= ("gdcwa_7.62x39_tracer")
-SWEP.Primary.RPM				= 600					// This is in Rounds Per Minute
+SWEP.Primary.RPM			= 600					// This is in Rounds Per Minute
 SWEP.Primary.ClipSize			= 30					// Size of a clip
-SWEP.Primary.DefaultClip			= 31					// Default number of bullets in a clip
+SWEP.Primary.DefaultClip		= 31					// Default number of bullets in a clip
+SWEP.Primary.ConeSpray			= 2.0					// Hip fire accuracy
+SWEP.Primary.ConeIncrement		= 2.0					// Rate of innacuracy
+SWEP.Primary.ConeMax			= 5.0					// Maximum Innacuracy
+SWEP.Primary.ConeDecrement		= 0.1					// Rate of accuracy
 SWEP.Primary.KickUp			= 0.5					// Maximum up recoil (rise)
 SWEP.Primary.KickDown			= 0.4					// Maximum down recoil (skeet)
 SWEP.Primary.KickHorizontal			= 0.4					// Maximum up recoil (stock)					// Maximum up recoil (stock)

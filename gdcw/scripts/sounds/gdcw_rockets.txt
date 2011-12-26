@@ -1,0 +1,36 @@
+"RPGF.single"
+{
+	"channel"			"CHAN_WEAPON"
+	"volume"			"1.0"
+	"CompatibilityAttenuation"	"ATTN_NORM"
+	"pitch"				"PITCH_NORM"
+	"soundlevel"			"SNDLVL_155dB"
+	"wave"				")GDC/Rockets/RPGF.wav"
+}
+"M72F.single"
+{
+	"channel"			"CHAN_WEAPON"
+	"volume"			"1.0"
+	"CompatibilityAttenuation"	"ATTN_NORM"
+	"pitch"				"PITCH_NORM"
+	"soundlevel"			"SNDLVL_155dB"
+	"wave"				")GDC/Rockets/M72F.wav"
+}
+"M202F.single"
+{
+	"channel"			"CHAN_WEAPON"
+	"volume"			"1.0"
+	"CompatibilityAttenuation"	"ATTN_NORM"
+	"pitch"				"PITCH_NORM"
+	"soundlevel"			"SNDLVL_155dB"
+	"wave"				")GDC/Rockets/M202F.wav"
+}
+"AT4F.single"
+{
+	"channel"			"CHAN_WEAPON"
+	"volume"			"1.0"
+	"CompatibilityAttenuation"	"ATTN_NORM"
+	"pitch"				"PITCH_NORM"
+	"soundlevel"			"SNDLVL_155dB"
+	"wave"				")GDC/Rockets/AT4F.wav"
+}

@@ -27,7 +27,7 @@ game_sounds_manifest
 	"precache_file"		"scripts/sounds/gdcw_p90.txt"
 	"precache_file"		"scripts/sounds/gdcw_reloadfix.txt"
 	"precache_file"		"scripts/sounds/gdcw_revolver.txt"
-	"precache_file"		"scripts/sounds/gdcw_rpg7.txt"
+	"precache_file"		"scripts/sounds/gdcw_rockets.txt"
 	"precache_file"		"scripts/sounds/gdcw_sg552.txt"
 	"precache_file"		"scripts/sounds/gdcw_shotgun.txt"
 	"precache_file"		"scripts/sounds/gdcw_smg.txt"

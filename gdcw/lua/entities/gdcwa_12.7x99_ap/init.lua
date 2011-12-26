@@ -34,8 +34,8 @@ self.Timeleft 		= CurTime() + 5				// How long before auto-remove?
 self.Impacted 		= false					// Important for flight continuation, see line 173
 self.Splatter 		= false					// Carries blood and AIDS after the round passes through someone
 self.EffectSize		= 1.5					// How much stuff gets kicked up on impact
-self.TissueDamage	= math.Rand(80,100)			// Player damage is multiplied by 2 for some reason
-self.BallisticDrag	= 250					// Fraction of velocity lost per tick, higher is less
+self.TissueDamage	= math.Rand(90,110)			// Player damage is multiplied by 2 for some reason
+self.BallisticDrag	= 90					// Fraction of velocity lost per tick, higher is less
 self.Drift		= 0.02					// How much the bullet will drift in flight (Inaccuracy)
 
 self.Entity:SetModel( "models/led.mdl" )

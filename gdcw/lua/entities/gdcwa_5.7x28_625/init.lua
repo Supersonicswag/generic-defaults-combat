@@ -35,7 +35,7 @@ self.Impacted 		= false					// Important for flight continuation, see line 173
 self.Splatter 		= false					// Carries blood and AIDS after the round passes through someone
 self.EffectSize		= 0.85					// How much stuff gets kicked up on impact
 self.TissueDamage	= math.Rand(20,30)			// Player damage is multiplied by 2 for some reason
-self.BallisticDrag	= 80					// Fraction of velocity lost per tick, higher is less
+self.BallisticDrag	= 60					// Fraction of velocity lost per tick, higher is less
 self.Drift		= 0.3					// How much the bullet will drift in flight (Inaccuracy)
 
 self.Entity:SetModel( "models/led.mdl" )

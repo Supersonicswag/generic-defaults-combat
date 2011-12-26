@@ -2,7 +2,7 @@
 {
 	"$baseTexture" "models/weapons/v_models/M4t_AWP/body"
 	"$bumpmap" "models/weapons/v_models/M4t_AWP/bodynormphong"
-	 "$phong" "1"
+	"$phong" "1"
 	"$phongboost" "0.2"
 	"$phongfresnelranges" "[0.5 0.7 0.8]"
 	"$phongexponent" "8"

@@ -50,7 +50,7 @@ self.Size 		= 5*self.Scale			// Size is exclusively for the explosion "trails" s
 self.Emitter 		= ParticleEmitter( self.Pos )	// Emitter must be there so you don't get an error			//
 	
 
-			if self.Scale<2.1 then
+			if self.Scale<1.2 then
 			WorldSound( "ambient/explosions/explode_" .. math.random(1, 4) .. ".wav", self.Pos, 100, 100 )
 			else
 			WorldSound( "Explosion.Boom", self.Pos)
@@ -131,7 +131,7 @@ end
 		for i=1, 25*self.Scale do
 		local Debris = self.Emitter:Add( "effects/fleck_cement"..math.random(1,2), self.Pos )
 		if (Debris) then
-		Debris:SetVelocity ( self.DirVec * math.random(0,500)*self.Scale + VectorRand():GetNormalized() * math.random(0,400)*self.Scale )
+		Debris:SetVelocity ( self.DirVec * math.random(0,700)*self.Scale + VectorRand():GetNormalized() * math.random(0,700)*self.Scale )
 		Debris:SetDieTime( math.random( 1, 2) * self.Scale )
 		Debris:SetStartAlpha( 255 )
 		Debris:SetEndAlpha( 0 )
@@ -223,7 +223,7 @@ function EFFECT:Dirt()
 		for i=1, 25*self.Scale do
 		local Debris = self.Emitter:Add( "effects/fleck_cement"..math.random(1,2), self.Pos )
 		if (Debris) then
-		Debris:SetVelocity ( self.DirVec * math.random(0,500)*self.Scale + VectorRand():GetNormalized() * math.random(0,400)*self.Scale )
+		Debris:SetVelocity ( self.DirVec * math.random(0,700)*self.Scale + VectorRand():GetNormalized() * math.random(0,700)*self.Scale )
 		Debris:SetDieTime( math.random( 1, 2) * self.Scale )
 		Debris:SetStartAlpha( 255 )
 		Debris:SetEndAlpha( 0 )
@@ -299,7 +299,7 @@ function EFFECT:Dirt()
 		for i=0, 25*self.Scale do		// Chunkage
 		local Debris = self.Emitter:Add( "effects/fleck_cement"..math.random(1,2), self.Pos )
 		if (Debris) then
-		Debris:SetVelocity ( self.DirVec * math.random(50,700)*self.Scale + VectorRand():GetNormalized() * math.random(0,500)*self.Scale )
+		Debris:SetVelocity ( self.DirVec * math.random(50,900)*self.Scale + VectorRand():GetNormalized() * math.random(0,700)*self.Scale )
 		Debris:SetDieTime( math.random( 1, 2) * self.Scale )
 		Debris:SetStartAlpha( 255 )
 		Debris:SetEndAlpha( 0 )
@@ -513,7 +513,7 @@ end
 		for i=1, 25*self.Scale do
 		local Debris = self.Emitter:Add( "effects/fleck_tile"..math.random(1,2), self.Pos )
 		if (Debris) then
-		Debris:SetVelocity ( self.DirVec * math.random(100,400)*self.Scale + VectorRand():GetNormalized() * math.random(100,700)*self.Scale )
+		Debris:SetVelocity ( self.DirVec * math.random(100,600)*self.Scale + VectorRand():GetNormalized() * math.random(100,1200)*self.Scale )
 		Debris:SetDieTime( math.random( 1, 3) * self.Scale )
 		Debris:SetStartAlpha( 255 )
 		Debris:SetEndAlpha( 0 )
@@ -588,7 +588,7 @@ end
 		for i=0, 20*self.Scale do
 		local Debris = self.Emitter:Add( "effects/fleck_wood"..math.random(1,2), self.Pos+self.DirVec )
 		if (Debris) then
-		Debris:SetVelocity( self.DirVec * math.random(50,300)*self.Scale + VectorRand():GetNormalized() * math.random(200,600)*self.Scale )
+		Debris:SetVelocity( self.DirVec * math.random(50,500)*self.Scale + VectorRand():GetNormalized() * math.random(200,900)*self.Scale )
 		Debris:SetDieTime( math.random( 0.75, 2) )
 		Debris:SetStartAlpha( 255 )
 		Debris:SetEndAlpha( 0 )
