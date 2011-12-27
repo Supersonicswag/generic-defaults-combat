@@ -53,6 +53,7 @@ end
 
 function SWEP:Deploy()
 	self.Weapon:SendWeaponAnim( ACT_VM_DRAW )
+	self.Weapon:SetClip1(1)
 	self.IronSightsPos = self.RunSightsPos					// Hold it down
 	self.IronSightsAng = self.RunSightsAng					// Hold it down
 	self:SetIronsights(false, self.Owner)					// Set the ironsight true
@@ -107,8 +108,9 @@ function SWEP:Lower()
 
 	self.IronSightsPos = self.RunSightsPos					// Hold it down
 	self.IronSightsAng = self.RunSightsAng					// Hold it down
-self:SetIronsights(true, self.Owner)
- 
+	self:SetIronsights(true, self.Owner)
+ 	self.Owner:SetFOV( 0, 0.3 )						// Reset FOV
+
 	
 end
 
@@ -118,9 +120,13 @@ end
 
 function SWEP:Reload()
 
+	self.IronSightsPos = self.RunSightsPos					// Hold it down
+	self.IronSightsAng = self.RunSightsAng					// Hold it down
 	self.Weapon:SendWeaponAnim(ACT_VM_DRAW )
 	self.Weapon:DefaultReload(ACT_VM_RELOAD) 
 	self:SetIronsights(false, self.Owner)					// Set the ironsight true
+	self.Owner:SetFOV( 0, 0.3 )						// Reset FOV
+
 end
 
 
@@ -146,7 +152,7 @@ function SWEP:IronSight()
 	end
 
 
-		if self.Owner:KeyPressed(IN_ATTACK2) then
+		if self.Owner:KeyPressed(IN_ATTACK2) and self.Weapon:Clip1() then
 		self.Owner:SetFOV( 40, 0.5 )
 		self.IronSightsPos = self.SightsPos					// Bring it up
 		self.IronSightsAng = self.SightsAng					// Bring it up

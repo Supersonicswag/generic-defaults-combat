@@ -256,20 +256,21 @@ self:SwitchAmmo()
 	if ( self.Weapon:GetNetworkedBool( "reloading", false ) ) then
 	
 		if ( self.Weapon:GetVar( "reloadtimer", 0 ) < CurTime() ) then
-			
-			// Finished reload -
+
 			if ( self.Weapon:Clip1() >= self.Primary.ClipSize) then
-				self.Weapon:SetNetworkedBool( "reloading", false )
-			//self.Weapon:SendWeaponAnim(ACT_SHOTGUN_RELOAD_FINISH)
-				return
+			self.Weapon:SetNetworkedBool( "reloading", false )
+			self.Weapon:SendWeaponAnim(ACT_SHOTGUN_RELOAD_FINISH)
+			return
 			end
 			
 			// Next cycle
+
 			self.Weapon:SetVar( "reloadtimer", CurTime() + 0.4 )
 			self.Weapon:SendWeaponAnim( ACT_VM_RELOAD )
 			self.Weapon:SetNextPrimaryFire(CurTime()+0.5)
 			self.Owner:DoReloadEvent()
-			
+
+
 			// Add ammo
 			self.Owner:RemoveAmmo( 1, self.Primary.Ammo, false )
 			self.Weapon:SetClip1(  self.Weapon:Clip1() + 1)

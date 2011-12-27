@@ -121,6 +121,7 @@ function SWEP:Reload()
 	self.Weapon:DefaultReload(ACT_VM_RELOAD) 
 	self:SetWeaponHoldType("passive")
 	self:SetIronsights(false, self.Owner)					// Set the ironsight true
+	self.Owner:SetFOV( 0, 0.3 )						// Reset FOV
 
 
 	if ( self.Weapon:Clip1() < self.Primary.ClipSize ) and !self.Owner:IsNPC() then
