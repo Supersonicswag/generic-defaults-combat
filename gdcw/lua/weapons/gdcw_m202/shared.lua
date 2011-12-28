@@ -3,7 +3,7 @@ SWEP.Category				= "Generic Default's Explosives"
 SWEP.Author				= "Generic Default"
 SWEP.Contact				= "AIDS!"
 SWEP.Purpose				= "Commando stuff"
-SWEP.Instructions			= "Rounds:\n M74 66mm HEAT, 10 meter casualty radius. \nVelocity: 145 m/s \nSights: Reflex \nCapacity: 4 rounds"
+SWEP.Instructions			= "Rounds:\n M74 66mm TPA Incindiary, 10 meter casualty radius. \nVelocity: 115 m/s \nSights: Reflex \nCapacity: 4 rounds"
 SWEP.MuzzleAttachment			= "1" 	-- Should be "1" for CSS models or "muzzle" for hl2 models
 SWEP.ShellEjectAttachment		= "2" 	-- Should be "2" for CSS models or "1" for hl2 models
 SWEP.DrawCrosshair			= false	
@@ -17,7 +17,7 @@ SWEP.Spawnable				= true
 SWEP.AdminSpawnable			= true
 
 SWEP.Primary.Round 			= ("gdcwa_m74")	
-SWEP.Primary.RPM			= 900					// This is in Rounds Per Minute
+SWEP.Primary.RPM			= 800					// This is in Rounds Per Minute
 SWEP.Primary.ClipSize			= 4					// Size of a clip
 SWEP.Primary.DefaultClip		= 4					// Default number of bullets in a clip
 SWEP.Primary.Automatic			= false					// Automatic/Semi Auto
@@ -76,7 +76,7 @@ function SWEP:PrimaryAttack()
 		fx:SetOrigin(self.Owner:GetShootPos())
 		fx:SetNormal(self.Owner:GetAimVector())
 		fx:SetAttachment(self.MuzzleAttachment)
-		util.Effect("gdcw_muzzle",fx)
+		util.Effect("gdcw_backblast",fx)
 		self.Owner:SetAnimation( PLAYER_ATTACK1 )
 		self.Owner:MuzzleFlash()
 		self.Weapon:SetNextPrimaryFire(CurTime()+1/(self.Primary.RPM/60))

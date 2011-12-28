@@ -4,7 +4,7 @@ include('shared.lua')
 
 function ENT:Initialize()   
 
-self.flightvector = self.Entity:GetUp() * ((115*52.5)/66)
+self.flightvector = self.Entity:GetUp() * ((145*52.5)/66)
 self.timeleft = CurTime() + 10
 self.Owner = self:GetOwner()
 self.Entity:SetModel( "models/props_junk/garbage_glassbottle001a.mdl" )
@@ -48,18 +48,7 @@ end
 			end
 	
 				if tr.Hit then
-
-				for k, v in pairs ( ents.FindInSphere( tr.HitPos, 500 ) ) do	// Find anything within ~50 feet
-				if v:IsPlayer() || v:IsNPC() then				// If its alive then
-				local trace = {}						// Make sure there's not a wall in between
-				trace.start = tr.HitPos+tr.HitNormal*30
-				trace.endpos = v:GetPos() + Vector(0,0,30)			// Trace to the torso
-				trace.filter = self.Entity
-				local wp = util.TraceLine( trace )				// If the trace hits a living thing then
-				if wp.Entity:IsPlayer() || wp.Entity:IsNPC() then v:Ignite( 5, 100 ) end end	// Fry it for 5 seconds
-				end	
-
-					util.BlastDamage(self.Entity, self.Owner, tr.HitPos, 400, 50)
+					util.BlastDamage(self.Entity, self.Owner, tr.HitPos, 450, 150)
 					local effectdata = EffectData()
 					effectdata:SetOrigin(tr.HitPos)			// Where is hits
 					effectdata:SetNormal(tr.HitNormal)		// Direction of particles
@@ -67,7 +56,7 @@ end
 					effectdata:SetScale(1.3)			// Size of explosion
 					effectdata:SetRadius(tr.MatType)		// What texture it hits
 					effectdata:SetMagnitude(18)			// Length of explosion trails
-					util.Effect( "gdcw_tpaboom", effectdata )
+					util.Effect( "gdcw_cinematicboom", effectdata )
 					util.ScreenShake(tr.HitPos, 10, 5, 1, 3000 )
 					util.Decal("Scorch", tr.HitPos + tr.HitNormal, tr.HitPos - tr.HitNormal)
 
@@ -75,7 +64,7 @@ end
 					end
 	
 	self.Entity:SetPos(self.Entity:GetPos() + self.flightvector)
-	self.flightvector = self.flightvector - (self.flightvector/500)  + Vector(math.Rand(-0.2,0.2), math.Rand(-0.2,0.2),math.Rand(-0.2,0.2)) + Vector(0,0,-0.111)
+	self.flightvector = self.flightvector - (self.flightvector/350)  + Vector(math.Rand(-0.2,0.2), math.Rand(-0.2,0.2),math.Rand(-0.2,0.2)) + Vector(0,0,-0.111)
 	self.Entity:SetAngles(self.flightvector:Angle() + Angle(90,0,0))
 	self.Entity:NextThink( CurTime() )
 	return true
