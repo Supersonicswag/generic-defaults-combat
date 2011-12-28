@@ -5,7 +5,7 @@ include('shared.lua')
 function ENT:Initialize()   
 
 self.flightvector = self.Entity:GetUp() * ((145*52.5)/66)
-self.timeleft = CurTime() + 10
+self.timeleft = CurTime() + 15
 self.Owner = self:GetOwner()
 self.Entity:SetModel( "models/props_junk/garbage_glassbottle001a.mdl" )
 self.Entity:PhysicsInit( SOLID_VPHYSICS )      -- Make us work with physics,  	
@@ -64,7 +64,7 @@ end
 					end
 	
 	self.Entity:SetPos(self.Entity:GetPos() + self.flightvector)
-	self.flightvector = self.flightvector - (self.flightvector/350)  + Vector(math.Rand(-0.2,0.2), math.Rand(-0.2,0.2),math.Rand(-0.2,0.2)) + Vector(0,0,-0.111)
+	self.flightvector = self.flightvector - (self.flightvector/350)  + Vector(math.Rand(-0.2,0.2), math.Rand(-0.2,0.2),math.Rand(-0.1,0.1)) + Vector(0,0,-0.111)
 	self.Entity:SetAngles(self.flightvector:Angle() + Angle(90,0,0))
 	self.Entity:NextThink( CurTime() )
 	return true

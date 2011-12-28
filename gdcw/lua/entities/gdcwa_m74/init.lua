@@ -5,7 +5,7 @@ include('shared.lua')
 function ENT:Initialize()   
 
 self.flightvector = self.Entity:GetUp() * ((115*52.5)/66)
-self.timeleft = CurTime() + 10
+self.timeleft = CurTime() + 15
 self.Owner = self:GetOwner()
 self.Entity:SetModel( "models/props_junk/garbage_glassbottle001a.mdl" )
 self.Entity:PhysicsInit( SOLID_VPHYSICS )      -- Make us work with physics,  	
@@ -59,7 +59,7 @@ end
 				if wp.Entity:IsPlayer() || wp.Entity:IsNPC() then v:Ignite( 5, 100 ) end end	// Fry it for 5 seconds
 				end	
 
-					util.BlastDamage(self.Entity, self.Owner, tr.HitPos, 400, 50)
+					util.BlastDamage(self.Entity, self.Owner, tr.HitPos, 400, 70)
 					local effectdata = EffectData()
 					effectdata:SetOrigin(tr.HitPos)			// Where is hits
 					effectdata:SetNormal(tr.HitNormal)		// Direction of particles
@@ -75,7 +75,7 @@ end
 					end
 	
 	self.Entity:SetPos(self.Entity:GetPos() + self.flightvector)
-	self.flightvector = self.flightvector - (self.flightvector/500)  + Vector(math.Rand(-0.2,0.2), math.Rand(-0.2,0.2),math.Rand(-0.2,0.2)) + Vector(0,0,-0.111)
+	self.flightvector = self.flightvector - (self.flightvector/500)  + Vector(math.Rand(-0.2,0.2), math.Rand(-0.2,0.2),math.Rand(-0.1,0.1)) + Vector(0,0,-0.111)
 	self.Entity:SetAngles(self.flightvector:Angle() + Angle(90,0,0))
 	self.Entity:NextThink( CurTime() )
 	return true

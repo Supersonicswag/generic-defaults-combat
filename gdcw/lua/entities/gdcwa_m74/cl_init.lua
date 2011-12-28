@@ -18,7 +18,7 @@
  function ENT:Think()
 	
 	pos = self:GetPos()
-		for i=0, (5) do
+		for i=0, (3) do
 			local particle = self.emitter:Add( "particle/smokesprites_000"..math.random(1,9), pos + (self:GetUp() * -120 * i))
 			if (particle) then
 				particle:SetVelocity((self:GetUp() * -2000)+(VectorRand()* 100) )
