@@ -182,7 +182,7 @@ end
 		local Smoke = self.Emitter:Add( "particle/smokesprites_000"..math.random(1,9), self.Pos )
 		if (Smoke) then
 		Smoke:SetVelocity( self.DirVec * math.random( 20,70*self.Scale) + VectorRand():GetNormalized()*150*self.Scale )
-		Smoke:SetDieTime( math.Rand( 0.5 , 2 )*self.Scale )
+		Smoke:SetDieTime( math.Rand( 0.5 , 2 ) )
 		Smoke:SetStartAlpha( math.Rand( 30, 40 ) )
 		Smoke:SetEndAlpha( 0 )
 		Smoke:SetStartSize( 25*self.Scale )
@@ -238,7 +238,7 @@ end
 		local Smoke = self.Emitter:Add( "particle/smokestack", self.Pos )
 		if (Smoke) then
 		Smoke:SetVelocity( self.DirVec * math.random( 20,70*self.Scale) + VectorRand():GetNormalized()*150*self.Scale )
-		Smoke:SetDieTime( math.Rand( 1 , 5 )*self.Scale )
+		Smoke:SetDieTime( math.Rand( 1 , 5 ) )
 		Smoke:SetStartAlpha( math.Rand( 50, 70 ) )
 		Smoke:SetEndAlpha( 0 )
 		Smoke:SetStartSize( 20*self.Scale )
@@ -255,7 +255,7 @@ end
 		local Smoke = self.Emitter:Add( "particle/smokesprites_000"..math.random(1,9), self.Pos )
 		if (Smoke) then
 		Smoke:SetVelocity( self.DirVec * math.random( 20,70*self.Scale) + VectorRand():GetNormalized()*150*self.Scale )
-		Smoke:SetDieTime( math.Rand( 1 , 4 )*self.Scale )
+		Smoke:SetDieTime( math.Rand( 1 , 4 ) )
 		Smoke:SetStartAlpha( math.Rand( 50, 60 ) )
 		Smoke:SetEndAlpha( 0 )
 		Smoke:SetStartSize( 20*self.Scale )
@@ -295,7 +295,7 @@ end
 		local Smoke = self.Emitter:Add( "particle/smokesprites_000"..math.random(1,9), self.Pos )
 		if (Smoke) then
 		Smoke:SetVelocity( self.DirVec * math.random( 20,70*self.Scale) + VectorRand():GetNormalized()*150*self.Scale )
-		Smoke:SetDieTime( math.Rand( 1 , 3 )*self.Scale )
+		Smoke:SetDieTime( math.Rand( 1 , 3 ) )
 		Smoke:SetStartAlpha( math.Rand( 30, 50 ) )
 		Smoke:SetEndAlpha( 0 )
 		Smoke:SetStartSize( 25*self.Scale )
@@ -312,7 +312,7 @@ end
 		local Smoke = self.Emitter:Add( "particle/smokesprites_000"..math.random(1,9), self.Pos )
 		if (Smoke) then
 		Smoke:SetVelocity( self.DirVec * math.random( 20,70*self.Scale) + VectorRand():GetNormalized()*130*self.Scale )
-		Smoke:SetDieTime( math.Rand( 1 , 3 )*self.Scale )
+		Smoke:SetDieTime( math.Rand( 1 , 3 ) )
 		Smoke:SetStartAlpha( math.Rand( 40, 60 ) )
 		Smoke:SetEndAlpha( 0 )
 		Smoke:SetStartSize( 20*self.Scale )
@@ -352,7 +352,7 @@ end
 		local Smoke = self.Emitter:Add( "particle/smokesprites_000"..math.random(1,9), self.Pos )
 		if (Smoke) then
 		Smoke:SetVelocity( self.DirVec * math.random( 20,70*self.Scale) + VectorRand():GetNormalized()*150*self.Scale )
-		Smoke:SetDieTime( math.Rand( 3 , 7 )*self.Scale )
+		Smoke:SetDieTime( math.Rand( 3 , 7 ) )
 		Smoke:SetStartAlpha( math.Rand( 30, 50 ) )
 		Smoke:SetEndAlpha( 0 )
 		Smoke:SetStartSize( 20*self.Scale )

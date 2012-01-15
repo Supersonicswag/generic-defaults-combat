@@ -27,19 +27,39 @@ local mats={					// Multipliers for materials
 function ENT:Initialize()   
 math.randomseed(CurTime())
 
-self.Penetrate 		= 25					// How deep Generic Default goes (in yo mama)
-self.Flightvector 	= self.Entity:GetUp()*550		// Velocity in inches/sec
+self.Penetrate 		= 7					// How deep Generic Default goes (in yo mama)
+self.Flightvector 	= self.Entity:GetUp()*400		// Velocity in inches/sec
 self.Timeleft 		= CurTime() + 5				// How long before auto-remove?
 self.Impacted 		= false					// Important for flight continuation, see line 152
-self.EffectSize		= 2					// How much stuff gets kicked up on impact
-self.BlastDamage	= 70					// How much it dislodges your small intestine
-self.BlastRadius	= 150					// How big impact radius is
-self.Drift		= 0.5					// How much the bullet will drift in flight (Inaccuracy)
+self.EffectSize		= 1					// How much stuff gets kicked up on impact
+self.BlastDamage	= 50					// How much it dislodges your small intestine
+self.BlastRadius	= 70					// How big impact radius is
+self.Drift		= 0.3					// How much the bullet will drift in flight (Inaccuracy)
 
 self.Entity:SetModel( "models/led.mdl" )
 self.Entity:PhysicsInit( SOLID_VPHYSICS )
 self.Entity:SetMoveType( MOVETYPE_NONE )
 self.Entity:SetSolid( SOLID_VPHYSICS )
+       
+Trail = ents.Create("env_spritetrail")				// The streak of the tracer
+Trail:SetKeyValue("lifetime","0.1")
+Trail:SetKeyValue("startwidth","25")
+Trail:SetKeyValue("endwidth","5")
+Trail:SetKeyValue("spritename","trails/laser.vmt")
+Trail:SetKeyValue("rendermode","5")
+Trail:SetKeyValue("rendercolor","255 150 100")
+Trail:SetPos(self.Entity:GetPos())
+Trail:SetParent(self.Entity)
+Trail:Spawn()
+Trail:Activate()
+Glow = ents.Create("env_sprite")				// The ball of the tracer
+Glow:SetKeyValue("model","orangecore2.vmt")
+Glow:SetKeyValue("rendercolor","255 150 100")
+Glow:SetKeyValue("scale","0.10")
+Glow:SetPos(self.Entity:GetPos())
+Glow:SetParent(self.Entity)
+Glow:Spawn()
+Glow:Activate()
 
 self:Think()
 end   
@@ -84,21 +104,12 @@ function ENT:Think()
 			effectdata:SetScale(self.EffectSize)			// Size of explosion
 			effectdata:SetRadius(tr.MatType)			// Texture of Impact
 			util.Effect("gdca_universal_impact",effectdata)
-			util.ScreenShake(tr.HitPos, 10, 5, 0.1, self.BlastRadius*2 )
+			util.ScreenShake(tr.HitPos, 10, 5, 0.1, 200 )
 			util.Decal("ExplosiveGunshot", tr.HitPos + tr.HitNormal, tr.HitPos - tr.HitNormal)
 
-	// THIS IS BULLET RICOCHET	
-		local Dot = self.Entity:GetUp():DotProduct(tr.HitNormal)
-		if (Dot*math.Rand(0.04,1)*mats[tr.MatType][1])>-0.04 then		// If it doesnt hit head on,
-			self.Flightvector = (self.Flightvector:Length()*(1+Dot*1.2)) * (self.Entity:GetUp()+(tr.HitNormal*Dot*-0.8)+(VectorRand()*0.1))
-			self.Entity:SetAngles(self.Flightvector:Angle() + Angle(90,0,0))
-			self.Entity:SetPos(tr.HitPos+tr.HitNormal)
-			self.Entity:NextThink( CurTime() )
-			return true
-			end	
 
 			if tr.Entity:IsValid() and GDCENGINE then
-			local attack =  gdc.caphit( tr.Entity, 250) 	// Entity, Damage
+			local attack =  gdc.caphit( tr.Entity, 70) 	// Entity, Damage
 			end
 			///
 
@@ -133,8 +144,8 @@ function ENT:Think()
 	effectdata:SetNormal(self.Flightvector:GetNormalized())			// Direction of Impact
 	effectdata:SetScale(self.EffectSize)					// Size of explosion
 	effectdata:SetRadius(pr.MatType)					// Texture of Impact
-	util.Effect( "gdca_universal_penetrate", effectdata )			// Make some debris
-	util.ScreenShake(pr.HitPos, 10, 5, 0.1, self.BlastRadius*2 )				// Compression in the material
+	util.Effect( "gdca_universal_penetrate", effectdata )					// Make some debris
+	util.ScreenShake(pr.HitPos, 10, 5, 0.1, 200 )						// Compression in the material
 	util.Decal("ExplosiveGunshot", pr.HitPos + pr.HitNormal,pr.HitPos - pr.HitNormal)	// Bullet hole in the exit
 
 	end									// This one ends the penetration code
@@ -144,7 +155,7 @@ function ENT:Think()
 	self.Entity:SetPos(self.Entity:GetPos() + self.Flightvector)
 	end									// This one sets a normal flight path if there is no impact
 
-self.Flightvector = self.Flightvector + (VectorRand():GetNormalized()*self.Drift) + Vector(0,0,-0.2)
+self.Flightvector = self.Flightvector + (VectorRand():GetNormalized()*self.Drift) + Vector(0,0,-0.111)
 self.Entity:SetAngles(self.Flightvector:Angle() + Angle(90,0,0))
 self.Entity:NextThink( CurTime() )
 return true

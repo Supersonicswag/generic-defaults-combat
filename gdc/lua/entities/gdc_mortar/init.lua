@@ -39,7 +39,7 @@ function ENT:Initialize()
 		phys:Wake() 
 	end 
  
-	self.Inputs = Wire_CreateInputs( self.Entity, { "Fire HE", "Fire WP", "Fire Illuminator", "Airburst Time" } )
+	self.Inputs = Wire_CreateInputs( self.Entity, { "Fire HE", "Fire WP", "Fire Illuminator" } )
 	self.Outputs = Wire_CreateOutputs( self.Entity, { "Can Fire"})
 end   
 
@@ -213,10 +213,6 @@ function ENT:TriggerInput(k, v)
 			end
 			end
 
-		if(k=="Airburst Time") then
-		if((v or 0) >= 0) then
-		self.Airburst = v
-		else	self.Airburst = 0	end	end
 end
  
  

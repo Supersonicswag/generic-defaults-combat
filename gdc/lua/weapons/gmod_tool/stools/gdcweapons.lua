@@ -26,7 +26,7 @@ if ( CLIENT ) then
 	language.Add( "Tool_gdcweapons_help2", "700 RPM, API,HE/HEIT(5m), 23100 Units/Second, 980 DPS." )
 	language.Add( "Tool_gdcweapons_help3", "300 RPM, HEI/HEIT(6.5m),API/APIT, 36300 Units/Second, 1250 DPS." )
 	language.Add( "Tool_gdcweapons_help4", "600 RPM, HEI(7m), 19800 Units/Second" )
-	language.Add( "Tool_gdcweapons_help5", "200 RPM, HE(8m), 33000 Units/Second" )
+	language.Add( "Tool_gdcweapons_help5", "200 RPM, HE(8m), 33000 Units/Second, 1000 DPS." )
 	language.Add( "Tool_gdcweapons_help6", "120 RPM, HET(13m), 19800 Units/Second" )
 	language.Add( "Tool_gdcweapons_help7", "7 RPS, 7 Salvo, HE(18m)/WP(15m), 13200 Units/Second" )
 	language.Add( "Tool_gdcweapons_help8", "8 RPM, HE(31m)/WP(25m), 19800 Units/Second" )
@@ -538,16 +538,16 @@ function TOOL.BuildCPanel( CPanel )
 
 	local Ctype = {Label = "#Tool_turret_type", MenuButton = 0, Options={}}
 
-		Ctype["Options"]["#M240 7.62"]			= { gdcweapons_gdcweaponsindex = "0" }
-		Ctype["Options"]["#M2HB 12.7"]			= { gdcweapons_gdcweaponsindex = "1" }
-		Ctype["Options"]["#M197 20mm"]			= { gdcweapons_gdcweaponsindex = "2" }
-		Ctype["Options"]["#M242 25mm"]			= { gdcweapons_gdcweaponsindex = "3" }
-		Ctype["Options"]["#M230 30mm"]			= { gdcweapons_gdcweaponsindex = "4" }
-		Ctype["Options"]["#2A42 30mm"]			= { gdcweapons_gdcweaponsindex = "5" }
-		Ctype["Options"]["#L60 40mm"]			= { gdcweapons_gdcweaponsindex = "6" }
-		Ctype["Options"]["#M260 70mm"]			= { gdcweapons_gdcweaponsindex = "7" }
-		Ctype["Options"]["#M101 105mm"]			= { gdcweapons_gdcweaponsindex = "8" }
-		Ctype["Options"]["#GAU-12 25mm"]		= { gdcweapons_gdcweaponsindex = "9" }
+		Ctype["Options"]["#M240 7.62"]			= { gdcweapons_gdcweaponsindex = "0"  }
+		Ctype["Options"]["#M2HB 12.7"]			= { gdcweapons_gdcweaponsindex = "1"  }
+		Ctype["Options"]["#M197 20mm"]			= { gdcweapons_gdcweaponsindex = "2"  }
+		Ctype["Options"]["#M242 25mm"]			= { gdcweapons_gdcweaponsindex = "3"  }
+		Ctype["Options"]["#M230 30mm"]			= { gdcweapons_gdcweaponsindex = "4"  }
+		Ctype["Options"]["#2A42 30mm"]			= { gdcweapons_gdcweaponsindex = "5"  }
+		Ctype["Options"]["#L60 40mm"]			= { gdcweapons_gdcweaponsindex = "6"  }
+		Ctype["Options"]["#M260 70mm"]			= { gdcweapons_gdcweaponsindex = "7"  }
+		Ctype["Options"]["#M101 105mm"]			= { gdcweapons_gdcweaponsindex = "8"  }
+		Ctype["Options"]["#GAU-12 25mm"]		= { gdcweapons_gdcweaponsindex = "9"  }
 		Ctype["Options"]["#2KG High Explosive Charge"]	= { gdcweapons_gdcweaponsindex = "10" }
 		Ctype["Options"]["#M134 7.62mm"]		= { gdcweapons_gdcweaponsindex = "11" }
 		Ctype["Options"]["#M256 120mm"]			= { gdcweapons_gdcweaponsindex = "12" }

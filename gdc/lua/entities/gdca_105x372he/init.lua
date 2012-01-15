@@ -7,13 +7,12 @@ include('shared.lua')
 function ENT:Initialize()   
 
 self.flightvector = self.Entity:GetUp() * 200
-self.timeleft = CurTime() + 10
+self.timeleft = CurTime() + 35
 self.Entity:SetModel( "models/props_junk/garbage_plasticbottle003a.mdl" )
-self.Entity:SetGravity( 0.5 ) 	
 self.Entity:PhysicsInit( SOLID_VPHYSICS )      -- Make us work with physics,  	
 self.Entity:SetMoveType( MOVETYPE_NONE )   --after all, gmod is a physics  	
-self.Entity:SetSolid( SOLID_VPHYSICS )        -- CHEESECAKE!    >:3           
-self.Entity:SetColor(255,255,0,255)
+self.Entity:SetSolid( SOLID_NONE )        -- CHEESECAKE!    >:3           
+self.Entity:SetColor(50,50,50,255)
  
 end   
 
@@ -31,11 +30,11 @@ end
 	local tr = util.TraceLine( trace )
 
 
-				if tr.Hit then
-					if tr.HitSky then
-					self.Entity:Remove()
-					return true
-					end
+				if tr.Hit and !tr.HitSky then
+					//if tr.HitSky then
+					//self.Entity:Remove()
+					//return true
+					//end
 					if tr.MatType==83 then				//83 is wata
 					local effectdata = EffectData()
 					effectdata:SetOrigin( tr.HitPos )
@@ -66,7 +65,7 @@ end
 				end
 	
 	self.Entity:SetPos(self.Entity:GetPos() + self.flightvector)
-	self.flightvector = self.flightvector + Vector(math.Rand(-0.3,0.3), math.Rand(-0.3,0.3),math.Rand(-0.2,0.2)) + Vector(0,0,-0.2)
+	self.flightvector = self.flightvector + Vector(math.Rand(-0.02,0.02), math.Rand(-0.02,0.02),math.Rand(-0.02,0.02)) + Vector(0,0,-0.2)
 	self.Entity:SetAngles(self.flightvector:Angle() + Angle(90,0,0))
 	self.Entity:NextThink( CurTime() )
 	return true

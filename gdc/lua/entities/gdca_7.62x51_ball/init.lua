@@ -87,6 +87,15 @@ function ENT:Think()
 			util.ScreenShake(tr.HitPos, 10, 5, 0.1, 200 )
 			util.Decal("ExplosiveGunshot", tr.HitPos + tr.HitNormal, tr.HitPos - tr.HitNormal)
 
+	// THIS IS BULLET RICOCHET	
+		local Dot = self.Entity:GetUp():DotProduct(tr.HitNormal)
+		if (Dot*math.Rand(0.04,1)*mats[tr.MatType][1])>-0.04 then		// If it doesnt hit head on,
+			self.Flightvector = (self.Flightvector:Length()*(1+Dot*1.2)) * (self.Entity:GetUp()+(tr.HitNormal*Dot*-0.8)+(VectorRand()*0.1))
+			self.Entity:SetAngles(self.Flightvector:Angle() + Angle(90,0,0))
+			self.Entity:SetPos(tr.HitPos+tr.HitNormal)
+			self.Entity:NextThink( CurTime() )
+			return true
+			end	
 
 			if tr.Entity:IsValid() and GDCENGINE then
 			local attack =  gdc.caphit( tr.Entity, 70) 	// Entity, Damage

@@ -4,7 +4,7 @@ include('shared.lua')
 
 function ENT:Initialize()   
 self.flightvector = self.Entity:GetUp() * 200
-self.timeleft = CurTime() + 10
+self.timeleft = CurTime() + 35
 self.Entity:SetModel( "models/props_junk/garbage_plasticbottle003a.mdl" )
 self.Entity:SetGravity( 0.5 ) 	
 self.Entity:PhysicsInit( SOLID_VPHYSICS )      -- Make us work with physics,  	
@@ -28,11 +28,11 @@ end
 	local tr = util.TraceLine( trace )
 
 
-				if tr.Hit then
-					if tr.HitSky then
-					self.Entity:Remove()
-					return true
-					end
+				if tr.Hit and !tr.HitSky then
+					//if tr.HitSky then
+					//self.Entity:Remove()
+					//return true
+					//end
 					if tr.MatType==83 then				//83 is wata
 					local effectdata = EffectData()
 					effectdata:SetOrigin( tr.HitPos )

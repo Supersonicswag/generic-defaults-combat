@@ -52,7 +52,7 @@ function ENT:Think()
 			effectdata:SetMagnitude(20)
 			util.Effect( "gdca_airburst", effectdata )
 			if GDCENGINE then	
-			local attack = gdc.gdcsplode( self.Entity:GetPos(), 500, 50, self.Entity)	// Position, Radius, Damage, Self		
+			local attack = gdc.gdcsplode( self.Entity:GetPos(), 525, 80, self.Entity)	// Position, Radius, Damage, Self		
 			end	
 			self.Entity:Remove()	end
 			
@@ -95,7 +95,7 @@ function ENT:Think()
 					util.Decal("fadingScorch", tr.HitPos + tr.HitNormal, tr.HitPos - tr.HitNormal)
 
 			if GDCENGINE then	
-			local attack = gdc.gdcsplode( tr.HitPos, 80, 100, self.Entity)	// Position, Radius, Damage, Self		
+			local attack = gdc.gdcsplode( tr.HitPos, 110, 100, self.Entity)	// Position, Radius, Damage, Self		
 			end	
 
 					self.Entity:Remove()
