@@ -55,7 +55,7 @@ Glow:Spawn()
 Glow:Activate()
 
 Shine = ents.Create("env_sprite")
-Shine:SetPos(self.Entity:GetPos())
+Shine:SetPos(self.Entity:GetPos()-(self.Entity:GetUp()*30))
 Shine:SetKeyValue("renderfx", "0")
 Shine:SetKeyValue("rendermode", "5")
 Shine:SetKeyValue("renderamt", "255")
@@ -83,7 +83,7 @@ if !self.Guider:IsValid() then self.Guider = self.Entity end
 	self.Target = self.Guider:GetVar("Target",Vector) 		// Refresh target position
 
 	if self.Target!=Vector(0,0,0) then
-	self.Distance = ((self.Target-Vector(0,0,self.Target.z))-(self:GetPos()-self:GetPos():z())):Length()// Horizontal Distance
+	self.Distance = ((self.Target-Vector(0,0,self.Target.z))-self:GetPos()):Length()// Horizontal Distance
 	
 
 	if self.Distance>self.DistanceCutoff then					// If you are far away

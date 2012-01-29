@@ -47,7 +47,7 @@ if ( CLIENT ) then
 	language.Add( "Tool_gdcweapons_help23", "430 RPM, API/APIT, HEI(4m), Overheats after 33 rounds, 39600 Units/Second, 560 DPS" )
 	language.Add( "Tool_gdcweapons_help24", "600 RPM, AP/APT(Green), 29700 Units/Second, 825 DPS." )
 	language.Add( "Tool_gdcweapons_help25", "900 RPM, AP/APT, 33000 Units/Second, 750 DPS." )
-	language.Add( "Tool_gdcweapons_help26", "Anti Tank Guided Missile Launcher. For now top attack only, future inputs will work. HEAT(23m)" )
+	language.Add( "Tool_gdcweapons_help26", "Anti Tank Guided Missile Launcher. Inputs control the trajectory of the missile. HEAT(23m)" )
 	language.Add( "Tool_gdcweapons_help27", "50kg Bomb. Use outputs for TV guidance (+-20 input angle). HE(35m)" )
 	language.Add( "Tool_gdcweapons_help28", "Oxidated flamethrower. 30 meter range, ~10 degree burn cone. 66 DPS per prop." )
 
