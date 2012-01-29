@@ -13,6 +13,9 @@ function ENT:Initialize()
 	self.loading = false
 	self.reloadtime = 0
 	self.infire = false
+	self.Wobbliness 	= 1
+	self.Zmod 		= 0.25
+	self.DistanceCutoff 	= 5000
 	self.Velo = Vector(0,0,0)
 	self.Pos2 = self.Entity:GetPos()
 	self.Entity:SetModel( "models/props_pipes/pipecluster08d_extender64.mdl" ) 	
@@ -28,7 +31,7 @@ function ENT:Initialize()
 		phys:Wake() 
 	end 
  
-	self.Inputs = WireLib.CreateSpecialInputs(self, { "Fire ATGM", "Position", "THESEDONTWORKYET", "Wobbliness", "Distance Cutoff", "Z Modulation" }, { "NORMAL", "VECTOR", "NORMAL", "NORMAL", "NORMAL", "NORMAL" } )
+	self.Inputs = WireLib.CreateSpecialInputs(self, { "Fire ATGM", "Position", "Wobbliness", "Distance Cutoff", "Z Modulation" }, { "NORMAL", "VECTOR", "NORMAL", "NORMAL", "NORMAL" } )
 	self.Outputs = Wire_CreateOutputs( self.Entity, { "Can Fire"})
 end   
 
@@ -107,15 +110,15 @@ function ENT:TriggerInput(k, v)
 	end
 
 	if (k == "Wobbliness") then
-	self.FlightData.x = v or 0.8
+	self.Wobbliness = v or 1
 	end
 
 	if (k == "Distance Cutoff") then
-	self.FlightData.y = v or 0
+	self.DistanceCutoff = v or 5000
 	end
 
-	if (k == "Z Modulate") then
-	self.FlightData.z = v or 0
+	if (k == "Z Modulation") then
+	self.Zmod = v else self.Zmod = 0.25
 	end
 
 

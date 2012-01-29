@@ -17,8 +17,8 @@ self.Entity:SetColor(255,255,0,255)
 
 Tracer = ents.Create("env_spritetrail")
 Tracer:SetKeyValue("lifetime","0.1")
-Tracer:SetKeyValue("startwidth","90")
-Tracer:SetKeyValue("endwidth","15")
+Tracer:SetKeyValue("startwidth","70")
+Tracer:SetKeyValue("endwidth","25")
 Tracer:SetKeyValue("spritename","trails/laser.vmt")
 Tracer:SetKeyValue("rendermode","5")
 Tracer:SetKeyValue("rendercolor","255 150 100")
@@ -35,6 +35,21 @@ Glow:SetPos(self.Entity:GetPos())
 Glow:SetParent(self.Entity)
 Glow:Spawn()
 Glow:Activate()
+
+Shine = ents.Create("env_sprite")
+Shine:SetPos(self.Entity:GetPos())
+Shine:SetKeyValue("renderfx", "0")
+Shine:SetKeyValue("rendermode", "5")
+Shine:SetKeyValue("renderamt", "255")
+Shine:SetKeyValue("rendercolor", "255 140 80")
+Shine:SetKeyValue("framerate12", "20")
+Shine:SetKeyValue("model", "light_glow03.spr")
+Shine:SetKeyValue("scale", "0.8")
+Shine:SetKeyValue("GlowProxySize", "130")
+Shine:SetParent(self.Entity)
+Shine:Spawn()
+Shine:Activate()
+
 
 end   
 

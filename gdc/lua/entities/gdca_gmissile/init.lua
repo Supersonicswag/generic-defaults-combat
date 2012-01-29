@@ -66,6 +66,9 @@ end
 
  function ENT:Think()
 	
+local MissilePosition 	= self.Entity:GetPos()
+local MissileUp 	= self.Entity:GetUp()
+
 if (self.Accelerator<self.AccelMax) then self.Accelerator = self.Accelerator+self.AccelRate	end	// Speed it up!
 
 	if self.timeleft < CurTime() then
@@ -73,8 +76,8 @@ if (self.Accelerator<self.AccelMax) then self.Accelerator = self.Accelerator+sel
 	end
 
 	local trace = {}
-		trace.start 	= self.Entity:GetPos()
-		trace.endpos 	= self.Entity:GetPos() + self.flightvector*1.1
+		trace.start 	= MissilePosition
+		trace.endpos 	= MissilePosition + self.flightvector*1.1
 		trace.filter 	= self.Entity 
 		trace.mask 	= MASK_SHOT + MASK_WATER			// Trace for stuff that bullets would normally hit
 	local tr = util.TraceLine( trace )
@@ -115,14 +118,16 @@ if (self.Accelerator<self.AccelMax) then self.Accelerator = self.Accelerator+sel
 			self.Entity:Remove() 
 			end
 			
+	if self.nexttarGet < CurTime() then 
 
+if !self.Flared then
 	local EIS = ents.FindInSphere(self:GetPos(), 40000)
 	local distance = 40000
-	if self.nexttarGet < CurTime() then 
+	//if self.nexttarGet < CurTime() then 
 		for _,t in pairs(EIS) do
 			if !(t:GetClass() == "gdca_flare") and !self.Flared then
 			if (t:IsValid() and (t:GetClass() == "prop_physics" || t:GetClass() == "prop_vehicle_prisoner_pod" || t:GetClass() == "prop_vehicle_jeep" || t:GetClass() == "prop_vehicle_airboat" || t:GetClass() == "gdca_flare" || t:IsNPC()) and (t:GetVelocity():Length() > 0)) then
-				if (t:GetPos():Distance(self:GetPos()) < distance && self:GetUp():DotProduct((t:GetPos() - self:GetPos()):GetNormalized()) > 0.99) then
+				if ( (t:GetPos():Distance(MissilePosition)<distance) and (MissileUp:DotProduct((t:GetPos() - MissilePosition):GetNormalized())>0.99) ) then
 						self.Target = t
 				end
 				end
@@ -133,30 +138,28 @@ if (self.Accelerator<self.AccelMax) then self.Accelerator = self.Accelerator+sel
 			end
 			self.nexttarGet = CurTime() + 0.3
 		end
+end	
 
-
-	if (self.Target:IsValid()) and (self.Target != self.Entity) and (self.Target:GetPos():Distance(self:GetPos()) < distance && self:GetUp():DotProduct((self.Target:GetPos() - self:GetPos()):GetNormalized()) > 0.50) then
-	ForwardAngle = self.Entity:GetUp():Angle()
+	if self.Target:IsValid() and self.Target!=self.Entity and self.Target:GetPos():Distance(MissilePosition)<40000 and MissileUp:DotProduct((self.Target:GetPos() - MissilePosition):GetNormalized())>0.50 then
+	ForwardAngle = MissileUp:Angle()
 			
-	IDist 		= (self.Target:GetPos() - self:GetPos()):Length()	// In Units
+	IDist 		= (self.Target:GetPos() - MissilePosition):Length()	// In Units
 	ITime 		= IDist/self.Accelerator				// In server ticks, 1/66 second
 	TVel 		= (self.Target:GetPos()-self.TPos)			// Net Velocity (Delta Distance)	
-	Multiplexah	= math.Clamp(TVel:Length()/20,0,1)			// Limit the intercept by target speed
-	IPos 		= self.Target:GetPos()+(TVel*ITime*Multiplexah)		// Fly to intercept
-
+	IPos 		= self.Target:GetPos()+(TVel*ITime)			// Fly to intercept
 	self.TPos 	= self.Target:GetPos()					// Refresh the target position
 
-	TangY = (IPos - self:GetPos()):GetNormalized():Angle().y
-	AddY = math.Clamp(math.AngleDifference(TangY, self.Entity:GetUp():Angle().y)*15,-self.Accelerator/150,self.Accelerator/150)
-	TangP = (IPos - self:GetPos()):GetNormalized():Angle().p
-	AddP = math.Clamp(math.AngleDifference(TangP, self.Entity:GetUp():Angle().p)*15,-self.Accelerator/150,self.Accelerator/150)
+	TangY = (IPos - MissilePosition):GetNormalized():Angle().y
+	AddY = math.Clamp(math.AngleDifference(TangY, MissileUp:Angle().y)*15,-self.Accelerator/150,self.Accelerator/150)
+	TangP = (IPos - MissilePosition):GetNormalized():Angle().p
+	AddP = math.Clamp(math.AngleDifference(TangP, MissileUp:Angle().p)*15,-self.Accelerator/150,self.Accelerator/150)
 	self.Entity:SetAngles((Angle(AddP,AddY,0) + ForwardAngle) + Angle(90,0,0) + Angle(math.Rand(-0.8,0.8),math.Rand(-0.8,0.8),math.Rand(-0.8,0.8)))
 	else
 	self.Entity:SetAngles(self.flightvector:Angle() + Angle(90,0,0))
 	end
 
-	self.flightvector = self.Entity:GetUp()*self.Accelerator
-	self.Entity:SetPos(self.Entity:GetPos() + self.flightvector)
+	self.flightvector = MissileUp*self.Accelerator
+	self.Entity:SetPos(MissilePosition + self.flightvector)
 	self.Entity:NextThink( CurTime() )
 	return true
 end

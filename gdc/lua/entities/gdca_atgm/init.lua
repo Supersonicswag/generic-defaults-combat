@@ -17,11 +17,19 @@ function ENT:Initialize()
 	end
 	end
 
-self.Target 		= self.Guider:GetVar("Target",Vector)
-self.FlightData 	= self.Guider:GetVar("FlightData",Vector)
-self.W 			= 1
-self.Zmod 		= 0.25
-self.DistanceCutoff 	= 4000
+self.Target 		= self.Guider:GetVar("Target",Vector)		//print(tostring(self.Target))
+
+if self.Guider.Wobbliness!=1 		then
+self.W = self.Guider.Wobbliness 	else
+self.W = 1 				end
+
+if self.Guider.Zmod!=0.25 		then
+self.Zmod = self.Guider.Zmod 		else
+self.Zmod = 0.25 			end
+
+if self.Guider.DistanceCutoff 				then
+self.DistanceCutoff = self.Guider.DistanceCutoff 	else
+self.DistanceCutoff = 5000 				end
 
 self.Accelerator 	= 20
 self.AccelRate		= 1
@@ -37,6 +45,29 @@ self.Entity:SetSolid( SOLID_VPHYSICS )        -- CHEESECAKE!    >:3
 self.Sound = CreateSound( self.Entity, Sound( "weapons/rpg/rocket1.wav" ) ) 
 self.Sound:Play()
 
+Glow = ents.Create("env_sprite")
+Glow:SetKeyValue("model","orangecore2.vmt")
+Glow:SetKeyValue("rendercolor","255 150 100")
+Glow:SetKeyValue("scale","0.25")
+Glow:SetPos(self.Entity:GetPos()-(self.Entity:GetUp()*30))
+Glow:SetParent(self.Entity)
+Glow:Spawn()
+Glow:Activate()
+
+Shine = ents.Create("env_sprite")
+Shine:SetPos(self.Entity:GetPos())
+Shine:SetKeyValue("renderfx", "0")
+Shine:SetKeyValue("rendermode", "5")
+Shine:SetKeyValue("renderamt", "255")
+Shine:SetKeyValue("rendercolor", "255 150 100")
+Shine:SetKeyValue("framerate12", "20")
+Shine:SetKeyValue("model", "light_glow03.spr")
+Shine:SetKeyValue("scale", "0.3")
+Shine:SetKeyValue("GlowProxySize", "130")
+Shine:SetParent(self.Entity)
+Shine:Spawn()
+Shine:Activate()
+
 self:Think()
 end   
 
@@ -51,14 +82,16 @@ if (self.Accelerator<self.AccelMax) then self.Accelerator = self.Accelerator+sel
 if !self.Guider:IsValid() then self.Guider = self.Entity end
 	self.Target = self.Guider:GetVar("Target",Vector) 		// Refresh target position
 
-	self.Distance = ((self.Target-Vector(0,0,self.Target.z))-self:GetPos()):Length()// Horizontal Distance
+	if self.Target!=Vector(0,0,0) then
+	self.Distance = ((self.Target-Vector(0,0,self.Target.z))-(self:GetPos()-self:GetPos():z())):Length()// Horizontal Distance
+	
 
 	if self.Distance>self.DistanceCutoff then					// If you are far away
 	self.Zadd = Vector(0,0,	self.Distance*self.Zmod	)				// Add to the Z coordinate
 	else self.Zadd = Vector(0,0,0) end						// Or else go straight for it
 
 	self.Target = self.Target + self.Zadd						// Add Distance * Z Multiplier
-
+	end
 
 	if self.timeleft < CurTime() || !self.Guider:IsValid() then
 	self.Entity:Remove()				
@@ -99,12 +132,12 @@ if !self.Guider:IsValid() then self.Guider = self.Entity end
 			effectdata:SetEntity(self.Entity)			// Who done it?
 			effectdata:SetScale(4.5)				// Size of explosion
 			effectdata:SetRadius(tr.MatType)			// Texture of Impact
-			effectdata:SetMagnitude(17)				// Length of explosion trails
+			effectdata:SetMagnitude(18)				// Length of explosion trails
 			util.Effect( "gdca_cinematicboom", effectdata )
 			util.ScreenShake(tr.HitPos, 10, 5, 1, 4000 )
 			util.Decal("Scorch", tr.HitPos + tr.HitNormal, tr.HitPos - tr.HitNormal)
 			if GDCENGINE then	
-			local attack = gdc.gdcsplode( tr.HitPos, 500, 800, self.Entity)	// Position, Radius, Damage, Self		
+			local attack = gdc.gdcsplode( tr.HitPos, 500, 1000, self.Entity)	// Position, Radius, Damage, Self		
 			end	
 			self.Entity:Remove()
 			else 
@@ -114,9 +147,9 @@ if !self.Guider:IsValid() then self.Guider = self.Entity end
 			effectdata:SetNormal(tr.HitNormal)			// Direction of Impact
 			effectdata:SetStart(self.flightvector:GetNormalized())	// Direction of Round
 			effectdata:SetEntity(self.Entity)			// Who done it?
-			effectdata:SetScale(0.5)				// Size of explosion
+			effectdata:SetScale(0.8)				// Size of explosion
 			effectdata:SetRadius(tr.MatType)			// Texture of Impact
-			effectdata:SetMagnitude(15)				// Length of explosion trails
+			effectdata:SetMagnitude(18)				// Length of explosion trails
 			util.Effect( "gdca_cinematicboom", effectdata )
 			self.Entity:Remove()
 			end
@@ -131,7 +164,7 @@ if !self.Guider:IsValid() then self.Guider = self.Entity end
 	AddP = math.Clamp(math.AngleDifference(TangP, self.Entity:GetUp():Angle().p)*5,-0.5,1.0)
 	self.Entity:SetAngles((Angle(AddP,AddY,0) + ForwardAngle) + Angle(90,0,0) + Angle(math.Rand(-self.W,self.W),math.Rand(-self.W,self.W),math.Rand(-self.W,self.W)))
 	else
-	self.Entity:SetAngles(self.flightvector:Angle() + Angle(90,0,0))
+	self.Entity:SetAngles(self.flightvector:Angle() + Angle(90,0,0) + (VectorRand()*self.W/5))
 	end
 
 	self.flightvector = self.Entity:GetUp()*self.Accelerator
