@@ -81,7 +81,7 @@ function ENT:fireapt()
 		effectdata:SetMagnitude(self.Velo:Length())
 		effectdata:SetAngle(self.Velo:Angle())
 		util.Effect( "gdca_highrpmmuzzle", effectdata )
-		util.ScreenShake(self.Entity:GetPos(), 12, 5, 0.1, 600 )
+		util.ScreenShake(self.Entity:GetPos(), 2, 5, 0.1, 600 )
 		self.Entity:EmitSound( "GSh30.Emit" )
 	
 
@@ -109,7 +109,7 @@ function ENT:fireHET()
 		effectdata:SetMagnitude(self.Velo:Length())
 		effectdata:SetAngle(self.Velo:Angle())
 		util.Effect( "gdca_highrpmmuzzle", effectdata )
-		util.ScreenShake(self.Entity:GetPos(), 12, 5, 0.1, 600 )
+		util.ScreenShake(self.Entity:GetPos(), 2, 5, 0.1, 600 )
 		self.Entity:EmitSound( "GSh30.Emit" )
 	
 end
