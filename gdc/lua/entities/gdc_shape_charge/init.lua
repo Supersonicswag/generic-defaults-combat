@@ -49,7 +49,8 @@ function ENT:Think()
 		util.ScreenShake(self.Entity:GetPos(), 25, 5, 1, 2000 )
 			if GDCENGINE then	
 			gdc.gdcheat( self.Entity:GetPos(), self.Entity:GetUp(), 300, 800, 100, 2000, self.Entity)	
-			//position, direction, sphereradius, spheredamage, coneradius, conedamage, shell)			end	
+			//position, direction, sphereradius, spheredamage, coneradius, conedamage, shell)			
+			end	
 		util.BlastDamage(self.Entity, self.Entity, self.Entity:GetPos(), 600, 200)
 		self.Entity:Remove()
 	end
