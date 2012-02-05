@@ -41,7 +41,7 @@ self.Drift		= 0.05					// How much the bullet will drift in flight (Inaccuracy)
 self.Entity:SetModel( "models/led.mdl" )
 self.Entity:PhysicsInit( SOLID_VPHYSICS )
 self.Entity:SetMoveType( MOVETYPE_NONE )
-self.Entity:SetSolid( SOLID_VPHYSICS )
+self.Entity:SetSolid( SOLID_NONE )
        
 self:Think()
 end   
@@ -117,6 +117,16 @@ if hitgroup == HITGROUP_GENERIC 					then 	dmginfo:ScaleDamage( 1 ) 			elseif
 		end
 			end
 			///
+
+	// THIS IS BULLET RICOCHET	
+		local Dot = self.Entity:GetUp():DotProduct(tr.HitNormal)
+		if (Dot*math.Rand(0.04,1)*mats[tr.MatType][1])>-0.04 then		// If it doesnt hit head on,
+			self.Flightvector = (self.Flightvector:Length()*(1+Dot*1.2)) * (self.Entity:GetUp()+(tr.HitNormal*Dot*-0.8)+(VectorRand()*0.1))
+			self.Entity:SetAngles(self.Flightvector:Angle() + Angle(90,0,0))
+			self.Entity:SetPos(tr.HitPos+tr.HitNormal)
+			self.Entity:NextThink( CurTime() )
+			return true
+			end	
 
 				// This part is for realistic bullet penetration
 				// Generic Default penetrated your mom......

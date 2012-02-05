@@ -41,7 +41,7 @@ self.Drift		= 0.2					// How much the bullet will drift in flight (Inaccuracy)
 self.Entity:SetModel( "models/led.mdl" )
 self.Entity:PhysicsInit( SOLID_VPHYSICS )
 self.Entity:SetMoveType( MOVETYPE_NONE )
-self.Entity:SetSolid( SOLID_VPHYSICS )
+self.Entity:SetSolid( SOLID_NONE )
        
 Trail = ents.Create("env_spritetrail")				// The streak of the tracer
 Trail:SetKeyValue("lifetime","0.1")
@@ -54,6 +54,7 @@ Trail:SetPos(self.Entity:GetPos())
 Trail:SetParent(self.Entity)
 Trail:Spawn()
 Trail:Activate()
+
 Glow = ents.Create("env_sprite")				// The ball of the tracer
 Glow:SetKeyValue("model","orangecore2.vmt")
 Glow:SetKeyValue("rendercolor","100 255 100")
@@ -62,6 +63,20 @@ Glow:SetPos(self.Entity:GetPos())
 Glow:SetParent(self.Entity)
 Glow:Spawn()
 Glow:Activate()
+
+Shine = ents.Create("env_sprite")
+Shine:SetPos(self.Entity:GetPos())
+Shine:SetKeyValue("renderfx", "0")
+Shine:SetKeyValue("rendermode", "5")
+Shine:SetKeyValue("renderamt", "255")
+Shine:SetKeyValue("rendercolor", "120 255 100")
+Shine:SetKeyValue("framerate12", "20")
+Shine:SetKeyValue("model", "light_glow03.spr")
+Shine:SetKeyValue("scale", "0.25")
+Shine:SetKeyValue("GlowProxySize", "1")
+Shine:SetParent(self.Entity)
+Shine:Spawn()
+Shine:Activate()
 
 self:Think()
 end   
@@ -137,6 +152,16 @@ if hitgroup == HITGROUP_GENERIC 					then 	dmginfo:ScaleDamage( 1 ) 			elseif
 		end
 			end
 			///
+
+	// THIS IS BULLET RICOCHET	
+		local Dot = self.Entity:GetUp():DotProduct(tr.HitNormal)
+		if (Dot*math.Rand(0.04,1)*mats[tr.MatType][1])>-0.04 then		// If it doesnt hit head on,
+			self.Flightvector = (self.Flightvector:Length()*(1+Dot*1.2)) * (self.Entity:GetUp()+(tr.HitNormal*Dot*-0.8)+(VectorRand()*0.1))
+			self.Entity:SetAngles(self.Flightvector:Angle() + Angle(90,0,0))
+			self.Entity:SetPos(tr.HitPos+tr.HitNormal)
+			self.Entity:NextThink( CurTime() )
+			return true
+			end	
 
 				// This part is for realistic bullet penetration
 				// Generic Default penetrated your mom......

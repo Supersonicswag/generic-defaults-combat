@@ -17,10 +17,25 @@ Glow = ents.Create("env_sprite")
 Glow:SetKeyValue("model","orangecore2.vmt")
 Glow:SetKeyValue("rendercolor","255 150 100")
 Glow:SetKeyValue("scale","0.3")
-Glow:SetPos(self.Entity:GetPos())
+Glow:SetPos(self.Entity:GetPos()-(self.Entity:GetUp()*15))
 Glow:SetParent(self.Entity)
 Glow:Spawn()
 Glow:Activate()
+
+Shine = ents.Create("env_sprite")
+Shine:SetPos(self.Entity:GetPos()-(self.Entity:GetUp()*15))
+Shine:SetKeyValue("renderfx", "0")
+Shine:SetKeyValue("rendermode", "5")
+Shine:SetKeyValue("renderamt", "255")
+Shine:SetKeyValue("rendercolor", "255 130 100")
+Shine:SetKeyValue("framerate12", "20")
+Shine:SetKeyValue("model", "light_glow03.spr")
+Shine:SetKeyValue("scale", "0.4")
+Shine:SetKeyValue("GlowProxySize", "1")
+Shine:SetParent(self.Entity)
+Shine:Spawn()
+Shine:Activate()
+
 
 end   
 

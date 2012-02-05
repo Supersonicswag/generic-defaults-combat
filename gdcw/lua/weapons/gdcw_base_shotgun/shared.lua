@@ -101,9 +101,7 @@ end
 
 function SWEP:FireRound1()
 	aim = self.Owner:GetAimVector()
-	side = aim:Cross(Vector(0,0,1))
-	up = side:Cross(aim)
-	pos = self.Owner:GetShootPos()+(side*math.Rand(-1,1)+up*math.Rand(-1,1)):GetNormalized()*10
+	pos = self.Owner:GetShootPos()
 	if SERVER then
 		local rocket = ents.Create(self.Primary.Round1)
 		if !rocket:IsValid() then return false end
