@@ -39,7 +39,7 @@ self.Drift		= 0.06					// How much the bullet will drift in flight (Inaccuracy)
 self.Entity:SetModel( "models/led.mdl" )
 self.Entity:PhysicsInit( SOLID_VPHYSICS )
 self.Entity:SetMoveType( MOVETYPE_NONE )
-self.Entity:SetSolid( SOLID_VPHYSICS )
+self.Entity:SetSolid( SOLID_NONE )
        
 
 self:Think()

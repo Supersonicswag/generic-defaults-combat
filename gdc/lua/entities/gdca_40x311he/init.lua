@@ -12,7 +12,7 @@ self.AirburstTime = CurTime() + 5 			end
 self.Entity:SetModel( "models/led2.mdl" )
 self.Entity:PhysicsInit( SOLID_VPHYSICS )      -- Make us work with physics,  	
 self.Entity:SetMoveType( MOVETYPE_NONE )   --after all, gmod is a physics  	
-self.Entity:SetSolid( SOLID_VPHYSICS )        -- CHEESECAKE!    >:3           
+self.Entity:SetSolid( SOLID_NONE )        -- CHEESECAKE!    >:3           
 self.Entity:SetColor(255,255,0,255)
 
 Tracer = ents.Create("env_spritetrail")
@@ -108,7 +108,7 @@ end
 					util.ScreenShake(tr.HitPos, 10, 5, 1, 1300 )
 					util.Decal("Scorch", tr.HitPos + tr.HitNormal, tr.HitPos - tr.HitNormal)
 			if GDCENGINE then	
-			local attack = gdc.gdcsplode( tr.HitPos, 200, 300, self.Entity)	// Position, Radius, Damage, Self		
+			local attack = gdc.gdcsplode( tr.HitPos, 300, 300, self.Entity)	// Position, Radius, Damage, Self		
 			end	
 					self.Entity:Remove()	
 					end

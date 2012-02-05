@@ -10,7 +10,7 @@ self.timeleft = CurTime() + 8
 self.Entity:SetModel( "models/led2.mdl" ) 	
 self.Entity:PhysicsInit( SOLID_VPHYSICS )      -- Make us work with physics,  	
 self.Entity:SetMoveType( MOVETYPE_NONE )   --after all, gmod is a physics  	
-self.Entity:SetSolid( SOLID_VPHYSICS )        -- CHEESECAKE!    >:3            
+self.Entity:SetSolid( SOLID_NONE )        -- CHEESECAKE!    >:3            
 self.Entity:SetColor(255,255,0,255)
 
 Glow = ents.Create("env_sprite")
@@ -67,8 +67,9 @@ function ENT:Think()
 					util.ScreenShake(tr.HitPos, 10, 5, 1, 1000 )
 					util.Decal("Scorch", tr.HitPos + tr.HitNormal, tr.HitPos - tr.HitNormal)
 
-			if GDCENGINE then	
-			local attack = gdc.gdcsplode( tr.HitPos, 200, 200, self.Entity)	// Position, Radius, Damage, Self		
+			if GDCENGINE then
+			gdc.gdcheat( tr.HitPos+(tr.HitNormal*5), self.Entity:GetUp(), 200, 200, 100, 200, self.Entity)	
+			//position, direction, sphereradius, spheredamage, coneradius, conedamage, shell)	
 			end	
 
 					self.Entity:Remove()

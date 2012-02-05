@@ -39,7 +39,7 @@ self.Drift		= 0.2					// How much the bullet will drift in flight (Inaccuracy)
 self.Entity:SetModel( "models/led.mdl" )
 self.Entity:PhysicsInit( SOLID_VPHYSICS )
 self.Entity:SetMoveType( MOVETYPE_NONE )
-self.Entity:SetSolid( SOLID_VPHYSICS )
+self.Entity:SetSolid( SOLID_NONE )
        
 Tracer = ents.Create("env_spritetrail")
 Tracer:SetKeyValue("lifetime","0.1")

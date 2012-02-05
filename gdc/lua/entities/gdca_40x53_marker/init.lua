@@ -9,7 +9,7 @@ self.timeleft = CurTime() + 8
 self.Entity:SetModel( "models/led2.mdl" )
 self.Entity:PhysicsInit( SOLID_VPHYSICS )      -- Make us work with physics,  	
 self.Entity:SetMoveType( MOVETYPE_NONE )   --after all, gmod is a physics  	
-self.Entity:SetSolid( SOLID_VPHYSICS )        -- CHEESECAKE!    >:3           
+self.Entity:SetSolid( SOLID_NONE )        -- CHEESECAKE!    >:3           
 self.Entity:SetColor(255,255,255,255)
 
 Glow = ents.Create("env_sprite")

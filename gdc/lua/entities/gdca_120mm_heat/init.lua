@@ -23,11 +23,25 @@ self.Entity:SetSolid( SOLID_VPHYSICS )        -- CHEESECAKE!    >:3
 Glow = ents.Create("env_sprite")
 Glow:SetKeyValue("model","orangecore2.vmt")
 Glow:SetKeyValue("rendercolor","255 200 150")
-Glow:SetKeyValue("scale","0.6")
+Glow:SetKeyValue("scale","0.3")
 Glow:SetPos(self.Entity:GetPos())
 Glow:SetParent(self.Entity)
 Glow:Spawn()
 Glow:Activate()
+
+Shine = ents.Create("env_sprite")
+Shine:SetPos(self.Entity:GetPos())
+Shine:SetKeyValue("renderfx", "0")
+Shine:SetKeyValue("rendermode", "5")
+Shine:SetKeyValue("renderamt", "255")
+Shine:SetKeyValue("rendercolor", "255 140 80")
+Shine:SetKeyValue("framerate12", "20")
+Shine:SetKeyValue("model", "light_glow03.spr")
+Shine:SetKeyValue("scale", "0.3")
+Shine:SetKeyValue("GlowProxySize", "130")
+Shine:SetParent(self.Entity)
+Shine:Spawn()
+Shine:Activate()
 
 self:Think()
 end   
@@ -74,10 +88,9 @@ function ENT:Think()
 					util.ScreenShake(tr.HitPos, 20, 5, 1, 1200 )
 					util.Decal("Scorch", tr.HitPos + tr.HitNormal, tr.HitPos - tr.HitNormal)
 			if GDCENGINE then	
-			local attack = gdc.gdcsplode( tr.HitPos, 400, 1500, self.Entity)	// Position, Radius, Damage, Self		
-			end	
-
-
+			gdc.gdcheat( tr.HitPos+(tr.HitNormal*5), self.Entity:GetUp(), 500, 600, 100, 3000, self.Entity)	
+			//position, direction, sphereradius, spheredamage, coneradius, conedamage, shell)	
+			end
 					self.Entity:Remove()
 					end
 

@@ -97,3 +97,43 @@ end
 
 cbt_gdcsplode = gdc.gdcsplode
 
+
+
+
+// This is the function that controls conical explosion damage.
+function gdc.gdcheat( position, direction, sphereradius, spheredamage, coneradius, conedamage, shell)
+
+	local targets = ents.FindInSphere( position, sphereradius)
+	
+	for _,i in pairs(targets) do	
+		if i:IsValid() then
+
+		local tracedata = {}
+		tracedata.start = position
+		tracedata.endpos = i:LocalToWorld(i:OBBCenter())
+		tracedata.filter = shell
+		tracedata.mask = MASK_SHOT
+		local trace = util.TraceLine(tracedata) 
+		
+		// SPHERICAL DAMAGE for overpressure simulation
+		if trace.Entity == i then
+		local hitat = trace.HitPos
+		local dist = (position-i:LocalToWorld(i:OBBCenter())):Length()
+		local destructy = spheredamage*math.Clamp((sphereradius-dist)/(sphereradius/2),0,1)		// Mutiply damage by distance fraction
+		cbt_dealcaphit( i, destructy)	//								|---------------------------------|
+		end				//								<--------((((((((O))))))))-------->
+						//								But keep it maximum until 1/2 radius out
+
+		//CONE DAMAGE for shape charges and HEAT rounds
+		if i:GetClass()=="prop_physics"  ||  trace.Entity == i then
+		local dist = (position-i:LocalToWorld(i:OBBCenter())):Length()
+		local degrizzle = direction:DotProduct((i:LocalToWorld(i:OBBCenter()) - position):GetNormalized())
+		local destructo = (conedamage*math.Clamp(degrizzle,0,1))  *  math.Clamp((coneradius-dist)/coneradius,0,1)
+		cbt_dealcaphit( i, destructo)
+		end
+		end
+	end	
+	
+end
+
+cbt_gdcheat = gdc.gdcheat

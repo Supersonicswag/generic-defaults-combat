@@ -18,7 +18,7 @@ self.nexttarGet = CurTime()
 self.Entity:SetModel( "models/props_c17/canister01a.mdl" ) 	
 self.Entity:PhysicsInit( SOLID_VPHYSICS )      -- Make us work with physics,  	
 self.Entity:SetMoveType( MOVETYPE_NONE )   --after all, gmod is a physics  	
-self.Entity:SetSolid( SOLID_VPHYSICS )        -- CHEESECAKE!    >:3 
+self.Entity:SetSolid( SOLID_NONE )        -- CHEESECAKE!    >:3 
 self.Sound = CreateSound( self.Entity, Sound( "weapons/rpg/rocket1.wav" ) ) 
 self.Sound:Play()
 
@@ -98,8 +98,9 @@ if (self.Accelerator<self.AccelMax) then self.Accelerator = self.Accelerator+sel
 			util.Effect( "gdca_cinematicboom", effectdata )
 			util.ScreenShake(tr.HitPos, 10, 5, 1, 2000 )
 			util.Decal("Scorch", tr.HitPos + tr.HitNormal, tr.HitPos - tr.HitNormal)
-			if GDCENGINE then	
-			local attack = gdc.gdcsplode( tr.HitPos, 400, 400, self.Entity)	// Position, Radius, Damage, Self		
+			if GDCENGINE then
+			gdc.gdcheat( tr.HitPos+(tr.HitNormal*5), self.Entity:GetUp(), 400, 400, 100, 1000, self.Entity)	
+			//position, direction, sphereradius, spheredamage, coneradius, conedamage, shell)	
 			end	
 			self.Entity:Remove()
 			end

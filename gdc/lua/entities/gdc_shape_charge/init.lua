@@ -48,8 +48,8 @@ function ENT:Think()
 		util.Effect( "gdca_airburst", effectdata )
 		util.ScreenShake(self.Entity:GetPos(), 25, 5, 1, 2000 )
 			if GDCENGINE then	
-			local attack = gdc.gdcsplode( self.Entity:GetPos(), 300, 1500, self.Entity)	// Position, Radius, Damage, Self		
-			end	
+			gdc.gdcheat( self.Entity:GetPos(), self.Entity:GetUp(), 300, 800, 100, 2000, self.Entity)	
+			//position, direction, sphereradius, spheredamage, coneradius, conedamage, shell)			end	
 		util.BlastDamage(self.Entity, self.Entity, self.Entity:GetPos(), 600, 200)
 		self.Entity:Remove()
 	end
