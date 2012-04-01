@@ -66,7 +66,7 @@ function ENT:Think()
 			effectdata:SetMagnitude(20)
 			util.Effect( "gdca_airburst", effectdata )
 			if GDCENGINE then	
-			local attack = gdc.gdcsplode( self.Entity:GetPos(), 525, 80, self.Entity)	// Position, Radius, Damage, Self		
+			local attack = gdc.gdcsplode( self.Entity:GetPos(), 400, 70, self.Entity)	// Position, Radius, Damage, Self		
 			end	
 			self.Entity:Remove()	end
 			

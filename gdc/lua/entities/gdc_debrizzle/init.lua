@@ -9,8 +9,8 @@ function ENT:Initialize()
 
 	math.randomseed(CurTime())
 	self.exploded = false
-	self.fuseleft = CurTime() + math.random(3,8)
-	self.minsmoke = CurTime() + 1
+	self.fuseleft = CurTime() + math.random(5,10)
+	self.minsmoke = CurTime() + 0.5
 	self.Entity:PhysicsInit( SOLID_VPHYSICS )
 	self.Entity:SetMoveType( MOVETYPE_VPHYSICS )
 	self.Entity:SetSolid( SOLID_VPHYSICS ) 

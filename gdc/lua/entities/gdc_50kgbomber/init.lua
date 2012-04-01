@@ -15,6 +15,7 @@ function ENT:Initialize()
 	self.Dropping1 		= false
 	self.Dropping2 		= false
 	self.Dropping3 		= false
+	self.Dropping4 		= false
 	self.TVEnt 		= self.Entity
 	self.TVActive 		= 0
 	self.TVDirection 	= self.Entity:GetForward()
@@ -36,7 +37,7 @@ function ENT:Initialize()
 	phys:Wake() 
 	end 
  
-	self.Inputs = WireLib.CreateSpecialInputs(self, { "Unguided","GPS GBU","TV GBU", "Target Position", "TV Rotate" }, { "NORMAL", "NORMAL", "NORMAL", "VECTOR", "ANGLE" } )
+	self.Inputs = WireLib.CreateSpecialInputs(self, { "Unguided","GPS GBU","TV GBU", "Target Position", "TV Rotate", "Unguided TPA" }, { "NORMAL", "NORMAL", "NORMAL", "VECTOR", "ANGLE", "NORMAL" } )
 	self.Outputs = WireLib.CreateSpecialOutputs(self, { "Ready","TV Active", "TV Bomb","TV Position", "TV Direction", }, { "NORMAL", "NORMAL", "ENTITY", "VECTOR", "VECTOR" } )
 end   
 
@@ -102,6 +103,12 @@ function ENT:Think()
 	end
 	end
 
+	if self.Dropping4 and !self.Dropping3 and !self.Dropping2 and !self.Dropping1 then
+	if (self.reloadtime < CurTime()) then
+	self:droptpa()	
+	end
+	end
+
 	self.Entity:NextThink( CurTime() + .01)
 	return true
 end
@@ -141,12 +148,33 @@ function ENT:TriggerInput(k, v)
 		self.Dropping3 = false
 		end
 		end
+
+		if(k=="Unguided TPA") then
+		if((v or 0) >= 1) then
+		self.Dropping4 = true
+		else
+		self.Dropping4 = false
+		end
+		end
 end
  
 
 function ENT:dropdumb()
 
 		local Bomb = ents.Create( "gdca_50kg_unguided" )
+		Bomb:SetPos( self.Entity:GetPos())
+		Bomb:SetAngles( self.Entity:GetAngles() )
+		Bomb.Dropper = self.Entity
+		Bomb:Spawn()
+		Bomb:Initialize()
+		Bomb:Activate()
+		self.ammos = self.ammos-1	
+
+end
+
+function ENT:droptpa()
+
+		local Bomb = ents.Create( "gdca_50kg_unguided_tpa" )
 		Bomb:SetPos( self.Entity:GetPos())
 		Bomb:SetAngles( self.Entity:GetAngles() )
 		Bomb.Dropper = self.Entity

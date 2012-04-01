@@ -14,7 +14,7 @@
   function ENT:Initialize()
 	Position = self:GetPos()
 	self.emitter = ParticleEmitter( Position )
-	Size = math.Clamp(self.Entity:BoundingRadius()/70,0.4,3) or 1
+	Size = math.Clamp(self.Entity:BoundingRadius()/70,0.4,1.7) or 1
  end
  
  function ENT:Think()
@@ -25,13 +25,13 @@
 
 		Position = self:GetPos()
 
- 			for i=1, 2 do 
+ 			for i=1, 1 do 
 			local particle1 = self.emitter:Add( "particle/smokesprites_000"..math.random(1,9), Position ) 
  			if (particle1) then 
  			particle1:SetVelocity( VectorRand() * math.Rand(200, 300) ) 
  			particle1:SetLifeTime( 0 ) 
  			particle1:SetDieTime( math.Rand(1, 7) ) 
- 			particle1:SetStartAlpha( 180 ) 
+ 			particle1:SetStartAlpha( 140 ) 
  			particle1:SetEndAlpha( 0 ) 
  			particle1:SetStartSize( 70*Size ) 
  			particle1:SetEndSize( 250*Size ) 
