@@ -64,10 +64,11 @@ function ENT:Think()
 
 
 				if tr.Hit then
-					if tr.HitSky then
+					if tr.HitSky || tr.StartSolid then
 					self.Entity:Remove()
 					return true
 					end
+
 					if tr.MatType==83 then				//83 is wata
 					local effectdata = EffectData()
 					effectdata:SetOrigin( tr.HitPos )

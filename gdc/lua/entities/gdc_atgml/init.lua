@@ -12,12 +12,20 @@ function ENT:Initialize()
 	self.armed = false
 	self.loading = false
 	self.reloadtime = 0
-	self.infire = false
+	self.InFire = false
+	self.InFire2 = false
 	self.Wobbliness 	= 1
 	self.Zmod 		= 0.25
 	self.DistanceCutoff 	= 5000
-	self.Velo = Vector(0,0,0)
-	self.Pos2 = self.Entity:GetPos()
+
+	self.TVEnt 		= self.Entity
+	self.TVActive 		= 0
+	self.TVDirection 	= self.Entity:GetForward()
+	self.TVPosition 	= self.Entity:GetPos()
+	self.TVRotate 		= Angle(0,0,0)
+	self.Velo 		= Vector(0,0,0)
+	self.Pos2 		= self.Entity:GetPos()
+
 	self.Entity:SetModel( "models/props_pipes/pipecluster08d_extender64.mdl" ) 	
 	self.Entity:PhysicsInit( SOLID_VPHYSICS )      -- Make us work with physics,  	
 	self.Entity:SetMoveType( MOVETYPE_VPHYSICS )   --after all, gmod is a physics  	
@@ -31,8 +39,8 @@ function ENT:Initialize()
 		phys:Wake() 
 	end 
  
-	self.Inputs = WireLib.CreateSpecialInputs(self, { "Fire ATGM", "Position", "Wobbliness", "Distance Cutoff", "Z Modulation" }, { "NORMAL", "VECTOR", "NORMAL", "NORMAL", "NORMAL" } )
-	self.Outputs = Wire_CreateOutputs( self.Entity, { "Can Fire"})
+	self.Inputs = WireLib.CreateSpecialInputs(self, { "Fire ATGM", "Position", "Wobbliness", "Distance Cutoff", "Z Modulation", "Fire TVGM", "TV Rotate"}, { "NORMAL", "VECTOR", "NORMAL", "NORMAL", "NORMAL", "NORMAL", "ANGLE" } )
+	self.Outputs = WireLib.CreateSpecialOutputs( self, { "Can Fire", "TV Active", "TV Missile", "TV Position", "TV Direction"}, { "NORMAL", "NORMAL", "ENTITY", "VECTOR", "VECTOR" })
 end   
 
 function ENT:SpawnFunction( ply, tr)
@@ -56,11 +64,6 @@ function ENT:fireatgm()
 		GPSMISSILE:Initialize()
 		GPSMISSILE:Activate()
 		GPSMISSILE.Target = self.Target or Vector(0,0,0)
-
-		local phys = self.Entity:GetPhysicsObject()  	
-		if (phys:IsValid()) then  		
-		phys:ApplyForceCenter( self.Entity:GetUp() * -800 ) 
-		end 
 		
 		local effectdata = EffectData()
 		effectdata:SetOrigin(self.Entity:GetPos() +  self.Entity:GetUp() * 30)
@@ -72,13 +75,53 @@ function ENT:fireatgm()
 		util.Effect( "gdca_rocketlaunch", effectdata )
 		self.Entity:EmitSound( "GML.Emit" )
 		self.ammos = self.ammos-1
-	
+end
 
+function ENT:firetvgm()
+
+		local TVMISSILE = ents.Create( "gdca_tvgm" )
+		TVMISSILE:SetPos( self.Entity:GetPos() + (self.Entity:GetUp()*300))
+		TVMISSILE:SetAngles( self.Entity:GetAngles() )
+		TVMISSILE.Guider = self.Entity
+		TVMISSILE:Spawn()
+		TVMISSILE:Initialize()
+		TVMISSILE:Activate()
+		self.TVEnt 		= TVMISSILE
+		self.TVActive 		= 1
+		self.TVDirection	= TVMISSILE:GetForward()
+		self.TVPosition 	= TVMISSILE:GetPos()		
+
+		local effectdata = EffectData()
+		effectdata:SetOrigin(self.Entity:GetPos() +  self.Entity:GetUp() * 30)
+		effectdata:SetNormal(self:GetUp())
+		effectdata:SetScale(1.5)
+		effectdata:SetRadius(2)
+		effectdata:SetMagnitude(self.Velo:Length())
+		effectdata:SetAngle(self.Velo:Angle())
+		util.Effect( "gdca_rocketlaunch", effectdata )
+		self.Entity:EmitSound( "GML.Emit" )
+		self.ammos = self.ammos-1
 end
 
 function ENT:Think()
 	self.Velo = (self.Entity:GetPos()-self.Pos2)
 	self.Pos2 = self.Entity:GetPos()
+
+	if !self.TVEnt:IsValid() || self.TVEnt==self.Entity 	then	
+	self.TVEnt = self.Entity
+	self.TVActive = 0
+	self.TVDirection = self.Entity:GetForward()
+	self.TVPosition = self.Entity:LocalToWorld(self.Entity:OBBCenter())
+	else			
+	self.TVDirection = self.TVEnt:GetForward()
+	self.TVPosition = self.TVEnt:LocalToWorld(self.TVEnt:OBBCenter())
+	end
+
+	Wire_TriggerOutput(self.Entity, "TV Bomb", 	self.TVEnt)
+	Wire_TriggerOutput(self.Entity, "TV Active", 	self.TVActive)
+	Wire_TriggerOutput(self.Entity, "TV Direction", self.TVDirection)
+	Wire_TriggerOutput(self.Entity, "TV Position",  self.TVPosition)
+
 
 	if self.ammos <= 0 then
 	self.reloadtime = CurTime()+10
@@ -91,9 +134,15 @@ function ENT:Think()
 	Wire_TriggerOutput(self.Entity, "Can Fire", 0)
 	end
 	
-	if self.inFire then
-	if (self.reloadtime < CurTime()) and self.Target then
+	if self.InFire then
+	if (self.reloadtime < CurTime()) then
 	self:fireatgm()	
+	end
+	end
+
+	if self.InFire2 then
+	if (self.reloadtime < CurTime()) then
+	self:firetvgm()	
 	end
 	end
 
@@ -110,7 +159,7 @@ function ENT:TriggerInput(k, v)
 	end
 
 	if (k == "Wobbliness") then
-	self.Wobbliness = v or 1
+	self.Wobbliness = math.Clamp(v,0,5) or 1
 	end
 
 	if (k == "Distance Cutoff") then
@@ -124,10 +173,23 @@ function ENT:TriggerInput(k, v)
 
 		if(k=="Fire ATGM") then
 		if((v or 0) >= 1) then
-		self.inFire = true
+		self.InFire = true
 		else
-		self.inFire = false
+		self.InFire = false
 		end
-	end
+		end
+
+		if(k=="Fire TVGM") then
+		if((v or 0) >= 1) then
+		self.InFire2 = true
+		else
+		self.InFire2 = false
+		end
+		end
+
+		if (k == "TV Rotate") then
+		if(v) then
+		self.TVRotate = v or Angle(0,0,0)
+		end	end
 end
  

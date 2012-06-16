@@ -96,7 +96,7 @@ function ENT:Think()
 	
 
 		if tr.Hit then
-			if tr.HitSky then
+			if tr.HitSky || tr.StartSolid then
 			self.Entity:Remove()
 			return true
 			end

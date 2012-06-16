@@ -29,10 +29,11 @@ end
 
 
 				if tr.Hit and !tr.HitSky then
-					//if tr.HitSky then
-					//self.Entity:Remove()
-					//return true
-					//end
+					if tr.StartSolid then
+					self.Entity:Remove()
+					return true
+					end
+
 					if tr.MatType==83 then				//83 is wata
 					local effectdata = EffectData()
 					effectdata:SetOrigin( tr.HitPos )
