@@ -34,7 +34,7 @@ self.Timeleft 		= CurTime() + 5				// How long before auto-remove?
 self.Impacted 		= false					// Important for flight continuation, see line 173
 self.Splatter 		= false					// Carries blood and AIDS after the round passes through someone
 self.EffectSize		= 0.7					// How much stuff gets kicked up on impact
-self.TissueDamage	= math.Rand(15,20)			// Player damage is multiplied by 2 for some reason
+self.TissueDamage	= math.Rand(20,25)			// Player damage is multiplied by 2 for some reason
 self.BallisticDrag	= 70					// Fraction of velocity lost per tick, higher is less
 self.Drift		= 0.2					// How much the bullet will drift in flight (Inaccuracy)
 
@@ -75,7 +75,7 @@ function ENT:Think()
 				local effectdata = EffectData()
 				effectdata:SetOrigin( tr.HitPos )
 				effectdata:SetNormal( tr.HitNormal )		// In case you hit sideways water?
-				effectdata:SetScale( 15*self.EffectSize )	// Big splash for big bullets
+				effectdata:SetScale( 10*self.EffectSize )	// Big splash for big bullets
 				util.Effect( "watersplash", effectdata )
 				self.Entity:Remove()
 				return true

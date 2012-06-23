@@ -21,33 +21,69 @@ local mats={					// Multipliers for materials
 	[MAT_CONCRETE]			={1},
 	[MAT_GRATE]			={0.8},
 	[MAT_VENT]			={0.8},
-	[MAT_METAL]			={0.5},
+	[MAT_METAL]			={0.3},
 }						// This determines how much the bullet will penetrate in stuff
 
 function ENT:Initialize()   
 math.randomseed(CurTime())
-
+self.Data 		= self.Entity:GetVar("Data")
+self.Tracer		= 0					// How much the bullet will drift in flight (Inaccuracy)
 self.Owner 		= self:GetOwner()			// Who dun it!
-self.Penetrate 		= 20					// How deep Generic Default goes
+self.Penetrate 		= 14					// How deep Generic Default goes
 self.Flightvector 	= self.Entity:GetUp()*((850*52.5)/66)	// Velocity in m/s, FIRST NUMMER is SPEED (FrameTime)
 self.Timeleft 		= CurTime() + 5				// How long before auto-remove?
 self.Impacted 		= false					// Important for flight continuation, see line 173
 self.Splatter 		= false					// Carries blood and AIDS after the round passes through someone
 self.EffectSize		= 1.3					// How much stuff gets kicked up on impact
-self.TissueDamage	= math.Rand(45,60)			// Player damage is multiplied by 2 for some reason
-self.BallisticDrag	= 90					// Fraction of velocity lost per tick, higher is less
-self.Drift		= 0.05					// How much the bullet will drift in flight (Inaccuracy)
+self.TissueDamage	= math.Rand(35,40)			// Player damage is multiplied by 2 for some reason
+self.BallisticDrag	= 80					// Fraction of velocity lost per tick, higher is less
+self.Drift		= 0.1					// How much the bullet will drift in flight (Inaccuracy)
 
 self.Entity:SetModel( "models/led.mdl" )
 self.Entity:PhysicsInit( SOLID_VPHYSICS )
 self.Entity:SetMoveType( MOVETYPE_NONE )
 self.Entity:SetSolid( SOLID_NONE )
-       
+
 self:Think()
 end   
 
 
 function ENT:Think()
+if self.Tracer==0 and self.Data.x==1 then		
+self.Tracer=1
+Trail = ents.Create("env_spritetrail")				// The streak of the tracer
+Trail:SetKeyValue("lifetime","0.1")
+Trail:SetKeyValue("startwidth","25")
+Trail:SetKeyValue("endwidth","25")
+Trail:SetKeyValue("spritename","trails/laser.vmt")
+Trail:SetKeyValue("rendermode","5")
+Trail:SetKeyValue("rendercolor","255 150 100")
+Trail:SetPos(self.Entity:GetPos())
+Trail:SetParent(self.Entity)
+Trail:Spawn()
+Trail:Activate()
+Glow = ents.Create("env_sprite")				// The ball of the tracer
+Glow:SetKeyValue("model","orangecore2.vmt")
+Glow:SetKeyValue("rendercolor","255 150 100")
+Glow:SetKeyValue("scale","0.10")
+Glow:SetPos(self.Entity:GetPos())
+Glow:SetParent(self.Entity)
+Glow:Spawn()
+Glow:Activate()
+Shine = ents.Create("env_sprite")
+Shine:SetPos(self.Entity:GetPos())
+Shine:SetKeyValue("renderfx", "0")
+Shine:SetKeyValue("rendermode", "5")
+Shine:SetKeyValue("renderamt", "255")
+Shine:SetKeyValue("rendercolor", "255 150 100")
+Shine:SetKeyValue("framerate12", "20")
+Shine:SetKeyValue("model", "light_glow03.spr")
+Shine:SetKeyValue("scale", "0.25")
+Shine:SetKeyValue("GlowProxySize", "1")
+Shine:SetParent(self.Entity)
+Shine:Spawn()
+Shine:Activate()
+end
 
 	if self.Impacted  then self.Impacted = false end	// Reset this part so it can tell at the end
 
@@ -65,12 +101,12 @@ function ENT:Think()
 	trace.mask 	= MASK_SHOT + MASK_WATER			// Trace for stuff that bullets would normally hit
 	local tr = util.TraceLine( trace )
 	
-
 		if tr.Hit then
-			if tr.HitSky then
+			if tr.MatType==88 || tr.StartSolid then
 			self.Entity:Remove()
 			return true
 			end
+
 				if tr.MatType==83 then				//83 is wata
 				local effectdata = EffectData()
 				effectdata:SetOrigin( tr.HitPos )
@@ -81,6 +117,7 @@ function ENT:Think()
 				return true
 				end
 
+			
 			local effectdata = EffectData()
 			effectdata:SetOrigin(tr.HitPos)				// Position of Impact
 			effectdata:SetNormal(tr.HitNormal)			// Direction of Impact
@@ -93,6 +130,7 @@ function ENT:Think()
 				if self.Splatter then 				// If the bullet has hit blood, make it splat on walls
 				util.Decal("blood", tr.HitPos + tr.HitNormal, tr.HitPos - tr.HitNormal)
 				end
+			
 
 			if tr.Entity:IsValid() then
 			local dmginfo = DamageInfo()
@@ -116,11 +154,12 @@ if hitgroup == HITGROUP_GENERIC 					then 	dmginfo:ScaleDamage( 1 ) 			elseif
 		util.Decal("blood", tr.HitPos + tr.HitNormal, tr.HitPos - tr.HitNormal)		//Splat all over them
 		end
 			end
+
 			///
 
 	// THIS IS BULLET RICOCHET	
 		local Dot = self.Entity:GetUp():DotProduct(tr.HitNormal)
-		if (Dot*math.Rand(0.04,1)*mats[tr.MatType][1])>-0.04 then		// If it doesnt hit head on,
+		if (Dot*math.Rand(0.04,1)*mats[tr.MatType][1])>-0.06 then		// If it doesnt hit head on,
 			self.Flightvector = (self.Flightvector:Length()*(1+Dot*1.2)) * (self.Entity:GetUp()+(tr.HitNormal*Dot*-0.8)+(VectorRand()*0.1))
 			self.Entity:SetAngles(self.Flightvector:Angle() + Angle(90,0,0))
 			self.Entity:SetPos(tr.HitPos+tr.HitNormal)
@@ -144,8 +183,8 @@ if hitgroup == HITGROUP_GENERIC 					then 	dmginfo:ScaleDamage( 1 ) 			elseif
 	else
 	///
 
-	self.Penetrate = self.Penetrate-(tr.HitPos:Distance(pr.HitPos)/mats[self.Mat][1])	// Subtract to get the penetration depth
-	if self.Penetrate<=0 then								// If it runs out of inertia, remove it
+	self.Penetrate = self.Penetrate-(tr.HitPos:Distance(pr.HitPos)/mats[self.Mat][1])		// Subtract to get the penetration depth
+	if self.Penetrate<0 then								// If it runs out of inertia, remove it
 	self.Entity:Remove()							
 	end
 

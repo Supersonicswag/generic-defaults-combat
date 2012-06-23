@@ -11,6 +11,7 @@ local mats={
 	[MAT_ANTLION]			={5,9},
 	[MAT_BLOODYFLESH]		={5,8},
 	[45]				={5,8},	// Metrocop heads are a source glitch, they have no enumeration
+	[88]				={5},	// Map boundary glitch is now accounted for!
 	[MAT_CLIP]			={3,5},
 	[MAT_COMPUTER]			={4,5},
 	[MAT_FLESH]			={5,8},

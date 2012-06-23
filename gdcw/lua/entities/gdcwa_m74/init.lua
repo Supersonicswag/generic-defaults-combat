@@ -5,7 +5,7 @@ include('shared.lua')
 function ENT:Initialize()   
 
 self.flightvector = self.Entity:GetUp() * ((115*52.5)/66)
-self.timeleft = CurTime() + 15
+self.timeleft = CurTime() + 25
 self.Owner = self:GetOwner()
 self.Entity:SetModel( "models/props_junk/garbage_glassbottle001a.mdl" )
 self.Entity:PhysicsInit( SOLID_VPHYSICS )      -- Make us work with physics,  	

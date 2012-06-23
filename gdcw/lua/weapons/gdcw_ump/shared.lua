@@ -12,7 +12,7 @@ SWEP.ViewModelFOV			= 65
 SWEP.ViewModelFlip			= true
 SWEP.ViewModel				= "models/weapons/v_GDC_UMP45.mdl"
 SWEP.WorldModel				= "models/weapons/w_GDC_UMP45.mdl"
-SWEP.Base 				= "gdcw_base_assault"
+SWEP.Base 				= "gdcw_base_assault_emenu"
 SWEP.Spawnable				= true
 SWEP.AdminSpawnable			= true
 

@@ -21,7 +21,7 @@ local mats={					// Multipliers for materials
 	[MAT_CONCRETE]			={1},
 	[MAT_GRATE]			={0.8},
 	[MAT_VENT]			={0.8},
-	[MAT_METAL]			={0.5},
+	[MAT_METAL]			={0.3},
 }						// This determines how much the bullet will penetrate in stuff
 
 function ENT:Initialize()   

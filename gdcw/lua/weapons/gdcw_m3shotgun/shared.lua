@@ -22,7 +22,7 @@ SWEP.Primary.Round2			= ("gdcwa_slug")		// Slug
 SWEP.Primary.Round3 			= ("gdcwa_breach")		// Door breaching round
 SWEP.Primary.Round4 			= ("gdcwa_frag12")		// FRAG-12 grenade
 SWEP.Primary.RPM			= 80				// This is in Rounds Per Minute
-SWEP.Primary.MRAD			= 15				// Accuracy of pellets in MILIRADIANS; 1 Radian = ~57.3 Degrees
+SWEP.Primary.MRAD			= 20				// Accuracy of pellets in MILIRADIANS; 1 Radian = ~57.3 Degrees
 SWEP.Primary.Pellets			= 9				// Numba of pellets
 SWEP.Primary.ClipSize			= 8				// Size of a clip
 SWEP.Primary.DefaultClip		= 9				// Default number of bullets in a clip

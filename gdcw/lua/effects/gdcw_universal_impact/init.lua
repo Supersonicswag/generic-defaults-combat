@@ -11,6 +11,7 @@ local mats={
 	[MAT_ANTLION]			={9},
 	[MAT_BLOODYFLESH]		={8},
 	[45]				={8},	// Metrocop heads are a source glitch, they have no enumeration
+	[88]				={5},	// Map boundary glitch is now accounted for!
 	[MAT_CLIP]			={5},
 	[MAT_COMPUTER]			={5},
 	[MAT_FLESH]			={8},
@@ -61,7 +62,7 @@ end
 		local Smoke = self.Emitter:Add( "particle/smokesprites_000"..math.random(1,9), self.Pos )
 		if (Smoke) then
 		Smoke:SetVelocity( self.DirVec * math.random( 20,500*self.Scale) + VectorRand():GetNormalized()*100*self.Scale )
-		Smoke:SetDieTime( math.Rand( 1 , 2.5 )*self.Scale )
+		Smoke:SetDieTime( math.Rand( 1 , 3 )*self.Scale )
 		Smoke:SetStartAlpha( math.Rand( 80, 100 ) )
 		Smoke:SetEndAlpha( 0 )
 		Smoke:SetStartSize( 15*self.Scale )
@@ -135,7 +136,7 @@ end
 		local Smoke = self.Emitter:Add( "particle/smokesprites_000"..math.random(1,9), self.Pos )
 		if (Smoke) then
 		Smoke:SetVelocity( self.DirVec * math.random( 20,500*self.Scale) + VectorRand():GetNormalized()*100*self.Scale )
-		Smoke:SetDieTime( math.Rand( 1 , 2.5 )*self.Scale )
+		Smoke:SetDieTime( math.Rand( 1 , 3 )*self.Scale )
 		Smoke:SetStartAlpha( math.Rand( 80, 100 ) )
 		Smoke:SetEndAlpha( 0 )
 		Smoke:SetStartSize( 15*self.Scale )
@@ -208,7 +209,7 @@ end
 		local Smoke = self.Emitter:Add( "particle/particle_composite", self.Pos )
 		if (Smoke) then
 		Smoke:SetVelocity( self.DirVec * math.random( 20,500*self.Scale) + VectorRand():GetNormalized()*100*self.Scale )
-		Smoke:SetDieTime( math.Rand( 1 , 2.5 )*self.Scale )
+		Smoke:SetDieTime( math.Rand( 1 , 3 )*self.Scale )
 		Smoke:SetStartAlpha( math.Rand( 60, 80 ) )
 		Smoke:SetEndAlpha( 0 )
 		Smoke:SetStartSize( 15*self.Scale )
@@ -245,12 +246,12 @@ end
 	WorldSound( "Bullet.Metal", self.Pos)
 	self.Emitter = ParticleEmitter( self.Pos )
 		
-	for i=0, 15*self.Scale do
+	for i=0, 4*self.Scale do
 		local Smoke = self.Emitter:Add( "particle/smokesprites_000"..math.random(1,9), self.Pos )
 		if (Smoke) then
 		Smoke:SetVelocity( self.DirVec * math.random( 20,70*self.Scale) + VectorRand():GetNormalized()*150*self.Scale )
 		Smoke:SetDieTime( math.Rand( 3 , 7 )*self.Scale )
-		Smoke:SetStartAlpha( math.Rand( 30, 40 ) )
+		Smoke:SetStartAlpha( math.Rand( 20, 30 ) )
 		Smoke:SetEndAlpha( 0 )
 		Smoke:SetStartSize( 30*self.Scale )
 		Smoke:SetEndSize( 40*self.Scale )
@@ -375,7 +376,7 @@ end
 	WorldSound( "Bullet.Wood", self.Pos)
 	self.Emitter = ParticleEmitter( self.Pos )
 		
-	for i=0, 7*self.Scale do
+	for i=0, 5*self.Scale do
 		local Smoke = self.Emitter:Add( "particle/smokesprites_000"..math.random(1,9), self.Pos )
 		if (Smoke) then
 		Smoke:SetVelocity( self.DirVec * math.random( 20,70*self.Scale) + VectorRand():GetNormalized()*150*self.Scale )
@@ -392,7 +393,7 @@ end
 		end
 	end
 
-	for i=0, 13*self.Scale do
+	for i=0, 7*self.Scale do
 		local Smoke = self.Emitter:Add( "particle/smokesprites_000"..math.random(1,9), self.Pos )
 		if (Smoke) then
 		Smoke:SetVelocity( self.DirVec * math.random( 20,70*self.Scale) + VectorRand():GetNormalized()*130*self.Scale )

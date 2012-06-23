@@ -12,7 +12,7 @@ SWEP.ViewModelFOV			= 65
 SWEP.ViewModelFlip			= false
 SWEP.ViewModel				= "models/weapons/v_GDCW_M249IRON.mdl"
 SWEP.WorldModel				= "models/weapons/w_GDCM240.mdl"
-SWEP.Base 				= "gdcw_base_assault"
+SWEP.Base 				= "gdcw_base_assault_emenu"
 SWEP.Spawnable				= true
 SWEP.AdminSpawnable			= true
 
@@ -46,4 +46,5 @@ SWEP.SightsPos = Vector (-4.0153, -2.7663, 1.7654)
 SWEP.SightsAng = Vector (0.1316, -0.0083, 0)
 SWEP.RunSightsPos = Vector (3.2216, 0, 2.3745)
 SWEP.RunSightsAng = Vector (-21.6398, 36.3675, -11.0591)
-
+SWEP.WallSightsPos = Vector (-0.5336, -14.2233, -4.8932)
+SWEP.WallSightsAng = Vector (53.4322, 8.6914, 0)
