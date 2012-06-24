@@ -400,7 +400,8 @@ function SWEP:IronSight()
 		trace.filter = self.Owner
 	local tr = util.TraceLine( trace )
 
-	if tr.Hit then		self:SetIronsights(true, self.Owner)					// Set the ironsight true
+	if tr.Hit and (!tr.Entity:IsNPC() and !tr.Entity:IsPlayer()) then		
+				self:SetIronsights(true, self.Owner)					// Set the ironsight true
 				self.WallSights	= true
 				self.IronSightsPos = self.WallSightsPos					// Hold it down
 				self.IronSightsAng = self.WallSightsAng					// Hold it down

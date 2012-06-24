@@ -54,7 +54,7 @@ SWEP.SightMode				= 2
 
 SWEP.data 				= {}					-- The starting firemode
 SWEP.data.ironsights			= 1
-SWEP.Silenceable			= true
+SWEP.Silenceable			= false
 SWEP.Silenced				= false
 SWEP.BurstCapable			= false
 
