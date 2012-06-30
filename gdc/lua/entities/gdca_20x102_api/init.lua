@@ -27,7 +27,7 @@ local mats={					// Multipliers for materials
 function ENT:Initialize()   
 math.randomseed(CurTime())
 
-self.Penetrate 		= 20					// How deep Generic Default goes (in yo mama)
+self.Penetrate 		= 13					// How deep Generic Default goes (in yo mama)
 self.Flightvector 	= self.Entity:GetUp()*350		// Velocity in inches/sec
 self.Timeleft 		= CurTime() + 5				// How long before auto-remove?
 self.Impacted 		= false					// Important for flight continuation, see line 152

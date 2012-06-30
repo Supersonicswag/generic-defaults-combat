@@ -114,7 +114,7 @@ if (self.Accelerator<self.AccelMax) then self.Accelerator = self.Accelerator+sel
 
 
 			if GDCENGINE then	
-			local attack = gdc.gdcsplode( tr.HitPos, 300, 300, self.Entity)	// Position, Radius, Damage, Self		
+			local attack = gdc.gdcsplode( tr.HitPos, 300, 400, self.Entity)	// Position, Radius, Damage, Self		
 			end	
 			self.Entity:Remove() 
 			end
@@ -127,7 +127,7 @@ if !self.Flared then
 	//if self.nexttarGet < CurTime() then 
 		for _,t in pairs(EIS) do
 			if !(t:GetClass() == "gdca_flare") and !self.Flared then
-			if (t:IsValid() and (t:GetClass() == "prop_physics" || t:GetClass() == "prop_vehicle_prisoner_pod" || t:GetClass() == "prop_vehicle_jeep" || t:GetClass() == "prop_vehicle_airboat" || t:GetClass() == "gdca_flare" || t:IsNPC()) and (t:GetVelocity():Length() > 0)) then
+			if (t:IsValid() and (t:GetClass() == "prop_physics" || t:GetClass() == "prop_vehicle_prisoner_pod" || t:GetClass() == "prop_vehicle_jeep" || t:GetClass() == "prop_vehicle_airboat" || t:GetClass() == "gdca_flare" || t:IsNPC()) and (t:GetVelocity():Length() > 300)) then
 				if ( (t:GetPos():Distance(MissilePosition)<distance) and (MissileUp:DotProduct((t:GetPos() - MissilePosition):GetNormalized())>0.99) ) then
 						self.Target = t
 				end
