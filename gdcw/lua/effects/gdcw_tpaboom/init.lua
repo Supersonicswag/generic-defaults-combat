@@ -28,13 +28,6 @@ local mats={
 	[MAT_GLASS]			={4,7},
 }
 
-local sounds={
-	[1]={"Bullet.Dirt",},
-	[2]={"Bullet.Concrete",},
-	[3]={"Bullet.Metal",},
-	[4]={"Bullet.Glass",},
-	[5]={"Bullet.Flesh",},
-}
 
 function EFFECT:Init(data)
 self.Entity 		= data:GetEntity()		// Entity determines what is creating the dynamic light			//
@@ -51,10 +44,10 @@ self.Emitter 		= ParticleEmitter( self.Pos )	// Emitter must be there so you don
 	
 
 			if self.Scale<1.2 then
-			WorldSound( "ambient/explosions/explode_" .. math.random(1, 4) .. ".wav", self.Pos, 100, 100 )
+			sound.Play( "ambient/explosions/explode_" .. math.random(1, 4) .. ".wav", self.Pos, 100, 100 )
 			else
-			WorldSound( "Explosion.Boom", self.Pos)
-			WorldSound( "ambient/explosions/explode_" .. math.random(1, 4) .. ".wav", self.Pos, 100, 100 )
+			sound.Play( "Explosion.Boom", self.Pos)
+			sound.Play( "ambient/explosions/explode_" .. math.random(1, 4) .. ".wav", self.Pos, 100, 100 )
 			end
 
 

@@ -14,7 +14,7 @@ self.Size 		= 5*self.Scale
 self.Origin 		= Pos	
 self.emitter 		= ParticleEmitter( Pos )
 
-				WorldSound( "ambient/explosions/explode_" .. math.random(1, 4) .. ".wav", Pos, 100, 100 )
+				sound.Play( "ambient/explosions/explode_" .. math.random(1, 4) .. ".wav", Pos, 100, 100 )
 
 
 		for i=1, 50*Scale do

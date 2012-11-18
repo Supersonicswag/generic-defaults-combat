@@ -58,7 +58,7 @@ end
 
 function SWEP:Deploy()
 
-if SinglePlayer() then self.Single=true
+if game.SinglePlayer() then self.Single=true
 else
 self.Single=false
 end

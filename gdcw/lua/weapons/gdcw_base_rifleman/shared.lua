@@ -133,7 +133,7 @@ end
 
 function SWEP:Deploy()
 
-if SinglePlayer() then self.Single=true
+if game.SinglePlayer() then self.Single=true
 else
 self.Single=false
 end
@@ -377,9 +377,9 @@ function SWEP:DrawHUD()
 	self.Time = math.Round(((self.Range)/self.Velocity)*100)/100
 	self.Drop = math.Round((4.9*(self.Time^2))*100)/100
 
-	draw.SimpleText( "RANGE " ..tostring(math.Round(self.Range)) .. "m","ScoreboardText",ScrW() / 3, ScrH() * (44/60),Color(130,170,70,255))			//Range in meters
-	draw.SimpleText( "TIME " ..tostring(self.Time) .. "s","ScoreboardText",ScrW() / 3, ScrH() * (45/60),Color(170,130,70,255))					//Flight time in seconds
-	draw.SimpleText( "DROP " ..tostring(self.Drop) .. "m","ScoreboardText",ScrW() / 3, ScrH() * (46/60),Color(230,70,70,255))					//Drop in meters
+	draw.SimpleText( "RANGE " ..tostring(math.Round(self.Range)) .. "m","Default",ScrW() / 3, ScrH() * (44/60),Color(130,170,70,255))			//Range in meters
+	draw.SimpleText( "TIME " ..tostring(self.Time) .. "s","Default",ScrW() / 3, ScrH() * (45/60),Color(170,130,70,255))					//Flight time in seconds
+	draw.SimpleText( "DROP " ..tostring(self.Drop) .. "m","Default",ScrW() / 3, ScrH() * (46/60),Color(230,70,70,255))					//Drop in meters
 	end
 
 	end

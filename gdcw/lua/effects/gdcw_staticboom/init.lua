@@ -16,10 +16,10 @@ self.Size = 5*self.Scale
 self.emitter = ParticleEmitter( Pos )
 self.Origin = Pos	
 			if Scale<2.1 then
-				WorldSound( "ambient/explosions/explode_" .. math.random(1, 4) .. ".wav", Pos, 100, 100 )
+				sound.Play( "ambient/explosions/explode_" .. math.random(1, 4) .. ".wav", Pos, 100, 100 )
 			else
-				WorldSound( "Explosion.Boom", Pos)
-				WorldSound( "ambient/explosions/explode_" .. math.random(1, 4) .. ".wav", Pos, 100, 100 )
+				sound.Play( "Explosion.Boom", Pos)
+				sound.Play( "ambient/explosions/explode_" .. math.random(1, 4) .. ".wav", Pos, 100, 100 )
 			end
 
 

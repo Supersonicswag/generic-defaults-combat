@@ -171,7 +171,7 @@ function SWEP:Initialize()
 end
 
 function SWEP:Deploy()
-if SinglePlayer() then self.Single=true
+if game.SinglePlayer() then self.Single=true
 else
 self.Single=false
 end
@@ -463,7 +463,7 @@ function SWEP:IronSight()
 		self:SetWeaponHoldType("ar2")                      // Hold type styles; ar2 pistol shotgun rpg normal melee grenade smg slam fist melee2 passive knife
 		self.Owner:SetFOV( 0, 0.3 )
 		self:SetIronsights(false, self.Owner)
-		if self.SightMode==3 and !self.ACOGDEPLOYED then	self:Deploy() self.ACOGDEPLOYED=true 		end
+		if self.SightMode==3 then	self:Deploy() self.ACOGDEPLOYED=true 		end
 		if CLIENT then return end
 		self.Owner:DrawViewModel(true)
 
@@ -532,12 +532,12 @@ if self.Owner:KeyDown(IN_USE) then
 
 
 
-	draw.SimpleText( display,"ScoreboardText",-Yaw + (ScrW()/2), Pitch + (ScrH()/2),Color(50,170,30,255))
+	draw.SimpleText( display,"Default",-Yaw + (ScrW()/2), Pitch + (ScrH()/2),Color(50,170,30,255))
 
-	draw.SimpleText( "[*]","ScoreboardText",(ScrW()/2), (ScrH()/2),Color(50,170,30,255))
+	draw.SimpleText( "[*]","Default",(ScrW()/2), (ScrH()/2),Color(50,170,30,255))
 
-	//draw.SimpleText( tostring(Yaw),"ScoreboardText",(ScrW()/4), (ScrH()/4),Color(150,170,30,255))
-	//draw.SimpleText( tostring(Pitch),"ScoreboardText",(ScrW()/4), (ScrH()/3),Color(150,170,30,255))
+	//draw.SimpleText( tostring(Yaw),"Default",(ScrW()/4), (ScrH()/4),Color(150,170,30,255))
+	//draw.SimpleText( tostring(Pitch),"Default",(ScrW()/4), (ScrH()/3),Color(150,170,30,255))
 
 end
 
@@ -631,9 +631,9 @@ end
 	self.Time = math.Round(((self.Range)/self.Velocity)*100)/100
 	self.Drop = math.Round((4.9*(self.Time^2))*100)/100
 
-	draw.SimpleText( "RANGE " ..tostring(math.Round(self.Range)) .. "m","ScoreboardText",ScrW() / 3, ScrH() * (44/60),Color(130,170,70,255))			//Range in meters
-	draw.SimpleText( "TIME " ..tostring(self.Time) .. "s","ScoreboardText",ScrW() / 3, ScrH() * (45/60),Color(170,130,70,255))					//Flight time in seconds
-	draw.SimpleText( "DROP " ..tostring(self.Drop) .. "m","ScoreboardText",ScrW() / 3, ScrH() * (46/60),Color(230,70,70,255))					//Drop in meters
+	draw.SimpleText( "RANGE " ..tostring(math.Round(self.Range)) .. "m","Default",ScrW() / 3, ScrH() * (44/60),Color(130,170,70,255))			//Range in meters
+	draw.SimpleText( "TIME " ..tostring(self.Time) .. "s","Default",ScrW() / 3, ScrH() * (45/60),Color(170,130,70,255))					//Flight time in seconds
+	draw.SimpleText( "DROP " ..tostring(self.Drop) .. "m","Default",ScrW() / 3, ScrH() * (46/60),Color(230,70,70,255))					//Drop in meters
 	end
 
 	end
@@ -753,7 +753,8 @@ function SWEP:SightSwitch()
 	self.WorldModel		= self.IronWModel
 	self.SightsPos 		= self.ISPos	
 	self.SightsAng 		= self.ISAng	
-	self:Deploy()
+	timer.Simple( 0.3, self.Deploy, self )	
+	//self:Deploy()
 
 	elseif 	self.SightMode==1 and self.HasRDotModel==1 then
 	util.PrecacheModel(self.RDotVModel)
@@ -761,7 +762,7 @@ function SWEP:SightSwitch()
 	self.WorldModel		= self.RDotWModel
 	self.SightsPos 		= self.RSPos	
 	self.SightsAng  	= self.RSAng	
-	self:Deploy()
+	timer.Simple( 0.3, self.Deploy, self )	
 
 	elseif 	self.SightMode==2 and self.HasHoloModel==1 then
 	util.PrecacheModel(self.HoloVModel)
@@ -769,15 +770,16 @@ function SWEP:SightSwitch()
 	self.WorldModel		= self.HoloWModel
 	self.SightsPos 		= self.HSPos	
 	self.SightsAng  	= self.HSAng	
-	self:Deploy()
+	timer.Simple( 0.3, self.Deploy, self )	
 
 	elseif 	self.SightMode==3 and self.HasACOGModel==1 then
 	util.PrecacheModel(self.ACOGVModel)
 	self.ViewModel		= self.ACOGVModel
 	self.WorldModel		= self.ACOGWModel
 	self.SightsPos 		= self.ASPos	
-	self.SightsAng  	= self.ASAng	
-	self:Deploy()	
+	self.SightsAng  	= self.ASAng
+	timer.Simple( 0.3, self.Deploy, self )	
+
 
 	end
 end
