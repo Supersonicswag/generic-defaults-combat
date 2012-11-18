@@ -58,7 +58,7 @@ end
 		effectdata:SetScale(1.2)
 		effectdata:SetRadius(1)
 		effectdata:SetMagnitude(self.Velo:Length())
-		effectdata:SetAngle(self.Velo:Angle())
+		effectdata:SetAngles(self.Velo:Angle())
 		util.Effect( "gdca_rocketlaunch", effectdata )
 		self.Entity:EmitSound( "RocketPod.Emit" )
 		self.ammos = self.ammos-1
@@ -78,7 +78,7 @@ end
 		effectdata:SetScale(1.2)
 		effectdata:SetRadius(1)
 		effectdata:SetMagnitude(self.Velo:Length())
-		effectdata:SetAngle(self.Velo:Angle())
+		effectdata:SetAngles(self.Velo:Angle())
 		util.Effect( "gdca_rocketlaunch", effectdata )
 		self.Entity:EmitSound( "RocketPod.Emit" )
 		self.ammos = self.ammos-1
@@ -99,7 +99,7 @@ end
 		effectdata:SetScale(1.2)
 		effectdata:SetRadius(1)
 		effectdata:SetMagnitude(self.Velo:Length())
-		effectdata:SetAngle(self.Velo:Angle())
+		effectdata:SetAngles(self.Velo:Angle())
 		util.Effect( "gdca_rocketlaunch", effectdata )
 		self.Entity:EmitSound( "RocketPod.Emit" )
 		self.ammos = self.ammos-1

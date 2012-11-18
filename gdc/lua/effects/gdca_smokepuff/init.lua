@@ -14,7 +14,7 @@ self.Size 		= 5*self.Scale			// Size is exclusively for the explosion "trails" s
 self.Emitter 		= ParticleEmitter( self.Pos )	// Emitter must be there so you don't get an error			//
 
 
-				WorldSound( "Bullet.Impact", self.Pos)
+				sound.Play( "Bullet.Impact", self.Pos)
 
 		for i=0, 40*self.Scale do
 		local Whisp = self.Emitter:Add( "particle/smokesprites_000"..math.random(1,9), self.Pos )

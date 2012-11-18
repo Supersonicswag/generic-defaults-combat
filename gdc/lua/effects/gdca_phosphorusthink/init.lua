@@ -5,7 +5,7 @@ function EFFECT:Init( data )
 	local NumParticles = 30
 	local Streams = 20
 	
-	WorldSound( "ambient/explosions/explode_9.wav", vOffset, 130, 130 )
+	sound.Play( "ambient/explosions/explode_9.wav", vOffset, 130, 130 )
 	local emitter = ParticleEmitter( vOffset )
 	
 		flash = emitter:Add( "effects/yellowflare", vOffset )

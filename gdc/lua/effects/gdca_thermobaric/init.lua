@@ -11,8 +11,8 @@
 	self.Magnitude = data:GetMagnitude()
 	self.Emitter = ParticleEmitter( self.Origin )
 
-			WorldSound( "Explosion.Boom", self.Origin)
-			WorldSound( "ambient/explosions/explode_" .. math.random(1, 4) .. ".wav", self.Origin, 100, 100 )
+			sound.Play( "Explosion.Boom", self.Origin)
+			sound.Play( "ambient/explosions/explode_" .. math.random(1, 4) .. ".wav", self.Origin, 100, 100 )
 
 	
 	for i=0, 40*self.Scale do

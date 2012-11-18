@@ -49,7 +49,7 @@ self.Emitter 		= ParticleEmitter( self.Pos )	// Emitter must be there so you don
 end
  
  function EFFECT:Dust()
-	WorldSound( "Bullet.Concrete", self.Pos)
+	sound.Play( "Bullet.Concrete", self.Pos)
 	self.Emitter = ParticleEmitter( self.Pos )
 		
 	for i=0, 10+(self.Scale*5) do
@@ -122,7 +122,7 @@ end
  end
  
  function EFFECT:Dirt()
-	WorldSound( "Bullet.Dirt", self.Pos)
+	sound.Play( "Bullet.Dirt", self.Pos)
 
 	self.Emitter = ParticleEmitter( self.Pos )
 		
@@ -196,7 +196,7 @@ end
  end
 
  function EFFECT:Sand()
-	WorldSound( "Bullet.Dirt", self.Pos)
+	sound.Play( "Bullet.Dirt", self.Pos)
 	self.Emitter = ParticleEmitter( self.Pos )
 		
 	for i=0, 10+(self.Scale*5) do
@@ -237,7 +237,7 @@ end
  end
 
  function EFFECT:Metal()
-	WorldSound( "Bullet.Metal", self.Pos)
+	sound.Play( "Bullet.Metal", self.Pos)
 	self.Emitter = ParticleEmitter( self.Pos )
 		
 	for i=0, 6 do
@@ -294,7 +294,7 @@ end
 
 
  function EFFECT:Smoke()
-	WorldSound( "Bullet.Tile", self.Pos)
+	sound.Play( "Bullet.Tile", self.Pos)
 	self.Emitter = ParticleEmitter( self.Pos )
 		
 	for i=0, 3 do
@@ -367,7 +367,7 @@ end
  end
 
  function EFFECT:Wood()
-	WorldSound( "Bullet.Wood", self.Pos)
+	sound.Play( "Bullet.Wood", self.Pos)
 	self.Emitter = ParticleEmitter( self.Pos )
 		
 	for i=0, 7*self.Scale do
@@ -425,7 +425,7 @@ end
  end
 
  function EFFECT:Glass()
-	WorldSound( "Bullet.Glass", self.Pos)
+	sound.Play( "Bullet.Glass", self.Pos)
 	for i=0, 5 do
 		local Smoke = self.Emitter:Add( "particle/smokesprites_000"..math.random(1,9), self.Pos )
 		if (Smoke) then
@@ -477,7 +477,7 @@ end
  end
 
  function EFFECT:Blood()
-	WorldSound( "Bullet.Flesh", self.Pos)
+	sound.Play( "Bullet.Flesh", self.Pos)
 
 	for i=0, 10+(self.Scale*10) do
 		// Some blood spray out front and the back
@@ -554,7 +554,7 @@ end
  end
 
  function EFFECT:YellowBlood()
-	WorldSound( "Bullet.Flesh", self.Pos)
+	sound.Play( "Bullet.Flesh", self.Pos)
 	for i=0, 10*self.Scale do
 		local Smoke = self.Emitter:Add( "particle/particle_composite", self.Pos )
 		if (Smoke) then

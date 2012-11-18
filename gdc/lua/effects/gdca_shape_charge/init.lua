@@ -10,7 +10,7 @@ function EFFECT:Init( data )
 	
 local vOffset = data:GetOrigin() 
 
-	WorldSound( "ambient/explosions/explode_" .. math.random(1, 4) .. ".wav", vOffset, 100, 85 )
+	sound.Play( "ambient/explosions/explode_" .. math.random(1, 4) .. ".wav", vOffset, 100, 85 )
 
  	local NumParticles = 80	 
  	local emitter = ParticleEmitter( vOffset ) 

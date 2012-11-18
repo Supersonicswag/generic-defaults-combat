@@ -5,8 +5,6 @@ AddCSLuaFile( "shared.lua" )
 include('entities/base_wire_entity/init.lua'); 
 include('shared.lua')
 
-util.PrecacheSound("arty/artyfire.wav")
-
 function ENT:Initialize()   
 
 	self.ammos = 10
@@ -61,7 +59,7 @@ function ENT:flare()
 		effectdata:SetScale(0.4)
 		effectdata:SetRadius(1)
 		effectdata:SetMagnitude(self.Velo:Length())
-		effectdata:SetAngle(self.Velo:Angle())
+		effectdata:SetAngles(self.Velo:Angle())
 		util.Effect( "gdca_otheremit", effectdata )
 		self.Entity:EmitSound( "Flare.Emit" )
 		self.ammos = self.ammos-1	

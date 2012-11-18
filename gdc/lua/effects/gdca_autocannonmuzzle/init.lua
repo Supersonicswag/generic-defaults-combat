@@ -5,18 +5,18 @@ function EFFECT:Init( data )
 	self.DirVec  = data:GetNormal()
 	self.Scale   = data:GetScale()
 	self.Speed   = data:GetMagnitude()
-	self.RecAng  = data:GetAngle()
+	self.RecAng  = data:GetAngles()
 	self.Emitter = ParticleEmitter( self.Origin )
 	self.Sound   = math.Round(data:GetRadius())
 
 	self.Velo = (self.RecAng:Forward())*self.Speed
 
-	if self.Sound==1 then WorldSound( "KPV.Split",   self.Origin)
-    elseif self.Sound==2 then WorldSound( "M197.Split",  self.Origin)
-    elseif self.Sound==3 then WorldSound( "M242.Split",  self.Origin)
-    elseif self.Sound==4 then WorldSound( "M230.Split",  self.Origin)
-    elseif self.Sound==5 then WorldSound( "2A42.Split",  self.Origin)
-    elseif self.Sound==6 then WorldSound( "L60.Split",   self.Origin) end
+	if self.Sound==1 then sound.Play( "KPV.Split",   self.Origin)
+    elseif self.Sound==2 then sound.Play( "M197.Split",  self.Origin)
+    elseif self.Sound==3 then sound.Play( "M242.Split",  self.Origin)
+    elseif self.Sound==4 then sound.Play( "M230.Split",  self.Origin)
+    elseif self.Sound==5 then sound.Play( "2A42.Split",  self.Origin)
+    elseif self.Sound==6 then sound.Play( "L60.Split",   self.Origin) end
 
 
 

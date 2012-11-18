@@ -28,13 +28,6 @@ local mats={
 	[MAT_GLASS]			={4,7},
 }
 
-local sounds={
-	[1]={"Bullet.Dirt",},
-	[2]={"Bullet.Concrete",},
-	[3]={"Bullet.Metal",},
-	[4]={"Bullet.Glass",},
-	[5]={"Bullet.Flesh",},
-}
 
 function EFFECT:Init(data)
 self.Pos 		= data:GetOrigin()		// Pos determines the global position of the effect			//

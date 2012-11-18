@@ -5,20 +5,21 @@ function EFFECT:Init( data )
 	self.DirVec  = data:GetNormal()
 	self.Scale   = data:GetScale()
 	self.Speed   = data:GetMagnitude()
-	self.RecAng  = data:GetAngle()
+	self.RecAng  = data:GetAngles()
 	self.Emitter = ParticleEmitter( self.Origin )
 	self.Sound   = math.Round(data:GetRadius())
 
 	self.Velo = (self.RecAng:Forward())*self.Speed
 
-	if self.Sound==1 then WorldSound( "M249.Split",  self.Origin)
-    elseif self.Sound==2 then WorldSound( "M240.Split",  self.Origin)
-    elseif self.Sound==3 then WorldSound( "PKM.Split",   self.Origin)
-    elseif self.Sound==4 then WorldSound( "M134.Split",  self.Origin)
-    elseif self.Sound==5 then WorldSound( "M2HB.Split",  self.Origin)
-    elseif self.Sound==6 then WorldSound( "GAU19.Split", self.Origin) end
+	if self.Sound==1 then sound.Play( "M249.Split",  self.Origin, 100, 100, 1)
+    elseif self.Sound==2 then sound.Play( "M240.Split",  self.Origin, 100, 100, 1)
+    elseif self.Sound==3 then sound.Play( "PKM.Split",   self.Origin, 100, 100, 1)
+    elseif self.Sound==4 then sound.Play( "M134.Split",  self.Origin, 100, 100, 1)
+    elseif self.Sound==5 then sound.Play( "M2HB.Split",  self.Origin, 100, 100, 1)
+    elseif self.Sound==6 then sound.Play( "GAU19.Split", self.Origin, 100, 100, 1) end
 
 
+//			sound.Play( "Explosion.Boom", self.Pos, 100, 100, 1 )
 
 		local Heatwave = self.Emitter:Add("sprites/heatwave", self.Origin)
 		Heatwave:SetVelocity((80*self.DirVec) + self.Velo)

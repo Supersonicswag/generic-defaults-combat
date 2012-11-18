@@ -11,9 +11,9 @@ function EFFECT:Init( data )
 
 	self.Velo = (self.RecAng:Forward())*self.Speed
 
-	if self.Sound==1 then WorldSound( "RocketPod.Split",   	self.Origin)
-    elseif self.Sound==2 then WorldSound( "GML.Split", 		self.Origin)
-    elseif self.Sound==3 then WorldSound( "RAM.Split",   	self.Origin)	end
+	if self.Sound==1 then sound.Play( "RocketPod.Split",   	self.Origin)
+    elseif self.Sound==2 then sound.Play( "GML.Split", 		self.Origin)
+    elseif self.Sound==3 then sound.Play( "RAM.Split",   	self.Origin)	end
 
 
 

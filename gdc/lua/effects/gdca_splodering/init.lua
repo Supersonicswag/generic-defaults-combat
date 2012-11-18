@@ -12,7 +12,7 @@
 	self.Radius = data:GetRadius()
 	self.Emitter = ParticleEmitter( self.Origin )
 
-	WorldSound( "Explosion.Boom", self.Origin)
+	sound.Play( "Explosion.Boom", self.Origin)
 		
 	for i=0, 10*self.Radius do
 	
