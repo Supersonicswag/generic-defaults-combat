@@ -78,8 +78,7 @@ end
 function SWEP:PrimaryAttack()
 	if self:CanPrimaryAttack() then
 
-		if self.Primary.AmmoSwitch==1 then
-		for i=1, self.Primary.Pellets do		self:FireRound1() end end
+		if self.Primary.AmmoSwitch==1 then	self:FireRound1() end
 		if self.Primary.AmmoSwitch==2 then 	self:FireRound2() end
 		if self.Primary.AmmoSwitch==3 then 	self:FireRound3() end
 		if self.Primary.AmmoSwitch==4 then 	self:FireRound4() end
@@ -103,6 +102,7 @@ function SWEP:FireRound1()
 	aim = self.Owner:GetAimVector()
 	pos = self.Owner:GetShootPos()
 	if SERVER then
+		for i=0, self.Primary.Pellets do
 		local rocket = ents.Create(self.Primary.Round1)
 		if !rocket:IsValid() then return false end
 		rocket:SetAngles(aim:Angle()+Angle(90,0,0)+Angle(math.Rand(-self.Primary.MRAD*0.0573,self.Primary.MRAD*0.0573), math.Rand(-self.Primary.MRAD*0.0573,self.Primary.MRAD*0.0573), 0 ) )
@@ -110,7 +110,7 @@ function SWEP:FireRound1()
 		rocket:SetOwner(self.Owner)
 		rocket:Spawn()
 		rocket:Activate()
-		end
+		end	end
 		if SERVER and !self.Owner:IsNPC() then
 		local anglo = Angle(math.Rand(-self.Primary.KickDown,self.Primary.KickUp), math.Rand(-self.Primary.KickHorizontal,self.Primary.KickHorizontal), 0)
 		self.Owner:ViewPunch(anglo)

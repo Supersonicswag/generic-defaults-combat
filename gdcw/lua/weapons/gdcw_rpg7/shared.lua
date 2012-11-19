@@ -77,8 +77,8 @@ function SWEP:PrimaryAttack()
 		self.Owner:MuzzleFlash()
 		self.Weapon:SetNextPrimaryFire(CurTime()+1/(self.Primary.RPM/60))
 
-		//timer.Simple( 2, self.Reload, self)
-		timer.Create( "ReloadTimer", 2, 1, self.Reload )
+		timer.Simple( 2, self:Reload() )
+
 
 	end
 end

@@ -753,8 +753,8 @@ function SWEP:SightSwitch()
 	self.WorldModel		= self.IronWModel
 	self.SightsPos 		= self.ISPos	
 	self.SightsAng 		= self.ISAng	
-	timer.Simple( 0.3, self.Deploy, self )	
-	//self:Deploy()
+	//timer.Simple( 0.3, self.Deploy, self )	
+	self:Deploy()
 
 	elseif 	self.SightMode==1 and self.HasRDotModel==1 then
 	util.PrecacheModel(self.RDotVModel)
@@ -762,7 +762,8 @@ function SWEP:SightSwitch()
 	self.WorldModel		= self.RDotWModel
 	self.SightsPos 		= self.RSPos	
 	self.SightsAng  	= self.RSAng	
-	timer.Simple( 0.3, self.Deploy, self )	
+	self:Deploy()
+	//timer.Simple( 0.3, Deploy() )//, self )	self.Weapon:SendWeaponAnim( ACT_VM_DRAW )
 
 	elseif 	self.SightMode==2 and self.HasHoloModel==1 then
 	util.PrecacheModel(self.HoloVModel)
@@ -770,7 +771,8 @@ function SWEP:SightSwitch()
 	self.WorldModel		= self.HoloWModel
 	self.SightsPos 		= self.HSPos	
 	self.SightsAng  	= self.HSAng	
-	timer.Simple( 0.3, self.Deploy, self )	
+	//timer.Simple( 0.3, self.Deploy, self )	
+	self:Deploy()
 
 	elseif 	self.SightMode==3 and self.HasACOGModel==1 then
 	util.PrecacheModel(self.ACOGVModel)
@@ -778,8 +780,8 @@ function SWEP:SightSwitch()
 	self.WorldModel		= self.ACOGWModel
 	self.SightsPos 		= self.ASPos	
 	self.SightsAng  	= self.ASAng
-	timer.Simple( 0.3, self.Deploy, self )	
-
+	//timer.Simple( 0.3, self.Deploy, self )	
+	self:Deploy()
 
 	end
 end

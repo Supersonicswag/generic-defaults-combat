@@ -48,7 +48,7 @@ SWEP.Secondary.UseElcan			= false
 SWEP.Secondary.UseGreenDuplex		= true	
 SWEP.Secondary.UseRangefinder		= false	
 SWEP.ScopeScale 			= 0.5					// This is the size of the scope overlay
-SWEP.ReticleScale 			= 1.0					// This is the size of the scope crosshairs
+SWEP.ReticleScale 			= 1.2					// This is the size of the scope crosshairs
 SWEP.CrossScale 			= 0.07
 SWEP.SightMode				= 0
 
