@@ -41,7 +41,7 @@ self.Emitter 		= ParticleEmitter( self.Pos )	// Emitter must be there so you don
 			if self.Scale<2.1 then
 			sound.Play( "ambient/explosions/explode_" .. math.random(1, 4) .. ".wav", self.Pos, 100, 100 )
 			else
-			sound.Play( "Explosion.Boom", self.Pos)
+			sound.Play( "Explosion.Boom", self.Pos, 170)
 			sound.Play( "ambient/explosions/explode_" .. math.random(1, 4) .. ".wav", self.Pos, 100, 100 )
 			end
 

@@ -18,8 +18,8 @@ self.emitter = ParticleEmitter( Pos )
 self.Origin = Pos	
 
 
-				sound.Play( "ThunderousExplosion.Boom", Pos)
-				sound.Play( "ThunderousExplosion2.Boom", Pos)
+				sound.Play( "ThunderousExplosion.Boom", Pos, 180)
+				sound.Play( "ThunderousExplosion2.Boom", Pos, 180)
 
 
 

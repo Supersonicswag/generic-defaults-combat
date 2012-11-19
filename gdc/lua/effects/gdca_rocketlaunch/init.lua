@@ -5,7 +5,7 @@ function EFFECT:Init( data )
 	self.DirVec  = data:GetNormal()
 	self.Scale   = data:GetScale()
 	self.Speed   = data:GetMagnitude()
-	self.RecAng  = data:GetAngle()
+	self.RecAng  = data:GetAngles()
 	self.Emitter = ParticleEmitter( self.Origin )
 	self.Sound   = math.Round(data:GetRadius())
 
