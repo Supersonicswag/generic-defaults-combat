@@ -109,3 +109,11 @@
 	"wave"				"physics/wood/wood_solid_impact_bullet5.wav"
 	}
 }
+"Explosion.Boom"
+{
+	"channel"			"CHAN_EXPLOSION"
+	"volume"			"1.0"
+	"pitch"				"90, 120"
+	"soundlevel"			"SNDLVL_155dB"
+	"wave"				"^GDC/ExplosionBoom.wav"
+}

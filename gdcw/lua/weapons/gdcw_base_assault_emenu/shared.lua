@@ -197,7 +197,7 @@ function SWEP:PrimaryAttack()
 			end
 
 		if !self.Silenced then
-		self.Weapon:EmitSound(self.Primary.Sound) self.Weapon:SendWeaponAnim( ACT_VM_PRIMARYATTACK )
+		self.Weapon:EmitSound(self.Primary.Sound, 150) self.Weapon:SendWeaponAnim( ACT_VM_PRIMARYATTACK )
 		local fx 		= EffectData()
 		fx:SetEntity(self.Weapon)
 		fx:SetOrigin(self.Owner:GetShootPos())
