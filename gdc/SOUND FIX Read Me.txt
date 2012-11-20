@@ -1,15 +1,3 @@
-1) Go to scripts/sounds folder in this addon.
-2) Copy the two files
-3) Go to the garrysmod/garrysmod/scripts/sounds folder
-4) Paste them in there
-5) Start Gmod. The sounds should work
-
-
-This is a temporary fix for the lack of scripted sounds until Garry decides to fix what he broke. 
-This is valid as of August 7th 2011.
-This is 5 steps so get it right.
-
-
-
-
-This must be done every time new sounds are added to GDC, for both the server and the client. Not my fault!
+Garry removed sound scripting in Gmod 13. This means that modders like me can't add 
+custom sounds with all of the functionality that used to be possible. So I apologize for
+the new sounds because they can't be heard far away. Hopefully Garry will re-add scripts!

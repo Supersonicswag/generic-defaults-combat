@@ -364,18 +364,18 @@ sound.Add(
     	name 		= "GSH23.Emit",
     	channel 	= CHAN_WEAPON,
     	volume 		= 1.0,
-	pitch		= 100,
+	pitch		= 110,
     	soundlevel 	= SNDLVL_160dB,
-    	sound 		= "GDC/GSH23Emit.wav"
+    	sound 		= "GDC/GSH2Emit.wav"
 })
 sound.Add(
 {
     	name 		= "GSH23.Split",
     	channel 	= CHAN_WEAPON,
     	volume 		= 1.0,
-	pitch		= 100,
+	pitch		= 110,
     	soundlevel 	= SNDLVL_160dB,
-    	sound 		= "GDC/GSH23Split.wav"
+    	sound 		= "GDC/GSHSplit.wav"
 })
 sound.Add(
 {
@@ -384,7 +384,7 @@ sound.Add(
     	volume 		= 1.0,
 	pitch		= 100,
     	soundlevel 	= SNDLVL_160dB,
-    	sound 		= "GDC/GSH30Emit.wav"
+    	sound 		= "GDC/GSHEmit.wav"
 })
 sound.Add(
 {
@@ -393,7 +393,7 @@ sound.Add(
     	volume 		= 1.0,
 	pitch		= 100,
     	soundlevel 	= SNDLVL_160dB,
-    	sound 		= "GDC/GSH30Split.wav"
+    	sound 		= "GDC/GSHSplit.wav"
 })
 sound.Add(
 {
