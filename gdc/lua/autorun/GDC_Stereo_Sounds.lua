@@ -6,7 +6,7 @@ sound.Add(
     	volume 		= 1.0,
 	pitch		= 105,
     	soundlevel 	= SNDLVL_160dB,
-    	sound 		= "GDC/M240Emit.wav"
+    	sound 		= ")GDC/M240Emit.wav"
 })
 sound.Add(
 {
@@ -15,7 +15,7 @@ sound.Add(
     	volume 		= 1.0,
 	pitch		= 105,
     	soundlevel 	= SNDLVL_160dB,
-    	sound 		= "GDC/M240Split.wav"
+    	sound 		= "^GDC/M240Split.wav"
 })
 sound.Add(
 {
@@ -24,7 +24,7 @@ sound.Add(
     	volume 		= 1.0,
 	pitch		= 100,
     	soundlevel 	= SNDLVL_160dB,
-    	sound 		= "GDC/M240Emit.wav"
+    	sound 		= ")GDC/M240Emit.wav"
 })
 sound.Add(
 {
@@ -32,8 +32,8 @@ sound.Add(
     	channel 	= CHAN_WEAPON,
     	volume 		= 1.0,
 	pitch		= 100,
-    	soundlevel 	= SNDLVL_160dB,
-    	sound 		= "GDC/M240Split.wav"
+    	soundlevel 	= SNDLVL_170dB,
+    	sound 		= "^GDC/M240Split.wav"
 })
 sound.Add(
 {
@@ -42,7 +42,7 @@ sound.Add(
     	volume 		= 1.0,
 	pitch		= 100,
     	soundlevel 	= SNDLVL_160dB,
-    	sound 		= "GDC/PKMEmit.wav"
+    	sound 		= ")GDC/PKMEmit.wav"
 })
 sound.Add(
 {
@@ -51,7 +51,7 @@ sound.Add(
     	volume 		= 1.0,
 	pitch		= 100,
     	soundlevel 	= SNDLVL_160dB,
-    	sound 		= "GDC/PKMSplit.wav"
+    	sound 		= "^GDC/PKMSplit.wav"
 })
 sound.Add(
 {
@@ -60,7 +60,7 @@ sound.Add(
     	volume 		= 1.0,
 	pitch		= 100,
     	soundlevel 	= SNDLVL_160dB,
-    	sound 		= "GDC/M134Emit.wav"
+    	sound 		= ")GDC/M134Emit.wav"
 })
 sound.Add(
 {
@@ -69,7 +69,7 @@ sound.Add(
     	volume 		= 1.0,
 	pitch		= 100,
     	soundlevel 	= SNDLVL_160dB,
-    	sound 		= "GDC/M134Split.wav"
+    	sound 		= "^GDC/M134Split.wav"
 })
 sound.Add(
 {
@@ -78,7 +78,7 @@ sound.Add(
     	volume 		= 1.0,
 	pitch		= 100,
     	soundlevel 	= SNDLVL_160dB,
-    	sound 		= "GDC/M2HBEmit.wav"
+    	sound 		= ")GDC/M2HBEmit.wav"
 })
 sound.Add(
 {
@@ -87,7 +87,7 @@ sound.Add(
     	volume 		= 1.0,
 	pitch		= 100,
     	soundlevel 	= SNDLVL_160dB,
-    	sound 		= "GDC/M2HBSplit.wav"
+    	sound 		= "^GDC/M2HBSplit.wav"
 })
 sound.Add(
 {
@@ -96,7 +96,7 @@ sound.Add(
     	volume 		= 1.0,
 	pitch		= 100,
     	soundlevel 	= SNDLVL_160dB,
-    	sound 		= "GDC/GAU19Emit.wav"
+    	sound 		= ")GDC/GAU19Emit.wav"
 })
 sound.Add(
 {
@@ -105,7 +105,7 @@ sound.Add(
     	volume 		= 1.0,
 	pitch		= 100,
     	soundlevel 	= SNDLVL_160dB,
-    	sound 		= "GDC/GAU19Split.wav"
+    	sound 		= "^GDC/GAU19Split.wav"
 })
 sound.Add(
 {
@@ -114,7 +114,7 @@ sound.Add(
     	volume 		= 1.0,
 	pitch		= 100,
     	soundlevel 	= SNDLVL_160dB,
-    	sound 		= "GDC/KPVEmit.wav"
+    	sound 		= ")GDC/KPVEmit.wav"
 })
 sound.Add(
 {
@@ -123,7 +123,7 @@ sound.Add(
     	volume 		= 1.0,
 	pitch		= 100,
     	soundlevel 	= SNDLVL_160dB,
-    	sound 		= "GDC/KPVSplit.wav"
+    	sound 		= "^GDC/KPVSplit.wav"
 })
 sound.Add(
 {
@@ -132,7 +132,7 @@ sound.Add(
     	volume 		= 1.0,
 	pitch		= 100,
     	soundlevel 	= SNDLVL_160dB,
-    	sound 		= "GDC/M197Emit.wav"
+    	sound 		= ")GDC/M197Emit.wav"
 })
 sound.Add(
 {
@@ -141,7 +141,7 @@ sound.Add(
     	volume 		= 1.0,
 	pitch		= 100,
     	soundlevel 	= SNDLVL_160dB,
-    	sound 		= "GDC/M197Split.wav"
+    	sound 		= "^GDC/M197Split.wav"
 })
 sound.Add(
 {
@@ -150,7 +150,7 @@ sound.Add(
     	volume 		= 1.0,
 	pitch		= 100,
     	soundlevel 	= SNDLVL_160dB,
-    	sound 		= "GDC/M242Emit.wav"
+    	sound 		= ")GDC/M242Emit.wav"
 })
 sound.Add(
 {
@@ -159,7 +159,7 @@ sound.Add(
     	volume 		= 1.0,
 	pitch		= 100,
     	soundlevel 	= SNDLVL_160dB,
-    	sound 		= "GDC/M242Split.wav"
+    	sound 		= "^GDC/M242Split.wav"
 })
 sound.Add(
 {
@@ -168,7 +168,7 @@ sound.Add(
     	volume 		= 1.0,
 	pitch		= 100,
     	soundlevel 	= SNDLVL_160dB,
-    	sound 		= "GDC/GAU12Emit.wav"
+    	sound 		= ")GDC/GAU12Emit.wav"
 })
 sound.Add(
 {
@@ -177,7 +177,7 @@ sound.Add(
     	volume 		= 1.0,
 	pitch		= 100,
     	soundlevel 	= SNDLVL_160dB,
-    	sound 		= "GDC/GAU12Split.wav"
+    	sound 		= "^GDC/GAU12Split.wav"
 })
 sound.Add(
 {
@@ -186,7 +186,7 @@ sound.Add(
     	volume 		= 1.0,
 	pitch		= 100,
     	soundlevel 	= SNDLVL_160dB,
-    	sound 		= "GDC/M230Emit.wav"
+    	sound 		= ")GDC/M230Emit.wav"
 })
 sound.Add(
 {
@@ -195,7 +195,7 @@ sound.Add(
     	volume 		= 1.0,
 	pitch		= 100,
     	soundlevel 	= SNDLVL_160dB,
-    	sound 		= "GDC/M230Split.wav"
+    	sound 		= "^GDC/M230Split.wav"
 })
 sound.Add(
 {
@@ -204,7 +204,7 @@ sound.Add(
     	volume 		= 1.0,
 	pitch		= 100,
     	soundlevel 	= SNDLVL_160dB,
-    	sound 		= "GDC/2A42Emit.wav"
+    	sound 		= ")GDC/2A42Emit.wav"
 })
 sound.Add(
 {
@@ -213,7 +213,7 @@ sound.Add(
     	volume 		= 1.0,
 	pitch		= 100,
     	soundlevel 	= SNDLVL_160dB,
-    	sound 		= "GDC/2A42Split.wav"
+    	sound 		= "^GDC/2A42Split.wav"
 })
 sound.Add(
 {
@@ -222,7 +222,7 @@ sound.Add(
     	volume 		= 1.0,
 	pitch		= 100,
     	soundlevel 	= SNDLVL_160dB,
-    	sound 		= "GDC/MK19Emit.wav"
+    	sound 		= ")GDC/MK19Emit.wav"
 })
 sound.Add(
 {
@@ -231,7 +231,7 @@ sound.Add(
     	volume 		= 1.0,
 	pitch		= 100,
     	soundlevel 	= SNDLVL_160dB,
-    	sound 		= "GDC/MK19Split.wav"
+    	sound 		= "^GDC/MK19Split.wav"
 })
 sound.Add(
 {
@@ -240,7 +240,7 @@ sound.Add(
     	volume 		= 1.0,
 	pitch		= 100,
     	soundlevel 	= SNDLVL_160dB,
-    	sound 		= "GDC/L60Emit.wav"
+    	sound 		= ")GDC/L60Emit.wav"
 })
 sound.Add(
 {
@@ -249,7 +249,7 @@ sound.Add(
     	volume 		= 1.0,
 	pitch		= 100,
     	soundlevel 	= SNDLVL_160dB,
-    	sound 		= "GDC/L60Split.wav"
+    	sound 		= "^GDC/L60Split.wav"
 })
 sound.Add(
 {
@@ -258,7 +258,7 @@ sound.Add(
     	volume 		= 1.0,
 	pitch		= 100,
     	soundlevel 	= SNDLVL_160dB,
-    	sound 		= "GDC/RocketPodEmit.wav"
+    	sound 		= ")GDC/RocketPodEmit.wav"
 })
 sound.Add(
 {
@@ -267,7 +267,7 @@ sound.Add(
     	volume 		= 1.0,
 	pitch		= 100,
     	soundlevel 	= SNDLVL_160dB,
-    	sound 		= "GDC/RocketPodSplit.wav"
+    	sound 		= "^GDC/RocketPodSplit.wav"
 })
 sound.Add(
 {
@@ -276,7 +276,7 @@ sound.Add(
     	volume 		= 1.0,
 	pitch		= 100,
     	soundlevel 	= SNDLVL_160dB,
-    	sound 		= "GDC/MortarEmit.wav"
+    	sound 		= ")GDC/MortarEmit.wav"
 })
 sound.Add(
 {
@@ -285,7 +285,7 @@ sound.Add(
     	volume 		= 1.0,
 	pitch		= 100,
     	soundlevel 	= SNDLVL_160dB,
-    	sound 		= "GDC/MortarSplit.wav"
+    	sound 		= "^GDC/MortarSplit.wav"
 })
 sound.Add(
 {
@@ -294,7 +294,7 @@ sound.Add(
     	volume 		= 1.0,
 	pitch		= 100,
     	soundlevel 	= SNDLVL_160dB,
-    	sound 		= "GDC/RAMEmit.wav"
+    	sound 		= ")GDC/RAMEmit.wav"
 })
 sound.Add(
 {
@@ -303,7 +303,7 @@ sound.Add(
     	volume 		= 1.0,
 	pitch		= 100,
     	soundlevel 	= SNDLVL_160dB,
-    	sound 		= "GDC/RAMSplit.wav"
+    	sound 		= "^GDC/RAMSplit.wav"
 })
 sound.Add(
 {
@@ -312,7 +312,7 @@ sound.Add(
     	volume 		= 1.0,
 	pitch		= 100,
     	soundlevel 	= SNDLVL_160dB,
-    	sound 		= "GDC/GMLEmit.wav"
+    	sound 		= ")GDC/GMLEmit.wav"
 })
 sound.Add(
 {
@@ -321,7 +321,7 @@ sound.Add(
     	volume 		= 1.0,
 	pitch		= 100,
     	soundlevel 	= SNDLVL_160dB,
-    	sound 		= "GDC/GMLSplit.wav"
+    	sound 		= "^GDC/GMLSplit.wav"
 })
 sound.Add(
 {
@@ -330,7 +330,7 @@ sound.Add(
     	volume 		= 1.0,
 	pitch		= 100,
     	soundlevel 	= SNDLVL_160dB,
-    	sound 		= "GDC/M101Emit.wav"
+    	sound 		= ")GDC/M101Emit.wav"
 })
 sound.Add(
 {
@@ -339,7 +339,7 @@ sound.Add(
     	volume 		= 1.0,
 	pitch		= 100,
     	soundlevel 	= SNDLVL_160dB,
-    	sound 		= "GDC/M101Split.wav"
+    	sound 		= "^GDC/M101Split.wav"
 })
 sound.Add(
 {
@@ -348,7 +348,7 @@ sound.Add(
     	volume 		= 1.0,
 	pitch		= 100,
     	soundlevel 	= SNDLVL_160dB,
-    	sound 		= "GDC/M256Emit.wav"
+    	sound 		= ")GDC/M256Emit.wav"
 })
 sound.Add(
 {
@@ -357,7 +357,7 @@ sound.Add(
     	volume 		= 1.0,
 	pitch		= 100,
     	soundlevel 	= SNDLVL_160dB,
-    	sound 		= "GDC/M256Split.wav"
+    	sound 		= "^GDC/M256Split.wav"
 })
 sound.Add(
 {
@@ -366,7 +366,7 @@ sound.Add(
     	volume 		= 1.0,
 	pitch		= 110,
     	soundlevel 	= SNDLVL_160dB,
-    	sound 		= "GDC/GSH2Emit.wav"
+    	sound 		= ")GDC/GSHEmit.wav"
 })
 sound.Add(
 {
@@ -375,7 +375,7 @@ sound.Add(
     	volume 		= 1.0,
 	pitch		= 110,
     	soundlevel 	= SNDLVL_160dB,
-    	sound 		= "GDC/GSHSplit.wav"
+    	sound 		= "^GDC/GSHSplit.wav"
 })
 sound.Add(
 {
@@ -384,7 +384,7 @@ sound.Add(
     	volume 		= 1.0,
 	pitch		= 100,
     	soundlevel 	= SNDLVL_160dB,
-    	sound 		= "GDC/GSHEmit.wav"
+    	sound 		= ")GDC/GSHEmit.wav"
 })
 sound.Add(
 {
@@ -393,7 +393,7 @@ sound.Add(
     	volume 		= 1.0,
 	pitch		= 100,
     	soundlevel 	= SNDLVL_160dB,
-    	sound 		= "GDC/GSHSplit.wav"
+    	sound 		= "^GDC/GSHSplit.wav"
 })
 sound.Add(
 {
@@ -401,8 +401,8 @@ sound.Add(
     	channel 	= CHAN_FIYAA,
     	volume 		= 1.0,
 	pitch		= 100,
-    	soundlevel 	= SNDLVL_110dB,
-    	sound 		= "GDC/FlamerEmit.wav"
+    	soundlevel 	= SNDLVL_120dB,
+    	sound 		= ")GDC/FlamerEmit.wav"
 })
 sound.Add(
 {
@@ -410,8 +410,8 @@ sound.Add(
     	channel 	= CHAN_FIYAA,
     	volume 		= 1.0,
 	pitch		= 100,
-    	soundlevel 	= SNDLVL_110dB,
-    	sound 		= "GDC/FlamerStop.wav"
+    	soundlevel 	= SNDLVL_120dB,
+    	sound 		= ")GDC/FlamerStop.wav"
 })
 sound.Add(
 {
@@ -420,7 +420,7 @@ sound.Add(
     	volume 		= 1.0,
 	pitch		= 100,
     	soundlevel 	= SNDLVL_100dB,
-    	sound 		= "GDC/FlareEmit.wav"
+    	sound 		= ")GDC/FlareEmit.wav"
 })
 sound.Add(
 {
@@ -429,7 +429,7 @@ sound.Add(
     	volume 		= 1.0,
 	pitch		= 100,
     	soundlevel 	= SNDLVL_130dB,
-    	sound 		= "GDC/FlareSplit.wav"
+    	sound 		= "^GDC/FlareSplit.wav"
 })
 sound.Add(
 {
@@ -438,7 +438,7 @@ sound.Add(
     	volume 		= 1.0,
 	pitch		= 100,
     	soundlevel 	= SNDLVL_170dB,
-    	sound 		= "GDC/ExplosionBoom.wav"
+    	sound 		= "^GDC/ExplosionBoom.wav"
 })
 sound.Add(
 {
@@ -447,7 +447,7 @@ sound.Add(
     	volume 		= 1.0,
 	pitch		= 100,
     	soundlevel 	= SNDLVL_180dB,
-    	sound 		= "GDC/200KGExplosion.wav"
+    	sound 		= "@GDC/200KGExplosion.wav"
 })
 sound.Add(
 {
@@ -455,6 +455,6 @@ sound.Add(
     	channel 	= CHAN_EXPLOSION,
     	volume 		= 1.0,
 	pitch		= 100,
-    	soundlevel 	= SNDLVL_160dB,
-    	sound 		= "GDC/200KGExplosion.wav"
+    	soundlevel 	= SNDLVL_180dB,
+    	sound 		= "@GDC/200KGExplosion.wav"
 })
