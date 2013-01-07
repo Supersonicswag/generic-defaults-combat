@@ -497,7 +497,7 @@ function EFFECT:Dirt()
  end
 
  function EFFECT:Metal()
-			WorldSound( "Bullet.Impact", self.Pos)
+			sound.Play( "Bullet.Impact", self.Pos)
 
 		for i=1,5 do 				// Blast flash
 		local Flash = self.Emitter:Add( "effects/muzzleflash"..math.random(1,4), self.Pos )
@@ -600,7 +600,7 @@ end
 
 
  function EFFECT:Smoke()
-				WorldSound( "Bullet.Impact", self.Pos)
+				sound.Play( "Bullet.Impact", self.Pos)
 
 		for i=1,5 do 				// Blast flash
 		local Flash = self.Emitter:Add( "effects/muzzleflash"..math.random(1,4), self.Pos )
