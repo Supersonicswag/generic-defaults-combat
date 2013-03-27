@@ -131,7 +131,7 @@ if !self.Guider:IsValid() then self.Guider = self.Entity end
 			effectdata:SetNormal(tr.HitNormal)			// Direction of Impact
 			effectdata:SetStart(self.flightvector:GetNormalized())	// Direction of Round
 			effectdata:SetEntity(self.Entity)			// Who done it?
-			effectdata:SetScale(4.5)				// Size of explosion
+			effectdata:SetScale(3.7)				// Size of explosion
 			effectdata:SetRadius(tr.MatType)			// Texture of Impact
 			effectdata:SetMagnitude(18)				// Length of explosion trails
 			util.Effect( "gdca_cinematicboom", effectdata )
@@ -166,7 +166,7 @@ if !self.Guider:IsValid() then self.Guider = self.Entity end
 	AddP = math.Clamp(math.AngleDifference(TangP, self.Entity:GetUp():Angle().p)*5,-0.5,1.0)
 	self.Entity:SetAngles((Angle(AddP,AddY,0) + ForwardAngle) + Angle(90,0,0) + Angle(math.Rand(-self.W,self.W),math.Rand(-self.W,self.W),math.Rand(-self.W,self.W)))
 	else
-	self.Entity:SetAngles(self.flightvector:Angle() + Angle(90,0,0) + (VectorRand()*self.W/5))
+	self.Entity:SetAngles(self.flightvector:Angle() + Angle(90,0,0) + Angle(math.Rand(-self.W,self.W)/8,math.Rand(-self.W,self.W)/8,math.Rand(-self.W,self.W)/8) )
 	end
 
 	self.flightvector = self.Entity:GetUp()*self.Accelerator

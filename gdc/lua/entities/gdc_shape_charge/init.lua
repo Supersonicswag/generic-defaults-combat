@@ -41,11 +41,14 @@ function ENT:Think()
 
         if self.infire then
 		local effectdata = EffectData()
-		effectdata:SetOrigin(self.Entity:GetPos())
-		effectdata:SetScale(2)			// Size of cloud
-		effectdata:SetRadius(2)			// Size of ring
-		effectdata:SetMagnitude(200)			// Size of flash
-		util.Effect( "gdca_airburst", effectdata )
+					local effectdata = EffectData()
+					effectdata:SetOrigin(self.Entity:GetPos())	// Position of Impact
+					effectdata:SetNormal(Vector(0,0,1))		// Direction of Impact
+					effectdata:SetStart(Vector(0,0,1))		// Direction of Round
+					effectdata:SetScale(1.6)			// Size of explosion
+					effectdata:SetRadius(1)				// Texture of Impact
+					effectdata:SetMagnitude(25)			// Length of explosion trails
+					util.Effect( "gdcw_nadeairburst", effectdata )
 		util.ScreenShake(self.Entity:GetPos(), 25, 5, 1, 2000 )
 			if GDCENGINE then	
 			gdc.gdcheat( self.Entity:GetPos(), self.Entity:GetUp(), 300, 800, 100, 2000, self.Entity)	

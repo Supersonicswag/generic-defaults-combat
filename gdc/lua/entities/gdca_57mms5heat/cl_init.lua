@@ -16,21 +16,23 @@
  end
  
  function ENT:Think()
-		pos = self:GetPos()
-		for i=1, (6) do
+	
+	pos = self:GetPos()
+		for i=0, (10) do
 			local particle = self.emitter:Add( "particle/smokesprites_000"..math.random(1,9), pos + (self:GetUp() * -100 * i))
 			if (particle) then
-			particle:SetVelocity((self:GetUp() * -1000)+VectorRand():GetNormalized()*math.Rand(50, 100) )
-			particle:SetDieTime( math.Rand( 2, 5 ) )
-			particle:SetStartAlpha( math.Rand( 50, 70 ) )
-			particle:SetEndAlpha( 0 )
-			particle:SetStartSize( math.Rand( 80, 90 ) )
-			particle:SetEndSize( math.Rand( 120, 150 ) )
-			particle:SetRoll( math.Rand(0, 360) )
-			particle:SetRollDelta( math.Rand(-1, 1) )
-			particle:SetColor( 200 , 200 , 200 ) 
- 			particle:SetAirResistance( 100 ) 
- 			particle:SetGravity( VectorRand():GetNormalized()*math.Rand(40, 70) ) 
+				particle:SetVelocity((self:GetUp() * -2000)+(VectorRand()* 100) )
+				particle:SetDieTime( math.Rand( 2, 5 ) )
+				particle:SetStartAlpha( math.Rand( 13, 15 ) )
+				particle:SetEndAlpha( 0 )
+				particle:SetStartSize( math.Rand( 30, 40 ) )
+				particle:SetEndSize( math.Rand( 130, 150 ) )
+				particle:SetRoll( math.Rand(0, 360) )
+				particle:SetRollDelta( math.Rand(-1, 1) )
+				particle:SetColor( 200 , 200 , 200 ) 
+ 				particle:SetAirResistance( 200 ) 
+ 				particle:SetGravity( Vector( 100, 0, 0 ) ) 	
 			end
+		
 		end
 end

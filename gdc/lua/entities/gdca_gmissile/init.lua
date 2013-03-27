@@ -105,7 +105,7 @@ if (self.Accelerator<self.AccelMax) then self.Accelerator = self.Accelerator+sel
 					effectdata:SetNormal(tr.HitNormal)			// Direction of Impact
 					effectdata:SetStart(self.flightvector:GetNormalized())	// Direction of Round
 					effectdata:SetEntity(self.Entity)			// Who done it?
-					effectdata:SetScale(3)					// Size of explosion
+					effectdata:SetScale(2.5)					// Size of explosion
 					effectdata:SetRadius(tr.MatType)			// Texture of Impact
 					effectdata:SetMagnitude(16)				// Length of explosion trails	
 					util.Effect( "gdca_cinematicboom", effectdata )
@@ -114,7 +114,7 @@ if (self.Accelerator<self.AccelMax) then self.Accelerator = self.Accelerator+sel
 
 
 			if GDCENGINE then	
-			local attack = gdc.gdcsplode( tr.HitPos, 300, 400, self.Entity)	// Position, Radius, Damage, Self		
+			local attack = gdc.gdcsplode( tr.HitPos, 300, 500, self.Entity)	// Position, Radius, Damage, Self		
 			end	
 			self.Entity:Remove() 
 			end

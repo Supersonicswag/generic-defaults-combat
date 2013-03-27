@@ -87,7 +87,7 @@ end
 					local effectdata = EffectData()
 					effectdata:SetOrigin(tr.HitPos)
 					effectdata:SetNormal(tr.HitNormal)
-					effectdata:SetScale(2.5)
+					effectdata:SetScale(2.3)
 					effectdata:SetRadius(3.0)
 					effectdata:SetMagnitude(20)
 

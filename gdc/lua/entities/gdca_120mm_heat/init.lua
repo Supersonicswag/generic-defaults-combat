@@ -82,7 +82,7 @@ function ENT:Think()
 					effectdata:SetNormal(tr.HitNormal)			// Direction of Impact
 					effectdata:SetStart(self.flightvector:GetNormalized())	// Direction of Round
 					effectdata:SetEntity(self.Entity)			// Who done it?
-					effectdata:SetScale(3.5)				// Size of explosion
+					effectdata:SetScale(3.2)				// Size of explosion
 					effectdata:SetRadius(tr.MatType)			// Texture of Impact
 					effectdata:SetMagnitude(18)				// Length of explosion trails	
 					util.Effect( "gdca_cinematicboom", effectdata )

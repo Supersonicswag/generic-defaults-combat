@@ -74,9 +74,9 @@ end
 					local effectdata = EffectData()
 					effectdata:SetOrigin(tr.HitPos)
 					effectdata:SetNormal(tr.HitNormal)
-					effectdata:SetScale(3)			// Size of cloud
+					effectdata:SetScale(2.7)		// Size of cloud
 					effectdata:SetRadius(3)			// Size of ring
-					effectdata:SetMagnitude(300)			// Size of flash
+					effectdata:SetMagnitude(300)		// Size of flash
 					util.Effect( "gdca_thermobaric", effectdata )
 					util.ScreenShake(tr.HitPos, 10, 5, 1, 3000 )
 					util.Decal("Scorch", tr.HitPos + tr.HitNormal, tr.HitPos - tr.HitNormal)

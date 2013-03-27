@@ -40,13 +40,15 @@ end
 function ENT:Think()
 
         if self.infire then			
-		local effectdata = EffectData()
-		effectdata:SetOrigin(self.Entity:GetPos())
-		effectdata:SetScale(3)			// Size of cloud
-		effectdata:SetRadius(3)			// Size of ring
-		effectdata:SetMagnitude(200)			// Size of flash
-		util.Effect( "gdca_airburst", effectdata )
-			WorldSound( "Explosion.Boom", self.Entity:GetPos())
+					local effectdata = EffectData()
+					effectdata:SetOrigin(self.Entity:GetPos())	// Position of Impact
+					effectdata:SetNormal(Vector(0,0,1))		// Direction of Impact
+					effectdata:SetStart(Vector(0,0,1))		// Direction of Round
+					effectdata:SetScale(2.0)			// Size of explosion
+					effectdata:SetRadius(1)				// Texture of Impact
+					effectdata:SetMagnitude(25)			// Length of explosion trails
+					util.Effect( "gdcw_nadeairburst", effectdata )
+			sound.Play( "Explosion.Boom", self.Entity:GetPos())
 		util.ScreenShake(self.Entity:GetPos(), 20, 5, 1, 3000 )
 			if GDCENGINE then	
 			local attack = gdc.gdcsplode( self.Entity:GetPos(), 600, 500, self.Entity)	// Position, Radius, Damage, Self		

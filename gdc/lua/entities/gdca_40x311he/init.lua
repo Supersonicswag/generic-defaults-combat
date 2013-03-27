@@ -62,11 +62,14 @@ end
 
 			if self.AirburstTime < CurTime() then
 			util.BlastDamage(self.Entity, self.Entity, self.Entity:GetPos(), 800, 100)
-			local effectdata = EffectData()
-			effectdata:SetOrigin(self.Entity:GetPos())
-			effectdata:SetScale(2)
-			effectdata:SetMagnitude(20)
-			util.Effect( "gdca_airburst", effectdata )
+					local effectdata = EffectData()
+					effectdata:SetOrigin(self.Entity:GetPos())	// Position of Impact
+					effectdata:SetNormal(Vector(0,0,1))		// Direction of Impact
+					effectdata:SetStart(Vector(0,0,1))		// Direction of Round
+					effectdata:SetScale(1.5)			// Size of explosion
+					effectdata:SetRadius(1)				// Texture of Impact
+					effectdata:SetMagnitude(15)			// Length of explosion trails
+					util.Effect( "gdcw_nadeairburst", effectdata )
 			if GDCENGINE then	
 			local attack = gdc.gdcsplode( self.Entity:GetPos(), 800, 130, self.Entity)	// Position, Radius, Damage, Self		
 			end	

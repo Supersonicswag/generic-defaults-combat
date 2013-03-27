@@ -18,36 +18,20 @@
  function ENT:Think()
 	
 	pos = self:GetPos()
-		for i=1, (5) do
+		for i=0, (10) do
 			local particle = self.emitter:Add( "particle/smokesprites_000"..math.random(1,9), pos + (self:GetUp() * -100 * i))
 			if (particle) then
-				particle:SetVelocity((self:GetUp() * -2000) )
-				particle:SetDieTime( math.Rand( 3, 7 ) )
-				particle:SetStartAlpha( math.Rand( 30, 40 ) )
+				particle:SetVelocity((self:GetUp() * -2000)+(VectorRand()* 100) )
+				particle:SetDieTime( math.Rand( 2, 5 ) )
+				particle:SetStartAlpha( math.Rand( 14, 18 ) )
 				particle:SetEndAlpha( 0 )
-				particle:SetStartSize( math.Rand( 40, 50 ) )
-				particle:SetEndSize( math.Rand( 150, 200 ) )
+				particle:SetStartSize( math.Rand( 30, 40 ) )
+				particle:SetEndSize( math.Rand( 140, 180 ) )
 				particle:SetRoll( math.Rand(0, 360) )
 				particle:SetRollDelta( math.Rand(-1, 1) )
-				particle:SetColor( 250 , 250 , 250 ) 
- 				particle:SetAirResistance( 100 ) 
- 				particle:SetGravity( VectorRand():GetNormalized()*math.Rand(50, 100) ) 
-			end
-
-			for i=1, 10 do
-				local particle = self.emitter:Add( "effects/fire_cloud1", pos + (self:GetUp() * -40 * i) )
-
-				particle:SetVelocity((self:GetUp() * -500) )
-				particle:SetDieTime( 0.06 )
-				particle:SetStartAlpha( 255 )
-				particle:SetEndAlpha( 0 )
-				particle:SetStartSize( 20 )
-				particle:SetEndSize( math.Rand( 25, 35 ) )
-				particle:SetRoll( math.Rand( -5, 5 ) )
-				particle:SetRollDelta( 0 )
-				particle:SetAirResistance(10)
-				particle:SetColor( 255,255,255 )
-
+				particle:SetColor( 200 , 200 , 200 ) 
+ 				particle:SetAirResistance( 200 ) 
+ 				particle:SetGravity( Vector( 100, 0, 0 ) ) 	
 			end
 		
 		end

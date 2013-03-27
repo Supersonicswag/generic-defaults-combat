@@ -77,7 +77,7 @@ end
 					effectdata:SetNormal(tr.HitNormal)			// Direction of Impact
 					effectdata:SetStart(self.flightvector:GetNormalized())	// Direction of Round
 					effectdata:SetEntity(self.Entity)			// Who done it?
-					effectdata:SetScale(6)				// Size of explosion
+					effectdata:SetScale(4.5)				// Size of explosion
 					effectdata:SetRadius(tr.MatType)			// Texture of Impact
 					effectdata:SetMagnitude(20)				// Length of explosion trails	
 					util.Effect( "gdca_cinematicboom", effectdata )

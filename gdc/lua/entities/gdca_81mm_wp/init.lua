@@ -59,7 +59,7 @@ end
 				local effectdata = EffectData()
 				effectdata:SetOrigin(tr.HitPos)
 				effectdata:SetNormal(tr.HitNormal)
-				effectdata:SetScale(3.5)
+				effectdata:SetScale(3.0)
 				effectdata:SetRadius(4.0)
 				effectdata:SetMagnitude(20)
 				util.Effect( "gdca_whitephosphorus", effectdata )

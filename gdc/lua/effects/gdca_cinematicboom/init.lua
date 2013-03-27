@@ -203,12 +203,12 @@ function EFFECT:Dirt()
 		Distort:SetColor(255,255,255)	
 		end
 
-		for i=1, 20*self.Scale do
+		for i=1, 25*self.Scale do
 		local Dust = self.Emitter:Add( "particle/particle_composite", self.Pos )	
 		if (Dust) then
 		Dust:SetVelocity( self.DirVec * math.random( 100,400)*self.Scale + ((VectorRand():GetNormalized()*300)*self.Scale) )
 		Dust:SetDieTime( math.Rand( 2 , 3 ) )
-		Dust:SetStartAlpha( 230 )
+		Dust:SetStartAlpha( 200 )
 		Dust:SetEndAlpha( 0 )
 		Dust:SetStartSize( (50*self.Scale) )
 		Dust:SetEndSize( (100*self.Scale) )
@@ -220,28 +220,12 @@ function EFFECT:Dirt()
 		end
 		end
 
-		for i=1, 15*self.Scale do
-		local Dust = self.Emitter:Add( "particle/smokesprites_000"..math.random(1,9), self.Pos )
-		if (Dust) then
-		Dust:SetVelocity( self.DirVec * math.random( 100,400)*self.Scale + ((VectorRand():GetNormalized()*400)*self.Scale) )
-		Dust:SetDieTime( math.Rand( 1 , 5 )*self.Scale )
-		Dust:SetStartAlpha( 50 )
-		Dust:SetEndAlpha( 0 )
-		Dust:SetStartSize( (80*self.Scale) )
-		Dust:SetEndSize( (100*self.Scale) )
-		Dust:SetRoll( math.Rand(150, 360) )
-		Dust:SetRollDelta( math.Rand(-1, 1) )			
-		Dust:SetAirResistance( 250 ) 			 
-		Dust:SetGravity( Vector( math.Rand( -200 , 200 ), math.Rand( -200 , 200 ), math.Rand( 10 , 100 ) ) )		
-		Dust:SetColor( 90,83,68 )
-		end
-		end
 
-		for i=1, 25*self.Scale do
+		for i=1, 30*self.Scale do
 		local Debris = self.Emitter:Add( "effects/fleck_cement"..math.random(1,2), self.Pos )
 		if (Debris) then
-		Debris:SetVelocity ( self.DirVec * math.random(0,500)*self.Scale + VectorRand():GetNormalized() * math.random(0,400)*self.Scale )
-		Debris:SetDieTime( math.random( 1, 2) * self.Scale )
+		Debris:SetVelocity ( self.DirVec * math.random(50,600)*self.Scale + VectorRand():GetNormalized() * math.random(50,600)*self.Scale )
+		Debris:SetDieTime( math.random( 2, 3) * self.Scale )
 		Debris:SetStartAlpha( 255 )
 		Debris:SetEndAlpha( 0 )
 		Debris:SetStartSize( math.random(5,10)*self.Scale)
@@ -253,17 +237,38 @@ function EFFECT:Dirt()
 		end
 		end
 
+				local Density = 20*self.Scale					/// This part is for the dust ring ///
+				local Angle = self.DirVec:Angle()
+				for i=0, Density do	
+				Angle:RotateAroundAxis(Angle:Forward(), (360/Density))
+				local ShootVector = Angle:Up()
+				local Smoke = self.Emitter:Add( "particle/smokesprites_000"..math.random(1,9), self.Pos )
+				if (Smoke) then
+				Smoke:SetVelocity( ShootVector * math.Rand(150,900)*self.Scale )
+				Smoke:SetDieTime( math.Rand( 0.3 , 3 )*self.Scale  )
+				Smoke:SetStartAlpha( math.Rand( 70, 100 ) )
+				Smoke:SetEndAlpha( 0 )
+				Smoke:SetStartSize( 30*self.Scale )
+				Smoke:SetEndSize( 60*self.Scale )
+				Smoke:SetRoll( math.Rand(0, 360) )
+				Smoke:SetRollDelta( math.Rand(-1, 1) )			
+				Smoke:SetAirResistance( 200 ) 			 
+				Smoke:SetGravity( Vector( math.Rand( -200 , 200 ), math.Rand( -200 , 200 ), math.Rand( 10 , 100 ) ) )			
+				Smoke:SetColor( 90,83,68 )
+				end	
+				end
+
 		local Angle = self.DirVec:Angle()
 		for i = 1, self.DebrizzlemyNizzle do 					/// This part makes the trailers ///
 		Angle:RotateAroundAxis(Angle:Forward(), (360/self.DebrizzlemyNizzle))
 		local DustRing = Angle:Up()
-		local RanVec = self.DirVec*math.Rand(2, 6) + (DustRing*math.Rand(1, 4))	
+		local RanVec = self.DirVec*math.Rand(2, 6) + (DustRing*math.Rand(1, 5))	
 
-			for k = 3, self.Particles do
+			for k = 4, self.Particles do
 			local Rcolor = math.random(-20,20)
 			local particle1 = self.Emitter:Add( "particle/smokesprites_000"..math.random(1,9), self.Pos )				
 			particle1:SetVelocity((VectorRand():GetNormalized()*math.Rand(1, 2) * self.Size) + (RanVec*self.Size*k*3.5))	
-			particle1:SetDieTime( math.Rand( 0.5, 4 )*self.Scale )	
+			particle1:SetDieTime( math.Rand( 0.3, 2 )*self.Scale )	
 			particle1:SetStartAlpha( math.Rand( 90, 100 ) )			
 			particle1:SetEndAlpha(0)	
 			particle1:SetGravity((VectorRand():GetNormalized()*math.Rand(5, 10)* self.Size) + Vector(0,0,-50))

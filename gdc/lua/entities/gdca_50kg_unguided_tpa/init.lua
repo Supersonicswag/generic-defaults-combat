@@ -13,7 +13,7 @@ self.Entity:PhysicsInit( SOLID_VPHYSICS )
 self.Entity:SetMoveType( MOVETYPE_NONE )
 self.Entity:SetSolid( SOLID_VPHYSICS )
 self.Entity:SetCollisionGroup(COLLISION_GROUP_WORLD)
-self.Entity:SetColor(200,200,200,255)
+self.Entity:SetMaterial("models/props_lab/door_klab01")
  
 end   
 

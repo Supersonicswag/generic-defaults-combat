@@ -88,8 +88,8 @@ function ENT:firetvgm()
 		TVMISSILE:Activate()
 		self.TVEnt 		= TVMISSILE
 		self.TVActive 		= 1
-		self.TVDirection	= TVMISSILE:GetForward()
-		self.TVPosition 	= TVMISSILE:GetPos()		
+		self.TVDirection	= TVMISSILE:GetUp()
+		self.TVPosition 	= TVMISSILE:GetPos() + TVMISSILE:GetUp()*400	
 
 		local effectdata = EffectData()
 		effectdata:SetOrigin(self.Entity:GetPos() +  self.Entity:GetUp() * 30)
@@ -113,8 +113,8 @@ function ENT:Think()
 	self.TVDirection = self.Entity:GetForward()
 	self.TVPosition = self.Entity:LocalToWorld(self.Entity:OBBCenter())
 	else			
-	self.TVDirection = self.TVEnt:GetForward()
-	self.TVPosition = self.TVEnt:LocalToWorld(self.TVEnt:OBBCenter())
+	self.TVDirection = self.TVEnt:GetUp()
+	self.TVPosition = self.TVEnt:LocalToWorld(self.TVEnt:OBBCenter()) + self.TVEnt:GetUp()*400
 	end
 
 	Wire_TriggerOutput(self.Entity, "TV Bomb", 	self.TVEnt)
