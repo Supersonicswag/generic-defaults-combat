@@ -10,7 +10,7 @@ function ENT:Initialize()
 	local CheckHo = ents.FindByClass( "gdc_57mm" )		
 	for _,t in pairs(CheckHo) do
 	if t.Entity:IsValid() and (t.Entity!=self.Entity) and (t.Entity:GetClass()=="gdc_57mm") then
-	if t:GetPos():Distance(self:GetPos())<500 then
+	if t:GetPos():Distance(self:GetPos())<200 then
 	self.Entity:Remove() 		print("Removed Extra 57mm")	
 	end
 	end

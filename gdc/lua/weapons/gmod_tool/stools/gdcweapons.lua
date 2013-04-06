@@ -55,6 +55,7 @@ if ( CLIENT ) then
 	language.Add( "Tool_gdcweapons_help26", "Anti Tank Guided Missile Launcher. Inputs control the trajectory of the missile. HEAT(23m)" )
 	language.Add( "Tool_gdcweapons_help27", "50kg Bomb. Use outputs for TV guidance (+-20 input angle). HE(35m)" )
 	language.Add( "Tool_gdcweapons_help28", "Oxidated flamethrower. 30 meter range, ~10 degree burn cone. 66 DPS per prop." )
+	language.Add( "Tool_gdcweapons_help29", "20 RPM, HE(6m),HE-T, 31500 Units/Second" )
 
 
 	language.Add( "Tool_turret_type", "Type of weapon" )
@@ -273,6 +274,13 @@ if (CLIENT) then return true end
 
 		elseif (gdcweaponsindex == 28) then
 	self.ent = ents.Create( "gdc_flamethrower" )
+	self.ent:SetPos( SpawnPos )
+	self.ent:SetAngles( trace.HitNormal:Angle() + Angle(90,0,0))
+	self.ent:Spawn()
+	self.ent:Activate()
+
+		elseif (gdcweaponsindex == 29) then
+	self.ent = ents.Create( "gdc_57mm" )
 	self.ent:SetPos( SpawnPos )
 	self.ent:SetAngles( trace.HitNormal:Angle() + Angle(90,0,0))
 	self.ent:Spawn()
@@ -514,6 +522,12 @@ if ( !trace.Hit ) then return end
 	self.ent:Spawn()
 	self.ent:Activate()
 
+		elseif (gdcweaponsindex == 29) then
+	self.ent = ents.Create( "gdc_57mm" )
+	self.ent:SetPos( SpawnPos )
+	self.ent:SetAngles( trace.HitNormal:Angle() + Angle(90,0,0))
+	self.ent:Spawn()
+	self.ent:Activate()
 
 	end
 
@@ -572,6 +586,7 @@ function TOOL.BuildCPanel( CPanel )
 		Ctype["Options"]["#ATGML"]			= { gdcweapons_gdcweaponsindex = "26" }
 		Ctype["Options"]["#50KG Bomb"]			= { gdcweapons_gdcweaponsindex = "27" }
 		Ctype["Options"]["#Flamer"]			= { gdcweapons_gdcweaponsindex = "28" }
+		Ctype["Options"]["#57mm Cannon"]		= { gdcweapons_gdcweaponsindex = "29" }
 
 	CPanel:AddControl("ComboBox", Ctype )
 	
