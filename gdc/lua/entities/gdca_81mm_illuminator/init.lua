@@ -16,7 +16,6 @@ self.Entity:SetGravity( 0.5 )
 self.Entity:PhysicsInit( SOLID_VPHYSICS )      -- Make us work with physics,  	
 self.Entity:SetMoveType( MOVETYPE_NONE )   --after all, gmod is a physics  	
 self.Entity:SetSolid( SOLID_VPHYSICS )        -- CHEESECAKE!    >:3           
-self.Entity:SetColor(255,255,0,255)
  
 end   
 

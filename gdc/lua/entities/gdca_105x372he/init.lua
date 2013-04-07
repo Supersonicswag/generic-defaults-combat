@@ -12,7 +12,6 @@ self.Entity:SetModel( "models/props_junk/garbage_plasticbottle003a.mdl" )
 self.Entity:PhysicsInit( SOLID_VPHYSICS )      -- Make us work with physics,  	
 self.Entity:SetMoveType( MOVETYPE_NONE )   --after all, gmod is a physics  	
 self.Entity:SetSolid( SOLID_NONE )        -- CHEESECAKE!    >:3           
-self.Entity:SetColor(50,50,50,255)
  
 end   
 

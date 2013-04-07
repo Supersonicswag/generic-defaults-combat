@@ -10,7 +10,6 @@ self.Entity:SetModel( "models/props_junk/garbage_glassbottle001a.mdl" )
 self.Entity:PhysicsInit( SOLID_VPHYSICS )      -- Make us work with physics,  	
 self.Entity:SetMoveType( MOVETYPE_NONE )   --after all, gmod is a physics  	
 self.Entity:SetSolid( SOLID_NONE )        -- CHEESECAKE!    >:3           
-self.Entity:SetColor(255,255,0,255)
 
 SmokeTrail = ents.Create("env_spritetrail")
 SmokeTrail:SetKeyValue("lifetime","1")
@@ -33,7 +32,7 @@ Glow:SetKeyValue("rendercolor", "250 200 150")
 Glow:SetKeyValue("framerate12", "20")
 Glow:SetKeyValue("model", "light_glow03.spr")
 Glow:SetKeyValue("scale", "2")
-Glow:SetKeyValue("GlowProxySize", "130")
+Glow:SetKeyValue("GlowProxySize", "50")
 Glow:SetParent(self.Entity)
 Glow:Spawn()
 Glow:Activate()

@@ -10,8 +10,6 @@ self.Entity:SetModel( "models/led2.mdl" )
 self.Entity:PhysicsInit( SOLID_VPHYSICS )      -- Make us work with physics,  	
 self.Entity:SetMoveType( MOVETYPE_NONE )   --after all, gmod is a physics  	
 self.Entity:SetSolid( SOLID_NONE )        -- CHEESECAKE!    >:3           
-self.Entity:SetColor(255,255,0,255)
-
 
 end   
 
@@ -47,7 +45,7 @@ end
 					return true
 					end
 
-					util.BlastDamage(self.Entity, self.Entity, tr.HitPos, 400, 100)
+					util.BlastDamage(self.Entity, self.Entity, tr.HitPos, 400, 130)
 					local effectdata = EffectData()
 					effectdata:SetOrigin(tr.HitPos)				// Position of Impact
 					effectdata:SetNormal(tr.HitNormal)			// Direction of Impact

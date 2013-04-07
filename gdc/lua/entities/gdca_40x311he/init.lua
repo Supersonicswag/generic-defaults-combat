@@ -13,7 +13,6 @@ self.Entity:SetModel( "models/led2.mdl" )
 self.Entity:PhysicsInit( SOLID_VPHYSICS )      -- Make us work with physics,  	
 self.Entity:SetMoveType( MOVETYPE_NONE )   --after all, gmod is a physics  	
 self.Entity:SetSolid( SOLID_NONE )        -- CHEESECAKE!    >:3           
-self.Entity:SetColor(255,255,0,255)
 
 Tracer = ents.Create("env_spritetrail")
 Tracer:SetKeyValue("lifetime","0.1")
@@ -45,7 +44,7 @@ Shine:SetKeyValue("rendercolor", "255 140 80")
 Shine:SetKeyValue("framerate12", "20")
 Shine:SetKeyValue("model", "light_glow03.spr")
 Shine:SetKeyValue("scale", "0.8")
-Shine:SetKeyValue("GlowProxySize", "130")
+Shine:SetKeyValue("GlowProxySize", "50")
 Shine:SetParent(self.Entity)
 Shine:Spawn()
 Shine:Activate()
@@ -71,7 +70,7 @@ end
 					effectdata:SetMagnitude(15)			// Length of explosion trails
 					util.Effect( "gdcw_nadeairburst", effectdata )
 			if GDCENGINE then	
-			local attack = gdc.gdcsplode( self.Entity:GetPos(), 800, 130, self.Entity)	// Position, Radius, Damage, Self		
+			local attack = gdc.gdcsplode( self.Entity:GetPos(), 600, 200, self.Entity)	// Position, Radius, Damage, Self		
 			end	
 			self.Entity:Remove()	end
 

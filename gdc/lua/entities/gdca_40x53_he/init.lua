@@ -67,7 +67,7 @@ end
 					util.ScreenShake(tr.HitPos, 10, 5, 1, 1000 )
 					util.Decal("Scorch", tr.HitPos + tr.HitNormal, tr.HitPos - tr.HitNormal)
 			if GDCENGINE then	
-			local attack = gdc.gdcsplode( tr.HitPos, 200, 100, self.Entity)	// Position, Radius, Damage, Self		
+			local attack = gdc.gdcsplode( tr.HitPos, 200, 150, self.Entity)	// Position, Radius, Damage, Self		
 			end	
 					self.Entity:Remove()
 					end

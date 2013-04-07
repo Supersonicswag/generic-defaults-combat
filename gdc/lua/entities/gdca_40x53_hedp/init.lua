@@ -69,7 +69,7 @@ function ENT:Think()
 					util.Decal("Scorch", tr.HitPos + tr.HitNormal, tr.HitPos - tr.HitNormal)
 
 			if GDCENGINE then
-			gdc.gdcheat( tr.HitPos+(tr.HitNormal*5), self.Entity:GetUp(), 200, 200, 100, 200, self.Entity)	
+			gdc.gdcheat( tr.HitPos+(tr.HitNormal*5), self.Entity:GetUp(), 200, 200, 100, 300, self.Entity)	
 			//position, direction, sphereradius, spheredamage, coneradius, conedamage, shell)	
 			end	
 
