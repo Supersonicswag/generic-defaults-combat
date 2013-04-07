@@ -61,7 +61,7 @@ end
 function ENT:firehe()
 
 		local ent = ents.Create( "gdca_57x438_he" )
-		ent:SetPos( self.Entity:GetPos() +  self.Entity:GetUp() * 100)
+		ent:SetPos( self.Entity:GetPos() +  self.Entity:GetUp() * 130)
 		ent:SetAngles( self.Entity:GetAngles() )
 		ent:Spawn()
 		ent:Activate()
@@ -70,7 +70,7 @@ function ENT:firehe()
 		
 		local phys = self.Entity:GetPhysicsObject()  	
 		if (phys:IsValid()) then  		
-			phys:ApplyForceCenter( self.Entity:GetUp() * -120000 ) 
+			phys:ApplyForceCenter( self.Entity:GetUp() * -4000 ) 
 		end 
 		
 		local effectdata = EffectData()
@@ -81,8 +81,8 @@ function ENT:firehe()
 		effectdata:SetMagnitude(self.Velo:Length())
 		effectdata:SetAngles(self.Velo:Angle())
 		util.Effect( "gdca_cannonmuzzle", effectdata )
-		util.ScreenShake(self.Entity:GetPos(), 90, 5, 0.3, 1050 )
-		self.Entity:EmitSound( "M101.Emit" )
+		util.ScreenShake(self.Entity:GetPos(), 90, 5, 0.2, 600 )
+		self.Entity:EmitSound( "57mm.Emit" )
 		self.ammos = self.ammos-1
 	
 
@@ -91,7 +91,7 @@ end
 function ENT:firehet()
 
 	local ent = ents.Create( "gdca_57x438_het" )
-		ent:SetPos( self.Entity:GetPos() +  self.Entity:GetUp() * 150)
+		ent:SetPos( self.Entity:GetPos() +  self.Entity:GetUp() * 130)
 		ent:SetAngles( self.Entity:GetAngles() )
 		ent:Spawn()
 		ent:Activate()
@@ -100,7 +100,7 @@ function ENT:firehet()
 		
 		local phys = self.Entity:GetPhysicsObject()  	
 		if (phys:IsValid()) then  		
-			phys:ApplyForceCenter( self.Entity:GetUp() * -120000 ) 
+			phys:ApplyForceCenter( self.Entity:GetUp() * -4000 ) 
 		end 
 		
 		local effectdata = EffectData()
@@ -111,8 +111,8 @@ function ENT:firehet()
 		effectdata:SetMagnitude(self.Velo:Length())
 		effectdata:SetAngles(self.Velo:Angle())
 		util.Effect( "gdca_cannonmuzzle", effectdata )
-		util.ScreenShake(self.Entity:GetPos(), 90, 5, 0.3, 1050 )
-		self.Entity:EmitSound( "M101.Emit" )
+		util.ScreenShake(self.Entity:GetPos(), 90, 5, 0.2, 600 )
+		self.Entity:EmitSound( "57mm.Emit" )
 		self.ammos = self.ammos-1
 	
 

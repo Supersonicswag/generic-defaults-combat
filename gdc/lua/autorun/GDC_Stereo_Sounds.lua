@@ -253,6 +253,24 @@ sound.Add(
 })
 sound.Add(
 {
+    	name 		= "57mm.Emit",
+    	channel 	= CHAN_WEAPON,
+    	volume 		= 1.0,
+	pitch		= 100,
+    	soundlevel 	= SNDLVL_160dB,
+    	sound 		= ")GDC/57mmEmit.wav"
+})
+sound.Add(
+{
+    	name 		= "57mm.Split",
+    	channel 	= CHAN_WEAPON,
+    	volume 		= 1.0,
+	pitch		= 100,
+    	soundlevel 	= SNDLVL_160dB,
+    	sound 		= "^GDC/57mmSplit.wav"
+})
+sound.Add(
+{
     	name 		= "RocketPod.Emit",
     	channel 	= CHAN_WEAPON,
     	volume 		= 1.0,
