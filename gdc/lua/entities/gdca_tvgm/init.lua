@@ -18,8 +18,7 @@ self.Entity:PhysicsInit( SOLID_VPHYSICS )
 self.Entity:SetMoveType( MOVETYPE_NONE )
 self.Entity:SetSolid( SOLID_VPHYSICS )
 self.Entity:SetCollisionGroup(COLLISION_GROUP_WORLD)
-self.Entity:SetColor(200,200,200,255)
-self.Sound = CreateSound( self.Entity, Sound( "weapons/rpg/rocket1.wav" ) ) 
+self.Sound = CreateSound( self.Entity, Sound( "Phx.Turbine" ) ) 
 self.Sound:Play()
 
 Glow = ents.Create("env_sprite")
@@ -48,6 +47,9 @@ Shine:Activate()
 
 self:Think()
 end   
+function ENT:OnRemove()
+	self.Sound:Stop()
+end
 
  function ENT:Think()
 

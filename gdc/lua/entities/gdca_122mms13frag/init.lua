@@ -10,7 +10,8 @@ self.Entity:SetModel( "models/props_junk/garbage_glassbottle001a.mdl" )
 self.Entity:PhysicsInit( SOLID_VPHYSICS )      -- Make us work with physics,  	
 self.Entity:SetMoveType( MOVETYPE_NONE )   --after all, gmod is a physics  	
 self.Entity:SetSolid( SOLID_NONE )        -- CHEESECAKE!    >:3           
-self.Entity:SetColor(255,255,0,255)
+self.Sound = CreateSound( self.Entity, Sound( "Phx.Turbine" ) ) 
+self.Sound:Play()
 
 SmokeTrail = ents.Create("env_spritetrail")
 SmokeTrail:SetKeyValue("lifetime","1")
@@ -40,7 +41,9 @@ Glow:Activate()
 
 
 end   
-
+function ENT:OnRemove()
+	self.Sound:Stop()
+end
  function ENT:Think()
 
 		if self.timeleft < CurTime() then

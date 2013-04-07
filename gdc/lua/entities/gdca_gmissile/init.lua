@@ -25,7 +25,7 @@ self.Entity:SetModel( "models/props_c17/canister01a.mdl" )
 self.Entity:PhysicsInit( SOLID_VPHYSICS )      -- Make us work with physics,  	
 self.Entity:SetMoveType( MOVETYPE_NONE )   --after all, gmod is a physics  	
 self.Entity:SetSolid( SOLID_NONE )        -- CHEESECAKE!    >:3 
-self.Sound = CreateSound( self.Entity, Sound( "weapons/rpg/rocket1.wav" ) ) 
+self.Sound = CreateSound( self.Entity, Sound( "Phx.HoverHeavy" ) ) //Phx.Turbine weapons/rpg/rocket1.wav
 self.Sound:Play()
 self.Target = self.Entity    
 self.Flared = false

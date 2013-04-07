@@ -1,5 +1,5 @@
 TOOL.Category		= "GDC"
-TOOL.Name		= "#tool.gdc_tool.name"
+TOOL.Name		= "#Generic Defaults Combat"
 TOOL.Command		= nil
 TOOL.ConfigName		= ""
 
