@@ -1,5 +1,5 @@
 TOOL.Category		= "GDC"
-TOOL.Name		= "#Generic Defaults Combat"
+TOOL.Name		= "#tool.gdc_tool.name"
 TOOL.Command		= nil
 TOOL.ConfigName		= ""
 
@@ -7,9 +7,9 @@ TOOL.ClientConVar[ "gdcweaponsindex" ] = "0"
 TOOL.ent = {}
 
 if CLIENT then
-	language.Add( "Tool.weight.name", "Generic Defaults Combat" )
-	language.Add( "Tool.weight.desc", "Puts weapons on stuff" )
-	language.Add( "Tool.weight.0", "Left click to spawn and weld a weapon. Right click to spawn one unwelded. R for weapon statistics. DPS = Damage Per Second (AP Ammo only)." )
+	language.Add( "tool.gdcweapons.name", "Generic Defaults Combat" )
+	language.Add( "Tool.gdcweapons.desc", "Puts weapons on stuff" )
+	language.Add( "Tool.gdcweapons.0", "Left click to spawn and weld a weapon. Right click to spawn one unwelded. R for weapon statistics. DPS = Damage Per Second (AP Ammo only)." )
 end
 
 cleanup.Register( "gdcweapons" )
