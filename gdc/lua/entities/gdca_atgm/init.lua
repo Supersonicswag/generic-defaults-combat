@@ -19,13 +19,13 @@ function ENT:Initialize()
 
 self.Target 		= self.Guider:GetVar("Target",Vector)		//print(tostring(self.Target))
 
-if self.Guider.Wobbliness!=1 		then
+if self.Guider.Wobbliness!=0.5 		then
 self.W = self.Guider.Wobbliness 	else
-self.W = 1 				end
+self.W = 0.5 				end
 
-if self.Guider.Zmod!=0.25 		then
+if self.Guider.Zmod!=0.0 		then
 self.Zmod = self.Guider.Zmod 		else
-self.Zmod = 0.25 			end
+self.Zmod = 0.0 			end
 
 if self.Guider.DistanceCutoff 				then
 self.DistanceCutoff = self.Guider.DistanceCutoff 	else

@@ -14,8 +14,8 @@ function ENT:Initialize()
 	self.reloadtime = 0
 	self.InFire = false
 	self.InFire2 = false
-	self.Wobbliness 	= 1
-	self.Zmod 		= 0.25
+	self.Wobbliness 	= 0.5
+	self.Zmod 		= 0.0
 	self.DistanceCutoff 	= 5000
 
 	self.TVEnt 		= self.Entity
@@ -167,7 +167,7 @@ function ENT:TriggerInput(k, v)
 	end
 
 	if (k == "Z Modulation") then
-	self.Zmod = v else self.Zmod = 0.25
+	self.Zmod = v else self.Zmod = 0.0
 	end
 
 
