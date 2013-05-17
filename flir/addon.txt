@@ -1,0 +1,9 @@
+"AddonInfo"
+{
+	"name"			"FLIR"
+	"version"		"2"
+	"author_name"		"Generic Default"
+	"author_url"		"Nope"
+	"info"			"FLIR Infrared."	
+	"override"		"0"
+}
