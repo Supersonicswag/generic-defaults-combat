@@ -13,35 +13,13 @@ function ENT:Initialize()
 	end
 	end
 
-self.flightvector = self.Entity:GetUp() * 300
+self.flightvector = self.Entity:GetUp() * 400
 self.timeleft = CurTime() + 5
-self.Entity:SetModel( "models/props_junk/garbage_glassbottle001a.mdl" ) 	
+self.Entity:SetModel( "models/props_junk/garbage_plasticbottle003a.mdl" ) 	
 self.Entity:PhysicsInit( SOLID_VPHYSICS )      -- Make us work with physics,  	
 self.Entity:SetMoveType( MOVETYPE_NONE )   --after all, gmod is a physics  	
 self.Entity:SetSolid( SOLID_VPHYSICS )        -- CHEESECAKE!    >:3         
 
-Glow = ents.Create("env_sprite")
-Glow:SetKeyValue("model","orangecore2.vmt")
-Glow:SetKeyValue("rendercolor","255 200 150")
-Glow:SetKeyValue("scale","0.3")
-Glow:SetPos(self.Entity:GetPos())
-Glow:SetParent(self.Entity)
-Glow:Spawn()
-Glow:Activate()
-
-Shine = ents.Create("env_sprite")
-Shine:SetPos(self.Entity:GetPos())
-Shine:SetKeyValue("renderfx", "0")
-Shine:SetKeyValue("rendermode", "5")
-Shine:SetKeyValue("renderamt", "255")
-Shine:SetKeyValue("rendercolor", "255 140 80")
-Shine:SetKeyValue("framerate12", "20")
-Shine:SetKeyValue("model", "light_glow03.spr")
-Shine:SetKeyValue("scale", "0.3")
-Shine:SetKeyValue("GlowProxySize", "50")
-Shine:SetParent(self.Entity)
-Shine:Spawn()
-Shine:Activate()
 
 self:Think()
 end   

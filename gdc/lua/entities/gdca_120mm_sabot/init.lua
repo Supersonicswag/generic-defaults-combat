@@ -36,7 +36,7 @@ function ENT:Initialize()
 	end
 
 self.Penetrate 		= 50					// How deep Generic Default goes (in yo mama)
-self.Flightvector 	= self.Entity:GetUp()*550		// Velocity in inches/sec
+self.Flightvector 	= self.Entity:GetUp()*750		// Velocity in inches/sec
 self.Timeleft 		= CurTime() + 5				// How long before auto-remove?
 self.Impacted 		= false					// Important for flight continuation, see line 152
 self.EffectSize		= 3					// How much stuff gets kicked up on impact
@@ -52,26 +52,11 @@ self.Entity:SetSolid( SOLID_VPHYSICS )
 Glow = ents.Create("env_sprite")
 Glow:SetKeyValue("model","orangecore2.vmt")
 Glow:SetKeyValue("rendercolor","255 200 150")
-Glow:SetKeyValue("scale","0.3")
+Glow:SetKeyValue("scale","0.2")
 Glow:SetPos(self.Entity:GetPos())
 Glow:SetParent(self.Entity)
 Glow:Spawn()
 Glow:Activate()
-
-
-Shine = ents.Create("env_sprite")
-Shine:SetPos(self.Entity:GetPos())
-Shine:SetKeyValue("renderfx", "0")
-Shine:SetKeyValue("rendermode", "5")
-Shine:SetKeyValue("renderamt", "255")
-Shine:SetKeyValue("rendercolor", "255 140 80")
-Shine:SetKeyValue("framerate12", "20")
-Shine:SetKeyValue("model", "light_glow03.spr")
-Shine:SetKeyValue("scale", "0.3")
-Shine:SetKeyValue("GlowProxySize", "50")
-Shine:SetParent(self.Entity)
-Shine:Spawn()
-Shine:Activate()
 
 self:Think()
 end   

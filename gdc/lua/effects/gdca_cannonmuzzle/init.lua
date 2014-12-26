@@ -29,11 +29,11 @@ function EFFECT:Init( data )
 		Heatwave:SetAirResistance(0)
 
 
-		for i=0, 20*self.Scale do
+		for i=0, 15*self.Scale do
 		local Smoke = self.Emitter:Add( "particle/smokestack", self.Origin )
 		if (Smoke) then
 		Smoke:SetVelocity( self.DirVec * math.random( 100,1000*self.Scale) + (VectorRand()*200*self.Scale) + self.Velo)
-		Smoke:SetDieTime( math.Rand( 0.5 , 4 )*self.Scale )
+		Smoke:SetDieTime( math.Rand( 0.15 , 2 )*self.Scale )
 		Smoke:SetStartAlpha( math.Rand( 70, 100 ) )
 		Smoke:SetEndAlpha( 0 )
 		Smoke:SetStartSize( 40*self.Scale )
@@ -42,7 +42,7 @@ function EFFECT:Init( data )
 		Smoke:SetRollDelta( math.Rand(-2, 2) )			
 		Smoke:SetAirResistance( 200 ) 			 
 		Smoke:SetGravity( Vector( 0, 0, math.Rand(0, 100) ) ) 			
-		Smoke:SetColor( 50,50,50 )
+		Smoke:SetColor( 70,70,70 )
 		end
 		end
 	
