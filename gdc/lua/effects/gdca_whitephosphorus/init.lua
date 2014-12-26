@@ -23,18 +23,18 @@
 		
 
 		for i=0, 20*self.Scale do
-		local Smoke = self.Emitter:Add( "particles/smokey", self.Origin )
+		local Smoke = self.Emitter:Add( "particle/smokesprites_000"..math.random(1,9), self.Origin )
 		if (Smoke) then
 		Smoke:SetVelocity( self.DirVec * math.random( 200,700*self.Scale) + VectorRand():GetNormalized()*250*self.Scale )
-		Smoke:SetDieTime( math.Rand( 13 , 20 ) )
-		Smoke:SetStartAlpha( math.Rand( 60, 80 ) )
+		Smoke:SetDieTime( math.Rand( 4 , 13 ) )
+		Smoke:SetStartAlpha( math.Rand( 50, 60 ) )
 		Smoke:SetEndAlpha( 0 )
 		Smoke:SetStartSize( 50*self.Scale )
-		Smoke:SetEndSize( 90*self.Scale )
+		Smoke:SetEndSize( 250*self.Scale )
 		Smoke:SetRoll( math.Rand(0, 360) )
 		Smoke:SetRollDelta( math.Rand(-1, 1) )			
 		Smoke:SetAirResistance( 200 ) 			 
-		Smoke:SetGravity( (Vector(math.Rand(-300,300),math.Rand(-300,300),0):GetNormalized()*math.Rand(50, 300)) + Vector(0,0,math.Rand(-100, -200)) ) 			
+		Smoke:SetGravity( (Vector(math.Rand(-100,100),math.Rand(-100,100),0):GetNormalized()*math.Rand(20, 100)) + Vector(0,0,math.Rand(-100, -200)) ) 			
 		Smoke:SetColor( 255,255,255 )
 		end
 		end
@@ -54,25 +54,25 @@
 		end
 
 
-		local Density = 20*self.Radius
+		local Density = 60*self.Radius
 		local Angle = self.DirVec:Angle()	
 		for i=0, Density do	
 			
 		Angle:RotateAroundAxis(Angle:Forward(), (360/Density))
 		local ShootVector = Angle:Up()
-		local Smoke = self.Emitter:Add( "particles/smokey", self.Origin+self.DirVec*100 )	//"particle/smokestack"
-
+		local Smoke = self.Emitter:Add( "particle/smokesprites_000"..math.random(1,9), self.Origin+self.DirVec*30 )	//"particles/smokey"
+													//"particle/smokestack"
 		if (Smoke) then
-		Smoke:SetVelocity( ShootVector * math.Rand(10,500*self.Radius) )
-		Smoke:SetDieTime( math.Rand( 10 , 20 ) )
-		Smoke:SetStartAlpha( math.Rand( 60, 80 ) )
+		Smoke:SetVelocity( ShootVector * math.Rand(200,800*self.Radius) )
+		Smoke:SetDieTime( math.Rand( 5 , 20 ) )
+		Smoke:SetStartAlpha( math.Rand( 15, 20 ) )
 		Smoke:SetEndAlpha( 0 )
 		Smoke:SetStartSize( 40*self.Scale )
-		Smoke:SetEndSize( 70*self.Radius )
+		Smoke:SetEndSize( 120*self.Radius )
 		Smoke:SetRoll( math.Rand(0, 360) )
 		Smoke:SetRollDelta( math.Rand(-1, 1) )			
 		Smoke:SetAirResistance( 200 ) 			 
-		Smoke:SetGravity( Vector(math.Rand(-300,300),math.Rand(-300,300),0):GetNormalized() * math.Rand(50, 300) )			
+		Smoke:SetGravity( Vector(math.Rand(-300,300),math.Rand(-300,300),0):GetNormalized() * math.Rand(30, 70) )			
 		Smoke:SetColor( 255,255,255 )
 		end	
 		end
@@ -87,7 +87,7 @@
 		local particle1 = self.Emitter:Add( "particle/smokesprites_000"..math.random(1,9), self.Pos )				
 		particle1:SetVelocity((VectorRand():GetNormalized()*math.Rand(1, 2) * self.Size) + (RanVec*self.Size*k*3.5))	
 		particle1:SetDieTime( math.Rand( 0.5, 4 )*self.Scale )	
-		particle1:SetStartAlpha( math.Rand( 90, 100 ) )			
+		particle1:SetStartAlpha( math.Rand( 70, 80 ) )			
 		particle1:SetEndAlpha(0)	
 		particle1:SetGravity((VectorRand():GetNormalized()*math.Rand(5, 10)* self.Size) + Vector(0,0,-50))
 		particle1:SetAirResistance( 200+self.Scale*20 ) 		

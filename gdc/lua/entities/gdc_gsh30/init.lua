@@ -1,7 +1,7 @@
-AddCSLuaFile( "cl_init.lua" )
-AddCSLuaFile( "shared.lua" )
-include('entities/base_wire_entity/init.lua'); 
-include('shared.lua')
+
+AddCSLuaFile()
+DEFINE_BASECLASS( "base_wire_entity" )
+ENT.RenderGroup		= RENDERGROUP_BOTH
 
 // READ ME!
 

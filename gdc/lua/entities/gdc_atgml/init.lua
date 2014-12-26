@@ -1,9 +1,6 @@
-
-AddCSLuaFile( "cl_init.lua" )
-AddCSLuaFile( "shared.lua" )
-
-include('entities/base_wire_entity/init.lua'); 
-include('shared.lua')
+AddCSLuaFile()
+DEFINE_BASECLASS( "base_wire_entity" )
+ENT.RenderGroup		= RENDERGROUP_BOTH
 
 function ENT:Initialize()   
 
@@ -114,7 +111,7 @@ function ENT:Think()
 	self.TVPosition = self.Entity:LocalToWorld(self.Entity:OBBCenter())
 	else			
 	self.TVDirection = self.TVEnt:GetUp()
-	self.TVPosition = self.TVEnt:LocalToWorld(self.TVEnt:OBBCenter()) + self.TVEnt:GetUp()*400
+	self.TVPosition = self.TVEnt:LocalToWorld(self.TVEnt:OBBCenter()) + self.TVEnt:GetUp()*600
 	end
 
 	Wire_TriggerOutput(self.Entity, "TV Bomb", 	self.TVEnt)

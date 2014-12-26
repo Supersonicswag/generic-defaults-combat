@@ -1,7 +1,7 @@
-AddCSLuaFile( "cl_init.lua" )
-AddCSLuaFile( "shared.lua" )
-include('entities/base_wire_entity/init.lua');
-include('shared.lua')
+
+AddCSLuaFile()
+DEFINE_BASECLASS( "base_wire_entity" )
+ENT.RenderGroup		= RENDERGROUP_BOTH
 
 function ENT:Initialize()
 		
@@ -56,7 +56,9 @@ function ENT:Think()
 	self.Sound:ChangePitch( 100-(self.Heat/1.75),0.133 )
 
 	local EIS = ents.FindInCone(self:GetPos()+self.Entity:GetUp()*30, self.Entity:GetUp(), self.Range, 10)
-		for _,t in pairs(EIS) do	if t.Entity:IsValid() and t.Entity:GetPhysicsObject():IsValid() then
+		for _,t in pairs(EIS) do	if t:IsValid() then
+//		for _,t in pairs(EIS) do	if t:IsValid() and t:GetPhysicsObject():IsValid() then
+
 		if self:GetUp():DotProduct((t:GetPos() - self:GetPos()):GetNormalized())>0.993 then
 
 

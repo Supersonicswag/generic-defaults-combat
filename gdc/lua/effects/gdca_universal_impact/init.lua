@@ -139,7 +139,7 @@ end
 		Smoke:SetRollDelta( math.Rand(-2, 2) )			
 		Smoke:SetAirResistance( 300 ) 			 
 		Smoke:SetGravity( Vector( math.Rand(-70, 70) * self.Scale, math.Rand(-70, 70) * self.Scale, math.Rand(0, -100) ) ) 			
-		Smoke:SetColor( 90,83,68 )
+		Smoke:SetColor( 135,124,102 )
 		end
 	end
 
@@ -156,7 +156,7 @@ end
 		Smoke:SetRollDelta( math.Rand(-2, 2) )			
 		Smoke:SetAirResistance( 400 ) 			 
 		Smoke:SetGravity( Vector( math.Rand(-50, 50) * self.Scale, math.Rand(-50, 50) * self.Scale, math.Rand(0, -100) ) ) 			
-		Smoke:SetColor( 90,83,68 )
+		Smoke:SetColor( 135,124,102 )
 		end
 	end
 

@@ -67,28 +67,37 @@ function ENT:Think()
 					return true
 					end
 
-					util.BlastDamage(self.Entity, self.Entity, tr.HitPos, 350, 40)
+				for k, v in pairs ( ents.FindInSphere( tr.HitPos, 90 ) ) do		// Find anything within ~50 feet
+				if v:IsPlayer() || v:IsNPC() then					// If its alive then
+				local trace = {}						// Make sure there's not a wall in between
+				trace.start = tr.HitPos+tr.HitNormal*30
+				trace.endpos = v:GetPos() + Vector(0,0,30)			// Trace to the torso
+				trace.filter = self.Entity
+				local wp = util.TraceLine( trace )				// If the trace hits a living thing then
+				if wp.Entity:IsPlayer() || wp.Entity:IsNPC() then v:Ignite( 3, 100 ) end end	// Fry it for 5 seconds
+				end	
+
+					util.BlastDamage(self.Entity, self.Entity, tr.HitPos, 260, 30)
 					local effectdata = EffectData()
-					effectdata:SetOrigin(tr.HitPos)				// Position of Impact
-					effectdata:SetNormal(tr.HitNormal)			// Direction of Impact
-					effectdata:SetStart(self.flightvector:GetNormalized())	// Direction of Round
-					effectdata:SetEntity(self.Entity)			// Who done it?
-					effectdata:SetScale(1.2)				// Size of explosion
-					effectdata:SetRadius(tr.MatType)			// Texture of Impact
-					effectdata:SetMagnitude(15)				// Length of explosion trails	
-					util.Effect( "gdca_cinematicboom", effectdata )
-					util.ScreenShake(tr.HitPos, 10, 5, 0.5, 1000 )
+					effectdata:SetOrigin(tr.HitPos)
+					effectdata:SetNormal(tr.HitNormal)
+					effectdata:SetScale(0.8)
+					effectdata:SetRadius(0.8)
+					effectdata:SetMagnitude(15)
+
+					util.Effect( "gdca_whitephosphorus", effectdata )
+					util.ScreenShake(tr.HitPos, 10, 5, 1, 800 )
 					util.Decal("Scorch", tr.HitPos + tr.HitNormal, tr.HitPos - tr.HitNormal)
 
 			if GDCENGINE then	
-			local attack = gdc.gdcsplode( tr.HitPos, 140, 80, self.Entity)	// Position, Radius, Damage, Self		
+			local attack = gdc.gdcsplode( tr.HitPos, 100, 20, self.Entity)	// Position, Radius, Damage, Self		
 			end	
 
 					self.Entity:Remove()
 					end
 
 	self.Entity:SetPos(self.Entity:GetPos() + self.flightvector)
-	self.flightvector = self.flightvector- self.flightvector/300 + Vector(math.Rand(-0.3,0.3), math.Rand(-0.3,0.3),math.Rand(-0.3,0.3)) + Vector(0,0,-0.2)
+	self.flightvector = self.flightvector- self.flightvector/300 + Vector(math.Rand(-0.4,0.4), math.Rand(-0.4,0.4),math.Rand(-0.3,0.3)) + Vector(0,0,-0.2)
 	self.Entity:SetAngles(self.flightvector:Angle() + Angle(90,0,0))
 	self.Entity:NextThink( CurTime() )
 	return true

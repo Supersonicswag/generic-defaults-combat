@@ -1,9 +1,7 @@
 
-AddCSLuaFile( "cl_init.lua" )
-AddCSLuaFile( "shared.lua" )
-
-include('entities/base_wire_entity/init.lua'); 
-include('shared.lua')
+AddCSLuaFile()
+DEFINE_BASECLASS( "base_wire_entity" )
+ENT.RenderGroup		= RENDERGROUP_BOTH
 
 util.PrecacheSound("arty/artyfire.wav")
 
@@ -24,6 +22,8 @@ function ENT:Initialize()
 	self.reloadtime = 0
 	self.infire = false
 	self.infire2 = false
+	self.infire3 = false
+	self.infire4 = false
 	self.Velo = Vector(0,0,0)
 	self.Pos2 = self.Entity:GetPos()
 	self.Entity:SetModel( "models/props_lab/pipesystem01b.mdl" ) 	
@@ -38,7 +38,7 @@ function ENT:Initialize()
 		phys:Wake() 
 	end 
  
-	self.Inputs = Wire_CreateInputs( self.Entity, { "Fire HE", "Fire HEDP", "Fire Marker" } )
+	self.Inputs = Wire_CreateInputs( self.Entity, { "Fire HE", "Fire HEDP", "Fire Marker", "Fire WP" } )
 	self.Outputs = Wire_CreateOutputs( self.Entity, { "Can Fire"})
 end   
 
@@ -143,6 +143,35 @@ function ENT:firemarker()
 
 end
 
+function ENT:firewp()
+
+		local ent = ents.Create( "gdca_40x53_wp" )
+		ent:SetPos( self.Entity:GetPos() +  self.Entity:GetUp() * 100)
+		ent:SetAngles( self.Entity:GetAngles() )
+		ent:Spawn()
+		ent:Activate()
+		self.armed = false
+		
+		local phys = self.Entity:GetPhysicsObject()  	
+		if (phys:IsValid()) then  		
+		phys:ApplyForceCenter( self.Entity:GetUp() * -10000 ) 
+		end 
+		
+		local effectdata = EffectData()
+		effectdata:SetOrigin(self.Entity:GetPos() +  self.Entity:GetUp() * 30)
+		effectdata:SetNormal(self:GetUp())
+		effectdata:SetScale(0.5)
+		effectdata:SetRadius(1)
+		effectdata:SetMagnitude(self.Velo:Length())
+		effectdata:SetAngles(self.Velo:Angle())
+		util.Effect( "gdca_cannonmuzzle", effectdata )
+		util.ScreenShake(self.Entity:GetPos(), 20, 5, 0.2, 200 )
+		self.Entity:EmitSound( "MK19.Emit" )
+		self.ammos = self.ammos-1
+	
+
+end
+
 function ENT:Think()
 	self.Velo = (self.Entity:GetPos()-self.Pos2)*4.54
 	self.Pos2 = self.Entity:GetPos()
@@ -176,6 +205,11 @@ function ENT:Think()
 	end
 	end
 
+	if self.inFire4 and !self.inFire then
+	if (self.reloadtime < CurTime()) then
+	self:firewp()	
+	end
+	end
 	self.Entity:NextThink( CurTime() + .22)
 	return true
 end
@@ -203,6 +237,14 @@ function ENT:TriggerInput(k, v)
 		self.inFire3 = true
 		else
 		self.inFire3 = false
+		end
+		end
+
+		if(k=="Fire WP") then
+		if((v or 0) >= 1) then
+		self.inFire4 = true
+		else
+		self.inFire4 = false
 		end
 		end
 	

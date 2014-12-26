@@ -1,8 +1,7 @@
-AddCSLuaFile( "cl_init.lua" )
-AddCSLuaFile( "shared.lua" )
 
-include('entities/base_wire_entity/init.lua'); 
-include('shared.lua')
+AddCSLuaFile()
+DEFINE_BASECLASS( "base_wire_entity" )
+ENT.RenderGroup		= RENDERGROUP_BOTH
 
 function ENT:Initialize()   
 
@@ -85,7 +84,7 @@ function ENT:fire()
 		effectdata:SetAngles(self.Velo:Angle())	
 		util.Effect( "gdca_lowcalmuzzle", effectdata )
 		util.ScreenShake(self.Entity:GetPos(), 7, 5, 0.2, 140 )
-		self.Entity:EmitSound( "M240.Emit" )
+		self.Entity:EmitSound( "SCARF.single" )
 		self.ammos = self.ammos-1
 	
 
@@ -114,7 +113,7 @@ function ENT:firetracer()
 		effectdata:SetAngles(self.Velo:Angle())	
 		util.Effect( "gdca_lowcalmuzzle", effectdata )
 		util.ScreenShake(self.Entity:GetPos(), 7, 5, 0.2, 140 )
-		self.Entity:EmitSound( "M240.Emit" )
+		self.Entity:EmitSound( "SCARF.single" ) //M240.Emit
 		self.ammos = self.ammos-1
 end
 

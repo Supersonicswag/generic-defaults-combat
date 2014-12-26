@@ -1,8 +1,7 @@
-AddCSLuaFile( "cl_init.lua" )
-AddCSLuaFile( "shared.lua" )
 
-include('entities/base_wire_entity/init.lua'); 
-include('shared.lua')
+AddCSLuaFile()
+DEFINE_BASECLASS( "base_wire_entity" )
+ENT.RenderGroup		= RENDERGROUP_BOTH
 
 function ENT:Initialize()   
 
@@ -85,7 +84,7 @@ function ENT:fire()
 		effectdata:SetAngles(self.Velo:Angle())
 		util.Effect( "gdca_lowcalmuzzle", effectdata )
 		util.ScreenShake(self.Entity:GetPos(), 7, 5, 0.05, 200 )
-		self.Entity:EmitSound( "M2HB.Emit" )
+		self.Entity:EmitSound( "M2HB.Emit" ) //M2HB.Emit
 		self.ammos = self.ammos-1
 	
 

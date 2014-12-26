@@ -16,17 +16,17 @@ self.Entity:SetSolid( SOLID_VPHYSICS )        -- CHEESECAKE!    >:3
 self.Sound = CreateSound( self.Entity, Sound( "Phx.HoverHeavy" ) ) //Phx.Turbine weapons/rpg/rocket1.wav
 self.Sound:Play()
 
- SmokeTrail = ents.Create("env_spritetrail")
-SmokeTrail:SetKeyValue("lifetime","1")
-SmokeTrail:SetKeyValue("startwidth","20")
-SmokeTrail:SetKeyValue("endwidth","150")
-SmokeTrail:SetKeyValue("spritename","trails/smoke.vmt")
-SmokeTrail:SetKeyValue("rendermode","5")
-SmokeTrail:SetKeyValue("rendercolor","200 200 200")
-SmokeTrail:SetPos(self.Entity:GetPos())
-SmokeTrail:SetParent(self.Entity)
-SmokeTrail:Spawn()
-SmokeTrail:Activate()
+ //SmokeTrail = ents.Create("env_spritetrail")
+//SmokeTrail:SetKeyValue("lifetime","1")
+//SmokeTrail:SetKeyValue("startwidth","20")
+//SmokeTrail:SetKeyValue("endwidth","150")
+//SmokeTrail:SetKeyValue("spritename","trails/smoke.vmt")
+//SmokeTrail:SetKeyValue("rendermode","5")
+//SmokeTrail:SetKeyValue("rendercolor","200 200 200")
+//SmokeTrail:SetPos(self.Entity:GetPos())
+//SmokeTrail:SetParent(self.Entity)
+//SmokeTrail:Spawn()
+//SmokeTrail:Activate()
 
 Glow = ents.Create("env_sprite")
 Glow:SetPos(self.Entity:GetPos())
@@ -36,8 +36,8 @@ Glow:SetKeyValue("renderamt", "255")
 Glow:SetKeyValue("rendercolor", "250 200 150")
 Glow:SetKeyValue("framerate12", "20")
 Glow:SetKeyValue("model", "light_glow03.spr")
-Glow:SetKeyValue("scale", "3")
-Glow:SetKeyValue("GlowProxySize", "50")
+Glow:SetKeyValue("scale", "1")
+Glow:SetKeyValue("GlowProxySize", "1")
 Glow:SetParent(self.Entity)
 Glow:Spawn()
 Glow:Activate()
@@ -85,7 +85,7 @@ end
 					effectdata:SetEntity(self.Entity)			// Who done it?
 					effectdata:SetScale(2.5)				// Size of explosion
 					effectdata:SetRadius(tr.MatType)			// Texture of Impact
-					effectdata:SetMagnitude(16)				// Length of explosion trails	
+					effectdata:SetMagnitude(18)				// Length of explosion trails	
 					util.Effect( "gdca_cinematicboom", effectdata )
 					util.ScreenShake(tr.HitPos, 10, 5, 1, 2000 )
 					util.Decal("Scorch", tr.HitPos + tr.HitNormal, tr.HitPos - tr.HitNormal)

@@ -1,11 +1,7 @@
 
-AddCSLuaFile( "cl_init.lua" )
-AddCSLuaFile( "shared.lua" )
-
-include('entities/base_wire_entity/init.lua'); 
-include('shared.lua')
-
-
+AddCSLuaFile()
+DEFINE_BASECLASS( "base_wire_entity" )
+ENT.RenderGroup		= RENDERGROUP_BOTH
 
 function ENT:Initialize()   
 
@@ -22,6 +18,7 @@ function ENT:Initialize()
 	self.loading = false
 	self.reloadtime = 0
 	self.infire = false
+	self.inFireWP = false
 	self.heat = 0
 	self.Velo = Vector(0,0,0)
 	self.Pos2 = self.Entity:GetPos()
@@ -38,7 +35,7 @@ function ENT:Initialize()
 		phys:Wake() 
 	end 
  
-	self.Inputs = Wire_CreateInputs( self.Entity, { "Fire"} )
+	self.Inputs = Wire_CreateInputs( self.Entity, { "Fire", "Fire WP"} )
 	self.Outputs = Wire_CreateOutputs( self.Entity, { "Can Fire", "Heat"})
 end   
 
@@ -62,6 +59,34 @@ end
 function ENT:firerac5()
 
 		local ent = ents.Create( "gdca_30x113hei" )
+		ent:SetPos( self.Entity:GetPos() +  self.Entity:GetUp() * 150)
+		ent:SetAngles( self.Entity:GetAngles() )
+		ent:Spawn()
+		ent:Activate()
+		self.heat = self.heat+8
+		
+		local phys = self.Entity:GetPhysicsObject()  	
+		if (phys:IsValid()) then  		
+		phys:ApplyForceCenter( self.Entity:GetUp() * -30000 ) 
+		end 
+		
+		local effectdata = EffectData()
+		effectdata:SetOrigin(self.Entity:GetPos() +  self.Entity:GetUp() * 30)
+		effectdata:SetNormal(self:GetUp())
+		effectdata:SetScale(0.7)
+		effectdata:SetRadius(4)
+		effectdata:SetMagnitude(self.Velo:Length())
+		effectdata:SetAngles(self.Velo:Angle())
+		util.Effect( "gdca_autocannonmuzzle", effectdata )
+		self.Entity:EmitSound( "M230.Emit" )
+		util.ScreenShake(self.Entity:GetPos(), 25, 5, 0.2, 350 )
+	
+
+end
+
+function ENT:firewp()
+
+		local ent = ents.Create( "gdca_30x113wp" )
 		ent:SetPos( self.Entity:GetPos() +  self.Entity:GetUp() * 150)
 		ent:SetAngles( self.Entity:GetAngles() )
 		ent:Spawn()
@@ -112,6 +137,13 @@ function ENT:Think()
 	end
 	end
 
+	if self.inFireWP then
+	if (self.reloadtime < CurTime()) then
+	self:firewp()	
+	end
+	end
+
+
 	self.Entity:NextThink( CurTime() + .1)
 	return true
 end
@@ -126,6 +158,13 @@ function ENT:TriggerInput(k, v)
 		end
 		end
 
+		if(k=="Fire WP") then
+		if((v or 0) >= 1) then
+			self.inFireWP = true
+		else
+			self.inFireWP = false
+		end
+		end
 	
 end
  
