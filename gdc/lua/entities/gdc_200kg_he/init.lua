@@ -3,6 +3,10 @@ AddCSLuaFile()
 DEFINE_BASECLASS( "base_wire_entity" )
 ENT.RenderGroup		= RENDERGROUP_BOTH
 
+AddCSLuaFile( "cl_init.lua" )
+AddCSLuaFile( "shared.lua" )
+
+
 function ENT:SpawnFunction( ply, tr)
 	
 	if ( !tr.Hit ) then return end

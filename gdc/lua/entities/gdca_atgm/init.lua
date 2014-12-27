@@ -16,8 +16,9 @@ function ENT:Initialize()
 	end
 	end
 	end
-
-self.Target 		= self.Guider:GetVar("Target",Vector)		//print(tostring(self.Target))
+	
+//self.Target 		= Vector(0,0,0)	
+self.Target 		= self.Guider:GetVar("Target",Vector)		print(tostring(self.Target))
 
 if self.Guider.Wobbliness!=0.5 		then
 self.W = self.Guider.Wobbliness 	else

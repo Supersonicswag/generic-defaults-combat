@@ -17,7 +17,7 @@ self.Sound = CreateSound( self.Entity, Sound( "Phx.HoverHeavy" ) ) //Phx.Turbine
 self.Sound:Play()
 
  SmokeTrail = ents.Create("env_spritetrail")
-SmokeTrail:SetKeyValue("lifetime","1")
+SmokeTrail:SetKeyValue("lifetime","0.3")
 SmokeTrail:SetKeyValue("startwidth","20")
 SmokeTrail:SetKeyValue("endwidth","150")
 SmokeTrail:SetKeyValue("spritename","trails/smoke.vmt")

@@ -3,6 +3,9 @@ AddCSLuaFile()
 DEFINE_BASECLASS( "base_wire_entity" )
 ENT.RenderGroup		= RENDERGROUP_BOTH
 
+AddCSLuaFile( "cl_init.lua" )
+AddCSLuaFile( "shared.lua" )
+
 
 function ENT:Initialize()   
 

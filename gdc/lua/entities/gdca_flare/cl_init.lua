@@ -22,7 +22,7 @@
 			local particle = self.emitter:Add( "particle/smokesprites_000"..math.random(1,9), pos)
 			if (particle) then
 				particle:SetVelocity(self:GetUp() )
-				particle:SetDieTime( math.Rand( 3, 7 ) )
+				particle:SetDieTime( math.Rand( 2, 8 ) )
 				particle:SetStartAlpha( math.Rand( 40, 50 ) )
 				particle:SetEndAlpha( 0 )
 				particle:SetStartSize( 50 )

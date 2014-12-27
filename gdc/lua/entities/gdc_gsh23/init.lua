@@ -3,6 +3,10 @@ AddCSLuaFile()
 DEFINE_BASECLASS( "base_wire_entity" )
 ENT.RenderGroup		= RENDERGROUP_BOTH
 
+AddCSLuaFile( "cl_init.lua" )
+AddCSLuaFile( "shared.lua" )
+
+
 // READ ME!
 
 // So you found this entity and you're wondering why its not on the list.

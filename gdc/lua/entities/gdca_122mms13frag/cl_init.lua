@@ -22,10 +22,10 @@
 			local particle = self.emitter:Add( "particle/smokesprites_000"..math.random(1,9), pos + (self:GetUp() * -80 * i))
 			if (particle) then
 				particle:SetVelocity((self:GetUp() * -1000)+VectorRand():GetNormalized()*math.Rand(50, 100) )
-				particle:SetDieTime( math.Rand( 3, 7 ) )
-				particle:SetStartAlpha( math.Rand( 40, 60 ) )
+				particle:SetDieTime( math.Rand( 2, 10 ) )
+				particle:SetStartAlpha( math.Rand( 20, 30 ) )
 				particle:SetEndAlpha( 0 )
-				particle:SetStartSize( math.Rand( 70, 80 ) )
+				particle:SetStartSize( math.Rand( 50, 60 ) )
 				particle:SetEndSize( math.Rand( 200, 250 ) )
 				particle:SetRoll( math.Rand(0, 360) )
 				particle:SetRollDelta( math.Rand(-1, 1) )

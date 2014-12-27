@@ -32,9 +32,9 @@ self.Flared = false
 self.TPos = self.Target:GetPos()
 
 SmokeTrail = ents.Create("env_spritetrail")
-SmokeTrail:SetKeyValue("lifetime","1")
+SmokeTrail:SetKeyValue("lifetime","0.2")
 SmokeTrail:SetKeyValue("startwidth","40")
-SmokeTrail:SetKeyValue("endwidth","200")
+SmokeTrail:SetKeyValue("endwidth","100")
 SmokeTrail:SetKeyValue("spritename","trails/smoke.vmt")
 SmokeTrail:SetKeyValue("rendermode","5")
 SmokeTrail:SetKeyValue("rendercolor","200 200 200")

@@ -11,9 +11,9 @@ self.Entity:SetMoveType( MOVETYPE_NONE )   --after all, gmod is a physics
 self.Entity:SetSolid( SOLID_NONE )        -- CHEESECAKE!    >:3           
 
 SmokeTrail = ents.Create("env_spritetrail")
-SmokeTrail:SetKeyValue("lifetime","0.5")
-SmokeTrail:SetKeyValue("startwidth","20")
-SmokeTrail:SetKeyValue("endwidth","200")
+SmokeTrail:SetKeyValue("lifetime","0.2")
+SmokeTrail:SetKeyValue("startwidth","30")
+SmokeTrail:SetKeyValue("endwidth","100")
 SmokeTrail:SetKeyValue("spritename","trails/smoke.vmt")
 SmokeTrail:SetKeyValue("rendermode","5")
 SmokeTrail:SetKeyValue("rendercolor","200 200 200")

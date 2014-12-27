@@ -18,15 +18,15 @@
  function ENT:Think()
 	
 	pos = self:GetPos()
-		for i=0, (10) do
+		for i=0, (4) do
 			local particle = self.emitter:Add( "particle/smokesprites_000"..math.random(1,9), pos + (self:GetUp() * -100 * i))
 			if (particle) then
 				particle:SetVelocity((self:GetUp() * -2000)+(VectorRand()* 100) )
-				particle:SetDieTime( math.Rand( 2, 5 ) )
+				particle:SetDieTime( math.Rand( 0.25, 8 ) )
 				particle:SetStartAlpha( math.Rand( 14, 18 ) )
 				particle:SetEndAlpha( 0 )
-				particle:SetStartSize( math.Rand( 30, 40 ) )
-				particle:SetEndSize( math.Rand( 140, 180 ) )
+				particle:SetStartSize( math.Rand( 40, 50 ) )
+				particle:SetEndSize( math.Rand( 180, 230 ) )
 				particle:SetRoll( math.Rand(0, 360) )
 				particle:SetRollDelta( math.Rand(-1, 1) )
 				particle:SetColor( 200 , 200 , 200 ) 
